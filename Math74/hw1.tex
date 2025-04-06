@@ -1,0 +1,94 @@
+% \documentclass[12pt]{amsart}
+\documentclass[12pt]{article}
+
+\include{../style}
+
+\begin{document}
+
+% \input{title}
+
+
+\begin{problab}{1}
+Prove the pasting lemma: Suppose $X = A \cup B$ is a topological space with $A$, $B$ closed in $X$. If $f \colon X \to Y$ is a map such that the restrictions $f|_A$ and $f|_B$ are continuous, then $f$ is continuous. 
+\end{problab}
+\begin{solu}
+    This follows from the definition of continuity. Let $U \subseteq Y$ be open. Then $f^{-1}(U) = (f|_A)^{-1}(U) \cup (f|_B)^{-1}(U)$. Since $f|_A$ and $f|_B$ are continuous, $(f|_A)^{-1}(U)$ and $(f|_B)^{-1}(U)$ are open in $A$ and $B$, respectively. Because $A$ and $B$ are closed in $X$, these sets are also open in $X$. Hence, $f^{-1}(U)$ is open in $X$, and $f$ is continuous.
+\end{solu}
+\newpage
+
+\begin{problab}{2}
+In a connected space $X$, a point $x \in X$ is called a \emph{cut point} if $X \setminus \{ x \}$ is disconnected. 
+    \begin{enumerate}
+        \item Suppose that $f: X \to Y$ is a homeomorphism of connected spaces. Show that $x \in X$ is a cut point if and only if $f(x) \in Y$ is a cut point. 
+        \item Show that none of the spaces $(0,1), (0,1], [0,1],$ and $S^1 = \{ (x,y) \in \R^2 : x^2 + y^2 =1 \} $ are homeomorphic to each other. 
+        \item Show that $\R$ is not homeomorphic to $\R^n$ for any $n \geq 2$. 
+        \item The bouquet $B_n$ of $n$ circles is the space obtained by gluing $n$ disjoint copies of $S^1$ at a single point in each circle. Show that $B_n$ and $B_m$ are not homeomorphic for $n \neq m$. 
+    \end{enumerate}
+\end{problab}
+\begin{solu}
+    HELLO
+\end{solu}
+\newpage
+
+\begin{problab}{3}
+Define $\bb{RP}^n$ to be the quotient space of $\R^{n+1}\setminus \{0\}$ by $(x_1, \hdots, x_{n+1}) \simeq (a x_1, \hdots, a x_{n+1})$ for all nonzero scalars $a$. Let $[x_1: \hdots : x_{n+1}] \in \bb{RP}^n$ denote the image of $(x_1, \hdots, x_{n+1}) \in \bb{R}^{n+1} \setminus \{ 0 \}$ under the quotient map. Show that $i \colon \bb{R}^n \to \bb{RP}^n$ given by 
+$$ i (x_1, \hdots, x_n) = [1: x_1 : \hdots : x_n ] $$
+is a topological embedding (i.e., a homeomorphism onto its image) and the complement of $i(\bb{R}^n)$ is homeomorphic to $\bb{RP}^{n-1}$.
+\end{problab}
+
+\begin{solu}
+
+\end{solu}
+\newpage
+
+
+\begin{problab}{4}
+Suppose that $\mathcal{C}$ is a category, $A, B, C$ are objects of $\mathcal{C}$, and $f \in \hom(A,B)$ and $g \in \hom(B,C)$ are isomorphisms. 
+    \begin{enumerate}
+        \item Show that $f$ has a unique inverse in $\hom(B,A)$. 
+        \item Show that $\id_A$ is an isomorphism.
+        \item Show that the inverse of $f$ is an isomorphism.
+        \item Show that $g \circ f$ is an isomorphism.
+        \item Show that $\text{Aut}(A)$ and $\text{Aut}(B)$ are isomorphic groups.
+        \item Show that if $F: \mathcal{C} \to \mathcal{D}$ is a functor, then $F(f) \in \hom_\mathcal{D} (F(A), F(B))$ is an isomorphism.
+    \end{enumerate}
+\end{problab}
+
+\begin{solu}
+
+\end{solu}
+\newpage
+
+\begin{problab}{5}
+For a space $X$, let $\pi_0(X)$ be the space of path components of $X$. Recall that the image of a path-connected space is path-connected. Thus, for a continuous map $f: X \to Y$, there is an induced map $\pi_0(f): \pi_0(X) \to \pi_0(Y)$ taking a path component $A$ to the path component containing $f(A)$. Show that this makes $\pi_0$ a functor from the category of topological spaces to the category of sets.
+\end{problab}
+
+
+\begin{solu}
+\newpage 
+\end{solu}
+\begin{problab}{6} (Munkres, \emph{Topology}, 51.2) Given spaces $X$ and $Y$, let $[X,Y]$ denote the set of homotopy classes of maps of $X$ into $Y$.
+\begin{enumerate}
+\item Let $I = [0,1]$. Show that for any $X$, the set $[X,I]$ has a single element.
+\item Show that if $Y$ is path connected, then $[I,Y]$ has a single element.
+\end{enumerate}
+\end{problab}
+
+\begin{solu} .
+
+\end{solu}
+\newpage
+
+\begin{problab}{7}
+(Munkres, \emph{Topology}, 51.3) A space $X$ is said to be \emph{contractible} if the identity map $i_X: X \to X$ is nullhomotopic. 
+\begin{enumerate}
+\item Show that $I$ and $\R$ are contractible.
+\item Show that a contractible space is path connected.
+\item Show that if $Y$ is contractible, then for any $X$, the set $[X,Y]$ has a single element.
+\item Show that if $X$ is contractible and $Y$ is path connected then $[X,Y]$ has a single element. 
+\end{enumerate}
+\end{problab}
+
+
+
+\end{document}

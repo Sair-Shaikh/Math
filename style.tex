@@ -1,0 +1,104 @@
+\usepackage{fullpage}
+\usepackage{mdframed}
+\usepackage{colonequals}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{tcolorbox}
+\usepackage[all]{xy}
+\usepackage{proof}
+\usepackage{mathtools}
+\usepackage{bbm}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsxtra}
+\newcommand{\bb}{\mathbb}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\mathcat}[1]{\textup{\textbf{\textsf{#1}}}} % for defined terms
+
+\newenvironment{problab}[1]
+{\begin{tcolorbox}\noindent\textbf{Problem #1}.}
+{\vskip 6pt \end{tcolorbox}}
+
+\newenvironment{enumalph}
+{\begin{enumerate}\renewcommand{\labelenumi}{\textnormal{(\alph{enumi})}}}
+{\end{enumerate}}
+
+\newenvironment{enumroman}
+{\begin{enumerate}\renewcommand{\labelenumi}{\textnormal{(\roman{enumi})}}}
+{\end{enumerate}}
+
+\newcommand{\defi}[1]{\textsf{#1}} % for defined terms
+
+\theoremstyle{remark}
+\newtheorem*{solu}{Solution}
+
+\setlength{\hfuzz}{4pt}
+
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\br}{\mathbf{r}}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\nbit}[1]{\{0, 1\}^{#1}}
+\newcommand{\bits}{\{0, 1\}^{n}}
+\newcommand{\bbni}{\bigbreak \noindent}
+\let\1\relax
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\fr}[2]{\left(\frac{#1}{#2}\right)}
+
+\newcommand{\vecz}{\mathbf{z}}
+\newcommand{\vecr}{\mathbf{r}}
+\DeclareMathOperator{\Cinf}{C^{\infty}}
+\DeclareMathOperator{\Id}{Id}
+
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\opchar}{char}
+\DeclareMathOperator{\opspan}{span}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\CandE}{CandE}
+\DeclareMathOperator{\CandO}{CandO}
+\DeclareMathOperator{\argmax}{argmax}
+\DeclareMathOperator{\first}{first}
+\DeclareMathOperator{\last}{last}
+\DeclareMathOperator{\cost}{cost}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\path}{path}
+\DeclareMathOperator{\parent}{parent}
+\DeclareMathOperator{\argmin}{argmin}
+\DeclareMathOperator{\excess}{excess}
+\let\Pr\relax
+\DeclareMathOperator{\Pr}{\mathbf{Pr}}
+\DeclareMathOperator{\Exp}{\mathbb{E}}
+\DeclareMathOperator{\Var}{\mathbf{Var}}
+%Paired Delims
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{ \rfloor}
+
+
+\newcommand{\dagstar}{*}
+
+\newcommand{\tbigwedge}{{\textstyle{\bigwedge}}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
