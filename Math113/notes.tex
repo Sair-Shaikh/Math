@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+
+\include{../style}
+
+\begin{document}
+
+\input{title}
+
+\begin{itemize}
+    \item[Defn.] Let $\{U_\alpha\}_{\alpha \in A}$ be an open cover of $(X, \rho)$. We say that $d > 0$ is a Lebesgue number for the cover if given any $d$-ball $B_d(x_0)$ with $x_0 \in X$, there exists $a_0 \in A$ such that $B_d(x_0) \subseteq U_{a_0}$. 
+    \item[Ex] $X = \R$. $U_1 = (-\infty, 1)$, $U_2 = (0, 2)$, and $U_3 = (1, \infty)$. Here $d = 1/2$ is a LN for $\{U_1, U_2, U_3\}$. This is clear if $x_0 \in (1/2, 3/2)$. 
+    \item[Ex. (Hwk.)] Given $x \in (0, 1)$, $\exists \delta_x > 0$ such that:
+    \[ y \in B_{\delta_x}(x) = \{y \in (0, 1): |y-x| \leq \delta_x\} \]
+    \[ \implies |1/x - 1/y| < 1 \]
+    Then, 
+    \[ (0, 1) = \bigcup_{x \in (0, 1)} B_{\delta_x}(x) \]
+    has no Lebesgue number.
+    \item[Lemma] (Lebesgue Covering Lemma) Every open cover of a compact metric space has a Lebesgue number. \\ 
+    Proof. Pictures. Apr 9.
+    \item[Thm.] Suppose $(X, \rho)$ is compact, and $F: (X, \rho) \to (Y, \sigma)$ is continuous. Then $F$ is uniformly continuous.
+    % Proof. Let $\epsilon > 0$. We need to find $\delta > 0$ such that $\forall x, y \in X$: 
+    % \[ \rho(x, y) < \delta \implies \sigma(F(x), F(y)) < \epsilon \]
+    % Since $F$ is continous, $\forall z \in X$, $\exists \delta_z > 0$ such that:
+    % \[ \rho(x, z) < \delta_z \implies \sigma(F(x), F(z)) < \epsilon/2 \]
+    % That is, 
+    % \[ F(B_{\delta_z}(z)) \subseteq B_{\epsilon/2}(F(z)) \]
+    % Let $\delta > 0$ be a Lebesgue number for the cover $\{B_{\delta_z}(z)\}_{z \in X}$. \\
+    % Now supposed $\rho(x,y) < \delta$. Then $\exists z \in X$ such that:
+    % \[ B_\delta(x) \subseteq B_{\delta_z}(z) \]
+    % and 
+    % \[\sigma(F(x), F(y)) \leq \sigma(F(x), F(y)) + \sigma(F(z), F(y)) < \epsilon/2 + \epsilon/2 = \epsilon \]
+    \item[Defn. ] Let $(X, \rho)$ be a metric space and $C(X)$ the $\C$-vector space of continous functions on $X$. We say $\mathcal{J} \subset C$ is equicontinous at $x \in X$ if $\forall \epsilon > 0, \exists \delta > 0$ such that:
+    \[ \forall F \in \mathcal{J}, F(B_\delta(x)) \subseteq B_\epsilon(F(x)) \]
+    We say $\mathcal{J}$ is equicontinous on $X$ if $\forall x \in X$, $\mathcal{J}$ is equicontinous at $x$.
+    \item[Ex.] Let $X = [0, 1] \subset \R$. Let $F_n(x) = x^n \forall n \geq 1$. Let:
+    \[\mathcal{J} = \{F_n: n \in \mathbb{N}\}\]
+    Let $x_n = \frac{1}{2}^{1/n}$. Then, $x_n$ arrow up to $1$. Then, 
+    \[ |F_n(x_n) - F_n(1)| = |1/2 -1| = 1/2\]
+    Thus, $\mathcal{J}$ is not equicontinous at $1$.
+    \item[Ex. (Hwk)] Show that $\mathcal{J}$ is equicontinous on $[0, 1)$. 
+    \item[Defn.] Let $(F_n)$ be a sequence of ($\C$-valued) functions on $X$. Then, $(F_n)$ is uniformly bounded if $\exists M > 0$ such that $\forall n \geq 1, \forall x \in X$:
+    \[ |F_n(x)| < M \]
+    We say that $(F_n)$ is pointwise bounded if $\forall x \in X$, $\exists M_x > 0$ such that:
+    \[ |F_n(x)| < M_x \]
+    \item[Defn.] A metric space (top. space) is seperable if there is a countable dense subset $D \subset X$. 
+    \item[Ex.] Since $\Q^n \subset \R^n$ is dense, $(\R^n, ||\cdot||_p)$ is separable.  
+    \item[Lemma.] (Arzelà-Ascoli) Let $(X, \rho)$ is a seperable metric space and that $(F_n)$ is pointwise bounded and equicontinous in $C(X)$. Then, there is subsequence $(F_{n_k})$ such that:
+        \[ \lim_{x\to\infty} F_{n_k}(x)\]
+    exists $\forall x \in X$.
+    \item[Yap.] Given a sequence $(x_n)$, we get subsequence by finding $n_k \in \mathbb{N}$ such that $n_{k+1} > n_k$ and $(x_{n_k})_{k=1}^\infty \to x$ is a sequence. \\
+    A subsubsequence is determined by finding $n_{k_1} < n_{k_2} < \cdots$ and then we write: 
+    \[ (x_{n_{k_j}})_{j=1}^\infty\]
+    A subsequence is determined by an infinite subset $S_1 = \{n_1 \leq n_2 \leq \cdots\} \subset \mathbb{N}$. A subsubsequence is determined by an infinite subset $S_2 \subset S_1$, 
+    \[ S_2 = \{n_{k_1} < n_{k_2} < \cdots \} \subset S_1\]
+    Now, we write: 
+    \[ \lim_{n \in S_1} x_n = a \text{ instead of } \lim_{k \to \infty} x_{n_k}\]
+    Note that $\lim_{n \in S_1} x_n = a$ if:
+    \[ \forall \epsilon > 0\, \exists N: n \geq N, n \in S' \implies |x_n - a| < \epsilon\] 
+    \item[Rmk.] Suppose $S_1 \subset \mathbb{N}$ determines a subsequence as above. Suppose $S' \subset \mathbb{N}$ is infinite and:
+    \[\{n \in S' : n \not \in S_1\}\]
+    is finite. The $\lim_{n \in S_1} x_n = a$ then $\lim_{n \in S'} x_n = a$ as well. \\
+    Proof of the AA Lemma: Pictures. 
+    \end{itemize}
+
+
+
+\end{document}
