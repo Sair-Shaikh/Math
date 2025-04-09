@@ -9,86 +9,205 @@
 
 
 \begin{problab}{1}
-Prove the pasting lemma: Suppose $X = A \cup B$ is a topological space with $A$, $B$ closed in $X$. If $f \colon X \to Y$ is a map such that the restrictions $f|_A$ and $f|_B$ are continuous, then $f$ is continuous. 
+    We want to show that the metrics induced on $\R^n$ by the $p$-norms are all strongly equivalent for $1 \leq p \leq \infty$.
 \end{problab}
 \begin{solu}
-    This follows from the definition of continuity. Let $U \subseteq Y$ be open. Then $f^{-1}(U) = (f|_A)^{-1}(U) \cup (f|_B)^{-1}(U)$. Since $f|_A$ and $f|_B$ are continuous, $(f|_A)^{-1}(U)$ and $(f|_B)^{-1}(U)$ are open in $A$ and $B$, respectively. Because $A$ and $B$ are closed in $X$, these sets are also open in $X$. Hence, $f^{-1}(U)$ is open in $X$, and $f$ is continuous.
+    First, note that strong equivalence of the norms implies strong equivalence of the metrices induced by the norms. Indeed, let $\alpha$ and $\beta$ be two norms on $\R^n$. Then, if there exist $C, D > 0 \in \R$ such that:
+    \[ \forall x \in \R^n : C \alpha(x) \leq \beta(x) \leq D \alpha(x) \]
+    Then, we have:
+    \[ \forall x, y \in \R^n : C \alpha(x-y, x-y) \leq \beta(x-y, x-y) \leq D \alpha(x-y,x-y) \]
+    which is precisely the statement for the strong equivalence on the induced metrics. Thus, we only need to show the strong equivalence of the norms. \bbni
+    Next, we show that being strongly equivalent is an equivalence relation on norms (although we will only use transitivity). Let $\alpha$, $\beta$, and $\gamma$ be norms on $\R^n$. We prove the following: 
+    \begin{itemize}
+        \item Reflexivity: Note that:
+        \[ \forall x \in \R^n : \alpha(x) \leq \alpha(x) \leq \alpha(x) \] 
+        Thus, $\alpha$ is strongly equivalent to itself.
+        \item Symmetry: Assume $\alpha$ is strongly equivalent to $\beta$. Then, there exist $C, D > 0 \in \R$ such that: 
+        \[ \forall x \in \R^n : C \alpha(x) \leq \beta(x) \leq D \alpha(x) \]
+        Then, we have:
+        \[ \forall x \in \R^n : \frac{1}{D} \beta(x) \leq \alpha(x) \leq \frac{1}{C} \beta(x) \]
+        where $\frac{1}{D}, \frac{1}{C} > 0$. Thus, $\beta$ is strongly equivalent to $\alpha$.
+        \item Transitivity: Assume $\alpha$ is strongly equivalent to $\beta$ and $\beta$ is strongly equivalent to $\gamma$. Then, there exist $C, D, E, F > 0 \in \R$ such that:
+        \[ \forall x \in \R^n : C \alpha(x) \leq \beta(x) \leq D \alpha(x) \]
+        \[ \forall x \in \R^n : E \beta(x) \leq \gamma(x) \leq F \beta(x) \]
+        Then, we have:
+        \[ \forall x \in \R^n: CE \alpha(x) \leq E \beta(x) \leq \gamma(x) \leq F\beta(x) \leq DF\alpha(x) \]
+        where $CE, DF > 0$. Thus, $\alpha$ is strongly equivalent to $\gamma$.
+    \end{itemize}
+    Thus, strong equivalence is an equivalence relation on norms. \bbni
+    Thus, by transitivity, it sufficies to prove that for an arbitrary $1 \leq p \leq \infty$, the $p$-norm is strongly equivalent to the $2$-norm, i.e. we need to show that there exist $C, D > 0 \in \R$ such that:
+    \[ \forall x \in \R^n : C ||x||_2 \leq ||x||_p \leq D_p ||x||_2 \]
+    We claim that it is sufficient to show the result on the subset $S = \{x \in \R^n \mid ||x||_2 = 1\}$. First, note that if $||x||_2 = 0$, we know that $x = 0$ (by definiteness), thus, $||x||_p = 0$ as well, and the metrics are strongly equivalent. Thus, we can assume $||x||_2 > 0$.
+    Indeed, using homogeneity of the $p$-norm, we have:
+    \begin{align*}
+        &\forall x \neq 0 \in X: C ||x||_2 \leq ||x||_p \leq D ||x||_2 \\
+        \iff &\forall x \neq 0 \in X: C \leq \frac{1}{||x||_2} ||x||_p \leq D \\
+        \iff &\forall x \neq 0 \in X: C \leq  || (x/||x||_2)||_p \leq D \\
+        \iff &\forall w \in S: C \leq ||w||_p \leq D
+    \end{align*}
+    Next, note that the $p$-norm is a continous function on $\R^n$ for $p \neq \infty$ as it is a $p$-th root of a finite sum of polynomial functions of the coordinates, thus is a composition of continous functions. Similarly, for $p = \infty$, the $p$-norm is a continous function on $\R^n$ as it is the maximum of a finite number of continous functions of the coordinates. Since $S$ is closed and bounded, we can apply the extreme value theorem to let $C, D > 0 \in \R$ be minimum and maximum of $||x||_p$ attained on $S$. Thus, we have:
+    \[ \forall x \in S: C \leq ||x||_p \leq D \]
+    This sufficies to prove that all $p$-norms are strongly equivalent.
 \end{solu}
+
 \newpage
 
 \begin{problab}{2}
-In a connected space $X$, a point $x \in X$ is called a \emph{cut point} if $X \setminus \{ x \}$ is disconnected. 
-    \begin{enumerate}
-        \item Suppose that $f: X \to Y$ is a homeomorphism of connected spaces. Show that $x \in X$ is a cut point if and only if $f(x) \in Y$ is a cut point. 
-        \item Show that none of the spaces $(0,1), (0,1], [0,1],$ and $S^1 = \{ (x,y) \in \R^2 : x^2 + y^2 =1 \} $ are homeomorphic to each other. 
-        \item Show that $\R$ is not homeomorphic to $\R^n$ for any $n \geq 2$. 
-        \item The bouquet $B_n$ of $n$ circles is the space obtained by gluing $n$ disjoint copies of $S^1$ at a single point in each circle. Show that $B_n$ and $B_m$ are not homeomorphic for $n \neq m$. 
-    \end{enumerate}
+    Give an example of a metric on $\R^n$ which is not equivalent to any of the metrics in problem 1.
 \end{problab}
 \begin{solu}
-    HELLO
+    Take the discrete metric on $\R^n$ given by:
+    \[ d(x,y) = \begin{cases}
+        0 & x = y \\
+        1 & x \neq y
+    \end{cases} \]
+    Under this metric, the singleton ${x}$ is open for all $x \in \R^n$ as $\{x\} = B_{1/2}(x)$. However, for the $p$-norm, the singleton $\{x\}$ is not open for any $p \in 1\leq p \leq \infty$. Thus, the discrete metric is not equivalent to any of the metrics in problem 1 as they do not generate the same topologies.
 \end{solu}
+
 \newpage
 
 \begin{problab}{3}
-Define $\bb{RP}^n$ to be the quotient space of $\R^{n+1}\setminus \{0\}$ by $(x_1, \hdots, x_{n+1}) \simeq (a x_1, \hdots, a x_{n+1})$ for all nonzero scalars $a$. Let $[x_1: \hdots : x_{n+1}] \in \bb{RP}^n$ denote the image of $(x_1, \hdots, x_{n+1}) \in \bb{R}^{n+1} \setminus \{ 0 \}$ under the quotient map. Show that $i \colon \bb{R}^n \to \bb{RP}^n$ given by 
-$$ i (x_1, \hdots, x_n) = [1: x_1 : \hdots : x_n ] $$
-is a topological embedding (i.e., a homeomorphism onto its image) and the complement of $i(\bb{R}^n)$ is homeomorphic to $\bb{RP}^{n-1}$.
+    Let $(X, \rho)$ be a metric space. If $A \subseteq X$, then define: 
+    \[ \rho(x, A) = \inf\{\rho(x,y) : y \in A\}\]
+    \begin{enumerate}
+        \item Show that $\rho(x,A) = 0$ if and only if $x \in \overline{A}$.
+        \item Show that $x \mapsto \rho(x,A)$ is continuous.
+        \item Show that if $A$ and $B$ are disjoint, non-empty, closed subsets of $X$, then there is a $f \in C_b(X)$ such that:
+        \begin{itemize}
+            \item $0 \leq f(x) \leq 1$ for all $x \in X$.
+            \item $f(x) = 1$ if and only if $x \in A$.
+            \item $f(x) = 0$ if and only if $x \in B$. 
+        \end{itemize}
+        (Hint: Use the function $\rho(x,B)/(\rho(x, A)+\rho(x, B))$.)
+    \end{enumerate} 
 \end{problab}
 
 \begin{solu}
-
+    \bbni
+    \begin{enumerate}
+        \item Unpacking the definitions, and using a lemma we proved in class, we note that:
+        \begin{align*}
+            &\rho(x, A) = 0  \\
+            \iff &\forall \epsilon > 0, \exists x' \in A: \rho(x,x') < \epsilon \\
+            \iff &\forall \epsilon > 0, \exists x' \in A: x' \in B_\epsilon(x) \\
+            \iff &\forall \epsilon > 0, B_\epsilon(x) \cap A \neq \emptyset \\
+            \iff &x \in \overline{A}
+        \end{align*}
+        \item Let $\epsilon > 0$ and $x \in X$ be arbitrary. We need to show that there exists a $\delta > 0$ such that for all $x' \in X$ with $\rho(x, x') < \delta$, we have:
+        \[|\rho(x, A) - \rho(x', A)| < \epsilon\]
+        Using the triangle inequality, we have:
+        \begin{align*}
+            \rho(x', A) &= \inf\{ \rho(x', y) : y\in A \} \\
+            &\leq \inf\{ \rho(x, x') + \rho(x, y) : y \in A \} \\
+            &\leq \rho(x, x') + \inf\{ \rho(x, y) : y \in A \} \\
+            &= \rho(x, x') + \rho(x, A)
+        \end{align*}
+        Thus, 
+        \[ \rho(x', A) - \rho(x, A) \leq \rho(x, x') \]
+        Similarly, by an analogous calculation switching $x$ with $x'$, we have:
+        \[ \rho(x, A) - \rho(x', A) \leq \rho(x, x') \]
+        Combining these, we conclude: 
+        \[ |\rho(x, A) - \rho(x', A)| \leq \rho(x, x')\]
+        Thus, for $\epsilon > 0$, we can take $\delta = \epsilon$. Then, for $\rho(x, x') < \delta$, we have:
+        \[ |\rho(x, A) - \rho(x', A)| \leq \rho(x, x') < \epsilon \]
+        \item Consider the function $f$ mapping $x \to \frac{\rho(x, B)}{\rho(x, A) + \rho(x, B)}$. Since $A$ and $B$ are disjoint, using part 1., we conclude that the denominator is never $0$ and the function is well-defined for all $x \in X$. This function is continous as it is a composition of continous functions.  We show it is bounded as a part of this question. Thus, $f \in C_b(X)$. We show that $f$ satifies these properties:  
+        \begin{itemize}
+            \item $0 \leq f(x) \leq 1$ for all $x \in X$: For any $x \in X$, $\rho(x, B)$ and $\rho(x, A)$ are the infimums of a set of non-negatives, and thus are non-negative. Thus, both the numerator and denominator, being sums of non-negative numbers, are non-negative. Thus, $f(x) \geq 0$. Additionally, by the non-negativity of $\rho(x, A)$, we have $\rho(x, B) \leq \rho(x, A) + \rho(x, B) \implies f(x) \leq 1$ for all $x \in X$. Thus,
+            \[ \forall x \in X: 0 \leq f(x) \leq 1 \]
+            \item Note that since $A$ is closed, $A = \overline{A}$. Thus, from part 1. we note that: 
+            \[ x \in A \iff \rho(x, A) = 0 \iff f(x) = \frac{\rho(x, B)}{0 + \rho(x, B)} = 1\]
+            \item Similarly, since $B$ is closed, $B = \overline{B}$. Thus, from part 1. we note that:
+            \[ x \in B \iff \rho(x, B) = 0 \iff f(x) = \frac{0}{\rho(x, A) + 0} = 0\]
+        \end{itemize}
+    \end{enumerate}
 \end{solu}
 \newpage
 
 
 \begin{problab}{4}
-Suppose that $\mathcal{C}$ is a category, $A, B, C$ are objects of $\mathcal{C}$, and $f \in \hom(A,B)$ and $g \in \hom(B,C)$ are isomorphisms. 
-    \begin{enumerate}
-        \item Show that $f$ has a unique inverse in $\hom(B,A)$. 
-        \item Show that $\id_A$ is an isomorphism.
-        \item Show that the inverse of $f$ is an isomorphism.
-        \item Show that $g \circ f$ is an isomorphism.
-        \item Show that $\text{Aut}(A)$ and $\text{Aut}(B)$ are isomorphic groups.
-        \item Show that if $F: \mathcal{C} \to \mathcal{D}$ is a functor, then $F(f) \in \hom_\mathcal{D} (F(A), F(B))$ is an isomorphism.
-    \end{enumerate}
+    Show that a Cauchy sequence in a metric space with a convergent subsequence is necessarily convergent. 
 \end{problab}
 
 \begin{solu}
-
+    Let $(x_n)$ be the Cauchy sequence in a metric space $(X, \rho)$. Let $(x_{n_k})$ be a convergent subsequence of $(x_n)$ with limit $x \in X$. We need to show that $(x_n)$ converges to $x$. \bbni
+    Since $(x_{n_k})$ converges to $x$, there exists an $N_0$, such that for all $k \geq N_0$, we have:
+    \[ \rho(x_{n_k}, x) < \frac{\epsilon}{2} \]
+    Since $(x_n)$ is Cauchy, there exists an $N_1$ such that for all $m, n \geq N_1$, we have:
+    \[ \rho(x_m, x_n) < \frac{\epsilon}{2} \]
+    Let $N = \max(N_0, N_1)$. Then for all $k \geq N$, noting $n_k \geq k$, we have:
+    \begin{align*}
+        \rho(x_{k}, x) &\leq \rho(x_{k}, x_{n_k}) + \rho(x_{n_k}, x) \\
+        &< \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
+        &= \epsilon
+    \end{align*}
+    Thus, $(x_n)$ converges to $x$.
 \end{solu}
 \newpage
 
 \begin{problab}{5}
-For a space $X$, let $\pi_0(X)$ be the space of path components of $X$. Recall that the image of a path-connected space is path-connected. Thus, for a continuous map $f: X \to Y$, there is an induced map $\pi_0(f): \pi_0(X) \to \pi_0(Y)$ taking a path component $A$ to the path component containing $f(A)$. Show that this makes $\pi_0$ a functor from the category of topological spaces to the category of sets.
+    Let $\rho$ and $\sigma$ be metrices on $X$. Show that $\rho$ and $\sigma$ are equivalent if and only if they have the same convergent sequences. That is, show that $x_n \to x$ in $(X, \rho)$ if and only if $x_n \to x$ in $(X, \sigma)$.
 \end{problab}
-
 
 \begin{solu}
-\newpage 
+    \bbni
+    \begin{itemize}
+        \item[($\implies$)] Assume $\rho$ and $\sigma$ are equivalent. Let $x_n \to x$ be a convergent sequence in $(X, \rho)$. To show that $x_n \to x$ in $(X, \sigma)$, we need to show that for all $\epsilon > 0$, there exists an $N$ such that for all $n \geq N$, we have:
+        \[ x_n \in B_\epsilon^\sigma(x) \]
+        Since $\rho$ and $\sigma$ are equivalent, there exists $\epsilon' > 0$ such that: 
+        \[ B_{\epsilon'}^\rho(x) \subset B_{\epsilon}^\sigma(x)\]
+        Since $x_n \to x$ in $(X, \rho)$, there exists an $N$ such that for all $n \geq N$, we have:
+        \[ x_n \in B_{\epsilon'}^\rho(x)\]
+        Thus, 
+        \[ x_n \in B_{\epsilon}^\sigma(x) \]
+        Hence, the sequence converges in $(X, \sigma)$ as well.
+
+        \item[($\impliedby$)] Assume $(X, \sigma)$ and $(X, \rho)$ have the same convergent sequences. To show that $\rho$ and $\sigma$ are equivalent, we need to show that they generate the same metric topologies. Let $U \subseteq X$ be open in $(X, \rho)$. We need to show that $U$ in open in $(X, \sigma)$. \bbni
+        We show instead that $X \setminus U$ is closed in $(X, \sigma)$. Let $(x_n) \subseteq X \setminus U$ be any convergent sequence and call its limit $x$. Then, by assumption, $(x_n)$ converges to $x$ in $(X, \rho)$. However, since $X \setminus U$ is closed in $(X, \rho)$, we conclude that $x \in X \setminus U$. Thus, $X \setminus U$ contains all its limit points, thus is closed in $(X, \sigma)$. Thus, $U$ is open in $(X, \sigma)$. Hence, $\rho$ and $\sigma$ generate the same metric topology and are equivalent. 
+    \end{itemize}
 \end{solu}
-\begin{problab}{6} (Munkres, \emph{Topology}, 51.2) Given spaces $X$ and $Y$, let $[X,Y]$ denote the set of homotopy classes of maps of $X$ into $Y$.
-\begin{enumerate}
-\item Let $I = [0,1]$. Show that for any $X$, the set $[X,I]$ has a single element.
-\item Show that if $Y$ is path connected, then $[I,Y]$ has a single element.
-\end{enumerate}
+\newpage 
+
+
+\begin{problab}{6} 
+    Let $X$ be a metric space. Prove that the uniform limit of continous function $f_n: X \to \C$ is continuous.
 \end{problab}
 
-\begin{solu} .
-
+\begin{solu}
+    Let $d$ be the metric. Let $\epsilon > 0$ and $x_0 \in X$ be arbitrary. To prove that $f$ is continous, we need to show that there exists $\delta > 0$ such that $|f(x) - f(x_0)| < \epsilon$ for all $x \in X$ such that $d(x,x_0) < \delta$. \bbni
+    Since $f_n$ is continous, there exists $\delta > 0$ such that for all $x \in X$ with $d(x, x_0) < \delta$, we have:
+    \[ |f_n(x) - f_n(x_0)| < \frac{\epsilon}{3} \]
+    we claim this $\delta$ works. 
+    Since $(f_n)$ converges uniformly to $f$, there exists $N$ such that for all $n \geq N$, we have:
+    \[ \forall x \in X: |f(x) - f_n(x)| < \frac{\epsilon}{3} \]
+    Picking an $n \geq N$, for all $x \in X$ with $d(x, x_0) < \delta$, we have:
+    \begin{align*}
+        |f(x) -f(x_0)| &= |f(x) - f_n(x) + f_n(x) - f_n(x_0) + f_n(x_0) - f(x_0)| \\
+        &\leq |f(x)-f_n(x)| + |f_n(x) -f_n(x_0)| + |f_n(x_0) - f(x_0)| \\
+        &< \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} \\
+        &= \epsilon
+    \end{align*}
+    Thus, $f$ is continous. 
 \end{solu}
 \newpage
 
 \begin{problab}{7}
-(Munkres, \emph{Topology}, 51.3) A space $X$ is said to be \emph{contractible} if the identity map $i_X: X \to X$ is nullhomotopic. 
-\begin{enumerate}
-\item Show that $I$ and $\R$ are contractible.
-\item Show that a contractible space is path connected.
-\item Show that if $Y$ is contractible, then for any $X$, the set $[X,Y]$ has a single element.
-\item Show that if $X$ is contractible and $Y$ is path connected then $[X,Y]$ has a single element. 
-\end{enumerate}
+    Let $X$ be a metric space. Recall that we say $f: X \to C$ is bounded if $||f||_\infty \leq \infty$. A sequence of functions $f_n: X \to D$ is uniformly bounded if there is a $M$ such that $||f_n||_\infty \leq M$ for all $n$. Also, $(f_n)$ is called uniformly Cauchy if for all $\epsilon > 0$ there is an $N$ such that $m, n \geq N$, implies $|f_n - f_m| < \epsilon$ for all $x \in X$. Show that a uniformly Cauchy sequence $(f_n)$ of bounded functions is uniformly bounded. In particular, $(f_n)$ converges to a bouned function.
 \end{problab}
 
-
+\begin{solu}
+    Let $(f_n)$ be a uniformly Cauchy sequence of bounded functions. We need to show that $(f_n)$ is uniformly bounded. Thus, we need to find an $M$ such that $||f||_\infty \leq M$ for all $n$. \bbni
+    Since $(f_n)$ is uniformly Cauchy, there exists an $N \in \mathbb{N}$ such that for all $m, n \geq N$, we have for all $x \in X$:
+    \[ |f_n(x) - f_m(x)| < 1 \]
+    In terms of the $\infty$-norm (the supremum of over all $x \in X$), we have for all $x \in X$:
+    \[ ||f_n(x) - f_m(x)||_\infty \leq 1 \]
+    Fix $m = N$. Then, for all $n \geq N$, we have (by the triangle inequality):
+    \[ ||f_n||_\infty \leq ||f_n-f_N||_\infty + ||f_N||_\infty \leq ||f_N(x)||_\infty + 1\]
+    Thus, let $M = \max(||f_1||_\infty, ||f_2||_\infty, \ldots, ||f_N||_\infty)+1$. Then, 
+    \begin{itemize}
+        \item For $n < N$, we have $||f_n||_\infty \leq M$ by definition.
+        \item For $n \geq N$, we have $||f_n||_\infty \leq ||f_N||_\infty + 1 \leq M$. 
+    \end{itemize}
+    Thus, $f_n$ is uniformly bounded. We already know that $f_n$ converges to $f$ uniformly. Thus, $f$ is bounded by $M$ as well. 
+\end{solu}
 
 \end{document}
