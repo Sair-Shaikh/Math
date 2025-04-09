@@ -26,7 +26,7 @@ In a connected space $X$, a point $x \in X$ is called a \emph{cut point} if $X \
     \end{enumerate}
 \end{problab}
 \begin{solu}
-    HELLO
+
 \end{solu}
 \newpage
 
@@ -63,10 +63,26 @@ Suppose that $\mathcal{C}$ is a category, $A, B, C$ are objects of $\mathcal{C}$
 For a space $X$, let $\pi_0(X)$ be the space of path components of $X$. Recall that the image of a path-connected space is path-connected. Thus, for a continuous map $f: X \to Y$, there is an induced map $\pi_0(f): \pi_0(X) \to \pi_0(Y)$ taking a path component $A$ to the path component containing $f(A)$. Show that this makes $\pi_0$ a functor from the category of topological spaces to the category of sets.
 \end{problab}
 
-
 \begin{solu}
-\newpage 
+    First, we understand what the induced morphism $\pi_0(f)$ is. For a subset $A \subseteq X$, we let $[A] \in \pi_0(X)$ denote the path component of $A$. Then,
+    \[ \pi_0(f)([A]) = [f(A)] \]   
+    To show that $\pi_0$ is a functor, we need to show that it preserves identities and compositions.
+    \begin{itemize}
+        \item Let $X$ be a topological space and $\id_X : X \to X$ be the identity map on $X$. Then, for any path component $A\subseteq X$, $\pi_0([\id_X])(A) = [\id_X(A)] = [A]$. Thus, $\pi_0(\id_X) = \id_{\pi_0(X)}$.
+        \item Let $X, Y, Z$ be topological spaces and $f: X \to Y$, $g: Y \to Z$ be continuous maps. Then, for any path component $A \subseteq X$, we have: 
+        \begin{align*}
+            \pi_0(g) \circ \pi_0(f)([A]) &= \pi_0(g)([f(A)]) \\
+            &= [g(f(A))] \\
+            &= [g \circ f(A)] \\
+            &= \pi_0(g \circ f)([A])
+        \end{align*}
+        Thus, 
+        \[ \pi_0(g \circ f) = \pi_0(g) \circ \pi_0(f) \]
+    \end{itemize}
+    Thus, $\pi_0$ preserves identities and compositions, and hence is a functor.
 \end{solu}
+\newpage
+
 \begin{problab}{6} (Munkres, \emph{Topology}, 51.2) Given spaces $X$ and $Y$, let $[X,Y]$ denote the set of homotopy classes of maps of $X$ into $Y$.
 \begin{enumerate}
 \item Let $I = [0,1]$. Show that for any $X$, the set $[X,I]$ has a single element.
@@ -75,6 +91,9 @@ For a space $X$, let $\pi_0(X)$ be the space of path components of $X$. Recall t
 \end{problab}
 
 \begin{solu} .
+    \begin{enumerate}
+        \item Let $X$ be a topological space and let $A, B \in [X, I]$. We need to show that $A = B$, i.e. $A$ and $B$ are homotopic. 
+    \end{enumerate}
 
 \end{solu}
 \newpage
