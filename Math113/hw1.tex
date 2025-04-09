@@ -61,6 +61,7 @@
         0 & x = y \\
         1 & x \neq y
     \end{cases} \]
+    Clearly, $d(x,x) = 0$, $d(x,y) = d(y,x)$, and $d(x,y) \leq d(x,z) + d(z,y)$ (as if $d(x,y) = 1$ then $x \neq y$, and either $x \neq z$ or $y\neq z$, so $d(x,z)+d(z,y) \geq 1$) and $\forall x, y, z \in \R^n$. Moreover, $d(x,y) = 0 \implies x = y$. Thus, $d$ is a metric. \bbni
     Under this metric, the singleton ${x}$ is open for all $x \in \R^n$ as $\{x\} = B_{1/2}(x)$. However, for the $p$-norm, the singleton $\{x\}$ is not open for any $p \in 1\leq p \leq \infty$. Thus, the discrete metric is not equivalent to any of the metrics in problem 1 as they do not generate the same topologies.
 \end{solu}
 
