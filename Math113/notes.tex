@@ -59,8 +59,19 @@
     \item[Rmk.] Suppose $S_1 \subset \mathbb{N}$ determines a subsequence as above. Suppose $S' \subset \mathbb{N}$ is infinite and:
     \[\{n \in S' : n \not \in S_1\}\]
     is finite. The $\lim_{n \in S_1} x_n = a$ then $\lim_{n \in S'} x_n = a$ as well. \\
-    Proof of the AA Lemma: Pictures. 
-    \end{itemize}
+    Proof of the AA Lemma: Pictures. Apr 9 and 10.
+    \item[Rmk.] If $X$ is compact, then $C(x) = C_b(X)$ is a complete metric space with respect to the uniform norm $||\cdot||_\infty$. 
+    \item[Thm.] (Arzelà-Ascoli) Let $(X, \rho)$ be a compact metric space and $(F_n) \subset C(X)$ be a sequence of functions that are point-wise bounded and equicontinous. Then $(F_n)$ has a subsequence converging uniformly to some function $F \in C(X)$.
+    Proof. Pictures.
+    \item[Lemma.] Suppose $X$ is compact and that $\mathcal{J} \subset C(X)$ is equicontinous on $X$. Then, $\mathcal{J}$ is uniformly equicontinous on $X$, in that for all $\epsilon > 0 \exists \delta > 0$ such that for all $x, y \in X$ and all $F  \in \mathcal{J}$, 
+        \[ \rho(x,y) < \delta \implies |F(x) - F(y)| < \epsilon \]
+    Rewriting, 
+    \[ F(B_\delta(x)) \subseteq B_\epsilon(F(x))\]
+    Proof left as homework.  
+    \item[Corr.] Let $X$ be a compact metric space. Let $\mathcal{J} \subset C(X)$ be a closed subset such that $\mathcal{J}$ is equicontinous and pointwise bounded. Then $\mathcal{J}$ is compact and uniformly bounded.
+    \item[Thm.] Suppose $X$ is a compact metric space. Then $\mathcal{J} \subset C(X)$ is compact if and only if $\mathcal{J}$ is closed, uniformly bounded, and equicontinous on $X$.
+    Proof. Pictures.   
+\end{itemize}
 
 
 
