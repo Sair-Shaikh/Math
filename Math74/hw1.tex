@@ -5,7 +5,7 @@
 
 \begin{document}
 
-% \input{title}
+\input{title}
 
 
 \begin{problab}{1}
@@ -66,9 +66,7 @@ is a topological embedding (i.e., a homeomorphism onto its image) and the comple
     \[ (1, x_1, \cdots, x_n) \to (x_1, \cdots, x_{n}) \]
     is continous as it is projection onto the last $n$ coordinates. Moreover, note that $\pi|_{U'}$ is bijective onto $U$ as every class in $U$ has a unique representative with $x_0 = 1$, thus, as it is also open, $\pi|_{U'}$ is a homeomorphism. Since $\psi = \phi \circ \pi|_{U'}$, $\psi$ is continous, and $\pi|_{U'}$ is a homeomorphism, $\phi$ is also continous. \bbni 
     We observe that $\phi|_{i(\R^n)}$ is the inverse of $i$ (easy to check). Thus, $i$ is a homeomorphism onto its image. \bbni
-    To show that the complement of $i(\R^n)$ is homeomorphic to $\bb{RP}^{n-1}$, we note that the complement only contains elements that do not have a representative of the form $[ 1 : x_1 : \cdots : x_n]$. However, every $(x_0, x_1, \cdots, x_n) \in \R^{n+1}$ with $x_0 \neq 0$ projects to $[1 : x_1/x_0 : \cdots : x_n/x_0]$ under $\pi$. Thus, the complement must have $x_0 = 0$, and is of the form:
-    \[ \]
-
+    To show that the complement of $i(\R^n)$ is homeomorphic to $\bb{RP}^{n-1}$, we note that the complement only contains elements that do not have a representative of the form $[1 : x_1 : \cdots : x_n]$. For any element $[x_0 : x_1 : \cdots : x_n] \in \RP^n$ with $x_0 \neq 0$, we can find a representative of the required form as $[1 : x_1/x_0 : \cdots : x_n/x_0]$ by dividing by $x_0$. Thus, we only need to consider $V = \{[0 : x_1 : \cdots : x_n] \in \RP^n\}$. Note that $\pi^{-1}([0 : x_1 : \cdots : x_n]) = \{ (0, \lambda x_1, \cdots, \lambda x_n) : \lambda \neq 0 \in \R\}$. Thus, $\pi^{-1}(V) = \{(0, x_1, \cdots, x_n) \in \R^{n+1}\}$. Thus, $\pi^{-1}(V)$ is homeomorphic to $\R^n$. Thus, $V$ is homeomorphic to $\RP^{n-1}$ via the restriction of the quotient map.
 \end{solu}
 \newpage
 
