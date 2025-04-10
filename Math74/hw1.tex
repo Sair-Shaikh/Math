@@ -12,7 +12,8 @@
 Prove the pasting lemma: Suppose $X = A \cup B$ is a topological space with $A$, $B$ closed in $X$. If $f \colon X \to Y$ is a map such that the restrictions $f|_A$ and $f|_B$ are continuous, then $f$ is continuous. 
 \end{problab}
 \begin{solu}
-    This follows from the definition of continuity. Let $U \subseteq Y$ be open. Then $f^{-1}(U) = (f|_A)^{-1}(U) \cup (f|_B)^{-1}(U)$. Since $f|_A$ and $f|_B$ are continuous, $(f|_A)^{-1}(U)$ and $(f|_B)^{-1}(U)$ are open in $A$ and $B$, respectively. Because $A$ and $B$ are closed in $X$, these sets are also open in $X$. Hence, $f^{-1}(U)$ is open in $X$, and $f$ is continuous.
+    Let $V \subseteq Y$ be any closed set. To show that $f$ is continous, we need to show that $f^{-1}(V) \subseteq X$ is closed (this definition is equivalent to the definition of continuity in terms of open sets, as taking the complement commutes with taking pre-images). \bbni
+    Note that $f^{-1}(V) \cap A$ and $f^{-1}(V) \cap B$ are closed, since they are pre-images of closed set $V$ under continuous functions $f|_A$ and $f|_B$ respectively. However, since $X = A \cup B$, $f^{-1}(V) = (f^{-1}(V) \cap A) \cup (f^{-1}(V) \cap B)$. Thus, $f^{-1}(V)$ is closed. 
 \end{solu}
 \newpage
 
@@ -26,7 +27,19 @@ In a connected space $X$, a point $x \in X$ is called a \emph{cut point} if $X \
     \end{enumerate}
 \end{problab}
 \begin{solu}
-
+    \bbni
+    \begin{enumerate}
+        \item Note that $f|_{X\setminus \{x\}}$ is a homeomorphism onto (its image) $Y \setminus \{f(x)\}$ as the restriction of a homeomorphism is a homeomorphism onto its image. Thus, $X \setminus \{x\}$ is homeomorphic to $Y \setminus \{f(x)\}$. Thus, noting that $X$ and $Y$ are both connected, we have:
+        \begin{align*}
+            &x \in X \text{ is a cut-point } \\
+            \iff &X \setminus \{x\} \text{ is disconnected } \\
+            \iff &Y \setminus \{f(x)\} \text{ is disconnected } \\
+            \iff &f(x) \in Y \text{ is a cut-point} 
+        \end{align*}
+        \item Note that in $(0, 1)$ every point is a cut-point, in $(0, 1]$, there is only $1$ point that is not a cut-point $\{1\}$, in $[0, 1]$ there are two points that are not cut-points $\{0, 1\}$, and in $S^1$ no point is a cut-point. Since cut-points are in bijection with cut-points under a homeomorphisms, points that are not cut-points are in bijection with points that are not cut-points. Since each of these spaces have a different number of points that are not cut-points, with $0$, $1$, $2$, and an infinite number, respectively, none of them are homeomorphic. 
+        \item Note that $0 \in \R$ is a cut-point, as $\R \setminus \{0\}$ is disconnected. For sake of contradiction, suppose there existed an homeomorphism from $\R \to \R^n$ for $n \geq 2$. Then, $f(0) \in \R^n$ would be a cut-point, as $f$ is a homeomorphism (part a). However, $\R^n \setminus \{x\}$ is connected for all $x \in \R^n, n \geq 2$, as it is path-connected. Thus, $\R^n \setminus \{f(0)\}$ is also connected. Thus, $f(0)$ is not a cut-point and we have a contradiction.
+        \item Let $X = B^n$ and $Y = B^m$ for $n \neq m$. Suppose $f$ is a homemorphism between them. Since homeomorphisms map cut-points to cut-points, $f$ must map the unique cut-point in $X$ to the unique cut-point in $Y$. Since restrictions of homeomorphism is a homeomorphism, $g := f|_{X \setminus \{c\}}$ is an homeomorphism onto $Y \setminus \{f(c)\}$. From problem 5, we know that the $\pi_0$ is a functor, thus it takes a homeomorphism of spaces to a set isomorphism (bijection) $\pi_0(g): \pi_0(X \setminus \{c\}) \to \pi_0(Y \setminus \{f(c)\})$. However, $\pi_0(X \setminus \{c\})$ has $n$ elements while $\pi_0(Y \setminus \{f(c)\})$ has $m$ elements. Thus, $\pi_0(g)$ is not a bijection and we have a contradiction. Thus, $X = B_n$ and $Y = B_m$ are not homeomorphic for $n \neq m$.
+    \end{enumerate}
 \end{solu}
 \newpage
 
@@ -37,6 +50,24 @@ is a topological embedding (i.e., a homeomorphism onto its image) and the comple
 \end{problab}
 
 \begin{solu}
+    Call the quotient map $\pi$. To show that $i$ is a topological embedding, we will show that $i$ is a continous map with a well-defined continuous inverse from its image. \bbni 
+    Note that $\phi: \R^n \to \R^{n+1}$ defined by $\phi(x_1, \cdots, x_n) = (1, x_1, \cdots, x_n)$ is continous. Since $\pi$ is continous, we have $i = \pi \circ \phi$ is also continous.  \bbni
+    To show that $i$ is injective, let $i(x_1, \cdots, x_n) = i(y_1, \cdots, y_n)$. Then, we have:
+    \[ [1 : x_1 : \cdots : x_n] = [1 : y_1 : \cdots : y_n] \]
+    Thus, there exists a non-zero $\lambda \in \R$ such that:
+    \[ (1, x_1, \cdots, x_n) = \lambda(1, y_1, \cdots, y_n) \]
+    Due to the first entry, we must have $\lambda = 1$. Thus, we have:
+    \[ (x_1, \cdots, x_n) = (y_1, \cdots, y_n) \]
+    Thus, $i$ is injective. Next, let $U = \{[x_0 : \cdots : x_n] \in \RP^n : x_0 \neq 0 \}$. Define $\phi: U \to \R^n$ by: 
+    \[ \phi([x_0 : x_1: x_2: \hdots : x_{n}]) = (x_1/x_0, \cdots, x_{n}/x_0) \]
+    This map is well-defined, as for any $\lambda > 0 \in \R$, 
+    \[ \phi([\lambda x_0 : \cdots : \lambda x_n]) = (x_1/x_0, \cdots, x_{n}/x_0) \]
+    Moreover, note that the map $\psi$ from $U' = \{(x_0, \cdots, x_n) \in \R^{n+1} : x_0 = 1\}$ to $\R^n$ given by:
+    \[ (1, x_1, \cdots, x_n) \to (x_1, \cdots, x_{n}) \]
+    is continous as it is projection onto the last $n$ coordinates. Moreover, note that $\pi|_{U'}$ is bijective onto $U$ as every class in $U$ has a unique representative with $x_0 = 1$, thus, as it is also open, $\pi|_{U'}$ is a homeomorphism. Since $\psi = \phi \circ \pi|_{U'}$, $\psi$ is continous, and $\pi|_{U'}$ is a homeomorphism, $\phi$ is also continous. \bbni 
+    We observe that $\phi|_{i(\R^n)}$ is the inverse of $i$ (easy to check). Thus, $i$ is a homeomorphism onto its image. \bbni
+    To show that the complement of $i(\R^n)$ is homeomorphic to $\bb{RP}^{n-1}$, we note that the complement only contains elements that do not have a representative of the form $[ 1 : x_1 : \cdots : x_n]$. However, every $(x_0, x_1, \cdots, x_n) \in \R^{n+1}$ with $x_0 \neq 0$ projects to $[1 : x_1/x_0 : \cdots : x_n/x_0]$ under $\pi$. Thus, the complement must have $x_0 = 0$, and is of the form:
+    \[ \]
 
 \end{solu}
 \newpage
@@ -55,7 +86,56 @@ Suppose that $\mathcal{C}$ is a category, $A, B, C$ are objects of $\mathcal{C}$
 \end{problab}
 
 \begin{solu}
-
+    \bbni
+    \begin{enumerate}
+        \item Let $f: A \to B$ be an isomorphism, with $f', f'' \in \hom(B, A)$ inverses of $f$. By the associativity of composition, we have: 
+        \[ f' = f' \circ \id_B = f' \circ (f \circ f'') = (f' \circ f) \circ f'' = \id_A \circ f'' = f'' \]
+        Thus, $f'$ and $f''$ are equal. Hence, $f$ has a unique inverse in $\hom(B,A)$.
+        \item We claim that $\id_A \in \hom(A, A)$ is its own inverse. Clearly, by the definition of the identity: 
+        \[  \id_A \circ \id_A = \id_A \]
+        Since $\id_A$ has an inverse, it is an isomorphism.
+        \item Let $f^{-1} \in \hom(B, A)$ be the unique inverse of $f \in \hom(A, B)$. We claim that $f$ is the inverse of $f^{-1}$. By the definition of the inverse, we have:
+        \[ f \circ f^{-1} = \id_B \qquad f^{-1} \circ f = \id_A \]
+        Thus, $f^{-1}$ has an inverse $f$, and is thus an isomorphism.
+        \item Since $f \in \hom(A, B)$ and $g \in \hom(B, C)$ are isomorphisms, there exists inverses $f^{-1} \in \hom(B, A)$ and $g^{-1} \in \hom(C, B)$. We claim that $g \circ f$ is an isomorphism with inverse $f^{-1} \circ g^{-1}$. Using associatiativity, we check: 
+        \begin{align*}
+            (g \circ f) \circ (f^{-1} \circ g^{-1}) &= g \circ \id_B \circ g^{-1} \\
+            &= g \circ g^{-1} \\
+            &= \id_C \\
+            (f^{-1} \circ g^{-1}) \circ (g \circ f) &= f^{-1} \circ \id_B \circ f \\
+            &= f^{-1} \circ f \\
+            &= \id_A
+        \end{align*}
+        Thus, $g \circ f$ is an isomorphism with inverse $f^{-1} \circ g^{-1}$.
+        \item We define the map $\phi: \text{Aut}(A) \to \text{Aut}(B)$ by $\phi(\alpha) = f \circ \alpha \circ f^{-1}$. Since we proved that $f$ and $f^{-1}$ are isomorphisms, $\alpha$ is an isomorphism by definition, and that the composition of isomorphisms is an isomorphism, we conclude that $\phi(\alpha) \in \text{Aut}(B)$. To show that $\phi$ is a group homomorphism, we check for any $\alpha, \beta \in \text{Aut}(A)$:
+        \begin{align*}
+            \phi(\alpha) \circ \phi(\beta) &= (f \circ \alpha \circ f^{-1}) \circ (f \circ \beta \circ f^{-1}) \\
+            &= f \circ \alpha \circ \id_A \circ \beta \circ f^{-1} \\
+            &= f \circ \alpha \circ \beta \circ f^{-1} \\
+            &= \phi(\alpha \circ \beta)
+        \end{align*}
+        Moreover, we claim that $\phi$ is an isomorphism as it has an inverse $\phi^{-1}: \text{Aut}(B) \to \text{Aut}(A)$, given by: 
+        \[ \phi^{-1}(\gamma) = f^{-1} \circ \gamma \circ f \]
+        The proof that $\phi^{-1}$ is a well-defined homomorphism is analogous to the proof for $\phi$. Thus, we check that these maps are inverses, for $\alpha \in \text{Aut}(A)$ and $\gamma \in \text{Aut}(B)$:
+        \begin{align*}
+            \phi \circ \phi^{-1}(\gamma) &= \phi( f^{-1} \circ \gamma \circ f) \\
+            &= f \circ (f^{-1} \circ \gamma \circ f) \circ f^{-1} \\
+            &= \id_B \circ \gamma \circ \id_A \\
+            &= \gamma \\
+            \phi^{-1} \circ \phi(\alpha) &= \phi^{-1}(f \circ \alpha \circ f^{-1}) \\
+            &= f^{-1} \circ (f \circ \alpha \circ f^{-1}) \circ f \\
+            &= \id_A \circ \alpha \circ \id_B \\
+            &= \alpha 
+        \end{align*}
+        Thus, 
+        \[ \phi \circ \phi^{-1} = \id_{\text{Aut}(B)} \qquad \qquad \phi^{-1} \circ \phi = \id_{\text{Aut}(A)} \]
+        Thus, $\phi$ is a group isomorphism and $\text{Aut}(A) \cong \text{Aut}(B)$.
+        \item We claim $F(f)$ is an isomorhism, with inverse $F(f^{-1}) \in \hom_\mathcal{D} (F(B), F(A))$. Since $F$ is a functor, it respects composition and identities. Thus, we check:
+        \begin{align*}
+            F(f) \circ F(f^{-1}) &= F(f \circ f^{-1}) = F(\id_B) = \id_{F(B)} \\
+            F(f^{-1}) \circ F(f) &= F(f^{-1} \circ f) = F(\id_A) = \id_{F(A)}
+        \end{align*}
+    \end{enumerate}
 \end{solu}
 \newpage
 
@@ -92,7 +172,18 @@ For a space $X$, let $\pi_0(X)$ be the space of path components of $X$. Recall t
 
 \begin{solu} .
     \begin{enumerate}
-        \item Let $X$ be a topological space and let $A, B \in [X, I]$. We need to show that $A = B$, i.e. $A$ and $B$ are homotopic. 
+        \item Let $X$ be a topological space and let $f \in [X, I]$ be arbitrary. We will show that $f$ is homotopic to the constant map $c: X \to I$ given by $c(x) = 0$ for all $x \in X$. We define a homotopy $H: X \times I \to I$ by:
+        \[ H(x, t) = (1-t)f(x) \] 
+        Clearly, at $t = 0$, $H(x, 0) = f(x)$ and at $t = 1$, $H(x, 1) = 0$. Since $f(x)$ and $(1-t)$ are continous functions, $H$ is continous. Thus, $H$ is a homotopy between $f$ and $c$. Since $f$ was arbitrary, by the trasitivity of homotopy, $[X,I]$ has a single element. \bbni  
+        Note that we can also do this by realizing that $I$ is convex and using the straight-line homotopy between any two maps. 
+        \item Let $Y$ be a path connected space. Let $f, g \in [I, Y]$ be arbitrary. Let $\sigma: I \to Y$ be a path from $f(0)$ to $g(0)$. Define $H: I \times I \to Y$ by:
+        \[ H(x, t) = \begin{cases}
+            f((1-3t)x) & \text{if } 0 \leq x \leq \frac{1}{3} \\
+            \sigma((3t - 1)x) & \text{if } \frac{1}{3} \leq x \leq \frac{2}{3} \\
+            g((3t-2)x) & \text{if } \frac{2}{3  } \leq x \leq 1
+        \end{cases} \]
+        Note that $H$ is well-defined, as $f(x, 1/3) = f(0) = \sigma(0)$ and $g(x, 2/3) = g(0) = \sigma(1)$. Moreover, as $(1-3t)x$, $(3t-1)x$, and $(3t-2)x$ are continous, each of the three cases are composition of continous functions, hence, continous. Thus, by the pasting lemma, $H$ is continous. \bbni 
+        Finally, note that $H(x, 0) = f(x)$ and $H(x, 1) = g(x)$, hence $f$ and $g$ are homotopic. Since $f$ and $g$ were arbitrary, we conclude that $[I,Y]$ has a single element.
     \end{enumerate}
 
 \end{solu}
@@ -107,7 +198,40 @@ For a space $X$, let $\pi_0(X)$ be the space of path components of $X$. Recall t
 \item Show that if $X$ is contractible and $Y$ is path connected then $[X,Y]$ has a single element. 
 \end{enumerate}
 \end{problab}
+\begin{solu}
+    \bbni
+    \begin{enumerate}
+        \item Let $X = \R$. We define a homotopy $H : \R \times I \to \R$ by: 
+        \[  H(x, t) = \id_X((1-t)x) \]
+        $H$ is continous as it is a composition of continous functions. Note that $H(x, 0) = \id_X(x)$ and $H(x, 1) = \id_X(0) = 0$ for all $x \in X$. Thus, $\id_X$ is null-homotopic and $\R$ is contractible. Since $I \subset \R$, we can use the same homotopy to show that $I$ is contractible. 
+        \item Let $X$ be a topological space. Let $a \in X$ be arbitrary. Since $X$ is contractible, there exists a homotopy $H : X \times I \to X$ between the identity map and a constant map $\lambda_c: X \to X$ with $\lambda_c(x) = c \in X$ for all $x \in X$. Then, we can define a path from $a$ to $c$ as follows:  
+        \[ \sigma: I \to X \qquad \qquad\,  \sigma(t) = H(a, t) \]
+        This  map is continous as it is a restriction of a continous map $H$. Moreover, 
+        \[ \sigma(0) = H(a, 0) = \id_X(a) = a \qquad \qquad \sigma(1) = H(a, 1) = \lambda_c(a) = c \]
+        Thus, $\sigma$ is a path from $a$ to $c$. Since $a$ was arbitrary, there is a path from $x$ to $c$ for all $x \in X$. Since being in the same path component defines an equivalence relation, $X$ has only one path component. Hence, $X$ is path connected.
+        \item Let $X$ and $Y$ be topological spaces with $Y$ contractible. Since $Y$ is contractible, there exists a homotopy $H: Y \times I \to Y$ between $\id_Y$ the identity on $Y$ and the constant map $\lambda_c: Y \to Y$ with $\lambda_c(y) = c \in Y$ for all $y \in Y$. Let $f \in [X,Y]$ be arbitrary. We define a homotopy $H': X \times I \to Y$ by:
+        \[ H'(x, t) = H(f(x), t)\]
+        Since $H$ and $f$ are continous, $H'$ is a composition of continous functions, hence, it is continous. Note that: 
+        \[ H'(x, 0) = H(f(x), 0) = \id_Y(f(x)) = f(x) \qquad H'(x, 1) = H(f(x), 1) = \lambda_c(f(x)) = c \]
+        Thus, $f$ is homotopic to the constant map $\lambda_c \circ f$. Since $f$ was arbitrary, and homotopy is transitive, we conclude that $[X,Y]$ has a single element. 
+        \item Let $X$ be a contractible space and $Y$ be a path connected space. Since $X$ is contractible, there exists a homotopy $H: X \times I \to X$ between $\id_X$ and the constant map $\lambda_c: X \to X$ with $\lambda_c(x) = c \in X$ for all $x \in X$. Since $Y$ is path connected, there exists a path $\sigma_y: I \to Y$ from $f(c)$ to a fixed $y \in Y$. Let $f \in [X,Y]$ be arbitrary. We will define a homotopy from $f$ to the constant function with value $y$. \bbni
+        We define the homotopy $H': X \times I \to Y$ by:
+        \[ H'(x, t) = \begin{cases}
+            f(H(x, 2t)) & \text{if } 0 \leq t < frac{1}{2} \\
+            \sigma_y((2t - 1)) & \text{if } \frac{1}{2} \leq t \leq 1
+        \end{cases} \]
+        Since $H, f$ and $\sigma_y$ are continous, each of the cases of $H'$ is continous. Moreover, it agrees on the intersection, as:
+        \[ H'(x, 1/2) = f(H(x, 1)) = f(\lambda_c(x)) = f(c) = \sigma_y(0)  \]
+        Thus, by the pasting lemma, $H'$ is continous. \bbni
+        Note that:
+        \begin{align*}
+            H'(x, 0) &= f(H(x, 0)) = f(\id_X(x)) = f(x) \\
+            H'(x, 1) &= \sigma(1) = y
+        \end{align*}
+        Thus, as $f$ was arbitrary, every map $f \in [X, Y]$ is homotopic to the constant map with value $y$. Thus, the the transitivity of homotopy, $[X,Y]$ has a single element. 
 
+    \end{enumerate}
+\end{solu}
 
 
 \end{document}
