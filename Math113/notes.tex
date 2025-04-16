@@ -71,7 +71,132 @@
     \item[Corr.] Let $X$ be a compact metric space. Let $\mathcal{J} \subset C(X)$ be a closed subset such that $\mathcal{J}$ is equicontinous and pointwise bounded. Then $\mathcal{J}$ is compact and uniformly bounded.
     \item[Thm.] Suppose $X$ is a compact metric space. Then $\mathcal{J} \subset C(X)$ is compact if and only if $\mathcal{J}$ is closed, uniformly bounded, and equicontinous on $X$.
     Proof. Pictures.   
+    \item[Defn.] A topological space is called a Baire space if the countable intersection of dense open sets is dense. 
+    \item[Rmk.] If $\rho$ and $\sigma$ are equivalent metrics on $X$ then $(X, \rho)$ is a Baire space if and only if $(X, \sigma)$ is a Baire space.
+    \item[Defn.] If $S \subset X$ then the interior of $S$ is: 
+    \[ Int(S) = \bigcup \{U \subset S : U \text{ is open in } X\} \]
+    \item[Rmk.] One can write $Int_X(S)$ as interior of $S$ in $X$. Where you take the interior matters. 
+    \item[Lemma.] A space $X$ is a Baire space if and only if given a countable $\{F_n\}_{n = 1}^\infty$ of closed sets, such that:
+    \[ \bigcup_{n = 1}^\infty F_n\]    
+    has non-empty interior, then at least one $F_n$ has (non-empty) interior. 
+    \item[Hwk. ] Write $O_n = F_n^C = X \setminus F_n$. $O_n$ dense $\iff Int(F_n) = \emptyset$. 
+    \item[Thm.] Barise Category Thm. Every complete metric space is a Baire space.
+    \item[Rmk.] Note that $(0, 1)$ is homeomorphic to $\R$. Hence, $(0, 1)$ is a Baire space. 
+    \item[Hwk.] More generally, every non-empty open subset $V$ of a complete metric space admits an equivalent complete metric (Hwk). Hence $V$ is a Baire space. Thus, if:
+    \[ V = \bigcup_{n=1}^\infty V \cap F_n \]
+    of each $F_n$ closed in $X$, thus $V \cap F_n$ is closed in $V$. Hence, at least one $V \cap F_n$ has non-empty interior in $V$. But $V$ is open, so it has interior in $X$.
+    \item[Thm.] Suppose that $X$ is a Baire space and that $(F_n) \subset C(X)$ such that $F_n \to F$ pointwise. Then,
+    \[ A = \{x \in X : F \text{ is cts at $x$}\}\]
+    is dense in $X$. \\
+    Proof. Pictures. 
+    \item[Rmk.] If $X = \R$, then we can assume: 
+    \[ A = \{x \in X: F \text{ is cts at $x$}\}\]
+    is uncountable. 
+    \item[Defn.] A normed vector space $(V, ||\cdot||)$ is called a Banach space if $V$ is complete in in the induced metric. Recall that $\mathbb{F}$ is always $\C$ or $\R$.  
+    \item[Yap.] Normed vector spaces are special. 
+    \begin{enumerate}
+        \item $B_r(x) = x + B_r(0)$. The topology is homogenous. 
+        \item $| ||v|| - ||w|| | \leq ||v - w|| \implies v \to ||v||$ is continous.
+        \item $\overline{B_r(v)} = \{x \in V : ||x-v|| \leq r\}$. 
+        \item $\epsilon B_r(0) = B_{\epsilon r}(0)$. 
+        \item $\epsilon \overline{B_r(0)} = \overline{B_{\epsilon r}(0)}$.
+    \end{enumerate} 
+    \item[Thm.] Supposed that $X$ and $Y$ are normed vector spaces and $T: X \to Y$ is linear. Then, the following are equivalent: 
+    \begin{enumerate}
+        \item $T$ is continuous.
+        \item $T$ is continous at a single point.
+        \item $\exists \alpha \geq 0$ such that $||T(x)|| \leq \alpha ||x||$ for all $v \in X$. 
+    \end{enumerate}
+    Proof. \\
+    (1) $\implies$ (2) is trivial. \\
+    (2) $\implies$ (3). Since $T$ is continous at $x_0$, $\exists \delta > 0$ such that: 
+    \[ T(\overline{B_\delta(x_0)}) \subset B_1(T(x_0))\]
+    LHS $ = T(B_\delta(x_0)) + T(x_0)$. \\
+    RHS $ = B_1(0) + T(x)$. \\
+    This implies, $T(\overline{B_\delta(0)}) \subset B_1(0)$. \\
+    Now if $z \neq 0$, 
+    \[  ||T(z) || = || \frac{||z||}{\delta} T(\delta \cdot \frac{z}{||z||})|| \leq \frac{||z||}{\delta}\]
+    Let $\alpha = \frac{1}{\delta}$. \\
+    $(3) \implies (1)$. Erased. 
+    \item[Rmk.] Suppose that $||\cdot||_1$ and $||\cdot ||_2$ (two different norms) induce equivalent metrics on $V$. Then, take the $\id: (V, ||\cdot||_1) \to (V, ||\cdot||_2)$ is continous (same topology). Hence, $\exists c \geq 0$ such that: 
+    \[ ||x_2|| \leq c \cdot ||x_1||\]  
+    Clearly, that means $c > 0$. By symmetry, there exists a $d > 0$, such that:
+    \[ ||x_1|| \leq d \cdot ||x_2||\]
+    Thus, the metrics and the norms are strongly equivalent.
+    \item[Defn.] If $X$ and $Y$ are normed vector spaces, then $\mathcal{L}(X, Y)$ is the vector space of continous linear maps $T: X \to Y$. Define $||T|| = \sup_{||x|| \leq 1} ||T(x)||$. If $X = Y$, then we write $\mathcal{L}(X)$ instead of $\mathcal{L}(X, X)$.
+    \item[Lem.] With $||T||$ as above, $\mathcal{L}(X,Y)$ is a normed vector space with:
+    \[ ||T(x)|| \leq ||T||||x|| \forall x \in X\]
+    If $S \in \mathcal{L}(Y, Z)$, then we write $ST$ in place of $S \circ T$ and: 
+    \[ ||ST|| \leq ||S||||T||\]
+    \item[Defn.] An algebra over $\mathbb{F}$ is a vector space $A$ over $\mathbb{F}$ with a ring structure, with $\lambda(xy) = (\lambda x)y = x(\lambda y)$ for all $\lambda \in \mathbb{F}$ and $x, y \in A$.
+    \item[Ex. ] $M_n(\mathbb{F})$, $\R[x]$, $\C[x]$, $C(X)$. 
+    \item[Defn.] If $||\cdot||$ is a norm on an algebra $A$, then we call $(A, ||\cdot||)$ a normed algebra if $\forall x,y \in A$: 
+    \[ ||xy|| \leq ||x||||y|| \]
+    We call $(A, ||\cdot||)$ a Banach algebra if $(A, ||\cdot||)$ is a normed algebra and $A$ is complete with respect to $||\cdot||$.
+    \item[Prop.] If $X$ and $Y$ are normed vector spaces, and $Y$ is a Banach space, then $\mathcal{L}(X,Y)$ is a Banach space. If $X$ is a Banach space, then $\mathcal{L}(X)$ is a Banach algebra. \\
+    Proof. Suppose that $(T_n)$ is a Cauchy sequence in $\mathcal{L:}(X,Y)$. Then, for each $z \in X$, $T_n(X)$ is a Cauchy sequence in $Y$. Hebcem $\exists T(x) \in Y$ such that:
+    \[ T_n(X) \to T(X) \]
+    It is not hard to see that $T: X \to Y$ is linear. \\
+    Since $(T_n)$ is Cauchy in norm, its bounded i.e. $\exists m > 0$ such that:
+    \[||T_n|| \leq M \forall n \geq 1 \]
+    Now if $||x|| \leq 1$, then:
+    \[ ||T(x)|| = \lim_{n\to \infty} ||T_n(x)|| \leq \limsup_{n} ||T_n|| ||x|| \leq M||x||\]
+    This implies $T \in \mathcal{L}(X,Y)$. \\
+    Let $\epsilon > 0$. Let $N$ be such that $m, n \geq N$. Thus, 
+    \[ ||T_n - T_m|| \leq \frac{\epsilon}{2} \]
+    Now if $||x|| \leq 1$, and if $n \geq N$, 
+    \begin{align*}
+        ||(T-T_n)(x)|| & = ||T(x) - T_n(x)|| \\
+        &= \lim_{m\to \infty} ||T_m(x) - T_n(x)|| \\
+        &\leq \limsup_{m} ||T_m - T_n|| \cdot ||x|| \\
+        &\leq \frac{\epsilon}{2} < \epsilon
+    \end{align*}
+    \item[Yap.] Let $Y \subset X$ be a subsoace of a normed vector space $X$. Then we can form the quotient vector space $X / Y = \{x +Y : x\in X\}$ with $q: X \to X/Y$ the quotient map. \\
+    If $x \in X$, then: 
+     \[ \inf \{||x-y|| : y \in Y\} \] 
+    depends only on $q(x)$. We call: 
+    \[||q(x)|| := \inf\{||x-y|| : y \in Y\}\]
+    the quotient norm on $X/Y$.
+    \item[Rmk.] As $Y$ is a subspace, 
+    \begin{align*}
+        ||q(x)|| &= \inf\{||x+y|| : y \in Y\} \\
+        &= \inf\{||x+\alpha y|| : y \in Y\} \, \forall \alpha \in \mathbb{F}\setminus\{0\}\\
+    \end{align*}
+    \item[Thm.] If $Y$ be a subspace of $(X, ||\cdot||)$. Then, 
+    \[ ||q(x)|| = \inf\{||x-y|| : y \in Y\} \]
+    is a seminorm on $X/Y$ which is a norm exactly when $Y$ is closed. If $X$ is a Banach space, and $Y$ is closed in $X$, then $X/Y$ is a Banach space. \\
+    Proof. Note that for $\alpha \neq 0$: 
+    \[ ||\alpha q(x) || = || q(\alpha x) || = \inf \{||\alpha x + \alpha y|| : y \in Y\} = |\alpha| \inf\{||x+y||: y \in Y\} = |\alpha|||q(x)||\]
+    Next, fix $x_1, x_2 \in X$. Then given $\epsilon > 0$, $\exists y_1, y_2 \in Y$ such that:
+    \begin{align*}
+        ||q(x_1)|| + ||q(x_2)|| + \epsilon &\geq ||x_1 - y_1|| + ||x_2 - y_2|| \\
+        &\geq ||x_1 - y_1 + x_2 - y_2|| \\
+        &\geq ||q(x_1 + x_2)|| \\
+        &=  ||q(x_1)|| + ||q(x_2)|| 
+    \end{align*}
+    Since $\epsilon > 0$ is arbitrary, $||q(x_1) + q(x_2)|| \leq ||q(x_1)|| + ||q(x_2)||$. Thus, it is a semi-norm. \\
+    Sketch for closed. If quotient norm is $0$, there exists a sequence $y_n$ converging to $x$. If $Y$ closed, $x \in Y$ and $g(x) = 0$. Conversely, if quotient norm is a norm and $y_n \to x$. Then, $||q(x)|| = 0$. Then, $q(x) = 0$ and $x \in X$. \\
+    Now suppose $X$ is a Banach space and $Y$ is closed in $X$. Let $(q(z_0))$ be Cauchy in $X/Y$. Then we can pass to a subsequence and assume: 
+    \[ ||q(z_{n+1}) - q(z_0)|| \leq 1/2^n\]
+    Let $x_1 = z_1$. Since: 
+    \[ ||q(z_2) - q(x_1)|| < 1/2 \]
+    Thus, 
+    \[\inf\{||z_2 - x_1 - y || : y \in Y \} < 1/2\]
+    Hence, we can find $x_2$ such that $q(x_1) = q(z_2)$ and 
+    \[||x_2-x_1|| < 1/2 \]
+    Continuing, we get $(x_n)$ such that $q(x_n) = q(z_n)$ and: 
+    \[ ||x_{n+1} - x_n|| < 1/2^n\]
+    (Hwk) $(x_n)$ is Cauchy, thus, $x_n \to x$ in $X$. \\
+    But $||q(z)|| \leq ||z||$. Hence, $q$ is continous. Thus, 
+    \[q(z_n) = q(x_n) \to q(x)\]
+    \item[Rmk.] Note that $q : X \to X/Y$ is a bounded linear map of norm at most $1$. 
+    \item[Thm.] Suppose that $Y$ is a closed subspace of $(X, ||\cdot||)$. Then $X$ is a Banach space if and only if both $Y$ and $X/Y$ are Banach spaces. \\
+    Proof. Pictures. 4/16
+    \item[Thm.] Every finite-dimensinal subspace $Y$ of a normed vector space $X$ is a Banach space and hence closed in $X$. If $\dim(Y) = n$, then every linear isomorphism $\Phi: \mathbb{F}^n \to Y$ is a homeomorphism. \\
+    Proof. Pictures. 4/16.
+    
 \end{itemize}
+
 
 
 
