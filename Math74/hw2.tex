@@ -1,35 +1,104 @@
-\begin{problab}[1]
-    (0.10) A space is called contractible if the identity map is nullhomotopic. Show that \( X \) is contractible if and only if for every space \( Y \), every map \( f : X \to Y \) is nullhomotopic. Similarly, show that \( X \) is contractible if and only if for any \( Y \), every map \( f : Y \to X \) is nullhomotopic.
-    \end{problab}
-    
-    \begin{problab}[2]
-    Let \( A \subset X \) and suppose \( r : X \to A \) is a continuous map such that \( r(a) = a \) for all \( a \in A \) (i.e., \( r \) is a retraction of \( X \) onto \( A \)). If \( a_0 \in A \), show that
-    \[
-    r_* : \pi_1(X, a_0) \to \pi_1(A, a_0)
-    \]
-    is surjective. (Hint: Consider also the inclusion map of \( A \) into \( X \).)
-    \end{problab}
-    
-    \begin{problab}[3]
-    (1.1.3) If \( X \) is a path-connected space, show that \( \pi_1(X) \) is abelian if and only if every change-of-basepoint isomorphism (\( \hat{\alpha} \) in class or \( \beta_h \) in Hatcher) depends only on the endpoints of the path.
-    \end{problab}
-    
-    \begin{problab}[4]
-    (1.1.6) Note that a loop based at \( x_0 \) can be regarded as a continuous map of pointed spaces
-    \[
-    (S^1, (1, 0)) \to (X, x_0).
-    \]
-    Let \( [S^1, X] \) be the set of homotopy classes of maps from \( S^1 \) to \( X \) without conditions on basepoints. Then, there is a map \( \Phi : \pi_1(X, x_0) \to [S^1, X] \) that forgets the base points.
-    \begin{itemize}
-      \item[(a)] Show that \( \Phi([f]) = \Phi([g]) \) if and only if \( [f] \) and \( [g] \) are conjugate in \( \pi_1(X, x_0) \).
-      \item[(b)] Deduce that if \( X \) is path connected, then \( [S^1, X] \) is in bijection with conjugacy classes of \( \pi_1(X, x_0) \).
-    \end{itemize}
-    \end{problab}
-    
-    \begin{problab}[5]
-    Suppose that \( p : E \to B \) is a covering map where \( B \) is connected. Show that if \( p^{-1}(b_0) \) has \( k \) elements for some \( b_0 \in B \), then \( p^{-1}(b) \) has \( k \) elements for every \( b \in B \).
-    \end{problab}
-    
-    \begin{problab}[6]
-    Let \( q : X \to Y \) and \( r : Y \to Z \) be covering maps such that \( r \) has finite degree. Show that \( p = r \circ q \) is a covering map.
-    \end{problab}
+% \documentclass[12pt]{amsart}
+\documentclass[12pt]{article}
+
+\include{../style}
+
+\begin{document}
+
+\input{title}
+\begin{problab}{1}
+(0.10) A space is called contractible if the identity map is nullhomotopic. Show that \( X \) is contractible if and only if for every space \( Y \), every map \( f : X \to Y \) is nullhomotopic. Similarly, show that \( X \) is contractible if and only if for every \( Y \), every map \( f : Y \to X \) is nullhomotopic.
+\end{problab}
+\begin{solu}
+    $(\impliedby)$ Assume for every $Y$ every map $f : X \to Y$ is nullhomotopic. Then, in particular, picking $Y = X$ and $f = \id_X$, we have that $\id_X$ is nullhomotopic. Thus, $X$ is contractible. \\
+    $(\implies)$ Assume that $X$ is contractible and $Y$ be any space. Thus, there exists a homotopy $H: X \times I \to X$ from $\id_X$ to a constant map $\lambda_c : X \to X$ for some $c \in X$. Then, for any map $f : X \to Y$, we claim that $H': X \times I \to Y$ defined by $H'(x, t) = f(H(x, t))$ is a homotopy from $f$ to the constant map $f(c)$. Similarly, for any map $g$ from $Y$ to $X$, we claim that $H'': Y \times I \to X$ defined by $H''(y, t) = H(g(y), t)$ is a homotopy from $g$ to the constant map $g(c)$. Note that $H'$ and $H''$ are continous as they are compositions of continous maps. Moreover, we check, for all $x \in X$ and $y \in Y$,
+    \begin{align*}
+        H'(x, 0) &= f(H(x, 0)) = f(x) \\
+        H'(x, 1) &= f(H(x, 1)) = f(\lambda_c(x)) = f(c) \\
+        H''(y, 0) &= H(g(y), 0) = g(y) \\
+        H''(y, 1) &= H(g(y), 1) = \lambda_c(g(y)) = c
+    \end{align*}
+    Thus, $H'$ is a homotopy from $f$ to the constant map valued at $f(c)$ and $H''$ is a homotopy from $g$ to the constant map valued at $c$.
+\end{solu}
+\newpage
+
+\begin{problab}{2}
+Let \( A \subset X \) and suppose \( r : X \to A \) is a continuous map such that \( r(a) = a \) for all \( a \in A \) (i.e., \( r \) is a retraction of \( X \) onto \( A \)). If \( a_0 \in A \), show that
+\[
+r_* : \pi_1(X, a_0) \to \pi_1(A, a_0)
+\]
+is surjective. (Hint: Consider also the inclusion map of \( A \) into \( X \).)
+\end{problab}
+\begin{solu}
+    Let $\iota: A \to X$ be the inclusion map. Then, note that for all $a \in A$: 
+    \[ r \circ \iota (a) = a\]    
+    Thus, for any $f: I \to A$, we have $r \circ \iota \circ f = f$. Moreover, we have $\iota_*: \pi_1(A, a_0) \to \pi_1(X, a_0)$ with $\iota_*([f]) = [\iota \circ f]$. Let $p \in \pi_1(A, a_0)$ be arbitrary. Then, we claim that $\iota_*([p]) \in \pi_1(X, a_0)$ maps to $[p]$ under $r_*$. We compute:
+    \begin{align*}
+        r_*(\iota_*([p])) &= r_*([\iota \circ p]) \\
+        &= [r \circ \iota \circ p] \\
+        &= [p] \\
+    \end{align*} 
+    Thus, as $[p]$ was arbitrary, we have shown that $r_*$ is surjective.
+\end{solu}
+\newpage
+
+
+\begin{problab}{3}
+(1.1.3) If \( X \) is a path-connected space, show that \( \pi_1(X) \) is abelian if and only if every change-of-basepoint isomorphism (\( \hat{\alpha} \) in class or \( \beta_h \) in Hatcher) depends only on the endpoints of the path.
+\end{problab}
+\begin{solu}
+    $(\implies)$ Assume $\pi_1(X)$ is abelian. Let $\alpha_1, \alpha_2: I \to X$ be two paths from $x_0$ to $x_1$. Then, $\hat{\alpha_i}: \pi_1(X, x_0) \to \pi_1(X, x_1)$ are given by $\hat{\alpha_i}([f]) = [\overline{\alpha_i} \cdot f \cdot \alpha_i]$. Note that $\pi_1(X, x_1)$ is abelian as $\pi_1(X)$ is. We show, for any $[f] \in \pi_1(X, x_0)$ that:
+    \begin{align*}
+        \hat{\alpha_1}([f]) &= [\overline{\alpha_1} \cdot f \cdot \alpha_1] \\
+        &= [\overline{\alpha_1} \cdot f \cdot \alpha_2 \cdot \overline{\alpha_2} \cdot \alpha_1] \\
+        &= [\overline{\alpha_1} \cdot f \cdot \alpha_2] \cdot [\overline{\alpha_2} \cdot \alpha_1] \\
+        &= [\overline{\alpha_2} \cdot \alpha_1] \cdot [\overline{\alpha_1} \cdot f \cdot \alpha_2] \\
+        &= [\overline{\alpha_2} \cdot \alpha_1 \cdot \overline{\alpha_1} \cdot f \cdot \alpha_2] \\
+        &= [\overline{\alpha_2} \cdot f \cdot \alpha_2] \\
+        &= \hat{\alpha_2}([f])
+    \end{align*} 
+    Thus, $\hat{\alpha_1}$ depends only on the endpoints of the path. \bbni
+    $(\impliedby)$ Let $x_0 \in X$ and $[f], [g] \in \pi_1(X, x_0)$ be arbitary. Assume $\hat{f} = \hat{g}$, since $f$ and $g$ have the same endpoints (they are loops based at $x_0$). It suffices to show that $[f] = [\overline{g} \cdot f \cdot g]$. We compute:
+    \begin{align*}
+        [f] &= [\overline{f} \cdot f \cdot f] \\
+        &= \hat{f}([f]) \\
+        &= \hat{g}([f]) \\
+        &= [\overline{g} \cdot f \cdot g]
+    \end{align*}
+    Thus, $\pi_1(X, x_0)$ is abelian. Since $x_0$ was arbitrary, we have shown that $\pi_1(X)$ is abelian.
+\end{solu}
+\newpage
+
+
+\begin{problab}{4}
+(1.1.6) Note that a loop based at \( x_0 \) can be regarded as a continuous map of pointed spaces
+\[
+(S^1, (1, 0)) \to (X, x_0).
+\]
+Let \( [S^1, X] \) be the set of homotopy classes of maps from \( S^1 \) to \( X \) without conditions on basepoints. Then, there is a map \( \Phi : \pi_1(X, x_0) \to [S^1, X] \) that forgets the base points.
+\begin{itemize}
+    \item[(a)] Show that \( \Phi([f]) = \Phi([g]) \) if and only if \( [f] \) and \( [g] \) are conjugate in \( \pi_1(X, x_0) \).
+    \item[(b)] Deduce that if \( X \) is path connected, then \( [S^1, X] \) is in bijection with conjugacy classes of \( \pi_1(X, x_0) \).
+\end{itemize}
+\end{problab}
+\begin{solu}
+
+\end{solu}
+\newpage
+
+\begin{problab}{5}
+Suppose that \( p : E \to B \) is a covering map where \( B \) is connected. Show that if \( p^{-1}(b_0) \) has \( k \) elements for some \( b_0 \in B \), then \( p^{-1}(b) \) has \( k \) elements for every \( b \in B \).
+\end{problab}
+\begin{solu}
+
+\end{solu}
+\newpage
+
+\begin{problab}{6}
+Let \( q : X \to Y \) and \( r : Y \to Z \) be covering maps such that \( r \) has finite degree. Show that \( p = r \circ q \) is a covering map.
+\end{problab}
+\begin{solu}
+
+\end{solu}
+
+\end{document}
