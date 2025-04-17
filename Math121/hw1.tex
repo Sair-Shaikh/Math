@@ -55,6 +55,66 @@
         \]
     \end{enumerate}
 \end{problab}
+\begin{solu}
+    \bbni
+    \begin{enumerate}
+        \item Let $e \in E$ and $g \in G$. Then, we define the scalar multiplication by $z \in \C$ by using the complex structure of $G$: 
+        \[ z\cdot (e \otimes g) = e \otimes zg \]
+        and extend linearly. For $z \in \R$, this definition respects the tensor product over $\R$ as:
+        \[ z \cdot (e \otimes g ) = e \otimes zg = ze \otimes g\]
+        If $\{e_i\}_i$ is a basis of $E$ and $\{g_j\}_j$ is a basis of $G$, then the set $\{e_i \otimes_\R g_j\}_{i,j}$ is a $\R$-linear basis of $E \otimes_{\mathbb{R}} G$ (before we introduce the complex structure). With respect to the complex structure, note that this set is $\C$-linearly independent as if: 
+        \[\sum_{i,j} z_{ij} (e_i \otimes g_j)= 0\]
+        then, 
+        \[ \sum_{i,j}  e_i \otimes z_{ij}g_j = 0\]
+        which contradicts the $\R$-linear independence of $\{e_i \otimes_\R g_j\}_{i,j}$. Moreover, the set clearly $\C$-spans $E \otimes_\R G$ as it $\R$-spans it. Thus, the set is a $\C$-linear basis of $E \otimes_\R G$. \bbni
+        Next, we define the homomorphisms $\Phi: E \otimes_{\mathbb{R}} G \to (E \otimes_{\mathbb{R}} \mathbb{C}) \otimes_{\mathbb{C}} G$ and $\Psi: (E \otimes_{\mathbb{R}} \mathbb{C}) \otimes_{\mathbb{C}} G \to E \otimes_{\mathbb{R}} G$ as follows:
+        \begin{align*}
+            \Phi(e \otimes g) &= (e \otimes_\R 1) \otimes_\C g \\
+            \Psi((e \otimes_\R z) \otimes_\C g) &= e \otimes_\R zg
+        \end{align*}
+        and extending linearly. We show that these are inverses as follows: 
+        \begin{align*}
+            \Psi \circ \Phi((e \otimes_\R g)) &= \Psi((e \otimes_\R 1) \otimes_\C g) \\
+            &= e \otimes_\R g \\
+            \Phi \circ \Psi((e \otimes_\R z) \otimes_\C g) &= \Phi(e \otimes_\R zg) \\
+            &= (e \otimes_\R 1) \otimes_\C zg \\
+            &= z\cdot (e \otimes_\R 1) \otimes_\C g \\
+            &= (e \otimes_\R z) \otimes_\C g
+        \end{align*}
+        where we use the same natural complex structure on $E \otimes_\R \C$. Thus, $\Phi$ and $\Psi$ are inverses. Thus, 
+        \[E \otimes_\R G \cong (E \otimes_\R \C) \otimes_\C G\]
+        \item We show this by constructing the linear maps $\Phi: \Hom_\R(E, G) \to \Hom_\C(E \otimes_\R \C, G)$ and $\Psi: \Hom_\C(E \otimes_\R \C, G) \to \Hom_\R(E, G)$ as follows, for $f \in \Hom_\R(E, G)$ and $g \in \Hom_\C(E \otimes_\R \C, G)$:
+        \begin{align*}
+            \Phi(f)(e \otimes_\R z) &= zf(e) \in G \\
+            \Psi(g)(e) &= g(e \otimes_\R 1) \in G
+        \end{align*}
+        and extending linearly. We show that $\Phi(g)$ is $\C$-linear and $\Psi(g)$ is $\R$-linear. 
+        \begin{align*}
+            \Phi(f)(z \cdot e_1 \otimes_\R z_1 + e_2 \otimes_\R z_2) &= \Phi(f)(e_1 \otimes_\R zz_1 + e_2 \otimes_\R z_2) \\
+            &= zz_1f(e_1) + z_2f(e_2) \\
+            &= z\cdot \Phi(f)(e_1 \otimes_\R z_1)  + \Phi(f)(e_2 \otimes_\R z_2)
+        \end{align*}
+        Thus, $\Phi(f)$ is $\C$-linear.
+        \begin{align*}
+            \Psi(g)(ze_1 + e_2) &= g((ze_1+e_2) \otimes_\R 1) \\
+            &= g((e_1 \otimes_\R z) + (e_2 \otimes_\R 1)) \\
+            &= \Phi(g)(ze_1) + \Phi(g)(e_2)
+        \end{align*}
+        Thus, $\Psi(g)$ is $\R$-linear. Finally, we wanna show that $\Phi$ and $\Psi$ are inverses, for $e\in E$ and $z \in \C$. 
+        \begin{align*}
+            \Psi(\Phi(f))(e) &= \Phi(f)(e \otimes_\R 1) \\
+            &= f(e) \\
+            \Phi(\Psi(g))(e \otimes_\R z) &= z\Psi(g)(e) \\
+            &= zg(e \otimes_\R 1) \\
+            &= g(e \otimes_\R z)
+        \end{align*}
+        Thus, $\Phi$ and $\Psi$ are inverses. Thus, we have the isomorphism:
+        \[\Hom_\R(E, G) \cong \Hom_\C(E \otimes_\R \C, G)\]
+        \item 
+        \item  
+    \end{enumerate}
+\end{solu}
+
 \newpage
 
 
@@ -103,25 +163,90 @@
 \begin{solu}
     \bbni
     \begin{enumerate}
-        \item If suffices to show the condition over fibers, as the transition functions preserve fibers. Let $x \in U_\alpha \cap U_\beta \cap U_\gamma$ and let $E_x = \pi^{-1}(a)$ be the fiber over $x$ in $E$. \\
-        Thoughts on this: Perhaps pick basis in each of the three trivializations. Then the transition functions are change of basis matrices. Then the change of basis matrices satisfy the cocycle condition. 
-        \item What do we need to prove that $E'$ is a holomorphic vector bundle? We need to show that $E'$ has a projection map $\pi'$ to $X$ and that there are local trivializations $\tau_{\alpha}: \pi^{-1}(U_\alpha) \to U_\alpha \times \C^n$ whose transition maps are holomorphic. \\
-        To show that these vector bundles are $E'$ and $E$ are isomorphic, we need to find a biholomorphism $f : E \to E'$ such that: 
-        \[ \pi' \circ f = \pi \qquad \qquad \pi \circ f^{-1} = \pi' \]
-        and also that $f$ and $f'$ are holomorphic.
-        \item If $E$ and $F$ are isomorphic as holomorphic vector bundles. Then there exists a biholomorphism $f : E \to F$ with $\pi' \circ f = \pi$. Take charts $U_\alpha$ and $U_\beta$. Then, we have the following to compare: 
-        \[ (x, v) \qquad (x, f(v)), \qquad (x, f(\rho(x)(v))) \qquad (x, \rho(x)(f(v))) \]
-        Do $f$ and $\rho$ commute? We need to think about the biholomorphism for this. 
-        \item Suppose I have the transition functions $\rho$ and $\rho'$ for $E$ and $F$ respectively. What would the transition functions for each of those look like?
+        \item Let $\{U_\alpha\}$ be an open cover of $X$ that trivializes $E$, with respective maps $\tau_\alpha: \pi^{-1}(U_\alpha) \to U_\alpha \times \C^n$. Then, note that $\rho_{\alpha\beta}: \tau_\alpha(\pi^{-1}(U_\alpha \cap U_\beta)) \to U_\beta \times \C^n$ is given by: 
+        \[\rho_{\alpha\beta} = \tau_\beta \circ \tau_\alpha^{-1}  \] 
+        with others defined similarly. Let $x \in U_\alpha \cap U_\beta \cap U_\gamma$ and $E_x = \pi^{-1}(a)$ be the fiber over $x$ in $E$. Then, we calculate: 
+        \begin{align*}
+            \rho_{\beta\gamma} \circ \rho_{\alpha\beta}(E_x) &= \tau_\gamma \circ \tau_\beta^{-1} \circ \tau_\beta \circ \tau_\alpha^{-1}(E_x) \\
+            &= \tau_\gamma \circ \tau_\alpha^{-1}(E_x) \\
+            &= \rho_{\alpha\gamma}(E_x)
+        \end{align*}
+        Thus, the cocycle condition holds on every such fiber. Thus, it holds in general. We can also realize this by picking a basis for the image of $E_x$ in each trivialization, and noticing that $\rho$ are just change of basis matrices, which satisfy the cocycle condition. 
+        \item We first check that $E'$ is a holomorphic vector bundle. We write an element of $E'$ as $(x, [v])$, for $x \in U_\alpha$, where $[v]$ is the equivalence class of $\{\rho_{\alpha\beta}(v): x \in U_\beta\}$. \bbni 
+        Defining $\pi'(x, [v]) = x$, we note that the projection $\pi'$ is clearly well-defined and can be made holomorphic by inheriting the holomorphic structure from the base space. \bbni
+        Furthermore, we define the trivialization maps $\tau'_\beta: \pi'^{-1}(U_\beta) \to U_\beta \times \C^n$ as follows:
+        \[
+            \tau'_\beta(x, [v]) = (x, v)
+        \]
+        where $v$ is the representative of $[v]$ such that $(x, v) \in U_\beta \times \C^n$. Then, $\tau'^{-1}_\beta$ is given by taking the equivalence class: 
+        \[ \tau'^{-1}_\beta(x, v) = (x, [v]) \]
+        Thus, the transition maps $\rho'_{\alpha\beta}$ are given by, for $x \in U_\alpha \cap U_\beta$:
+        \begin{align*}
+            \rho'_{\alpha\beta}(x, v) &= \tau'_\beta \circ \tau'^{-1}_\alpha(x, v) \\
+            &= (x, [v])) \\
+            &= (x, [\rho_{\alpha\beta}(v)])  \\
+            &= (x, \rho_{\alpha\beta}(v))         
+        \end{align*}
+        Thus, the transition functions $\rho'_{\alpha\beta}$ are holomorphic as $\rho_{\alpha\beta}$ are holomorphic. Thus, $E'$ is a holomorphic vector bundle. \bbni
+        Next, to show that $E'$ is isomorphic to $E$ as a vector bundle, we need to find a biholomorphism $f: E \to E'$ that respects the fibers. We can define $f$ as follows: for $x \in U_\alpha$, and $\epsilon \in \pi^{-1}(x) = E_x$ , 
+        \[ f(\epsilon) = \tau_\alpha'^{-1} \circ \tau_\alpha(\epsilon)\]
+        To see that $f$ is well-defined, let $x \in U_\alpha \cap U_\beta$. Then, we have: 
+        \begin{align*}
+            f(\epsilon) &= \tau_\alpha'^{-1} \circ \tau_\alpha(\epsilon) \\
+            &= \tau'^{-1}_\alpha(x, v) \\
+            &= (x, [v]) \\
+            &= (x, [\rho_{\alpha\beta}(v)]) \\
+            &= \tau'^{-1}_\beta(x, \rho_{\alpha\beta}(v)) \\
+            &= \tau'^{-1}_\beta \circ \tau_{\beta}(\epsilon) \\
+            &= f(\epsilon)
+        \end{align*}
+        Since it is a composition of holomorphic maps, $f$ is holomorphic. Next, we define the inverse $f^{-1}: E' \to E$ as follows: for $x \in U_\alpha$ and $(x, [v]) \in E'$, with $v$ being the representative that came from $U_\alpha \times \C^n$, we have: 
+        \begin{align*}
+            f^{-1}(x, [v]) &= \tau^{-1}_\alpha \circ \tau'_\alpha(x, [v]) 
+        \end{align*}
+        To see that this is well-defined, let $x \in U_\alpha \cap U_\beta$. Then, we have:
+        \begin{align*}
+            f^{-1}(x, [v]) &= \tau^{-1}_\alpha \circ \tau'_\alpha(x, [v]) \\
+            &= \tau^{-1}_\alpha(x, v) \\
+            &= \tau_\beta^{-1}(x, \rho_{\alpha\beta}(v)) \\
+            &= \tau_\beta^{-1} \circ \tau'_\beta(x, [\rho_{\alpha\beta}(v)]) \\
+            &= \tau_\beta^{-1} \circ \tau'_\beta(x, [v]) \\
+            &= f^{-1}(x, [v])
+        \end{align*}
+        Since $f^{-1}$ is also a composition of holomorphic maps, $f^{-1}$ is holomorphic. Moreover, it is easy to see that $f^{-1}$ and $f$ are inverses. Thus, $f$ is a biholomorphism. \bbni
+        Finally, we can see that $f$ and $f^{-1}$ respect the fibers as they are compositons of fiber-preserving maps. Thus, they commute with the projection maps. Moreover, we note that on a particular fiber, $E_x$, with respect to the trivializations, $f$ is a vector space isomorphism. That is, $\tau'_{\alpha} \circ f \circ \tau^{-1}_{\alpha}$ is an isomorphism on $\{x\} \times \C^n$ as it is linear and has an inverse.
+        \item Since $E$ and $F$ are isomorphic as holomorphic vector bundles, there exists a biholomorphism $f: E \to F$ that respects the fibers, and is a vector space isomorphism when restricted to each fiber. \bbni
+        By refining the covers over which the trivializations for $E$ and $F$ are defined, choose a cover $\{U_\alpha\}$ such that both $E$ and $F$ are trivialized over it. Let $x \in U_\alpha \cap U_\beta$. Let $\tau_{\alpha, E}$ and $\tau_{\alpha, F}$ be trivializations and $\rho_E$ and $\rho_F$ be the transition functions from $\tau_\alpha(\pi^{-1}(U_\alpha)) \to U_\beta \times \C^n$ (sloppily identifying the two projections $\pi$). Let $E_{x, \alpha}$, $E_{x, \beta}$ be the trivilized fibers over $x$ and similarly for $f$. Then, $f$ is such that:
+        \begin{align*}
+            \tau_{\alpha, F} \circ f \circ \tau_{\alpha, E}^{-1} \qquad \tau_{\beta, F} \circ f \circ \tau_{\alpha, E}^{-1}  \\
+            \tau_{\alpha, F} \circ f \circ \tau_{\beta, E}^{-1} \qquad \tau_{\beta, F} \circ f \circ \tau_{\beta, E}^{-1}
+        \end{align*} 
+        are all isomorphisms. Composition by $\rho_E$ and $\rho_F$ and their inverses permutes them. Write $f_{\alpha} := \tau_{\alpha, F} \circ f \circ \tau_{\alpha, E}^{-1}$. Thus, we have the commutative diagram connecting the two transition functions (where every arrow is invertible):
+        \[
+            \xymatrix{ E_{x, \alpha} \ar[r]^{\rho_E} \ar[d]_{f_\alpha} & E_{x, \beta} \ar[d]^{f_\beta} \\
+            F_{x, \alpha} \ar[r]_{\rho_F} & F_{x, \beta}}
+        \]
+        % Extending this to three intersecting opens, the commutative diagram:
+        % \[ 
+        %     \xymatrix{ E_{x, \alpha} \ar[r]^{\rho_{E, \alpha\beta}} \ar[d]^{f_\alpha}  & E_{x, \beta} \ar[r]^{\rho_{E, \beta\gamma}} \ar[d]^{f_\beta}  & E_{x, \gamma} \ar[d]^{f_\gamma}  \\
+        %     F_{x, \alpha} \ar[r]^{\rho_{F, \alpha\beta}} & F_{x, \beta} \ar[r]^{\rho_{F, \beta\gamma}} & F_{x, \gamma} }
+        % \]
+        \item We can pick a cover $\{U_\alpha\}$ that trivializes both $E$ and $F$. Then, pick $x \in U_\alpha \cap U_\beta$ and $\rho_E$ and $\rho_F$ be the transiton functions from the $U_\alpha$ trivialization to the $U_\beta$ trivialization. Then, 
         \begin{enumerate}
-            \item Apply $\rho$ to the first components of the bundle and $\rho'$ to the second components of each coordinate of the bundle. 
-            \item Wait, I think you can just take the $\rho$ on each component. But what if there is any intersection? Does direct sum have any intersection?
-            \item Apply to each and then take the wedge product of them?
+            \item $\rho_E \otimes_\C \rho_F$ is a transition function for $E \otimes_\C F$. 
+            \item $\rho_E \oplus \rho_F$ be a transition function for $E \oplus F$.
+            \item $\bigwedge^n \rho_E$ be a transition function for $\bigwedge^n E$.
         \end{enumerate}
+        These are all holomorphic, as they are holomorphic on each component. 
         
     \end{enumerate}
 \end{solu}
 
+
+\subsection*{Questions:}
+\begin{enumerate}
+    \item In 5b), is it okay to just take a representative that comes from a particular $U_\alpha \times \C^n$ pre-quotienting? What's a better way to write this?
+\end{enumerate}
 
 
 \end{document}
