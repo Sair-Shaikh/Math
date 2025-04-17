@@ -82,7 +82,48 @@ Let \( [S^1, X] \) be the set of homotopy classes of maps from \( S^1 \) to \( X
 \end{itemize}
 \end{problab}
 \begin{solu}
-
+    \bbni
+    \begin{itemize}
+        \item[(a)] Let $f, g: S^1 \to X$ be two loops based at $x_0$. \\
+        $(\implies)$ Assume $\Phi([f]) = \Phi([g])$. Then there exists a homotopy $H: S^1 \times I \to X$ such that $H(x, 0) = f(x)$ and $H(x, 1) = g(x)$ (we can pick the representative for the conjugacy classes as there exists homotopies between any two representatives that we can compose). \bbni
+        We define $\alpha_t: I \to X$ be the path that $x_0$ takes under the homotopy $H$ in the interval $[0, t]$ (appropriately rescaled). We then define the homotopy $H': S^1  \times I: \to X$ as: 
+        \[ H'(x, t) = \alpha_t \cdot H(x, t) \cdot \overline{\alpha_t} \]
+        Clearly, $\alpha_t = \overline{\alpha_t}= H(0, t)$ by definition. $H'$ is also continuous as it is a concatenation of continuous paths. Moreover, we check:
+            \begin{align*}
+                H'(x, 0) &= \alpha_0 \cdot H(x, 0) \cdot \overline{\alpha_0} \\
+                &= f(x) \\
+                H'(x, 1) &= \alpha_1 \cdot H(x, 1) \cdot \overline{\alpha_1} \\
+                &= \alpha_1 \cdot g(x) \cdot \overline{\alpha_1} \\
+                H'((1,0), t) &= \alpha_t \cdot H((1,0), t) \cdot \overline{\alpha_t} \\
+                &= \alpha_t \cdot \overline{\alpha_t} \\
+                &= x_0 
+            \end{align*}
+        Thus, $H'$ is a homotopy from $f$ to $\alpha_1 \cdot g \cdot \overline{\alpha_1}$. Note that $\alpha_1$ is the path of $x_0$ under the homotopy $H$. Thus, $\alpha_1(0) = H((0, 1), 0) = f(0) = x_0$ and $\alpha_1(1) = H((0, 1), 1) = g(0) = x_0$. Thus, $\alpha_1$ is a loop based at $x_0$. We have shown that $[f] = [\alpha_1 \cdot g \cdot \overline{\alpha_1}]$, thus $[f]$ and $[g]$ are conjugate in $\pi_1(X, x_0)$. \bbni  
+        $(\impliedby)$ Assume $[f]$ and $[g]$ are conjugate in $\pi_1(X, x_0)$. Then, there exists a path $\alpha: I \to X$ such that $\alpha(0) = x_0$ and $\alpha(1) = x_0$ such that $[f] = [\overline{\alpha} \cdot g \cdot \alpha]$, via a path homotopy $H$. Let $\beta_t$ be the part of the loop $\alpha$ on the interval $[1-t, 1]$ (rescaled appropriately). Note that $\beta_1 = \alpha_1$. We define the homotopy $H': S^1 \times I \to X$ as: 
+        \[H'(x, t) = \beta_t \cdot H(x, t) \cdot \overline{\beta_t }\]
+        $H'$ is a well-defined continous map as its a concatenation of paths (which are compatible by definition). Finally, we check: 
+        \begin{align*}
+            H'(x, 0) &= \beta_0 \cdot H(x, 0) \cdot \overline{\beta_0} \\
+            &= f(x) \\
+            H'(x, 1) &= \beta_1 \cdot H(x, 1) \cdot \overline{\beta_1} \\
+            &= \beta_1 \cdot \overline{\alpha_1 } \cdot g(x) \cdot \alpha_1 \cdot \overline{\beta_1}\\
+            &= g(x)
+        \end{align*}
+        Thus, $H'$ is a homotopy from $f$ to $g$. Thus, $\Phi([f]) = \Phi([g])$.
+        \item[(b)] In the previous part, we already showed that $\Phi$ provides an injection from the conjugacy classes of $\pi_1(X, x_0)$ to $[S^1, X]$. We need to show that $\Phi$ provides a surjection from the conjugacy classes of $\pi_1(X, x_0)$ to $[S^1, X]$. Since every element in a conjugacy class has the same image, it is sufficient to show that $\Phi$ is surjective. \bbni
+        Let $f: S^1 \to X$ be a loop. By path-connectedness, we can pick a path $\alpha: I \to X$ such that $\alpha(0) = x_0$ and $\alpha(1) = f((1,0))$. Then, 
+        \[\alpha \cdot f \cdot \overline{\alpha} \]
+        is a loop based at $x_0$. We claim that $\Phi([\alpha \cdot f \cdot \overline{\alpha}]) = [f]$. Similar to before, define $\alpha_t$ to be the part of $\alpha$ on the interval $[1-t, 1]$. Define the homotopy $H: S^1 \times I \to X$ as follows:
+        \[ H(x, t) = \alpha_t \cdot f(x) \cdot \overline{\alpha_t} \]
+        Similar to before, $H$ is a well-defined continous map. We check: 
+        \begin{align*}
+            H(x, 0) &= \alpha_0 \cdot f(x) \cdot \overline{\alpha_0} \\
+            &= f(x) \\
+            H(x, 1) &= \alpha_1 \cdot f(x) \cdot \overline{\alpha_1} \\
+            &= \alpha \cdot f(x) \cdot \overline{\alpha}
+        \end{align*}
+        Thus, $\Phi([\alpha \cdot f \cdot \overline{\alpha}]) = [f]$. Thus, $\Phi$ is surjective. Therefore, there is a bijection between the conjugacy classes of $\pi_1(X, x_0)$ and $[S^1, X]$.
+    \end{itemize}
 \end{solu}
 \newpage
 
@@ -90,7 +131,9 @@ Let \( [S^1, X] \) be the set of homotopy classes of maps from \( S^1 \) to \( X
 Suppose that \( p : E \to B \) is a covering map where \( B \) is connected. Show that if \( p^{-1}(b_0) \) has \( k \) elements for some \( b_0 \in B \), then \( p^{-1}(b) \) has \( k \) elements for every \( b \in B \).
 \end{problab}
 \begin{solu}
-
+    Let $b \in B$ be arbitrary. Since $p$ is a covering map, there exists open $U$ such that $b \in U$ and $p^{-1}(U) = \bigcup_{\alpha \in A} U_\alpha$ where $U_\alpha$ are disjoint open subsets in $E$ such that $p|_{U_\alpha}: U_\alpha \to U$ is a homeomorphism, where $A$ is some space. Since each $p|_{U_\alpha}$ is a homeomorphism onto $U$, we must have $p^{-1}(b) \cap U_\alpha$ be a singleton. Thus, $|p^{-1}(b)| \leq |A|$. Since the $U_\alpha$ are disjoint, each $U_\alpha$ must contain a distinct element, thus, $|p^{-1}(b)| = |A|$. Similarly, $\forall b' \in U$, the same arguments hold, thus, $|p^{-1}(b')| = |A|$. Thus, the size of the pre-image is constant for any two points within the same evenly covered open. \bbni
+    Let $G_i = \{b \in B : p^{-1}(b) = i\}$ for $i \in \mathbb{N} \cup \{\infty\}$. For every $b \in G_i$, we know that there exists an evenly covered open $U_b$ such that every point in $U_b$ has $i$ pre-images. Thus, $U_b \in G_i$. Thus, $G_i$ is open for all $i$. Moreover, as $B \setminus G_i = \bigcup_{j \neq i} G_j$, is a union of opens, hence open. Thus, $G_i$ is also closed for all $i$. \bbni
+    Since $B$ is connected, the only non-empty clopen set is $B$. We know that $G_k$ is non-empty as $b_0 \in G_k$. Since $G_k$ is clopen, $G_k = B$. Thus, $\forall b \in B$, $p^{-1}(b) = k$.
 \end{solu}
 \newpage
 
