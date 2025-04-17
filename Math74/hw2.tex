@@ -141,7 +141,20 @@ Suppose that \( p : E \to B \) is a covering map where \( B \) is connected. Sho
 Let \( q : X \to Y \) and \( r : Y \to Z \) be covering maps such that \( r \) has finite degree. Show that \( p = r \circ q \) is a covering map.
 \end{problab}
 \begin{solu}
-
+    Let $z \in Z$ be some point. We need to show there exists a $U \subseteq Z$ with $z \in U$ such that $U$ is evenly covered by $p$. Since $r$ is a covering map of finite degree, call it $d$, there exists an evenly covered $U \subset Z$ such that: 
+    \[ r^{-1}(U) = \bigcup_{i = 1}^d V_i \]
+    where $V_i$ are disjoint open sets in $Y$ such that $r|_{V_i}: V_i \to U$ is a homeomorphism. \bbni
+    We know that each $V_i$ has a unique point $y_i$ such that $r(y_i) = z$. Since $q$ is a covering map, there exists an evenly covered open $W_i \subseteq Y$ such that $y_i \in W_i$. Let $U' = \bigcap_{i = 1}^d r(V_i \cap W_i)$. Then, $z \in U'$ as $y_i \in V_i \cap W_i$ for all $i$. We will show that $U'$ is evenly covered by $p$. \bbni
+    As $U' \subseteq U$ it is evenly covered by $r$ by restricting all homomorphisms to the pre-image of $U'$ in each $V_i \cap W_i$. Thus, we have:
+    \[r^{-1}(U') = \bigcup_{i = i}^d B_{i}\]
+    where $B_i \subset V_i \cap W_i$ are disjoint open sets in $Y$ such that $r|_{B_i}: B_i \to U'$ is a homeomorphism. \bbni
+    Since $B_i \subseteq W_i$, and $W_i$ is evenly covered by $q$, $B_i$ is also evenly covered by restricting all the homeomorphisms onto $W_i$ to the pre-image of $B_i$. Thus, we have:
+    \[q^{-1}(B_i) = \bigcup_{\alpha \in A_i} C_{\alpha}\]
+    where $C_{\alpha}$ are disjoint open sets in $X$ such that $q|_{C_{\alpha}}: C_{\alpha} \to B_i$ is a homeomorphism. Thus, each $C_\alpha$ is homeomorphic to $U'$ under $p = r \circ q$. \bbni  
+    Moreover, since the $B_i$ are disjoint, for $C_\alpha$ for $\alpha \in A_i$ is disjoint from $C_\beta$ if $\beta \not \in A_i$ as their images are disjoint. $W_\alpha$ already disjoint of $W_\beta$ for $\beta \in A_i$ by construction. \bbni 
+    Let $A = \bigcup_{i = 1}^d A_i$. Then, we have:
+    \[p^{-1}(U') = \bigcup_{\alpha \in A} C_\alpha\]
+    where $C_\alpha$ are disjoint open sets in $X$ such that $p|_{C_\alpha}: C_\alpha \to U'$ is a homeomorphism for all $\alpha \in A$, where $U'$ is an open set containing $z$. Since $z$ was arbitrary, this shows that $p$ is a covering map.
 \end{solu}
 
 \end{document}
