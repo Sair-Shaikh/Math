@@ -110,8 +110,67 @@
         \end{align*}
         Thus, $\Phi$ and $\Psi$ are inverses. Thus, we have the isomorphism:
         \[\Hom_\R(E, G) \cong \Hom_\C(E \otimes_\R \C, G)\]
-        \item 
-        \item  
+        \item We do this by constructing explicit maps. 
+        \begin{itemize}
+            \item Let $e \in E$, $f\in F$ and $z \in \C$. Define the two maps: 
+            \begin{align*}
+                \Phi: (E \oplus F) \otimes_\R \C &\to (E \otimes_\R \C) \oplus (F \otimes_\R \C) \\
+                (e, f) \otimes_\R z &\mapsto (e \otimes_\R z, f \otimes_\R z) \\
+                \Psi: (E \otimes_\R \C) \oplus (F \otimes_\R \C) &\to (E \oplus F) \otimes_\R \C \\
+                (e \otimes z_1, f \otimes z_2) &\mapsto (e, 0) \otimes_\R z_1 + (0, f) \otimes_\R z_2
+            \end{align*} 
+            and extend linearly. We show that these are inverses as follows:
+            \begin{align*}
+                \Phi \circ \Psi(e \otimes_\R z_1, f \otimes_\R z_2) &= \Phi((e, 0) \otimes_\R z_1 + (0, f) \otimes_\R z_2) \\ 
+                &= \Phi((e, 0) \otimes_\R z_1) + \Phi((0, f) \otimes_\R z_2) \\
+                &= (e \otimes_\R z_1, 0) + (0, f \otimes_\R z_2) \\
+                &= (e \otimes_\R z_1, f \otimes_\R z_2) \\
+                \Psi \circ \Phi((e, f) \otimes_\R z) &= \Psi(e \otimes_\R z, f \otimes_\R z) \\
+                &= (e, 0) \otimes_\R z + (0, f) \otimes_\R z \\
+                &= (e, f) \otimes_\R z
+            \end{align*}
+            Thus, $\Phi$ and $\Psi$ are inverses. Thus, we have the isomorphism:
+            \[(E \oplus F) \otimes_\R \C \cong (E \otimes_\R \C) \oplus (F \otimes_\R \C)\]
+            \item Let $e \in E$, $f\in F$ and $z \in \C$. Note that a simple tensor in $(E \otimes_\R \C) \otimes_\C (F \otimes_\R \C)$ is $(e \otimes_\R z) \otimes_\C (f \otimes_\R 1)$ as we are tensoring over $\C$. Define the two maps: 
+            \begin{align*}
+                \Phi: (E \otimes_\R F) \otimes_\R \C &\to (E \otimes_\R \C) \otimes_\C (F \otimes_\R \C) \\
+                e \otimes f \otimes_\R z &\mapsto (e \otimes_\R z) \otimes_\C (f \otimes_\R 1) \\
+                \Psi: (E \otimes_\R \C) \otimes_\C (F \otimes_\R \C) &\to (E \otimes F) \otimes_\R \C \\
+                (e \otimes z) \otimes (f \otimes 1) &\mapsto e \otimes_\R f \otimes_\R z
+            \end{align*} 
+            and extend linearly. We show that these are inverses as follows:
+            \begin{align*}
+                \Phi \circ \Psi( (e \otimes_\R z) \otimes_\C (f \otimes_\R 1)) &=  \Phi(e \otimes_\R f \otimes_\R z) \\ 
+                &= (e \otimes_\R z) \otimes_\C (f \otimes_\R 1)\\ 
+                \Psi \circ \Phi(e \otimes_\R f \otimes_\R z) &= \Psi(e \otimes_\R z) \otimes_\C (f \otimes_\R 1) \\
+                &= e \otimes_\R f \otimes_\R z
+            \end{align*}
+            Thus, $\Phi$ and $\Psi$ are inverses. Thus, we have the isomorphism:
+            \[ (E \otimes_\R F) \otimes_\R \C \cong  (E \otimes_\R \C) \otimes_\C (F \otimes_\R \C) \]
+            \item Let $e_1, \cdots, e_n \in E$ and $z_1, \cdots, z_n \in \C$. Assuming that $\bigwedge^n (E \otimes_\R \C)$ is wedging over $\C$. Define the two maps: 
+            \begin{align*}
+                \Phi: \bigwedge^n E \otimes_\R \C &\to \bigwedge^n (E \otimes_\R \C)\\
+                e_1 \wedge \cdots \wedge e_n \otimes_\R z_1 &\mapsto (e_1 \otimes_\R z_1) \wedge (e_2 \otimes_\R 1) \wedge \cdots \wedge (e_n \otimes_\R 1) \\
+                \Psi: \bigwedge^n (E \otimes_\R \C)  &\to \bigwedge^n E \otimes_\R \C \\
+                (e_1 \otimes_\R z_1) \wedge \cdots \wedge (e_n \otimes_\R z_n) &\mapsto e_1 \wedge \cdots \wedge e_n \otimes_\R z_1 \cdots z_n
+            \end{align*} 
+            and extend linearly. We show that these are inverses as follows:
+            \begin{align*}
+                \Phi \circ \Psi( (e_1 \otimes_\R z_1) \wedge \cdots \wedge (e_n \otimes_\R z_n) ) &=  \Phi(e_1 \wedge \cdots \wedge e_n \otimes_\R z_1 \cdots z_n) \\ 
+                &= (e_1 \otimes_\R z_1\cdots z_n) \wedge (e_2 \otimes_\R 1) \wedge  \cdots \wedge (e_n \otimes_\R 1)\\ 
+                &= (e_1 \otimes_\R z_1) \wedge \cdots \wedge (e_n \otimes_\R z_n)\\ 
+                \Psi \circ \Phi(e_1 \wedge \cdots \wedge e_n \otimes_\R z_1) &= \Psi((e_1 \otimes_\R z_1) \wedge (e_2 \otimes_\R 1) \wedge  \cdots \wedge (e_n \otimes_\R 1)) \\
+                &= e_1 \wedge \cdots \wedge e_n \otimes_\R z_1
+            \end{align*}
+            Thus, $\Phi$ and $\Psi$ are inverses. Thus, we have the isomorphism:
+            \[  \bigwedge^n E \otimes_\R \C \cong \bigwedge^n (E \otimes_\R \C)\]
+        \end{itemize}
+        \item Let $e \in \ker(f)$. Then, for any $e \otimes_\R z \in \ker(f) \otimes_\R \C$, we have:
+        \[f_\C(e \otimes_\R z) = f(e) \otimes_\R z = 0 \otimes_\R z = 0 \]
+        Thus, $e \otimes_\R z \in \ker(f_\C)$ for any $z \in \C$. Thus, $\ker(f) \otimes \C \subseteq \ker(f_\C)$. \\
+        Similarly, let $e \otimes_\R z \in \ker(f_\C)$. If $z = 0$, then, $e \otimes_\R z = 0 \otimes 0$ and $0 \in \ker(f)$. Thus, assume $z \neq 0$. Then, $f_\C(e \otimes_\R z) = 0$ implies that $f(e) \otimes_\R z = 0$. Since $z \neq 0$, we have $f(e) = 0$. Thus, $e \in \ker(f)$. Thus, $\ker(f_\C) \subseteq \ker(f) \otimes_\R \C$. Hence, we conclude $\ker(f_\C) = \ker(f) \otimes_\R \C$. \bbni
+        Let $p \in \img(f)$. Then, there exists $e \in E$ such that $f(e) = p$. Then, we have $f_\C(e \otimes_\R z) = f(e) \otimes_\R z = p \otimes_\R z$. Thus, $\img(f) \otimes_\R \C \subseteq \img(f_\C)$. \\
+        Conversely, let $p \otimes_\R z \in \img(f_\C)$. Then, there exists $e \otimes_\R z' \in E \otimes_\R \C$ such that $f_\C(e \otimes_\R z') = p \otimes_\R z$. Then, by the definition of $f_\C$, we have $z = z'$ and $p = f(e)$. Thus, $p \in \img(f)$. Thus, $\img(f_\C) \subseteq \img(f) \otimes_\R \C$. Hence, we conclude $\img(f_\C) = \img(f) \otimes_\R \C$.
     \end{enumerate}
 \end{solu}
 
