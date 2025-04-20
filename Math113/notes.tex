@@ -194,7 +194,60 @@
     Proof. Pictures. 4/16
     \item[Thm.] Every finite-dimensinal subspace $Y$ of a normed vector space $X$ is a Banach space and hence closed in $X$. If $\dim(Y) = n$, then every linear isomorphism $\Phi: \mathbb{F}^n \to Y$ is a homeomorphism. \\
     Proof. Pictures. 4/16.
-    
+    \item[Corr.] If $Y$ is finite-dimensional vector space, then all norms $||\cdot||$ are strongly equivalent. \\
+    Proof. $\id:( Y, ||\cdot||_1) \to (Y, ||\cdot||_2)$ is a homeomorphism and continous linear maps are bounded.
+    \item[Recall.]  Recall the topological definition of continous functions and open maps. If $F: X\to Y$ is a bijection, then $F^{-1}: Y \to X$ is continous if and only if $F$ is open.
+    \item[Thm.] (The Big Three) (Open Mapping Theorem) Suppose that $X$ and $Y$ are Banach spaces and that $T \in \mathcal{L}(X,Y)$ is a surjection. Then $T$ is an open map.
+    \item[Lem.] It will suffice to find $r > 0$ such that: 
+    \[ B_r(0) \subseteq T(B_1(0)) \]
+    Proof. By homogeneity, $T(B_\delta(0))$ is a neighborhood of $0_Y$ for all $\delta > 0$. By linearity, $T(B_\delta(x))$ is a neighborhood of $T(x)$ for all $x \in X$ and $\delta > 0$. Thus, if $V$ is open in $X$ and $x \in V$, then $\exists \delta > 0$ such that:
+    \[ B_\delta(x) \subseteq V\]
+    Then, $T(B_\delta(x))$ is a neighborhood of $T(x)$ in $T(Y)$. Thus, $T$ is an open map. Thus, $T(V)$ is open.
+    \item[Lem.] It will suffice to find $r > 0$ such that: 
+    \[ B_r(0) \subseteq \overline{T(B_1(0))}\]
+    Proof. Assume $r > 0$ is such that the property holds. Let $y \in B_r(0)$. Then, 
+    \[ \exists y_1 \in T(B_1(0)): ||y-y_1|| < r/2\]
+    Then, $y-y_1 \in B_{r/2}(0)$. \\
+    Hence, $\exists y_2 \in 1/2T(B_1(0)) = T(B_{1/2}(0))$ such that: 
+    \[ || y- y_1 -y_2|| < r/2^2\]
+    Continue to get a sequence $(y_n)$ such that: 
+    \[y_n \in 2^{-n+1}T(B_1(0)) = T(B_{2^{-n+1}}(0))\]
+    and: 
+    \[||y - \sum_{i = 1}^n y_i|| < 2^{-n}r\]
+    By construction, $\exists x_n \in X$ such that:
+    \[ T(x_n) = y_n \qquad ||x_n|| < 2^{-n+1} \]
+    Since $X$ is a Banach space, $x = \sum_{n=1}^\infty x_n$ converges and since $T$ is continous (hence bounded), and also: 
+    \[ ||x|| < \sum_{n = 1}^\infty 2^{-n+1} = 2 \]
+    and
+    \[T(x) = y\] 
+    Since $y$ was arbitrary, we have shown that:
+    \[B_r(0) \subset T(B_2(0))\]
+    This implies: 
+    \[ B_{r/2}(0) \subset T(B_1(0)) \]
+    This suffices by lemma $1$.
+    \item[Lem. 3] If suffices to see that: 
+    \[ \overline{T(B_n(0))}\] 
+    has interior for some $n \geq 1$. \\
+    Proof. By homogeneity, we can assume that $\overline{T(B_1(0))}$ has interior. \\
+    Thus, $\exists \epsilon > 0$ such that: 
+    \[B_\epsilon(y) \subset \overline{T(B_1(0))} \]
+    Let $z \in B_\epsilon(0)$. Write
+    \[ z = z/2 + y - (y-z/2) \in B_{\epsilon/2}(y)-B_{\epsilon/2}(y) \subseteq \overline{T(B_{1/2}(0))}- \overline{T(B_{1/2}(0))}\]
+    Rest in pictures.
+    \item[Proof.] Of the Open Mapping Theorem. Pictures. 4/18.
+    \item[Ex.] Let $1 \leq p < \infty$. Then, let: 
+    \[ l_0^p = \opspan\{e_n : n \geq 1\} = \{x \in l^p: x(n) = 0 \text{ for all but finitely many $n$}\}\]
+    Notte $l_0^p$ is dense in $l^p$. \\
+    Define: $T_0: l_0^p \to l_0^p$ by:
+    \[T_0(e_n) = 1/n e_n\]
+    You can check that $||T|| = 1$. Also $T_0$ is a bijection. 
+    \[T_0^{-1}(e_n) = ne_n\]
+    but $T_0^{-1} \not\in \mathcal{L}(l_0^p)$
+    \item[Thm.] Suppose that $X$ and $Y$ are Banach spaces and $T \in \mathcal{L}(X,Y)$ is a bijection. Then $T^{-1} \in \mathcal{L}(Y,X)$. \\
+    Proof. $T^{-1}$ is linear by general nonsense and $T$ is open by the Open Mapping Theorem. Hence $T^{-1}$ is continous hence bounded.
+    \item[Yap.] If $X$ and $Y$ are Banach spaces, then I can give $X \times Y$ a norm by: 
+    \[ ||(x,y|| = max\{||x||, ||y||\})\]
+    This makes $X \times Y$ a Banach spaces.
 \end{itemize}
 
 

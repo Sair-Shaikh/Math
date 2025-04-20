@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+
+\include{../style}
+
+\begin{document}
+
+\input{title}
+
+\begin{problab}{1}
+    Show that $X$ is compact if and only if given any family $\mathcal{F}$ of closed sets of $X$ with the finite intersection property, we have $\bigcap_{F \in \mathcal{F}} F \neq \emptyset$.
+\end{problab}
+\begin{solu}
+    \bbni
+    \begin{itemize}
+        \item[$(\implies$)] Assume $X$ is compact. We will prove that contrapositive. Let $\{F_\alpha\}$ be a family of closed sets such that: 
+        \[ \bigcap_{\alpha} F_\alpha = \emptyset \]
+        Let $\{U_\alpha\}$ be a family of open sets such that $U_\alpha = X \setminus F_\alpha$. Then, we have:
+        \[ \bigcup_\alpha U_\alpha = X \setminus \bigcap_\alpha F_\alpha = X\]
+        Thus, $\{U_\alpha\}$ is an open cover of $X$. Since $X$ is compact, there exists a finite subcover of $\{U_\alpha\}$. Let $\{U_1, \ldots, U_n\}$ be the finite subcover. Then, we have:
+        \[ \bigcap_{i=1}^n F_i = X \setminus \bigcap_{i=1}^n U_i = \emptyset\]
+        Thus, we have found a finite subset of $\{F_\alpha\}$ with empty intersection. Thus, $\{F_\alpha\}$ does not have the finite intersection property. Therefore, by the contrapositive, any family of closed sets with the finite intersection property has non-empty intersection.
+        \item[($\impliedby$)] Assume any family of closed sets with the finite intersection property has non-empty intersection. By the contrapositive, this implies that if the family has empty intersection, it cannot have the finite intersection property. \bbni 
+        Let $\{U_\alpha\}$ be an open cover of $X$. To show that $X$ is compact it suffices to show that there exists a finite subcover of $\{U_\alpha\}$. Let $\{F_\alpha\}$ be the family of closed sets such that $F_\alpha = X \setminus U_\alpha$. Then, 
+        \[ \bigcap_{\alpha} F_\alpha = X \setminus \bigcup_\alpha U_\alpha  = \emptyset \]
+        Thus, $\{F_\alpha\}$ does not have the finite intersection property. Therefore, there exists a finite subset of $\{F_\alpha\}$, call it $\{F_1, \ldots, F_n\}$, such that: 
+        \[ \bigcap_{i = 1}^n F_i = \emptyset \]
+        However, we know that:
+        \[ \bigcap_{i = 1}^n F_i = X \setminus \bigcup_{i=1}^n U_i \]
+        Thus, we conclude that:
+        \[X \setminus \bigcup_{i=1}^n U_i = \emptyset\]
+        Thus, $\bigcup_{i=1}^n U_i = X$. Therefore, $\{U_1, \ldots, U_n\}$ is a finite subcover of $\{U_\alpha\}$. Therefore, $X$ is compact.
+    \end{itemize}
+\end{solu}
+
+\newpage
+
+\begin{problab}{2}
+    Let $X$ be a metric space. 
+    \begin{enumerate}
+        \item Show that if $E$ is a compact subspace of $X$, then $E$ is closed. 
+        \item Show that if $X$ is compact and $E$ is closed in $X$, then $E$ is compact.
+    \end{enumerate}
+\end{problab}
+\begin{solu}
+    \bbni
+    \begin{enumerate}
+        \item Let $E$ be a compact subspace of $X$. To show that $E$ is closed, it suffices to show that $X \setminus E$ is open. Let $x \in X \setminus E$. Then, we define to families of open sets, $\{U_e\}_{e \in E}$ and $\{V_e\}_{e \in E}$, such that:
+        \begin{align*}
+            U_e &= B_{\epsilon}(e) \text{ where } \epsilon < \rho(x,e)/2 \\
+            V_e &= B_{\epsilon}(x) \text{ where } \epsilon < \rho(x,e)/2
+        \end{align*} 
+        Note that by definition, $x \in V_e$ for all $e \in E$ and that $U_e \cap V_e = \emptyset$. Moreover, by definition, $\{U_e\}_{e\in E}$ is an open cover of $E$. Since $E$ is compact, there exists a finite subcover of $\{U_e\}_{e \in E}$. Let $\{U_{e_1}, \ldots, U_{e_n}\}$ be the finite subcover. Then, since $\{V_{e_1}, \ldots, V_{e_n}\}$ is a finite collection of open sets, $V = \bigcap_{i=1}^n V_{e_n}$ is an open set that contains $x$. However, since $U_{e_i} \cap V_{e_i} = \emptyset$, and $V \subseteq V_{e_i}$, we have that $V \cap U_{e_i} = \emptyset$ for all $i$. Thus,
+        \[  V \cap E = V \cap \bigcup_{i=1}^n U_{e_i} = \emptyset\]
+        Thus, there exists an open set $V$ containing $x$ disjoint from $E$, thus contained in $X \setminus E$. Therefore, $X \setminus E$ is open. Thus, $E$ is closed.
+        \item Assume $X$ is compact and $E$ is closed in $X$. If $E = X$, then we are done. Thus, assume $X \neq E$. Let $\{U_\alpha\}$ be an open cover of $E$ in $E$. Then, there exists a family of open sets $\{V_\alpha\}$ in $X$ where, for all $\alpha$,
+        \[ U_\alpha = V_\alpha \cap E \]
+        Note that since $U_\alpha \subseteq V_\alpha$ for all $\alpha$, $\{V_\alpha\}$ is an open cover for $E$ in $X$. Since $E$ is closed, $X \setminus E$ is open. Thus, $\{V_\alpha\} \cup \{X \setminus E\}$ is an open cover of $X$. Since $X$ is compact, there exists a finite subcover of $\{V_\alpha\} \cup \{X \setminus E\}$. \bbni 
+        Let $\{V_{1}, \ldots, V_{n}, X \setminus E\}$, be the finite subcover. If the provided finite subcover does not contain $X \setminus E$, we can just add it while maintaining a finite subcover, we assume it does. Then, $V_1, \cdots, V_n$ is an open cover for $E$ in $X$. Then, we have:
+        \[ \bigcup_{i=1}^n U_i = \bigcup_{i=1}^n (V_i \cap E) = \left(\bigcup_{i=1}^n V_i\right) \cap E = E \]
+        Thus, $U_1, \ldots, U_n$ is a finite subcover of $U_\alpha$ in $E$. Therefore, $E$ is compact.
+    \end{enumerate}
+\end{solu}
+
+\newpage
+
+\begin{problab}{3}
+    We say that $D$ is dense in $X$ if $\overline{D} = X$. Show that $D$ is dense if and only if $D$ meets every non-empty open set in $X$. 
+\end{problab}
+
+\begin{solu}
+    We use the fact that $x \in \overline{D}$ (is a point of closure) if and only if every open neighborhood of $x$ intersects $D$. This is in Royden-Fitzpatrick as the definition of closure, with Ch9.2, Proposition 3 and 4 proving that the closure is closed and the complement of an open.
+    \begin{itemize}
+        \item[($\implies$)] Assume $D$ is dense in $X$. Let $U$ be a non-empty open set in $X$. Then, there exists a point $x \in U$. Since $\overline{D} = X$, $x \in \overline{D}$. Thus, every open neighborhood of $x$ intersects $D$. Thus, $U$ intersects $D$.
+        \item[($\impliedby$)] Assume $D$ meets every non-empty open set in $X$. Let $x \in X$ be arbitrary. Then, $D$ meets every non-empty open set containing $x$. Thus, $x$ is a point of closure of $D$. Thus, $x \in \overline{D}$. Since $x$ is arbitrary, we have that $\overline{D} = X$. Thus, $D$ is dense in $X$.
+    \end{itemize}
+\end{solu}
+\newpage
+
+
+\begin{problab}{4}
+    Show that a compact metric space has a countable dense subset. It is enough for the space to be totally bounded.
+\end{problab}
+
+\begin{solu}
+    Let $(X, \rho)$ be a compact metric space. We define a countable set of open covers, indexed by $\mathbb{N}$, where $\mathcal{U}_n$ is the open cover: 
+    \[ \mathcal{U}_n = \{ B_{1/n}(x) : x \in X\} \] 
+    Then, for each $n$, the cover $\mathcal{U}_n$ has a finite subcover. Let $C_n$ be the centers of the balls in the finite subcover, for each $n$. The union of these sets over $n$ is countable, as it is a countable union of finite sets. Call this set $C$. We will show that $C$ is dense in $X$. \bbni
+    Let $U$ be a non-empty open set in $X$. Then, there exists a point $x \in U$. Since $U$ is open, there exists an $\epsilon$, such that $B_\epsilon(x) \subseteq U$. Pick an $n$ such that $1/n < \epsilon$. Then, there exists a center $c \in C_n$ such that $x \in B_{1/n}(c)$ as $C_n$ is the set of centers of a finite cover made of $1/n$-balls. Thus, we have:
+    \[\rho(x, c) < 1/n < \epsilon\]
+    Thus, $c \in B_\epsilon(x) \subseteq U$. Therefore, $U$ intersects $C$. Since $U$ is arbitrary, every non-empty open set in $X$ intersects $C$. Thus, $C$ is dense in $X$. Therefore, $C$ is a countable dense subset of $X$.
+\end{solu}
+\newpage
+
+\begin{problab}{5}
+    Show that an equicontinous family of functions on a compact metric space is uniformly equicontinous as in lecture. (Some texts do not define equicontinous at a point. Instead, whether $X$ is compact or not, equicontinuity is what we have called uniformly equicontinuous. Fortunately, there is no distinction for compact spaces.)
+\end{problab}
+
+\begin{solu}
+
+\end{solu}
+\newpage 
+
+
+\begin{problab}{6} 
+    Show that if $X$ a metric space which is not totally bounded, then there is an unbounded continous function $f: X \to \R$. (Hints provided).
+\end{problab}
+
+\begin{solu}
+
+\end{solu}
+\newpage
+
+\begin{problab}{7}
+    Let $X$ be a metric space such that every continous function $f: X \to \R$ attains its minimum value. Show that $X$ is complete. (Hints provided).
+\end{problab}
+
+\begin{solu}
+
+\end{solu}
+\newpage
+
+\begin{problab}{8}
+    Show that a metric space is compact if and only if every continous real-valued function on $X$ attains its maximum value. (Note that every real-valued function attains its maximum if and only if every real-valued function attains its minimum. Consider $-f$.)
+\end{problab}
+
+
+\end{document}
