@@ -96,7 +96,22 @@
 \end{problab}
 
 \begin{solu}
-
+    % Equicontinous Family + Compact Space = Uniformly Equicontinous Family. \bbni
+    Let $(X,\rho)$ be a compact metric space. Let $\mathcal{J}$ be an equicontinous family of functions from $(X, \rho)$ to $(Y, \sigma)$. Let $\epsilon > 0$. We need to show that there exists a $\delta > 0$, such that for all $F \in \mathcal{J}$, $x, y \in X$:
+    \[\rho(x,y) < \delta \implies \sigma(F(x), F(y)) < \epsilon \]
+    Since $\mathcal{J}$ is equicontinous, for every $x \in X$, there exists a $\delta_x > 0$ such that for all $F \in \mathcal{J}$, $y \in X$:
+    \[\rho(x,y) < \delta_x \implies \sigma(F(x), F(y)) < \epsilon/2 \]
+    Let $U_x = B_{\delta_x}(x)$. Then, $\{U_x\}_{x \in X}$ is an open cover of $X$. Since $X$ is compact, this open cover has a Lebesgue number $\delta > 0$. Thus, for all $F \in \mathcal{J}$, $x, y \in X$, if $\rho(x,y) < \delta$, there exists a $z$ such that:
+    \[B_\delta(x) \subseteq B_{\delta_z}(z)\]
+    Thus, we have:
+    \[\rho(x,z) < \delta_z \qquad \rho(y,z) < \delta_z \]
+    Finally, we compute:
+    \begin{align*}
+        \sigma(F(x), F(y)) &\leq \sigma(F(x), F(z)) + \sigma(F(z), F(y)) \\
+        &< \epsilon/2 + \epsilon/2 \\
+        &= \epsilon
+    \end{align*}
+    Thus, $\mathcal{J}$ is uniformly equicontinous.
 \end{solu}
 \newpage 
 
@@ -106,7 +121,21 @@
 \end{problab}
 
 \begin{solu}
-
+    Assume $(X, \rho)$ is not totally bounded. Then, there exists a $r > 0$ such that there is no finite collection of open balls of radius $r$ that covers $X$. We will use this to construct a sequence $(x_n)$ where $\rho(x_i, x_j) > r$ for all $i \neq j$. \bbni
+    Since $X$ is non-empty, we can pick a point $x_1 \in X$. Moreover, if $x_1, \cdots, x_k$ are already picked points with $\rho(x_i, x_j) > r$ for all $i \neq j$ and $1 \leq i,j \leq k$, we can pick a point $x_{k+1} \in X \setminus \bigcup_{i=1}^k B_r(x_i)$, as the finite collection of open balls of radius $r$ centered at $x_1, \cdots, x_k$ does not cover $X$. Moreover, this means that $\rho(x_{k+1}, x_i) > r$ for all $i = 1, \cdots, k$. Thus, $\rho(x_i, x_j) > r$ for all $i\neq j$ where $1 \leq i, j \leq k+1$. Thus, by induction, we can construct a sequence $(x_n)$ such that $\rho(x_i, x_j) > r$ for all $i \neq j$. \bbni
+    Secondly, we claim that for $i \neq j$, we have $B_{\frac r2}(x_i) \cap B_{\frac r2}(x_j) = \emptyset$. To see this, assume that there exists a $y \in B_{\frac r2}(x_i) \cap B_{\frac r2}(x_j)$. Then, we have:
+    \[ \rho(x_i, x_j) \leq \rho(x_i, y) + \rho(y, x_j) < \frac r2 + \frac r2 < r\]
+    which is a contradiction. \bbni
+    Next, we define a sequence of functions $f_n: X \to \R$ such that $f_n(x_n) = 1$ and $f_n(x) = 0$ for all $x \in X \setminus B_{\frac r2}(x_n)$. Consider the following: 
+    \[ x \mapsto \begin{cases}
+        e^{1-\frac{1}{1-\left(\frac{2\rho(x,x_n)}{r}\right)^2}} & \text{if } x \in B_{\frac r2}(x_n) \\
+        0 & \text{if } x \not \in B_{\frac r2}(x_n)
+    \end{cases}\]
+    Notice that if $x = x_n$ then $\rho(x, x_n) = 0$ and thus $f_n(x) = e^0 = 1$. Moreover $f_n$ is evidently continous in $B_{\frac r2}(x_n)$, as it is a composition of continous functions, as well as on $X \setminus \overline{B_{\frac r2}(x_n)}$. Thus, we only need to check the boundary. \\
+    Let $x$ be a point on the boundary. Then, notice that $f_n$ is a monotonically decreasing function of $|\rho(x, x_n)|$ in $B_{\frac r2}(x_n)$ and $0$ outside. Moreover, notice that $\lim_{y \to x} \rho(y,x_n) = \frac r2$. Thus, we have that $\lim_{y\to x} 1-\left(\frac{2\rho(y,x_n)}{r}\right)^2 \to 0$. Thus, $\lim_{y\to x} f_n(y) \to 0$ from inside the ball. Since the function is identically $0$ outside, the limit is well-defined. Moreover, since for $x \not \in B_{\frac r2}(x_n)$, $f_n(x) = 0$. Thus, the limit equals the value and $f_n$ is continous on $X$. \bbni
+    Next, we consider the function: 
+    \[f(x) = \sum_{n \in \N} nf_n(x)\]
+    since the sets $B_{\frac r2}(x_i)$ are disjoint, we have that at most one $f_n(x)$ is non-zero for every $X$. Thus, the function is continous. Moreover, the function is unbounded, as for any $M > 0$, we can pick $n > M$, and then $f(x_n) = nf_n(x_n) > M$. Thus, we are done.
 \end{solu}
 \newpage
 
@@ -115,13 +144,66 @@
 \end{problab}
 
 \begin{solu}
-
+    Let $(x_n)$ be a Cauchy sequence in $X$. We will show that $(x_n)$ converges to a point in $X$. \bbni
+    Since every function attains its minimum value, every function also attains its maximum value, as this is the minimum value for $-f$. Thus, every function $X \to \R$ is bounded. By the contrapositive of the previous question, this implies that $X$ is totally bounded. \bbni
+    For any $x \in X$, we claim that $(\rho(x, x_n))_n$ is Cauchy in $\R$. Let $\epsilon > 0$. Since $(x_n)$ is Cauchy, there exists an $N$ such that for all $m, n > N$, we have: 
+    \[ \rho(x_n, x_m) < \epsilon\]
+    Then, we have:
+    \begin{align*}
+       &\rho(x, x_n) \leq \rho(x, x_m) + \rho(x_m, x_n) \\
+       \implies &\rho(x, x_n) - \rho(x, x_m) \leq \rho(x_n, x_m) < \epsilon
+    \end{align*}
+    Symmetrically, we have:
+    \[\rho(x, x_m) - \rho(x, x_n) < \epsilon\]
+    Thus, for all $n, m > N$, we have:
+    \[|\rho(x, x_n) - \rho(x, x_m)| < \epsilon \]
+    Thus, $(\rho(x, x_n))_n$ is Cauchy in $\R$. \bbni 
+    Let $f(x) = \lim_{n \to \infty} \rho(x, x_n)$. We show that $f$ is continous. Let $\epsilon > 0$. We need to find a $\delta > 0$ such that for all $x, y \in X$: 
+    \[\rho(x, y) < \delta \implies |f(x) - f(y)| < \epsilon \]
+    Pick $\delta = \epsilon$, and notice:
+    \begin{align*}
+        \rho(x, x_n) &\leq (\rho(x, y) + \rho(y, x_n) ) \\ 
+        \rho(x, x_n) - \rho(y, x_n) &\leq \rho(x, y) < \delta = \epsilon \\
+    \end{align*}
+    Symmetrically, we have:
+    \[\rho(y, x_n) - \rho(x, x_n) < \epsilon \]
+    Thus, we have:
+    \[ |\rho(x, x_n) - \rho(y, x_n)| < \epsilon\]
+    Taking the limit as $n \to \infty$, we have:
+    \[|f(x) - f(y) | < \epsilon\]
+    Thus, $f$ is continous. \bbni
+    Moreover, notice that $f$ is bounded below by $0$, as it is a limit of a sequence of non-negative functions. We prove that its infimum is $0$. Let $\epsilon > 0$. Since $(x_n)$ is Cauchy, there exists an $N$ such that for all $m, n > N$, we have: 
+    \[\rho(x_m, x_n) < \epsilon\]
+    Letting $n \to \infty$, we have:
+    \[|f(x_m) - 0| < \epsilon \]
+    Thus, the infimum of $f$ is $0$. Since $f$ attains its minimum value, there exists a $x_0 \in X$ such that $f(x_0) = 0$. \bbni 
+    Lastly, we show that $(x_n) \to x_0$. Since $f(x_0) = 0$, we have:
+    \begin{align*}
+        \lim_{n\to \infty} \rho(x_n, x_0) = 0
+    \end{align*}
+    which is precisely equivalent to the definition of convergence in metric spaces.
 \end{solu}
 \newpage
 
 \begin{problab}{8}
     Show that a metric space is compact if and only if every continous real-valued function on $X$ attains its maximum value. (Note that every real-valued function attains its maximum if and only if every real-valued function attains its minimum. Consider $-f$.)
 \end{problab}
+\begin{solu}
+    \bbni
+    \begin{itemize}
+        \item[$(\implies$)] We did this in class. Here's a reproduction of the argument. Let $X$ be a compact metric space and $f: X \to \R$ be a continous function. As $X$ is  Since $X$ is compact, $f$ is bounded.  Let $M := \sup f(x) \in (-\infty, \infty]$. Thus, for $M \neq \infty$, there exists a sequence $(x_n)$ such that: 
+        \[ |f(x_n) - M| < 1/n\]
+        and for $M = \infty$, there exists a sequence $(x_n)$ such that:
+        \[|f(x_n)| > n\]
+        That is, in both cases, there exists a sequence such that:
+        \[\lim_{n \to \infty} f(x_n) = M \]
+        Since $X$ is compact, it is sequentially compact. Thus, there exists a subsequence $(x_{n_k})$ that converges to a point $x_0 \in X$. \bbni 
+        Then, since $f$ is continous, we have: 
+        \[ f(x_0) = \lim_{n\to\infty} f(x_n) = M \]
+        Thus, $f$ attains its maximum value. Considering $-f$, the same argument shows that $f$ attains its minimum value. 
+        \item[$(\impliedby$)] Assume every real-valued continous function on $X$ attains its maximum value. By the previous problem (Problem 7), we know that $X$ is complete. Moreover, as every real-valued function attains its maximum value, there is no unbounded continous function on $X$. Thus, by the contrapositive of the problem before the previous problem (Problem 6), we have that $X$ is totally bounded. Finally, we claimed in class that a metric space is compact if and only if it is complete and totally bounded. Thus, $X$ is compact.        
+    \end{itemize}
+\end{solu}
 
 
 \end{document}

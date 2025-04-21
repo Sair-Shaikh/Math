@@ -18,17 +18,17 @@
     \item[Lemma] (Lebesgue Covering Lemma) Every open cover of a compact metric space has a Lebesgue number. \\ 
     Proof. Pictures. Apr 9.
     \item[Thm.] Suppose $(X, \rho)$ is compact, and $F: (X, \rho) \to (Y, \sigma)$ is continuous. Then $F$ is uniformly continuous.
-    % Proof. Let $\epsilon > 0$. We need to find $\delta > 0$ such that $\forall x, y \in X$: 
-    % \[ \rho(x, y) < \delta \implies \sigma(F(x), F(y)) < \epsilon \]
-    % Since $F$ is continous, $\forall z \in X$, $\exists \delta_z > 0$ such that:
-    % \[ \rho(x, z) < \delta_z \implies \sigma(F(x), F(z)) < \epsilon/2 \]
-    % That is, 
-    % \[ F(B_{\delta_z}(z)) \subseteq B_{\epsilon/2}(F(z)) \]
-    % Let $\delta > 0$ be a Lebesgue number for the cover $\{B_{\delta_z}(z)\}_{z \in X}$. \\
-    % Now supposed $\rho(x,y) < \delta$. Then $\exists z \in X$ such that:
-    % \[ B_\delta(x) \subseteq B_{\delta_z}(z) \]
-    % and 
-    % \[\sigma(F(x), F(y)) \leq \sigma(F(x), F(y)) + \sigma(F(z), F(y)) < \epsilon/2 + \epsilon/2 = \epsilon \]
+    \bbni Proof. Let $\epsilon > 0$. We need to find $\delta > 0$ such that $\forall x, y \in X$: 
+    \[ \rho(x, y) < \delta \implies \sigma(F(x), F(y)) < \epsilon \]
+    Since $F$ is continous, $\forall z \in X$, $\exists \delta_z > 0$ such that:
+    \[ \rho(x, z) < \delta_z \implies \sigma(F(x), F(z)) < \epsilon/2 \]
+    That is, 
+    \[ F(B_{\delta_z}(z)) \subseteq B_{\epsilon/2}(F(z)) \]
+    Let $\delta > 0$ be a Lebesgue number for the cover $\{B_{\delta_z}(z)\}_{z \in X}$. \\
+    Now supposed $\rho(x,y) < \delta$. Then $\exists z \in X$ such that:
+    \[ B_\delta(x) \subseteq B_{\delta_z}(z) \]
+    and 
+    \[\sigma(F(x), F(y)) \leq \sigma(F(x), F(y)) + \sigma(F(z), F(y)) < \epsilon/2 + \epsilon/2 = \epsilon \]
     \item[Defn. ] Let $(X, \rho)$ be a metric space and $C(X)$ the $\C$-vector space of continous functions on $X$. We say $\mathcal{J} \subset C$ is equicontinous at $x \in X$ if $\forall \epsilon > 0, \exists \delta > 0$ such that:
     \[ \forall F \in \mathcal{J}, F(B_\delta(x)) \subseteq B_\epsilon(F(x)) \]
     We say $\mathcal{J}$ is equicontinous on $X$ if $\forall x \in X$, $\mathcal{J}$ is equicontinous at $x$.
