@@ -1,0 +1,70 @@
+% \documentclass[12pt]{amsart}
+\documentclass[12pt]{article}
+
+\include{../style}
+
+\begin{document}
+
+\input{title}
+
+\begin{problab}{1}
+    Let $p: \R^{n+1} \setminus \{0\} \to \bb{RP}^n$ be the quotient map from HW1. For $n \geq 2$, show that $p|_{S^n}$ is a degree two cover and deduce that $\pi_1(\bb{RP}^n) \simeq \bb{Z}/2\bb{Z}$. (The fundamental group is $\bb{Z}$ for $n=1$ as $S^1 \cong \bb{RP}^1$.)
+\end{problab}
+\begin{solu}
+    Recall the quotient map identifies points in $\R^{n+1} \setminus \{0\}$ as follows: 
+    \[ \forall \lambda \neq 0 \in \R: \, (x_0, \cdots, x_n) \sim \lambda (x_0, \cdots, x_n)\]
+    Let $(x_0, \cdots, x_n) \in S^n$ be a point on the sphere. Then, we additionally know that:
+    \[ x_0^2 + x_1^2 + \cdots + x_n^2 = 1\]
+    The equivalence class of this point on the sphere contains all points such that $\lambda(x_0, \cdots, x_n)$ such that:
+    \[ (\lambda x_0)^2 + \cdots + (\lambda x_n)^2 = \lambda^2 (x_0^2 + \cdots + x_n^2) = 1\]
+    Thus, we have $\lambda = \pm 1$. Thus, restricting $p$ to $S^n$, we get a quotient map that identifies antipodal points on the sphere, i.e. $x \sim -x$. \\
+    Thus, each $[p] \in \RP^n$ has exactly two pre-images in $S^n$, i.e. $p|_{S^n}$ is a two to one mapping. \bbni
+    Moreover, let $[x] \in \RP^n$ be a point. Then, $p|_{S^n}^{-1}([x]) = \{x, -x\}$. Let $V$ and $V'$ be two disjoint open sets in $S^n$ around $x$ and $-x$ ($S^n$ is Hausdorff). Let $W = V \cap -V'$ and $W' = V' \cap -V$. Then, $W$ and $W'$ are still disjoint. Moreover, $W$ and $W'$ are such that they contain antipodal points (by definition). \\
+    Let $U = p(W)$. By the definition of $p$, we note that:
+    \[ \rho|_{S^n}^{-1}(U) = W \bigsqcup W'\]
+    Since $W$ and $W'$ are open, $U$ is open in $\RP^n$. Moreover, $p|_W(W) = U$ is a continous bijection of compact Hausdroff spaces, and is thus a homeomorphism. Similarly for $W'$. Thus, as $[x]$ was arbitrary, we have found an open set $U$ around $x$ whose pre-image is a disjoint union of two isomorphic copies of $U$. Thus, $p|_{S^n}$ is a degree $2$ covering map. \bbni 
+    Moreover, we note that for $n \geq 2$, $S^n$ is simply connected. Thus, for any point $x \in \RP^n$, the map: 
+    \[ \pi_1(\RP^n, x) \to p|_{S^n}^{-1}(x)\]
+    is a bijection. Thus, $|\pi_1(\RP^n, x)| = 2$. Thus, 
+    \[ \pi_1(\RP^n, x) = \Z/2\Z\]
+
+\end{solu}
+\newpage
+
+\begin{problab}{2}
+    Let $g\colon S^1 \to S^1$ be the covering map $g(z) = z^n$ for $n \in \bb{Z}$. Under the isomorphism $\pi_1(S^1, (1,0)) \cong \bb{Z}$ that we proved, compute $g_* \colon \bb{Z} \to \bb{Z}$ and the map $\phi_g: \bb{Z} \to g^{-1}(1,0)$ defined by lifting loops so that they still start at $(1,0)$.
+\end{problab}
+\begin{solu}
+
+\end{solu}
+\newpage
+
+\begin{problab}{3}
+    Show that there are no retractions $r \colon X \to A$ in the following cases:
+    \begin{enumerate}
+    \item $X = \R^3$ and $A$ is any subspace homeomorphic to $S^1$.
+    \item $X = S^1 \times D^2$ and $A$ is its boundary torus $S^1 \times S^1$.
+    \item $X$ is the M{\" o}bius band and $A$ is its boundary circle.
+    \end{enumerate}
+\end{problab}
+\begin{solu}
+
+\end{solu}
+\newpage
+
+\begin{problab}{4}
+    Use the intermediate value theorem to prove the $1$-dimensional version of the Brouwer fixed point theorem: If $f \colon I \to I$ is continuous, there is a point $x \in I$ such that $f(x) = x$. 
+\end{problab}
+\begin{solu}
+
+\end{solu}
+\newpage
+
+\begin{problab}{5}
+    Use the intermediate value theorem to prove the $1$-dimensional version of the Borsuk-Ulam theorem: If $f: S^1 \to \R$ is continuous, there is a point $x \in S^1$ such that $f(x) = f(-x)$.
+\end{problab}
+\begin{solu}
+
+\end{solu}
+
+\end{document}
