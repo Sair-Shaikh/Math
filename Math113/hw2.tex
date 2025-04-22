@@ -204,6 +204,53 @@
         \item[$(\impliedby$)] Assume every real-valued continous function on $X$ attains its maximum value. By the previous problem (Problem 7), we know that $X$ is complete. Moreover, as every real-valued function attains its maximum value, there is no unbounded continous function on $X$. Thus, by the contrapositive of the problem before the previous problem (Problem 6), we have that $X$ is totally bounded. Finally, we claimed in class that a metric space is compact if and only if it is complete and totally bounded. Thus, $X$ is compact.        
     \end{itemize}
 \end{solu}
+\newpage 
 
+\begin{problab}{9}
+    Show that $X$ is a Baire space if and only if whenever a countable union $\bigcup F_n$ of closed sets $F_n$ has interior in $X$, then at least one of the $F_n$ has interior in $X$.
+\end{problab}
+\begin{solu}
+    First, we introduce a lemma: 
+    \begin{lemma}
+        If $F$ is a closed set with empty interior in $X$, if and only if $X \setminus F$ is dense in $X$.         
+    \end{lemma}
+    \begin{proof}
+        First assume that $F$ has empty interior. Let $U$ be a non-empty open set in $X$. Clearly, $U \not \subseteq F$ as the interior of $F$ is empty. Thus, there exists a point $x \in U$ such that $x \not \in F$. Thus, $x \in X \setminus F$. Since $U$ is an arbitrary open, we have $X \setminus F$ is dense in $X$. \\
+        Next, assume that $X \setminus F$ is dense in $X$. Let $U$ be a non-empty open set in $X$. Then, by an earlier problem, we know that $U \cap (X \setminus F) \neq \emptyset$. Thus, there exists a point $x \in U$ such that $x \not \in F$. Thus, $U \not \subseteq F$. As $U$ was arbitrary, no open set is contained in $F$. Thus, $F$ has empty interior.         
+    \end{proof}
+    \bbni
+    Now, let $F_n$ be closed sets. Let $O_n = X \setminus F_n$ for all $n \in \N$. Then, using De Morgan's Laws:
+    \[(*) \qquad \bigcup_{n \in \N} F_n = X \setminus \bigcap_{n \in \N} O_n \]
+    $(\implies)$ Assume that $X$ is a Baire space and all $F_n$ have empty interior. Then, by the lemma, we have that $O_n$ is dense in $X$ for all $n \in \N$. As $X$ is a Baire space, we note that:
+    \[ \bigcap_{n \in \N} O_n \text{ is dense in $X$} \]
+    is also dense in $X$. Then, by $(*)$, and our lemma above, we note that $\bigcup_{n \in \N} F_n$ has empty interior. Thus, by contrapositive, we have shown that if $X$ is a Baire space, then if $\bigcup_{n \in \N} F_n$ has interior in $X$, at least one of the $F_n$ must have interior in $X$. \bbni
+    $(\impliedby)$ Assume that for any collection $F_n$ of closed sets, if $\bigcup_{n \in \N} F_n$ has interior in $X$, then at least one of the $F_n$ has interior in $X$. Let $O_n$ be a countable collection of dense open sets in $X$. Then $F_n = X \setminus O_n$ is a countable collection of closed sets. Moreover, by the lemma, $F_n$ has empty interior for all $n \in \N$. Thus, by the contrapositive of our assumption, we have that $\bigcup_{n \in \N} F_n$ has empty interior. Thus, by $(*)$ and using the lemma again, we have that:
+    \[ \bigcap_{n \in \N} O_n \text{ is dense in $X$} \]
+    is dense in $X$. Thus, $X$ is a Baire space.
+\end{solu}
+\newpage 
+
+\begin{problab}{10}
+    Let $U$ be an non-empty open subset of a metric space $(X, \rho)$. Show that $U$ admits a complete metric equivalent to the metric inherited from $X$.
+\end{problab}
+\begin{solu}
+    First, we claim that if there exists a homeomorphism $\phi: (U, \rho) \to (Y, \sigma)$, where $(Y, \sigma)$ is a complete metric space, then there exists a complete metric $\delta$ on $U$ that is equivalent to $\rho|_U$. Define: $\delta(x,y) = \sigma(\phi(x), \phi(y))$. Then, for any $x \in X$ and $\epsilon > 0$, there exists $\epsilon'$ such that:
+    \[\phi(B_{\epsilon'}(x)) \cong B_{\epsilon}(\phi(x))\] 
+    via the homeomorphism. Thus, we have:
+    \begin{align*}
+        y \in B_\epsilon^\delta(x) \iff& \delta(x, y) < \epsilon \\
+        \iff& \sigma(\phi(x), \phi(y)) < \epsilon \\
+        \iff& \phi(y) \in B_\epsilon^\sigma(\phi(x)) \\
+        \iff& y \in B_{\epsilon'}^\rho(x) \text{ as $\phi$ is a homeomorphism}
+    \end{align*}
+    Thus, $\delta$ is equivalent to $\rho|_U$ as they both generate the same basic opens. Moreover, we claim that $\delta$ is complete. Indeed, if $(x_n)$ is Cauchy in $(U, \delta)$, then, $f(x_n)$ is Cauchy in $(Y, \sigma)$. Siince $Y$ is complete, this converges to $f(x)$. Then, $(x_n)$ converges to $f^{-1}(x) \in U$ (as the topologiees match). \bbni
+    Let $A = X \setminus U$. We define the following map, $f : (U, \rho) \to ((X, \R), \sigma)$, where $\sigma$ is the product metric on $X \times \R$: 
+    \[f(x) \to (x, \rho(x, A)^{-1})\]
+    Since $x \not \in A$ and $A$ is closed, we have that $\rho(x, A) > 0$, thus, $f$ is well-defined. Moreover, since it is continous in each entry, it is continous. The inverse map, defined by projection onto the first coordinate is also continous. Moroever, $f$ is clearly injective, as if $f(x) = f(y)$, then $x = y$ by matching the first coordinate of the output. Thus, $f$ is a homeomorphism onto its image. \bbni
+    Thus, it suffices to show that $f(U)$ is closed, hence complete. Let $(x_n, y_n) \to (x, y)$ with $(x_n, y_n) \in f(U)$ be a convergent sequence. Since $\sigma$ is the product metric, we know that $x_n \to x \in X$ and $y_n \to y \in \R$. Since $x_n \in U$ (via the projection map $f^{-1}$), we have that $x \in \overline{U}$. \bbni 
+    Assume $x \not \in U$. Then, $(x_n) \to x \in A$. However, as $(x_n) \to x$, we have $\rho(x_n, A) \to 0$. Thus, $(y_n) \to \infty$ is unbounded and does not converge. This is a contradiction. Thus, we have $x \in U$. \bbni
+    Thus, $(x, t) = (x, \rho(x, A)^{-1})$ is in the image of $f$. Thus, we have that $(x_n, y_n) \to (x, y)$ in $f(U)$. Thus, $f(U)$ is closed and hence complete. \bbni
+    Finally, we note that since $f$ is a homeomorphism onto its image, we have found an equivalent metric $\delta$ to $\rho|_U$ such that $(U, \delta)$ is complete.
+\end{solu}
 
 \end{document}
