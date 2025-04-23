@@ -35,7 +35,30 @@
     Let $g\colon S^1 \to S^1$ be the covering map $g(z) = z^n$ for $n \in \bb{Z}$. Under the isomorphism $\pi_1(S^1, (1,0)) \cong \bb{Z}$ that we proved, compute $g_* \colon \bb{Z} \to \bb{Z}$ and the map $\phi_g: \bb{Z} \to g^{-1}(1,0)$ defined by lifting loops so that they still start at $(1,0)$.
 \end{problab}
 \begin{solu}
-
+    Let $\gamma_k(s) = e^{2\pi i ks} \in \pi_1(S^1, (1, 0))$ be the loop that goes around the circle $k$ times. Recall the isomprhism $f: \pi_1(S^1, (1,0)) \to \bb{Z}$, which maps $f(\gamma_k) = k$. \bbni
+    Next, we calculate $g_*([\gamma_k])$. We have:
+    \begin{align*}
+        g_*([\gamma_k]) &= [g \circ \gamma_k] \\
+        &= [\gamma_k^n] \\
+        &= [s \mapsto e^{2\pi i nk s}] \\
+        &= [\gamma_{nk}]
+    \end{align*}
+    Thus, under the identification through the isomorphism, we have:
+    \[g_*(k) = nk\]
+    That is, $g_*$ is just multiplication by $n$.\bbni
+    Next, we calculate $\phi_g: \pi_1(S^1, (1, 0)) \to g^{-1}((1,0))$. Notice that $(1,0)$ is identified to $z = 1 = e^0$. Thus, we have: 
+    \[ g^{-1}(1) = \{z \in S^1: z^n = 1\} = \{e^{2\pi i k/n}: k = 0, \cdots, n-1\}\]
+    For $\gamma_k \in \pi_1(S^1, (1,0))$, we have the lift: 
+    \[\tilde{\gamma}_k = s \mapsto e^{2\pi i k/n}\]
+    as we can verify: 
+    \[ g \circ \tilde{\gamma}_k = s \mapsto (e^{2\pi i k/n})^n = \gamma_k\]
+    Moroever, as $\tilde{\gamma}_k(0) = \gamma_k(0) = 1$, this is unique. Thus, we can evaluate $\phi_g$ as:
+    \begin{align*}
+        \phi_g(\gamma_k) &= \tilde{\gamma}_k(1) \\
+        &= e^{2\pi i k/n}
+    \end{align*}
+    Beyond the requirements of the problem, it is also interesting to show that $g^{-1}(1)$ is the cyclic group of order $n$ under multiplication, since it contains the $n$th roots of unity. If we identify $e^{2i\pi k/n} \to k$, then we get an isomorphism from $C_n \to \Z/n\Z$ (written additively). This is a standard exercise. Under this identification, as well as the identification of $\pi_1(S^1, (1,0))$ with $\Z$, we have that: $\phi_g: \Z \to \Z/n\Z$ is given by:
+    \[ \phi_g(k) = k\pmod n\]
 \end{solu}
 \newpage
 
@@ -48,7 +71,69 @@
     \end{enumerate}
 \end{problab}
 \begin{solu}
-
+    \bbni
+    \begin{enumerate}
+        \item If we had such a retraction $r$, the push-forwards on the fundamental group will yield the following commutative diagram:
+        \[ \xymatrix{ \pi_1(S^1) \ar[rr]^{\id_*} \ar[rd]^{\iota_*} & & \pi_1(S^1) \\ 
+        & \pi_1(\R^3) \ar[ur]^{r_*}} \]
+        that is:
+        \[ \xymatrix{ \Z \ar[rr]^{\id_*} \ar[rd]^{\iota_*} & & \Z \\ 
+        & \{1\} \ar[ur]^{r_*}} \]
+        This implies that $\iota_*$ is injective, as $r_* \circ \iota_*$ is bijective. However, this is clearly impossible.
+        \item Similar to the case above, noting that taking the product commutes with taking the fundamental group, a retraction $r$ would yield the following commutative diagram:
+        \[ \xymatrix{ \Z \times \Z \ar[rr]^{\id_*} \ar[rd]^{\iota_*} & & \Z \times \Z\\ 
+        & \Z \ar[ur]^{r_*}} \]       
+        Similar to before, there is no injective homomorphism from $\Z \times \Z$ to $\Z$, since $\Z \times \Z$ is not cyclic and $\Z$ (and all its subgroups) are cyclic. Thus, $r$ cannot exist.
+        \item Define the Mobius strip as:
+        \[ M = [0,1] \times [0, 1] / \sim\]
+        with the equivalence relation:
+        \[ (0, y) \sim (1, 1-y)\]
+        Next, let $C = \{[(s, 1/2)]: s\in [0, 1]\}$ be the central circle and $\iota_C: C \to M$ be the inclusion map. We define a retraction $r_C: M \to C$ as:
+        \[r_C( [(s, t)]) = [(s, 1/2)]\]
+        This is well-defined as: 
+        \[r_C([(0, y)]) = [(0, 1/2)] = [(1, 1/2)] = r_C([1, 1-y])\]
+        as is clearly continous as (topologically) its a projection onto the first coordinate. Thus,
+        \[r_C \circ \iota_C = \id_C \]
+        Moreover, we show that $\iota_C \circ r_C$ is homotopic to $\id_M$. We define the straight-line homotopy $H: M \times [0, 1] \to M$ as:
+        \[H([(x, y)], t) = [(x, (1-t)y + t/2)]\]
+        Similarly notice that this is well-defined as:
+        \begin{align*}
+            H([(0, y)], t) &= [(0, (1-t)y + t/2)] \\
+            &= [(1, 1-(t/2+(1-t)y))] \\
+            &= [(1, 1-t -(1-t)y + t/2)] \\
+            &= [(1, (1-t)(1-y) + t/2)] \\
+            &= H([(1, 1-y)], t)
+        \end{align*}
+        and is clearly continous as it is a sum of products of continous functions. Moroever, 
+        \[H([x,y], 0) = [x,y] = \id_M([x,y]) \qquad H([x,y]) = [x,1/2] = r_C([x,y]))\] 
+        Thus, we have: 
+        \[[\iota_c \circ r_C] = [\id_M]\]
+        Since $\pi_1$ is functorial and homotopy invariant, this implies that:
+        \[ r_{C*} \circ \iota_{C*} = \id_{\pi_1(C)} \qquad \iota_{C*} \circ r_{C*} = \id_{\pi_1(M)}\]
+        Thus, $\iota_{C*}$ is an isomorphism. \bbni 
+        Let $B = \{[(s, t)]: t \in \{0, 1\} , s \in [0, 1]\}$ be the boundary circle of the Mobius strip and $\iota_B: B \to M$ be the inclusion map. Then, note that we have the continous map: $r_C \circ \iota_B: B \to C$. Taking the push-forward, if there was a retraction $r_B: M \to B$, we have the following commutative diagram: 
+        \[ \xymatrix{ \pi_1(B) \ar[r]^{\id_*} \ar[d]^{r_{C*}} & \pi_1(B)\\ 
+        \pi_1(C) \ar[r]^{\iota_{C*}} & \pi_1(M) \ar[u]^{r_{B*}}} \]   
+        Finally, let $\gamma: I \to B$ be the generator of $\pi_1(B)$, i.e.:
+        \[\gamma(t) = \begin{cases}
+            [(2t, 0)] & t \in [0, 1/2] \\
+            [(2t-1, 1)] & t \in [1/2, 1]
+        \end{cases}\]  
+        Note that $\gamma$ is well-defined loop as $\gamma(1/2) = [(1, 0)] = [(0, 1)]$ and $\gamma(0) = [(0, 0)] = [(1, 1)] = \gamma(1)$. Moreover, it is easy to see that $\gamma$ loops around the boundary circle once, and thus is a generator. \bbni 
+        Finally, we calculate $\iota_{*C} \circ r_{*C}(\gamma)$. We have:
+        \begin{align*}
+            \iota_{*C} \circ r_{*C}(\gamma) &= [\iota_C \circ r_C \circ \gamma(t)] \\
+            &= \begin{cases}
+                [(2t, 1/2)] & t \in [0, 1/2] \\
+                [(2t-1, 1/2)] & t \in [1/2, 1]
+            \end{cases}
+        \end{align*} 
+        Thus, we notice that $\iota_{*C} \circ r_{*C}(\gamma)$ is a loop that goes around the center circle twice. In terms of the identification of the fundamental group with $\Z$, $\iota_{*C}\circ r_{*C}(1) = 2$. Thus, by our commutative diagram, if $r_B$ existed, we would have:
+        \[ r_{B*}(2) = 1\]
+        However, $r_{B*}$ is a group homomorphism, this implies: 
+        \[ 1 = r_{B*}(2) = r_{B*}(1+1) = r_{B*}(1)+r_{B*}(1) \] 
+        However, there is no integer whose sum with itself is $1$. Thus, $r_B$ cannot exist.
+    \end{enumerate}
 \end{solu}
 \newpage
 
@@ -56,7 +141,11 @@
     Use the intermediate value theorem to prove the $1$-dimensional version of the Brouwer fixed point theorem: If $f \colon I \to I$ is continuous, there is a point $x \in I$ such that $f(x) = x$. 
 \end{problab}
 \begin{solu}
-
+    Notice first that if $f(1) = 1$ or $f(0) = 0$ we are done. Thus, we can assume that $f(0) > 0$ and $f(1) < 1$. Define $g: I \to [-1, 1]$ as $g(x) = f(x) - x$. $g$ is continous as it is the difference of two continous functions. Then, notice: 
+    \[g(0) = f(0)-0 > 0 \qquad g(1) = f(1) - 1 < 0 \] 
+    Thus, by the intermediate value theorem, there exists a point $c \in (0, 1)$ such that $g(c) = 0$. Thus, we have:
+    \[f(c) - c = 0 \implies f(c) = c\] 
+    and we are done.
 \end{solu}
 \newpage
 
@@ -64,7 +153,13 @@
     Use the intermediate value theorem to prove the $1$-dimensional version of the Borsuk-Ulam theorem: If $f: S^1 \to \R$ is continuous, there is a point $x \in S^1$ such that $f(x) = f(-x)$.
 \end{problab}
 \begin{solu}
-
+    Define $g: S^1 \to \R$ as:
+    \[ g(x) = f(x) - f(-x)\]
+    Notice that $g$ is continous as it is the sum of two continous functions. Moreover, notice that: 
+    \[ g(-x) = f(-x)-f(x) = -g(x)\]
+    We claim that $g(c) = 0$ for some $c \in S^1$. First, if $g$ is identically $0$, we pick any point to be $c$. Otherwise, we can assume that there exists a point $x \in S^1$ such that $g(x) \neq 0$. Then, since $g(-x) = -g(y)$, we have that $g$ takes both a positive and a negative value. Thus, there exists a point $c \in S^1$ (more specifically, on either arc from $x$ to $-x$) such that $g(c) = 0$. Thus, we have:
+    \[g(c) = 0 \implies f(c) = f(-c)\]
+    and we are done. 
 \end{solu}
 
 \end{document}
