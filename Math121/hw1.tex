@@ -17,6 +17,38 @@
         \item Let $M$ be a compact complex manifold. Prove that any holomorphic function on $M$ is constant.
     \end{enumerate}    
 \end{problab}
+\begin{solu}
+    \bbni
+    \begin{enumerate}
+        \item Let $V \subseteq U$ be open such that $f|_V \equiv 0$. Let $G$ be the set of points in $z \in U$ such that $f$ vanishes in a neighborhood of $z$. We want to show that $G = U$. We do this by showing that $G$ is a non-empty clopen set. \bbni        
+        By definition, $G$ is a union of open sets, and thus, $G$ is open. \bbni
+        Let $p \in V$ be arbitrary. Since $U$ is open, and $f$ is holomorphic, there exists an open ball $B_r(p) \subseteq U$ of radius $r$ around $p$ such that $f$ has a convergent power series expansion around $p$:
+        \[ f(z) = \sum_{\alpha \in \N^n} c_\alpha (z-p)^\alpha \]
+        where $\alpha = (\alpha_1, \cdots, \alpha_n)$ is a multi-index, $(z-p)^\alpha = (z_1-p_1)^\alpha_1 \cdots (z_n-p_n)^\alpha_n$ and $c_\alpha \in \C$. Moreover, since $V$ is open, $B_r(p) \cap V \subseteq U$ is an open neighborhood of $p$ such that $f$ vanishes on it. Thus, we have that $c_\alpha = 0$ for all $\alpha \in \N^n$. Since $p\in V$ was arbitrary, $V \subseteq G$. Thus, $G$ is non-empty.  \bbni
+        To show that $G$ is closed, let $(w_n) \in G$ be a sequence that converges to $w \in U$. Let $B$ be a small open ball around $w$ and consider the power series expansion of $f$ around $w$ in $B$. We have: 
+        \[f(z) = \sum_{\alpha \in \N^n} c_\alpha(z-w)^\alpha\]
+        If all $c_\alpha = 0$, we are done. Otherwise, there exists, some minimum $\alpha'$ (with dictionary order) such that $c_\alpha \neq 0$. Then, $(z-w)^{\alpha'}$ is a factor of every other non-zero term (since we picked the dictionary order).
+        Thus, we can write: 
+        \[f(z) = c_{\alpha'}(z-w)^{\alpha'}(1+g(z-w)) \]
+        where $g \to 0$ as $z \to w$. Moroever, we know that eventually $(w_k) \in B$. Since $w_k \neq w$, we have that $(z-w)^{\alpha'} \neq 0$ and $(1+g(z-w)) \neq 0$. Thus, $f(w_k) \neq 0$, which is a contradiction. Thus, no such $\alpha'$ exists and $f(z) = 0$ on all of $B$. Thus, $w \in G$ and $G$ is closed. \bbni
+        Since $G$ is a non-empty open and closed subset of $U$, and $U$ is connected, we have that $G = U$. Thus, $f$ vanishes everywhere.
+        \item Note that we showed the result for $U \subset \C$ in class (using the Cauchy formula in polar form). Assume $|f|$ has a local maximum at $(a_1, \cdots, a_n) \in U$. Then, there exists a poly-disk $D = D_1 \times \cdots \times D_n$ such that for $p \in D$, we have: 
+        \[|f(p)| \leq |f(a_1, \cdots, a_n)|\]
+        We need to show that for any $(z_1, \cdots, z_n) \in D$, we have $f(z_1, \cdots, z_n) = f(a_1, \cdots, a_n)$. \bbni
+        Consider the function $f_1: \C \to \C$ defined as:
+        \[ f_1(z) = f(z, a_2, \cdots, a_n)\]
+        Then, $f_1(z)$ attains a maximum on $D_1$ at $a_1$. Thus, by the result in the single-variable case, $f_1$ is constant on $D_1$. Thus, we have: 
+        \[f(z_1, a_2, \cdots, a_n) = f(a_1, \cdots, a_n)\]
+        and $f(z_1, a_2, \cdots, a_n)$ is a local minimum. Thus, we can repeat this process $n$ times to get:
+        \[f(z_1, z_2, \cdots, z_n) = f(a_1, a_2, \cdots, a_n)\]
+        Thus, $f$ is constant on an open subset $D$. Then, we can define $g: U \to \C$ by letting it be:
+        \[g(z) = f(z)-f(a_1, \cdots, a_n)\]
+        Then this function is vanishes on $D$, thus, by the previous part, vanishes on $U$. Thus, $f$ is constant on $U$. 
+        \item Let $f: M \to \C$ be a holomorphic function. Since $f$ is holomorphic, it is continous. Moreover, $|f|: M \to \R$ is also continous. Since $M$ is compact, $|f|$ attains a maximum at some point $p \in M$. \\
+        Let $\{(U_i, \phi_i)\}_{i=1}^n$ be a cover of charts (we can pick finite as $M$ is compact). Then $p \in U_i$ for some $i$. Then, we have that $f \circ \phi_i^{-1}: \phi_i(U_i) \to \C$ attains a maximum at $\phi_i(p)$. Thus, by the previous part, $f \circ \phi_i^{-1}$ is constant on $\phi_i(U_i)$. Thus, $f$ is constant on $U_i$ (as $\phi^{-1}$ is bijective). \\
+        Then, using part 1), and assuming that $M$ is connected, we can prove that $f$ is constant on all of $M$, propagating via open intersections of chart domains.
+    \end{enumerate}
+\end{solu}
 \newpage
 
 
@@ -302,10 +334,10 @@
 \end{solu}
 
 
-\subsection*{Questions:}
-\begin{enumerate}
-    \item In 5b), is it okay to just take a representative that comes from a particular $U_\alpha \times \C^n$ pre-quotienting? What's a better way to write this?
-\end{enumerate}
+% \subsection*{Questions:}
+% \begin{enumerate}
+%     \item In 5b), is it okay to just take a representative that comes from a particular $U_\alpha \times \C^n$ pre-quotienting? What's a better way to write this?
+% \end{enumerate}
 
 
 \end{document}
