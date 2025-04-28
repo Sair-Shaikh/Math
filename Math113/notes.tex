@@ -248,6 +248,72 @@
     \item[Yap.] If $X$ and $Y$ are Banach spaces, then I can give $X \times Y$ a norm by: 
     \[ ||(x,y|| = max\{||x||, ||y||\})\]
     This makes $X \times Y$ a Banach spaces.
+    \newpage 
+    \item[Thm.] The map:
+    \[ \Phi: l^q \to (l^p)^\vee \]
+    given by $\Phi(y) = \phi_y$ is an isometric isomorphism. That is, $\Phi$ is a isomorphism such that:
+    \[ ||\Phi(y)|| = ||y|| \]
+    \item[Rmk.] If $z \in \C$, then: 
+    \[ \sgn(z) = \frac{z}{|z|} \text{ if } z \neq 0 \text{ else } 0 \]
+    Then, $z = |z| \sgn(z)$ and $|z| = \sgn(z) z$.
+    \item[Lemma.] If $y \in l^q$, then $||\phi_y|| = ||y||_q$.   
+    Proof. Pictures. 4/28.
+    \item[Lemma.] If $\phi \in (l^p)^\vee$, then $\exists y \in l^q$ such that:
+    \[ \phi = \phi_y\]
+    Proof. Pictures. 4/28.
+    Let $y_n = \phi(e_n)$. Then, if $x \in l^p$, then: 
+    \[ x = \sum_{n=1}^\infty x_ne_n\]
+    Note, 
+    \[ || x = \sum_{n=1}^N x_n e_n||_p^p = \sum_{n=N+1}^\infty |x_n|^p \]
+    converges in the Banach space $l^p$. \\
+    Hence, 
+    \[ \phi(x) = \sum_{n=1}^\infty x_ny_n \]
+    Then, if we can show $y \in l^q$, then $\phi = \phi_y$, and we are done. \\
+    Let $y^N \in l^q$ be given by:
+    \[ y^N(n) = \begin{cases}
+        y_n \text{ if } 1\leq n \leq N \\
+        0 \text{ otherwise }
+    \end{cases}\] 
+    Then, $\phi_{y^N} \in (l_p)^\vee$ and $||\phi_{y^N}|| \leq ||y^N||_q$. \\
+    If $x \in l^p$, then,
+    \[\phi_{y^N}(x) = \sum_{n=1}^N x_ny_n \to \sum_{n=1}^\infty x_yy_n = \phi(x) \]
+    Hence, by the Principle of Uniform Boundedness, $\exists M > 0$ such that:
+    \[ ||\phi_{y^N}|| \leq M  \qquad \forall N \geq 1\]
+    Thus, if $q < \infty$, then, 
+    \[ \sum_{n=1}^N |y_n|^q \leq M^q < \infty \]
+    \item[Rmk.] If $X$ is a normed vector space, then we know that $X^*$ is a Banach space. Then, we can form the bidual $(X^*)^* = X^{**}$. We get a natural map $\iota$
+    \[ \iota: X \to X^{**}\]
+    $\iota(x)(\phi) = \phi(x)$ is evaluation at $x$. \\
+    Now, 
+    \begin{align*}
+        ||\iota(x)|| = \sup_{||\phi||\leq 1} | \iota(x)(\phi)|
+        &= \sup_{||\phi||\leq 1} |\phi(x)|  (*)
+    \end{align*}
+    Then, $(*) \leq ||x||$ since $||\phi||\leq 1$. \\
+    Then, by Hahn-Banach, $\exists \phi \in X^*$ such that $||\phi|| = 1$ and $\phi(x) = ||x||$. Thus, 
+    \[||\iota(x)|| = ||x||\]
+    We can identify $X$ at $\iota(X)$ in $X^{**}$. \\
+    If $X$ is a Banach space, then, $\iota(x)$ is complete, hence closed in $X^{**}$. \\
+    Otherwise, $\overline{\iota(X)}$ is a Banach space containing $X$ as a dense subspace. Then, $\overline{\iota(X)}$ is the completion of $X$ as a Banach space. 
+    \item[Defn.] If $X$ is a Banach space then $X$ is reflexive if $\iota(X) = X^{**}$ is onto. 
+    \item[Rmk.] If $X$ is reflexive, then $X^{**}$ are isometrically isomorphic. The converse can fail. It can be that they are isometrically isomorphic but $\iota$ is not the map. [Robert James 1951].
+    \item[Ex.] Let $1 < p < \infty$. Let $\frac{1}{p} + \frac{1}{q} = 1$. Then,
+    \[ (l^p)^{*} = \{\phi_y^p : y \in l^q\} \] 
+    and also:
+    \[ (l^q)^{*} = \{\phi_x^q : x \in l^p\} \]
+    If $x \in l^p$, then, $\iota(x) \in (l^p)^{**}$, and:
+    \begin{align*}
+        \iota(x)(\phi_y^p) &= \phi_y^p(x) \\
+        &= \phi_x^q(y)
+    \end{align*}  
+    Thus, $\iota: l^p \to (l^p)^(**)$ is surjective and $l^p$ is reflexive for $1 < p < \infty$.
+    \item[Prop.] $l^p$ is reflexive for $1 < p < \infty$.
+    \item[Rmk.] Let $X$ be a normed vector space and $D = \{d_n\}_{n=1}^\infty \subset X$ be a countable subset of $X$. Then the rational space of $D$, $\opspan_\Q(D)$ is the span of $D$ viewing $X$ as a rational vector space. Thus,
+    \[\opspan_\Q(D) = \bigcup_{n=1}^\infty \{\sum_{k=1}^r r_kd_k : r_k\in\Q \, d_k \in D\}\]
+    Then, $\opspan_\Q(D)$ is countable. Then if $\opspan(D)$ is dense, then since $\opspan_\Q(D)$ is dense in $\opspan(D)$. Thus, $X$ is separable. \\
+    Same works over $\C$ replacing $\Q$ by $\Q + i\Q$. 
+    \item[Corr.] $l^p$ is seperatble for $1 \leq p < \infty$. Let $D = \{e_n\}_{n=1}^\infty$. But $l^\infty$ is not separable. 
+    \item[Hwk.] If $X^*$ is separable, then $X$ is.  
 \end{itemize}
 
 
