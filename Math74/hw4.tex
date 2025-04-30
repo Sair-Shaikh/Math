@@ -1,0 +1,95 @@
+\documentclass[12pt]{article}
+
+\include{../style}
+
+\begin{document}
+
+\input{title}
+
+\begin{problab}{1}
+    Suppose that $f: X \to Y$ is a homotopy equivalence. Show that the map $\pi_0(f): \pi_0(X) \to \pi_0(Y)$ from Homework 1, Problem 5 is a bijection.
+\end{problab}
+\begin{solu}
+
+\end{solu}
+\newpage
+
+\begin{problab}{2}
+    (0.11) Show that a continuous map $f: X \to Y$ is a homotopy equivalence if there exist continuous maps $g, h: Y \to X$ such that $f\circ g \simeq \id_Y$ and $h \circ f \simeq \id_X$. More generally, show that $f$ is a homotopy equivalence if $f \circ g$ and $h \circ f$ are homotopy equivalences.
+\end{problab}
+\begin{solu}
+    
+\end{solu}
+\newpage
+
+\begin{problab}{3}
+    Suppose that $G$ is a group and $G_1, \hdots, G_n$ are subgroups that generate $G$ such that $G_i \cap G_j = \{ 1 \}$ for $i \neq j$. Show that $G$ is the free product $G_1 * \hdots * G_n$ if and only if for every group $H$ and collection of homomorphisms $h_j : G_j \to H$, there exists a unique homomorphism $h: G \to H$ such that $h_j = h \circ i_j$ where $i_j: G_j \to G$ is the inclusion.
+\end{problab}
+\begin{solu}
+
+\end{solu}
+\newpage
+
+\begin{problab}{4}
+    Find the fundamental group of each arrangement of three spheres below.
+    \begin{enumerate}
+    \item A chain. 
+    \begin{center} \begin{tikzpicture}
+        \draw (-1,0) arc (180:360:1cm and 0.5cm);
+        \draw[dashed] (-1,0) arc (180:0:1cm and 0.5cm);
+        \draw (0,0) circle (1cm);
+        \shade[ball color=blue!10!white,opacity=0.20] (0,0) circle (1cm);
+        
+        \begin{scope}[xshift = 2.01cm]
+            \draw (-1,0) arc (180:360:1cm and 0.5cm);
+        \draw[dashed] (-1,0) arc (180:0:1cm and 0.5cm);
+        \draw (0,0) circle (1cm);
+        \shade[ball color=blue!10!white,opacity=0.20] (0,0) circle (1cm);
+        \end{scope}
+        
+        \begin{scope}[xshift = -2.01cm]
+            \draw (-1,0) arc (180:360:1cm and 0.5cm);
+        \draw[dashed] (-1,0) arc (180:0:1cm and 0.5cm);
+        \draw (0,0) circle (1cm);
+        \shade[ball color=blue!10!white,opacity=0.20] (0,0) circle (1cm);
+        \end{scope}
+      \end{tikzpicture}
+      \end{center}
+    \item A triangle.
+    \begin{center} \begin{tikzpicture}
+        \draw (-1,0) arc (180:360:1cm and 0.5cm);
+        \draw[dashed] (-1,0) arc (180:0:1cm and 0.5cm);
+        \draw (0,0) circle (1cm);
+        \shade[ball color=blue!10!white,opacity=0.20] (0,0) circle (1cm);
+        
+        \begin{scope}[xshift = 1 cm, yshift= -1.73 cm]
+            \draw (-1,0) arc (180:360:1cm and 0.5cm);
+        \draw[dashed] (-1,0) arc (180:0:1cm and 0.5cm);
+        \draw (0,0) circle (1cm);
+        \shade[ball color=blue!10!white,opacity=0.20] (0,0) circle (1cm);
+        \end{scope}
+        
+        \begin{scope}[xshift = -1cm, yshift=-1.73 cm]
+            \draw (-1,0) arc (180:360:1cm and 0.5cm);
+        \draw[dashed] (-1,0) arc (180:0:1cm and 0.5cm);
+        \draw (0,0) circle (1cm);
+        \shade[ball color=blue!10!white,opacity=0.20] (0,0) circle (1cm);
+        \end{scope}
+      \end{tikzpicture}
+      \end{center}
+    \end{enumerate}
+\end{problab}
+\begin{solu}
+
+\end{solu}
+\newpage
+
+\begin{problab}{5}
+    (1.2.3) Let $X$ be the union of $n$ lines through the origin in $\R^3$. Compute the fundamental group of $\R^3 \setminus X$. 
+\end{problab}
+\begin{solu}
+
+\end{solu}
+\newpage
+
+\end{document}

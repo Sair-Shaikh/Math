@@ -314,6 +314,113 @@
     Same works over $\C$ replacing $\Q$ by $\Q + i\Q$. 
     \item[Corr.] $l^p$ is seperatble for $1 \leq p < \infty$. Let $D = \{e_n\}_{n=1}^\infty$. But $l^\infty$ is not separable. 
     \item[Hwk.] If $X^*$ is separable, then $X$ is.  
+    \newpage 
+    \item[Thm.] If $1 \leq p \leq \infty$, and if $q$ is the conjugate exponent, then: 
+    \[ \Phi: l^q \to (l^p)^* \]
+    is an isometric isomorphism when $\Phi(y) = \phi_y^p$ and 
+    \[ \phi_y^p = \sum_{n=1}^{\infty} x_ny_n\]
+    \item[Rmk.] If $(l^p)^* = \{\phi_y^p : y \in l^q\}$ and if $q \leq \infty$, then: 
+    \[ (l^q)^* = \{\phi_x^q : x \in l^p\}\] 
+    \item[Defn.] Recall: If $X$ is a Banach space, then $X$ is reflexive if $\iota(X) = X^{**}$ is surjective.
+    \item[Prop.] If $1 < p < \infty$, then $l^p$ is reflexive.\\ 
+    Proof. COnsider $\iota: l^p \to (l^p)^{**}$. If $\phi_y^p \in (l^p)^*$, then: 
+    \[ \iota(x)(\phi_y^p) = \phi_y^p(x) = \phi_x^q(y) \]
+    Let $\psi \in (l^p)^{**}$. Then,
+    \begin{align*}
+        \psi(\phi_y^p) &= \psi(\Phi(y))
+    \end{align*}
+    Now $y \to \psi(\Phi(y))$ is a in $(l^q)^*$. Hence, $\exists x \in l^p$ such that:
+    \[ \psi(\Phi(y)) = \phi_x^q(y) \]
+    Thus, $\iota(x) = \psi$. Thus, $\iota$ is onto.
+    \item[Rmk.] If $X$ is a normed vector space over $\mathbb{F}$ and $D \subset X$ is countable and $\overline{\opspan(D)} = X$, then $X$ is separable. 
+    \item[Corr.] If $1 \leq p < \infty$, then $l^p$ is separable. \\
+    Proof. $D = \{e_n : n \geq 1\}$.  
+    \item[Ex.] $l^\infty$ is not separable. \\
+    Proof. Let $A \subseteq \N$. Let: 
+    \[ x_A(n) = \1_{n \in A}\]
+    If $A \neq B$, then $||x_A - x_B||_\infty = 1$. But $\{x_A : A \subseteq \N\}$ is uncountable. You cannot find a countable dense subset anymore (cant fit all of them into countably many $1/4$ balls).
+    \item[Hwk.] $(l^\infty)^*$ is not separable. Thus, $l^1$ is not reflexive.  
+    \item[Defn.] Suppose $T \in \mathcal{L}(X, Y)$. Then we define: 
+    \[ T^*: Y^* \to X^*\]
+    by: 
+    \[ T^*(\phi)(x) = \phi(T(x))\]
+    \item[Prop.] If $X$ and $Y$ are normed vector spaces, and $T \in \mathcal{L}(X,Y)$, then $T^* \in \mathcal{L}(Y^*, X^*)$ and $||T^*|| = ||T||$. \\
+    Proof. First, check that $T^*$ is linear (easy). \\
+    Next, show the norm equality. Look at: 
+    \begin{align*}
+        ||T^*(\phi)|| &= \sup_{||x|| \leq 1} |T^*(\phi)(x)| \\
+        &= \sup_{||x|| \leq 1} |\phi(T(x))| \\
+        &\leq ||\phi||||T||||x|| \\
+        &\leq ||\phi||||T||
+    \end{align*}
+    Thus, 
+    \[ ||T^*|| \leq ||T||\] 
+    Fix $\epsilon > 0$. Then, $\exists x_0 \in X$ such that $||x_0|| = 1$ and: 
+    \[ ||T(x_0)|| > ||T|| - \epsilon\]
+    But $\exists \phi \in Y^*$ such that $||\phi|| = 1$ and:
+    \[ \phi(T(x_0)) = ||T(x_0)|| \]
+    Then, 
+    \begin{align*}
+        ||T^*|| &\geq ||T^*(\phi)|| \\
+        &\geq |T^*(\phi)(x_0)| \\
+        &= |\phi(T(x_0))| \\
+        &= ||T(x_0)||
+        &> ||T|| - \epsilon
+    \end{align*}
+    Since $\epsilon > 0$ is arbitrary, we have:
+    \[ ||T^*|| \geq ||T||\]
+    Thus, $||T^*|| = ||T||$.
+    \item[Thm.] Let $X$ and $Y$ be Banach spaces and suppose that: 
+    \[ T: X \to Y \qquad S: Y^* \to X^* \]
+    are functions (not linear or bounded) such that $\forall \phi \in Y^*$ and $x \in X$: 
+    \[ S(\phi)(x) = \phi(T(x)) \]
+    Then, $T \in \mathcal{L}(X,Y)$ and $S \in \mathcal{L}(Y^*, X^*)$, with $S = T^*$. \\
+    Proof. Supposed that $x, y \in X$ and $\alpha \in \mathbb{F}$. Then, if $\phi \in Y^*$, we have:
+    \begin{align*}
+        \phi(T(\alpha x + y)) &= S(\phi)(\alpha x + y) \\
+        &= \alpha(S(\phi)(x)) + S(\phi)(y) \\
+        &= \alpha\phi(T(x)) + \phi(T(y)) \\
+        &= \phi(\alpha T(x) + T(y)) 
+    \end{align*}
+    Since $\phi \in Y^*$ is arbitrary, we have $T(\alpha x + y) = \alpha T(x) + T(y)$. (something about separate points). \\
+    To see that $T$ is bounded, use CGT. Suppose that $x_n \to x$ in $X$ and $T(x_n) \to y$ in $Y$. But $\forall \phi \in Y^*$, we have: 
+    \begin{align*}
+        \phi(y) &= \lim \phi(T(x_n)) \\
+        &= \lim S(\phi)(x_n) \\
+        &= S(\phi)(x) \\
+        &= \phi(T(x))
+    \end{align*}
+    Thus, $y = T(x)$. Thus, $T$ is bounded. \\
+    But $T^*(\phi) = S(\phi)$. 
+    \item[Yap.] Let $(X, \tau)$ be a topological space. Then $\beta \subset \tau$ is a basis for $\tau$ if given any $U \in \tau$ and $x \in U$, then $\exists V \in \beta$ such that $x \in V \subset U$. \\
+    We say $S$ is a neighborhood of $x \in X$ if $\exists U \in \tau$ such that $x \in U \subset S$. \\
+    Wrote $\mathcal{N}(x)$ for the set of all neighborhoods of $x$. We say that $\alpha \subseteq \mathcal{N}(x)$ is a neighborhood basis at $x$ if $U \in \mathcal{N}(x)$, there exists $V \in \alpha$ such that: 
+    \[ x \in V \subseteq U \]
+    \item[Ex. ] (1) In a metric space, the collection of all open balls is a basis for the metric topology. \\
+    (2) In $\R^n$, every point has a neighborhood basis consisting of compact sets. Such spaces are called locally compact.
+    \item[Lemma.] Low Hanging Fruit: Let $(X , \tau)$ be a topological space and $\alpha(x)$ has a neighborhood basis at $x \in X$ consisting of open sets. Then: 
+    \[ \beta = \bigcup_{x \in X} \alpha(x) \]
+    is a basis for $\tau$.  
+    \item[Lemma.] Low Hanging Fruit: $\beta \in \tau$ is a bssis for $\tau$ if and only if given $U \in \tau$, 
+    \[ U = \bigcup_{V \in \beta \subset U} V\]
+    \item[Defn.] Let $(X, \tau)$ be a topological space. Then, 
+    \begin{enumerate}
+        \item $(X, \tau)$ is seperable if it ihas a countable dense subset. 
+        \item $(X, \tau)$ is 2nd countable if it has a countable basis.
+        \item $(X, \tau)$ 1st countable if every point has a countable neighborhood basis.
+    \end{enumerate}
+    \item[Rmk.] \begin{enumerate}
+        \item Every 2nd countable space is seperable. The converse holds in metric spaces. Hwk 8. 
+        \item Metric spaces are 1st countable. 
+    \end{enumerate}
+    \item[Ex.] \begin{enumerate}
+        \item Let $X$ be a set. Then $\tau = \mathcal{P}(X)$ is the discrete topology. This is the metric topology coming from the the discrete metric. 
+        \item $\tau = \{X, \phi\}$. 
+    \end{enumerate}
+    \item[Lemma.] Let $S \subset \mathcal{P}(X)$. Then, there is a smallest topology $\tau(S)$ that contains $S$. \\
+    Proof. Let $\tau(S) = \bigcap\{\tau' : \tau' \text{ is a top and } S \in \tau'\}$. 
+    \item[Prop.] Let $\beta \subset \mathcal{P}(X)$ be a coer of $X$. Then $\beta$ is a basis for $\tau(B)$ if and only if $U, V \in \beta$ and $x \in U \cap V$, then $\exists W \in \beta$ such that $x \in W \subset U \cap V$. \\
+    Proof. Hwk. 
 \end{itemize}
 
 
