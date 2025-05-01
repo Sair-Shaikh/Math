@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+
+\include{../style}
+
+\begin{document}
+
+\input{title}
+
+\begin{problab}{30}
+    Suppose that $X$ and $Y$ are normed vector spaces. 
+    \begin{enumerate}
+        \item Show that $\mathcal{L}(X, Y)$ is a normed vector space with respect to the the operator norm defined in lecture such that: 
+        \[ ||T(x)|| \leq ||T|| ||x|| \]
+        \item Show that if $S \in \mathcal{L}(Y, Z)$. Then, 
+        \[  ||ST|| \leq ||S||||T|| \]
+        \item Show that: 
+        \[ ||T|| = \inf\{ a \geq 0 : ||T(x)|| \leq \alpha||x|| \quad \forall x \in X\}\]
+    \end{enumerate}
+\end{problab}
+\begin{solu} 
+
+\end{solu}
+\newpage 
+
+\begin{problab}{31}
+    Suppose that $X$ and $Y$ are Banach spaces with $T \in \mathcal{L}(X, Y)$. Suppose that $E$ is a closed proper subspace of $X$ such that $E \subset \ker(T)$. Show that there is a unique operator $\overline{T} \in \mathcal{L}(X/E, Y)$ such that $\overline{T}(q(x)) = T(x)$ for all $x \in X$ where $q: X \to X/E$ is the quotient map. Moreover, $||\overline{T}|| = ||T||$.
+\end{problab}
+\begin{solu} 
+
+\end{solu}
+\newpage 
+
+
+\begin{problab}{33}
+    Let $E$ and $X$ be Banach spaces with $E$ finite dimensional. 
+    \begin{enumerate}
+        \item Show that every linear map $S: E \to X$ is bounded. 
+        \item Show that a linear map $T: X \to E$ is bounded if and only if $\ker(T)$ is closed. 
+    \end{enumerate}
+\end{problab}
+\begin{solu} 
+
+\end{solu}
+\newpage 
+
+\begin{problab}{34}
+    Supposed that $E$ and $M$ are closed subspaces of a Banach space $X$. If $E$ is finite dimensional, show that $E+M = \{x+y: x \in E \, y \in M\}$ is closed. 
+\end{problab}
+\begin{solu} 
+
+\end{solu}
+\newpage 
+
+\begin{problab}{35}
+    Suppose that $X$ and $Y$ are Banach spaces for $T \in \mathcal{L}(X, Y)$. Show that $T$ is injective with closed range if and only if: 
+    \[ \inf \{||T(x)|| : ||x|| = 1\} > 0 \]
+\end{problab}
+\begin{solu} 
+
+\end{solu}
+\newpage 
+
+
+\begin{problab}{38}
+    Let $X$ be a normed vector space. A Banach space $\tilde{X}$ is called a completion of $X$ is there is an isometric isomorphism $\iota: X \to \tilde{X}$ onto a dense subspace of $\tilde{X}$. Show that any two completions $(tilde{X}_1, \iota_1)$ and $(\tilde{X}_2, \iota_2)$ are isometrically isomorphic by an isomorphism: 
+    \[ \Phi: \tilde{X}_1 \to \tilde{X}_2\]
+    such that $\Phi(\iota_1(x)) = \iota_2(x)$ for all $x \in X$. 
+\end{problab}
+\begin{solu} 
+
+\end{solu}
+\newpage 
+
+\begin{problab}{39}
+    Lets find a use for a genuine Minkowski functional. In this problem, we'll let $l_\R^\infty$ be the real Banach space of bounded sequences in $\R$. Define $m$ on $l_\R^\infty$: 
+    \[ m(x) = \limsup_n x_n\]
+    We clearly have $m(tx) = tm(x)$ if $t \geq 0$ and it is not hard to check that $m(x+y) \leq m(x) + m(y)$ for all $x, y \in l_\R^\infty$. We want to show that there are Banach limits or what I prefer to call a generalized limit on $l_\R^\infty$. This is we want to show that there is a functional $L \in l_\R^{\infty^*}$ such that:
+    \[ L(S(x)) = L(x)\] 
+    where $S \in \mathcal{L}(l_\R^\infty)$ is given by $S(x)_n = x_{n+1}$ and such that $\liminf_n x_n \leq L(x) \leq \limsup_n x_n$. (Hint provided).
+\end{problab}
+\begin{solu} 
+
+\end{solu}
+\newpage 
+
+\begin{problab}{40}
+    Prove the following Lemma from lecture. Let $X$ be a complex vector space. Every real linear functional of $X$ is the real part of a complex linear functional on $X$. In fact, if $\phi = \Re(\psi)$ then $\psi(x) = \phi(x) - i\phi(ix)$. 
+\end{problab}
+\begin{solu} 
+
+\end{solu}
+\newpage 
+
+\begin{problab}{41}
+    Suppose that $X$ is a normed vector space such that $X^*$ is seperable. Show that $X$ is seperable. (Hint provided).
+\end{problab}
+\begin{solu} 
+
+\end{solu}
+\newpage 
+
+\end{document}
