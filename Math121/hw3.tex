@@ -1,0 +1,211 @@
+\documentclass[12pt]{article}
+
+\input{../style}
+
+\begin{document}
+
+\input{title}
+
+\begin{problem}{2.}
+    \textbf{Grassmanians.} Let $n \geq 2$ and $0 < r < n$. Let $G(r, \C^n)$ be the Grassmanian of $r$ planes in $\C^n$.
+    \begin{enumerate}
+        \item Prove that $G(r, \C^n)$ has the structure of a compact complex manifold. You can mimic the usual proof for the differentiable structure. 
+        \item Prove that $G(r, \C^n)$ is a projective manifold. Hint: the Plücker embedding. 
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item (Adapted from Wikipedia) Recall the definition of the Grassmanian. Each point in $G(r, \C^n)$ is an equivalence class of $r$-dimensional subspaces of $\C^n$. Fixing a basis, an $r$-dimensional subspace of $\C^n$ is given by a full-rank $n \times k$ matrix. Two matrices, $A, B$ span the same subspace if and only if $A = Bg$ for some $g \in GL_r(\C)$, which defines the equivalence relation. Any such matrix has exactly $r$ linearly independent rows. Since applying elementary column operations amounts to right-multiplying by elements of $GL_r(\C)$, we can reduce each such equivalence class to obtain a unique representation, where the $r$ independent rows are operated on to be the identity submatrix. The remaining $n-r$ rows determine which subspace corresponds to this representative.\bbni Thus, each element in $G(r, \C^n)$ can be represented by a matrix such that for some $1 \leq i_1 < i_2 < \cdots < i_r \leq n$, these rows form an identity submatrix. For each set $I$ containing $1 \leq i_1 < i_2 < \cdots < i_r \leq n$, let $U_I$ contain those elements in $G(r, \C^n)$ whose $r$ independent rows indexed by $I$ are the identity submatrix. Thus, we can define a chart $(U_I, \phi_I)$, where $\phi_I: U_I \to \C^{(n-r)r}$ maps a matrix in this form to the remaining $n-r$ rows. Clearly, this map is invariant to choice of representative for the same subspace, since we fixed a basis and are only allowed column operations. Moreover, it is also clear that the remaining entries of the matrix are unconstrained and can be chosen arbitrarily. These charts cover by the previous argument. \bbni 
+        Thus, we can choose a topology on $G(r, \C^n)$ such that the maps $\phi_I$ are homeomorphisms onto $M((n-r) \times r, \C) \cong \C^{(n-k)k}$, the space of $(n-r)\times r$ matrices. \bbni
+        Let $I$ and $J$ be two index sets. Let $W_I$ and $W_J \in GL_r(\C)$ be the composition of the sequence of elementary column operations to turn the respective non-singular submatrix (indexed by $I$ and $J$) into the identity matrix. Let $[W] \in U_I \cap U_J$. Then, we have that the representative used for mapping via $\phi_I$ and $\phi_J$ are given by:
+        \[ \phi_I([W]) = WW_I \qquad \phi_J([W]) = WW_J \in U_J\]
+        Since $W_I$ and $W_J$ are invertible, the transition maps are:
+        \[ \phi_J \circ \phi_I^{-1}(WW_I) = WW_J \]
+        given by right-multiplication by $W_I^{-1}W_J$. These are rational functions in the space of $(n-r) \times r$ matrices, and thus are holomorphic. Thus, we have a holomorphic atlas, and we have shown that $G(r, \C^n)$ is a compact complex manifold.
+        \item Pick a basis $(e_1, \cdots e_n)$ for $\C^n$. Let $V \in G(r, \C^n)$. Pick some basis $w_1, \ldots, w_r$ for $V$. Then, the Plucker embedding is given by: 
+        \begin{align*}
+            \phi: G(r, \C^n) &\to \mathbb{P}(\bigwedge^r \C^n) \\
+            V &\mapsto [w_1 \wedge w_2 \wedge \cdots \wedge w_r]
+        \end{align*}
+        Since $\dim(V) = r$, we note that the embedding is well-defined with respect to the choice of basis, $\bigwedge^r V \in \bigwedge^r \C^n$ is one-dimensional. \bbni
+        To see that $\phi$ is injective, consider two $r$-dimensional subspaces $V_1$ and $V_2$ such that $\phi(V_1) = \phi(V_2)$. Then, there exists basis $B_1 \subset V_1$ and $B_2 \subset V_2$ such that their wedge products are scalar multiples of each other. However, thus each element of $B_1$ wedged with the wedge of $B_2$ yields $0$. Thus, $B_1$ is contained in the span of $B_2$ and symmetrically $B_2$ is contained in the span of $B_1$. Thus, $V_1 = V_2$ and $\phi$ is injective. \bbni
+        Let the matrix $W = [W_1 \cdots W_k]$ contain the representation of $w_1, \ldots, w_r$ as columns expressed in $e_1, \cdots, e_n$ basis for $V$. Then, using usual results on exterior powers, we have that:
+        \[ \phi(V) = \sum_{|I| = k} det(W_I) w_I\]
+        where $W_I$ is the matrix formed by taking the columns of $W$ in the order given by $I$ and $w_I$ is the wedge of these columns, and $\det(W_I)$ is the Plucker coordinate. Then, evidently, this embedding is holomorphic as it is given in local coordinates by polynomials.  \bbni
+        Under these coordinates, for any two sequences, $1 \leq i_1 < \cdots < i_{k-1}$ and $1 \leq j_1 < \cdots < j_{k+1}$, we have well-defined relations called the Plucker relations, which determine the image of $V$, given by:
+        \[ \sum_{k =1}^{r+1} (-1)^k det([w_I, w_{j_k}])det([w_J, \hat{w_{j_k}}])\]
+        where $[w_I, w_k]$ is the matrix with all the columns of $w_I$ and $w_{j_k}$, and $[w_J, \hat{w_{j_k}}]$ is the matrix with all the columns of $w_J$ except $w_{j_k}$. Thus, these describe the image of $\phi$, which must be closed in projective space. \bbni
+        Since the image is a smooth algebraic variety, $\phi$ is injective and holomorphic, we conclude that $\phi$ is an embedding. 
+        (Why is it an immersion? Not clear.)
+    \end{enumerate}
+\end{solution}
+\newpage
+
+\begin{problem}{4.}
+    Let $n \geq 1$, $\omega_{FS}$ the Fubini-Study form on $\CP^n$. Let $A \in GL_{n+1}(\C)$ and $T_A: \CP^n \to \CP^n$ the the corresponding transformation. Prove that $T_A^* \omega_{FS} = \omega_{FS}$ if and only if $A$ is unitary, up to a scalar matrix.
+\end{problem}
+
+\begin{solution}
+    \textit{I believe this is wrong. I think I pullbacked the form in an incorrect way. The proper proof likely requires going down to local charts, and showing the local representation of the form is invariant under rotations. However, I saw this too late to rewrite.} \bbni
+    First, note that the map $T_A$ is given by: 
+    \[T_A([v]) = [Av]\]
+    Recall the definition of the Fubini-Study form, for a section $\sigma$ of $O(1)$, we have: 
+    \[ \omega_{FS} = \frac{-i}{2\pi} \partial \overline{\partial}\log(||\sigma||^2_{h*}) =   \frac{i}{2\pi} \partial \overline{\partial}\log(||\sigma||^2) \]
+    where $h*$ is the dual metric to the usual hermitian metric on $\C^{n+1}$.
+    Thus, the pullback of the Fubini-Study form by is given by: 
+    \[ T_A^*\omega_{FS} = \frac{i}{2\pi} \partial \overline{\partial}\log\left(||\sigma A||^2\right) \]
+    To get the condition $T_A^*\omega_{FS} = \omega_{FS}$, we need to have:
+    \[ -2\pi i \left(T_A^*\omega_{FS}(\sigma) - \omega_{FS}(\sigma)\right) = 0\]
+    for all $\sigma$. By linearity of the dolbeault operators, we can write this as:
+    \begin{align*}
+        2\pi i \left(T_A^*\omega_{FS}(\sigma) - \omega_{FS}(\sigma)\right) &= \partial \overline{\partial}\log\left(||\sigma A||^2\right) - \partial \overline{\partial}\log\left(||\sigma||^2\right) \\
+        &= \partial \overline{\partial}\log\left(\frac{||\sigma A||^2}{||\sigma||^2}\right)
+    \end{align*}
+    by linearity of the dolbeault operators. Let $f := \log\left(\frac{||\sigma||^2}{||\sigma A||^2}\right)$, then we want:
+    \[ \partial \overline{\partial} f = 0\]
+    i.e. we want $f$ to be a pluriharmonic function. Since $\CP^n$ is compact, every pluriharmonic function is constant. Since $\log$ of a function is constant, if and only if the function is constant, we have reduced our problem to showing that: 
+    \[ T_A^* \omega_{FS} = \omega_{FS} \iff \left(\frac{||\sigma A||^2}{||\sigma||^2}\right) = \lambda > 0 \]
+    However, $\left(\frac{||\sigma A||^2}{||\sigma||^2}\right) = \lambda$ if and only if $A^\dagger A = \lambda I$, i.e. $A$ is unitary up to a scalar. 
+    
+\end{solution}
+\newpage
+
+\begin{problem}{5.}
+    Let $V$ be a real vector space and let $(\omega, h, J)$ be a Kahler structure on $V$. Show that: 
+    \begin{enumerate}
+        \item Every two elements in the set $\{ \omega, h, J \}$ uniquely determine the third one.
+        \item The operator $J: V \to V$ is orthogonal with respect to the metric $h$. 
+        \item The decompositon $V \otimes_\R \C = V^{1,0} \oplus V^{0,1}$ is orthogonal with respect to the metric $h$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \bbni
+    \begin{enumerate}
+        \item Assume that we know $\omega$ and $J$. Define $h$ as follows: 
+        \[ h(u, v) = \omega(u, Jv) -i\omega(u, v) \]
+        for all $u, v \in V$. We check that $h$ is hermitian. First, let the bilinear map $g(u, v) = \omega(u, Jv)$ for all $u,v$. Then, $g$ is symmetric as $\omega$ is skew-symmetric and compatible with $J$: 
+        \begin{align*}
+            g(u, v) &= \omega(u, Jv) \\
+            &= -\omega(Jv, u) \\
+            &= -\omega(J^2 v, Ju) \\
+            &= -\omega(-v, J u) \\
+            &= \omega(v, Ju) \\
+            &= g(v, u)
+        \end{align*}
+        Moreover, $g$ is compatible with the complex structure as $\omega$ is. 
+        Then, we check that $h$ is hermitian (on the complex vector space naturally isomorphic to $(V, J)$). Note that:
+        \begin{align*}
+            \overline{h(u, v)} &= g(u, v) + i\omega(u, v) \\
+            &= g(v,u) - i\omega(v, u) \\
+            &= h(v, u)
+        \end{align*}
+        and 
+        \begin{align*}
+            h(u, \alpha v + \beta J(v)) &= \alpha g(u, v) + \beta g(u, Jv) - i\alpha\omega(u, v) -i\beta \omega(u, Jv) \\
+            &= \alpha h(u, v) +\beta \omega(u, v) - i \beta g(u, v) \\
+            &= (\alpha - i\beta)h(u, v)
+        \end{align*}
+        and similarly for linearity in the first entry. Thus, $h$ is hermitian and respects the complex structure as $g$ and $\omega$ do.
+        \bbni
+        Next, assume we know $h$ and $J$. Then, we define $\omega(u, v) = -\Im(h(u, v))$ for all $u, v$. Recall that $h(Ju, v) = ih(u,v)$ and its real part is symmetric. Then, we check that $\omega$ is skew-symmetric:
+        \begin{align*}
+            \omega(u, v) &= -\Im(h(u, v)) \\
+            &= \Re(h(Ju, v)) \\
+            &= \Re(h(v, Ju)) \\
+            &= \Im(h(Jv, Ju)) \\
+            &= \Im(h(v, u)) \\
+            &= -\omega(v, u)
+        \end{align*}
+        Moreover, $\omega$ is non-degenerate as for any $x \in V$, if $\omega(x, \cdot) = 0$, then:
+        \[\Im(h(x, \cdot ))  = 0 \]
+        and
+        \begin{align*}
+            \Re(h(x, J\cdot)) &= \Im(h(Jx, J\cdot)) \\
+            &= \Im(h(x, \cdot)) \\
+            &= 0
+        \end{align*}
+        Thus, as $h$ is non-degenerate, and fixing $x$, both of its components are determined by $\omega$, we conclude that $x = 0$. Thus, $\omega$ is non-degenerate. Finally, $\omega$ is also compatible with the complex structure as $h$ is. Thus, $\omega$ is uniquely determined. \bbni 
+        Finally, assume we know $h$ and $\omega$. Then, we define $g(u, v) = \Re(h(u, v))$ for all $u, v$. We check that $g$ is symmetric:
+        \begin{align*}
+            g(u, v) &= \Re(h(u, v)) \\
+            &= \Re(\overline{h(v, u)}) \\
+            &= \Re(h(v, u)) \\
+            &= g(v, u)
+        \end{align*}
+        Moreover, $g$ is non-degenerate as for any $x \in V$, if $g(x, \cdot) = 0$, then:
+        \[ \Re(h(x, \cdot)) = 0 \]
+        and (noting multiplication by $i$ is defined in the isomorphic complex v.s.)
+        \begin{align*}
+            \Im(h(x, i \cdot)) &= \Re(-h(i x, i \cdot)) \\
+            &= -\Re(h(x, \cdot)) \\
+            &= 0
+        \end{align*} 
+        Thus, as $h$ is non-degenerate, and fixing $x$, both of its components are determined by $g$, we conclude that $x = 0$. Thus, $g$ is non-degenerate. Finally, we define $J$ implicitly as $\omega$ and $g$ are both non-degenerate via the relation: 
+        \[ g(u, v) = \omega(u, Jv) \] 
+        Thus, we have shown that any two of the three elements are sufficient to determine the third.       
+        \item Note first, we have:
+        \begin{align*}
+            \omega(u, J^2v) &= g(u, Jv) \\
+            &= g(Jv, u) \\
+            &= \omega(Jv, Ju) \\
+            &= -\omega(Ju, Jv)
+        \end{align*}
+        and 
+        \begin{align*}
+            g(u, J^2v) &= \omega(u, Jv) \\
+            &= -\omega(Jv, u) \\
+            &= -g(Jv, Ju) \\
+            &= -g(Ju, Jv)
+        \end{align*}
+        Using these, we compute:
+        \begin{align*}
+            h(Ju, Jv) &= g(Ju, Jv) - i\omega(Ju, Jv) \\
+            &= -g(u, J^2v) + i \omega(u, J^2v) \\
+            &= -g(u, -v) + i \omega(u, -v) \\
+            &= g(u, v) - i \omega(u, v) \\
+            &= h(u, v)
+        \end{align*}
+        Thus, $J$ is orthogonal with respect to $h$.
+        \item Firstly, as $J^2 = \id$, we note that $J$ is an automorphism of $V$. Recall that: 
+        \begin{align*}
+            V^{1,0} &= \{ u + iJu \in V \otimes_\R \C \} \\
+            V^{0,1} &= \{ u - iJu \in V \otimes_\R \C \}
+        \end{align*}
+        Take $u + iJu \in V^{1,0}$ and $v - iJv \in V^{0,1}$. Then, we have:
+        \begin{align*}
+            h(u + iJu, v - iJv) &= h(u, v) + i h(u, Jv) + ih(Ju, v) - h(Ju, Jv) \\
+            &= (h(u, v) - h(u, v)) + i(h(u, Jv) + h(Ju, v)) \\
+            &= i(h(u, Jv) + h(Ju, v))
+        \end{align*}
+        We consider $h(u, Jv) + h(Ju, v)$. Computing further:
+        \begin{align*}
+            h(u, Jv)+h(Ju, v) &= g(u, Jv) + g(Ju, v) -i\omega(u, Jv) -i\omega(Ju, v) \\
+            &= g(u, Jv) + g(v, Ju) -i\omega(u, Jv) + i\omega(v, Ju) \\
+            &= \omega(u, J^2v) + \omega(v, J^2u) -ig(u, v) +ig(v, u) \\
+            &= \omega(u, -v) + \omega(v, -u) \\
+            &= -(\omega(u, v) + \omega(v, u)) \\
+            &= 0
+        \end{align*}
+        Thus the decomposition is orthogonal with respect to $h$.
+    \end{enumerate}
+\end{solution}
+% \newpage
+
+% \begin{problem}{6.}
+%     Let $(V, h)$ be a Euclidean vector space and suppose $I$, $J$, and $K$ are three $h$-orthogonal complex structures on $V$ that satisfy $IJ = -JI = K$. The datum $(h, I, J, K)$ is called a hyper-Kahler structure on $V$. 
+%     \begin{enumerate}
+%         \item Show that $V$ becomes in a natural way a module over the algebra $\mathbb{H}$ of quaternions. 
+%         \item Describe the set of all $(a, b, c) \in \R^3$ for which $aI + bJ + cK$ is again an $h$-orthogonal complex structure on $V$.  
+%         \item For every $u \in \{I, J, K\}$ consider the associated sympletic form $\omega_u(\cdot, \cdot) = h(u \cdot, \cdot)$. Consider the type decompositon of $\bigwedge^\bullet(V \otimes_\R \C)^\vee$ corresponding to the complex structure $I$. Show that in this type decomposition the complex $2-$form $\omega_J + i \omega_K \in \bigwedge^2(V \otimes \C)^vee$ has pure type $(2, 0)$ and is non-degenerate on $V$. 
+%     \end{enumerate}
+% \end{problem}
+
+% \begin{solution}
+
+% \end{solution}
+
+
+
+\end{document}

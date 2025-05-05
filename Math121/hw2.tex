@@ -7,10 +7,10 @@
 \input{title}
 
 
-\begin{problab}{1}
+\begin{problem}{1}
 Let $X$ be a differentiable manifold. Prove that $H^k_{\text{dR}}(X,\mathbb{C}) \simeq H^k_{\text{dR}}(X,\mathbb{R}) \otimes_{\mathbb{R}} \mathbb{C}$.
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     We note that the de Rham cohomology with complex coefficients is defined as: 
     \begin{align*}
         H_{dR}^k(X, \mathbb{C}) &= \frac{\ker(d_\C : \Omega^k(X) \otimes_\R \C \to \Omega^{k+1}(X) \otimes_\R \C)}{\text{im}(d_\C : \Omega^{k-1}(X) \otimes_\R \C\to \Omega^k(X) \otimes_\R \C)}
@@ -32,10 +32,10 @@ Let $X$ be a differentiable manifold. Prove that $H^k_{\text{dR}}(X,\mathbb{C}) 
         &= H_{dR}^k(X, \mathbb{R}) \otimes_\R \C
     \end{align*}
 
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{2}
+\begin{problem}{2}
 This exercise is taken from HW1 as, unfortunately, the hint for question 1 was missing. As the techniques and the result are important, I put it back.
 
 Let $U$ be an open subset of $\mathbb{C}$ and $D \subset \Omega$ be a closed disk.
@@ -59,13 +59,13 @@ Let $U$ be an open subset of $\mathbb{C}$ and $D \subset \Omega$ be a closed dis
 
     \item In the last question, show that if $g$ is $C^\infty$, then $f$ can be chosen $C^\infty$. Show also that if $g$ depends smoothly (or holomorphically) on other parameters, then so does $f$.
 \end{enumerate}
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
 
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{3}
+\begin{problem}{3}
 \textbf{Holomorphic $\bar{\partial}$-Dolbeault Lemma.} Let $U$ be an open subset of $\mathbb{C}^n$ and $D$ an open polydisk with closure contained in $U$. Let $0 \le p \le n$, $1 \le q \le n$. The goal of this exercise is to prove that any $(p, q)$-form $\bar{\partial}$-closed on $U$ has a restriction to $D$ which is $\bar{\partial}$-exact.
 
 \begin{enumerate}
@@ -75,13 +75,13 @@ Let $U$ be an open subset of $\mathbb{C}$ and $D \subset \Omega$ be a closed dis
 
     \item Prove the result by induction on $k$. \textit{Hint: you can consider a form $\mu \in \mathcal{A}^{0,q-1}$ obtained from $\gamma$ by replacing each coefficient $f \in C^\infty(D)$ by a function $g \in C^\infty$ such that $\partial g/\partial z^k = f$ on $D$. Show that if $\bar{\partial}\alpha = 0$, then we can choose $\mu$ such that $\bar{\partial}\mu = dz^k \wedge \gamma + \nu$ where $\nu$ can be expressed only in terms of $dz^1, \dots, dz^{k-1}$ and $C^\infty(U)$.}
 \end{enumerate}
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
 
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{4}
+\begin{problem}{4}
 \textbf{Dolbeault cohomology of the open disk.} Let $D$ be an open disk in $\mathbb{C}$ or $D = \mathbb{C}$.
 
 \begin{enumerate}
@@ -91,19 +91,19 @@ Let $U$ be an open subset of $\mathbb{C}$ and $D \subset \Omega$ be a closed dis
 
     \item Compute the Dolbeault cohomology groups of $D$.
 \end{enumerate}
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
 
-\end{solu}
+\end{solution}
 \newpage
-\begin{problab}{5}
+\begin{problem}{5}
 Let $\mathbb{P}^3(\mathbb{C})$ denote the complex projective 3-space with homogeneous coordinates $x_0, x_1, x_2, x_3$. Consider the complex submanifold
 \[
 X := \{x \in \mathbb{P}^3(\mathbb{C}) \mid x_0^4 + x_1^4 + x_2^4 + x_3^4 = 0\}.
 \]
 Let $M$ be the underlying $C^\infty$ manifold of $X$ and let $I$ denote the corresponding complex structure. Show that $(M, I)$ and $(M, -I)$ are isomorphic as complex manifolds. How can you generalize this example?
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     \bbni
     Define the map $\phi: (M, I) \to (M, I)$ by: 
     \[ \phi([x_0 : \cdots : x_3 ]) \to [\overline{x_0} : \cdots : \overline{x_3}]\]
@@ -128,8 +128,8 @@ Let $M$ be the underlying $C^\infty$ manifold of $X$ and let $I$ denote the corr
         \frac{\partial \overline{z}}{\partial \overline{z}} &= \frac{1}{2}(1+i(-i)) = 1
     \end{align*}
     Thus, $\psi$ is anti-holomorphic. Since (anti-)holomorphicity for higher dimensions is defined coordinate-wise, we note that complex conjugation is anti-holomorphic. Thus, complex conjugation is holomorphic with respect to the flipped complex structure on the target space. Thus, $\phi$ is holomorphic with respect to the complex structure on the target space (using the same atlas). \bbni 
-    In general, every part of this argument applies to any complex submanifold of $\mathbb{P}^n(\C)$, so long as the submanifold is defined by a polynomial equation with real coefficients, as this guarantees that the complex conjugate of a solution is also a solution. The rest of the argument stays the same in those cases.
-\end{solu}
+    In general, every part of this argument applies to any complex submanifold of $\mathbb{P}^n(\C)$, so long as the submanifold is defined by a polynomial equation with real coefficients, as this guarantees that the complex conjugate of a solutiontion is also a solutiontion. The rest of the argument stays the same in those cases.
+\end{solution}
 
 
 

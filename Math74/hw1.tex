@@ -8,16 +8,16 @@
 \input{title}
 
 
-\begin{problab}{1}
+\begin{problem}{1}
 Prove the pasting lemma: Suppose $X = A \cup B$ is a topological space with $A$, $B$ closed in $X$. If $f \colon X \to Y$ is a map such that the restrictions $f|_A$ and $f|_B$ are continuous, then $f$ is continuous. 
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Let $V \subseteq Y$ be any closed set. To show that $f$ is continous, we need to show that $f^{-1}(V) \subseteq X$ is closed (this definition is equivalent to the definition of continuity in terms of open sets, as taking the complement commutes with taking pre-images). \bbni
     Note that $f^{-1}(V) \cap A$ and $f^{-1}(V) \cap B$ are closed, since they are pre-images of closed set $V$ under continuous functions $f|_A$ and $f|_B$ respectively. However, since $X = A \cup B$, $f^{-1}(V) = (f^{-1}(V) \cap A) \cup (f^{-1}(V) \cap B)$. Thus, $f^{-1}(V)$ is closed. 
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{2}
+\begin{problem}{2}
 In a connected space $X$, a point $x \in X$ is called a \emph{cut point} if $X \setminus \{ x \}$ is disconnected. 
     \begin{enumerate}
         \item Suppose that $f: X \to Y$ is a homeomorphism of connected spaces. Show that $x \in X$ is a cut point if and only if $f(x) \in Y$ is a cut point. 
@@ -25,8 +25,8 @@ In a connected space $X$, a point $x \in X$ is called a \emph{cut point} if $X \
         \item Show that $\R$ is not homeomorphic to $\R^n$ for any $n \geq 2$. 
         \item The bouquet $B_n$ of $n$ circles is the space obtained by gluing $n$ disjoint copies of $S^1$ at a single point in each circle. Show that $B_n$ and $B_m$ are not homeomorphic for $n \neq m$. 
     \end{enumerate}
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     \bbni
     \begin{enumerate}
         \item Note that $f|_{X\setminus \{x\}}$ is a homeomorphism onto (its image) $Y \setminus \{f(x)\}$ as the restriction of a homeomorphism is a homeomorphism onto its image. Thus, $X \setminus \{x\}$ is homeomorphic to $Y \setminus \{f(x)\}$. Thus, noting that $X$ and $Y$ are both connected, we have:
@@ -40,16 +40,16 @@ In a connected space $X$, a point $x \in X$ is called a \emph{cut point} if $X \
         \item Note that $0 \in \R$ is a cut-point, as $\R \setminus \{0\}$ is disconnected. For sake of contradiction, suppose there existed an homeomorphism from $\R \to \R^n$ for $n \geq 2$. Then, $f(0) \in \R^n$ would be a cut-point, as $f$ is a homeomorphism (part a). However, $\R^n \setminus \{x\}$ is connected for all $x \in \R^n, n \geq 2$, as it is path-connected. Thus, $\R^n \setminus \{f(0)\}$ is also connected. Thus, $f(0)$ is not a cut-point and we have a contradiction.
         \item Let $X = B^n$ and $Y = B^m$ for $n \neq m$. Suppose $f$ is a homemorphism between them. Since homeomorphisms map cut-points to cut-points, $f$ must map the unique cut-point in $X$ to the unique cut-point in $Y$. Since restrictions of homeomorphism is a homeomorphism, $g := f|_{X \setminus \{c\}}$ is an homeomorphism onto $Y \setminus \{f(c)\}$. From problem 5, we know that the $\pi_0$ is a functor, thus it takes a homeomorphism of spaces to a set isomorphism (bijection) $\pi_0(g): \pi_0(X \setminus \{c\}) \to \pi_0(Y \setminus \{f(c)\})$. However, $\pi_0(X \setminus \{c\})$ has $n$ elements while $\pi_0(Y \setminus \{f(c)\})$ has $m$ elements. Thus, $\pi_0(g)$ is not a bijection and we have a contradiction. Thus, $X = B_n$ and $Y = B_m$ are not homeomorphic for $n \neq m$.
     \end{enumerate}
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{3}
+\begin{problem}{3}
 Define $\bb{RP}^n$ to be the quotient space of $\R^{n+1}\setminus \{0\}$ by $(x_1, \hdots, x_{n+1}) \simeq (a x_1, \hdots, a x_{n+1})$ for all nonzero scalars $a$. Let $[x_1: \hdots : x_{n+1}] \in \bb{RP}^n$ denote the image of $(x_1, \hdots, x_{n+1}) \in \bb{R}^{n+1} \setminus \{ 0 \}$ under the quotient map. Show that $i \colon \bb{R}^n \to \bb{RP}^n$ given by 
 $$ i (x_1, \hdots, x_n) = [1: x_1 : \hdots : x_n ] $$
 is a topological embedding (i.e., a homeomorphism onto its image) and the complement of $i(\bb{R}^n)$ is homeomorphic to $\bb{RP}^{n-1}$.
-\end{problab}
+\end{problem}
 
-\begin{solu}
+\begin{solution}
     Call the quotient map $\pi$. To show that $i$ is a topological embedding, we will show that $i$ is a continous map with a well-defined continuous inverse from its image. \bbni 
     Note that $\phi: \R^n \to \R^{n+1}$ defined by $\phi(x_1, \cdots, x_n) = (1, x_1, \cdots, x_n)$ is continous. Since $\pi$ is continous, we have $i = \pi \circ \phi$ is also continous.  \bbni
     To show that $i$ is injective, let $i(x_1, \cdots, x_n) = i(y_1, \cdots, y_n)$. Then, we have:
@@ -67,11 +67,11 @@ is a topological embedding (i.e., a homeomorphism onto its image) and the comple
     is continous as it is projection onto the last $n$ coordinates. Moreover, note that $\pi|_{U'}$ is bijective onto $U$ as every class in $U$ has a unique representative with $x_0 = 1$, thus, as it is also open, $\pi|_{U'}$ is a homeomorphism. Since $\psi = \phi \circ \pi|_{U'}$, $\psi$ is continous, and $\pi|_{U'}$ is a homeomorphism, $\phi$ is also continous. \bbni 
     We observe that $\phi|_{i(\R^n)}$ is the inverse of $i$ (easy to check). Thus, $i$ is a homeomorphism onto its image. \bbni
     To show that the complement of $i(\R^n)$ is homeomorphic to $\bb{RP}^{n-1}$, we note that the complement only contains elements that do not have a representative of the form $[1 : x_1 : \cdots : x_n]$. For any element $[x_0 : x_1 : \cdots : x_n] \in \RP^n$ with $x_0 \neq 0$, we can find a representative of the required form as $[1 : x_1/x_0 : \cdots : x_n/x_0]$ by dividing by $x_0$. Thus, we only need to consider $V = \{[0 : x_1 : \cdots : x_n] \in \RP^n\}$. Note that $\pi^{-1}([0 : x_1 : \cdots : x_n]) = \{ (0, \lambda x_1, \cdots, \lambda x_n) : \lambda \neq 0 \in \R\}$. Thus, $\pi^{-1}(V) = \{(0, x_1, \cdots, x_n) \in \R^{n+1}\}$. Thus, $\pi^{-1}(V)$ is homeomorphic to $\R^n$. Thus, $V$ is homeomorphic to $\RP^{n-1}$ via the restriction of the quotient map.
-\end{solu}
+\end{solution}
 \newpage
 
 
-\begin{problab}{4}
+\begin{problem}{4}
 Suppose that $\mathcal{C}$ is a category, $A, B, C$ are objects of $\mathcal{C}$, and $f \in \hom(A,B)$ and $g \in \hom(B,C)$ are isomorphisms. 
     \begin{enumerate}
         \item Show that $f$ has a unique inverse in $\hom(B,A)$. 
@@ -81,9 +81,9 @@ Suppose that $\mathcal{C}$ is a category, $A, B, C$ are objects of $\mathcal{C}$
         \item Show that $\text{Aut}(A)$ and $\text{Aut}(B)$ are isomorphic groups.
         \item Show that if $F: \mathcal{C} \to \mathcal{D}$ is a functor, then $F(f) \in \hom_\mathcal{D} (F(A), F(B))$ is an isomorphism.
     \end{enumerate}
-\end{problab}
+\end{problem}
 
-\begin{solu}
+\begin{solution}
     \bbni
     \begin{enumerate}
         \item Let $f: A \to B$ be an isomorphism, with $f', f'' \in \hom(B, A)$ inverses of $f$. By the associativity of composition, we have: 
@@ -134,14 +134,14 @@ Suppose that $\mathcal{C}$ is a category, $A, B, C$ are objects of $\mathcal{C}$
             F(f^{-1}) \circ F(f) &= F(f^{-1} \circ f) = F(\id_A) = \id_{F(A)}
         \end{align*}
     \end{enumerate}
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{5}
+\begin{problem}{5}
 For a space $X$, let $\pi_0(X)$ be the space of path components of $X$. Recall that the image of a path-connected space is path-connected. Thus, for a continuous map $f: X \to Y$, there is an induced map $\pi_0(f): \pi_0(X) \to \pi_0(Y)$ taking a path component $A$ to the path component containing $f(A)$. Show that this makes $\pi_0$ a functor from the category of topological spaces to the category of sets.
-\end{problab}
+\end{problem}
 
-\begin{solu}
+\begin{solution}
     First, we understand what the induced morphism $\pi_0(f)$ is. For a subset $A \subseteq X$, we let $[A] \in \pi_0(X)$ denote the path component of $A$. Then,
     \[ \pi_0(f)([A]) = [f(A)] \]   
     To show that $\pi_0$ is a functor, we need to show that it preserves identities and compositions.
@@ -158,17 +158,17 @@ For a space $X$, let $\pi_0(X)$ be the space of path components of $X$. Recall t
         \[ \pi_0(g \circ f) = \pi_0(g) \circ \pi_0(f) \]
     \end{itemize}
     Thus, $\pi_0$ preserves identities and compositions, and hence is a functor.
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{6} (Munkres, \emph{Topology}, 51.2) Given spaces $X$ and $Y$, let $[X,Y]$ denote the set of homotopy classes of maps of $X$ into $Y$.
+\begin{problem}{6} (Munkres, \emph{Topology}, 51.2) Given spaces $X$ and $Y$, let $[X,Y]$ denote the set of homotopy classes of maps of $X$ into $Y$.
 \begin{enumerate}
 \item Let $I = [0,1]$. Show that for any $X$, the set $[X,I]$ has a single element.
 \item Show that if $Y$ is path connected, then $[I,Y]$ has a single element.
 \end{enumerate}
-\end{problab}
+\end{problem}
 
-\begin{solu} .
+\begin{solution} .
     \begin{enumerate}
         \item Let $X$ be a topological space and let $f \in [X, I]$ be arbitrary. We will show that $f$ is homotopic to the constant map $c: X \to I$ given by $c(x) = 0$ for all $x \in X$. We define a homotopy $H: X \times I \to I$ by:
         \[ H(x, t) = (1-t)f(x) \] 
@@ -184,10 +184,10 @@ For a space $X$, let $\pi_0(X)$ be the space of path components of $X$. Recall t
         Finally, note that $H(x, 0) = f(x)$ and $H(x, 1) = g(x)$, hence $f$ and $g$ are homotopic. Since $f$ and $g$ were arbitrary, we conclude that $[I,Y]$ has a single element.
     \end{enumerate}
 
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{7}
+\begin{problem}{7}
 (Munkres, \emph{Topology}, 51.3) A space $X$ is said to be \emph{contractible} if the identity map $i_X: X \to X$ is nullhomotopic. 
 \begin{enumerate}
 \item Show that $I$ and $\R$ are contractible.
@@ -195,8 +195,8 @@ For a space $X$, let $\pi_0(X)$ be the space of path components of $X$. Recall t
 \item Show that if $Y$ is contractible, then for any $X$, the set $[X,Y]$ has a single element.
 \item Show that if $X$ is contractible and $Y$ is path connected then $[X,Y]$ has a single element. 
 \end{enumerate}
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     \bbni
     \begin{enumerate}
         \item Let $X = \R$. We define a homotopy $H : \R \times I \to \R$ by: 
@@ -229,7 +229,7 @@ For a space $X$, let $\pi_0(X)$ be the space of path components of $X$. Recall t
         Thus, as $f$ was arbitrary, every map $f \in [X, Y]$ is homotopic to the constant map with value $y$. Thus, the the transitivity of homotopy, $[X,Y]$ has a single element. 
 
     \end{enumerate}
-\end{solu}
+\end{solution}
 
 
 \end{document}

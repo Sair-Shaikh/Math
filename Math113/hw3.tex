@@ -6,7 +6,7 @@
 
 \input{title}
 
-\begin{problab}{30}
+\begin{problem}{30}
     Suppose that $X$ and $Y$ are normed vector spaces. 
     \begin{enumerate}
         \item Show that $\mathcal{L}(X, Y)$ is a normed vector space with respect to the the operator norm defined in lecture such that: 
@@ -14,89 +14,179 @@
         \item Show that if $S \in \mathcal{L}(Y, Z)$. Then, 
         \[  ||ST|| \leq ||S||||T|| \]
         \item Show that: 
-        \[ ||T|| = \inf\{ a \geq 0 : ||T(x)|| \leq \alpha||x|| \quad \forall x \in X\}\]
+        \[ ||T|| = \inf\{ a \geq 0 : ||T(x)|| \leq a||x|| \quad \forall x \in X\}\]
     \end{enumerate}
-\end{problab}
-\begin{solu} 
+\end{problem}
+\begin{solution} 
+    \bbni 
+    \begin{enumerate}
+        \item First, note that $\mathcal{L}(X, Y)$ is a vector space, through pointwise addition and scalar multiplication defined in $Y$, i.e. for $T, S \in \mathcal{L}(X, Y)$ and $\alpha \in \mathbb{F}$ we let:
+        \[(\alpha T + S)(x) := \alpha T(x) + S(x)\]
+        for all $x \in X$. Thus, we only need to show that the operator norm is a norm and satisfies the given property. Recall the definition of the operator norm for $T \in \mathcal{L}(X, Y)$:
+        \[ ||T|| = \sup_{||x|| \leq 1} ||T(x)||\] 
+        \begin{enumerate}
+            \item[Non-Neg.] Let $T \in \mathcal{L}(X, Y)$ be arbitrary. Then, for all $x \in X$ with $||x|| \leq 1$, $||T(x)|| \geq 0$ by the non-negativity of the norm on $Y$. Thus, $||T|| \geq 0$. 
+            \item[Homogeneity.] Let $T \in \mathcal{L}(X, Y)$ and $\alpha \in \mathbb{F}$. Then, for every $x \in X$, with $||x|| \leq 1$, we have that: 
+            \begin{align*}
+                ||(\alpha T)(x)|| &= ||\alpha T(x)|| \\
+                &= |\alpha|\cdot ||T(x)|| \\
+                &\leq |\alpha| \cdot ||T||
+            \end{align*} 
+            using the homogeneity of the norm on $Y$. Thus, 
+            \[ ||\alpha T|| \leq |\alpha| \cdot ||T(x)||\]
+            Similarly, we also have: 
+            \begin{align*}
+                |\alpha| \cdot ||T(x)|| &= ||\alpha T(x) || \\
+                &= ||(\alpha T)(x)|| \\
+                &\leq ||\alpha T||
+            \end{align*}
+            Thus, we have:
+            \[ |\alpha| \cdot ||T|| \leq ||\alpha T||\]
+            Thus, we have shown that:
+            \[ ||\alpha T|| = |\alpha| \cdot ||T||\]
+            \item[$\triangle$ ineq.] Let $T, S \in \mathcal{L}(X, Y)$. For every $x \in X$, with $||x|| \leq 1$, we have: 
+            \begin{align*}
+                ||(T+S)(x)|| &= ||T(x) + S(x)||  \\
+                &\leq ||T(x)|| + ||S(x)|| \\
+                &\leq ||T|| + ||S||
+            \end{align*}
+            using the triangle inequality for the norm in $Y$. Thus, 
+            \[ ||T+S|| \leq ||T|| + ||S||\]
+            \item[Pos. Def.] To prove this, we first will show that $||T(x)|| \leq ||T||||x||$ for all $x \in X$. For $x \in X$, by homogeneity (and non-negativity) of the norm on $X$: 
+            \[  \left\lvert\left\lvert\frac{1}{||x||} x\right\rvert\right\rvert = \frac{1}{||x||}\cdot ||x|| = 1 \]
+            Thus, we note that:
+            \[  \left\lvert\left\lvert T\left(\frac{1}{||x||} x\right)\right\rvert\right\rvert \leq ||T|| \]
+            By the linearity of $T$ and the homogeneity of the norm in $Y$, this implies:
+            \begin{align*}
+                \frac{1}{||x||} ||T(x)||  &= 
+                \left\lvert\left\lvert \frac{1}{||x||} T(x)\right\rvert\right\rvert \\
+                &=  \left\lvert\left\lvert T\left(\frac{1}{||x||} x\right)\right\rvert\right\rvert \\
+                &\leq ||T|| \\
+            \end{align*}
+            Thus, 
+            \[ ||T(x)|| \leq ||T|| \cdot ||x||\]
+            Now, let $T \in \mathcal{L}(X, Y)$ be such that $||T|| = 0$. Then, for all $x \in X$, we have that: 
+            \begin{align*}
+                ||T(x)|| &\leq ||T|| \cdot ||x|| \\
+                &= 0
+            \end{align*}
+            However, by the non-negativity of the norm in $Y$, we must have that $||T(x)|| = 0$ for all $x \in X$. Then, by positive definiteness of the norm in $Y$, we have that $T(x) = 0$ for all $x \in X$. Thus, $T$ is the zero map. \\
+            Conversely, if $T$ is the zero map, then for all $x \in X$ with $||x|| \leq 1$, we have that:
+            \[ ||T|| = ||0 \cdot T|| = 0 \cdot ||T|| = 0\]
+            by homogeneity. Thus, the norm is positive definite.
+        \end{enumerate}
+        Therefore, we have shown that the operator norm is a norm on $\mathcal{L}(X, Y)$ and satisfies for all $T \in \mathcal{L}(X, Y)$ and $x \in X$:
+        \[ ||T(x)|| \leq ||T|| \cdot ||x||\]
+        \item For any $x \in X$, with $||x|| = 1$, by applying the property from part 1 twice, we have that: 
+        \begin{align*}
+            ||ST(x)|| &= ||S(T(x))|| \\
+            &\leq ||S|| \cdot ||T(x)|| \\
+            &\leq ||S|| \cdot ||T|| \cdot ||x|| \\
+            &= ||S|| \cdot ||T||
+        \end{align*}
+        Thus,
+        \[ ||ST|| \leq ||S|| \cdot ||T||\]
+        \item Let $\alpha(T)$ be the defined infimum. \bbni
+        Since we have that $||T(x)|| \leq ||T||\cdot ||x||$ for all $x \in X$, $||T||$ is in the set we are taking the infimum over. Thus, $\alpha(T) \geq ||T||$. \bbni
+        Moreover, by the definition of $\alpha(T)$, we have that for all $x \in X$ with $||x|| \leq 1$,
+        \[ ||T(x)|| \leq \alpha(T)||x|| = \alpha(T) \]
+        Thus, $\alpha(T)$ is an upperbound on $||T(x)||$ with $||x|| \leq 1$. Therefore, by the definition of the supremum, we have that:
+        \[ ||T|| \leq \alpha(T)\]
+        Thus, we have shown that:
+        \[ ||T|| = \alpha(T) = \inf\{ a \geq 0 : ||T(x)|| \leq a||x|| \quad \forall x \in X\}\]
 
-\end{solu}
+
+    \end{enumerate}
+\end{solution}
 \newpage 
 
-\begin{problab}{31}
+\begin{problem}{31}
     Suppose that $X$ and $Y$ are Banach spaces with $T \in \mathcal{L}(X, Y)$. Suppose that $E$ is a closed proper subspace of $X$ such that $E \subset \ker(T)$. Show that there is a unique operator $\overline{T} \in \mathcal{L}(X/E, Y)$ such that $\overline{T}(q(x)) = T(x)$ for all $x \in X$ where $q: X \to X/E$ is the quotient map. Moreover, $||\overline{T}|| = ||T||$.
-\end{problab}
-\begin{solu} 
-
-\end{solu}
+\end{problem}
+\begin{solution} 
+    We claim the map $\overline{T}: X/E \to Y$ given by: 
+    \[ \overline{T}([x]) = T(x)\]
+    satisfies the desired properties. We need to show that $\overline{T}$ is well-defined, linear, satisfies $\overline{T}(q(x)) = T(x)$ for all $x \in X$, and satisfies $||\overline{T}|| = ||T||$ (hence is bounded/continous). \bbni
+    Let $x, y \in X$ be such that $[x] = [y]$. Then, note that $x - y \in E \subset \ker(T)$. Thus, $T(x)-T(y) = T(x-y) = 0$. Thus, $T(x) = T(y)$. Then, by the definition of $\overline{T}$, we have $\overline{T}([x]) = \overline{T}([y])$. Thus, $\overline{T}$ is well-defined. \bbni
+    Next, let $[x], [y] \in X/E$ and $\alpha \in \mathbb{F}$ be arbitrary. Then, noting the linearity of $q$ and $T$, we have that:
+    \begin{align*}
+        \overline{T}(\alpha[x] + [y]) &= \overline{T}([\alpha x + y]) \\
+        &= T(\alpha x + y) \\
+        &= \alpha T(x) + T(y) \\
+        &= \alpha \overline{T}([x]) + \overline{T}([y])
+    \end{align*}
+    Thus, $\overline{T}$ is linear. \bbni
+    
+\end{solution}
 \newpage 
 
 
-\begin{problab}{33}
+\begin{problem}{33}
     Let $E$ and $X$ be Banach spaces with $E$ finite dimensional. 
     \begin{enumerate}
         \item Show that every linear map $S: E \to X$ is bounded. 
         \item Show that a linear map $T: X \to E$ is bounded if and only if $\ker(T)$ is closed. 
     \end{enumerate}
-\end{problab}
-\begin{solu} 
+\end{problem}
+\begin{solution} 
 
-\end{solu}
+\end{solution}
 \newpage 
 
-\begin{problab}{34}
+\begin{problem}{34}
     Supposed that $E$ and $M$ are closed subspaces of a Banach space $X$. If $E$ is finite dimensional, show that $E+M = \{x+y: x \in E \, y \in M\}$ is closed. 
-\end{problab}
-\begin{solu} 
+\end{problem}
+\begin{solution} 
 
-\end{solu}
+\end{solution}
 \newpage 
 
-\begin{problab}{35}
+\begin{problem}{35}
     Suppose that $X$ and $Y$ are Banach spaces for $T \in \mathcal{L}(X, Y)$. Show that $T$ is injective with closed range if and only if: 
     \[ \inf \{||T(x)|| : ||x|| = 1\} > 0 \]
-\end{problab}
-\begin{solu} 
+\end{problem}
+\begin{solution} 
 
-\end{solu}
+\end{solution}
 \newpage 
 
 
-\begin{problab}{38}
+\begin{problem}{38}
     Let $X$ be a normed vector space. A Banach space $\tilde{X}$ is called a completion of $X$ is there is an isometric isomorphism $\iota: X \to \tilde{X}$ onto a dense subspace of $\tilde{X}$. Show that any two completions $(tilde{X}_1, \iota_1)$ and $(\tilde{X}_2, \iota_2)$ are isometrically isomorphic by an isomorphism: 
     \[ \Phi: \tilde{X}_1 \to \tilde{X}_2\]
     such that $\Phi(\iota_1(x)) = \iota_2(x)$ for all $x \in X$. 
-\end{problab}
-\begin{solu} 
+\end{problem}
+\begin{solution} 
 
-\end{solu}
+\end{solution}
 \newpage 
 
-\begin{problab}{39}
+\begin{problem}{39}
     Lets find a use for a genuine Minkowski functional. In this problem, we'll let $l_\R^\infty$ be the real Banach space of bounded sequences in $\R$. Define $m$ on $l_\R^\infty$: 
     \[ m(x) = \limsup_n x_n\]
     We clearly have $m(tx) = tm(x)$ if $t \geq 0$ and it is not hard to check that $m(x+y) \leq m(x) + m(y)$ for all $x, y \in l_\R^\infty$. We want to show that there are Banach limits or what I prefer to call a generalized limit on $l_\R^\infty$. This is we want to show that there is a functional $L \in l_\R^{\infty^*}$ such that:
     \[ L(S(x)) = L(x)\] 
     where $S \in \mathcal{L}(l_\R^\infty)$ is given by $S(x)_n = x_{n+1}$ and such that $\liminf_n x_n \leq L(x) \leq \limsup_n x_n$. (Hint provided).
-\end{problab}
-\begin{solu} 
+\end{problem}
+\begin{solution} 
 
-\end{solu}
+\end{solution}
 \newpage 
 
-\begin{problab}{40}
+\begin{problem}{40}
     Prove the following Lemma from lecture. Let $X$ be a complex vector space. Every real linear functional of $X$ is the real part of a complex linear functional on $X$. In fact, if $\phi = \Re(\psi)$ then $\psi(x) = \phi(x) - i\phi(ix)$. 
-\end{problab}
-\begin{solu} 
+\end{problem}
+\begin{solution} 
 
-\end{solu}
+\end{solution}
 \newpage 
 
-\begin{problab}{41}
+\begin{problem}{41}
     Suppose that $X$ is a normed vector space such that $X^*$ is seperable. Show that $X$ is seperable. (Hint provided).
-\end{problab}
-\begin{solu} 
+\end{problem}
+\begin{solution} 
 
-\end{solu}
+\end{solution}
 \newpage 
 
 \end{document}

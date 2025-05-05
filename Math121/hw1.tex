@@ -9,15 +9,15 @@
 
 
 
-\begin{problab}{1}
+\begin{problem}{1}
     Let $U \subset \mathbb{C}^n$ be a domain (i.e., a non-empty connected subset) and let $f : U \to \mathbb{C}$ be a holomorphic function.
     \begin{enumerate}
         \item Prove that $f$ satisfies analytic continuation: if it vanishes on an open subset of $U$, then it vanishes everywhere.
         \item Prove that $f$ satisfies the maximum principle: if $|f|$ admits a local maximum in $U$, then $f$ is constant.
         \item Let $M$ be a compact complex manifold. Prove that any holomorphic function on $M$ is constant.
     \end{enumerate}    
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     \bbni
     \begin{enumerate}
         \item Let $V \subseteq U$ be open such that $f|_V \equiv 0$. Let $G$ be the set of points in $z \in U$ such that $f$ vanishes in a neighborhood of $z$. We want to show that $G = U$. We do this by showing that $G$ is a non-empty clopen set. \bbni        
@@ -48,11 +48,11 @@
         Let $\{(U_i, \phi_i)\}_{i=1}^n$ be a cover of charts (we can pick finite as $M$ is compact). Then $p \in U_i$ for some $i$. Then, we have that $f \circ \phi_i^{-1}: \phi_i(U_i) \to \C$ attains a maximum at $\phi_i(p)$. Thus, by the previous part, $f \circ \phi_i^{-1}$ is constant on $\phi_i(U_i)$. Thus, $f$ is constant on $U_i$ (as $\phi^{-1}$ is bijective). \\
         Then, using part 1), and assuming that $M$ is connected, we can prove that $f$ is constant on all of $M$, propagating via open intersections of chart domains.
     \end{enumerate}
-\end{solu}
+\end{solution}
 \newpage
 
 
-\begin{problab}{2}
+\begin{problem}{2}
     \begin{enumerate}
         \item Show that the assignment $L \mapsto (L_{\mathbb{R}}, \text{mult}(i))$ gives an equivalence between the category of complex vector spaces and the category of pairs $(V, J)$, where $V$ is a real vector space, $J : V \to V$ is an $\mathbb{R}$-linear operator satisfying $J^2 = -\mathrm{Id}_{L_\mathbb{R}}$, and a morphism $(V, J) \to (W, K)$ is defined as an $\mathbb{R}$-linear map $f : V \to W$ that intertwines $J$ and $K$, i.e., such that $K \circ f = f \circ J$.
 
@@ -64,11 +64,11 @@
             \item Each element $v \in V_{\mathbb{C}}$ can be written as $v = v_1 + v_2$ along the above decomposition. Show that $v \in V$ if and only if $v_2 = \bar{v}_1$.
         \end{enumerate}
     \end{enumerate}
-\end{problab}
+\end{problem}
 \newpage
 
 
-\begin{problab}{3}
+\begin{problem}{3}
     Let $E, F$ be real vector spaces and let $G$ be a complex vector space, all finite-dimensional.
     \begin{enumerate}
         \item Show that $E \otimes_{\mathbb{R}} G$ admits a natural structure of a complex vector space. Construct a basis in terms of bases of $E$ and $G$. Show that $E \otimes_{\mathbb{R}} G = (E \otimes_{\mathbb{R}} \mathbb{C}) \otimes_{\mathbb{C}} G$.
@@ -86,8 +86,8 @@
             \ker(f_{\mathbb{C}}) = \ker(f) \otimes_{\mathbb{R}} \mathbb{C}, \quad \mathrm{Im}(f_{\mathbb{C}}) = \mathrm{Im}(f) \otimes_{\mathbb{R}} \mathbb{C}.
         \]
     \end{enumerate}
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     \bbni
     \begin{enumerate}
         \item Let $e \in E$ and $g \in G$. Then, we define the scalar multiplication by $z \in \C$ by using the complex structure of $G$: 
@@ -204,13 +204,13 @@
         Let $p \in \img(f)$. Then, there exists $e \in E$ such that $f(e) = p$. Then, we have $f_\C(e \otimes_\R z) = f(e) \otimes_\R z = p \otimes_\R z$. Thus, $\img(f) \otimes_\R \C \subseteq \img(f_\C)$. \\
         Conversely, let $p \otimes_\R z \in \img(f_\C)$. Then, there exists $e \otimes_\R z' \in E \otimes_\R \C$ such that $f_\C(e \otimes_\R z') = p \otimes_\R z$. Then, by the definition of $f_\C$, we have $z = z'$ and $p = f(e)$. Thus, $p \in \img(f)$. Thus, $\img(f_\C) \subseteq \img(f) \otimes_\R \C$. Hence, we conclude $\img(f_\C) = \img(f) \otimes_\R \C$.
     \end{enumerate}
-\end{solu}
+\end{solution}
 
 \newpage
 
 
 
-\begin{problab}{4}
+\begin{problem}{4}
     Let $U \subset \mathbb{C}$ be an open subset and let $D \subset \Omega$ be a closed disk.
 
     \begin{enumerate}
@@ -230,10 +230,10 @@
         
         \item In the previous question, show that if $g$ is $\mathcal{C}^\infty$, then $f$ can also be chosen to be $\mathcal{C}^\infty$.
     \end{enumerate}
-\end{problab}
+\end{problem}
 \newpage
 
-\begin{problab}{5}
+\begin{problem}{5}
     Let $E$ and $F$ be two holomorphic vector bundles on a complex manifold $X$. Given an open cover $\{ U_\alpha \}$ of $X$ that trivializes $E$, the vector bundle $E$ is described on overlaps $U_\alpha \cap U_\beta$ by holomorphic transition functions:
     \[
         \rho_{\alpha \beta} : U_\alpha \cap U_\beta \to \mathrm{GL}_n(\mathbb{C}).
@@ -250,8 +250,8 @@
         
         \item Using the transition maps of $E$ and $F$, construct the following vector bundles by writing down explicitly their transition functions: $E \otimes_{\mathbb{C}} F$, $E \oplus F$, $\Lambda^n E$.
     \end{enumerate}
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     \bbni
     \begin{enumerate}
         \item Let $\{U_\alpha\}$ be an open cover of $X$ that trivializes $E$, with respective maps $\tau_\alpha: \pi^{-1}(U_\alpha) \to U_\alpha \times \C^n$. Then, note that $\rho_{\alpha\beta}: \tau_\alpha(\pi^{-1}(U_\alpha \cap U_\beta)) \to U_\beta \times \C^n$ is given by: 
@@ -331,7 +331,7 @@
         These are all holomorphic, as they are holomorphic on each component. 
         
     \end{enumerate}
-\end{solu}
+\end{solution}
 
 
 % \subsection*{Questions:}

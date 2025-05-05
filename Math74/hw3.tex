@@ -7,10 +7,10 @@
 
 \input{title}
 
-\begin{problab}{1}
+\begin{problem}{1}
     Let $p: \R^{n+1} \setminus \{0\} \to \bb{RP}^n$ be the quotient map from HW1. For $n \geq 2$, show that $p|_{S^n}$ is a degree two cover and deduce that $\pi_1(\bb{RP}^n) \simeq \bb{Z}/2\bb{Z}$. (The fundamental group is $\bb{Z}$ for $n=1$ as $S^1 \cong \bb{RP}^1$.)
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Recall the quotient map identifies points in $\R^{n+1} \setminus \{0\}$ as follows: 
     \[ \forall \lambda \neq 0 \in \R: \, (x_0, \cdots, x_n) \sim \lambda (x_0, \cdots, x_n)\]
     Let $(x_0, \cdots, x_n) \in S^n$ be a point on the sphere. Then, we additionally know that:
@@ -28,13 +28,13 @@
     is a bijection. Thus, $|\pi_1(\RP^n, x)| = 2$. Thus, 
     \[ \pi_1(\RP^n, x) = \Z/2\Z\]
 
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{2}
+\begin{problem}{2}
     Let $g\colon S^1 \to S^1$ be the covering map $g(z) = z^n$ for $n \in \bb{Z}$. Under the isomorphism $\pi_1(S^1, (1,0)) \cong \bb{Z}$ that we proved, compute $g_* \colon \bb{Z} \to \bb{Z}$ and the map $\phi_g: \bb{Z} \to g^{-1}(1,0)$ defined by lifting loops so that they still start at $(1,0)$.
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Let $\gamma_k(s) = e^{2\pi i ks} \in \pi_1(S^1, (1, 0))$ be the loop that goes around the circle $k$ times. Recall the isomprhism $f: \pi_1(S^1, (1,0)) \to \bb{Z}$, which maps $f(\gamma_k) = k$. \bbni
     Next, we calculate $g_*([\gamma_k])$. We have:
     \begin{align*}
@@ -59,18 +59,18 @@
     \end{align*}
     Beyond the requirements of the problem, it is also interesting to show that $g^{-1}(1)$ is the cyclic group of order $n$ under multiplication, since it contains the $n$th roots of unity. If we identify $e^{2i\pi k/n} \to k$, then we get an isomorphism from $C_n \to \Z/n\Z$ (written additively). This is a standard exercise. Under this identification, as well as the identification of $\pi_1(S^1, (1,0))$ with $\Z$, we have that: $\phi_g: \Z \to \Z/n\Z$ is given by:
     \[ \phi_g(k) = k\pmod n\]
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{3}
+\begin{problem}{3}
     Show that there are no retractions $r \colon X \to A$ in the following cases:
     \begin{enumerate}
     \item $X = \R^3$ and $A$ is any subspace homeomorphic to $S^1$.
     \item $X = S^1 \times D^2$ and $A$ is its boundary torus $S^1 \times S^1$.
     \item $X$ is the M{\" o}bius band and $A$ is its boundary circle.
     \end{enumerate}
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     \bbni
     \begin{enumerate}
         \item If we had such a retraction $r$, the push-forwards on the fundamental group will yield the following commutative diagram:
@@ -134,25 +134,25 @@
         \[ 1 = r_{B*}(2) = r_{B*}(1+1) = r_{B*}(1)+r_{B*}(1) \] 
         However, there is no integer whose sum with itself is $1$. Thus, $r_B$ cannot exist.
     \end{enumerate}
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{4}
+\begin{problem}{4}
     Use the intermediate value theorem to prove the $1$-dimensional version of the Brouwer fixed point theorem: If $f \colon I \to I$ is continuous, there is a point $x \in I$ such that $f(x) = x$. 
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Notice first that if $f(1) = 1$ or $f(0) = 0$ we are done. Thus, we can assume that $f(0) > 0$ and $f(1) < 1$. Define $g: I \to [-1, 1]$ as $g(x) = f(x) - x$. $g$ is continous as it is the difference of two continous functions. Then, notice: 
     \[g(0) = f(0)-0 > 0 \qquad g(1) = f(1) - 1 < 0 \] 
     Thus, by the intermediate value theorem, there exists a point $c \in (0, 1)$ such that $g(c) = 0$. Thus, we have:
     \[f(c) - c = 0 \implies f(c) = c\] 
     and we are done.
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{5}
+\begin{problem}{5}
     Use the intermediate value theorem to prove the $1$-dimensional version of the Borsuk-Ulam theorem: If $f: S^1 \to \R$ is continuous, there is a point $x \in S^1$ such that $f(x) = f(-x)$.
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Define $g: S^1 \to \R$ as:
     \[ g(x) = f(x) - f(-x)\]
     Notice that $g$ is continous as it is the sum of two continous functions. Moreover, notice that: 
@@ -160,6 +160,6 @@
     We claim that $g(c) = 0$ for some $c \in S^1$. First, if $g$ is identically $0$, we pick any point to be $c$. Otherwise, we can assume that there exists a point $x \in S^1$ such that $g(x) \neq 0$. Then, since $g(-x) = -g(y)$, we have that $g$ takes both a positive and a negative value. Thus, there exists a point $c \in S^1$ (more specifically, on either arc from $x$ to $-x$) such that $g(c) = 0$. Thus, we have:
     \[g(c) = 0 \implies f(c) = f(-c)\]
     and we are done. 
-\end{solu}
+\end{solution}
 
 \end{document}

@@ -6,10 +6,10 @@
 \begin{document}
 
 \input{title}
-\begin{problab}{1}
+\begin{problem}{1}
 (0.10) A space is called contractible if the identity map is nullhomotopic. Show that \( X \) is contractible if and only if for every space \( Y \), every map \( f : X \to Y \) is nullhomotopic. Similarly, show that \( X \) is contractible if and only if for every \( Y \), every map \( f : Y \to X \) is nullhomotopic.
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     $(\impliedby)$ Assume for every $Y$ every map $f : X \to Y$ is nullhomotopic. Then, in particular, picking $Y = X$ and $f = \id_X$, we have that $\id_X$ is nullhomotopic. Thus, $X$ is contractible. \\
     $(\implies)$ Assume that $X$ is contractible and $Y$ be any space. Thus, there exists a homotopy $H: X \times I \to X$ from $\id_X$ to a constant map $\lambda_c : X \to X$ for some $c \in X$. Then, for any map $f : X \to Y$, we claim that $H': X \times I \to Y$ defined by $H'(x, t) = f(H(x, t))$ is a homotopy from $f$ to the constant map $f(c)$. Similarly, for any map $g$ from $Y$ to $X$, we claim that $H'': Y \times I \to X$ defined by $H''(y, t) = H(g(y), t)$ is a homotopy from $g$ to the constant map $g(c)$. Note that $H'$ and $H''$ are continous as they are compositions of continous maps. Moreover, we check, for all $x \in X$ and $y \in Y$,
     \begin{align*}
@@ -19,17 +19,17 @@
         H''(y, 1) &= H(g(y), 1) = \lambda_c(g(y)) = c
     \end{align*}
     Thus, $H'$ is a homotopy from $f$ to the constant map valued at $f(c)$ and $H''$ is a homotopy from $g$ to the constant map valued at $c$.
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{2}
+\begin{problem}{2}
 Let \( A \subset X \) and suppose \( r : X \to A \) is a continuous map such that \( r(a) = a \) for all \( a \in A \) (i.e., \( r \) is a retraction of \( X \) onto \( A \)). If \( a_0 \in A \), show that
 \[
 r_* : \pi_1(X, a_0) \to \pi_1(A, a_0)
 \]
 is surjective. (Hint: Consider also the inclusion map of \( A \) into \( X \).)
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Let $\iota: A \to X$ be the inclusion map. Then, note that for all $a \in A$: 
     \[ r \circ \iota (a) = a\]    
     Thus, for any $f: I \to A$, we have $r \circ \iota \circ f = f$. Moreover, we have $\iota_*: \pi_1(A, a_0) \to \pi_1(X, a_0)$ with $\iota_*([f]) = [\iota \circ f]$. Let $p \in \pi_1(A, a_0)$ be arbitrary. Then, we claim that $\iota_*([p]) \in \pi_1(X, a_0)$ maps to $[p]$ under $r_*$. We compute:
@@ -39,14 +39,14 @@ is surjective. (Hint: Consider also the inclusion map of \( A \) into \( X \).)
         &= [p] \\
     \end{align*} 
     Thus, as $[p]$ was arbitrary, we have shown that $r_*$ is surjective.
-\end{solu}
+\end{solution}
 \newpage
 
 
-\begin{problab}{3}
+\begin{problem}{3}
 (1.1.3) If \( X \) is a path-connected space, show that \( \pi_1(X) \) is abelian if and only if every change-of-basepoint isomorphism (\( \hat{\alpha} \) in class or \( \beta_h \) in Hatcher) depends only on the endpoints of the path.
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     $(\implies)$ Assume $\pi_1(X)$ is abelian. Let $\alpha_1, \alpha_2: I \to X$ be two paths from $x_0$ to $x_1$. Then, $\hat{\alpha_i}: \pi_1(X, x_0) \to \pi_1(X, x_1)$ are given by $\hat{\alpha_i}([f]) = [\overline{\alpha_i} \cdot f \cdot \alpha_i]$. Note that $\pi_1(X, x_1)$ is abelian as $\pi_1(X)$ is. We show, for any $[f] \in \pi_1(X, x_0)$ that:
     \begin{align*}
         \hat{\alpha_1}([f]) &= [\overline{\alpha_1} \cdot f \cdot \alpha_1] \\
@@ -66,11 +66,11 @@ is surjective. (Hint: Consider also the inclusion map of \( A \) into \( X \).)
         &= [\overline{g} \cdot f \cdot g]
     \end{align*}
     Thus, $\pi_1(X, x_0)$ is abelian. Since $x_0$ was arbitrary, we have shown that $\pi_1(X)$ is abelian.
-\end{solu}
+\end{solution}
 \newpage
 
 
-\begin{problab}{4}
+\begin{problem}{4}
 (1.1.6) Note that a loop based at \( x_0 \) can be regarded as a continuous map of pointed spaces
 \[
 (S^1, (1, 0)) \to (X, x_0).
@@ -80,8 +80,8 @@ Let \( [S^1, X] \) be the set of homotopy classes of maps from \( S^1 \) to \( X
     \item[(a)] Show that \( \Phi([f]) = \Phi([g]) \) if and only if \( [f] \) and \( [g] \) are conjugate in \( \pi_1(X, x_0) \).
     \item[(b)] Deduce that if \( X \) is path connected, then \( [S^1, X] \) is in bijection with conjugacy classes of \( \pi_1(X, x_0) \).
 \end{itemize}
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     \bbni
     \begin{itemize}
         \item[(a)] Let $f, g: S^1 \to X$ be two loops based at $x_0$. \\
@@ -124,23 +124,23 @@ Let \( [S^1, X] \) be the set of homotopy classes of maps from \( S^1 \) to \( X
         \end{align*}
         Thus, $\Phi([\alpha \cdot f \cdot \overline{\alpha}]) = [f]$. Thus, $\Phi$ is surjective. Therefore, there is a bijection between the conjugacy classes of $\pi_1(X, x_0)$ and $[S^1, X]$.
     \end{itemize}
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{5}
+\begin{problem}{5}
 Suppose that \( p : E \to B \) is a covering map where \( B \) is connected. Show that if \( p^{-1}(b_0) \) has \( k \) elements for some \( b_0 \in B \), then \( p^{-1}(b) \) has \( k \) elements for every \( b \in B \).
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Let $b \in B$ be arbitrary. Since $p$ is a covering map, there exists open $U$ such that $b \in U$ and $p^{-1}(U) = \bigcup_{\alpha \in A} U_\alpha$ where $U_\alpha$ are disjoint open subsets in $E$ such that $p|_{U_\alpha}: U_\alpha \to U$ is a homeomorphism, where $A$ is some space. Since each $p|_{U_\alpha}$ is a homeomorphism onto $U$, we must have $p^{-1}(b) \cap U_\alpha$ be a singleton. Thus, $|p^{-1}(b)| \leq |A|$. Since the $U_\alpha$ are disjoint, each $U_\alpha$ must contain a distinct element, thus, $|p^{-1}(b)| = |A|$. Similarly, $\forall b' \in U$, the same arguments hold, thus, $|p^{-1}(b')| = |A|$. Thus, the size of the pre-image is constant for any two points within the same evenly covered open. \bbni
     Let $G_i = \{b \in B : p^{-1}(b) = i\}$ for $i \in \mathbb{N} \cup \{\infty\}$. For every $b \in G_i$, we know that there exists an evenly covered open $U_b$ such that every point in $U_b$ has $i$ pre-images. Thus, $U_b \in G_i$. Thus, $G_i$ is open for all $i$. Moreover, as $B \setminus G_i = \bigcup_{j \neq i} G_j$, is a union of opens, hence open. Thus, $G_i$ is also closed for all $i$. \bbni
     Since $B$ is connected, the only non-empty clopen set is $B$. We know that $G_k$ is non-empty as $b_0 \in G_k$. Since $G_k$ is clopen, $G_k = B$. Thus, $\forall b \in B$, $p^{-1}(b) = k$.
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{6}
+\begin{problem}{6}
 Let \( q : X \to Y \) and \( r : Y \to Z \) be covering maps such that \( r \) has finite degree. Show that \( p = r \circ q \) is a covering map.
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Let $z \in Z$ be some point. We need to show there exists a $U \subseteq Z$ with $z \in U$ such that $U$ is evenly covered by $p$. Since $r$ is a covering map of finite degree, call it $d$, there exists an evenly covered $U \subset Z$ such that: 
     \[ r^{-1}(U) = \bigcup_{i = 1}^d V_i \]
     where $V_i$ are disjoint open sets in $Y$ such that $r|_{V_i}: V_i \to U$ is a homeomorphism. \bbni
@@ -155,6 +155,6 @@ Let \( q : X \to Y \) and \( r : Y \to Z \) be covering maps such that \( r \) h
     Let $A = \bigcup_{i = 1}^d A_i$. Then, we have:
     \[p^{-1}(U') = \bigcup_{\alpha \in A} C_\alpha\]
     where $C_\alpha$ are disjoint open sets in $X$ such that $p|_{C_\alpha}: C_\alpha \to U'$ is a homeomorphism for all $\alpha \in A$, where $U'$ is an open set containing $z$. Since $z$ was arbitrary, this shows that $p$ is a covering map.
-\end{solu}
+\end{solution}
 
 \end{document}

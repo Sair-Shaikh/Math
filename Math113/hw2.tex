@@ -6,10 +6,10 @@
 
 \input{title}
 
-\begin{problab}{1}
+\begin{problem}{1}
     Show that $X$ is compact if and only if given any family $\mathcal{F}$ of closed sets of $X$ with the finite intersection property, we have $\bigcap_{F \in \mathcal{F}} F \neq \emptyset$.
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     \bbni
     \begin{itemize}
         \item[$(\implies$)] Assume $X$ is compact. We will prove that contrapositive. Let $\{F_\alpha\}$ be a family of closed sets such that: 
@@ -30,18 +30,18 @@
         \[X \setminus \bigcup_{i=1}^n U_i = \emptyset\]
         Thus, $\bigcup_{i=1}^n U_i = X$. Therefore, $\{U_1, \ldots, U_n\}$ is a finite subcover of $\{U_\alpha\}$. Therefore, $X$ is compact.
     \end{itemize}
-\end{solu}
+\end{solution}
 
 \newpage
 
-\begin{problab}{2}
+\begin{problem}{2}
     Let $X$ be a metric space. 
     \begin{enumerate}
         \item Show that if $E$ is a compact subspace of $X$, then $E$ is closed. 
         \item Show that if $X$ is compact and $E$ is closed in $X$, then $E$ is compact.
     \end{enumerate}
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     \bbni
     \begin{enumerate}
         \item Let $E$ be a compact subspace of $X$. To show that $E$ is closed, it suffices to show that $X \setminus E$ is open. Let $x \in X \setminus E$. Then, we define to families of open sets, $\{U_e\}_{e \in E}$ and $\{V_e\}_{e \in E}$, such that:
@@ -59,43 +59,43 @@
         \[ \bigcup_{i=1}^n U_i = \bigcup_{i=1}^n (V_i \cap E) = \left(\bigcup_{i=1}^n V_i\right) \cap E = E \]
         Thus, $U_1, \ldots, U_n$ is a finite subcover of $U_\alpha$ in $E$. Therefore, $E$ is compact.
     \end{enumerate}
-\end{solu}
+\end{solution}
 
 \newpage
 
-\begin{problab}{3}
+\begin{problem}{3}
     We say that $D$ is dense in $X$ if $\overline{D} = X$. Show that $D$ is dense if and only if $D$ meets every non-empty open set in $X$. 
-\end{problab}
+\end{problem}
 
-\begin{solu}
+\begin{solution}
     We use the fact that $x \in \overline{D}$ (is a point of closure) if and only if every open neighborhood of $x$ intersects $D$. This is in Royden-Fitzpatrick as the definition of closure, with Ch9.2, Proposition 3 and 4 proving that the closure is closed and the complement of an open.
     \begin{itemize}
         \item[($\implies$)] Assume $D$ is dense in $X$. Let $U$ be a non-empty open set in $X$. Then, there exists a point $x \in U$. Since $\overline{D} = X$, $x \in \overline{D}$. Thus, every open neighborhood of $x$ intersects $D$. Thus, $U$ intersects $D$.
         \item[($\impliedby$)] Assume $D$ meets every non-empty open set in $X$. Let $x \in X$ be arbitrary. Then, $D$ meets every non-empty open set containing $x$. Thus, $x$ is a point of closure of $D$. Thus, $x \in \overline{D}$. Since $x$ is arbitrary, we have that $\overline{D} = X$. Thus, $D$ is dense in $X$.
     \end{itemize}
-\end{solu}
+\end{solution}
 \newpage
 
 
-\begin{problab}{4}
+\begin{problem}{4}
     Show that a compact metric space has a countable dense subset. It is enough for the space to be totally bounded.
-\end{problab}
+\end{problem}
 
-\begin{solu}
+\begin{solution}
     Let $(X, \rho)$ be a compact metric space. We define a countable set of open covers, indexed by $\mathbb{N}$, where $\mathcal{U}_n$ is the open cover: 
     \[ \mathcal{U}_n = \{ B_{1/n}(x) : x \in X\} \] 
     Then, for each $n$, the cover $\mathcal{U}_n$ has a finite subcover. Let $C_n$ be the centers of the balls in the finite subcover, for each $n$. The union of these sets over $n$ is countable, as it is a countable union of finite sets. Call this set $C$. We will show that $C$ is dense in $X$. \bbni
     Let $U$ be a non-empty open set in $X$. Then, there exists a point $x \in U$. Since $U$ is open, there exists an $\epsilon$, such that $B_\epsilon(x) \subseteq U$. Pick an $n$ such that $1/n < \epsilon$. Then, there exists a center $c \in C_n$ such that $x \in B_{1/n}(c)$ as $C_n$ is the set of centers of a finite cover made of $1/n$-balls. Thus, we have:
     \[\rho(x, c) < 1/n < \epsilon\]
     Thus, $c \in B_\epsilon(x) \subseteq U$. Therefore, $U$ intersects $C$. Since $U$ is arbitrary, every non-empty open set in $X$ intersects $C$. Thus, $C$ is dense in $X$. Therefore, $C$ is a countable dense subset of $X$.
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{5}
+\begin{problem}{5}
     Show that an equicontinous family of functions on a compact metric space is uniformly equicontinous as in lecture. (Some texts do not define equicontinous at a point. Instead, whether $X$ is compact or not, equicontinuity is what we have called uniformly equicontinuous. Fortunately, there is no distinction for compact spaces.)
-\end{problab}
+\end{problem}
 
-\begin{solu}
+\begin{solution}
     % Equicontinous Family + Compact Space = Uniformly Equicontinous Family. \bbni
     Let $(X,\rho)$ be a compact metric space. Let $\mathcal{J}$ be an equicontinous family of functions from $(X, \rho)$ to $(Y, \sigma)$. Let $\epsilon > 0$. We need to show that there exists a $\delta > 0$, such that for all $F \in \mathcal{J}$, $x, y \in X$:
     \[\rho(x,y) < \delta \implies \sigma(F(x), F(y)) < \epsilon \]
@@ -112,15 +112,15 @@
         &= \epsilon
     \end{align*}
     Thus, $\mathcal{J}$ is uniformly equicontinous.
-\end{solu}
+\end{solution}
 \newpage 
 
 
-\begin{problab}{6} 
+\begin{problem}{6} 
     Show that if $X$ a metric space which is not totally bounded, then there is an unbounded continous function $f: X \to \R$. (Hints provided).
-\end{problab}
+\end{problem}
 
-\begin{solu}
+\begin{solution}
     Assume $(X, \rho)$ is not totally bounded. Then, there exists a $r > 0$ such that there is no finite collection of open balls of radius $r$ that covers $X$. We will use this to construct a sequence $(x_n)$ where $\rho(x_i, x_j) > r$ for all $i \neq j$. \bbni
     Since $X$ is non-empty, we can pick a point $x_1 \in X$. Moreover, if $x_1, \cdots, x_k$ are already picked points with $\rho(x_i, x_j) > r$ for all $i \neq j$ and $1 \leq i,j \leq k$, we can pick a point $x_{k+1} \in X \setminus \bigcup_{i=1}^k B_r(x_i)$, as the finite collection of open balls of radius $r$ centered at $x_1, \cdots, x_k$ does not cover $X$. Moreover, this means that $\rho(x_{k+1}, x_i) > r$ for all $i = 1, \cdots, k$. Thus, $\rho(x_i, x_j) > r$ for all $i\neq j$ where $1 \leq i, j \leq k+1$. Thus, by induction, we can construct a sequence $(x_n)$ such that $\rho(x_i, x_j) > r$ for all $i \neq j$. \bbni
     Secondly, we claim that for $i \neq j$, we have $B_{\frac r2}(x_i) \cap B_{\frac r2}(x_j) = \emptyset$. To see this, assume that there exists a $y \in B_{\frac r2}(x_i) \cap B_{\frac r2}(x_j)$. Then, we have:
@@ -136,14 +136,14 @@
     Next, we consider the function: 
     \[f(x) = \sum_{n \in \N} nf_n(x)\]
     since the sets $B_{\frac r2}(x_i)$ are disjoint, we have that at most one $f_n(x)$ is non-zero for every $X$. Thus, the function is continous. Moreover, the function is unbounded, as for any $M > 0$, we can pick $n > M$, and then $f(x_n) = nf_n(x_n) > M$. Thus, we are done.
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{7}
+\begin{problem}{7}
     Let $X$ be a metric space such that every continous function $f: X \to \R$ attains its minimum value. Show that $X$ is complete. (Hints provided).
-\end{problab}
+\end{problem}
 
-\begin{solu}
+\begin{solution}
     Let $(x_n)$ be a Cauchy sequence in $X$. We will show that $(x_n)$ converges to a point in $X$. \bbni
     Since every function attains its minimum value, every function also attains its maximum value, as this is the minimum value for $-f$. Thus, every function $X \to \R$ is bounded. By the contrapositive of the previous question, this implies that $X$ is totally bounded. \bbni
     For any $x \in X$, we claim that $(\rho(x, x_n))_n$ is Cauchy in $\R$. Let $\epsilon > 0$. Since $(x_n)$ is Cauchy, there exists an $N$ such that for all $m, n > N$, we have: 
@@ -182,13 +182,13 @@
         \lim_{n\to \infty} \rho(x_n, x_0) = 0
     \end{align*}
     which is precisely equivalent to the definition of convergence in metric spaces.
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{8}
+\begin{problem}{8}
     Show that a metric space is compact if and only if every continous real-valued function on $X$ attains its maximum value. (Note that every real-valued function attains its maximum if and only if every real-valued function attains its minimum. Consider $-f$.)
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     \bbni
     \begin{itemize}
         \item[$(\implies$)] We did this in class. Here's a reproduction of the argument. Let $X$ be a compact metric space and $f: X \to \R$ be a continous function. As $X$ is  Since $X$ is compact, $f$ is bounded.  Let $M := \sup f(x) \in (-\infty, \infty]$. Thus, for $M \neq \infty$, there exists a sequence $(x_n)$ such that: 
@@ -203,13 +203,13 @@
         Thus, $f$ attains its maximum value. Considering $-f$, the same argument shows that $f$ attains its minimum value. 
         \item[$(\impliedby$)] Assume every real-valued continous function on $X$ attains its maximum value. By the previous problem (Problem 7), we know that $X$ is complete. Moreover, as every real-valued function attains its maximum value, there is no unbounded continous function on $X$. Thus, by the contrapositive of the problem before the previous problem (Problem 6), we have that $X$ is totally bounded. Finally, we claimed in class that a metric space is compact if and only if it is complete and totally bounded. Thus, $X$ is compact.        
     \end{itemize}
-\end{solu}
+\end{solution}
 \newpage 
 
-\begin{problab}{9}
+\begin{problem}{9}
     Show that $X$ is a Baire space if and only if whenever a countable union $\bigcup F_n$ of closed sets $F_n$ has interior in $X$, then at least one of the $F_n$ has interior in $X$.
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     First, we introduce a lemma: 
     \begin{lemma}
         If $F$ is a closed set with empty interior in $X$, if and only if $X \setminus F$ is dense in $X$.         
@@ -227,13 +227,13 @@
     $(\impliedby)$ Assume that for any collection $F_n$ of closed sets, if $\bigcup_{n \in \N} F_n$ has interior in $X$, then at least one of the $F_n$ has interior in $X$. Let $O_n$ be a countable collection of dense open sets in $X$. Then $F_n = X \setminus O_n$ is a countable collection of closed sets. Moreover, by the lemma, $F_n$ has empty interior for all $n \in \N$. Thus, by the contrapositive of our assumption, we have that $\bigcup_{n \in \N} F_n$ has empty interior. Thus, by $(*)$ and using the lemma again, we have that:
     \[ \bigcap_{n \in \N} O_n \text{ is dense in $X$} \]
     is dense in $X$. Thus, $X$ is a Baire space.
-\end{solu}
+\end{solution}
 \newpage 
 
-\begin{problab}{10}
+\begin{problem}{10}
     Let $U$ be an non-empty open subset of a metric space $(X, \rho)$. Show that $U$ admits a complete metric equivalent to the metric inherited from $X$.
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     First, we claim that if there exists a homeomorphism $\phi: (U, \rho) \to (Y, \sigma)$, where $(Y, \sigma)$ is a complete metric space, then there exists a complete metric $\delta$ on $U$ that is equivalent to $\rho|_U$. Define: $\delta(x,y) = \sigma(\phi(x), \phi(y))$. Then, for any $x \in X$ and $\epsilon > 0$, there exists $\epsilon'$ such that:
     \[\phi(B_{\epsilon'}(x)) \cong B_{\epsilon}(\phi(x))\] 
     via the homeomorphism. Thus, we have:
@@ -251,6 +251,6 @@
     Assume $x \not \in U$. Then, $(x_n) \to x \in A$. However, as $(x_n) \to x$, we have $\rho(x_n, A) \to 0$. Thus, $(y_n) \to \infty$ is unbounded and does not converge. This is a contradiction. Thus, we have $x \in U$. \bbni
     Thus, $(x, t) = (x, \rho(x, A)^{-1})$ is in the image of $f$. Thus, we have that $(x_n, y_n) \to (x, y)$ in $f(U)$. Thus, $f(U)$ is closed and hence complete. \bbni
     Finally, we note that since $f$ is a homeomorphism onto its image, we have found an equivalent metric $\delta$ to $\rho|_U$ such that $(U, \delta)$ is complete.
-\end{solu}
+\end{solution}
 
 \end{document}

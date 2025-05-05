@@ -6,10 +6,10 @@
 
 \input{title}
 
-\begin{problab}{1}
+\begin{problem}{1}
     Suppose that $f: X \to Y$ is a homotopy equivalence. Show that the map $\pi_0(f): \pi_0(X) \to \pi_0(Y)$ from Homework 1, Problem 5 is a bijection.
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Recall the map $\pi_0(f): \pi_0(X) \to \pi_0(Y)$ is defined as follows. For $[x] \in \pi_0(X)$, we have:
     \[ \pi_0(f)([x]) = [f(x)] \]
     Let $g$ be a homotopy inverse of $f$, i.e. $f \circ g \simeq \id_Y$ and $g \circ f \simeq \id_X$. First, we show that for any $x \in X$, we have $[\id_X(x)] = [g(f(x))] \in \pi_0(X)$. \\
@@ -19,13 +19,13 @@
     Thus, we conclude that $\pi_0(g \circ f) = \pi_0(\id_X)$. By the functoriality of $\pi_0$, we have that: 
     \[\pi_0(g) \circ \pi_0(f) = \id_{\pi_0(X)}\]
     Thus, $\pi_0(f)$ is injective. Similarly, we can show that $\pi_0(f) \circ \pi_0(g) = \id_{\pi_0(Y)}$, hence $\pi_0(f)$ is surjective. Thus, $\pi_0(f)$ is bijective. We can also just note that $\pi_0(f)$ is has a two-sided inverse to conclude this.
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{2}
+\begin{problem}{2}
     (0.11) Show that a continuous map $f: X \to Y$ is a homotopy equivalence if there exist continuous maps $g, h: Y \to X$ such that $f\circ g \simeq \id_Y$ and $h \circ f \simeq \id_X$. More generally, show that $f$ is a homotopy equivalence if $f \circ g$ and $h \circ f$ are homotopy equivalences.
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Since homotopy equivalence respects composition, note that: 
     \begin{align*}
         h &= h \circ \id_Y \\
@@ -53,13 +53,13 @@
     %     K(y, 1) &= H'(g(y), 1) = \id_X(g(y)) = g(y) 
     % \end{align*}  
     % Thus, $K'$ is a homotopy from $h \circ f \circ g$ to $g$. Since homotopy is an equivalence relation, we concluse that $g \simeq h$. Since composition respects the homotopy equivalence relation, we have that $f \circ g \simeq f \circ h \simeq \id_X$. Thus $h$ is a homotopy inverse of $f$ and $f$ is a homotopy equivalence. \\
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{3}
+\begin{problem}{3}
     Suppose that $G$ is a group and $G_1, \hdots, G_n$ are subgroups that generate $G$ such that $G_i \cap G_j = \{ 1 \}$ for $i \neq j$. Show that $G$ is the free product $G_1 * \hdots * G_n$ if and only if for every group $H$ and collection of homomorphisms $h_j : G_j \to H$, there exists a unique homomorphism $h: G \to H$ such that $h_j = h \circ i_j$ where $i_j: G_j \to G$ is the inclusion.
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Assume $G$ is the free product $G_1 * \hdots * G_n$. Then, we know that every $g \in G$ can be written as a unique finite reduced word $g_1 \cdots g_k$, where for each $i$ there exists a unique $j$ such that $g_i \in G_j$. Moreover, we have the inclusion maps: 
     \[ \iota_j : G_j \to G \qquad \iota_j(g) = g\] 
     Now let $H$ be a group such that $h_j : G_j \to H$ are homomorphisms. We can define a map $h: G \to H$ by sending $g_1 \cdots g_k$ to $h_{j_1}(g_1) \cdots h_{j_k}(g_k)$, where $j_i$ is the unique index such that $g_i \in G_{j_i}$. It is easy to check that $h_j = h \circ \iota_j$ as for any $x \in G_j$, 
@@ -90,10 +90,10 @@
     Thus, we have:
     \[ \iota_{j, G'} = \phi \circ \psi \circ \iota_{j, G'} \qquad \iota_{j, G} = \phi \circ \psi \circ \iota_{j, G} \]
     However, note that $\id_G'$ and $\id_G$ satisfy the same equations, respectively. Moreover, this is the commutative equation obtained from applying the universal property of $G$ and $G'$ to themselves. Thus, the obtained homomorphisms must be unique. Thus, $\phi \circ \psi = \id_{G'}$ and $\psi \circ \phi = \id_G$. Thus, $G = G'$.
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{4}
+\begin{problem}{4}
     Find the fundamental group of each arrangement of three spheres below.
     \begin{enumerate}
     \item A chain. 
@@ -141,8 +141,8 @@
       \end{tikzpicture}
       \end{center}
     \end{enumerate}
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Throughout this answer, contractible means deformation retractible. 
     \begin{enumerate}
         \item First, we calculate the fundamental group of the wedge of two spheres, call it $X'$. Let $U$ be the union of the two spheres minus the right-most point of the right sphere, and $V$ be the union of the two spheres minus the left-most point of the left sphere. Clearly, $U$ and $V$ are open as they are the whole space minus one point. Moreover, clearly $X' = U \cap V$. \\ 
@@ -162,13 +162,13 @@
         \[ \pi_1(X) = \pi_1(U) * \pi_1(V) = \langle x, y | xy^{-1} \rangle\]
         Finally, as $xy^{-1} = 1$ implies $x = y$, we have $\pi_1(X) = \Z$.    
     \end{enumerate}
-\end{solu}
+\end{solution}
 \newpage
 
-\begin{problab}{5}
+\begin{problem}{5}
     (1.2.3) Let $X$ be the union of $n$ lines through the origin in $\R^3$. Compute the fundamental group of $\R^3 \setminus X$. 
-\end{problab}
-\begin{solu}
+\end{problem}
+\begin{solution}
     Recall that $\R^3$ deformation retracts onto $S^2$ by the radical projection map, call it $r$. Thus, $\R^3 \setminus X$ deformation retracts onto $S^2$ minus $2n$ points, in $n$ antipodal pairs (where the $n$ lines intersect the sphere), thus has the same fundamental group. \bbni
     Note that we claimed in class that $S^2$ minus $1$ point is homeomorphic to $\R^2$ via the stereographic projection. Thus, restricting this projection to omit the remaining $2n-1$ missing points, we have that $S^2$ minus $2n$ points is homeomorphic to $\R^2$ minus $2n-1$ points. Thus, they have the same fundamental group. \bbni    
     Note that without loss of generality, we can assume that the missing $2n-1$ points are all on the $x$-axis, as translating these points can be done homeomorphically (one by one, they can be brought to the $x$-axis by a linear transformation that fixes the $x$-axis). Then, we can pick a wedge of $2n-1$ circles, with each circle going around one missing point. Then, we the space clearly deformation retracts onto the wedge of $2n-1$ circles. \bbni
@@ -185,7 +185,7 @@
         &= \pi_1\left(\bigwedge_{i=1}^{2n-1} S^1\right) \\
         &= \underbrace{\Z * \cdots * \Z}_{2n-1}
     \end{align*}
-\end{solu}
+\end{solution}
 \newpage
 
 \end{document}
