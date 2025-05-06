@@ -422,6 +422,87 @@
     Proof. Let $\tau(S) = \bigcap\{\tau' : \tau' \text{ is a top and } S \in \tau'\}$. 
     \item[Prop.] Let $\beta \subset \mathcal{P}(X)$ be a coer of $X$. Then $\beta$ is a basis for $\tau(B)$ if and only if $U, V \in \beta$ and $x \in U \cap V$, then $\exists W \in \beta$ such that $x \in W \subset U \cap V$. \\
     Proof. Hwk. 
+    \newpage
+    One lecture on weak topology omitted. 
+    \newpage 
+    \item[Defn.] An ordered set $(X, \leq)$ is directed if given $x, y \in X$, $\exists z \in X$ such that $x \leq z$ and $y \leq z$.
+    \item[Ex.] \begin{itemize}
+        \item $X = \N$. 
+        \item Let $(Y, \tau)$ be a topological space and $y_0 \in Y$. Then $X = \mathcal{N}(y_0)$ be the collection of neighborhoods of $y_0$ induced by reverse inclusion. Then, $U \leq V \iff V \subset U$. Then $\mathcal{N}(y_0)$ is directed. If $U, V \in \mathcal{N}(y_0)$, then so is $U \cap V$. 
+        \item We can do the same thing for open neighborhoods. 
+    \end{itemize} 
+    \item[Defn.] \begin{itemize}
+        \item A net $x$ is a set $X$ is a function $x: \:ambda \to X$ where $\Lambda$ is a directed set. As with seqeucnes, we usually write $X_\lambda$ for $x(\lambda)$ and $(x_\lambda)_{\lambda \in \Lambda}$ in place of $x: \Lambda \to X$, or just $x$. 
+        \item If $X$ is a topological space, then we say that a net $(x_\lambda)_{\lambda \in \Lambda}$ converges to $x_0 \in X$ if $(x_\lambda)$ is eventually in every neighborhood of $x_0$. That is, if $U \in \mathcal{N}(x_0)$, then $\exists \lambda_0 \in \Lambda$ such that: 
+        \[ \lambda \geq \lambda_0  \implies x_\lambda \in U \]
+        \item We say that $x_0 \in X$ is an accmulation point of a net $x_\lambda$ if $(x_\lambda)$ is frequently in every neighborhood of $x_0$. That is if $U$ is a neighborhood of $x_0$ and $\lambda_0 \in \Lambda$, then $\exists \lambda \geq \lambda_0$ such that $x_\lambda \in U$.
+    \end{itemize}
+    \item[Prop.] Suppose $X$ is a topological space and $E \subset X$. Then, $x_0 \in \overline{E}$ if and only if there exists a net $(x_\lambda) \subset E$ with $x_\lambda \to x_0$. \\
+    Proof. Suppose we have $x_\lambda \subset E$ with $x_\lambda \to x_0$. If $x_0 \not \in \overline{E}$, then $\exists U \in \mathcal{O}(x_0)$ such that $U \cap E = \emptyset$. But then we would eventually have $(x_\lambda)$ in $U$. Contradiction. \bbni
+    Now suppose that $x_0 \in \overline{E}$. Let $\Lambda = \mathcal{O}(x_0)$.  \\
+    If $W \in \Lambda$, then $W \cap E \neq \emptyset$. Then, we let $x_W \in W \cap E$. Then, $(x_W)_{W \in \Lambda}$ converges to $x_0$. \\
+    If $U_0 \in \mathcal{O}(x_0)$, then $U \geq U_0$, $x_U \in U \subset U_0$. 
+    \item[Ex.] $S = \{ \sqrt{n}e_n \in l^2 : n \geq 1\}$, then $0 \in \overline{S}^w$ (weak topology).
+    \item[Defn.] A subset $C$ of a vector space $V$ over $\mathcal{F}$ is convex if $x, y \in C$ and $t \in [0, 1]$, then $tx + (1-t)y \in C$.
+    \item[Ex.] In a normed vector space $X$, every open ball $B_r(x_0)$ is convex if $x_0 \in X$ and $r > 0$. To see this, supposed $x, y \in B_r(x_0)$, and $t \in [0, 1]$. Then,
+    \begin{align*}
+        ||tx+(1-t)y - x_0|| &\leq ||t(x-x_0)|| + ||(1-t)(y-x_0)|| \\
+        &< tr + (1-t)r \\
+        &= r
+    \end{align*}
+    \item[Lemma.] Let $C$ be an open convex neighborhood of $0$ in a normed vector space $X$. Then, 
+    \[m(x) = \inf\{s > 0, s^{-1}x \in C\}\]
+    Then $m$ is a Minkowski functional on $X$ such that: 
+    \[C = \{x \in X: m(x) < 1\}\]
+    Proof. If $x \in X$, then $\frac1n x \to 0$. So $\frac1n x$ is eventually in $C$. So $m(x) < \infty$ for all $x \in X$. \bbni
+    Note that if $t \geq 0$, then $m(tx) = tm(x)$. (This is one of the axioms for a Minkowski functional). \\
+    Also let $s^{-1}x$, $t^{-1}y \in C$. Then: 
+    \[ (s+t)^{-1}(x+y) = \frac{s}{s+t}s^{-1}x + \frac{t}{s+t}t^{-1}y \in C\]
+    Thus, $m(x+y) \leq s + t$. \\
+    Since $s^{-1}x, t^{-1}y \in C$ is arbitrary, we have:
+    \[ m(x+y) \leq m(x) + m(y)\]
+    This is the second axiom for a Minkowski functional. \\
+    Thus, $m: X \to \R$ is a Minkowski functional. Now if $x \in C$, then $(1+1/n)x \to x$. Thus, for some $n$, 
+    \[ m(x) = frac{1}{1+1/n} < 1\]
+    If $m(x) K 1$, then $\exists s < 1$ such that $s^{-1}x \in C$. \bbni
+    But $0 \in C$ and $x = (1-s)0 + s(s^{-1}x) \in C$. 
+    \item[Thm.] (Hahn-Banach Seperation Theorem). Let $A$ and $B$ be disjoint non-empty convex subsets of some normed vector space $X$. If $A$ is also open, then there exists $\phi \in X^*$ and $t \in \R$ such that: 
+    \[ \Re(\phi(x)) < t \leq \Re(\phi(y)) \]
+    for all $x \in A$ and $y \in B$. \bbni
+    Proof. We start with $\mathbb{F} = \R$. Then, we can use the Basic Extension Lemma. Fix $x_0 \in A$ and $y_0 \in B$. Let $z_0 = x_0 - y_0$. Let: 
+    \[ C = A-B + z_0\]
+    We can check that $C$ is convex. \\
+    Since $C = \bigcup_{y \in B} A -y + z_0$. Thus, $C$ is union of open sets, hence open neighborhood of $0$. \bbni  
+    Let $m: X \to \R$ be the corresponding Minkowski functional. \\
+    We claim $z_0 \not \in C$. If $x-y+z_0 = z_0$, then $x = y \in A \cap B - \emptyset$. \\
+    Thus, $m(z_0) \geq 1$. \\
+    Define: 
+    \[ \phi_0: \R z_0 \to \R\]
+    by $\phi_0(\alpha z_0)  = \alpha$. \\
+    Since $m(x) \geq 0$, then for all $x$ if $\alpha \leq 0$, then: 
+    \[ \phi_0(\alpha z_0) \leq m(\alpha z_0)\]
+    If $\alpha \geq 0$, then: 
+    \[ \phi_0(\alpha z_0) = \alpha \leq \alpha m(z_0) = m(\alpha z_0)\]
+    Thus, $\phi_0(z) \leq m(z)$ for all $z \in \R z_0$. \\
+    Thus, the Basic Extension Lemma gives us $\phi: X \to \R$ such that, $\phi(x) \leq m(x)$. \\
+    Thus, $\phi(x) < 1$ if $x \in C$. \\
+    Also, $-\phi(x) = \phi(-x) < 1$ if $x \in -C$. \\
+    Thus, $\forall \epsilon > 0$, 
+    \[ |\phi(x)| < \epsilon \text{ if } x \in \epsilon C \cap -\epsilon C\]
+    Since $\epsilon C \cap -\epsilon C$ is a neighborhood of $0$ for all $\epsilon < 0$, this means $\phi$ is continous at $0$. \\
+    Thus, $\phi \in X^*$. If $x \in A$ and $y \in B$, then: 
+    \[ x-y + z_0 \in C\]
+    Then, 
+    \[ m(x-y+z_0) < 1\]
+    Thus, 
+    \[ \phi(x-y+z_0) < 1\]
+    Since $\phi(z_0) = \phi_0(z_0) - 1$, we have: 
+    \[ \phi(x) < \phi(y)\]
+    Since $\phi$ is linear and since $A$ and $B$ are convex, $\phi(A)$ and $\phi(B)$ are intervals. Since $A$ is open and $\phi$ is linear, $\phi(A)$ must be open. \\
+    Then, we can let $t$ be the right-hand endpoint of $\phi(A)$. \bbni
+    Now if $\mathbb{F} = \C$, then we can treat $X$ as a real space and produce a real linear functional $\psi: X \to \R$ such that: 
+    \[ \psi(A) < t \leq \phi(B)\]
+    Now let $\phi(x) = \psi(x) -i \phi(ix)$. $\phi$ is continous since $\psi$ is and continuity implies boundedness.
 \end{itemize}
 
 
