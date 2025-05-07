@@ -104,7 +104,7 @@
 \begin{solution} 
     We claim the map $\overline{T}: X/E \to Y$ given by: 
     \[ \overline{T}([x]) = T(x)\]
-    satisfies the desired properties. We need to show that $\overline{T}$ is well-defined, linear, satisfies $\overline{T}(q(x)) = T(x)$ for all $x \in X$, and satisfies $||\overline{T}|| = ||T||$ (hence is bounded/continous). \bbni
+    satisfies the desired properties. Clearly, $\overline{T}(q(x)) = T(x)$ for all $x \in X$ by definition. We need to show that $\overline{T}$ is well-defined, linear, and satisfies $||\overline{T}|| = ||T||$ (hence is bounded/continous). \bbni
     Let $x, y \in X$ be such that $[x] = [y]$. Then, note that $x - y \in E \subset \ker(T)$. Thus, $T(x)-T(y) = T(x-y) = 0$. Thus, $T(x) = T(y)$. Then, by the definition of $\overline{T}$, we have $\overline{T}([x]) = \overline{T}([y])$. Thus, $\overline{T}$ is well-defined. \bbni
     Next, let $[x], [y] \in X/E$ and $\alpha \in \mathbb{F}$ be arbitrary. Then, noting the linearity of $q$ and $T$, we have that:
     \begin{align*}
@@ -114,6 +114,28 @@
         &= \alpha \overline{T}([x]) + \overline{T}([y])
     \end{align*}
     Thus, $\overline{T}$ is linear. \bbni
+    Finally, we need to show that $||\overline{T}|| = ||T||$. First, we show that $||q|| = 1$. We already showed that $||q|| \leq 1$. Next, let $x \in X$ such that $||x||\leq 1$. Then, if $x \in E$, $q(x) = 0$. Thus, we consider $x \in X\setminus E$. Since $q$ is bounded, for all $e \in E$: 
+    \begin{align*}
+        ||q(x)||_{X/E} &= ||q(x+e)||_{X/E} \\
+        &\leq ||q|| \cdot ||x+e||_{X}
+    \end{align*}
+    Thus,
+    \[ ||q(x)||_{X/E} \leq ||q|| \cdot \inf_{e\in E} ||x+e||_X = ||q|| \cdot ||q(x)||_{X/E} \]
+    Dividing through by $||q(x)|| > 0$ (as $x \not \in E$ closed), we have:
+    \[ ||q|| \geq 1\]
+    Thus, $||q|| = 1$. Next, note that for all $[x] \in X/E$ and for all  $e \in E \subset \ker(T)$,
+    \begin{align*}
+        ||\overline{T}([x])|| &= ||T(x)|| \\
+        &= ||T(x+e)|| \\
+        &\leq ||T|| \cdot ||x+e||_X \\
+    \end{align*}
+    Thus, we have that: 
+    \[||\overline{T}([x])|| \leq ||T|| \inf_{e\in E} ||x+e||_X = ||T||\cdot \norm{[x]}_{X/E}\]
+    Thus, by the definiton of the operator norm in Part 3 of Problem 30, we note that since $||T||$ is a bound for $\overline{T}$, and $||\overline{T}||$ is the infimum of these bounds, $||\overline{T}|| \leq ||T||$. This also shows $\overline{T}$ is bounded, thus, $\overline{T} \in \mathcal{L}(X/E, Y)$. Finally, from Problem 30 Part 2, we also have:
+    \begin{align*}
+        ||T|| \leq ||\overline{T}||||q|| = ||\overline{T}||
+    \end{align*}
+    Thus, $||\overline{T}|| = ||T||$. 
 \end{solution}
 \newpage 
 
@@ -301,7 +323,56 @@
     where $S \in \mathcal{L}(l_\R^\infty)$ is given by $S(x)_n = x_{n+1}$ and such that $\liminf_n x_n \leq L(x) \leq \limsup_n x_n$. (Hint provided).
 \end{problem}
 \begin{solution} 
-
+    \begin{lemma}
+        If $x_n$ is a sequence in $\R$, and $A_n = \frac{1}{n} \sum_{i=1}^n x_i$ converge, then $\lim_n A_n \leq \limsup_n x_n$ and $\lim_n A_n \geq \liminf_n x_n$.
+    \end{lemma}
+    \begin{proof}
+        Let $k \in \N$ be arbitrary. Then, $\forall n \geq k$ note that: 
+        \begin{align*}
+            A_n &= \frac{1}{n} \sum_{i=1}^k x_k + \frac{1}{n} \sum_{i = k + 1}^n x_i \\
+            &\leq \frac{1}{n} \sum_{i=1}^k x_k + \sup_{i \geq k} x_i
+        \end{align*}
+        Taking the $\limsup$ with respect to $n$ on both sides, we have that: 
+        \begin{align*}
+            \limsup_n A_n &\leq \limsup_n \left(\frac{1}{n}\sum_{i=1}^k x_i + \sup_{i \geq k} x_i\right) \\
+            &= 0 + \sup_{i \geq k} x_i 
+        \end{align*}
+        Since this is true for arbitrary $k$, we have that: 
+        \[ \limsup_n A_n \leq \lim_{k\to \infty} \sup_{i\geq k} x_i = \limsup_k x_k\]
+        However, since $A_n$ converges, we have that $\limsup_n A_n = \lim_n A_n$. Thus, we have shown that:
+        \[ \lim_n A_n \leq \limsup_n x_n\]
+        The proof for $\liminf$ follows similarly by flipping the inequalities. 
+    \end{proof}
+    Define $m_n(x) = \frac{1}{n}( x_1 + \ldots + x_n)$. Then define $Y = \{ x \in l^\infty_\R : \lim_n m_n(x) \text{ exists } \}$. Then, $Y$ is a subspace as for any $x, y \in Y$ and $\alpha \in \R$, if $m_n(x) \to a$ and $m_n(y) \to b$, then: 
+    \[ \lim_{n \to \infty} m_n(x + \alpha y) = \lim_{n\to \infty} \frac{1}{n}\left(\sum_{i =1}^n x_i + \alpha y_i\right) = \lim_{n\to \infty}  \frac{1}{n} \sum_{i=1}^n x_i + \alpha \lim_{n\to \infty}\frac{1}{n} \sum_{i=1}^n y_i = a + \alpha b \]
+    Thus, $x+\alpha y \in Y$ and $Y$ is a subspace (this also shows $m_n$ is linear). \bbni
+    Define $L_0: Y \to \R$ by: 
+    \[ L_0(x) = \lim_{n \to \infty} m_n(x)\]
+    Then, for $y \in Y$, we use the lemma to show that:
+    \[ L_0(x) \leq m(x)\]
+    where $m(x) = \limsup_n x_n$. \bbni
+    Thus, by the Basic Extension Lemma, we can extend $L_0$ to a linear functional $L: l^\infty_\R \to \R$ such that $L(x) = L_0(x)$ for all $x \in Y$ and $L(x) \leq m(x)$ for all $x \in l^\infty_\R$. Moreover, for all $x \in l^\infty_\R$, we have that: 
+    \begin{align*}
+        L(x) &= -L(-x) \\
+        &\geq -m(-x) \\
+        &= \limsup_n (-x_n) \\
+        &= -\liminf_n x_n
+    \end{align*}
+    Thus, 
+    \[ \liminf_n x_n \leq L(x) \leq \liminf_n x_n\]
+    Next, we show that $x-S(x) \in Y$. To see this, we unpack the definition to note that:
+    \[ (x-S(x))_n = x_n - x_{n+1}\]
+    Thus, we get that:
+    \begin{align*}
+        m_n(x-S(x)) &= \frac{1}{n}( (x_1-x_2) + (x_2-x_3) + \cdots + (x_{n}-x_{n+1})) \\
+        &= \frac1n (x_1 - x_{n+1})
+    \end{align*}
+    Taking the limit as $n \to \infty$, we have that:
+    \[ \lim_{n \to \infty} m_n(x-S(x)) = 0\]
+    Thus, $x-S(x) \in Y$. \bbni
+    Thus, we have that: 
+    \[L(x-S(x)) = 0 \implies L(x) = L(S(x))\]
+    by linearity of $L$. Thus, $L(x)$ is a generalized limit of $x$. Moreover, if $x$ converges, then $\limsup_n x_n = \liminf_n x_n$, thus, by the squeeze theorem, $L(x)$ equals this limit. 
 \end{solution}
 \newpage 
 
@@ -309,7 +380,30 @@
     Prove the following Lemma from lecture. Let $X$ be a complex vector space. Every real linear functional of $X$ is the real part of a complex linear functional on $X$. In fact, if $\phi = \Re(\psi)$ then $\psi(x) = \phi(x) - i\phi(ix)$. 
 \end{problem}
 \begin{solution} 
-
+    Let $\phi$ be a real linear functional on $X$. We prove existence and uniqueness separately. \bbni
+    \textbf{Existence:} Let $\psi: X \to \C$ be given by: 
+    \[ \psi(x) = \phi(x) - i\phi(x)\]
+    Clearly, $\phi(x) = \Re(\psi)$. We need to show that $\psi$ is complex linear. \bbni
+    Let $x, y \in X$ and $\alpha \in \C$ be arbitrary. Then, we have that:
+    \begin{align*}
+        \psi(\alpha x + y ) &= \phi(\alpha x + y) - i \phi(\alpha x + y) \\
+        &= \alpha\phi(x)-i\alpha\phi(x) + \phi(y) - i\phi(y) \\
+        &= \alpha(\phi(x) - i\phi(x)) + (\phi(y) - i\phi(y)) \\
+        &= \alpha\psi(x) + \psi(y)
+    \end{align*}
+    Thus, $\psi$ is complex linear. \bbni
+    \textbf{Uniqueness:} Let $\psi$ be a linear functional such that $\phi = \Re(\psi)$. Then, we need to show that $\psi(x) = \phi(x) - i\phi(ix)$. \\
+    Let $g(x) = \Im(\psi)$. Then, since $\psi$ is complex linear, we have that: 
+    \begin{align*}
+        \phi(ix) + ig(ix) &= \psi(ix) \\ 
+        &= i\psi(x) \\
+        &= i\phi(x) - g(x)
+    \end{align*}
+    Then, comparing real parts, we have that: 
+    \[ g(x) = -\phi(ix)\]
+    Thus, 
+    \[ \psi(x) = \phi(x) - i\phi(ix)\]
+    Thus, every real linear function $\phi$ is the real part of a unique complex linear functional $\psi = \phi(x) -i\phi(ix)$ on $X$.
 \end{solution}
 \newpage 
 
@@ -318,11 +412,32 @@
 \end{problem}
 \begin{solution} 
     Since $X^*$ is separable, there exists a countable dense subset $\{f_n\}_{n \in \N} \subset X^*$. Then, for each $n \in \N$, note that: 
-    \[ ||f_n|| = \sup_{||x|| = 1} |f_n(x)|\]
-    Thus, we can find $x_n$ with $||x_n|| = 1$ such that: 
-    \[ |f_n(x_n)| \geq ||f_n|| - \frac{1}{2}||f_n|| = \frac{1}{2}||f_n||  \]
-    Define $S = \opspan\{x_n : n \in \N\}$. We claim that $S$ is dense in $X$.
-
+    \[ ||f_n|| = \inf\{a : |f_n(x)| \leq a||x|| \quad \forall x \in X\}\]
+    Noting that norms are non-negative and homogeneous, and $f_n$ is linear, we divide through by $||x||$ to get: 
+    \[ ||f_n|| = \inf\{a : |f_n(x)| \leq a \quad \forall x \in X, ||x|| = 1\}\]
+    Thus, for $\frac{1}{2}||f_n|| > 0$, we can find $x_n$, with $||x_n||=1$ such that:
+    \[|f_n(x'_n)| \geq ||f_n|| - \frac{1}{2}||f_n|| = \frac{1}{2} ||f_n|| \] 
+    Define $S = \opspan\{x_n : n \in \N\}$. Clearly, $S$ is a subspace. We claim that $S$ is dense in $X$. \bbni
+    For contradiction, assume that $S$ is not dense in $X$. Then, there exists a (non-empty) open set that $S$ does not meet, thus $\overline{S} \neq X$ (we use the definition of the closure of $A$ to contain all points in $X$ such that any open set around that point meets $A$). Thus, $\overline{S}$ is a proper closed subspace of $X$. \bbni
+    Then, by a corollary of the Hahn-Banach Theorem, we can find a functional $f \in X^*$ such that $f(x) = 0$ for all $x \in \overline{S}$ and $||f|| = 1$. We show that this contradicts the denseness of $\{f_n\}_{n \in \N}$. \bbni
+    For all $n \in \N$, we have the following cases: 
+    \begin{itemize}
+        \item Assume $||f_n|| \geq \frac{1}{2}$. Then, for $x_n$, with $||x_n|| = 1$, we have:
+        \[|f_n(x_n)-f(x_n)| = |f_n(x_n)| \geq \frac12||f_n|| \geq \frac{1}{4}\]
+        Thus, $||f_n-f|| \geq 1/4$ is bounded away from $0$.
+        \item Assume $||f_n|| < \frac{1}{2}$. Then, 
+        \begin{align*}
+            ||f|| &= ||f-f_n+f_n||  \\
+            &\leq ||f-f_n|| + ||f_n||
+        \end{align*}
+        Thus, 
+        \begin{align*}
+            ||f-f_n|| \geq ||f|| - ||f_n|| \geq 1-\frac12 = \frac12
+        \end{align*}        
+        Thus, $||f_n-f|| \geq 1/2$ is bounded away from $0$. 
+    \end{itemize}
+    Thus, there exists an open neighborhood of $f$ (or radius $< \frac14$) that does not meet $\{f_n\}_{n\in\N}$, which is a contradiction since this set is dense in $X^*$.\bbni
+    Thus, $\opspan\{x_n : n \in \N\}$ is dense in $X$. Moreover, since $\opspan_\Q\{x_n : n \in \N\}$ is a countable dense subset of $\opspan\{x_n : n \in \N\}$, $X$ is separable (we made a remark about this in class).
 \end{solution}
 \newpage 
 
