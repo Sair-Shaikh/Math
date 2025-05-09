@@ -175,7 +175,7 @@
     Supposed that $E$ and $M$ are closed subspaces of a Banach space $X$. If $E$ is finite dimensional, show that $E+M = \{x+y: x \in E, y \in M\}$ is closed. 
 \end{problem}
 \begin{solution}
-    Let $q: X \to X/M$ be the quotient map. Since $M$ is closed, $X/M$ is a Banach space. Moreover, $q$ is a surjective continous linear map between Banach spaces, thus, it is open by the Open Mapping Theorem. Thus, $q(E)$ is closed as $E$ is closed. We can also see this as $\dim(q(E)) \leq \dim(E) < \infty$ so $q(E)$ is a finite dimensional subspace of $X/M$, thus Banach, thus closed. Then, since $q$ is continous, the pre-image of closed sets is closed. However, note that $q^{-1}(q(E)) = E + M$. Thus, $E + M$ is closed in $X$.
+    Let $q: X \to X/M$ be the quotient map. Since $M$ is closed, $X/M$ is a Banach space. Since $\dim(q(E)) \leq \dim(E) < \infty$ (rank-nullity applied to $q|_E$) so $q(E)$ is a finite dimensional subspace of $X/M$, thus Banach, thus closed. Then, since $q$ is continous, the pre-image of closed sets is closed. However, note that $q^{-1}(q(E)) = E + M$. Thus, $E + M$ is closed in $X$.
 \end{solution}
 \newpage 
 
