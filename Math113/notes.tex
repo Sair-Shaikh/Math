@@ -248,8 +248,10 @@
     Proof. $T^{-1}$ is linear by general nonsense and $T$ is open by the Open Mapping Theorem. Hence $T^{-1}$ is continous hence bounded.
     \item[Yap.] If $X$ and $Y$ are Banach spaces, then I can give $X \times Y$ a norm by: 
     \[ ||(x,y|| = max\{||x||, ||y||\})\]
-    This makes $X \times Y$ a Banach spaces.
+    This makes $X \times Y$ a Banach space.
     \newpage 
+    [Missed 3 classes due to Covid. Did Open Mapping Theorem, Closed Graph Theorem, Principle of Uniform Boundedness, defined norm-dual, and did Hahn-Banach with 3 important corollaries.]
+    \newpage
     \item[Thm.] The map:
     \[ \Phi: l^q \to (l^p)^\vee \]
     given by $\Phi(y) = \phi_y$ is an isometric isomorphism. That is, $\Phi$ is a isomorphism such that:
@@ -423,7 +425,7 @@
     \item[Prop.] Let $\beta \subset \mathcal{P}(X)$ be a coer of $X$. Then $\beta$ is a basis for $\tau(B)$ if and only if $U, V \in \beta$ and $x \in U \cap V$, then $\exists W \in \beta$ such that $x \in W \subset U \cap V$. \\
     Proof. Hwk. 
     \newpage
-    One lecture on weak topology omitted. 
+    [One lecture on omitted. Defined weak topology. ]
     \newpage 
     \item[Defn.] An ordered set $(X, \leq)$ is directed if given $x, y \in X$, $\exists z \in X$ such that $x \leq z$ and $y \leq z$.
     \item[Ex.] \begin{itemize}
@@ -502,7 +504,195 @@
     Then, we can let $t$ be the right-hand endpoint of $\phi(A)$. \bbni
     Now if $\mathbb{F} = \C$, then we can treat $X$ as a real space and produce a real linear functional $\psi: X \to \R$ such that: 
     \[ \psi(A) < t \leq \phi(B)\]
-    Now let $\phi(x) = \psi(x) -i \phi(ix)$. $\phi$ is continous since $\psi$ is and continuity implies boundedness.
+    Now let $\phi(x) = \psi(x) -i \phi(ix)$. $\phi$ is continous since $\psi$ is and continuity implies boundedness. 
+    \newpage
+    [Skipped a class of notes. Took pictures. 5/9 ]
+    \newpage
+    \item[Ex.] The sequence $(\sqrt{n}e_n) \subset l^2$ has no weakly convergent sequence. 
+    \item[Ex.] For each $\alpha \in l^\infty$, let:
+    \[ D_\alpha = \{z \in \C: |z| \leq ||\alpha||_\infty \}\]
+    Then if $\alpha = (\alpha_n)$ then $\alpha_n \in D_\alpha$ for all $n \geq 1$. \\
+    We now know that:
+    \[Z = \Pi_{\alpha \in l^\infty} D_a\]
+    is compact in the product topology. Let $(z_n) \subset Z$ be the sequence given by: 
+    \[ z_n(\alpha) = \alpha_n\] 
+    But we claim $(z_n)$ has no convergent subsequence. \\
+    Proof. Suppose $(z_{n_k})$ converges to $z_0 \in Z$. Then it converges pointwise. Thus for all $\alpha \in l^\infty$, we have:
+    \[z_{n_k}(\alpha) \to z_0(\alpha)\]
+    Let $\alpha_0 \in l^\infty$ be given by: 
+    \[ \alpha_0(n) = \begin{cases}
+        (-1)^k \text{ if } n = n_k \\
+        0 \text{ otherwise }
+    \end{cases}\]
+    But now:
+    \[ z_{n_k}(\alpha_0) = (-1)^k\]
+    But
+    \[ \lim_{k \to \infty} z_{n_k}(\alpha_0)\]
+    does not exist. 
+    \item[Defn.] Let $x: \Lambda \to X$ be a net in a set $x$. Then a net $y: M \to X$ is a subnet of $x$ if $\exists h: M \to \Lambda$ such that $y = x \circ h$ and for all $\lambda_0 \in \Lambda$, there exists $m(\lambda_0)$ such that: 
+    \[ m \geq m(\lambda_0)  \implies h(m) \geq \lambda_0\]
+    \item[Rmk.] If $h: M \to \Lambda$ is monotone in that $m_1 \geq m_2$ then $h(m_1) \geq h(m_2)$, then given $\lambda_0 \in \Lambda$ it suffices to find $m(\lambda_0)$ such that such that $h(m(\lambda_0)) \geq \lambda_0$.
+    \item[Yap.] We usually write: 
+    \[ (y_m)_{m\in M} \text{ as } (x_{h(m)})_{m\in M} \text{ or } (x_{\lambda_m})_{m \in M}\] 
+    Example: If you have a subsequence $(x_n)_{n \in \N}$ and $h: \N \to \N$ strictly increasing, we can write: 
+    \[ x_k = h(k) \qquad n_{k+1} > n_k\]
+    \item[Lemma.] Let $(x_\lambda)_{\lambda \in \Lambda}$ be a net $m$ a topological space. Then $x_0$ is an accumulation point of $(x_\lambda)$ if and only if there is a subnet $(x_{h(m)})_{m \in M}$ converging to $x_0$. \\
+    Proof. Suppose that $(x_{h(m)})_{m \in M}$ converges to $x_0$. \\ 
+    Let $U \in \mathcal{O}(x_0)$ and $\lambda_0 \in \Lambda$. \\
+    Since the subnet converges to $x_0$, there is a $m_0 \in M$ such that $m \geq m_0$ implies $x_{h(m)} \in U$. \\
+    But there exists $m_1 = m(\lambda_0)$ such that $m\geq m_1$ implies $h(m) \geq \lambda_0$. \\
+    Let $m_2$ be such that $m_2 \geq m_1$ and $M_2 \geq m_0$. Then,
+    \[ h(m_2) \geq \lambda_0 \text{ and } x_{h(m_2)} \in U\]
+    Thus, $x_0$ is an accumulation point of $(x_\lambda)$. \bbni
+    Now suppose that $x_0$ is an accumulation point of $(x_\lambda)$. Let: 
+    \[ \mathcal M \{(U, \lambda) \in \mathcal{O}(x_0) \times \Lambda : x_\lambda \in U\}\]
+    and $(U_1, \lambda_1) \leq (U_2, \lambda_2)$ if $U_2 \subset U_1$ and $\lambda_1 \geq \lambda_2$. \\
+    Claim: $\mathcal{M}$ is a directed set. To see this, let $(U_1, \lambda_1), (U_2, \lambda_2) \in \mathcal{M}$. Let $\lambda_3 \geq \lambda_1$ and $\lambda_3 \geq \lambda_2$. Let $\lambda_4 \geq \lambda_4$ such that $x_{\lambda_4} \in U_1 \cap U_2$. Then, $(U_1 \cap U_2, \lambda_4) \geq (U_k, \lambda_k)$ for $k = 1, 2$. \\
+    Now define $h: M \to \Lambda$ by $h(U, \lambda) = \lambda$. Clearly, 
+    \[ (x_{(U, \lambda)})_{(U, \lambda)\in M} \to x_0\]
+    \item[Corr.] A topological space is compact if and only if every net has a convergent subnet. 
+    \item[Not.] If $X$ is a normed vector space, and $Y$ a collection of linear functional on $X$. Then we write $\sigma(X, Y)$ for the initial topology on $X$ induced by $\mathcal{F} = Y$ (smallest topology that makes all of these functional continous, likely want separation so you get Hausdorff etc). 
+    \item[Ex.] $\sigma(X, X^*)$ is the weak topology on $X$. \\
+    $\sigma(X^*, X^{**})$ is the weak topology on $X^*$.
+    \item[Yap.] But now we want to consider: 
+    \[ \sigma(X^*, X) := \sigma(X^*, \iota(X))\]
+    \item[Defn.] If $X$ is a normed vector space, then: 
+    \[ \sigma(X^*, X)\]
+    is called the weak-* topology on $X^*$.
+    \item[Lemma.] Let $X$ be a normed vector space. Then a sub-basis for the weak-* topology on $X^*$ consists of all sets of the form:
+    \[  \mathcal{U}(x, \phi_0, \epsilon) = \{\phi \in X^* : |\phi(x)-\phi_0(x)| \leq \epsilon \}\]
+    where $x \in X, \phi_0 \in X^*$ and $\epsilon > 0$. \\
+    Then we get a neighborhood basis for $\phi_0 \in X^*$ by taking: 
+    \[ U(\{x_1, \cdots, x_n\}, \phi_0, \epsilon) = \{ \phi \in X^* : |\phi(x_k)-\phi_0(x_k)| < \epsilon \, \forall k\} \]
+    \item[Lemma.] A net $(\phi_\lambda)$ in $X^*$ converges in weak-* to $\phi_0$ if $\phi_\lambda(x) \to \phi_0(x)$ for all $x \in X$.
+    \item[Thm.] (Alaoglu's Theorem.) If $X$ is a normed vector space and:
+    \[ B^* = \{\phi \in X^*: ||\phi|| \leq 1\}\]
+    is the closed unit ball, then $B^*$ is compact in the weak-* topology. \\
+    Proof. Let $D_r = \{z \in \mathcal F: |z| \leq r\}$. Let: 
+    \[ Z = \Pi_{x \in X} D_{||x||}\]
+    Then we know that $Z$ is compact in the product topology by Tychonoff's theorem. \\
+    Define: 
+    \[ j: B^* \to Z \]
+    by $j(\phi)(x) = \phi(x)$. Note that $j$ is injective. \\
+    If $\phi_lambda \to \phi_0$ in the weak-* topology, then $\phi_\lambda(x) \to \phi_0(x)$ for all $x \in X$. Thus, $j(\phi_\lambda)(x) \to j(\phi_0)(x)$ for all $x \in X$. Thus, $j(\phi_\lambda) \to j(\phi_0)$ in $Z$. \\
+    Now, claim that $j$ has closed range in $Z$. Suppose $j(\phi_\lambda) \to z_0$ in $Z$. Then, 
+    \[ j(\phi_\lambda)(x) \to z_0(x) \qquad \forall x \in X \]
+    That is:
+    \[ \phi_\lambda(x) \to z_0(x) \]
+    Then,
+    \begin{align*}
+        z_0(x+y) &= \lim_\lambda \phi_\lambda(x+y)  \\
+        &= \lim_\lambda \phi_\lambda(x) + \phi_\lambda(y) \\
+        &= z_0(x) + z_0(y) \\
+    \end{align*}
+    We also clearly have: 
+    \[ |z_0(x)| \leq ||x|| \]
+    Thus, $z_0 \in j(B^*)$. Thus, $j(B^*)$ is compact. \\
+    If $j(\phi_\lambda) \to j(\phi)$ in $Z$, then:
+    \[ j(\phi_\lambda)(x) \to j(\phi)(x) \qquad \forall x \in X\] 
+    Then, $\phi_\lambda(x) \to \phi(x)$ for all $x \in X$. Thus, $\phi_\lambda \to \phi$ in the weak-* topology (thus inverse is continous).
+    Thus, $j$ is a homeomorphism onto $j(B^*)$ and then $B^*$ is compact. 
+    \newpage
+    \item[Defn.] We defined the weak-* topology on $X^*$, $\sigma(X^*, X)$, to be the initial topology on $X^*$ induced by $\mathcal{J}$ a family of linear functional on $X$. 
+    \item[Defn.] A subbases for $\sigma(X^*, X)$ is given by the sets: 
+    \[ \mathcal{U}(x, \phi_0, \epsilon) = \{\phi \in X^* : |\phi(x) - \phi_0(x)| < \epsilon\}\]
+    for all $x \in X$, $\phi_0 \in X^*$ and $\epsilon > 0$.
+    \[ \mathcal{U}(x, \phi_0, \epsilon) = \omega(\iota(x), \phi_0, \epsilon) = \{ \phi \in X^* : | \iota(x)(\phi)-\iota(x)(\phi_0)| < \epsilon\}\]
+    \item[Defn.] If $V$ is a vecto space over $\mathcal{F}$, then we call $(\cdot, \cdot): V\times V \to \mathcal{F}$ a sesquilinear form on $V$ if for all $x, y, z \in V$ and $\alpha \in \mathcal{F}$, we have:
+    \begin{itemize}
+        \item $(x+\alpha y, z) = (x, z) + \alpha(y, z)$
+        \item $(x, \alpha y+z) = \overline{\alpha}(x, y) + (x, z)$
+    \end{itemize}
+    If we also have:
+    \[ (x, y) = \overline{(y, x)}\]
+    then we say that $(\cdot, \cdot)$ is a self-adjoint and if:
+    \[(x, x) \geq 0\]
+    then we say $(\cdot, \cdot)$ is positive. 
+    \item[Lem.] (Polarization Identity). If $\mathbb{F} = \C$ and $(\cdot, \cdot)$ is a sesquilinear form on $V$, then:
+    \[ (x, y) = \frac 1 4 \sum_{k=0}^3 i^k(x+i^ky, x + i^ky)\]
+    Proof. Check that: 
+    \begin{align}
+        4(x, y) &= (x+y, x+y) + i(x+iy, x+iy) -(x-y, x-y) - i(x-iy, x-iy) \\
+    \end{align}
+    \item[Corr.] If $\mathbb{F} = \C$, then $(\cdot, \cdot)$ is self-adjoint if and only if $(x, x) \in \R$ for all $x \in V$. Hence on a complex vector space, a positive sesquilinear form is always self-adjoint.
+    \item[Defn.] A positive self-adjoint sesquilinear form on $V$ is called a pre-inner product. If $(x, x) = 0$ if and only if $x = 0$, then we call it an inner product.  
+    \item[Defn. ] If $(\cdot, \cdot)$ is a pre-inner product on $V$, then we define: 
+    \[ \norm{V} = (v, v)^{frac12}\]
+    for all $v \in V$.
+    \item[Rmk.] The polariziation identity then becomes for $\C$: 
+    \[ (x, y) = \frac14 \sum_{k=0}^3 i^k||x+i^ky||^2\]
+    for for $\R$, 
+    \[ (x, y) = \frac13(||x+y||^2 - ||x-y||^2)\]
+    \item[Lemm.] (Cauchy-Schwarz Inequality). If $(\cdot, \cdot)$ is a pre-inner product on $V$, then $\forall x, y \in V$: 
+    \[ |(x, y)| \leq \norm{x}\norm{y}  \]
+    Proof. For all $\alpha \in \mathcal{F}$, 
+    \begin{align*}
+        0 &\leq ||\alpha x + y||^2 = (\alpha x + y, \alpha x + y) \\
+        &= |\alpha|^2 ||x|| + \alpha(x, y) + \overline{\alpha}(x, y) + ||y||^2 \\
+        &= |\alpha|^2 ||x||^2 + 2\Re(\alpha(x,y)) + ||y||^2
+    \end{align*}
+    Let $\tau \in \mathcal{F}$ be such that $\tau(x, y) = |(x, y)|$. If $\alpha = t\tau$ with $t \in \R$, then:
+    \begin{align*}
+        0 &\leq t^2 ||x||^2 + 2t|(x,y)| + ||y||^2  
+    \end{align*}
+    Then, by the quadratic forumula, 
+    \begin{align*}
+        &4|(x, y)|^2 - 4||x||^2||y||^2 \leq 0 \\
+        \implies & |(x, y)| \leq ||x||||y||
+    \end{align*}
+    \item[Corr.] Let $(\cdot, \cdot)$ be a pre-inner product on $V$. Then: 
+    \[ ||x|| = (x, x)^{\frac12}\]
+    is a semi-norm on $V$ which is a norm exactly when $(\cdot, \cdot)$ is an inner product. \\
+    Proof. The homogeneity is clear. Use Cauchy Schwarz to see: 
+    \[ ||x+y||^2 \leq (||x|| + ||y||)^2\]
+    \item[Defn.] A vector space $H$ with an inner product is called a Hilbert space if the normed vector space $(H, \norm{})$ is complete with respect to $||x|| = (x, x)^{\frac12}$. 
+    \item[Ex.] (1) If $H = \mathbb F^n$ and
+    \[ (x, y) = \sum_{k=1}^n x_k \overline{y}_k\]
+    Here,
+    \[ ||x|| = ||x||_2\]
+    (2) Let $H = l^2$. Now, 
+    \[ (x, y) = \sum_{n=1}^\infty x_n\overline{y_n}\]
+    Again, 
+    \[ ||x|| = ||x||_2\]
+    (3) Let $H = L^2(x, \mathcal M, \mu)$ and:
+    \[ (f, g) = \int_X ( f(x)\overline{g(x)} d\mu(x))\]
+    \item[Thm.] (Parallelogram Law). If $V$ is a pre-inner product space, then for all $x, y \in H$, 
+    \[ ||x+y||^2 + ||x-y||^2 = 2||x||^2 + 2||y||^2\]
+    \item[Thm.] (Jordan von Neumann Thm.) Let $X$ be a normed vector space where norm satisfies the parallelogram law. Then $X$ admits an inner product such that $||x|| = (x, x)^{\frac12}$.
+    \item[Prop.] If $H$ is an inner product space and if $x_n \to x$ and $y_n \to y$ in $H$. Then, 
+    \[ (x_n, y_n) \to (x, y)\]
+    Proof. Since $H$ is a normed vector space, the norm is continous. Thus, 
+    \[||x_n|| \to ||x|| \qquad ||y_n|| \to ||y||\]
+    Now, using Cauchy-Schwarz,
+    \begin{align*}
+        |(x_n, y_n) - (x, y)| &\leq |(x_n-x, y_n)| + |(x, y_n - y)| \\
+        &\leq ||x_n-x|| \cdot ||y_n|| + ||x|| \cdot ||y_n - y|| \\
+        &\to 0
+    \end{align*}
+    \item[Defn.] Let $H$ be an inner product space. We say $x \in H$ is orthogonal to $g \in H$ or just $x \perp y$ if $(x,y) = 0$. We say $E \subset H$ is orthogonal to $F \subset H$ if $\forall x \in E, y\in H$, $x \perp y$. We would write $E \perp F$. 
+    \item[Thm.] (Pythagorean Theorem). Suppose $H$ is an inner product space and that $x_1, \cdots, x_n \in H$ are pairwise orthogonal. Then, 
+    \[ ||\sum_{k=1}^n x_k||^2 = \sum_{k=1}^n ||x_k|| \] 
+    Proof. Simple. 
+    \item[Lemm.] Let $C$ be a nonempty closed, convex subset of a Hilbert space $H$. Then $\forall y \in H$, $\exists ! x \in C$ such that: 
+    \[ d(y, C) = ||y-x|| \]
+    Proof. We can replace $C$ by $C-\{y\}$ and assume $y = 0$. \\
+    Let $\alpha = \inf\{||x|| : x \in C\} = d(0, C)$. \\
+    Let $(x_n) \subset C$ be a sequence such that $||x_n|| \to \alpha$. \\
+    Then, 
+    \begin{align*}
+        2(||x_n||^2 + ||x_m||^2) &= ||x_n+x_m||^2 + ||x_n-x_m||^2 \\
+        &= 4\norm{\frac{x_n+x_m}{2}}^2 + ||x_n-x_n||^2 \\
+        &\geq 4\alpha^2 + ||x_n-x_m||^2
+    \end{align*}
+    But LHS convers to $4\alpha^2$. Thus, $(x_n)$ is Cauchy. Then, 
+    \[ x_n \to x \qquad ||x|| = \alpha\]
+    Suppose $y \in C$ and $||y|| = \alpha$. Then,
+    \begin{align*}
+        4\alpha^2 &= 2(||x||^2 + ||y||^2) \\
+        &= ||x+y||^2 + ||x-y||^2 \\
+        &\geq 4\alpha^2 + ||x-y||^2 
+    \end{align*}
+    Thus, $||x-y||^2 = 0$, thus $x = y$.
 \end{itemize}
 
 
