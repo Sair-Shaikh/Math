@@ -693,6 +693,136 @@
         &\geq 4\alpha^2 + ||x-y||^2 
     \end{align*}
     Thus, $||x-y||^2 = 0$, thus $x = y$.
+    \newpage 
+    Missed a lecture. 5/16.
+    \newpage
+    \item[Thm.] (Bessel's Inequality). $H$ is an inner product space $\{e_n : n \in \N\}$ be an orthonormal subset. Then $\forall x \in H$: 
+    \[ ||x||^2 \geq \sum_{n=1}^\infty |(x\mid e_n)|^2\]
+    \item[Corr.] Let $\{e_n : n \in \N\}$ be an orthonomal subset of a Hilber space $H$ and let:
+    \[\calE = \overline{\opspan\{e_n : n \in \N\}}\] 
+    Then, for all $h \in H$, 
+    \[ \sum_{n=1}^\infty (h\mid e_n)e_n\]
+    converges in $H$ and: 
+    \[ P_\calE (h) = \sum_{n=1}^\infty (h\mid e_n)e_n\]
+    Proof. Pictures. 
+    \item[Defn.] An orthonormal subset $\{e_\alpha\}_{\alpha \in A}$ is a basis for $H$ if $\opspan\{e_\alpha : \alpha \in A\}$ is dense. 
+    \item[Prop.] Every Hilbert space $H$ has an orthonormal basis. \\
+    Proof. Let $\Lambda$ be a collection of orthonormal subsets index by inclusion. Then $\Lambda$ is inductively ordered. Then Zorn's lemma gives us a maximal element in $\Lambda$: 
+    \[ \{e_\alpha : \alpha \in A\}\]
+    If $w = \opspan\{e_\alpha\} \subset H$ is proper, then $\exists e_0 \in W^\perp$ with $\norm{e_0} = 1$. This is a contradiction to maximality. 
+    \item[Corr.] If $H$ is a separable $\infty$-dimensional Hilbert space, then every orthonormal basis for $H$ is countably infinite. \\
+    Proof. Let $\{e)\alpha : \alpha \in A\}$ be an orthonormal subset of $H$. Then the balls: 
+    \[ B_{1/\sqrt2}(e_n)\]
+    are pairwise disjoint. Hence there exists at most countably many $e_n$ in $H$.
+    \item[Thm.] Let $\{e_n ; n \in \N\}$ be an orthonormal subset of a Hilbert space. Then the following are equivalent:
+    \begin{itemize}
+        \item This is a basis (i.e. it has a dense linear span).
+        \item $(h|e_n) = 0$ for all $n \in \N$ implies $h = 0$.
+        \item $\forall h \in H$, $h = \sum_{n=1}^\infty (h|e_n)e_n$.
+        \item For all $h, k \in H$, $(h|k) = \sum_{n=1}^\infty (h|e_n)(e_n|k)$.
+        \item For all $h \in H$, $||h||^2 = \sum_{n=1}^\infty |(h|e_n)|^2$.
+    \end{itemize}
+    Proof. (1) $\implies$ (2). Let $w_0 = \opspan\{e_n\}$. Then, 
+    \[ w_0^{\perp\perp} = \overline{w_0} = H \]
+    Hence, 
+    \[ w_0^\perp = \overline{w_0}^\perp = \{0\}\]
+    (2) $\implies$ (1). If $w_0^\perp = \{0\}$, then: 
+    \[ \overline{w_0} = w_0^{\perp\perp} = H\]
+    (1) $\implies$ (3). Apply the $P_\calE$ corollary with $\calE = H$. \\
+    (3) $\implies$ (4). $\phi_k(\cdot) = (\cdot \mid k)$ is continous. \\
+    (4) $\implies$ (5). Let $k = h$. \\
+    (5) $\implies$ (1). Suppose $w_0 = \overline{\opspan\{e_n\}} \neq H$. Then, $\exists h \in H \setminus \{0\}$ such that $(h|e_n) = 0$ for all $n \in \N$. \\
+    Missed one line. 
+    \item[Thm.] Let $H$ be a separable $\infty$-dimensional Hilbert space. Then, there is an isometric linear isomorphism. 
+    \[ U: H \to l^2\]
+    such that: 
+    \[ (U(h) \mid U(k))_{l^2} = (h\mid k)_H\] 
+    Proof. Let $\{e_n : n \in \N\}$ be an orthonormal basis for $H$. Let $H_0 = \opspan\{e_n : n \in \N\}$. Define: 
+    \begin{align*}
+        U_0: H_0 \to l^2 
+    \end{align*}
+    by $U_0\left(\sum_{k=1}^n \alpha_k e_k\right) = (\alpha_1, \cdots, \alpha_n, 0, 0, \cdots)$. \\
+    Since $\{e_n\}$ is a Hamel basis for $H_0$, $U_0$ is well-defined and isometric by Parseval. Since $H_0$ is dense in $H$ and $U_0(H_0) = c_{0,0}$ (seqs that vanish after some point) is dense in $l^2$. Thus, $U_0$ extends to an isometrity of $H$ into $l^2$ with dense range. Since $U$ is an isometry, $U(H)$ is complete. Hence its closed and $U$ is a bijection. \\
+    We want to show that this preserves the inner product. Let: 
+    \[ [x, y] = (U(x) \mid U(y))_{l^2}\]
+    is an inner product on $H$. Then, 
+    \begin{align*}
+        (U x \mid U y) &= \frac14 \sum_{k=0}^3 i^k ||U(x + i^k y)||^2 \\
+        &= \frac14 \sum_{k=0}^3 i^k ||x + i^k y||^2 \\
+        &= (x \mid y)
+    \end{align*}
+    If $\mathbb F = \R$, use: 
+    \begin{align*}
+        (U x \mid U y) &= \frac14 (||U(x)+U(y)||^2 + ||U(x)-U(y)||^2)
+    \end{align*}
+    to get the same. 
+    \item[Ex.] Let $H = \F^n$. If $A \in M_n(\F)$, we set: 
+    \[ L_A \in \mathcal L(\F)\]
+    by $L_A(h) = Ah$. where:
+    \[ (Ah)_k = \sum_{j=1}^n a_{kj}h_j\]
+    where: 
+    \[ a_{ij} = (T(e_j)\mid e_i)\]
+    Now if $A = M_n(\F)$, let $A^* = (b_{ij})$, where 
+    \[ b_{ij} = \overline{a_{ji}}\]
+    then, we have:
+    \begin{align*}
+        (L_A(h) \mid k) &= (Ah \mid k) \\
+        &= (h \mid A^*k) \\
+        &= (h \mid L_{A^*}(k))
+    \end{align*}
+    Gien $T \in \mathcal L(\F^n)$. Then, $\exists! T^* \in \mathcal L(\F^n)$ such that:
+    \[ (T(h) \mid k) = (h \mid T^*(k))\]
+    \item[Thmn.] Let $H$ be a Hilbert space and $T \in \mathcal L(H)$. Then $\exists! T^* \in \mathcal L (H)$ such that for all $h, k \in H$: 
+    \[ (T(h) \mid k) - (h \mid T^*(k)) \]
+    Furthermore, 
+    \begin{itemize}
+        \item $||T^*|| = ||T||$
+        \item $(T+\lambda S)^* = T^* + \overline{\lambda} S^*$
+        \item $T^{**} = T$
+        \item $(TS)* = S^*T^*$
+        \item $\norm{T^*T} = ||T||^2$
+    \end{itemize}
+    Proof. Clearly, if $T^*$ exists, it is unique. For existence, fix $k \in H$. Then, 
+    \[ h \mapsto (T(h) \mid k)\]
+    is linear and 
+    \[ |(T(h)\mid k)| \leq ||T|| \cdot ||k|| \cdot ||h||\]
+    Thus, this is bounded in norm by $||T|| \cdot ||k||$. Thus this is a functional in $H^*$. Thus, $\exists! z(k)$ such that $||z(k)|| \leq ||T||||k||$ and: 
+    \[ (T(h) \mid k) = (h \mid z(k)) \qquad \forall h \in H\]
+    Now, check that: 
+    \[ z(k+\lambda k') = z(k) + \lambda z(k') \] 
+    and we can define: 
+    \[ T^*(k) = z(k) \qquad ||z(k)|| \leq ||T||||k||\]
+    for all $k \in H$. Thus, $||T^*|| \leq ||T||$. \bbni
+    Since $T^* \in \mathcal L (H)$, hence we have $T^{**} \in \mathcal L(H)$ and: 
+    \[ (T^*(h) \mid k) = (h \mid T^**(k))\]
+    But:
+    \[ (T^*(h) \mid k) = (h \mid T(k))\]
+    since this holds for all $h$ and $k$, we have that: $T = T^{**}$. \\
+    Thus, $||T|| = ||T^{**}|| \leq ||T^*||$. Thus, $||T^*|| = ||T||$. \bbni 
+    Next, note: 
+    \[ (h \mid (TS)^*(k)) = (TS(h) \mid k) = (h \mid S^*T^*(k)) \]
+    Thus, $T^*S^* = (TS)^*$. \\
+    Finally, 
+    \begin{align*}
+        ||T(h)||^2 &= (T(h) \mid T(h))  \\
+        &= (T^*T(h) \mid h) \\
+        &\leq ||T^*T|| ||h||^2 \\
+    \end{align*}
+    Thus, $||T||^2 \leq ||T^*T|| \leq ||T^*||||T|| = ||T||^2$. 
+    \item[Ex.] $H = \R^2$. Let $T \in \mathcal{L}(\R^2)$ be given by: 
+    \[ T(x,y) = (-y, x)\]
+    Note that $(T(h) \mid h) = 0$ for all $h \in \R^2$.
+    \item[Prop.] Let $H$ be a complex Hilbert space. If $T \in \mathcal{L}(H)$ and: 
+    \[ (T(h) \mid h) = 0 \qquad \forall h \in H\]
+    then $T = 0$. \\
+    Proof. Let $[x, y] = (T(x) \mid y)$. Then $[\cdot, \cdot]$ is a sesquilinear form on $H$. \\ 
+    Thus, we have the polarization identity: 
+    \begin{align*}
+        (T(x) \mid y) &= [x, y] \\
+        &= \frac 14 \sum_{k=0}^3 i^k (T(x + i^k y) \mid x + i^k y) \\
+        &= 0
+    \end{align*}
+    Thus, $T = 0$. 
 \end{itemize}
 
 

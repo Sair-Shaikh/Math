@@ -1,0 +1,271 @@
+\documentclass[12pt]{article}
+
+\include{../style}
+
+\begin{document}
+
+\input{title}
+
+\begin{problem}{42}
+    Let $\mathfrak{c}$ be the subspace of $l^\infty$ of sequences $x = (x_n)$ such that $\lim_n x_n$ exists and let $\mathfrak{c}_0$ be the subspace of $\mathfrak{c}$ for which the limit is $0$. 
+    \begin{itemize}
+        \item If $y \in l^1$, then let $\phi_y$ be the functional on $\mathfrak{c}_0$ given by: 
+        \[ \phi_y(x) = \sum_{n=1}^\infty x_ny_n\]
+        Show that $y \to \phi_y$ is an isometric isomorphism of $l^1$ onto $\mathfrak{c}_0^*$. 
+        \item Describe the dual of $\mathfrak{c}$. 
+        \item Is either $\mathfrak{c}_0$ or $\mathfrak{c}$ reflexive?
+    \end{itemize}
+\end{problem}
+\begin{solution}
+    \bbni
+    \begin{enumerate}
+        \item Let $\Phi: l^1 \to \mathfrak{c}_0^*$ be the map given by $\Phi(y) = \phi_y$. Since the map is given to us, we assume it is well-defined (it is also immediate via Holder's inequality with $p =1 $ and $q = \infty$). We need to show that $\Phi$ is an isometric isomorphism, thus we need to show it is linear, isometric and surjective. \bbni
+        First, to show that $\Phi$ is linear, let $y, z \in l^1$ and $\alpha \in \F$. Then, we have for all $x \in \mathfrak{c}_0$:
+        \begin{align*}
+            \Phi(\alpha y + y )(x) &= \sum_{n=1}^\infty x_n(\alpha y + z)_n \\
+            &= \sum_{n=1}^\infty x_n(\alpha y_n + z_n) \\
+            &= \alpha \sum_{n=1}^\infty x_ny_n + \sum_{n=1}^\infty x_nz_n \\
+            &= \alpha \Phi(y)(x) + \Phi(z)(x) \\
+            &= (\alpha \Phi(y) + \Phi(z))(x)
+        \end{align*}
+        Thus, $\Phi$ is linear. Next, we show that $\Phi$ is isometric. Let $y \in l^1$ be arbitrary. Then, for any $x \in \mathfrak{c}_0$, we have:
+        % Recall the definition of the operator norm: 
+        % \[ \norm{\Phi(y)} = \sup_{\norm{x}_\infty \leq 1} |\Phi(y)(x)|\]
+        % for $x \in \mathfrak{c}_0$. Then, we have:
+        \begin{align*}
+            |\Phi(y)(x)| &= \left|\sum_{n=1}^\infty x_ny_n\right| \\ 
+            &\leq \sum_{n=1}^\infty |x_n||y_n| \\
+            & \leq \sum_{n=1}^\infty \norm{x}_\infty |y_n| \\
+            & = \norm{x}_\infty \sum_{n=1}^\infty |y_n| \\
+            & = \norm{y}_1 \norm{x}_\infty 
+        \end{align*}     
+        Thus, $\norm{\Phi(y)} \leq \norm{y}_1$. To show the other direction, recall the definition of the operator norm:
+        \[ \norm{\Phi(y)} = \sup_{\norm{x}_\infty \leq 1} |\Phi(y)(x)|\]
+        for $x \in \mathfrak{c}_0$. Thus, to show that $\norm{\Phi(y)} \geq \norm{y}_1$, for $\epsilon > 0$, we need to find an $x \in \mathfrak{c}_0$ such that $\norm{x}_\infty \leq 1$ and $|\Phi(y)(x)| \geq \norm{y}_1 - \epsilon$. \bbni
+        Note that we have:
+        \begin{align*}
+            \sum_{n=1}^\infty |y_n| &= \lim_{N \to \infty} \sum_{n=1}^N |y_n| = \norm{y}_1
+        \end{align*} 
+        Thus, there exists an $N$ such that: 
+        \[\norm{y}_1 - \sum_{n=1}^N |y_n| < \epsilon\]
+        Next, define $x in l^\infty$ as follows: 
+        \begin{align*}
+            x_n = \begin{cases}
+                \sgn(y_n) & \text{if } n \leq N \\
+                0 & \text{otherwise} 
+            \end{cases}
+        \end{align*}
+        where $\sgn$ returns the sign of a real number, and $0$ for $0$. \bbni
+        Clearly, as $x_n \in \{0, 1, -1\}$, for all $n \in \N$, we have that $\norm{x}_\infty \leq 1$. Moreover, as $x_n$ is zero after a finite number of terms, we have that $\lim_n x_n = 0$. Thus, $x \in \mathfrak{c}_0$. Finally, we calculate: 
+        \begin{align*}
+            |\Phi(y)(x)| &= \left|\sum_{n=1}^\infty x_ny_n\right| \\
+            &= \left|\sum_{n=1}^N x_ny_n + \sum_{n=N+1}^\infty x_ny_n\right|
+        \end{align*}
+        % Then, for all $x \in \mathfrak{c}_0$, with $\norm{x}_\infty$, we have:
+        % \begin{align*}
+        %     |\Phi(y)(x)| &= \left|\sum_{n=1}^\infty x_ny_n\right| \\ 
+        %     &\leq \sum_{n=1}^\infty |x_n||y_n| \\
+        %     & \leq \sum_{n=1}^\infty \norm{x}_\infty |y_n| \\
+        %     & = \norm{x}_\infty \sum_{n=1}^\infty |y_n| \\
+        %     & = \norm{x}_\infty \norm{y}_1
+        % \end{align*} 
+        % Thus, $\norm{\Phi} \leq 
+    \end{enumerate}
+\end{solution}
+\newpage
+
+\begin{problem}{43}
+    Show that $X$ is reflexive if and only if $X^*$ is. 
+\end{problem}
+\begin{solution}
+    Assume $X$ is reflexive. Then $X$ is isometrically isomorphic to $X^{**}$ via the map: 
+    \begin{align*}
+        \iota: X &\to X^{**} \\
+        \iota(x)(f) &= f(x)
+    \end{align*}
+    for $x \in X$ and $f \in X^*$. To show that $X^*$ is reflexive, we need to show that the map given by: 
+    \begin{align*}
+        \lambda: X^* &\to X^{***} \\
+        \lambda(f)(y) &= y(f)
+    \end{align*}    
+    for $f \in X^*$ and $y \in X^{**}$ is onto. \bbni 
+    Thus, let $F \in X^{***}$. Since $X$ is reflexive, every element of $X^{**}$ can be written as $\iota(x)$ for a unique $x$ in $X$. Then, we can define a well-defined functional $f \in X^*$ by: 
+    \[ f(x) = F(\iota(x)) \]
+    i.e. $f = F \circ \iota$. This is linear and bounded as its a composition of linear bounded functionals. Then, note that for any $\iota(x) \in X^{**}$. 
+    \begin{align*}
+        \lambda(f)(\iota(x)) &= \iota(x)(f) \\
+        &= f(x) \\
+        &= F(\iota(x))
+    \end{align*}
+    Thus, $F = \lambda(l)$. Since $F$ was arbitrary, we have shown that $\lambda$ is onto and thus $X^*$ is reflexive. \bbni
+    Now, assume that $X^*$ is reflexive. Then, by the previous argument, we have that $X^{**}$ is reflexive. Let $\iota$ and $\lambda$ be as before. Assume for the sake of contradiction that $\iota$ is not onto. \bbni 
+    Since $X$ is Banach and $\iota$ is an isometric injection, we have that $\iota(X) \subset X^{**}$ is a closed proper subspace. Then by the 2nd corollary to the Hahn-Banach theorem, we have a non-zero functional $F \in X^{***}$ such that $F(\iota(x)) = 0$ for all $x \in X$. Since $\lambda$ is onto, there exists a $f \in X^*$ such that $\lambda(f) = F$. Then, following the unpacking of the definitions, we get, for all $x \in X$: 
+    \begin{align*}
+        0 &= F(\iota(x)) \\ 
+        &= \lambda(f)(\iota(x)) \\
+        &= \iota(x)(f) \\
+        &= f(x) 
+    \end{align*}
+    Thus, $f \equiv 0$, which is a contradiction. Thus, $X$ is reflexive. 
+\end{solution}
+\newpage
+
+
+\begin{problem}{44}
+    Let $\beta \subset \mathcal{P}(X)$ be a cover of $X$. Show that $\beta$ is a basis for $\tau(\beta)$ if and only if given $U$ and $V$ in $\beta$ and $x \in U \cap V$ there is a $W \in \beta$ such that $x \in W \subset U \cap V$. 
+\end{problem}
+\begin{solution}
+    Assume $\beta$ is a basis for $\tau(\beta)$. Then, if $U$ and $V$ are in $\beta$, they are in $\tau(\beta)$. Since $\tau(\beta)$ is a topology, $U \cap V$ is in $\tau(\beta)$. As $\beta$ is a basis for $\tau(\beta)$, for any $x \in U \cap V$, there exists a $W \in \beta$ such that $x \in W \subset U \cap V$. Thus, the condition holds. \bbni
+    Now, assume that the condition holds. Define $\tau'$ to be the collection of arbitrary unions of elements of $\beta$. We claim that $\tau' = \tau(\beta)$ and $\beta$ is a basis for $\tau'$. Clearly, as $\beta \subset \tau(\beta)$, $\tau(\beta)$ must contain arbitrary unions of elements of $\beta$ as it is a topology. Thus, we have that $\tau' \subset \tau(\beta)$. \bbni
+    To show the other direction, we need to show that $\tau'$ is a topology that contains $\beta$, since then $\tau(\beta) \subset \tau'$ by definition. Thus, we check the axioms: 
+    \begin{enumerate}
+        \item Since $\beta$ is a cover, $X = \bigcup_{U \in \beta} U$. Thus, $X$ is in $\tau'$. $\emptyset$ is the empty union of elements of $\beta$, so it is in $\tau'$ as well. 
+        \item $\tau'$ is closed under arbitrary unions by definition, as arbitary unions of arbitrary unions of elements of $\beta$ are still arbitrary unions of elements of $\beta$.
+        \item Let $U$ and $V$ be in $\tau'$. Then, by definition, $U = \bigcup_{i \in I} U_i$ and $V = \bigcup_{j \in J} V_j$ for some index sects $I, J$ and with $U_i, V_j \in \beta$. Then, we have:
+        \begin{align*}
+            U \cap V &= \left( \bigcup_{i \in I} U_i \right) \cap \left( \bigcup_{j \in J} V_j \right) \\
+            &= \bigcup_{i \in I} \bigcup_{j \in J} (U_i \cap V_j)
+        \end{align*}
+        i.e. something is in $U \cap V$ iff it is in some $U_i$ and some $V_j$, if and only if it is in some $U_i \cap V_j$. However, by the given condition, for any $x \in U_i \cap V_j$, there exists a $W_{x, i, j} \in \beta$ such that $x \in W_{x, i, j} \subset U_i \cap V_j$. Then, clearly, 
+        \[ U_i \cap V_j = \bigcup_{x \in U_i \cap V_j} W_{x, i,j}\]
+        as each $W_{x, i, j}$ is contained in $U_i \cap V_j$ and conversely each $x$ is contained in some $W_{x, i, j}$. Thus, we finally write:
+        \begin{align*}
+            U \cap V &= \bigcup_{i \in I} \bigcup_{j \in J} (U_i \cap V_j) \\
+            &= \bigcup_{i \in I} \bigcup_{j \in J} \left( \bigcup_{x \in U_i \cap V_j} W_{x, i, j} \right)
+        \end{align*}        
+        Thus, $\tau'$ is closed under finite intersections.  
+    \end{enumerate}
+    Thus, $\tau'$ is a topology and $\tau' = \tau(\beta)$. \bbni
+    Finally, we need to show that $\beta$ is a basis for $\tau'$. Let $U \in \tau'$ and $x \in U$. Then, by the given property, there exists a $V \in \beta$ such that $x \in V \subset U \cap U = U$. Thus, $\beta$ is a basis for $\tau' = \tau(\beta)$.
+\end{solution}
+\newpage
+
+
+\begin{problem}{45}
+    If $X$ is a finite dimensional normed space, show that the weak topology is the same as the norm topology. (Hint. Use the dual basis.)
+\end{problem}
+\begin{solution}
+    Let $\tau_W$ be the weak topology and $\tau_N$ be the norm topology. We already know that $\tau_W \subseteq \tau_N$ as every weakly open set is norm open. Thus, we need to show that if $X$ is finite dimensional, then $\tau_N \subseteq \tau_W$. \bbni
+    Since $X$ is finite dimensional, all norms on $X$ are equivalent, thus generate the same topology. Let $\{e_1, \cdots, e_n\}$ be a basis for $X$. Let $\norm{x}_\infty =  \max_i |x_i|$ be the $l^\infty$ norm on $X$, where $x = \sum_{i=1}^n x_ie_i$. We will show that open balls in this topology are weakly open. \bbni 
+    For all $\epsilon > 0$ and $x_0 \in X$, let:
+    \[B_\epsilon(x_0) = \{ x \in X : \norm{x-x_0}_\infty < \epsilon\}\]
+    be an open ball. Let $\{f_1, \cdots, f_n\} \subset X^*$ be the dual basis. These are bounded functionals as all functionals in a finite dimensional space are bounded (Problem 33). Then, we have the following subbasis elements for the weak topology, for $1 \leq i \leq n$:
+    \begin{align*}
+        U(f_i, x_0, \epsilon) &= \{ x \in X: |f_i(x_0)-f_i(x)| < \epsilon\}\\
+        &= \{ x \in X: |(x_0)_i - x_i| < \epsilon\}
+    \end{align*}
+    Then, the intersection of these for $i = 1, \cdots, n$ gives us:
+    \begin{align*}
+        \bigcap_{i=1}^n U(f_i, x_0, \epsilon) &= \bigcap_{i=1}^n \{ x \in X: |(x_0)_i - x_i| < \epsilon\} \\
+        &=  \{ x \in X: |(x_0)_i - x_i| < \epsilon , i = 1, \cdots, n\} \\
+        &= \{ x \in X: \norm{x-x_0}_\infty < \epsilon\} \\
+        &= B_\epsilon(x_0)
+    \end{align*}
+    Thus, we have shown that $B_\epsilon(x_0)$ is weakly open for all $x_0 \in X$ and $\epsilon > 0$. Since these open balls form a basis for the norm topology, every norm open set is weakly open. Thus, we have shown that $\tau_N \subseteq \tau_W$.    \bbni
+    Thus, we have shown that $\tau_W = \tau_N$ when $X$ is finite dimensional.
+\end{solution}
+\newpage
+
+
+\begin{problem}{46}
+    Show that if $X$ is an infinite dimensional normed space, then every nonempty weakly open set is unbounded. (Hint provided.)
+\end{problem}
+\begin{solution}
+    Let $X$ be an infinite dimensional normed space. Let $U$ be a non-empty weakly open set. We will show that $U$ is unbounded. \bbni
+    Since $U$ is non-empty, there exists a point $x_0 \in U$. Since $U$ is a neighborhood of $x_0$, there exists an element of the neighborhood basis of the weak topology contained in $U$. Thus, there exists $\phi_1, \cdots, \phi_n \in X^*$ and $\epsilon > 0$ such that:
+    \[ B := U(\{\phi_1, \cdots, \phi_n\}, x, \epsilon) = \{x \in X: |\phi_i(x)-\phi_i(x_0)| < \epsilon, 1 \leq i \leq n\} \subset U \]    
+    % Note that we can shift this get to get an element of the basic open around $0\in X$ as follows: 
+    % \begin{align*}
+    %     U(\{\phi_1, \cdots, \phi_n\}, x_0, \epsilon)-x_0 &= \{x-x_0 \in X: |\phi_i(x)-\phi_i(x_0)| < \epsilon, 1 \leq i \leq n\} \\
+    %     &= \{x-x_0 \in X: |\phi_i(x-x_0)-\phi_i(0)| < \epsilon, 1 \leq i \leq n\} \\
+    %     &= \{x \in X: |\phi_i(x)-\phi_i(0)| < \epsilon, 1 \leq i \leq n\} \\
+    %     &= U(\{\phi_1, \cdots, \phi_n\}, 0, \epsilon)
+    % \end{align*}
+    % Assume $B$ is non-empty. Then, it suffices to show that $B$ is unbounded, as every non-empty weakly open set is a non-empty union of such basic opens, thus contains an unbounded basic open, thus is unbounded itself. \bbni
+    Define $\phi: X \to \F^n$ by $\phi(x) = (\phi_1(x), \cdots, \phi_n(x))$. Consider $\ker(\phi)$. We note that: 
+    \[  x \in \ker(\phi) \iff x \in \ker(\phi_i), \forall 1 \leq i \leq n\]
+    Thus, 
+    \[ \ker(\phi) = \bigcap_{i=1}^n \ker(\phi_i)\]
+    By Problem 33, since each $\phi_i$ is bounded, it has a closed kernel. An intersection of closed sets is closed, thus $\phi$ has a closed kernel. Then, finally, by Problem 33, $\phi$ is bounded. \bbni
+    Moreover, note that by rank-nullity, as $X$ is infinite dimensional and $\dim(\img(\phi)) \leq n$, we have that $\ker(\phi)$ is infinite dimensional, hence a non-empty linear subspace. \bbni
+    Next, consider $\phi^{-1}(\phi(x_0))$. From undergraduate linear algebra, we know that this is a coset of $\ker(\phi)$, i.e.:
+    \[ \phi^{-1}(\phi(x_0)) = x_0 + \ker(\phi)\]
+    Moreover, we claim that $\phi^{-1}(\phi(x_0)) \subset B$. To see this, let $z \in \ker(\phi)$ be arbitrary. Then, $z \in \ker(\phi_i)$ for all $i$. Thus, we have: 
+    \[ |\phi_i(x_0+z)-\phi_i(x_0)| = |\phi_i(x_0-x_0)+\phi_1(z)| = 0 < \epsilon \]
+    for all $i$. Thus, $x_0 + z \in B$. Thus, $x_0 + \ker(\phi) \subset B$. \bbni
+    Now, since $\ker(\phi)$ is a non-empty linear subspace, it contains $\lambda z$ for some $z \in \ker(\phi)$ and all $\lambda \in \mathbb F$. Then, we calculate the metric distance between $x_0$ and $x_0 + \lambda z \in x_0+\ker(\phi)$:
+    \begin{align*}
+        ||x_0 - (x_0 + \lambda z)|| = ||\lambda z|| = |\lambda| \cdot ||z||
+    \end{align*}
+    Since $||z||$ is a constant, we can choose $|\lambda| > N$ for any $N \in \R$. Thus, $x_0 + \ker(\phi)$ is unbounded. Thus, $B$ is unbounded. Thus, $U$ is unbounded. \bbni
+\end{solution}
+\newpage
+
+\begin{problem}{48}
+    Let $f: (X, \tau) \to (Y, \sigma)$ be a function between topoligcal spaces. Show that $f$ is continous if and only if $f$ takes convergent nets to convergent nets. That is, $f$ is continous if and only if given $x_\lambda \to x$ in $X$, we have $f(x_\lambda) \to f(x)$ in $Y$. 
+\end{problem}
+\begin{solution}
+    Assume that $f$ is continous. Let $x_\lambda \to x$ be a convergent net in $X$. Then, $f(x_\lambda)$ is a net in $Y$. We need to show that $f(x_\lambda) \to f(x)$. Thus, we need to show that $f(x_\lambda)$ is eventually in every neighborhood of $f(x)$. \bbni
+    Let $V \in \mathcal N(f(x))$ be a neighborhood of $f(x)$. Then, there exists an open $U \in \sigma$ such that $f(x) \in U \subset V$. Since $f$ is continous, $f^{-1}(U)$ is open in $\tau$. Moreover, as $x \in f^{-1}(U)$ as $f(x) \in U$. Thus, $f^{-1}(U)$ is a neighborhood of $x$. Since $x_\lambda \to x$, there exists an index $\lambda_0$ such that for all $\lambda \geq \lambda_0$, $x_\lambda \in f^{-1}(U)$. Thus, for all $\lambda \geq \lambda_0$, we have that $f(x_\lambda) \in U$. Since $U \subset V$, we have that $f(x_\lambda) \in V$. Thus, $f(x_\lambda)$ is eventually in $V$. Since $V$ was arbitrary, $f(x_\lambda) \to f(x)$. \bbni
+    For the other direction, we prove the contrapositive. Assume that $f$ is not continous. Then, there exists an open set $V \in \sigma$ such that $f^{-1}(V)$ is not open in $\tau$. Then, there exists a point $x \in f^{-1}(V)$ such that there are no open neighborhoods containing $x$ that are contained in $f^{-1}(V)$ (using a definition of open from point set). \bbni 
+    Let $\Lambda = \mathcal N(x)$ be the neighborhoods of $x$ ordered by reverse inclusion. We construct a net $(x_\lambda)$ in $X$ by picking a point in each neighborhood of $x$ that is not in $f^{-1}(V)$. We claim that this net converges to $x$. To see this, let $U \in \mathcal N(x)$ be a neighborhood of $x$. Then for any $V \geq U \in \Lambda$, since we have $V \subseteq U$, we have that $x_V \in U$. Thus, $x_\lambda$ is eventually in $U$. Since $U$ was an arbitrary neighborhood of $x$, we have that $x_\lambda \to x$. \bbni  
+    However, $x_\lambda \not \in  f^{-1}(V)$ for all $\lambda \in \Lambda$. Thus, $f(x_\lambda) \not \in V$ for all $\lambda \in \Lambda$. Thus, $f(x_\lambda)$ is not eventually in $V$, a neighborhood of $f(x)$. Thus, $f(x_\lambda)$ does not converge to $f(x)$. \bbni
+    By the contrapositive, we have shown that if $f$ takes convergent nets to convergent nets, then $f$ is continous and we are done.
+\end{solution}
+\newpage
+
+
+\begin{problem}{49}
+    Let $X$ be a normed vector space. Show that a net $(x_\lambda)$ converges to $x$ weakly if and only if $\phi(x_\lambda) \to \phi(x)$ for all $\phi \in X^*$. Does a weakly convergent net $(x_\lambda)$ have to be bounded?
+\end{problem}
+\begin{solution}
+    Let $x_\lambda \subset X$ be a net. \bbni 
+    First assume that $x_\lambda \to x$ in the weak topology. By definition, we have that each $\phi \in X^*$ is continous with respect to the weak topology. Thus, by the previous problem, $\forall \phi \in X^*$, we have:
+    \[ x_\lambda \to x \implies \phi(x_\lambda) \to \phi(x)\] 
+    Next, assume $\phi(x_\lambda) \to \phi(x)$ for all $\phi \in X^*$. We need to show that $x_\lambda \to x$ in the weak topology. Thus, let $V \in \mathcal N(x)$ be a neighborhood of $x$. We need to show that $x_\lambda$ is eventually in $V$. \bbni
+    Let $\beta$ be the neighborhood basis of $x$ with respect to the weak topology that we defined in class. Since $V$ is a neighborhood of $x$, we know there exists a $U \in \beta$ such that $U \subset V$. Then, $U$ is of the form: 
+    \[ U = U(\{\phi_1, \cdots, \phi_n\}, x_0, \epsilon) = \{x' \in X: |\phi_i(x')-\phi_i(x)| < \epsilon, \forall 1 \leq i \leq n\}\]
+    for some $\phi_1, \cdots, \phi_n \in X^*$ and $\epsilon > 0$. We will show that $x_\lambda$ is eventually in $U \subset V$. \bbni
+    Note that $\phi_i(x_\lambda) \to \phi_i(x)$ for all $1 \leq i \leq n$. Take $B_\epsilon(\phi_i(x))$ to be the open ball of radius $\epsilon$ around $\phi_i(x)$. Then, there exists an index $\lambda_i$ such that for all $\lambda \geq \lambda_i$, we have:
+    \[ \phi_i(x_\lambda) \in B_\epsilon(\phi_i(x)) \iff |\phi_i(x_\lambda) - \phi_i(x)| < \epsilon \]
+    Since the $\lambda_i$ are a part of a directed set, any two of them have an element dominating them. By (very simple) induction, any finite collection of them has an element dominating them. Thus, let $\lambda_0$ be the element such that: 
+    \[ \lambda_0 \geq \lambda_i \qquad \forall 1 \leq i \leq n \]
+    Then, for all $\lambda \geq \lambda_0$, we have that for all $1 \leq i \leq n$: 
+    \[ |\phi_i(x_\lambda) - \phi_i(x)| < \epsilon \]
+    Thus, for all $\lambda \geq \lambda_0$, we have that:
+    \[ x_\lambda \in U\]
+    Thus, $x_\lambda$ is eventually in $U$, thus eventually in $V$. Since $V$ was an arbitrary neighborhood of $x$, we have that $x_\lambda \to x$ in the weak topology. 
+\end{solution}
+\newpage
+
+\begin{problem}{51}
+    Let $(x_\lambda)$ be a net in the compact space $X$. Show that $(x_\lambda)$ has an accmulation point. (Hint provided.)
+\end{problem}
+\begin{solution}
+    Let $(x_\lambda)$ be a net in compact space $X$. We need to show that there exists a point $x \in X$ such that for any neighborhood $U$ of $x$ and index $\lambda_0$, we have that there exists $\lambda \geq \lambda_0$ such that $x_{\lambda} \in U$. \bbni
+    Let $F_{\lambda'} = \overline{\{x_\lambda: \lambda \geq \lambda'\}}$. Then, the family $\{F_\lambda\}_\lambda$ is a family of closed sets. Moreover, let $\lambda_1, \cdots, \lambda_n$ be a finite collection of indices. Since the indices are from a directed set, there exists an index dominating any pair of them. Thus, by (very simple) induction, we can find an index $\lambda''$ dominating all of them (for any finite collection), i.e. $\lambda \geq \lambda''$ implies $\lambda \geq \lambda_i$ for all $1 \leq i \leq n$. Thus, by definition, we have that: 
+    \[ x_{\lambda''} \in \bigcap_{i=1}^n F_{\lambda_i}\]
+    Thus, the family $\{F_\lambda\}_\lambda$ is a family of closed sets with the finite intersection property. As $X$ is compact, we have (Problem 13) that: 
+    \[ \bigcap_{\lambda} F_\lambda \neq \emptyset\]
+    Thus, there exists a point $x \in \bigcap_{\lambda} F_\lambda$. We claim that $x$ is an accumulation point of $x_\lambda$. \bbni
+    Let $U$ be a neighborhood of $x$ and $\lambda_0$ be an index. Then,
+    \[ x \in F_{\lambda_0} = \overline{\{x_\lambda: \lambda \geq \lambda_0 \}}\]
+    Thus, by the definition of closure, we have that every open neighborhood of $x$ intersects $\{x_\lambda: \lambda \geq \lambda_0\}$. Thus, there exists a point in $\{x_\lambda: \lambda \geq \lambda_0\} \cap U$. Thus, there exists a $\lambda \geq \lambda_0$ such that $x_\lambda \in U$. \bbni 
+    As $U$ and $\lambda_0$ were arbitrary, $x$ is an accumulation point of $(x_\lambda)$.
+\end{solution}
+\newpage
+
+\begin{problem}{52}
+    Let $(x_n)$ be a sequence in a metric space $X$. Show that $x$ is an accumulation point of $(x_n)$ if and only if $(x_n)$ has a subsequence converging $x$. 
+\end{problem}
+\begin{solution}
+    Assume $x$ is an accumulation point of $(x_n)$. Let $B_{1/n}(x)$ be the open ball of radius $1/n$ around $x$. Since $x$ is an accmulation point and $B_{1}(x)$ is a neighborhood of $x$, we have that there exists $n_1 > 1$ such that $x_{n_1} \in B_{1}(x)$. Then, since $B_{1/2}(x)$ is a neighborhood of $x$, there exists $n_2 > n_1$ such that $x_{n_2} \in B_{1/2}(x) \subset B_{1}(x)$. Continuing in this manner, we can find a sequence of indices $n_1 < n_2 < \cdots < n_k < \cdots$ such that $x_{n_k} \in B_{1/k}(x)$. We claim that this subsequence converges to $x$. \bbni
+    For any $\epsilon > 0$, we can find $N \in \N$ such that $1/N < \epsilon$. Then, for all $k \geq N$, we have that $x_{n_{k}} \in B_{1/k}$. However, as $1/k < 1/N < \epsilon$, we have that $x_{n_k} \in B_{1/N}(x) \subseteq B_\epsilon(x)$. Thus, $x_{n_k} \to x$. \bbni
+    Next, assume that $(x_n)$ has a subsequence $(x_{n_k})$ converging to $x$. We need to show that $x$ is an accumulation point of $(x_n)$. \bbni
+    Let $U$ be a neighborhood of $x$ and $N \in \N$ be some index. We need to show that there exists an $m > N$ such that $x_{m} \in U$. \bbni
+    Since every neighborhood of $x$ contains an open neighborhood, we assume, without loss of generality, that $U$ is open. Since $x_{n_k}$ is a subsequence of $x$, we have that $n_k \geq k$. Moreover, since $x_{n_k}$ converges to $x$, there exists an index $N_1$ such that for all $k \geq N_1$, we have that $x_{n_k} \in U$. \bbni 
+    Let $N_0 > \max(N, N_1)$ be an index. Then, $n_{N_0} \geq N_0 > N$ and as $N_0 > N_1$, we have that $x_{N_0} \in U$. Thus, $x$ is an accumulation point of $(x_n)$. 
+\end{solution}
+
+
+\end{document}

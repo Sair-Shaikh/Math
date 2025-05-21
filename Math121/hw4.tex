@@ -6,26 +6,144 @@
 
 \input{title}
 
-\begin{problem}{1}
-    \begin{enumerate}
-        \item Let $X$ be a compact hermitian manifold and let $E \to X$ be a holomorphic vector bundle of rank $d$ endowed with a Hermitian metric $h$. Prove that the cohomology groups $H^q(X, E)$ are finite-dimensional vector spaces. In particular, the vector space of holomorphic sections of $E$ is finite dimensional. (Hint provided).
-        \item Let $M$ be a differentiable manifold, $E, F, G \to M$ differentiable vector bundle and $P: \mathcal{C}^\infty(E) \to \mathcal{C}^\infty(F)$ and $Q: \mathcal{C}^\infty(F) \to \mathcal{C}^\infty(G)$ be differential operators. Show that the symbol of $Q \circ P$ is equal to $\sigma_Q \circ \sigma_P$ and compute its degree in terms of the degrees of $P$ and $Q$.
-        \item Show that a form $\alpha$ is privitive if and only if $\Lambda \alpha = 0$, where $\Lambda$ is the adjoint of the Lefschetz operator.
-        \item Let $\omega_{FS}$ the Fubini-Study metric on $\mathbb{P}^n\C$. Show that $\int_{\mathbb{P}^n\C} \omega_{FS}^n = 1$. (Hint provided.)
-        \item Conclude that $H^{2k}(\mathbb{P}^n\C, \Z) = \Z[\omega_{FS}^k]$. 
-        \item Solve Exercise 2, Chapter 5 of Voisin. 
-    \end{enumerate}
+\begin{problem}{1.1}
+    Let $X$ be a compact hermitian manifold and let $E \to X$ be a holomorphic vector bundle of rank $d$ endowed with a Hermitian metric $h$. Prove that the cohomology groups $H^q(X, E)$ are finite-dimensional vector spaces. In particular, the vector space of holomorphic sections of $E$ is finite dimensional. (Hint provided).
+        
 \end{problem}
 
 \begin{solution}
-    Noting down ideas here. 
-    \begin{enumerate}
-        \item First note that we have the decomposition:
-        \[ H^k(X, E) = \bigoplus_{p+q=k} H^{p, q}(X, E)\]
-        Thus, it suffices to show that $H^{p, q}(X, E)$ is finite dimensional. This is the cohomology of the Dobault complex. 
-        \item First, trivialize the bundles $E, F, G$ over $U$. Then, locally for coordinates $(x_1, \ldots, x_n)$ on $M$, and $(\alpha_1, \cdots, \alpha_p)$ on $\Gamma(X, E)$, we have: 
-        
-    \end{enumerate}
+    First note that we have the decomposition:
+    \[ H^k(X, E) = \bigoplus_{p+q=k} H^{p, q}(X, E)\]
+    Thus, it suffices to show that $H^{p, q}(X, E)$ is finite dimensional. This is the cohomology of the Dobault complex. \bbni
+    This proof involved a lot of long computations involving the Laplacian, based on the hint. I definitely made mistakes, and am choosing to not turn this in due to time constraints. 
+\end{solution}
+\newpage 
+
+\begin{problem}{1.2}
+    Let $M$ be a differentiable manifold, $E, F, G \to M$ differentiable vector bundle and $P: \mathcal{C}^\infty(E) \to \mathcal{C}^\infty(F)$ and $Q: \mathcal{C}^\infty(F) \to \mathcal{C}^\infty(G)$ be differential operators. Show that the symbol of $Q \circ P$ is equal to $\sigma_Q \circ \sigma_P$ and compute its degree in terms of the degrees of $P$ and $Q$.
+\end{problem}
+\begin{solution}
+    First, trivialize the bundles $E, F, G$ over $U$. Assume $E|_U = U \times \R^e$, $F|_U = U \times \R^f$, and $G|_U = U \times \R^g$. Let $(x_1, \ldots, x_n)$ be local coordinates on $M$. Let $k$ and $k'$ be the degrees of $P$ and $Q$. Then, for $(\alpha_1, \ldots, \alpha_e) \in \Gamma(U, E)$ and $(\beta_1, \ldots, \beta_f) \in \Gamma(U, F)$, we have that:
+    \begin{align*}
+        P(\alpha_1, \ldots, \alpha_e) &= \left(\sum_{j=1}^e \sum_{|I|\leq k} P_{I, i, j} \frac{\partial \alpha_j}{\partial x_I} \right)_{1 \leq i \leq f } \\
+        Q(\beta, \ldots, \beta_f) &= \left(\sum_{j=1}^f \sum_{|I|\leq k'} Q_{I, i, j} \frac{\partial \beta_j}{\partial x_I} \right)_{1 \leq i \leq g } \\
+    \end{align*}
+    The composition, $Q \circ P$, is given by:
+    \begin{align*}
+        Q \circ P(\alpha_1, \ldots, \alpha_e) &=  \left(\sum_{j=1}^f \sum_{|I|\leq k'} Q_{I, i, j} \frac{\partial P(\alpha_1, \ldots, \alpha_e)_j}{\partial x_I} \right)_{1 \leq i \leq g } \\ 
+        &=  \left(\sum_{j=1}^f \sum_{|I|\leq k'} Q_{I, i, j} \frac{\partial }{\partial x_I}\left(\sum_{j'=1}^e \sum_{|J|\leq k} P_{J, j, j'} \frac{\partial \alpha_{j'}}{\partial x_J} \right) \right)_{1 \leq i \leq g }
+    \end{align*}
+    Next, note that $P_{J, j, j'} \in \Hom(E, F)$ and $Q_{I, i, j} \in \Hom(F, G)$, thus they act to pushforward to the correct space. Thus, we can move $P$ outside. Moreover, by the linearity of the differential operator, we can move the sum outside. Thus, we have that:
+    \begin{align*}
+        Q \circ P(\alpha_1, \ldots, \alpha_e) &= \left(\sum_{j=1}^f \sum_{|I|\leq k'} \sum_{j=1}^e \sum_{|J|\leq k} Q_{I, i, j} \circ P_{J, j, j'}  \frac{\partial }{\partial x_I}\left( \frac{\partial \alpha_{j'}}{\partial x_J} \right) \right)_{1 \leq i \leq g }
+    \end{align*}
+    Moreover, as the differentials commute, we have that $\frac{\partial}{\partial x_I} \circ \frac{\partial }{\partial x_{J}} = \frac{\partial }{\partial x_{I+J}}$ where $I+J$ is the entrywise sum of the multi-index. Moreover, $|I| + |J| \leq k' + k$ if $|I| \leq k'$ and $|J| \leq k$. Thus, we have that:  
+    \begin{align*}
+            Q \circ P(\alpha_1, \ldots, \alpha_e) &= \left(\sum_{j=1}^f \sum_{j'=1}^e \sum_{|I|+|J|\leq k+k'} Q_{I, i, j} \circ P_{J, j, j'}  \frac{\partial \alpha_{j'}}{\partial x_{I+J}} \right)_{1 \leq i \leq g }
+    \end{align*}
+    Computing the symbols of $P$, $Q$ and $Q \circ P$, we have that:
+    \begin{align*}
+        \sigma_P &= \left(\sum_{|I| = k} P_{I, i, j} \frac{\partial}{\partial x_I} \right)_{\substack{1 \leq i \leq f \\ 1 \leq j \leq e}} \\ 
+        \sigma_Q &= \left(\sum_{|I| = k} Q_{I, i, j} \frac{\partial}{\partial x_I} \right)_{\substack{1 \leq i \leq g \\ 1 \leq j \leq f}} \\ 
+        \sigma_{Q\circ P} &= \left(\sum_{|I|+|J| = k+k'} \sum_{j=1}^f Q_{I, i, j} \circ P_{J, j, j'}\frac{\partial}{\partial x_{I+J}} \right)_{\substack{1 \leq i \leq g \\ 1 \leq j' \leq e}} 
+    \end{align*}
+    Finally, we compute $\sigma_Q \circ \sigma_P$ by matrix mulitplication. 
+    \begin{align*}
+        \sigma_Q \circ \sigma_P &=  \left(\sum_{j=1}^f\left(\sum_{|I| = k} Q_{I, i, j} \frac{\partial}{\partial x_I}\right) \cdot \left(\sum_{|J| = k'} P_{J, j, j'} \frac{\partial}{\partial x_J}  \right)\right)_{\substack{1 \leq i \leq g \\ 1 \leq j' \leq e}} \\
+        &= \left(\sum_{j=1}^f\left(\sum_{|I|+|J| = k+k'} Q_{I, i, j} \circ P_{J, j, j'}\right) \frac{\partial}{\partial x_{I+J}} \right)_{\substack{1 \leq i \leq g \\ 1 \leq j' \leq e}}
+    \end{align*}
+    Noticing that the degree of $Q \circ P$ is the sum of the degrees of $P$ and $Q$, i.e. $k+k'$, we are finally done.
+\end{solution}
+\newpage
+
+\begin{problem}{1.3}
+    Show that a form $\alpha$ is privitive if and only if $\Lambda \alpha = 0$, where $\Lambda$ is the adjoint of the Lefschetz operator.
+\end{problem}
+\begin{solution}
+    Recall that we showed that: 
+    \[ [L^r, \Lambda] = (r(k-n)+r(r-1))L^{r-1} = (r(k-n-1+r))L^{r-1}\]
+    on $\Omega^k$. \bbni 
+    Let $\alpha \in \Omega^k(X)$. Picking $r = n-k+1$, the previous identity becomes:
+    \begin{align*}
+        [L^{n-k+1}, \Lambda]\alpha &= \left((n-k+1)(k-n-1+n-k+1)\right) L^{n-k}\alpha\\
+        &= 0 
+    \end{align*}
+    Expanding the commutator, we also have that: 
+    \begin{align*}
+        [L^{n-k+1}, \Lambda]\alpha = \Lambda L^{n-k+1}\alpha + L^{n-k+1}\Lambda \alpha 
+    \end{align*}
+    Thus, we have:
+    \[ \Lambda L^{n-k+1}\alpha = - L^{n-k+1}\Lambda \alpha \]
+    If $\alpha$ is primitive, we have $L^{n-k+1}\alpha = 0$ and $d_0 \alpha \leq n$. That implies,
+    \[ L^{n-k+1}\Lambda \alpha = 0\]
+    However, $\Lambda \alpha \in \Omega^{k-2}(X)$. As we showed in class, 
+    \[ L^{n-k+2}: \Omega^{k-2}(X) \to \Omega^{k-2}(X)  \]
+    is an isomorphism. Thus, $L^{n-k+1}$ (and all lower powers) is injective. Thus, we have that:
+    \[L^{n-k+1}\Lambda \alpha = 0 \implies \Lambda \alpha = 0\] 
+    Conversely, if $\Lambda \alpha = 0$, we have that: 
+    \[ \Lambda L^{n-k+1}\alpha = 0 \]
+    Similar to above, noting that $L$ is injective on $\Omega^a(X)$ for $a \leq n$, we have that $\Lambda$ is injective on $\Omega^{a}(X)$ for $a \geq n$. Thus,
+    \[ \Lambda \Lambda L^{n-k+1}\alpha = 0 \implies L^{n-k+1}\alpha = 0\]  
+    Thus $\alpha$ is primitive.
+\end{solution}
+\newpage
+
+\begin{problem}{1.4}
+    Let $\omega_{FS}$ the Fubini-Study metric on $\mathbb{P}^n\C$. Show that $\int_{\mathbb{P}^n\C} \omega_{FS}^n = 1$. (Hint provided.)
+\end{problem}
+\begin{solution}
+    We trivialize $\mathbb P^n \C$ over $U = \{[z_0: \cdots : z_n] : z_0 \neq 0\}$ with the map $\varphi([z_0: \cdots : z_n]) = \frac{1}{z_0}(z_1, \ldots, z_n)$ in the usual way. Note that the complement of $U$ is $\{[z_0 : \cdots : z_n] : z_0 = 0\}$ is measure zero ($\text{codim} 1$ as a submanifold as isomorphic to $\mathbb P^{n-1} \C$). Thus, we have that: 
+    \[ \int_{\mathbb P^n \C} \omega_{FS}^n = \int_{\phi(U)} \varphi^* \omega_{FS}^n\]
+    In local coordinates, the Fubini-Study form is given by:
+    \[ \varphi^* \omega_{FS} =\frac{i}{2\pi} \left( \sum_{k=1}^n dz_k \wedge d\bar{z}_k - \sum_{k,l} \frac{z_k\bar{z}_l}{1+\sum_{i=1}^n |z_i|^2}dz_l \wedge d\bar{z}_k\right)\]
+    Let $r = 1 + \sum_{i=1}^n |z_i|^2$ and define the Hermitian matrix: 
+    \[ H = \left(I_n -  \frac{z_k\bar{z}_l}{r}\right)\]
+    We want to compute the $n$th power of the form. Note that since $\omega_{FS}$ is a $(1, 1)$ form, $\omega_{FS}^n$ will be a $(n, n)$ volume form. Thus, we need to compute the elements of the product corresponding to $dz_1 \wedge d\bar{z}_1 \wedge \cdots \wedge dz_n \wedge d\bar{z}_n$. \bbni
+    Elements of this form correspond to picking an element from each row of $H$ such that each is in a unique column. This corresponds to the the determinant of $H$ (up to a sign, which we note is positive using the $1\times 1$ case). However, as we can still permute which term we pick from each of the $\omega_{FS}$ in our product, we get: 
+    \[ \varphi^* \omega_{FS} =  n!\left(\frac{i}{2\pi}\right)^n \det(H)\]
+    Thus, we have to compute $\det(H)$. Through some googling, I found the matrix determinant lemma, which states that if $A$ is a Hermitian matrix and $u, v$ are vectors, then:
+    \[ \det(I + uv^\dagger) = (1 + v^*u)\]
+    Letting $u = v = \frac{1}{\sqrt{r}}(z_1, \ldots, z_n)$, we have that:
+    \[ \det(H) = \det\left(I - \frac{1}{r}uv^\dagger\right) = \left(1 - \frac{1}{r}v^\dagger u\right) = \left(1-\frac{1}{r}\left(\sum_{i=1}^n |z_i|^2\right)\right) = \frac{1}{r}\]
+    Thus, we have: 
+    \begin{align*}
+        \int_{\mathbb P^n \C} \omega_{FS}^n &= \int_{\phi(U)}  n!\left(\frac{i}{2\pi}\right)^n \frac{1}{r} dz_1 \wedge d\bar{z}_1 \wedge \cdots \wedge dz_n \wedge d\bar{z}_n\\
+        &= n!\left(\frac{i}{2\pi}\right)^n \int_{\C^n} \frac{1}{r} dz_1 \wedge d\bar{z}_1 \wedge \cdots \wedge dz_n \wedge d\bar{z}_n
+    \end{align*}
+    Next, if $z_i = x_i + iy_i$, we have that:
+    \[ dz_i \wedge d\bar{z}_i = -2i dx_i \wedge dy_i\]
+    Thus, we get:
+    \begin{align*}
+        \int_{\mathbb P^n \C} \omega_{FS}^n &= n!\left(\frac{i}{2\pi}\right)^n (-2i)^n \int_{\R^{2n}} \frac{1}{1+\sum_i x_i^2+y_i^2} dx_1 \wedge dy_1 \wedge \cdots \wedge dx_n \wedge dy_n \\        
+        &= \left(\frac{n!}{\pi^n}\right) \int_{\R^{2n}} \frac{1}{1+\sum_i x_i^2+y_i^2} dV
+    \end{align*}
+    where $dV$ is the standard volume form on $\R^{2n}$. \bbni
+    At this point I googled for hints to compute this integral and choose not to present it. However, it is not hard to believe that this integral simplifies greatly through some switch to spherical coordinates and noting that $\text{Vol}(S^{2n}) = \frac{\pi^n}{n!}$.
+\end{solution}
+\newpage
+
+\begin{problem}{1.5}
+    Conclude that $H^{2k}(\mathbb{P}^n\C, \Z) = \Z[\omega_{FS}^k]$. 
+\end{problem}
+\begin{solution}
+    Note the classical result from topology: 
+    \[H^{2k}(\mathbb{P}^n\C, \Z) \cong \Z\] 
+    Thus, we need to show that $\omega_{FS}^k$ is the generator. We note that $\omega_{FS}^n$ is closed and not exact (it is a Kahler form) and integrates to $1$, thus generates $H^{2n}(\mathbb{P}^n\C, \Z)$. \bbni
+\end{solution}
+\newpage
+
+\begin{problem}{1.6}
+    An Application of Serre Duality. Let $X$ be a connected compact complex manifold of dimension $n$ and let $L$ be a holomorphic line bundle on $X$. We assume there exists an $N > 0$ such that:
+    \[H^0(X, L^{\otimes N}) \neq 0\]
+    Show that if $H^n(X, L \otimes K_X) \neq 0$, then the line bundle $L$ is trivial. 
+\end{problem}
+\begin{solution}
+    Recall the canoncial line bundle is $K_X = \Omega^n_X$. Assume $H^n(X, L \otimes K_X) \neq 0$. By Serre duality, we have that: 
+    \[ H^n(X, L \otimes K_X) \cong H^0(X, L^\vee)^\vee \neq 0\]
+    This implies that $H^0(X, L^\vee) \neq 0$. Thus, we have a non-zero section $\phi \in H^0(X, L^\vee)$. Since $H^0(X, L^{\otimes N}) \neq 0$, we also have a non-zero section $s \in H^0(X, L^{\otimes N})$. Then, we have $s \otimes \phi \in H^0(X, L^\otimes{N} \otimes L^{\vee}) \cong H^0(X, L^{N-1})$ obtained by contracting the last entry of $s$, i.e.
+    \[ s \otimes \phi(x) = (\id^{\otimes N-1} \otimes \phi(x))(s(x))\]
+    Since the sections are holomorphic, and $X$ is compact connected complex, $s$ and $t$ non-zero implies that $s \otimes t$ is non-zero. Thus, we have a non-zero section of $H^0(X, L^{N-1})$. \bbni
+    Continuing in this manner, we can construct a non-zero holomorphic section of $H^0(X, L)$, call it $t$. Then, we have that $t \otimes \phi \in H^0(X, \mathcal{O}_X)$ is a non-zero holomorphic function on $X$. As $X$ is compact and connected, this must be constant. As $t \otimes \phi$ is non-zero, $t \otimes \phi$ is nowhere vanishing. Thus, $t$ is a nowhere vanishing holomorphic section of $L$. Thus, $L$ is trivial.
 \end{solution}
 \newpage
 
@@ -34,15 +152,71 @@
 \end{problem}
 
 \begin{solution}
-    
+    (Used Voisin for hints, especially after the identity $\d\dbar^* = -\dbar^* \d)$)
+    First assume that $\omega \in \Omega^{p,q}(X)$ is $\partial$ exact. Thus, there exists a form $\beta \in \Omega^{p-1, q-1}(X)$ such that: 
+    \[ \omega = \partial\beta\]
+    Since $\Delta$ is elliptic, by the fundamental theorem of elliptic operators, we have that $\beta = \alpha_0 + \Delta \alpha_1$, where $\alpha_0$ is harmonic, and the two components are orthogonal. Since in the compact Kahler case we have $\Delta = 2\Delta_{\d} = 2\Delta_{\dbar}$, we have that $\Delta_{\d}\alpha_0 = 0$. Thus, $\alpha_0$ is $\d$ closed, and since $\d$ is linear, we can write:
+    \[ \omega = \d(\Delta\alpha_1) = 2\d(\Delta_{\dbar} \alpha_1)\]
+    Then, we can expand: 
+    \begin{align*}
+        \omega = 2\d\dbar\dbar^* \alpha_1 + 2\d\dbar^* \dbar \alpha_1
+    \end{align*}
+    Then, note that we showed that $\d\dbar^* = -\dbar^* \d$. Thus, we can write:
+    \begin{align*}
+        \omega = 2\d\dbar\dbar^* \alpha_1 - 2\dbar^*\d \dbar \alpha_1
+    \end{align*}
+    Then as $\omega$ and $\d\dbar\dbar^* \alpha_1$ are $\dbar$ closed, we have that $\dbar^*\d\dbar \alpha_1$ is also $\dbar$ closed. Moreover, it is in the image of $\dbar^*$. Thus, we can compute:
+    \begin{align*}
+        ||\dbar^*\d\dbar \alpha_1||^2 &= \langle \dbar^*\d\dbar \alpha_1, \dbar^*\d\dbar \alpha_1\rangle \\
+        &= \langle \d\dbar \alpha_1, \d \dbar^*\d\dbar \alpha_1\rangle  \\
+        &= \langle \d\dbar \alpha_1, 0\rangle \\
+        &= 0
+    \end{align*}
+    Thus, $\dbar^*\d\dbar \alpha_1 = 0$. Thus, we have that:
+    \[ \omega = \d\dbar\dbar^* (2\alpha_1)\]
+    Letting $\chi = \dbar^* (2\alpha_1)$, we complete the proof. \bbni
+    If $\omega$ is $\dbar$ exact, we can use the same argument. Finally, if $\omega$ is $d$ exact, we can write: 
+    \[ \omega = d(\alpha) = \d \alpha + \dbar \alpha \]
+    Since $\omega$ and $\dbar \alpha$ are $\dbar$ closed, so is $\d \alpha$. Thus, $\d \alpha$ is $\d$ and $\dbar$ closed and $\d$ exact, thus can be written as $\d \dbar \beta_1$ for some $\beta_1$. Similarly, we can write $\dbar \alpha$ as $\d \dbar \beta_2$. Thus, we have that: 
+    \[\omega = \d\dbar \beta_1 + \d\dbar \beta_2 = \d\dbar(\beta_1 + \beta_2) \]
+    This completes the proof.
 \end{solution}
 \newpage
 
-\begin{problem}{x.}
+\begin{problem}{4}
+    Let $X$ be a complex manifold. Define the category $(\mathit{Vect}/X)$ whose objects are holomorphic vector bundles on $X$ and whose morphisms are the holomorphic maps of total spaces which are linear on the fibers. Given a vector bundle $p : E \to X$, let $\mathcal{E}$ denote the sheaf of holomorphic sections of the map $p$. Given a morphism $f : E \to F$ of vector bundles, write $\tilde{f} : \mathcal{E} \to \mathcal{F}$ for the corresponding morphism of sheaves. Let $\mathcal{O}_X$ be the sheaf of holomorphic functions on $X$.
+\begin{enumerate}
+    \item Show that for every $E$, $\mathcal{E}$ has a natural structure of an $\mathcal{O}_X$-module.
+    \item Show that if $E$ is a holomorphic vector bundle of rank $r$, then $\mathcal{E}$ is a coherent sheaf of $\mathcal{O}_X$-modules which is locally free of rank $r$.
+    \item Let $\mathit{Cohlf}(X)$ be the full subcategory of the category of coherent sheaves on $X$, consisting of locally free sheaves. Show that the functor defined above $(\mathit{Vect}/X) \to \mathit{Cohlf}(X)$ is an equivalence of categories.
+\end{enumerate}
 \end{problem}
 
 \begin{solution}
-
+    \bbni 
+    \begin{enumerate}
+        \item Let $U \subseteq X$ be an open set. For all $s \in \Gamma(U, \calE)$ and $f \in \Gamma(U, \calO_X)$, we define multiplication by $f$ as: 
+        \[ f\cdot s(x) = f(x)s(x)\]
+        where the multiplication is defined as fiberwise scalar multiplication (as $f(x) \in \C$). Thus, as $f$ and $s$ are holomorphic, $f\cdot s$ is a holomorphic section in $\Gamma(U, \calE)$. Moreover, the multiplication is clearly linear and associative, and has the identity given by $1 \in \calO_X$, the constant function picking out $1 \in \C^n$ in each fiber. Moreover, note that the multiplication is compatible with the restriction map, as is is just scalar multiplicatin on the fibers.
+        \item Let $E$ be a holomorphic vector bundle of rank $r$. Let $U \subseteq X$. Then, we have that: 
+        \[  E|_U \cong U \times \C^r\] 
+        Thus, for $s \in \Gamma(U, \calE)$, we can see $s: U \to \C^r$ as a holomorphic map into $\C^r$. However, then $s = (f_1, \cdots, f_r)$ where $f_i \in \Gamma(U, \calO_X)$ is a holomorphic function. Thus, $\calE$ can be written as a direct sum of $r$ copies of $\calO_X$. Thus, it is locally free of rank $r$. This also implies it is coherent.
+        \item To show that the functor $F: \mathit{Vect}/X \to \mathit{Cohlf}(X)$ is an equivalence of categories, we need to show that it is fully faithful and essentially surjective. \bbni 
+        Let $E_1, E_2$ be two holomorphic vector bundles over $X$ and $\calE_1, \calE_2$ be the corresponding sheaves of holomorphic sections. \bbni
+        To show that $F$ is full, we need to show that for any morphism of sheaves $f: \calE_1 \to \calE_2$, there exists a morphism of vector bundles $f': E_1 \to E_2$ such that $F(f') = f$. Let $x \in X$. Since $\calE_1$ and $\calE_2$ are locally free, we can find $U \subseteq X$ open around $x$ with $\calE_1|_U \cong \calO_X^r$ and $\calE_2|_U \cong \calO_X^s$. Then, $f|_U$ corresponds locally to multiplication by a matrix of holomorphic function, call it $A_U$. Thus, if we define $f': E_1 \to E_2$ to be locally given by: 
+        \[ f'|_U(x, v) = (x, A_U(x) v)\]
+        then the morphism $f'$ is clearly holomorphic and linear on the fibers. Moreover, $F(f') = f$, thus $F$ is full. \bbni 
+        To show that $F$ is faithful, we need to show that if $f_1, f_2: E_1 \to E_2$ are two morphisms of vector bundles such that $F(f_1) = F(f_2)$, then $f_1 = f_2$. Let $U \subseteq X$ be open. Then, for every section $s \in \calE|_U = \Gamma(U, E_1)$, we have that: 
+        \[ f_1 \circ s = F(f_1) = F(f_2) = f_2 \circ s \]
+        We can define holomorphic sections $s_1, \cdots, s_r$ where $r$ is the rank of $E_1$ and $s_i(x) = (x, e_i)$. Then, for any $(x, e_i) \in E|_U$, we have that: 
+        \[ f_1(x, e_i) = f_1 \circ s_i(x) = f_2 \circ s_i(x) = f_2(x, e_i) \]
+        Thus, $f_1$ and $f_2$ agree on a basis of the fiber $E_x$. Thus, $f_1 = f_2$ are equal on each fiber. Thus, $F$ is faithful. \bbni
+        To show that $F$ is essentially surjective, we let $\calE$ be a locally free (coherent) sheaf. We need to show that there exists a holomorphic vector bundle $E$ such that $\calE \cong \Gamma(E)$. Since $\calE$ is locally free, we can find an open set around $x$ such that $\calE$ trivializes to $\calO_X^r$ for some $r$. \bbni
+        Let $\{U_i\}_{i \in I}$ be an open cover of $X$ such that $\calE|_{U_i} \cong \calO_{X}^r|_{U_i}$. The trivializations of $\calE$ over $U_i$ and $U_j$ provide a transition map between them that is a holomorphic section on $U_i \cap U_j$ taking values in $\text{GL}_r(\C)$, i.e. $g_{ij}: U_i \cap U_j \to \text{GL}_r(\C)$. Moreover, these transition maps satisfy the cocycle condition since these this transition map respects the restriction maps. Thus, using Problem 5 in Problem Set 1, we can form a vector bundle $E$ over $X$ by gluing $\bigsqcup_{i \in I} U_i \times \C^r$ using the transition maps $g_{ij}$. \bbni
+        Then, note that $\calE'$, the sheaf of holomorphic sections of $E$ contains sections that agree with sections of $\calE$ when trivialized over the cover $U_i$, with the same transition functions, thus they are isomorphic as sheaves. Thus, $F$ is essentially surjective. \bbni
+        Thus, we have that $F$ is an equivalence of categories. \bbni
+        \bbni Qs: Why does a locally free sheaf have a constant rank? How does one notate this more rigorously?
+    \end{enumerate}
 \end{solution}
 
 
