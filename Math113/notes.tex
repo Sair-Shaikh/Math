@@ -823,6 +823,66 @@
         &= 0
     \end{align*}
     Thus, $T = 0$. 
+    \item[Defn.] We say that $T \in \mathcal{L}(H)$ is self-adjoint if $T = T^*$.
+    \item[Ex.] If $H = \F^n$ and $T \in \mathcal L(\F^n)$ has a standard matrix $A = (a_{ij})$ where: 
+    \[ (a_{ij}) = (T(e_j) \mid e_i)\]
+    Then, $T = T^*$ if and only if $A = A^*$.
+    \item[Cor.] If $H$ is a complex Hilbert space, then $T \in \mathcal L(h)$ is self-adjoint if and only if: 
+    \[ (T(x) \mid x) \in \R\]
+    for all $x \in H$. \\
+    Proof. If $T = T^*$, then: 
+    \begin{align*}
+        (T(x) \mid x) &= (x \mid T^*(x)) \\
+        &= (x \mid T(x)) \\
+        &= \overline{(T(x) \mid x)}
+    \end{align*}
+    Thus, $(T(x) \mid x) \in \R$. \\
+    Conversely, if $(T(x) \mid x) \in \R$, for all $x \in H$, then:
+    \begin{align*}
+        (T(x) \mid x) &= \overline{(x \mid T(x))} \\
+        &= (x \mid T(x)) \\
+        &= (T^*(x) \mid x)
+    \end{align*}
+    Thus, $((T-T^*)(x) \mid x) = 0$ for all $x \in H$. Thus, $T = T^*$. 
+    \item[Prop.] Let $H$ be a Hilbert space and $T \in \mathcal L(H)$, then: 
+    \[ \ker(T^*) = T(H)^\perp\]
+    Proof. Let $y \in \ker(T^*)$. Then, $\forall x \in H$, 
+    \[(T(x) \mid y) = (x \mid T^*(y)) = 0\]
+    Thus, $y \in T(H)^\perp$ and $\ker(T^*) \subseteq T(H)^\perp$. \\
+    Conversely, if $y \in T(H)^\perp$, then $\forall x \in H$, 
+    \[(T^*(y) \mid x) = (y, T(x)) = 0\]
+    Thus, $T^*(y) = 0$ and $y \in \ker(T^*)$.
+    \item[Defn.] If $T: H \to H$ is linear, we that that $T$ is bounded away from $0$ if $\exists \alpha > 0$ such that: 
+    \[ ||T(x)|| \geq \alpha ||x||\]
+    \item[Ex.] If $T^{-1} \in \mathcal L(H)$, then: 
+    \[ ||x|| = ||T^{-1}T(x)|| \leq ||T^{-1}||||T(x)||\]
+    Thus, $T$ is bounded away from $0$ with $\alpha = \frac{1}{||T^{-1}||}$.
+    \item[Prop.] Suppose that $H$ is a Hilbert space and that $T \in \mathcal L(H)$. Then, the following are equivalent: 
+    \begin{enumerate}
+        \item $T$ is invertible.
+        \item $T^*$ is invertible.
+        \item Both $T$ and $T^*$ are bounded away from $0$.
+        \item $T$ and $T^*$ are injective and $T(H)$ is closed. 
+        \item $T$ is a bijection. 
+        \item $T$ and $T^*$ are both surjective.
+    \end{enumerate}
+    Proof. (1) $\iff$ (2). We have $I = TT^{-1} = T^{-1}T$. Then, 
+    we have $I = I^* = (T^*)(T^{-1})^* = (T^{-1})^*T^*$. Thus, $T^*$ is invertible. \\
+    $(1) + (2) \implies (3)$ because invertible operators are bounded away from $0$. \\
+    $(3) \implies (4)$. Problem 35 on the homework. \\
+    $(4) \implies (5)$. We know that: 
+    \begin{align*}
+        T(H) &= \overline{T(H)} \\
+        &= T(H)^{\perp\perp} \\
+        &= \ker(T^*)^\perp \\
+        &= \{0\}^\perp \\
+        &= H
+    \end{align*}
+    $(5) \implies (1)$. By the Open Mapping Theorem. \\
+    $(6) \implies (5)$. $\ker(T) = T^*(H)^\perp = H^\perp = \{0\}$.
+    $(1) + (2) \implies (6)$.
+    \item[Defn.] We say that $T \in \mathcal L(H)$ is normal if $TT^* = T^*T$. 
+    \item[Lemm.] Suppose $T \in \mathcal L(H)$ is normal. Then $||T(x)|| = ||T^*(x)||$ for all $x \in H$.
 \end{itemize}
 
 

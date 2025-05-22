@@ -29,9 +29,6 @@
             &= (\alpha \Phi(y) + \Phi(z))(x)
         \end{align*}
         Thus, $\Phi$ is linear. Next, we show that $\Phi$ is isometric. Let $y \in l^1$ be arbitrary. Then, for any $x \in \mathfrak{c}_0$, we have:
-        % Recall the definition of the operator norm: 
-        % \[ \norm{\Phi(y)} = \sup_{\norm{x}_\infty \leq 1} |\Phi(y)(x)|\]
-        % for $x \in \mathfrak{c}_0$. Then, we have:
         \begin{align*}
             |\Phi(y)(x)| &= \left|\sum_{n=1}^\infty x_ny_n\right| \\ 
             &\leq \sum_{n=1}^\infty |x_n||y_n| \\
@@ -48,7 +45,7 @@
         \end{align*} 
         Thus, there exists an $N$ such that: 
         \[\norm{y}_1 - \sum_{n=1}^N |y_n| < \epsilon\]
-        Next, define $x in l^\infty$ as follows: 
+        Next, define $x \in l^\infty$ as follows: 
         \begin{align*}
             x_n = \begin{cases}
                 \sgn(y_n) & \text{if } n \leq N \\
@@ -59,17 +56,99 @@
         Clearly, as $x_n \in \{0, 1, -1\}$, for all $n \in \N$, we have that $\norm{x}_\infty \leq 1$. Moreover, as $x_n$ is zero after a finite number of terms, we have that $\lim_n x_n = 0$. Thus, $x \in \mathfrak{c}_0$. Finally, we calculate: 
         \begin{align*}
             |\Phi(y)(x)| &= \left|\sum_{n=1}^\infty x_ny_n\right| \\
-            &= \left|\sum_{n=1}^N x_ny_n + \sum_{n=N+1}^\infty x_ny_n\right|
+            &= \left|\sum_{n=1}^N \sgn(y_n)y_n + \sum_{n=N+1}^\infty (0)y_n\right| \\
+            &= \left|\sum_{n=1}^N |y_n|\right| \\
+            &= \sum_{n=1}^N |y_n| \\
+            &\geq ||y||_1 - \epsilon
         \end{align*}
-        % Then, for all $x \in \mathfrak{c}_0$, with $\norm{x}_\infty$, we have:
-        % \begin{align*}
-        %     |\Phi(y)(x)| &= \left|\sum_{n=1}^\infty x_ny_n\right| \\ 
-        %     &\leq \sum_{n=1}^\infty |x_n||y_n| \\
-        %     & \leq \sum_{n=1}^\infty \norm{x}_\infty |y_n| \\
-        %     & = \norm{x}_\infty \sum_{n=1}^\infty |y_n| \\
-        %     & = \norm{x}_\infty \norm{y}_1
-        % \end{align*} 
-        % Thus, $\norm{\Phi} \leq 
+        Thus, we have that $\norm{\Phi(y)} \geq \norm{y}_1$. Thus, we conclude that $\norm{\Phi(y)} = \norm{y}_1$ and $\Phi$ is isometric. \bbni 
+        Since $\Phi$ is isometric map of normed vector spaces, it is also injective (i.e. the only things mapped to $0$ must have norm $0$, which is just $0$). Thus, we only need to show that $\Phi$ is surjective. \bbni
+        Let $\phi \in \mathfrak{c}^*$ be arbitrary. Define the sequence $y$ as:
+        \[ y_n = \phi(e_n) \]
+        where $e_n$ is the sequence is $1$ at the $n$th index and $0$ elsewhere (note $e_n \in \mathfrak{c}_0$ as all but one entry are $0$). We claim that $y \in l^1$. To see this, note that: 
+        \begin{align*}
+            \sum_{n=1}^N |y_n| &= \sum_{n=1}^N |\phi(e_n)| \\
+            &= \sum_{n=1}^N \phi(e_n)\sgn(\phi(e_n)) \\
+            &= \phi(x^{(N)})
+        \end{align*}
+        where: 
+        \[ x^{(N)} = \begin{cases}
+            \sgn(\phi(e_n)) & \text{if } n \leq N \\ 
+            0 & \text{otherwise}
+        \end{cases}\]
+        Note that for all $N$, $x^{(N)} \in \mathfrak{c}_0$ as it is $0$ after a finite number of terms. Moreover, $\norm{x^{(N)}}_\infty = 1$. Thus, as $\phi$ is bounded on $\mathfrak{c}_0$, we have that:
+        \begin{align*}
+            \sum_{n=1}^N |y_n| &= \phi(x^{(N)}) \\
+            &\leq ||\phi|| \cdot \norm{x^{(N)}}_{\infty} \\
+            &= ||\phi||
+        \end{align*}
+        Then taking the limit as $N \to \infty$, we have that:
+        \begin{align*}
+            ||y||_1 &= \lim_{N \to \infty} \sum_{n=1}^N |y_n| \\
+            &\leq \lim_{N \to \infty} ||\phi|| \\
+            &= ||\phi||
+        \end{align*}
+        Thus, $y \in l^1$. Finally, we calculate $\Phi(y)$. For all $x \in \mathfrak{c}_0$, we have: 
+        \begin{align*}
+            \Phi(y)(x) &= \sum_{n=1}^\infty x_ny_n \\
+            &= \sum_{n=1}^\infty x_n\phi(e_n) \\
+            &= \sum_{n=1}^\infty \phi(x_n e_n) \\
+            &= \phi\left(\sum_{n=1}^\infty x_n e_n\right) \\
+            &= \phi(x) 
+        \end{align*}
+        Thus, we have shown that $\Phi(y) = \phi$. Thus, $\Phi$ is surjective. \bbni
+        Thus, we have shown that $\Phi$ is an isometric isomorphism of $l^1$ onto $\mathfrak{c}_0^*$.
+        \item We claim that the dual of $\mathfrak{c}$ is also $l^1$. Note that if $x \in \mathfrak c$ and $b = \lim_n x_n$, if we write $\1$ for the constant sequence of $1$s, we have that: 
+        \[ \lim_n (x - b\1)_n = \lim_n (x_n - b) = 0 \]
+        Thus, $x-b\1 \in \mathfrak{c}_0$. Thus, for each $x \in \mathfrak c$, there exists an $x' \in \mathfrak{c}_0$, such that $x_m = (\lim_n x_n) + x'_m$ for all $m \in \N$. Thus, every bounded linear functional on $\mathfrak{c}$ can be written, for $x \in \mathfrak{c}$, as:
+        \[ \phi(x) = (\lim_n x_n)\phi(\1) + \phi(x')\]
+        by linearity. Thus, each map $\phi$ is characterized by its values on $\mathfrak{c}_0$ and $\phi(\1)$ (which may or may not be independent of each other). \bbni
+        Next, note that $S(l^1) \cong l^1$, where $S$ is the shift by one operator defined in Problem 39. Clearly, $S(l^1) \subset l^1$ as removing the first element keeps a finite $l^1$ norm finite. Moreover, every sequence in $l^1$ can be obtained by shifting a sequence in $l^1$ (say, take the original sequence and append a $0$ in the first position). Thus, we can write: 
+        \[ l^1 \cong \F \oplus l^1\]
+        by the map $x \to (x_1, S(x))$. If we define the norm on $\F \oplus l^1$ as: 
+        \[ ||(\alpha, x)|| = |\alpha| + \norm{x}_1\]
+        this mapping is clearly isometric (it agrees with the $l^1$ norm on the domain by definition). In this formulation, we can construct an map from $\Phi: \F \otimes l^1$ to $\mathfrak c$, for all $(\alpha, y) \in \F \otimes l^1$ by:
+        \[ \Phi(\alpha, y)(x) = \alpha \lim_n x_n + \sum_{n=1}^\infty x_ny_n\]
+        This is clearly surjective, by our characterization of all bounded linear functionals on $\mathfrak{c}$ earlier. It is also easily seen to be linear. We show it is isometric as:
+        \begin{align*}
+            |\Phi(\alpha, y)(x)| &= \left| \alpha \lim_n x_n + \sum_{n=1}^\infty x_ny_n\right| \\
+            &\leq |\alpha| |\lim_n x_n| + \norm{x}_\infty \left|\sum_{n=1}^\infty y_n\right| \\
+            &\leq (|\alpha| + ||y||_1) \cdot \norm{x}_\infty
+        \end{align*}
+        noting that $|\lim_n x_n| \leq ||x||_\infty$. Thus, we have: 
+        \[ \norm{\Phi(\alpha, y)} \leq |\alpha| + ||y||_1\]
+        To show that this bound is achievable, we can reuse the same proof as before. \bbni 
+        Let $(\alpha, y) \in \F \oplus l^1$ be arbitrary. Note that we have:
+        \begin{align*}
+            \sum_{n=1}^\infty |y_n| &= \lim_{N \to \infty} \sum_{n=1}^N |y_n| = \norm{y}_1
+        \end{align*} 
+        Thus, there exists an $N$ such that: 
+        \[\sum_{n=N+1}^\infty |y_n| = \norm{y}_1 - \sum_{n=1}^N |y_n| < \epsilon\]
+        Next, define $x \in l^\infty$ as follows: 
+        \begin{align*}
+            x_n = \begin{cases}
+                \sgn(y_n) & \text{if } n \leq N \\
+                \sgn(\alpha) & \text{otherwise} 
+            \end{cases}
+        \end{align*}
+        where $\sgn$ returns the sign of a real number, and $0$ for $0$. \bbni
+        Clearly, as $x_n \in \{0, 1, -1\}$, for all $n \in \N$, we have that $\norm{x}_\infty \leq 1$. Moreover, as $x_n$ is constant after a finite number of terms, we have that $\lim_n x_n = \sgn(\alpha)$. Thus, $x \in \mathfrak{c}$. Finally, we calculate: 
+        \begin{align*}
+            |\Phi(\alpha, y)(x)| &= \left|\alpha \lim_n x_n + \sum_{n=1}^\infty x_ny_n\right| \\
+            &= \left|\alpha\sgn(\alpha)+ \sum_{n=1}^N \sgn(y_n)y_n + \sgn(\alpha)\sum_{n=N+1}^\infty y_n\right| 
+        \end{align*}
+        Next, note that: 
+        \[ \sgn(\alpha)\sum_{n=N+1}^\infty y_n \leq \sum_{n=N+1}^\infty |y_n| < \epsilon\]
+        Thus, we have: 
+        \begin{align*}
+            |\Phi(\alpha, y)(x)| &\geq \left|\alpha\sgn(\alpha)+ \sum_{n=1}^N \sgn(y_n)y_n\right| - \epsilon \\
+            &= \left|\alpha\right|+ \sum_{n=1}^N \left|y_n\right| - \epsilon \\
+            &= \norm{(\alpha, y)} - \epsilon
+        \end{align*}
+        Thus, we have that $\Phi$ is isometric. Thus, we have shown isometric isomorphisms: 
+        \[ l^1 \cong \F \oplus l^1 \cong \mathfrak c^*\]
+        Since the composition of isometric isomorphisms is an isometric isomorphism, we have that $\mathfrak c^* \cong l^1$.
+        \item We claim that neither $\mathfrak c$ nor $\mathfrak c_0$ are reflexive. Note that we showed that the dual of both of these spaces is isometrically isomorphic to $l^1$. However, we know that the dual of $l^1$ is isometrically isomorphic to $l^\infty$. Thus, we have that the double dual of these spaces is isometrically isomorphic to $l^\infty$. However, these subspaces of $l^\infty$ are not isometrically isomorphic to $l^\infty$ as $l^\infty$ is not separable, but these subspaces are separable as their dual, $l^1$ is separable (Problem 41).
     \end{enumerate}
 \end{solution}
 \newpage
@@ -174,14 +253,6 @@
     Let $X$ be an infinite dimensional normed space. Let $U$ be a non-empty weakly open set. We will show that $U$ is unbounded. \bbni
     Since $U$ is non-empty, there exists a point $x_0 \in U$. Since $U$ is a neighborhood of $x_0$, there exists an element of the neighborhood basis of the weak topology contained in $U$. Thus, there exists $\phi_1, \cdots, \phi_n \in X^*$ and $\epsilon > 0$ such that:
     \[ B := U(\{\phi_1, \cdots, \phi_n\}, x, \epsilon) = \{x \in X: |\phi_i(x)-\phi_i(x_0)| < \epsilon, 1 \leq i \leq n\} \subset U \]    
-    % Note that we can shift this get to get an element of the basic open around $0\in X$ as follows: 
-    % \begin{align*}
-    %     U(\{\phi_1, \cdots, \phi_n\}, x_0, \epsilon)-x_0 &= \{x-x_0 \in X: |\phi_i(x)-\phi_i(x_0)| < \epsilon, 1 \leq i \leq n\} \\
-    %     &= \{x-x_0 \in X: |\phi_i(x-x_0)-\phi_i(0)| < \epsilon, 1 \leq i \leq n\} \\
-    %     &= \{x \in X: |\phi_i(x)-\phi_i(0)| < \epsilon, 1 \leq i \leq n\} \\
-    %     &= U(\{\phi_1, \cdots, \phi_n\}, 0, \epsilon)
-    % \end{align*}
-    % Assume $B$ is non-empty. Then, it suffices to show that $B$ is unbounded, as every non-empty weakly open set is a non-empty union of such basic opens, thus contains an unbounded basic open, thus is unbounded itself. \bbni
     Define $\phi: X \to \F^n$ by $\phi(x) = (\phi_1(x), \cdots, \phi_n(x))$. Consider $\ker(\phi)$. We note that: 
     \[  x \in \ker(\phi) \iff x \in \ker(\phi_i), \forall 1 \leq i \leq n\]
     Thus, 
@@ -202,7 +273,7 @@
 \newpage
 
 \begin{problem}{48}
-    Let $f: (X, \tau) \to (Y, \sigma)$ be a function between topoligcal spaces. Show that $f$ is continous if and only if $f$ takes convergent nets to convergent nets. That is, $f$ is continous if and only if given $x_\lambda \to x$ in $X$, we have $f(x_\lambda) \to f(x)$ in $Y$. 
+    Let $f: (X, \tau) \to (Y, \sigma)$ be a function between topological spaces. Show that $f$ is continous if and only if $f$ takes convergent nets to convergent nets. That is, $f$ is continous if and only if given $x_\lambda \to x$ in $X$, we have $f(x_\lambda) \to f(x)$ in $Y$. 
 \end{problem}
 \begin{solution}
     Assume that $f$ is continous. Let $x_\lambda \to x$ be a convergent net in $X$. Then, $f(x_\lambda)$ is a net in $Y$. We need to show that $f(x_\lambda) \to f(x)$. Thus, we need to show that $f(x_\lambda)$ is eventually in every neighborhood of $f(x)$. \bbni
@@ -234,7 +305,8 @@
     \[ |\phi_i(x_\lambda) - \phi_i(x)| < \epsilon \]
     Thus, for all $\lambda \geq \lambda_0$, we have that:
     \[ x_\lambda \in U\]
-    Thus, $x_\lambda$ is eventually in $U$, thus eventually in $V$. Since $V$ was an arbitrary neighborhood of $x$, we have that $x_\lambda \to x$ in the weak topology. 
+    Thus, $x_\lambda$ is eventually in $U$, thus eventually in $V$. Since $V$ was an arbitrary neighborhood of $x$, we have that $x_\lambda \to x$ in the weak topology. \bbni
+    TODO
 \end{solution}
 \newpage
 
@@ -251,7 +323,10 @@
     Let $U$ be a neighborhood of $x$ and $\lambda_0$ be an index. Then,
     \[ x \in F_{\lambda_0} = \overline{\{x_\lambda: \lambda \geq \lambda_0 \}}\]
     Thus, by the definition of closure, we have that every open neighborhood of $x$ intersects $\{x_\lambda: \lambda \geq \lambda_0\}$. Thus, there exists a point in $\{x_\lambda: \lambda \geq \lambda_0\} \cap U$. Thus, there exists a $\lambda \geq \lambda_0$ such that $x_\lambda \in U$. \bbni 
-    As $U$ and $\lambda_0$ were arbitrary, $x$ is an accumulation point of $(x_\lambda)$.
+    As $U$ and $\lambda_0$ were arbitrary, $x$ is an accumulation point of $(x_\lambda)$. \bbni
+    Not every weakly convergent net is bounded. Let $\Lambda = \R_{\leq 0}$ be the negative real numbers with their usual order. Then we have $x_\lambda \subseteq \R$ a net, defined by: 
+    \[ x_\lambda = -\lambda\]
+    Then, $x_\lambda \to 0$ in the norm topology, thus $x_\lambda$ is weakly convergent to $0$ (every weakly open set is norm open). However, for any $N \in \R$, if we pick $\lambda < N$, we have that $x_\lambda = -\lambda > N$. Thus, $x_\lambda$ is unbounded. 
 \end{solution}
 \newpage
 
