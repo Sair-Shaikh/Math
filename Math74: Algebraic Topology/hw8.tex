@@ -7,36 +7,101 @@
 \input{title}
 
 
-\begin{problem}{1}
+\begin{problem}{1}(2.2.9) Compute the homology of the following $2$-complexes:
+\begin{enumerate}
+	\item The quotient of $S^2$ by identifying the north and south poles to a point.
+	\item $S^1 \times (S^1 \vee S^1)$.
+	\item The space obtained from $D^2$ by first deleting the interiors of two disjoint subdisks in the interior of $D^2$ and then identifying all three resulting boundary circles via homeomorphisms preserving clockwise orientations.
+\end{enumerate}
 \end{problem}
+
 \begin{solution}
 \end{solution}
+
 \newpage
 
 \begin{problem}{2}
+    Compute the homology of the torus with $n \geq 1$ vertical disks filled in, that is, 
+\[ X = (S^1 \times S^1) \bigcup \left( \bigcup_{k=1}^{n} \left\{ e^{2 \pi i k/n}\right\}  \times D^2 \right). \]
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\newpage
+
+
+\begin{problem}{3}(2.2.21) 
+    If a finite CW complex $X$ is a union of subcomplexes $A$ and $B$, show that 
+\[ \chi(X) = \chi(A) + \chi(B) - \chi(A \cap B). \]
 \end{problem}
 \begin{solution}
+    Recall the definition of the Euler characteristic:
+    \[ \chi(X) = \sum_n (-1)^n |I_n| \]
+    where $I_n$ is the set of $n$-cells of $X$. Since $A$ and $B$ are subcomplexes, any cell that intersects with $A$ or $B$ must lie fully within $A$ or $B$, respectively. Since $X = A \cup B$, each cell of $X$ either lies just in $A$ (i.e. in $X\setminus B$), just in $B$ (i.e. in $X\setminus A$), or in both $A$ and $B$ (i.e. in $A \cap B$). For $n$-cells, call these respective sets $I_{n, A}$, $I_{n, B}$, and $I_{n, A \cap B}$. Clearly, by the inclusion-exclusion principle, we have: 
+    \[ |I_n| = |I_{n, A}| + |I_{n, B}| - |I_{n, A\cap B}|\]
+    Thus, we can write the Euler characteristic of $X$ as:
+    \begin{align*}
+    \chi(X) &= \sum_n (-1)^n |I_n| \\
+    &= \sum_n (-1)^n \left( |I_{n, A}| + |I_{n, B}| - |I_{n, A\cap B}| \right) \\
+    &= \sum_n (-1)^n |I_{n, A}| + \sum_n (-1)^n |I_{n, B}| - \sum_n (-1)^n |I_{n, A\cap B}| \\
+    &= \chi(A) + \chi(B) - \chi(A \cap B).
+    \end{align*}
+    Thus, 
+    \[ \chi(X) = \chi(A) + \chi(B) - \chi(A \cap B). \]
+    % A second proof can be given using the Mayer-Vietoris sequence. Since $A$ and $B$ are subcomplexes of $X$, we have that $X = \text{int}(A) \cup \text{int}(B)$. Thus, we can apply the Mayer-Vietoris sequence to get: 
+    % \[ \cdots \to H_i(A \cap B) \to H_i(A) \oplus H_i(B) \to H_i(X) \to H_{i-1}(A \cap B) \to \cdots \]
 \end{solution}
 \newpage
 
 
-\begin{problem}{3}(2.1.16) 
+\begin{problem}{4}(2.2.22) 
+    If $X$ is a finite CW complex and $p \colon \widetilde{X} \to X$ is a degree $n$ covering, show that $\chi(\widetilde{X}) = n \cdot \chi(X)$. 
 \end{problem}
 \begin{solution}
-\end{solution}
-\newpage
-
-
-\begin{problem}{4}
-\end{problem}
-\begin{solution}
+    Let $X$ be $m$-dimensional. It suffices to show that $|I_j(\widetilde{X})| = n |I_j(X)|$ for each $j \leq m$, as: 
+    \begin{align*}
+    \chi(\widetilde{X}) &= \sum_{k=0}^m (-1)^k |I_k(\widetilde{X})| \\
+    &= \sum_{k=0}^m (-1)^k n \cdot |I_k(X)| \\
+    &= n \sum_{k=0}^m (-1)^k |I_k(X)| \\
+    &= n \cdot \chi(X)
+    \end{align*}
+    To show this, we claim that $\rho^{-1}(X^{k})$ is a $k$-dimensional CW complex in $\widetilde{X}$ for each $k \geq 0$, with $|I_j(\widetilde X)| = n \cdot |I_j(X)|$ for all $j \leq k$. We proceed by induction. \bbni
+    For $k = 0$, we know that for every $0$-cell $x \in X$, there are $n$ distinct preimages under $\rho$ in $\widetilde{X}$, as $p$ is a covering map of degree $n$. Thus, $\widetilde{X}^0 = \rho^{-1}(X^0)$ is a $0$-dimensional CW complex with $|I_0(\widetilde{X})| = n |I_0(X)|$. \bbni
+    For $k > 0$, let $e^k$ be a $k$-cell of $X$ with map $\phi: D^k \to X$. Since $\pi_1(D^k, d_0)$ is trivial (for $d_0 \in \text{int}(D^k)$), we have that $\phi_{*}(\pi_1(D^n, d_0))$ is also trivial. Thus, as $D^n$ is path-connected and locally path-connected we can use the universal lifting property to get a unique lift for each pre-image under $\rho$ of $\phi(d_0)$, call these $\phi_1, \ldots, \phi_n: D^k \to \widetilde{X}$. We claim that $\text{int}(\img(\phi_i))$ are disjoint $k$-cells of $\widetilde{X}$ that map homeomorphically to $e^k$ under $p$. \bbni
+    For $1 \leq i \leq n$, note that we have: 
+    \[ \rho \circ \phi_i = \phi\]
+    Then note the following:
+    \begin{enumerate}
+        \item As $\phi|_{\text{int}(D^k)}$ is a homeomorphism onto $e^k$, so is $\rho \circ \phi_i|_{\text{int}(D^k)}$. Thus, $\rho|_{\phi_i(\text{int}(D^k))}$ is a homeomorphism onto $e^k$, i.e. $\phi_i(\text{int}(D^k)) \cong e^k$. Thus, we have $\phi_i(\text{int}(D^k)) \cong e^k \cong \text{int}(D^k)$.
+        \item Note $\rho \circ \phi_i(\delta D^n) = \phi(\delta D^n) \subseteq X^{k-1}$. Then, by the induction hypothesis, we have that $\rho^{-1}(X^{k-1}) = \widetilde{X}^{k-1}$. Thus, $\phi_i(\delta D^n) \subseteq \widetilde{X}^{k-1}$. 
+    \end{enumerate}
+    Thus, $\phi_i(\text{int}(D^k))$ are $k$-cells of $\widetilde{X}$ for each $i$. Finally, as these cells contain a distinct pre-image of the $\phi(d_0)$, they must be disjoint by uniqueness of the lift. Thus, we have that: 
+    \[ \rho^{-1}(e^k) = \bigsqcup_i \phi_i(\text{int}(D^k))\]
+    since we have $n$ distinct homeomorphic copies of $e^k$. Thus, considering these as the $k$-cells of $\widetilde{X}$, we have that $\rho^{-1}(X^k) = \widetilde{X}^k$ is a $k$-dimensional CW complex, with $|I_k(\widetilde{X})| = n \cdot |I_k(X)|$. By the induction hypothesis, we have that $|I_j(\widetilde{X})| = n \cdot |I_j(X)|$ for each $j \leq k$. \bbni
+    Thus, we note that since $X$ is a finite CW complex of some dimension $m$, so is $\widetilde{X}$ and we have that $|I_j(\widetilde{X})| = n \cdot |I_j(X)|$ for each $j \leq m$. As noted before, this concludes the proof.
 \end{solution}
 \newpage
 
 \begin{problem}{5}
-   
+    Use the previous problem to show that if $\rho \colon \mathbb{RP}^{2n} \to X$ is a covering map where $X$ is a finite CW complex, then $p$ is a homeomorphism.    
 \end{problem}
 \begin{solution}
+    Note that from the previous question, we have that: 
+    \[ \chi(\RP^{2n}) = \deg(\rho) \cdot \chi(X)\]
+    where $\deg(\rho)$ is the degree of the covering map $\rho$. Moreover, note that we showed: 
+    \[ H_i(\RP^{2n}) = \begin{cases}
+        \Z & i = 0 \\
+        \Z/2\Z & 1 < i < 2n, i \text{ odd } \\
+        0 & \text{otherwise}
+    \end{cases}\]
+    Thus, we can calculate $\chi(\RP^{2n})$ as follows:
+    \begin{align*}
+        \chi(\RP^{2n}) &= \sum_{i=0}^{2n} (-1)^i \rk(H_i(\RP^{2n})) = 1 
+    \end{align*}
+    as the free rank of $\Z/2\Z$ is $0$. Thus, we have that: 
+    \[\deg(\rho) \cdot \chi(X) = 1\]
+    Since both $\deg(\rho)$ and $\chi(X)$ are integers, we have $\deg(\rho) = \chi(X) = \pm 1$. However, as the degree of a covering map cannot be negative, we have that $\deg(\rho) = \chi(X) = 1$. In particular, this means that $\rho$ is a homeomorphism. 
 \end{solution}
 
 \end{document}
