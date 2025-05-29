@@ -15,4 +15,43 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
+	"setup": {
+		"scope": "tex,latex",
+		"prefix": "stp",
+		"body": [
+			"\\documentclass[12pt]{article}",
+			"\n",
+			"\\include{../style}",
+			"\n",
+			"\\begin{document}",
+			"\n",
+			"\\input{title}",
+			"\n",
+			"\n",
+			"\n",
+			"\n",
+			"\\end{document}"
+		],
+		"description": "Setup a new Math document"
+	},
+	"align": {
+		"scope": "tex,latex",
+		"prefix": "aa",
+		"body": [
+			"\\begin{align*}",
+			"$1",
+			"\\end{align*}"
+		],
+		"description": "Insert a Math line"
+	},
+	"mathline": {
+		"scope": "tex,latex",
+		"prefix": "zz",
+		"body": [
+			"\\[$1\\]",
+		],
+		"description": "Insert a Math line"
+	}
+
+
 }

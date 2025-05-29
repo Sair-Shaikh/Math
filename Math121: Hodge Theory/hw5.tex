@@ -15,7 +15,40 @@
         \item[(d)] Let $\phi: X \to Y$ a surjective holomorphic map of complex compact manifolds such that $X$ is k\"ahlerian. Show that $\phi^*$ is injective.
     \end{enumerate}
 \end{problem}
+\begin{solution}
+    \begin{enumerate}
+        \item[(a)] Assume first that we have a Hodge structure of weight $k$ $V$ such that: 
+        \[ V_\C  = \bigoplus V^{p,q} \qquad \qquad V^{p, q} = \overline{V}^{q, p}\]
+        Define the Hodge filtration by: 
+        \[ F^p V_\C = \bigoplus_{i \geq p} V^{i, k-i}\]
+        Then note that if $a > b$, we have that:
+        \begin{align*}
+            F^aV_\C  &= \bigoplus_{i \geq a} V^{i, k-i} \\
+            &\subseteq \bigoplus_{i \geq b} V^{i, k-i} \\
+            &= F^bV_\C
+        \end{align*} 
+        Moreover, we have that: 
+        \begin{align*}
+            F^pV_\C \cap \overline{F^{k-p+1}V_\C} &= \bigoplus_{i \geq p} V^{i, k-i} \cap \bigoplus_{j \geq k-p+1} \overline{V^{j, k-j}} \\
+            &=  \bigoplus_{i \geq p} V^{i, k-i} \cap \bigoplus_{j \geq k-p+1} V^{k-j, j} \\
+            &=  \bigoplus_{i \geq p} V^{i, k-i} \cap \bigoplus_{j' \leq p-1} V^{j', k-j'} \\
+        \end{align*}
+        
+        
+        % Assume first that we have a filtration $F^pV_\C$ that satisfies $F^pV_\C \oplus \overline{F^{k-p+1}V_\C} = V_\C$ for all $p$. This looks like: 
+        % \[ F^k V_\C \subseteq F^{k-1}V_\C \subseteq \cdots \subseteq F^0 V_\C\]
+        % Then, we define for $p + q = k$, we define: 
+        % \[ V_{p, q} = F^pV_\C \cap \overline{F^qV_\C}\]
+
+
+    \end{enumerate}
+\end{solution}
+
+
 \newpage
+
+
+
 % \begin{problem}{2.1}
 
 % \end{problem}
