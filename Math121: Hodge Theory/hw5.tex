@@ -7,7 +7,6 @@
 \input{title}
 
 \begin{problem}{1}
-    \bbni
     \begin{enumerate}
         \item[(a)] Check the equivalence between the two definitions of the Hodge structure of weight $k$ given in class. 
         \item[(b)] Check the a morphism Hodge structures is strict for the Hodge filtration. 
@@ -16,31 +15,125 @@
     \end{enumerate}
 \end{problem}
 \begin{solution}
+    \bbni
     \begin{enumerate}
-        \item[(a)] Assume first that we have a Hodge structure of weight $k$ $V$ such that: 
-        \[ V_\C  = \bigoplus V^{p,q} \qquad \qquad V^{p, q} = \overline{V}^{q, p}\]
-        Define the Hodge filtration by: 
-        \[ F^p V_\C = \bigoplus_{i \geq p} V^{i, k-i}\]
-        Then note that if $a > b$, we have that:
+        \item[(a)] First assume that we have filtration of $V_\C$:
+        \[ 0 = F^{k+1} \subset F^k V_\C \subset F^{n-1} V_\C \subset \cdots \subset F^0 V_\C = V_\C\]
+        that satisfies the condition: 
+        \[ F^p V_\C \oplus \overline{F^{k-p+1} V_\C } = V_\C\]
+        Then, we define: 
+        \[ H^{p, q} = F^p V_\C \cap \overline{F^q V_\C}  \]
+        Clearly, with this definition, we have: 
         \begin{align*}
-            F^aV_\C  &= \bigoplus_{i \geq a} V^{i, k-i} \\
-            &\subseteq \bigoplus_{i \geq b} V^{i, k-i} \\
-            &= F^bV_\C
-        \end{align*} 
-        Moreover, we have that: 
-        \begin{align*}
-            F^pV_\C \cap \overline{F^{k-p+1}V_\C} &= \bigoplus_{i \geq p} V^{i, k-i} \cap \bigoplus_{j \geq k-p+1} \overline{V^{j, k-j}} \\
-            &=  \bigoplus_{i \geq p} V^{i, k-i} \cap \bigoplus_{j \geq k-p+1} V^{k-j, j} \\
-            &=  \bigoplus_{i \geq p} V^{i, k-i} \cap \bigoplus_{j' \leq p-1} V^{j', k-j'} \\
+            \overline{H^{p, q}} &= \overline{F^p V_\C \cap \overline{F^q V_\C}} \\
+            &= \overline{F^p V_\C} \cap F^q V_\C \\
+            &= H^{q, p}
         \end{align*}
-        
-        
-        % Assume first that we have a filtration $F^pV_\C$ that satisfies $F^pV_\C \oplus \overline{F^{k-p+1}V_\C} = V_\C$ for all $p$. This looks like: 
-        % \[ F^k V_\C \subseteq F^{k-1}V_\C \subseteq \cdots \subseteq F^0 V_\C\]
-        % Then, we define for $p + q = k$, we define: 
-        % \[ V_{p, q} = F^pV_\C \cap \overline{F^qV_\C}\]
-
-
+        We will show that: 
+        \begin{align*}
+            F^{i} V  = \bigoplus_{p \geq i} H^{p, k-p}
+        \end{align*}
+        Notice that: 
+        \begin{align*}
+            F^{i} V_\C &= F^{i} V_\C \cap V_\C \\
+            &= F^{i} V_\C \cap (F^{i+1} V_\C \oplus \overline{F^{k-(i+1)+1} V_\C }) \\
+            &= F^{i} V_\C \cap (F^{i+1} V_\C \oplus \overline{F^{k-i} V_\C }) \\
+            &= (F^{i} V_\C \cap F^{i+1} V_\C)  \oplus (F^{i} V_\C \cap \overline{F^{k-i} V_\C}) \\
+            &= F^{i+1} V_\C  \, \oplus (F^{i} V_\C \cap \overline{F^{k-i} V_\C }) \\ 
+            &= F^{i+1} V_\C \oplus H_{i, k-1} \\
+            &= \bigoplus_{p \geq i} H^{p, k-p}
+        \end{align*}
+        Where the third equality uses the fact that $A \cap (B \oplus C) = A \cap B \oplus A \cap C$ if $B \subseteq A$ as if $a = b + c \in A \cap (B \oplus C)$ ($a \in A, b \in B, c \in C$), then since $b \in B \subset A$, we have $a-b = c \in A$. Thus, $b \in A \cap B$ and $c \in A \cap C$ and $A \cap (B \oplus C) \subseteq A \cap B \oplus A \cap C$. The other inclusion is clear. \bbni 
+        Thus, noting the result for $i = 0$, we have recovered the first definition of a Hodge structure of weight $k$. \bbni
+        Now, assume that we have a decomposition of $V_\C$ into the direct sum of the $H^{p, q}$:
+        \[ V_\C = \bigoplus_{p + q = k} H^{p, q}\]
+        with $H^{p, q} = \overline{H^{q, p}}$. Then, we define the filtration similarly:
+        \[ F^p V_\C = \bigoplus_{i \geq p} H^{i, k-i}\]
+        Then, we have that: 
+        \begin{align*}
+            F^p V_\C \oplus \overline{F^{k-p+1} V_\C} &= \bigoplus_{i \geq p} H^{i, k-i} \oplus \overline{\bigoplus_{j \geq k-p+1} H^{j, k-j}} \\
+            &= \bigoplus_{i \geq p} H^{i, k-i} \oplus \bigoplus_{j \geq k-p+1} H^{k-j, j} \\
+            &= \bigoplus_{i \geq p} H^{i, k-i} \oplus \bigoplus_{j' \leq p-1} H^{j', k-j'} \\
+            &= \bigoplus_{i \geq 0} H^{i, k-i}  \\
+            &= V_\C
+        \end{align*}
+        Thus, we have recovered the second definition of a Hodge structure of weight $k$.
+        \item[(b)] Recall the defnition of a morphism of Hodge structures. Let $V_\Z$ and $V'_\Z$ be two hodge structures of weight $k$ and $k+2r$. Then a morphism of Hodge structures of type $(r, r)$ is a group morphism $\phi$ whose $\C$-linear extension (which we will also call $\phi$ for this part) satisfies: 
+        \[ \phi(V^{p,q}) \subseteq {V'}^{p+r, q+r} \iff \phi(F^p V) \subset F^{p+r} V'\]
+        We need to show that this is strict for the Hodge filtration, i.e.
+        \[ \img(\phi) \cap F^{p+r} V' = \phi(F^p V)\]
+        Let $\alpha \in \img(\phi) \cap F^{p+r} V'$. Then, there exists $\beta \in V$ such that $\phi(\beta) = \alpha$. Then, using the decomposition of $V$, we can write: 
+        \begin{align*}
+            \alpha &= \phi(\beta) \\
+            &= \phi\left(\sum_{i+j = k} \beta^{i,j}\right) \\
+            &= \sum_{i+j = k} \phi(\beta^{i,j}) 
+        \end{align*}
+        Then, each $\phi(\beta^{i,j})$ is of type $(i+r, j+r)$. Then, if $i < p$, note that $\phi(\beta^{i, j}) \in {V'}^{i+r, j+r} \cap F^{p+r}$. But, as noted from the previous problem, we have:
+        \[ F^{p+r} V' = \bigoplus_{i \geq p+r} H^{i, k-i} \]
+        Thus, we have that $\phi(\beta^{i,j}) = 0$ for $i < p$. Thus, we can write:
+        \begin{align*}
+            \alpha &= \sum_{i \geq p} \phi(\beta^{i,k-i}) \in F^{p+r} V' 
+        \end{align*}
+        noting the decomposition for $F^{p+r} V'$ from the previous problem and that $\phi(\beta^{i,j}) \in {V'}^{i+r, j+r}$ (as noted before). Thus, we have that:
+        \[ \img(\phi) \cap F^{p+r}V' \subseteq \phi(F^{p}V) \]
+        The other direction is implied in the definition of a Hodge structure morphism. 
+        \item[(c)] Let $\phi: V_\Z \to {V'}_\Z$ be a morphism of Hodge structures of type $(r, r)$, where $V$ is of weight $k$ and $V'$ is of weight $k+2r$. We first prove that $\img(\phi)$ and $\ker(\phi)$ have natural Hodge structures. \bbni
+        For $\img(\phi)$, first note that:
+        \[ \img(\phi_\C) = \img(\phi) \otimes_\Z \C \qquad \ker(\phi_\C) = \ker(\phi) \otimes_\Z \C \]
+        Thus, we can define the filtration on $\img(\phi_\C)$ by: 
+        \[ F^p \img(\phi_\C) := \img(\phi) \cap F^{p} V'_\C \]    
+        It is easy to see that these define a decreasing filtration on $\img(\phi)$ and $\ker(\phi)$ by the filtration structures on the codomain and domain. Then, note for $\img(\phi)$ that we have: 
+        \begin{align*}
+            F^{p} \img(\phi_\C) \oplus \overline{F^{k+2r-p+1} \img(\phi_\C)} 
+            &= \img(\phi) \cap F^{p} V'_\C \oplus \overline{\img(\phi) \cap F^{k+2r-p+1} V'_\C} \\
+            &= \phi(F^{p-r} V) \oplus \overline{\phi(F^{k+r-p+1} V_\C)} \\
+            &= \phi(F^{p-r} V \oplus \overline{F^{k+r-p+1} V_\C}) \\
+            &= \phi(V_\C) \\
+            &= \img(\phi_\C)
+        \end{align*}    
+        Thus, $\img(\phi)$ has an Hodge structure of weight $k+2r$ and for $\ker(\phi)$, we note that:
+        \[ \ker(\phi_\C) = \bigoplus_{p+q = k} \ker(\phi_\C) \cap V^{p,q}\]
+        as the $V^{p, q}$ are disjoint. Let $K^{p, q} = \ker(\phi) \cap V^{p,q}$. Then, we have that: 
+        \[ \overline{\ker(\phi_\C) \cap V^{p, q}} = \overline{\ker(\phi_\C)} \cap V^{q, p}\]
+        But $\ker(\phi_\C)$ is closed under complex conjugation as $\phi_\C$ is $\C$-linear. Thus, we have shown that:
+        \begin{align*}
+            \ker(\phi_\C) &= \bigoplus_{p+q = k} K^{p, q}  \qquad K^{p, q} = \overline{K^{q, p}}
+        \end{align*}
+        Thus, we have that $\ker(\phi_\C)$ is a Hodge structure of weight $k$. \bbni
+        Finally, for the cokernel, note that:
+        \begin{align*}
+            \coker(\phi_\C) &= V'_\C / \img(\phi_\C) \\
+            &= (V' \otimes_\Z \C)/(\img(\phi) \otimes_\Z \C) \\
+            &= (V'_\C / \img(\phi_\C)) \otimes_\Z \C \\
+            &= \coker(\phi) \otimes_\Z \C
+        \end{align*}
+        Let
+        \[ \coker(\phi_\C)^{p,q} = {V'}^{p,q} / \img(\phi)^{p,q}\]
+        where $\img(\phi)^{p,q}$ is the $(p,q)$-part of $\img(\phi_\C)$. Then, we have:
+        \begin{align*}
+            \img(\phi_\C)^{p,q} &= (\img(\phi_\C) \cap F^{p} V'_\C) \cap (\overline{\img(\phi_\C) \cap F^{q} V'_\C}) \\
+            &= \img(\phi_\C) \cap {V'}^{p,q} \subseteq {V'}^{p,q}
+        \end{align*}
+        as the image is closed under complex conjugation. Thus, using these compatible decompositions, we note:  
+        \begin{align*}
+            \bigoplus_{p+q = k+2r} \coker(\phi_\C)^{p,q} &= \bigoplus_{p+q = k+2r} {V'}^{p,q} / \img(\phi_\C)^{p,q} \\
+            &= \left(\bigoplus_{p+q = k+2r} {V'}^{p,q}\right)/ \left(\bigoplus_{p+q = k+2r} \img(\phi_\C)^{p, q}  \right) \\
+            &= {V'}_\C / \img(\phi_\C) \\
+            &= \coker(\phi_\C)
+        \end{align*}
+        Moreover, we have that:
+        \begin{align*}
+            \overline{\coker(\phi_\C)^{p,q}} &= \overline{{V'}^{p,q} / \img(\phi_\C)^{p,q}} \\
+            &= {V'}^{q,p} / \img(\phi_\C)^{q,p} \\
+            &= \coker(\phi_\C)^{q, p}            
+        \end{align*}
+        as the quotient map is $\C$-linear, thus respects the complex structure. Thus, we have that $\coker(\phi_\C)$ is a Hodge structure of weight $k+2r$.
+        \item[(d)] (I took several hints from the proof in Voisin, and the proof gradually looked more and more like hers). \bbni 
+        Note that the pullback is: 
+        \[ \phi^*: H^k(Y, \Z) \to H^k(X, \Z)\]
+        It suffices to show that $\phi^*$ is injective with $\R$ coefficients. Let $\dim_\C(X) = n$ and $\dim_\C(Y) = m$. Let $\alpha \in H^{2m}(Y, \R)$. Then, we have $\phi^*\alpha \in H^{2m}(X, \R)$. Let $r = n-m > 0$ (as $\phi$ surjective). Then, we have that $\omega^r \wedge \phi^*\alpha \in H^{2n}(X)$ is a top-degree form on $X$, where $\omega$ is the K\"ahler form. Voisin claims that this map is always non-negative, and positive on at least an open set. Thus, the integral:
+        \[ \int_X \omega^r \wedge \phi^*\alpha > 0 \]
+        Thus, $\phi^* \alpha \geq 0$. We conclude that $\phi^*$ is injective on $H^k(Y, \R)$ using Poincare duality to get a top-form on $Y$, and noticing that the pullback distributes over the cup product (and is, in particular, a ring homomorphism).      
     \end{enumerate}
 \end{solution}
 
@@ -49,19 +142,30 @@
 
 
 
-% \begin{problem}{2.1}
-
-% \end{problem}
-% \begin{solution}
-% \end{solution}
-% \newpage
-
-% \begin{problem}{2.2}
-
-% \end{problem}
-% \begin{solution}
-% \end{solution}
-% \newpage
+\begin{problem}{2.1}
+    Let $H_\R$ be a $\R$-vector space, and $H_\C := H_\R \otimes_\R \C$.
+    \begin{enumerate}
+        \item[(a)] Show that a decomposition
+        \[ H_\C = \bigoplus_{p+q=k} H^{p,q} \qquad H^{p,q} = \overline{H^{q,p}}\]
+        determines a continous action $\rho: \C^\times \to \text{GL}(H_\C)$ of $\C^\times$ on $H^\C$ given by:
+        \[ z \cdot \alpha^{p,q} = z^p\overline{z^q}\alpha^{p,q}\]
+        for $\alpha^{p,q} \in H^{p,q}$. Show that this action satisfies: 
+        \[ \rho(\overline{z}) = \overline{\rho(z)}\]  
+        where the conjugacy on $GL(H_\C)$ is defined by: 
+        \[ \overline{g}(u) = \overline{g(\overline u)}\]
+        Show that one also has $\rho(t) = t^k \id$ for $t \in \R^\times$. \\
+        Conversely, let $\rho: \C^\times \to GL(H_\C)$ be a continous action of $\C^*$ on $H_\C$ satisfying $\rho(t) = t^k \id$ for $t \in \R^*$ and $\rho(\overline{z}) = \overline{\rho(z)}$. Show that there exists a decomposition of $H_\C$ into the direct sum of the $H^{p,q}$ such that $\rho(z)$ acts as above.
+        \item[(b)] Applying the diagonalization theorem for the actions of torsion abelian groups to the torsion points of $\C^*$, show that there exists a decompositon into a directt sum:
+        \[ H = \bigoplus_\chi H_\chi\]
+        where $\chi$ belongs to the set of characters of $\C^*$ and $\C^*$ acts by $z \to \chi(z)\id$ on $H_\chi$.
+        \item[(c)] Show that only the characters $\chi_{p, q}: z \to z^p\overline{z}^q$ with $p+q = k$ appear in the decomposition of $H_\C$.
+        \item[(d)] Let $H^{p,q} := H_{\chi_{p,q}}$. Show that $H^{p, q} = \overline{H^{q, p}}$. 
+        \item[(e)] Let $V_\Z$ be a Hodge structure of weight $2k$ and $\C^* \to GL(V_\R)$ the corresponding group morphism defined in the previous question. Show that the group of Hodge classes is equal to the group of stable (i.e. fixed up to a scaler) vectors of $V_\Z$ under the action of $\C^*$.
+    \end{enumerate}
+\end{problem}
+\begin{solution}
+\end{solution}
+\newpage
 
 
 \begin{problem}{3}(The Hodge Decomposition for Curves)
@@ -80,13 +184,6 @@
         with 
         \[ \overline{H^0(X, \Omega_X)} \cong H^1(X, \calO)\]
     \end{enumerate}
-
-\end{problem}
-\begin{solution}
-\end{solution}
-\newpage
-
-\begin{problem}{4}
 
 \end{problem}
 \begin{solution}

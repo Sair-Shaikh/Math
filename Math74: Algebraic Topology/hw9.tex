@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+
+\include{../style}
+
+\begin{document}
+
+\input{title}
+
+
+\begin{problem}{1}(2.3.1) \\
+    If $T_n(X,A)$ denotes the torsion subgroup of $H_n(X,A)$, show that the functors $(X,A) \mapsto T_n(X,A)$ with the obvious induced homomorphisms $T_n(X,A) \to T_n(Y,B)$ and boundary maps $T_n(X,A) \to T_{n-1}(A)$ do not satisfy a homology theory even if excluding the dimension axiom. Do the same for the `mod-torsion' functor $MT_n(X,A) = H_n(X,A)/T_n(X,A)$. 
+\end{problem}
+
+\begin{solution}
+    Let $X = \RP^2$ and $A$ be a circle in $X$. The long exact sequence in homology gives us:
+    \begin{align*}
+        &\cdots \to H_2(X, A) \to H_1(A) \to H_1(X) \to H_1(X, A) \to H_0(A) \to H_0(X) \to \cdots \\
+    \end{align*}
+    Then, note that we have $H_1(X) = \Z/2\Z$, $H_1(A) = \Z$ and $H_0(X) = H_0(A) = \Z$.
+    \[ \cdots \to H_2(X, A) \to \Z \to \Z/2\Z \to H_1(X, A) \to \Z \to \Z \to \cdots\]
+    The generator of $H_1(A)$ maps to a boundary in $H_1(X)$, thus, the first map is $0$. Thus, the second map is injective. Moroever, the last map is induced by the inclusion of $A$ into $X$, both of which are path-connected, thus the last $H_0(A) \to H_0(X)$ is an isomorphism. Thus, the image of $H_1(X, A) \to H_0(A)$ is trivial, i.e. the map is $0$. Thus, $H_1(X, A) = 0$. Overall, we have:
+    \[ \to \Z \to \Z/2\Z \to 0 \to \cdots\]
+    Applying the torsion functors, we get:
+    \[ T_1(A) = 0 \to T_1(X) = \Z/2\Z \to T_1(X,A) = 0 \to \cdots \]
+    which is not exact. Thus, the torsion functor does not satisfy the exactness axiom.
+\end{solution}
+\newpage
+
+\begin{problem}{2}(2.3.5, with $G= \Z$) 
+    Regarding a cochain $\varphi \in C^1(X)$ as a function on paths in $X$ to $\Z$, show that if $\varphi$ is a cocycle, then 
+    \begin{enumerate}
+    \item $\varphi(f \cdot g) = \varphi(f) + \varphi(g)$,
+    \item $\varphi$ takes the value $0$ on constant paths,
+    \item $\varphi(f) = \varphi(g)$ if $f \simeq_p g$, and
+    \item $\varphi$ is a coboundary if and only if $\varphi(f)$ depends only on the endpoints of $f$ for all paths $f$ in $X$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+
+\end{solution}
+\newpage
+
+\begin{problem}{3}
+Verify the remark in Hatcher after exercise 2.3.5: If $X$ is path-connected, the previous problem together with the universal coefficient theorem induces an isomorphism $H^1(X) \cong \mathrm{Hom}(\pi_1(X), \Z)$.
+\end{problem}
+\begin{solution}
+\end{solution}
+\newpage
+
+
+
+
+\end{document}
