@@ -8,9 +8,34 @@
 
 \begin{problem}{54}
     Suppose that $X$ is a reflexive Banach space. Show that the unit ball $B = \{x \in X: \norm{x} \leq 1\}$ is weakly compact. (Hint provided). 
-
 \end{problem}
 \begin{solution}
+    Let $X^*$ be the dual of $X$. By Alaoglu's theorem, we know that $B^{**} = \{f \in X^{**}: \norm{f} \leq 1\}$ is compact in $\sigma(X^{**}, X^*)$. Thus, it suffices to show that $B$ under the weak topology on $X$ is homeomorphic to $B^{**}$ in the weak-* topology on $X^{**}$ under the natural map $\iota$. \bbni
+    Since $X$ is reflexive, we already know that $\iota: X \to X^{**}$ is a bijection. Recall the definition of an basic open set in the weak* topology on $X^{**}$, for $f_0 \in X^{**}$, $\phi_1, \cdots, \phi_k \in X^*$ and $\epsilon > 0$:
+    \[ U = \{f \in X^{**}: |f(\phi_i)-f_0(\phi_i)| < \epsilon, 1 \leq i\leq k\}\]
+    Noting that $\iota$ is bijective, we may rewrite this as:
+    \begin{align*}
+       U &= \{\iota(x) \in X^{**}: |\iota(x)(\phi_i)-\iota(x_0)(\phi_i)| < \epsilon, 1 \leq i\leq k\}  \\
+         &= \{\iota(x) \in X^{**}: |\phi_i(x)-\phi_i(x_0)| < \epsilon, 1 \leq i\leq k\}
+    \end{align*}
+    The preimage of $U$ under $\iota$ then is precisely:
+    \begin{align*}
+        \iota^{-1}(U) &= \{x \in X: |\phi_i(x)-\phi_i(x_0)| < \epsilon, 1 \leq i\leq k\}    
+    \end{align*}
+    which is a basic open set in the weak topology on $X$. Thus, $\iota$ is continous. \bbni
+    Similarly, let $V$ be a basic open set in the weak topology on $X$, written, for some $x_0 \in X$, $\phi_1, \cdots \phi_k \in X^*$ and $\epsilon > 0$ as:
+    \[ V = \{x \in X: |\phi_i(x)-\phi_i(x_0)| < \epsilon, 1 \leq i\leq k\}\]
+    Then, we have that:
+    \begin{align*}
+        \iota(V) &= \{\iota(x) \in X^{**}: |(\phi_i(x))-\phi_i(x_0)| < \epsilon, 1 \leq i\leq k\} \\
+        &= \{\iota(x) \in X^{**}: |\iota(x)(\phi_i)-\iota(x_0)(\phi_i)| < \epsilon, 1 \leq i\leq k\}
+    \end{align*}
+    which is a basic open set in the weak* topology on $X^{**}$. Thus, $\iota^{-1}$ is also continous. \bbni
+    Thus, $\iota$ is a homeomorphism from $X$ with the weak topology to $X^{**}$ with the weak* topology. Finally, note that as $\iota$ is isometric,
+    \begin{align*}
+        \iota(B) &= \{\iota(x): ||\iota(x)|| \leq 1 \} = B^{**}
+    \end{align*}
+    Thus, as $B^{**}$ is compact in the weak* topology, we have that $B$ is weakly compact in the weak topology on $X$.
 \end{solution}
 \newpage
 
@@ -146,7 +171,20 @@
     Suppose that $X$ is a compact metric space and that $C(X)$ is the Banach space of real-valued functions on $X$. Show that if $(f_n) \subset C(X)$ is such that there is a $f \in C(X)$ such that $f_n(X) \nearrow f(x)$ for all $x \in X$, then $f_n \to f$ in $C(X)$. Equivalently, show that $f_n \to f$ uniformly on $X$. (Hint provided).
 \end{problem}
 \begin{solution}
-
+    Let $(f_n) \subset C(X)$ be such that $f_n(x) \nearrow f(x)$ for all $x \in X$. We need to show that $f_n \to f$ uniformly on $X$. \bbni
+    Let $\epsilon > 0$ be arbitrary. 
+    % For each $x \in X$, there exists an $N_x$ such that for all $n \geq N_x$, we have:
+    % \[ |f(x) - f_n(x)| < \epsilon\]
+    Let $E_n = \{ x \in X : |f(x)-f_n(x)| < \epsilon\}$. Then, as $f_{n}(x) \leq f_{n+1}(x)$, we have that $|f(x) - f_{n+1}(x)| \leq |f(x) - f_n(x)|$ for all $x \in X$ for all $n$. Thus, we have that $E_n \subseteq E_{n+1}$ for all $n$. Moreover, for each $x \in X$, as $f_n(x) \to f(x)$, there exists $N_x$ such that for all $n \geq N_x$,
+    \[ |f(x) -f_n(x)| < \epsilon\]
+    Thus, $x \in E_n$ for all $n \geq N_x$. Therefore, we have that $\{E_n\}$ is a cover for $X$. \bbni
+    Moreover, since $f$ and $f_n$ are continous, so is $f-f_n$ for all $n$. As $\{c \in \R : |c| < \epsilon\}$ is open, we have that $E_n$ is the continous preimage of an open set, thus is open. Thus, $\{E_n\}$ is an open cover for $X$. \bbni
+    Since $X$ is compact, there exista finite subcover $\{E_{n_1}, \ldots, E_{n_k}\}$ such that:
+    \[ X = \bigcup_{i=1}^k E_{n_i}\]
+    Let $N = \max\{n_1, \ldots, n_k\}$. Then, as noted previously, $E_{n_i} \subseteq E_N$ for all $i$. Thus for any $x \in X$, there exists an $i$ such that $x \in E_{n_i} \subseteq E_N$. Thus, $X = E_N$. \bbni
+    Moreover, we also note that the containments $E_N \subseteq E_{N+1} \subseteq \cdots$ imply that $E_m = X$ for all $m \geq N$. Thus, we have that for $m \geq N$, for all $x \in X$,:
+    \[ x\in E_m \iff |f(x) - f_m(x)| < \epsilon\]
+    Thus, $(f_n) \to f$ uniformly on $X$.
 \end{solution}
 \newpage
 
