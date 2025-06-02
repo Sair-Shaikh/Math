@@ -37,7 +37,53 @@
 \end{problem}
 
 \begin{solution}
-
+    \bbni
+    \begin{enumerate}
+        \item Recall that a cochain $\varphi \in C^1(X)$ is a cocycle if $\delta \varphi = 0$. However, we have, by definition, for $\sigma: \Delta^2 \to X$ that: 
+        \[ \delta(\varphi)(\sigma) = \varphi(\delta \sigma) = 0\]
+        Thus, $\varphi$ is $0$ on all boundaries. \bbni
+        We construct $\sigma: \Delta^2 \to X$ with sides $f$, $g$ and $f \cdot g$ as follows: \bbni
+        INSERT PICTURE HERE. \bbni
+        Then, we have: 
+        \begin{align*}
+            \varphi(\delta \sigma) &= \varphi(g) - \varphi(f \cdot g) + \varphi(f) = 0
+        \end{align*}
+        Thus, we have $\varphi(f \cdot g) = \varphi(f) + \varphi(g)$.
+        \item Let $\id_e$ be the constant path at point $e \in X$. The constant path is the boundary of the 2-simplex $\sigma: \Delta^2 \to X$ with all vertices mapped to $e$ (thus all edges constant paths $\id_{e}$). Then, we have:
+        \begin{align*}
+            \varphi(\delta \sigma) &= \varphi(\id_e) - \varphi(\id_e) + \varphi(\id_e) = 0
+        \end{align*}
+        Thus, $\varphi(\id_e) = 0$.
+        \item If $f \simeq_p g$ are paths from $x_0$ to $x_1$, then we can construct two $2$-simplices as in the diagram: \bbni
+        INSERT PICTURE HERE. \bbni
+        Then, we have:
+        \begin{align*}
+            \varphi(\delta (\sigma_1 - \sigma_2)) &= \varphi(-\id_{x_1}) + \varphi(f) -\varphi(\psi) - \varphi(g) - \varphi(\id_{x_0}) +\varphi(\psi) = 0 
+        \end{align*}
+        Then, using the previous part, we have: 
+        \begin{align*}
+            \varphi(f) &= \varphi(g)
+        \end{align*}
+        Note that these three parts together imply that $\varphi(f^{-1}) = -\varphi(f)$, since $f \cdot f^{-1} \simeq_p \id_{x_0}$, and then $\varphi(f^{-1}) + \varphi(f) = \varphi(\id_{x_0}) = 0$, where $x_0$ is the start point of $f$.
+        \item If $\varphi$ is a coboundary there exists a $0$-cochain $\psi \in C^0(X)$ such that $\varphi = \delta \psi$. Thus, for $f: \Delta^1 \to X$ with endpoints $x_0$ and $x_1$, we have:
+        \begin{align*}
+            \varphi(f) &= \delta \psi(f) \\
+            &= \psi(\delta f) \\
+            &= \psi(x_1) - \psi(x_0)
+        \end{align*}
+        Thus, $\varphi(f)$ depends only on the endpoints of $f$. \bbni
+        Conversely, assume $\varphi(f)$ depends only on the endpoints of $f$. Let $X'$ be a path-connected component. Pick a basepoint $x \in X'$. Then, for any $x' \in X'$, we can construct a path $f_{x'}: \Delta^1 \to X'$ from $x$ to $x'$. Then, we define $\psi: X' \to \Z$ by:
+        \[ \psi(x') := \varphi(f_{x'})\]
+        since $\varphi(f)$ depends only on the endpoints, this is well-defined. Similarly, we do this for all path-connected components of $X$. Then, if $f$ is a path from $x_0$ to $x_1$ in path-connected component with basepoint $x$, we construct $f_1$ and $f_2$, paths from $x$ to $x_1$ and $x_2$, respectively. Then, we have:
+        \begin{align*}
+            \varphi(f) &= \varphi(f_1^{-1} \cdot f_2) \\
+            &= -\varphi(f_1) + \varphi(f_2) \\
+            &= -\psi(x_1) + \psi(x_2) \\
+            &= \psi(\delta f) \\
+            &= \delta \psi(f)
+        \end{align*}
+        Thus, $\varphi$ is a coboundary.
+    \end{enumerate}
 \end{solution}
 \newpage
 
@@ -45,6 +91,28 @@
 Verify the remark in Hatcher after exercise 2.3.5: If $X$ is path-connected, the previous problem together with the universal coefficient theorem induces an isomorphism $H^1(X) \cong \mathrm{Hom}(\pi_1(X), \Z)$.
 \end{problem}
 \begin{solution}
+    We calculate $Ext^1(H_0(X), \Z)$. This represents the isomorphism classes of extensions: 
+    \[ 0 \to \Z \to A \to H_0(X) \to 0 \]
+    Since $X$ is path-connected, we have $H_0(X) \cong \Z$. Thus, there are no extensions and $Ext^1(H_0(X), \Z) = 0$. Then, note the universal coefficient theorem gives us the exact sequence: 
+    \[ 0 \to H^1(X) \to \Hom(H_1(X), \Z) \to 0 \]
+    Thus, we have $H^1(X) \cong \Hom(H_1(X), \Z)$. \bbni
+    Define $\Phi: Z^1(X) \to \Hom(\pi_1(X), \Z)$ as follows:
+    \[ \Phi(\varphi)([\gamma]) = \varphi(\gamma) \]
+    where $\varphi \in Z^1(X)$ is a cocycle and $[\gamma] \in \pi_1(X)$. This is well-defined by part (3), and a homomorphism by part (1) and (2) of the previous problem. We claim that $\Phi$ is surjective. \bbni
+    Let $\rho: \pi_1(X) \to \Z$ be a homomorphism. We define a cocycle $\varphi \in Z^1(X)$ for path $f$ from $x_1$ to $x_2$ as follows. Let $\alpha_{x_1}, \alpha_{v_2}$ be paths from $x_0$ (the basepoint of $\pi_1(X)$) to $x_1$ and $x_2$, respectively. Then, we define:
+    \[ \varphi(f) = \rho([\alpha_{x_1} \cdot f \cdot \alpha_{x_2}^{-1}]) \]
+    One can verify this is a cocycle. Let $\sigma: \Delta^2 \to X$ be a $2$-simplex with sides $[v_1, v_2]$, $[v_2, v_3]$ and $[v_3, v_1]$. Then, 
+    \begin{align*}
+        \varphi(\delta \sigma) &= \rho([\alpha_{v_2} \cdot [v_2, v_3] \cdot \alpha_{v_3}^{-1}]) - \rho([\alpha_{v_1} \cdot [v_1, v_3] \cdot \alpha_{v_3}^{-1}])+ \rho([\alpha_{v_1} \cdot [v_1, v_2] \cdot \alpha_{v_2}^{-1}]) \\
+        &= \rho([\alpha_{v_2} \cdot [v_2, v_3] \cdot \alpha_{v_3}^{-1} \cdot \alpha_{v_3} \cdot [v_3, v_1] \cdot \alpha_{v_1}^{-1} \cdot \alpha_{v_1} \cdot [v_1, v_2] \cdot \alpha_{v_2}^{-1}])\\
+        &= \rho([\alpha_{v_2} \cdot [v_2, v_3] \cdot [v_3, v_1] \cdot [v_1, v_2] \cdot \alpha_{v_2}^{-1}])\\
+        &= \rho([\alpha_{v_2} \cdot \id_{v_2} \cdot \alpha_{v_2}^{-1}])\\
+        &= \rho(\id_{v_2}) = 0
+    \end{align*}
+    Thus, $\varphi$ is a cocycle and $\Phi$ is surjective. \bbni
+    Next, we investigate $\ker(\Phi)$. Assume $\Phi(\varphi) = 0$. Then $\varphi(\gamma) = 0$ for all $\gamma \in \pi_1(X)$. Then, $\varphi$ trivially depends only on the endpoints of $\gamma$, thus is a coboundary by part (4) of the previous problem. Thus, $\ker(\Phi) \subseteq B^1(X)$. Moreover, if $\varphi$ is a coboundary, it depends only on the endpoints of any path. Thus, as paths in $\pi_1(X)$ are loops, $\varphi$ is constant on $\pi_1(X)$. Thus, $\varphi(\gamma) = \varphi(\id) = 0$ for all $\gamma \in \pi_1(X)$. Thus, $B^1(X) \subseteq \ker(\Phi)$. Thus, $\ker(\Phi) = B^1(X)$. \bbni
+    Then, by the first isomorphism theorem, we have:
+    \[ H^1(X) = Z^1(X)/B^1(X) \cong \Hom(\pi_1(X), \Z) \]
 \end{solution}
 \newpage
 

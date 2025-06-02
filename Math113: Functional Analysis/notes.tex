@@ -883,6 +883,97 @@
     $(1) + (2) \implies (6)$.
     \item[Defn.] We say that $T \in \mathcal L(H)$ is normal if $TT^* = T^*T$. 
     \item[Lemm.] Suppose $T \in \mathcal L(H)$ is normal. Then $||T(x)|| = ||T^*(x)||$ for all $x \in H$.
+    \newpage
+    Missed two to three lectures of notes.
+    \newpage
+    \item[Rmk.] We say that $T \in \mathcal{L}(H)$ is (orthgonally) diagonalizable if there is an orthonormal basis $\{e_n\}$ of $H$ consisting of eigenvectors of $T$. \item[Rmk.] If $\{e_n : n \in \N\}$ is a basis of eigenvectors for $T$ and if $T(e_n) = \lambda_n e_n$ then $(\lambda_n) \subset l^\infty$.
+    \item[Prop.] Suppose that $T \in \mathcal{L}(H)$ diagonaziable with $\{e_n : n \in \N\}$ and $T(e_n) = \lambda_n e_n$. Then $T \in \mathcal{K}(H)$ (compact) if and only if $(\lambda_n) \in c_0$. \bbni
+    Proof. We showed that if $T \in \mathcal{K}(H)$, then $(\lambda_n) \in c_0$. Now suppose $(\lambda_n) \in c_0$. Let:
+    \[ T_n = \sum_{k=1}^n \lambda_k \Theta_{e_k, e_k}\]
+    Then, $T_n \in \mathcal{L}_{\calF}(H)$. \\
+    If $\norm{x} \leq 1$, 
+    \begin{align*}
+        \norm{(T-T_n)(x)}^2 &= \norm{\sum_{k=n+1}^\infty \lambda_k (x \mid e_k)e_k}^2 \\
+        &= \lim_{N \to \infty } \norm{\sum_{k=n+1}^N \lambda_k (x, e_k)}^2 \\
+        &= \lim_{n \to \infty} \sum_{k=n+1}^N |\lambda_k|^2 |(x, e_k)|^2 \\
+        &\leq \sup_{k \geq n} |\lambda_k|^2 ||x||^2 \\
+        &\leq \sup_{k \geq n} |\lambda_k|^2
+    \end{align*}
+    Thus, $\norm{T-T_n} \leq \sup_{k \geq n} |\lambda_k|^2$. Thus, $T_n \to T$ in the operator norm. Thus, $T \in \mathcal{K}(H)$ since $(T_n) \subset \mathcal{L}_{\calF}(H)$.
+    \item[Defn.] If $T \in \mathcal{L}(H)$ then the numerical range of $T$ is: 
+    \[ n(T) = \sup\{|(Tx \mid x)| : ||x|| \leq 1\}\]
+    \item[Ex.] Let $\F = \R$ and:
+    \[ A = \begin{pmatrix}
+        0 & -1 \\
+        1 & 0
+    \end{pmatrix}\]
+    Since $A^T = A$, $L_A$ is normal, even unitary. But we know that $A$ has no eigenvalues. Hence, $L_A$ is not diagonalizable. Note that: 
+    \[ n(L_A) = 0 \]
+    \item[Yap.] Recall that $T \geq 0$ if and only if $T = A^*A$. But then, 
+    \begin{align*}
+        |(Tx \mid x)| &= (Ax \mid Ax) = ||Ax||^2
+    \end{align*}
+    Thus, $n(T) = ||A||^2$. Thus, $n(T) = \norm{A^*A} = \norm{T}$.
+    \item[Prop.] Suppose $T \in \mathcal{L}(H)$ and $T = T^*$. Then $n(T) = ||T||$. \bbni
+    Proof. We have: 
+    \[ n(T) = \leq \norm{T}\]
+    by Cauchy-Schwarz. Thus, by homogeneity, we have:
+    \[ (Tx \mid x) \leq n(T)||x||^2 \qquad \qquad (*)\]
+    Now, we recall, 
+    \begin{align*}
+        (T(x+y) \mid x+y) - (T(x-y) \mid x-y) &= 2((Tx \mid y) + (Ty \mid x)) \\
+        &= 4\Re((Tx \mid y)) \\
+    \end{align*}
+    Now using $(*)$, we have:
+    \begin{align*}
+        4\Re((Tx \mid y)) &\leq n(T)(||x+y||^2 + ||x-y||^2) \\
+        &= n(T)(2||x||^2 + 2||y||^2)
+    \end{align*}
+    Thus, if $||x|| = ||y|| = 1$, then:
+    \[ \Re(Tx \mid y) \leq n(T)\]
+    Now replacing $y$ by $Ty$ with $|T| = 1$, we have:
+    \[ |(Tx \mid y)| \leq n(T) \]
+    Missing. 
+    \item[Rmk.] If $\F = \C$ and $T \in \mathcal{L}(H)$ is normal, then $n(T) = ||T||$. 
+    \item[Lem.] (Cauchy-Schwarz Rev.) If $x, y \in H \setminus \{0\}$ and: 
+    \begin{align*}
+        |(x \mid y)| &= \norm{x}\norm{y} 
+    \end{align*} 
+    Then $\exists \lambda \neq 0$ such that $x = \lambda y$. \\
+    Proof. Let $\norm{x} = \norm{y} = 1$. Let $\lambda = 1$ be such that:
+    \[ \overline{\lambda}(x \mid y) = |(x \mid y)|^2 = \norm{x}\norm{y} = 1\]
+    Then, 
+    \begin{align*}
+        \norm{x-\lambda y}^2 &= (x - \lambda y \mid x - \lambda y) \\
+        &= \norm{x}^2 -2 \Re(\overline{\lambda}(x \mid y)) + |\lambda|^2 \norm{y}^2 \\
+        &= 1 - 2  + 1 = 0
+    \end{align*}
+    \item[Prop.] Suppose $T \in \mathcal{K}(H)$ and $T = T^*$. Then, $T$ has an eigenvalue $\lambda$ such that $|\lambda| = ||T||$. \bbni
+    Proof. Recall that since $T$ is compact, $T|_B: B \to H$ is weak-norm continous. Thus, if $x_\lambda \to x$ weakly then $T(x_\lambda) \to T(x)$ in norm.  \\
+    Then, we have:
+    \begin{align*}
+        |(Tx_\lambda \mid x_\lambda) -(Tx \mid x)| &\leq |(Tx_\lambda - T(x) \mid x_\lambda)| + |(Tx \mid x_\lambda - x)| \\
+        &\leq \norm{T(x_\lambda)-T(x)} + |(Tx \mid x_\lambda)-(T(x)\mid x)|
+    \end{align*}
+    By weak-norm continuity, this goes to $0$ as $\lambda \to \infty$. Thus, 
+    \[ x \mapsto |(T(x) \mid x)|\]
+    is weakly continous on $B$. Since $B$ is weakly compact, $\exists x_0 \in B$ such that:
+    \[ |(T(x_0) \mid x_0)| = \sup_{\norm{x} \leq 1} |(T(x) \mid x)| = n(T) = ||T||\]
+    Then, 
+    \begin{align*}
+        \norm{T} &= |(T(x_0) \mid x_0)| \\
+        &\leq \norm{Tx_0}\norm{x_0} \\
+        &\leq \norm{T}
+    \end{align*} 
+    Thus, $|(Tx_0 \mid x_0)| = \norm{Tx_0}\norm{x_0}$. Then, there exists $\exists \lambda$ such that $T(x_0) = \lambda x_0$. Clearly, $|\lambda| = ||T||$.
+    \item[Rmk.] If $T \in \mathcal{L}(H)$ is normal, then $v \neq 0$ is an eigenvector with eigenvalue $\lambda$ if and only if:
+    \[\norm{(T-\lambda I)(v)} = 0\]
+    But $T-\lambda I$ is normal is $T$ is. Hence, 
+    \[\norm{(T^*-\overline{\lambda}I)(v)} = 0 \]
+    and $v$ is an eigenvectof for $T^*$ with eigenvalue $\overline{\lambda}$.
+    \item[Thm.] (Spectral Theorem for compact operators). Suppose that $H$ is a separable Hilbert space and that $T = T^*$ is compact. Then $T$ is orthogonally diagonalizable. \bbni
+    Proof. Pictures. 06/02.
+    
 \end{itemize}
 
 
