@@ -12,17 +12,25 @@
 \end{problem}
 
 \begin{solution}
-    Let $X = \RP^2$ and $A$ be a circle in $X$. The long exact sequence in homology gives us:
+    We will show a contradiction to the exactness axiom. Let $X$ be the Mobius strip and $A$ be the boundary circle of the Mobius strip. Then, we must have the long exact sequence: 
+    \[\cdots \to H_1(A) \to H_1(X) \to H_1(X, A) \to H_0(A) \to H_0(X) \to  \cdots \]
+    Let $C$ be the center circle. We showed in Hwk 3, Problem 3.3, that $X$ deformation retracts to $C$ via the straight-line homotopy (this is also clear from the CW complex picture). Thus, $\pi_1(X) \cong \pi_1(C) = \Z$. Since $H_1$ is the abelianization of $\pi_1$, we have $H_1(X) \cong \Z$. \bbni 
+    Moreover, $H_1(A) \cong \Z$ as well, since $A$ is a circle. Moreover, note that we showed (in Hwk 3, Problem 3.3) that the generator for $H_1(A)$, i.e. the loop around $A$ maps to $2$ times the generator of $H_1(C)$, thus maps to $2$ times the generator of $H_1(X)$ (as deformation retraction is a homotopy equivalence, thus isomorphism on the homology). \bbni
+    Finally, we have that $H_0(A) \cong H_0(X) \cong \Z$ and the pushforward of the inclusion map on $H_0$ is an isomorphism as the spaces are path-connected. Thus, we get: 
+    \[\cdots \to \Z \xrightarrow{2} \Z \to H_1(X, A) \to \Z \xrightarrow{\sim} \Z \to \cdots \]
+    Then, the kernel of the second map is the image of the first map, i.e. $2\Z$. Thus, the image of the second map is $\cong \Z/2\Z$ (first isomorphism theorem). Thus, we have that $\ker(H_1(X, A) \to \Z) \cong \Z/2\Z$. \\
+    Moreover, the last map is an isomormphism, hence injective, thus the map $H_1(X, A) \to \Z$ is $0$. Thus, the kernel is everything, i.e. $H_1(X, A) \cong \Z/2\Z$. Thus, our long exact sequence becomess:
+    \[ \cdots \to \Z \xrightarrow{2} \Z \to \Z/2\Z \to 0 \to \cdots \]
+    Applying the torsion functor $T$, we have: 
     \begin{align*}
-        &\cdots \to H_2(X, A) \to H_1(A) \to H_1(X) \to H_1(X, A) \to H_0(A) \to H_0(X) \to \cdots \\
+        \cdots \to \underbrace{0}_{T_1(A)} \to \underbrace{0}_{T_1(X)} \to \underbrace{\Z/2\Z}_{T_1(X,A)} \to 0 \to \cdots
     \end{align*}
-    Then, note that we have $H_1(X) = \Z/2\Z$, $H_1(A) = \Z$ and $H_0(X) = H_0(A) = \Z$.
-    \[ \cdots \to H_2(X, A) \to \Z \to \Z/2\Z \to H_1(X, A) \to \Z \to \Z \to \cdots\]
-    The generator of $H_1(A)$ maps to a boundary in $H_1(X)$, thus, the first map is $0$. Thus, the second map is injective. Moroever, the last map is induced by the inclusion of $A$ into $X$, both of which are path-connected, thus the last $H_0(A) \to H_0(X)$ is an isomorphism. Thus, the image of $H_1(X, A) \to H_0(A)$ is trivial, i.e. the map is $0$. Thus, $H_1(X, A) = 0$. Overall, we have:
-    \[ \to \Z \to \Z/2\Z \to 0 \to \cdots\]
-    Applying the torsion functors, we get:
-    \[ T_1(A) = 0 \to T_1(X) = \Z/2\Z \to T_1(X,A) = 0 \to \cdots \]
-    which is not exact. Thus, the torsion functor does not satisfy the exactness axiom.
+    is not exact (the boundary maps are the natural ones from functoriality) as the image of the second map is trivial, but the kernel of the third map is $\Z/2\Z$. Thus, $T$ fails the exactness axiom. \bbni 
+    Similarly, applying the mod-torsion functor $MT$, we have: 
+    \begin{align*}
+        \cdots \to \underbrace{\Z}_{MT_1(A)} \xrightarrow{2} \underbrace{\Z}_{MT_1(X)} \to \underbrace{0}_{MT_1(X,A)} \to 0 \to \cdots
+    \end{align*}
+    (the $2$ map is preserved as be modded nothing out). Again, this is not exact at $MT_1(X)$ as the image of the first map is $2\Z$ while the kernel of the second map is $\Z$. Thus, the mod-torsion functor does not satisfy the exactness axiom. \bbni
 \end{solution}
 \newpage
 
@@ -42,8 +50,11 @@
         \item Recall that a cochain $\varphi \in C^1(X)$ is a cocycle if $\delta \varphi = 0$. However, we have, by definition, for $\sigma: \Delta^2 \to X$ that: 
         \[ \delta(\varphi)(\sigma) = \varphi(\delta \sigma) = 0\]
         Thus, $\varphi$ is $0$ on all boundaries. \bbni
-        We construct $\sigma: \Delta^2 \to X$ with sides $f$, $g$ and $f \cdot g$ as follows: \bbni
-        INSERT PICTURE HERE. \bbni
+        We construct $\sigma: \Delta^2 \to X$ with sides $[v_1, v_2] = f$, $[v_2, v_3] = g$ and $[v_1, v_3] = f \cdot g$ as follows: \bbni
+        \begin{centering}
+            \includegraphics[width=0.5\textwidth]{assets/hwk9_21.png}
+        \end{centering}
+        \bbni
         Then, we have: 
         \begin{align*}
             \varphi(\delta \sigma) &= \varphi(g) - \varphi(f \cdot g) + \varphi(f) = 0
@@ -55,16 +66,24 @@
         \end{align*}
         Thus, $\varphi(\id_e) = 0$.
         \item If $f \simeq_p g$ are paths from $x_0$ to $x_1$, then we can construct two $2$-simplices as in the diagram: \bbni
-        INSERT PICTURE HERE. \bbni
+        \begin{centering}
+            \includegraphics[width=0.5\textwidth]{assets/hwk9_22.png}
+        \end{centering}    
+        \bbni   
+        with $[v_1, v_2] = f$, $[v_1, v_3] = \psi$, $[v_1, v_4] = id_{x_0}$, $[v_2, v_3] = \id_{x_1}$, and $[v_3, v_4] = -g$. Then, we have: 
         Then, we have:
         \begin{align*}
-            \varphi(\delta (\sigma_1 - \sigma_2)) &= \varphi(-\id_{x_1}) + \varphi(f) -\varphi(\psi) - \varphi(g) - \varphi(\id_{x_0}) +\varphi(\psi) = 0 
+            \varphi(\delta (\sigma_1 + \sigma_2)) &= \varphi([v_2, v_3]) - \varphi([v_1, v_3]) + \varphi([v_1, v_3]) + \varphi([v_3, v_4]) - \varphi([v_1, v_4]) + \varphi([v_1, v_3]) \\
+            &= \varphi(\id_{x_1}) - \varphi(\psi) + \varphi(f) + \varphi(-g) - \varphi(\id_{x_0}) +  \varphi(\psi) \\
+            &= \varphi(f) - \varphi(g) \\
+            &= 0
         \end{align*}
-        Then, using the previous part, we have: 
+        Thus, 
         \begin{align*}
             \varphi(f) &= \varphi(g)
         \end{align*}
-        Note that these three parts together imply that $\varphi(f^{-1}) = -\varphi(f)$, since $f \cdot f^{-1} \simeq_p \id_{x_0}$, and then $\varphi(f^{-1}) + \varphi(f) = \varphi(\id_{x_0}) = 0$, where $x_0$ is the start point of $f$.
+        Note that I assumed $\varphi(-g) = -\varphi(g)$, which can be avoided by swapping $v_3$ and $v_4$ and just having $[v_3, v_4] = g$, but also, we implicitly use $[v_i, v_j] = -[v_j, v_i]$ often. \bbni 
+        Note that also these three parts together imply that $\varphi(f^{-1}) = -\varphi(f)$, since $f \cdot f^{-1} \simeq_p \id_{x_0}$, and then $\varphi(f^{-1}) + \varphi(f) = \varphi(\id_{x_0}) = 0$, where $x_0$ is the start point of $f$.
         \item If $\varphi$ is a coboundary there exists a $0$-cochain $\psi \in C^0(X)$ such that $\varphi = \delta \psi$. Thus, for $f: \Delta^1 \to X$ with endpoints $x_0$ and $x_1$, we have:
         \begin{align*}
             \varphi(f) &= \delta \psi(f) \\
