@@ -973,7 +973,27 @@
     and $v$ is an eigenvectof for $T^*$ with eigenvalue $\overline{\lambda}$.
     \item[Thm.] (Spectral Theorem for compact operators). Suppose that $H$ is a separable Hilbert space and that $T = T^*$ is compact. Then $T$ is orthogonally diagonalizable. \bbni
     Proof. Pictures. 06/02.
-    
+    \newpage
+    \item[Defn.] Let $A$ be a unital complex Banach algebrai with identity $I$. Thus, the spectrum of $a \in A$ is: 
+    \[ \sigma(a) = \{\lambda \in \C : a - \lambda I \text{ is not invertible }\}\]
+    \item[Ex.] If $\dim(H) < \infty$, and $T \in \mathcal{L}(H)$, then $\sigma(T)$ is the set of eigenvalues of $T$. The same is true if $G$ is a normal compact operator on a seperable complex Hilbert space $H$. 
+    \item[Thm.] For all $ a\in A$, $\sigma(a)$ is a nonempty closed and bounded subset of $\C$. In fact, 
+    \[ \rho(a) = \sup\{|\lambda| : \lambda \in \sigma(a)\} = \lim_{n\to\infty} \norm{a^n}^{1/n} = \inf_{n\geq 1} \norm{a^n}^{1/n}\]
+    Hence, $\rho(a) \leq \norm{a}$.
+    If $A$ is a unital commutative Banach algebra then we can let $\Delta = \Delta(A)$ be the set of nonzero complex homomorphisms
+    \[ h: A \to \C\]
+    \item[Thm.] Let $\Delta = \Delta(A)$ as above then $\Delta \neq \emptyset$ and: 
+    \begin{itemize}
+        \item $\norm{h} = 1$ for all $h \in \Delta$.
+        \item $\lambda \in \sigma(a) \iff h(a) = \lambda$ for some $h \in \Delta$.
+    \end{itemize}
+    \item[Rmk.] Note that $\Delta \subset A^*$. In fact, $\Delta$ is closed in $A^*$. Thus, $\Delta$ is compact in the weak-* topology. If $A$ is seperable, then $\Delta$ is metrizable. 
+    \item[Rmk.] Let $A$ and $\Delta$ be as above. Then if $a \in A$, we can define: 
+    \[ \hat a: \Delta \to \C\]
+    by $\hat a(h) = h(a)$. Then $\hat a$ is called the Gelfand transform and $\hat a \in C(\Delta)$. Note $\hat a(\Delta) = \sigma(a)$.\\
+    This gives us a map: 
+    \[ \Phi: A \to C(A)\]
+    given $\Phi(a) = \hat a$. This is an algebra homomorphism.  
 \end{itemize}
 
 

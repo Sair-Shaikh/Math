@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+
+
+\begin{problem}{1}
+\begin{defn}
+    A \emph{topological group}  $G$ is a group with a topology such that the maps $G \times G \to G$ given $(g,h) \mapsto g * h$ where $*$ is the group operation and $G \to G$ given by $g \mapsto g^{-1}$ are continuous. 
+\end{defn}
+    Let $G$ be a topological group with identity element $x_0$.
+    \begin{enumerate}
+    
+    \item Let $C$ be the connected component of $G$ containing the identity element $x_0$. Show that $C$ is a normal subgroup and every other connected component is homemorphic to $C$. (\emph{Hint:} Show that if $g \in G$, then $gC$ is the component of $G$ containing $g$.)
+
+    \item Let $\Omega(G,x_0)$ be the set of all loops in $G$ based at $x_0$. Define an operation $f \times g$ for $f, g \in \Omega(G,x_0)$ by
+    \[ (f \times g)(s) = f(s) \ast g(s). \]
+    Show that the operation $\times$ makes $\Omega(G,x_0)$ into a group. 
+
+    \item Show that $\times$ induces a group operation on $\pi_1(G,x_0)$.
+
+    \item Show that $\times$ agrees with the usual concatenation group operation $\cdot$ on $\pi_1(G,x_0)$. (\emph{Hint:} Compute $(f \cdot e_{x_0}) \ast (e_{x_0} \cdot g)$. )
+
+    \item Show that $\pi_1(G,x_0)$ is an abelian group.
+
+    \item Let $A$ be a (possibly empty) finite set of points in $\R^2$. For what values of $|A|$ can $\R^2 \setminus A$ be given the structure of a topological group? 
+    \end{enumerate}
+\end{problem}
+\newpage
+
+
+\begin{problem}{2}(50 points) 
+\begin{defn}
+    The \emph{real Grassmannian}  $\mathrm{Gr}(k,n)$ is the space of $k$-dimensional subspaces of $\R^n$. More precisely, let $M^*(k,n)$ be the set of $k \times n$ matrices of rank $k$ with the subspace topology in the space of all $k \times n$ matrices $M(k,n) \cong \R^{kn}$. Then, we define $\mathrm{Gr}(k,n) = M^*(k,n)/\sim$ where $A \sim B$ if and only if $A$ and $B$ have the same row space. 
+\end{defn}
+    Note that $\mathrm{Gr}(1,n) = \mathbb{RP}^{n-1}$. 
+    \begin{enumerate}
+    \item Show that $\mathrm{Gr}(k,n)$ is homeomorphic to $\mathrm{Gr}(n-k,n)$ for all $0 \leq k \leq n$.
+    \item Show that $\mathrm{Gr}(2,4)$ is homeomorphic to $S^2 \times S^2/\sim$ where $(x,y) \sim (-x, -y)$ for all $(x,y) \in S^2 \times S^2$. 
+    \item Describe a CW complex structure on $\mathrm{Gr}(2,4)$. (\emph{Hint:} You may wish to use the previous part.)
+    \item Compute $\pi_1(\mathrm{Gr}(2,4))$. 
+    \item Compute the homology of $\mathrm{Gr}(2,4)$. 
+    \end{enumerate}
+\end{problem}
+\newpage
+
+\begin{problem}{3}(50 points) 
+    
+    \begin{defn} Let $\mathcal{C}, \mathcal{D}$ be (locally small) categories and let $F, G: \mathcal{C} \to \mathcal{D}$ be functors. 
+    \begin{itemize}
+
+    \item A \emph{natural transformation} $\eta$ from $F$ to $G$ is the data of a morphism $\eta_X  \in \hom_{\mathcal{D}} (F(X), G(X))$ for every object $X$ in $\mathcal{C}$ such that for every $f \in \hom_\mathcal{C}(X,Y)$, $\eta_Y \circ F(f) = G(f) \circ \eta_X$. 
+
+    \item A \emph{natural isomorphism} $\eta$ from $F$ to $G$ is a natural transformation such that $\eta_X$ is an isomorphism for every object $X$ of $\mathcal{C}$. If such an $\eta$ exists, the functors $F$ and $G$ are said to be \emph{naturally isomorphic}. 
+
+    \item The functor $F:  \mathcal{C} \to \mathcal{D}$ is an \emph{equivalence of categories} if there is a functor $F':\mathcal{D} \to \mathcal{C}$ such that $F' \circ F$ is naturally isomorphic to the identity functor on $\mathcal{C}$ and $F \circ F'$ is naturally isomorphic to the identity functor on $\mathcal{D}$. If such a functor exists, $\mathcal{C}$ and $\mathcal{D}$ are said to be equivalent.
+    \end{itemize}
+
+    \end{defn}
+    
+    For a topological space $X$, let $\Pi(X)$ be the fundamental groupoid of $X$. 
+    \begin{enumerate}
+ 
+    \item Show that if $F: \mathcal{C} \to \mathcal{D}$ is an equivalence of categories and $X$ and $Y$ are objects of $\mathcal{C}$ such that $F(X)$ and $F(Y)$ are isomorphic, then $X$ and $Y$ are isomorphic. Deduce that the forgetful functor $F: \text{Top} \to \text{Sets}$ and the fundamental group functor $\pi_1: \text{Top} \to \text{Groups}$ are not equivalences of categories.
+ 
+    \item Show that if $X$ is path connected, the inclusion $\pi_1(X,x) = \hom_{\Pi(X)}(x,x) \to \Pi(X)$ is an equivalence of categories for every $x \in X$.
+ 
+    \item Show that any continuous function $f: X \to Y$ induces a functor $\Pi(f): \Pi(X) \to \Pi(Y)$.
+ 
+    \item Show that if $f: X \to Y$ and $g: X \to Y$ are continuous and homotopic, then the functors $\Pi(f)$ and $\Pi(g)$ are naturally isomorphic. 
+
+    \item Deduce that if $X$ and $Y$ are homotopy equivalent, then $\Pi(X)$ and $\Pi(Y)$ are equivalent. Use this to reprove the fact from class that if $f: X \to Y$ is a homotopy equivalence, then $f_*: \pi_1(X, x) \to \pi_1(Y,f(x))$ is an isomorphism.
+
+    \item Give an example of homotopic continuous functions $f$ and $g$ such that $\Pi(f)$ and $\Pi(g)$ are not equal.
+    \end{enumerate}
+\end{problem}
+\newpage
+ 
+\begin{problem}{4}(50 points) 
+    \begin{defn}
+        Given an open cover $\mathcal{U} = \{ U_i \}_{i \in I}$ of a topological space $X$, we define the \v{C}ech complex as
+        \[ \check{C}^k(X, \mathcal{U}) = \prod_{(i_0, \hdots, i_k) \in I^{k+1}} \mathcal{F}(U_{i_0} \cap \hdots \cap U_{i_k}) \]
+        where $\mathcal{F}(Y) = \{ f \colon Y \to \Z : f \text{ is continuous}\}$ where $\Z$ has the discrete topology. For $f \in \check{C}^k(X, \mathcal{U})$, denote by $f_{i_0, \hdots, i_k}$ the component in $\mathcal{F}(U_{i_0} \cap \hdots \cap U_{i_k})$. Then, define 
+        \[ d \colon \check{C}^k(X, \mathcal{U}) \to \check{C}^{k+1} (X, \mathcal{U}) \]
+        by
+        \[ (df)_{i_0, \hdots, i_{k+1}} = \sum_{j=0}^{k+1} (-1)^j f_{i_0, \hdots, \hat{i_j}, \hdots i_k}|_{U_{i_0} \cap \hdots \cap U_{i_k}} \]
+    \end{defn}
+    \begin{enumerate}
+    
+    \item Verify that the \v{C}ech complex is a cochain complex for any $X, \mathcal{U}$. 
+
+    \item Denoting the cohomology groups of the \v{C}ech complex by $\check{H}^k(X, \mathcal{U})$, describe $\check{H}^0(X, \mathcal{U})$ for any $X, \mathcal{U}$.
+
+    \item Find two covers of $S^1$ whose \v{C}ech cohomology groups do not coincide. 
+
+    \item A cover $\mathcal{V} = \{V_j\}_{j \in J}$ is a \emph{refinement} of $\mathcal{U} = \{ U_i \}_{i \in I}$ if for every $j \in J$, there is an $i \in I$ such that $V_j \subseteq U_i$. Show that if $\mathcal{V}$ is a refinement of $\mathcal{U}$, then there is a chain map $\check{C}^\bullet (X, \mathcal{U} ) \to \check{C}^\bullet (X, \mathcal{V})$ given by restriction. 
+    \end{enumerate}
+
+    We say that $\mathcal{U}$ is a \emph{good cover} if every non-empty intersection $U_{i_0} \cap \hdots \cap U_{i_k}$ is contractible. Here is a theorem that can be proved using a similar argument that we deployed for barycentric subdivision in singular homology once one proves that the \v{C}ech cohomology of a contractible space with respect to any cover agrees with the \v{C}ech cohomology of point, e.g., by proving homotopy invariance.
+
+    \begin{theorem} 
+    If $\mathcal{U}$ is a good cover of $X$ and the $\mathcal{V}$ is a refinement of $\mathcal{U}$, the chain map from the previous part induces an isomorphism on \v{C}ech cohomology. Moreover, $\check{H}^k(X, \mathcal{U}) \cong H^k(X)$ for all $k$. 
+    \end{theorem} 
+
+    \begin{enumerate}[resume]
+        \item Find good covers and explicitly compute the cohomology of a sphere $S^n$ and an orientable genus $g$ surface $M_g$ using the previous theorem. \\
+        (\emph{Remark/challenge:} These computations give you explicit generators. There is a natural way to phrase the cup product in \v{C}ech cohomology -- can you compute it in these examples? To be clear, I'm not grading you on this remark, but just leaving something to think about.)
+    \end{enumerate}
+    
+\end{problem}
+% \item(
+
+
+
+
+
+
+
+
+\end{document}

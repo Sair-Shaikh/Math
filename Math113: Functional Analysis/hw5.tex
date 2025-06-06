@@ -73,7 +73,7 @@
     \[ \Phi_y(x) = \sum_{n=1}^\infty x_ny_n\]
     Thus, there exists a $y \in l^2$ such that $\phi = \Phi_y$. Then, we have:
     \[ \phi(e_n) = y_n \]
-    Then, since $y \in l^2$, we have that $\sum_{n=1}^\infty |y_n|^2 < \infty$. Thus, there exists an $N$, such that $\sum_{n=N+1}^\infty |y_n|^2 < \epsilon$. Thus, for all $n \geq N$, we have that: 
+    Then, since $y \in l^2$, we have that $\sum_{n=1}^\infty |y_n|^2 < \infty$. Thus, there exists an $N$, such that $\sum_{n=N+1}^\infty |y_n|^2 < \epsilon^2$. Thus, for all $n \geq N$, we have that: 
     \[ |\phi(e_n)| = |y_n| < \epsilon\]
     Thus, $e_n \in U$ for all $n \geq N$. Therefore, $\{e_n\}$ converges weakly to $0$. \bbni
     % If $l^2$ is over the field of complex numbers, then we can use the same argument, but take the conjugate of $y_n$ in the definition of $\Phi_y$.  
@@ -160,7 +160,7 @@
     \[ H = V \oplus V^\perp = \overline{V} \oplus V^\perp \]
     Then, let $x \in \overline{V}\setminus V$. Then, as $H = V \oplus V^\perp$, we must have $x \in V^\perp$. However, $\overline{V} \cap V^\perp = \{0\}$, thus $x = 0$. But $0 \in V$ as $V$ is a subspace. Thus, we have a contradiction, and $\overline{V} \subseteq V$ is empty. Thus, $V = \overline{V}$, i.e. $V$ is closed. \bbni
     Thus, we have shown that $P$ is an orthogonal projection onto its range $V = \img(P)$. \bbni
-    NOTE: Is this what the definition of orthogonal projection is?
+    % Check: Is this what the definition of orthogonal projection is?
     % Then, let $x \in \overline{V}$. Then, the orthogonal projection of $x$ onto $V^\perp$ is $0$. 
     %  $x = v + v'$ for some $v \in V$ and $v' \in V^\perp$.  
     % Thus, it follows that $V = \overline{V}$, i.e. $V$ is closed. 

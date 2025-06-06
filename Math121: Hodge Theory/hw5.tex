@@ -142,20 +142,22 @@
 
 
 
-\begin{problem}{2.1}
+\begin{problem}{2}
     Let $H_\R$ be a $\R$-vector space, and $H_\C := H_\R \otimes_\R \C$.
     \begin{enumerate}
         \item[(a)] Show that a decomposition
         \[ H_\C = \bigoplus_{p+q=k} H^{p,q} \qquad H^{p,q} = \overline{H^{q,p}}\]
-        determines a continous action $\rho: \C^\times \to \text{GL}(H_\C)$ of $\C^\times$ on $H^\C$ given by:
+        determines a continous action $\rho: \C^\times \to \text{GL}(H_\C)$ of $\C^\times$ on $H_\C$ given by:
         \[ z \cdot \alpha^{p,q} = z^p\overline{z^q}\alpha^{p,q}\]
         for $\alpha^{p,q} \in H^{p,q}$. Show that this action satisfies: 
-        \[ \rho(\overline{z}) = \overline{\rho(z)}\]  
+        \[ \rho(z) = \overline{\rho(z)}\]  
         where the conjugacy on $GL(H_\C)$ is defined by: 
         \[ \overline{g}(u) = \overline{g(\overline u)}\]
-        Show that one also has $\rho(t) = t^k \id$ for $t \in \R^\times$. \\
-        Conversely, let $\rho: \C^\times \to GL(H_\C)$ be a continous action of $\C^*$ on $H_\C$ satisfying $\rho(t) = t^k \id$ for $t \in \R^*$ and $\rho(\overline{z}) = \overline{\rho(z)}$. Show that there exists a decomposition of $H_\C$ into the direct sum of the $H^{p,q}$ such that $\rho(z)$ acts as above.
-        \item[(b)] Applying the diagonalization theorem for the actions of torsion abelian groups to the torsion points of $\C^*$, show that there exists a decompositon into a directt sum:
+        Show that one also has $\rho(t) = t^k \id$ for $t \in \R^\times$.
+    \end{enumerate}
+        Conversely, let $\rho: \C^\times \to GL(H_\C)$ be a continous action of $\C^*$ on $H_\C$ satisfying $\rho(t) = t^k \id$ for $t \in \R^*$ and $\rho(z) = \overline{\rho(z)}$. Show that there exists a decomposition of $H_\C$ into the direct sum of the $H^{p,q}$ such that $\rho(z)$ acts as above.
+    \begin{enumerate}[resume]
+        \item[(b)] Applying the diagonalization theorem for the actions of torsion abelian groups to the torsion points of $\C^*$, show that there exists a decompositon into a direct sum:
         \[ H = \bigoplus_\chi H_\chi\]
         where $\chi$ belongs to the set of characters of $\C^*$ and $\C^*$ acts by $z \to \chi(z)\id$ on $H_\chi$.
         \item[(c)] Show that only the characters $\chi_{p, q}: z \to z^p\overline{z}^q$ with $p+q = k$ appear in the decomposition of $H_\C$.
@@ -164,29 +166,132 @@
     \end{enumerate}
 \end{problem}
 \begin{solution}
+    \bbni
+    Collaboration notice: For parts b) and c), I got hints from Henry.
+    \begin{enumerate}
+        \item First, note that the map $z \to z^p\overline{z}^q$ is continous as a map from $\C^\times$ to $\C^\times$. Thus, the map $z \to z^p\overline{z}^q\id$ is continous on each factor of the direct sum, thus it is continous by definition of the product/direct sum topology on vector spaces. \bbni
+        Next, note that for $\alpha \in H_\C$, we have:
+        \begin{align*}
+            \overline{\rho(z)}(\alpha^{p, q}) &= \overline{\rho(z)(\overline{\alpha^{p,q}})} \\
+            &= \overline{z^p\overline{z}^q \alpha^{q,p}} \\
+            &= \overline{z}^p z^q \overline{\alpha^{q,p}} \\
+            &= \overline{z}^pz^q \alpha^{p,q} \\
+            &= \rho(\overline{z})(\alpha^{p,q})
+        \end{align*}
+        Finally, if $t \in \R^\times$, we have $t = \overline{t}$, thus, for $\alpha \in H_\C$ with $\alpha \in H_\C$, we have:
+        \begin{align*}
+            \rho(t)(\alpha^{p,q}) &= t^p\overline{t}^q \alpha^{p,q} \\
+            &= t^k \alpha^{p,q}
+        \end{align*}
+        for all $p+q = k$. Thus, we have that $\rho(t) = t^k \id$ for $t \in \R^\times$. 
+        \item I did not know how to do this part. 
+        \item First consider some primitive $n$th root of unity $\zeta_n$ (one of them generates the rest). Then, since $\chi$ is a group homomorphism $\C^\times \to \C^\times$, we have:
+        \begin{align*}
+            \chi(\zeta_n)^n &= \chi(\zeta^n) = \chi(1) = 1
+        \end{align*} 
+        Thus, $\chi(\zeta_n)$ is a $n$th root of unity, thus is some power of $\zeta_n$, i.e.:
+        \[ \chi(\zeta_n) = \zeta_n^m\]
+        Since the action is continous and $n$th roots of unity are dense in the unit circle, we conclude that there is a fixed $m$ such that for all $z \in \C^\times$ with $|z| = 1$, we have:
+        \[ \chi(z) = z^m\]
+
+        For $z \in \C^\times$, we can write $z = (z\overline z)^{1/2}e^{i\theta}$. Then, we have: 
+        \begin{align*}
+            \chi(z) &= \chi((z\overline z)^{1/2}e^{i\theta}) \\
+            &= \chi(z\overline z)^{1/2}\chi(e^{i\theta}) \\
+            &= (z^k\overline z^k)^{1/2}e^{im\theta}
+        \end{align*}
+        Then (Henry helped with this part), we compute:
+        \begin{align*}
+            \chi(z) &= (z^{k-m}\overline z^{k-m})^{1/2}(z^m\overline z^m)^{1/2}e^{im\theta} \\
+            &= (z^{k-m}\overline z^{k-m})^{1/2}z^m \\
+            &= \overline z^{(k-m)/2}z^{(k+m)/2} \\
+        \end{align*}
+        Thus, we can set $p:= (k+m)/2$ and $q := (k-m)/2$. We only need to show that $p, q \in \Z$. Note that, since $\chi(t) = t^k$ for $t \in \R^\times$,:
+        \begin{align*}
+            \chi(-1) &= (-1)^k = 1^ke^{im\pi}
+        \end{align*}
+        Thus, $m \equiv k \pmod 2$. Thus, $p, q \in \Z$ and we finally have:
+        \[ \chi(z) = z^p\overline z^q\]
+        \item Note that, we are also given:
+        \[ \rho(z) = \chi(\overline z)\id = \overline{\chi(z)\id} = \overline{\rho(z)} \]
+        Thus, for $\alpha \in H_\C$, let $\alpha^{p,q} \in H^{p,q}$, then, we have:
+        \begin{align*}
+            \rho(z)(\overline{\alpha^{p,q}}) &= \chi( z)\id(\overline{\alpha^{p, q}})\\
+            &= \overline{\chi(z)\id}(\overline{\alpha^{p, q}}) \\
+            &= \overline{\chi(z)\id(\alpha^{p,q})} \\
+            &= \overline{z^p \overline z^q \id(\alpha^{p, q})} \\
+            &= z^q \overline z^p \id(\overline{\alpha^{p,q}})
+        \end{align*}
+        Thus, $\overline{\alpha^{p,q}} \in H^{q,p}$. As complex conjugation is self-inverse, we get the other inclusion. Thus, we have that $H^{p,q} = \overline{H^{q,p}}$.
+        \item Let $\alpha \in V^{n, n} \cap V_\Z$ be a Hodge class. Then, for any $z \in \C^\times$, we have:
+        \begin{align*}
+            \rho(z)(\alpha) &= z^n\overline{z}^n \alpha \\
+            &= |z|^{2n}\alpha
+        \end{align*}
+        Thus, $\alpha$ is a stable vector under the action of $\C^\times$. Next, let $\alpha \in V_\Z \subset V_\C$ be a stable vector under the action of $\C^\times$. Let $\alpha^{p,q} \in V^{p,q}$. Then, we have:
+        \begin{align*}
+            \rho(z)(\alpha^{p,q}) &=\sum_{p+q=2k} z^p\overline{z}^q \alpha^{p,q}
+        \end{align*}
+        Then, if we want all components of $\alpha$ to be scaled by the same scaler, we want $\alpha^{p,q} \ne 0$ for at most one $(p,q)$. Thus, $\alpha = \alpha^{p,q}$ for some $p, q$ such that $p+q = 2k$.
+        I do not understand why we also want $z^p\overline{z}^q$ to also be real, but assuming we do want that (why does the definition of the action includes $V_\R$ in place of $V_\C$ in Voisin?), it follows that we want $p = q = k$. Thus, $\alpha$ is a Hodge class. \bbni 
+        In general, I used the correction you emailed Henry about, i.e. that $\rho(z) = \overline{\rho(z)}$. This makes part 4) work out. However, I still showed that $\rho(\overline z) = \overline{\rho(z)}$ in part 1). These do not agree. I'm wondering if the definition of conjugation for $GL(H_\C)$ is incorrect.
+    \end{enumerate}
 \end{solution}
 \newpage
 
 
 \begin{problem}{3}(The Hodge Decomposition for Curves)
     Let $X$ be a compact connected complex curve. We have the differential:
-    \[d: \calO \to \Omega_X\]
+    \[d: \calO_X \to \Omega_X\]
     between the sheaf of homolormphic functions and the sheaf of holomorphic differentials.
     \begin{enumerate}
         \item[(a)] Show that $d$ is surjective with kernel equal to the constant sheaf $\C$. Hence, we have an exact sequence: 
-        \[ 0 \to \C \to \calO \rightarrow \to \Omega_X \to 0\]
+        \[ 0 \to \C \to \calO_X \rightarrow \to \Omega_X \to 0\]
         \item[(b)] Deduce from Serre duality that $H^1(X, \Omega_X) \cong \C$. Deduce from Poincare duality that $H^2(X, \C) = \C$. 
         \item[(c)] Show that $(6.15)$ induces a short exact sequence: 
         \[ 0 \to H^0(X, \Omega_X) \to H^1(X, \C) \to H^1(X, \calO_X) \to 0\]
-        \item[(d)] Show that the map which to a holomorphic form $\alpha$ associates the class of $\overline{\alpha}$ in $H^1(X, \calO)$ is injective.
+        \item[(d)] Show that the map which to a holomorphic form $\alpha$ associates the class of $\overline{\alpha}$ in $H^1(X, \calO_X)$ is injective.
         \item[(e)] Deduce from Serre duality that it is also surjective and that we have the decomposiiton: 
         \[ H^1(X, \C) = H^0(X, \Omega_X) \oplus \overline{H^0(X, \Omega_X)}\]
         with 
-        \[ \overline{H^0(X, \Omega_X)} \cong H^1(X, \calO)\]
+        \[ \overline{H^0(X, \Omega_X)} \cong H^1(X, \calO_X)\]
     \end{enumerate}
 
 \end{problem}
 \begin{solution}
+    \bbni 
+    \begin{enumerate}
+        \item Let $U$ be an open set of $X$. Let $\omega \in \Omega_X(U)$ be a section. Then $\omega = f dz$ in local coordinates. Since holomorphic functions are analytic, they have a primitive locally. Thus, there exists $g \in \calO_X(U)$ such that $dg/dz = f$. Then, we have that $d(g) = f dz = \omega$. Thus, $d$ is surjective. \bbni
+        Now let $f \in \calO_X(U)$ such that $df = 0$. Thus, $f$ is locally constant. Since $X$ is compact and connected, $f$ extends to a globally constant function in $\calO_X(X)$. Thus, $\ker(d) = \C$, the constant sheaf. \bbni
+        Thus, we have the exact sequence:
+        \[ 0 \to \C \to \calO_X \xrightarrow{d} \Omega_X \to 0\]
+        \item Recall that Serre duality gives us the isomorphism:
+        \[ H^1(X, \Omega_X) \cong H^0(X, \Omega_X^\vee \otimes \Omega_X)^\vee\]
+        However, $\Omega_X^\vee \otimes \Omega_X \cong \calO_X$ (by contracting). Thus, we have:
+        \[ H^1(X, \Omega_X) \cong H^0(X, \calO_X)^\vee\]
+        However, $H^0(X, \calO_X) \cong \C$ as global holomorphic functions on a compact connected surface are constant. Thus, $H^1(X, \Omega_X) \cong H^0(X, \calO_X)^\vee \cong \C$. \bbni
+        Recall that Poincare duality gives us the isomorphism:
+        \[ H^2(X, \C) \cong H^0(X, \C)^\vee\]
+        Similar to before, as $X$ is compact and connected, we have that $H^0(X, \C) \cong \C$. Thus, we have:
+        \[ H^2(X, \C) \cong H^0(X, \C)^\vee \cong \C\]
+        \item We obtain the long exact sequence in cohomology from the short exact sequence. 
+        \begin{align*}
+            \to H^0(X, \C) \to H^0(X, \calO_X) \xrightarrow{d} H^0(X, \Omega_X) \to H^1(X, \C) \to \cdots
+        \end{align*}
+        Note that $H^0(X, \C)$ are the globally constant functions, which are the same as the global holomorphic functions on a compact connected manifold. Thus, the first map is an isomorphism. Thus, $d:H^0(X, \calO_X) \to H^0(X, \Omega_X)$ is $0$. Thus, the sequence becomes:
+        \[0 \to H^0(X, \Omega_X) \to H^1(X, \C) \to H^1(X,\calO_X) \to H^1(X, \Omega_X) \to H^2(X, \C) \to  H^2(X, \calO_X) \]
+        Then, since $H^2(X, \calO_X) = H^{0,2}(X) = 0$, the last map is $0$. Thus, the map $H^1(X, \Omega_X) \to H^2(X, \C)$ is an isomorphism. Thus, the map before it is $0$, and we get:
+        \[0 \to H^0(X, \Omega_X) \to H^1(X, \C) \to H^1(X,\calO_X) \to 0  \]   
+        \item Let $\alpha \in H^0(X, \Omega_X)$ be a global holomorphic form. Then, $\overline{\alpha} \in H^1(X, \C)$ is of type $(0, 1)$ (antiholomorphic). If $[\overline{\alpha}] = 0 \in H^1(X, \calO_X)$, then $\overline{\alpha}$ is in $\img(H^0(X, \Omega_X) \to H^1(X, \C))$. But this is an inclusion map (the connecting morphism deals solely with holomorphic objects), thus, we would have $\overline{\alpha} = \beta$ for some global holomorphic form $\beta$. This implies $\alpha = 0$. Thus, the map is injective. 
+        \item By Serre duality, we noted that
+        \[ H^1(X, \Omega_X) \cong H^0(X, \calO_X)^\vee\]
+        Moreover, since these are finite-dimensional vector spaces, the dual has the same dimension as the original space. Thus, 
+        \[ \dim(H^1(X, \Omega_X)) = \dim(H^0(X, \calO_X))\]
+        Thus, an injective linear map is also surjective. Thus, the map given is an isomorphism. Since taking the complex conjugate is also an isomorphism, we must have that: 
+        \[ \overline{H^0(X, \Omega_X)} \cong H^1(X, \calO_X)\]
+        Then, also noting that an SES of vector spaces splits, we get: 
+        \[ H^1(X, \C) = H^0(X, \Omega_X) \oplus \overline{H^0(X, \Omega_X)}\]
+    \end{enumerate}
 \end{solution}
 \newpage
 

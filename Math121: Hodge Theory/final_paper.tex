@@ -1,0 +1,375 @@
+\documentclass[12pt]{article}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+\section{Background and Definitions}
+
+\begin{definition}
+    Let $E/\C$ be an elliptic curve. Then, the elliptic curve $E$ is given by a Weierstrass equation
+    \[ E: y^2 = x^3 + g_1x + g_2\]
+    together with a special point $O \in E$ at infinity. 
+\end{definition}
+
+\begin{definition}
+    Let $E/\C$ be an elliptic curve. $E$ has a abelian group structure with the identity element $O$. 
+\end{definition}
+
+
+\begin{definition}
+    Let $E_1/\C$ and $E_2/\C$ be elliptic curves. An isogeny $\phi: E_1 \to E_2$ is a non-zero morphism of varieties with $\phi(O_1) = O_2$. As the map is not constant, it is surjective. \\   
+    An isogeny from $E_1$ to itself is called an endomorphism. The set of endomorphisms $\End(E_1)$ is a ring with the addition and multiplication given by the pointwise addition and composition, respectively.
+\end{definition}
+
+
+\begin{definition}
+    An elliptic function (relative to a lattice $\Lambda$) is a meromorphic function $f(z)$ on $\C$ that satisfies: 
+    \[ f(z+\omega) = f(z) \]
+    for all $z \in \C$ and $\omega \in \Lambda$.
+\end{definition}
+
+\begin{definition}
+    Let $\Lambda \subset \C$ be a lattice. The Weierstrauss $\wp$-function relative to $\Lambda$ is defined by the series: 
+    \[ \wp(z; \Lambda) = \frac{1}{z^2} + \sum_{\substack{w \in \Lambda \\ w \ne 0}} \left( \frac{1}{(z-w)^2} - \frac{1}{\omega^2}\right)\]
+    The Eisenstein series $G_{2k}(\Lambda)$ of weight $2k$ is the series:
+    \[ G_{2k}(\Lambda) = \sum_{\substack{w \in \Lambda \\ w \ne 0} }w^{-2k}\]
+\end{definition}
+
+\begin{prop}
+    Let $\Lambda \subset \C$ be a lattice. Then, 
+    \[ \C(\Lambda) = \C(\wp(z), \wp'(z))\]
+    i.e. every elliptic function is a rational combination of $\wp(z)$ and $\wp'(z)$.
+\end{prop}
+
+\begin{prop}
+    The Laurent series for $\wp(z)$ around $z = 0$ is given by: 
+    \[ \wp(z) = \frac{1}{z^2} + \sum_{k=1}^\infty (2k+1)G_{2k+2}z^{2k} \]
+\end{prop}
+\begin{proof}
+    For $|z| < |w|$, we have:
+    \begin{align*}
+        \frac{1}{(w-z)^2} - \frac{1}{w^2} &= \frac{1}{w^2}\left(\frac{1}{(1-z/w)^2} - 1\right) \\
+        &= \sum_{k=1}^\infty (k+1)z^k/w^{2+k}
+    \end{align*}
+    Substituting this gives the desired result. 
+\end{proof}
+
+
+
+\begin{theorem}
+    For all $z \in \C \setminus \Lambda$, we have the relation: 
+    \[ \wp'(z)^2 = 4\wp(z)^3 - g_2\wp(z) - g_3\]
+    Let $g_2 = 60G_4(\Lambda)$ and $g_3 = 140G_6(\Lambda)$. Moreover,
+    \[ f(x) = 4x^3 - g_2x - g_3\]
+    has distinct roots, so its discriminant:
+    \[ \Delta(\Lambda) = g_2^3 - 27g_3^3\]
+    is nonzero. 
+\end{theorem}
+\begin{proof}
+Write down the Laurent expansions: 
+    \begin{align*}
+        \wp'(z)^2 &= 4z^{-6} -24G_4z^{-2} -80G_6 + \cdots \\
+        \wp(z)^3 &= z^{-6} + 9G_4z^{-1} _ 15G_6 + \cdots \\
+        \wp(z) &= z^{-2} + 3G_4z^2 + \cdots 
+    \end{align*}
+        Then, compare: 
+        \[ f(z) = wp'(z)^2-4\wp(z)^3+60G_4\wp(z)+140G_6\]
+        Note that this is holomorphic at $z = 0$ and satisfies $f(0) = 0$.  Since it is an elliptic function relative to $\Lambda$, from [AEC VI.3.1b], it is holomorphic away from $\Lambda$. Thus, it is constant, thus $0$.
+\end{proof}
+
+\begin{prop}
+    Let $E/\C$ be the Elliptic curve:
+    \[E : y^2 = 4x^3 - g_2x -g_3 \]
+    Then the map: 
+    \[ \phi: \C/\Lambda \to E(\C) \subset \bb P^2(\C), \qquad z \mapsto [\wp(z), \wp'(z), 1]\]
+    is a complex analytic isomorphism of complex Lie groups, i.e. it is an isomorphism of Riemann surfaces that is also a group homomorphism. 
+\end{prop}
+% \begin{proof}
+%     We have that $\img(\phi) \subset E(\C)$ from [AEC VI.3.5b]. We need to show that $\phi$ is surjective. Let $(x, y) \in E(\C)$. Then $\wp(z)-x$ is a nonconstant elliptic function, so from [AEC VI.2.1], it has a zero, say at $z = a$. It follows that $\wp^{'2}(a) = y^2$, so replacing $a$ by $-a$ if necessary, we obtain $\wp'(a) = y$. Then, $\phi(a) = (x,y)$. \bbni
+%     Next suppose that $\phi(z_1) = \phi(z_2)$. Then, $\wp(z)-\wp(z_1)$ is an elliptic function of order $2$ that vanishes at $z_1$, $-z_1$, and $z_2$. Thus, two of them are congruent modulo $\Lambda$. Then, if $2z_1 \not \in \Lambda$, we have $z_1 \equiv \pm z_2 \pmod{\Lambda}$, and we fix the sign since $\wp'$ is odd. If $2z_1 \in \Lambda$, then this has a double $0$ at $z_1$ and is zero at $z_2$, hence $z_1 \equiv z_2$.  \\
+%     Next, note that at every point of $E(\C)$, the differential form $dx/y$ is holomorphic and nonvanishing. Futher, we see that:
+%     \[ \phi^*\fr{dx}{dy} = \frac{d\wp(z)}{\wp'(z)} = dz\]
+%     is also holomorphic and nonvanishing at every point of $\C/\Lambda$. Hence, $\phi$ is a local analytic isomorphism, and the bijectivity of $\phi$ implies it is a global isomorphism. \bbni 
+%     Finally, check that $\phi$ is a group homomorphism. I dont get this part yet. 
+% \end{proof}
+
+\begin{theorem}
+    Let $\phi_\alpha: \C/\Lambda_1 \to \C/\Lambda_2$ be $\phi_\alpha(z) = \alpha z \pmod{\Lambda_2}$. This map is holomorphic. Moreover,   
+        \begin{enumerate}
+        \item The association: 
+        \begin{align*}
+            \{\alpha \in \C: \alpha \Lambda_1 \subset \Lambda_2\} &\to \left\{ \substack{ \text{ holomorphic maps } \\ \phi: \C/\Lambda_1 \to \C/\Lambda_2 \\
+            \text{ with } \phi(0) = 0}\right\} \\
+            \alpha &\mapsto \phi_\alpha 
+        \end{align*}
+        is a bijection. 
+        \item Let $E_1$ and $E_2$ be elliptic curves corresponding to lattices $\Lambda_1$ and $\Lambda_2$, respectively. Then the natural inclusion: 
+        \[ \{\text{ isogenies } \phi: E_1 \to E_2 \} \to \left\{ \substack{ \text{ holomorphic maps } \\ \phi: \C/\Lambda_1 \to \C/\Lambda_2 \\
+            \text{ with } \phi(0) = 0}\right\}\]
+        is a bijection.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \bbni
+    \begin{enumerate}
+        \item Assume $\phi_\alpha = \phi_\beta$. Then, $\alpha z \equiv \beta z \pmod{\Lambda_2}$ for all $z \in \C$. Thus, $z \mapsto (\alpha-\beta)z \equiv 0$. As $\Lambda_2$ is a discrete group, the map must be constant, hence $\alpha = \beta$. Thus, the map is injective. \\
+        Next, let $\phi: \C/\Lambda_1 \to \C/\Lambda_2$ be a holomorphic map with $\phi(0) = 0$. Then, as $\C$ is simply connected, we lift to $\phi:\C \to \C$ satisfying: 
+        \[ f(z+w) \equiv f(z) \pmod{\Lambda_2} \]
+        for all $w \in \Lambda_1$. As $\Lambda_2$ is discrete, we have $f(z+w)-f(z)$ is constant. Moreover, we have:
+        \[ f'(z+w) = f'(z)\]
+        so $f'(z)$ is a holomorphic elliptic function. It follows from [AEC VI.2.1] that $f'(z)$ is constant, so $f(z) = \alpha z + \gamma$. But $\gamma = 0$ as $f(0) = 0$. Then, we note $f(\Lambda_1) \subset \Lambda_2$ implies $\alpha\Lambda_1 \subseteq \Lambda_2$. Hence, $\phi = \phi_\alpha$.
+        \item Note that an isogeneny is given locally by everywhere defined rational functions, thus the map induced between the corresponding complex tori is holomorphic. Thus, the association is well-defined and injective. \\
+        To show surjectivity, consider a map $\phi_\alpha$, where $\alpha \in \C^*$ with $\alpha \Lambda_1 \subseteq \Lambda_2$. The induced map on Weierstrass $\wp$-functions satisfies:
+        \[ \wp(\alpha(z+w), \Lambda_2) = \wp(\alpha z + \alpha w, \Lambda_2) = \wp(\alpha z, \Lambda_2)\]
+        and similarly for $\wp'$. Thus, $\wp(\alpha z, \Lambda_2)$ and $\wp'(\alpha z, \Lambda_2)$ are in $\C(\Lambda_1)$. The result follows from [AEC VI.3.2]. Thus, the maps is surjective.
+    \end{enumerate}
+\end{proof}
+
+% \begin{corollary}
+%     Let $E_1/\C$ and $E_2/\C$ be elliptic curves corresponding to lattices $\Lambda_1$ and $\Lambda_2$, respectively. Then, $E_1$ and $E_2$ are isomorphic over $\C$ if and only if $\Lambda_1$ and $\Lambda_2$ are homothetic, i.e. $\Lambda_1 = \alpha \Lambda_2$. 
+% \end{corollary}
+
+\begin{theorem}(Uniformization Theorem)
+    Let $A, B \in \C$ satisfy $4A^3 + 27B^2 \ne 0$. Then, there is a unique lattice $\Lambda \subset \C$ satisfying:
+    \[ g_2(\Lambda) = A \qquad g_3(\Lambda) = B \]
+
+\end{theorem}
+
+
+\begin{theorem}
+    The following categories are equivalent: 
+    \begin{enumerate}
+        \item Elliptic curves over $\C$ with isogenies.
+        \item Elliptic curves over $\C$ with complex analytic maps taking $O$ to $O$. 
+        \item Lattices $\Lambda \subset \C$ up to homothety with maps:
+        \[ \Hom(\Lambda_1, \Lambda_2) = \{\alpha \in \C: \alpha \Lambda_1 \subset \Lambda_2\}\]
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    This is precisely the content of the last few theorems.
+\end{proof}
+
+\begin{definition}
+    Let $K$ ba number field. An order $R$ of $K$ is a subring of $K$ that is a finitely generated $\Z$-module and satisfies $R \otimes \Q = K$. 
+\end{definition}
+
+\begin{theorem}
+    Let $E/\C$ be an elliptic curve with associated lattice $\Lambda = \Z \oplus \tau\Z$. Then, one of the following is true:
+    \begin{enumerate}
+        \item $\End(E) = \Z$. 
+        \item The field $\Q(\tau)$ is an imaginary quadratic extension of $\Q$ and $\End(E)$ is isomorphic to an order in $\Q(\tau)$. 
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Note that we have:
+    \[ \End(E) \cong R := \{\alpha: \alpha \Lambda \subset \Lambda\}\]
+    Thus, there are integers $a, b, c, d$ such that:
+    \[ \alpha = a + b \tau \qquad \alpha\tau = c+d\tau\]
+    Eliminating $\tau$, we get: 
+    \[\alpha^2 - (a+d)\alpha + (ad-bc) = 0\]
+    Thus, $R$ is an integral extension of $\Z$. \\
+    If $R \ne \Z$, pick $\alpha \in R\setminus \Z$. Then, $b \neq 0$, so eliminating $\alpha$ gives: 
+    \[ b\tau^2 - (a-d)\tau -c = 0\]
+    Thus, $\Q(\tau)$ is an imginary quadratic extension of $\Q$ as $\tau \not \in \R$. Then, since $R$ is integral over $\Z$, $R$ is an order in $\Q(\tau)$.
+\end{proof}
+
+
+
+
+\begin{definition}
+    An elliptic curve $E/\C$ is said to have complex multiplication (CM) if $\End(E)$ is an order $R$ of an imaginary quadratic field. (Corollary III 9.4, also VI)
+\end{definition}
+
+\newpage
+
+
+\section{CM Elliptic Curvers are defined over $\overline{\Q}$}
+\begin{prop}
+    Two elliptic curves $E$ and $E'$ are isomorphic over $\overline \Q$ if and only if $j(E) = j(E')$.
+\end{prop}
+\begin{proof}
+    This is just computation. Refer to [AEC III 1.4]
+\end{proof}
+
+
+\begin{definition}
+    We denote by $\Ell(R)$ the set of elliptic curves $E$ with $\End(E) \cong R$ up to isomorphism.
+\end{definition}
+
+Let $\alpha$ is a non-zero fractional ideal of $K$ ($\Z$ module of rank $2$ not contained in $\R$), then $\alpha$ is a lattice in $\C$. Then, we have:
+\begin{align*}
+    \End(E_\alpha) &\cong \{ z \in \C : z\alpha \subset \alpha \} \\
+    &= \{ z \in K : z\alpha \subset \alpha \} \\
+    &= R_K \qquad (\text{ $\alpha$ is a fractional ideal})
+\end{align*}
+Since we care about lattices up to homothety, we define: 
+\begin{definition}
+    Let:
+    \begin{align*}
+        \text{CL}(R_K) &= \frac{\{ \text{non-zero fractional ideals of } R_K \}}{ \{\text{non-zero principal ideals of $R_K$}\}}
+    \end{align*}
+\end{definition}
+
+Then, there is a map: 
+\begin{align*}
+    \text{CL}(R_K) &\to \Ell(R_K) \\
+    \alpha &\mapsto E_\alpha
+\end{align*}
+Moreover, define: 
+\[\alpha\Lambda = \left\{\sum_{i=1}^n\alpha_i\lambda_i : \alpha_i \in \alpha, \lambda_i \in \Lambda\right\}\]
+
+
+\begin{prop}
+    There is a well-defined simply transitive action $[\alpha] \ast \Lambda = E_{\alpha^{-1}\Lambda}$ of $\text{CL}(R_K)$ on $\Ell(R_K)$. In particular, 
+    \[ \#\text{CL}(R_K) = \#\Ell(R_K) \]
+\end{prop}
+\begin{proof}
+    OUCH.
+\end{proof}
+
+\begin{lemma}
+    Let $E/\C \in \Ell(R_K)$. Then $j(E) \in \overline{\Q}$. 
+\end{lemma}
+\begin{proof}
+    First, note that if $\phi: E \to E$ is an endomorphism of $E$, then $\phi^\sigma: E^\sigma \to E^\sigma$ is an endomorphism of $E^\sigma$. Thus, \[ \End(E^\sigma) \cong \End(E)\] 
+    Next, let $\sigma \in \Aut(\C)$. Then $E^\sigma$ is obtained by letting $\sigma$ act on the coefficients of a Weierstrauss equation for $E$, and $j(E)$ is a rational combination of those coefficients, so it is clear that: 
+    \[ j(E^\sigma) = j(E)^\sigma\]
+    The previous theorem implies that $\End(E^\sigma) \cong R_K$. Then, $(1.2b)$ implies that $E^\sigma$ is in one of finitely many $\C$-isomorphism classes of elliptic curves. Thus, $j(E^\sigma)$ can take on finitely many values as $\sigma$ ranges over $\Aut(\C)$. Therefore, $[\Q(j(E)):\Q]$ is finite, and $j(E) \in \overline{\Q}$. (Why?)
+\end{proof}
+
+
+\begin{theorem}
+    \[\Ell(R_K) \cong \Ell_{\overline{\Q}}(R_K) := \frac{\{E/\overline{\Q} : \End(E) \cong R_K\}}{\text{isomorphism over $\overline{\Q}$}}\]
+\end{theorem}
+
+\begin{proof}
+    Fixing an embedding $\overline{\Q} \subset \C$, there is a natural map: 
+    \[ \epsilon : \Ell_\Q(R_K) \to \Ell_\C(R_K)\]
+    We need to show that $\epsilon$ is a bijection. \bbni
+    To show surjection, note the following: 
+    \begin{itemize}
+        \item $j(E) \in \overline{\Q}$ from (b). 
+        \item There is an elliptic curve $E'/\Q(j(E))$ with $j(E') = j(E)$. [AEC III.1.4c]
+        \item $E'$ is isomorphic to $E$ over $\C$ from [AEC III.1.4b].
+    \end{itemize}
+    Thus, $\epsilon(E') = E$. \bbni
+    Next let $E', E \in \Ell_\Q(R_K)$ be such that $\epsilon(E') = \epsilon(E)$. Then, $j(E') = j(E)$. Thus, $E_1$ and $E_2$ are isomorphic over $\overline{\Q}$ by [AEC III.1.4b]. 
+\end{proof}
+
+
+\newpage
+\section{CM for Abelian Varieties}
+
+\begin{definition}
+    A morphism between abelian varieties $f: A \to B$ is a rational map that respects the group structure. If $f$ is birrational, it is also biregular, hence an isomorphism.
+\end{definition}
+
+\begin{definition}
+    For an abelian variety $A/k$, $\End(A)$ is a free $\Z$-module of finite rank and every element is defined over a separably algebraic extension of $k$. Let $\End_\Q(A) = \End(A) \otimes_\Z \Q$. Then, $\End_\Q(A)$ is a $\Q$ algebra and $\End(A)$ is an order in $\End_\Q(A)$.
+\end{definition}
+
+
+
+
+
+\begin{definition}
+    Let $R$ be an algebra over $\Q$ with an identity element $1$. An abelian variety of type $R$ is a pair $(A, \iota)$ where $\iota$ is an isomorphism of $R$ into $\End_\Q(A)$ such that $\iota(1) = 1_A$.    
+\end{definition}
+
+% \begin{prop}
+%     If $\dim(A) = \dim(B)$ then there exists a morphism $A \to B$ if and only if there exists a morphism $B \to A$. We call such a morphism an isogeny. 
+% \end{prop}
+
+
+
+% \begin{definition}
+%     Let $A$ and $B$ be abelian varieties. An isogeny is a morphism $\phi: A \to B$ such that $\phi$ is surjective and $\dim A = \dim B$. The degree of $\phi$ is the degree of the extension $K(A)/\phi^*K(B)$. $deg \phi = 0$ if $\phi$ is not an isogeny. 
+% \end{definition}
+
+% \begin{definition}
+%     The category of abelian varieties over $K$ is a semisimple category, i.e. every abelian variety is a direct sum of simple abelian varieties. 
+% \end{definition}
+
+% For elliptic curve $E$ over $\C$, we noted that $E \cong \C/\Lambda$ for some $\Lambda \subset \C$. For abelian variety $A$, we note that $A \cong \C^g/\Lambda$ for some $\Lambda \subset \C^g$, but not every $\C^g/\Lambda$ is an abelian variety. An complex torus admitting a polatization is an abelian variety.
+
+The analytic representation of $\End^0(A)$ is given by: 
+\[ \End^0(A) \cong \{M \in \mathcal M_g(\C) : M\Q\Lambda \subset \Q\Lambda\}\]
+as it is a $g$-dimensional complex representation of $\End^0(A)$. Since $\R\Lambda = \C^n$, any $\C$-linear endomorphism  that is identity on $\Q\Lambda$ is identity on the whole of $\C^n$. Hence, $\Q\Lambda$ is a faithful $\End^0(A)$-module. Thus, 
+\[ [End^0(A): \Q]_{red} \leq \dim_\Q \Q\Lambda = 2\dim A\]
+\begin{definition}
+   An abelian variety $A/\C$ has complex multiplication if:
+   \[ [End^0(A): \Q]_{red} = 2\dim A\]
+\end{definition}
+
+
+\begin{theorem}(Shimura, 12, Prop. 26)
+    Let $(F; \{\phi\})$ be a CM-type and $(A, \iota)$ ab abelian variety of type $(F; \{\phi\})$. Then, there exists an abelian variety of type $(F; \{\phi_i\})$ isomorphic to $(A, \iota)$, defined over an algebraic number field of finite degree.
+\end{theorem}
+\begin{proof}(Sketch)
+    
+\end{proof}
+
+
+
+
+
+\newpage
+Lets fill out the proofs in reverse. Writing notes here.
+\begin{enumerate}
+    \item The isomorphism theorem directly requires [AEC III.1.4bc] and $j(E) \in \overline{\Q}$.
+    \item $j(E) \in \overline{\Q}$ has one ??? and requires [AEC III.1.4b] and $(1.2b)$.
+    \item (1.2b) requires defining class field, understanding fractional/principle ideals, and the action of $\text{CL}(R_K)$ on $\Ell(R_K)$. This is a somewhat longer proof. Relies on [AEC VI.4.1.1], [AEC VI.5.5].
+\end{enumerate}
+
+
+
+
+% \begin{theorem}
+%     For a lattice $\Lambda \subset \C$, the curve $E_\Lambda$ is given by: 
+%     \[ E_\Lambda = \begin{cases}
+%         [\wp(z), \wp'(z): 1] & z \not \in \C/\Lambda \\
+%         [0:1:0] & z \in \C/\Lambda
+%     \end{cases} \]
+%     where:
+%     \[ \wp(z) = \frac{1}{z^2} + \sum_{\omega \in \Lambda^*} \left(\frac{1}{(z-\omega)^2} - \frac{1}{\omega^2}\right)\]
+%     and if $E_\Lambda := y^2 = 4x^3 + g_2x + g_3$, then:
+%     \[ g_2 = 60\sum_{\omega \in \Lambda^*} \frac{1}{\omega^4}, \quad g_3 = 140\sum_{\omega \in \Lambda^*} \frac{1}{\omega^6} \] 
+% \end{theorem}
+
+% \begin{theorem}
+%     Let $\Lambda \subset \C$ be a lattice. 
+%     \begin{itemize}
+%         \item The Eisenstein series $G_{2k}(\Lambda)$ is absolutely convergent for all $k \ge 1$. 
+%         \item The series definiting $\wp$-function converges absolutely and uniformly on every compact subset of $\C \setminus \Lambda$. The series defines a meromorphic function on $\C$ having a double pole with residue $0$ at each lattice point and no other poles. 
+%         \item The Weierstrauss $\wp$-function is an even elliptic function. 
+%     \end{itemize}
+% \end{theorem}
+
+% \begin{theorem}
+%     Let $\Lambda \subset \C$ be a lattice. Then: 
+%     \[ \C(\Lambda) = \C(\wp(z), \wp'(z))\]
+%     i.e. every elliptic function is a rational combination of $\wp(z)$ and $\wp'(z)$.
+% \end{theorem}
+
+% \begin{remark}
+%     The multiplication by $m$ map $[m]: E \to E$ is an endomorphism of $E$ for any $m \in \Z$. This corresponds to scaling the complex torus by $n$, as we will see. 
+% \end{remark}
+
+
+% \begin{definition}
+%     If an elliptic curve $E/\C$ has complex multiplication $\phi(z) = mz$ for some $m \in \H$, then we call $m$ a CM point of $E$.
+% \end{definition}
+
+% \begin{theorem}
+%     If $m$ is a CM point of $E_\Lambda/\C$, then $m\Lambda \subset \Lambda$ and $m^2\Lambda \subset \Lambda$. Thus, $m$ satisfies a degree $2$ polynomial.   
+% \end{theorem}
+
+
+
+\end{document}

@@ -12,12 +12,18 @@
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amsxtra}
+\usepackage{enumitem}
 \newcommand{\bb}{\mathbb}
 
 
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
 \newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}{Lemma}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+
+
 
 \newcommand{\mathcat}[1]{\textup{\textbf{\textsf{#1}}}} % for defined terms
 
@@ -42,6 +48,8 @@
 
 \newcommand{\calC}{\mathcal{C}}
 \newcommand{\calF}{\mathcal{F}}
+\let\H\relax
+\newcommand{\H}{\mathbb H}
 \newcommand{\C}{\mathbb C}
 \newcommand{\N}{\mathbb N}
 \newcommand{\Q}{\mathbb Q}
@@ -73,8 +81,11 @@
 \newcommand{\vecr}{\mathbf{r}}
 \DeclareMathOperator{\Cinf}{C^{\infty}}
 \DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Ell}{Ell}
+\DeclareMathOperator{\CL}{\mathcal{CL}}
 
 \DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\ann}{ann}
 \DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\End}{End}
