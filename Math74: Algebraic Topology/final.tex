@@ -9,12 +9,10 @@
 
 \input{title}
 
-
-
 \begin{problem}{1}
-\begin{defn}
+\begin{definition}
     A \emph{topological group}  $G$ is a group with a topology such that the maps $G \times G \to G$ given $(g,h) \mapsto g * h$ where $*$ is the group operation and $G \to G$ given by $g \mapsto g^{-1}$ are continuous. 
-\end{defn}
+\end{definition}
     Let $G$ be a topological group with identity element $x_0$.
     \begin{enumerate}
     
@@ -33,27 +31,160 @@
     \item Let $A$ be a (possibly empty) finite set of points in $\R^2$. For what values of $|A|$ can $\R^2 \setminus A$ be given the structure of a topological group? 
     \end{enumerate}
 \end{problem}
-\newpage
 
-
-\begin{problem}{2}(50 points) 
-\begin{defn}
-    The \emph{real Grassmannian}  $\mathrm{Gr}(k,n)$ is the space of $k$-dimensional subspaces of $\R^n$. More precisely, let $M^*(k,n)$ be the set of $k \times n$ matrices of rank $k$ with the subspace topology in the space of all $k \times n$ matrices $M(k,n) \cong \R^{kn}$. Then, we define $\mathrm{Gr}(k,n) = M^*(k,n)/\sim$ where $A \sim B$ if and only if $A$ and $B$ have the same row space. 
-\end{defn}
-    Note that $\mathrm{Gr}(1,n) = \mathbb{RP}^{n-1}$. 
+\begin{solution}
+    \bbni
     \begin{enumerate}
-    \item Show that $\mathrm{Gr}(k,n)$ is homeomorphic to $\mathrm{Gr}(n-k,n)$ for all $0 \leq k \leq n$.
-    \item Show that $\mathrm{Gr}(2,4)$ is homeomorphic to $S^2 \times S^2/\sim$ where $(x,y) \sim (-x, -y)$ for all $(x,y) \in S^2 \times S^2$. 
-    \item Describe a CW complex structure on $\mathrm{Gr}(2,4)$. (\emph{Hint:} You may wish to use the previous part.)
-    \item Compute $\pi_1(\mathrm{Gr}(2,4))$. 
-    \item Compute the homology of $\mathrm{Gr}(2,4)$. 
+        \item First, we show that $C$ is a subgroup. Since $C$ is connected, so is $C \times C \subset G \times G$. As $\ast: C \times C \to G$ is the restriction of a continuous map, it is continuous. Thus, $\ast(C \times C) = \{g\ast h : g, h \in C\}$ is connected. Moreover, as $x_0 \in C$, $x_0 \ast x_0 = x_0 \in \ast(C \times C)$. Thus, as $C$ is the largest connected subset containing $x_0$, we have that $\ast(C \times C) \subseteq C$. Thus, $C$ is closed under multiplication. Similarly, as taking an inverse is continuous, we have that $C^{-1} = \{g^{-1} : g \in C\}$ is also connected and contains $x_0 = x_0^{-1}$. Thus, $C^{-1} \subseteq C$. Thus $C$ is closed under taking inverses, and hence $C$ is a subgroup. \bbni
+        Let $L_h: G \to G$ be the left multiplication map, given by $L_h(g) = h \ast g$. Since multiplication $*: G \times G \to G$ is continuous, and $L_h$ is just its restriction, $L_h$ is continuous for all $h \in G$. Moreover, we claim that for all $h \in G$, $L_{h^{-1}}$ is a continuous inverse of $L_h$. Indeed, we can check, for all $g \in G$:
+        \begin{align*}
+            L_{h^{-1}}(L_h(g)) &= L_{h^{-1}}(h \ast g) \\
+            &= h^{-1} \ast h \ast g \\
+            &= g \\
+            L_{h}(L_{h^{-1}}(g)) &= L_{h}(h^{-1} \ast g) \\
+            &= h \ast h^{-1} \ast g \\
+            &= g
+        \end{align*}
+        using the associativity of the group operation. Thus, $L_h$ is a homeomorphism for all $h \in G$. The same argument shows that $R_h$, the right multiplication map, is also a homeomorphism for all $h \in G$. \bbni
+        Define $\phi_g: G \to G$ by letting $\phi_g(h) = L_g(R_{g^{-1}}(h)) = g \ast h \ast g^{-1}$ for all $g \in G$. Note that $\phi_g$ is a homeomorphism, since it is the composition of two homeomorphisms. It is easy to see that its inverse is $\phi_{g^{-1}}$. Then, note that $x_0 \in \phi_g(C)$ as:
+        \[ \phi_g(x_0) = g \ast x_0 \ast g^{-1} = g \ast g^{-1} = x_0 \in \phi_g(C)\]
+        Similarly, $x_0 \in \phi_g^{-1}(C)$.         
+        Since $\phi_g(C)$ is connected, this implies $\phi_g(C) \subset C$. Similarly, since $\phi_g^{-1}(C)$ is connected, we have $\phi_g^{-1}(C) \subseteq C$. Thus, we have:
+        \[ C = \phi_{g}(\phi_{g^{-1}}(C)) \subseteq \phi_{g}(C) \subseteq C \]        
+        Thus, we must have equality everywhere, i.e. $\phi_g(C) = C$. Thus, $C$ is normal. \bbni
+        Next, let $g \in G$ and $C_g$ be the connected component of $g$. We also have:
+        \[ L_g(C) = \{g\ast h : h \in C\} = gC\]
+        As $L_g$ is a homeomorphism, $gC$ is homeomorphic to $C$, hence connected. Moreover, as $x_0 \in C$, $g = g \ast x_0 \in gC$. Thus, $gC \subseteq C_g$. \\
+        Next, note that $L_{g^{-1}}(C_g) = g^{-1}C_g$ is a connected subset of $G$ containing $x_0 = g^{-1} \ast g$ as $g \in C_g$. Thus, $g^{-1}C_g \subseteq C$. \\
+        Thus, we have:
+        \[ C = g^{-1}gC \subseteq g^{-1}(C_g) \subseteq C \]
+        Thus, we must equality everywhere. Thus, $C = g^{-1}C_g$. Thus, applying $L_{g}$, we get:
+        \[ gC = C_g\]
+        Thus, $gC$ is the connected component of $g$ in $G$. We know that $gC \cong C$ as $L_g$ is a homeomorphism and $gC = L_g(C)$. 
+        \item We need to check that $\Omega(G, x_0)$ is closed under $\times$, has an identity, inverses, and that $\times$ is associative. 
+        \begin{itemize}
+            \item Let $f, g \in \Omega(G, x_0)$. Then, $f \times g$ is a map $I \to G$, thus a path. It is a continuous map as its a composition of continuous maps $\ast$ after $(f, g): I \to G \times G$. Moreover, 
+            \[ f \times g(0) = f(0) \ast g(0) = x_0 \ast x_0 = x_0\]
+            and
+            \[ f \times g(1) = f(1) \ast g(1) = x_0 \ast x_0 = x_0\]
+            Thus, $f \times g$ is a loop based at $x_0$. Thus, $f \times g \in \Omega(G, x_0)$. 
+            \item The identity element is the constant loop $e_{x_0}: I \to G$ given by $e_{x_0}(t) = x_0$ for all $t \in I$. Note that for any $f \in \Omega(G, x_0)$, we have:
+            \begin{align*}
+                (f \times e_{x_0})(t) &= f(t) \ast e_{x_0}(t) \\
+                &= f(t) \ast x_0 \\
+                &= f(t)
+            \end{align*}
+            and similarly, 
+            \begin{align*}
+                (e_{x_0} \times f)(t) &= e_{x_0}(t) \ast f(t) \\
+                &= x_0 \ast f(t) \\
+                &= f(t)
+            \end{align*} 
+            Thus, $e_{x_0}$ is the identity element in $\Omega(G, x_0)$.
+            \item For $f \in \Omega(G, x_0)$, we define the inverse $f^{-1} \in \Omega(G, x_0)$ by $f^{-1}(t) = f(t)^{-1}$ for all $t \in I$, where the latter inverse is in $G$. Note that since $x_0^{-1} = x_0$, this still is a loop based at $x_0$. It is also continuous as the inverse map is continuous on $G$. Then, we have:
+            \begin{align*}
+                (f \times f^{-1})(t) &= f(t) \ast f^{-1}(t) \\
+                &= f(t) \ast f(t)^{-1} \\
+                &= e_{x_0}
+            \end{align*}
+            and similarly, 
+            \begin{align*}
+                (f^{-1} \times f)(t) &= f^{-1}(t) \ast f(t) \\
+                &= f(t)^{-1} \ast f(t) \\
+                &= e_{x_0}
+            \end{align*} 
+            Thus, $f^{-1}$ is the inverse of $f$ in $\Omega(G, x_0)$.
+            \item The associativity of $\times$ follows from the associativity of the group operation $\ast$ as follows. Let $f, g, h \in \Omega(G, x_0)$. Then, we have for all $t \in I$:
+            \begin{align*}
+                ((f \times g) \times h)(t) &= (f \times g)(t) \ast h(t) \\
+                &= f(t) \ast g(t) \ast h(t) \\
+                &= f(t) \ast (g \times h)(t) \\
+                &= (f \times (g \times h))(t)
+            \end{align*}
+            Thus, $\times$ is associative.
+        \end{itemize}
+        We have shown that $\Omega(G, x_0)$ is a group under the operation $\times$.
+        \item We define the map $[\cdot]: \Omega(G, x_0) \to \pi_1(G, x_0)$ by sending $f \in \Omega(G, x_0)$ to the homotopy class $[f] \in \pi_1(G, x_0)$. This is a quotient map by the homotopy equivalence relation. We define the map $\times$ on $\pi_1(G, x_0)$ by $[f] \times [g] = [f \times g]$. We need to check that this is well-defined. \\
+        Let $f \cong f'$ and $g \cong g'$ be two pairs of homotopic loops in $\Omega(G, x_0)$. We need to show that $[f \times g] = [f' \times g']$. Let $F$ and $G$ be the homotopies from $f$ to $f'$ and $g$ to $g'$, respectively. We define the map $H: I \times I \to G$ by $H(t, s) = F(t, s) \ast G(t, s)$. Since $F$ and $G$ are continuous, $(F, G): I\times I \to G\times G$ is also continuous. Thus, as $\ast$ is continuous, $H$ is a composition of continuous, thus continuous. We check that $H$ is a homotopy from $f \times g$ to $f' \times g'$.
+        \begin{itemize}
+            \item Setting $s = 0$, we have:
+            \[ H(t, 0) = F(t, 0) \ast G(t, 0) = f(t) \ast g(t) \]
+            \item Setting $s = 1$, we have:
+            \[ H(t, 1) = F(t, 1) \ast G(t, 1) = f'(t) \ast g'(t) \]
+            \item Setting $t = 0$, we have:
+            \[ H(0, s) = F(0, s) \ast G(0, s) = x_0 \ast x_0 = x_0\]
+            \item Setting $t = 1$, we have:
+            \[ H(1, s) = F(1, s) \ast G(1, s) = x_0 \ast x_0 = x_0\]
+        \end{itemize}
+        Thus, $H$ is a homotopy from $f \times g$ to $f' \times g'$. Thus, we have that $[f \times g] = [f' \times g']$. Thus, $\times$ is well-defined on $\pi_1(G, x_0)$. \bbni
+        The group axioms then follow from the group structure on $\Omega(G, x_0)$ ($[\cdot]$ commutes with $\times$).
+        \item For $[f], [g] \in \pi_1(G, x_0)$, we want to show that:
+        \[ [f] \times [g] = [f] \cdot [g]\]
+        Note that $[f \cdot e_{x_0}] = [f]$ and $[e_{x_0} \cdot g] = [g]$ in $\pi_1(G, x_0)$. Thus, we have:
+        \[ [f \times g] = [(f \cdot e_{x_0}) \times (e_{x_0} \cdot g)]\]
+        We evaluate this. For $t \in I$, we have:
+        \begin{align*}
+            (f \cdot e_{x_0}) \times (e_{x_0} \cdot g)(t) &= (f \cdot e_{x_0})(t) \ast (e_{x_0} \cdot g)(t) \\
+            &= \left\{
+            \begin{aligned}
+                &f(2t) && t \leq \frac{1}{2} \\
+                &x_0  && t \geq \frac{1}{2}
+            \end{aligned}
+            \right\}\ast \left\{
+            \begin{aligned}
+                &x_0 && t \leq \frac{1}{2} \\
+                &g(2t-1) && t \geq \frac{1}{2}
+            \end{aligned}
+            \right\} \\
+            &= \left\{ \begin{aligned}
+                &f(2t) && t \leq \frac{1}{2} \\
+                &g(2t-1) && t \geq \frac{1}{2}
+            \end{aligned}
+            \right\} \\
+            &= f \cdot g
+        \end{align*}
+        Thus, we have:
+        \[ [f \times g] = [(f \cdot e_{x_0}) \times (e_{x_0} \cdot g)] = [f \cdot g]\]
+        Thus, 
+        \[ [f] \times [g] = [f] \cdot [g]\]
+        and the two operations agree on $\pi_1(G, x_0)$.        
+        \item Let $[f], [g] \in \pi_1(G, x_0)$ be arbitrary. We compute:
+        \begin{align*}
+            [f] \times [g] &= [(e_{x_0} \cdot f)] \times [(g \cdot e_{x_0})] \\
+            &= [(e_{x_0} \cdot f) \times (g \cdot e_{x_0})] \\
+            &= \left[ t \to\left\{
+            \begin{aligned}
+                &x_0 && t \leq \frac{1}{2} \\
+                &f(2t-1) && t \geq \frac{1}{2}
+            \end{aligned}
+            \right\}\ast \left\{
+            \begin{aligned}
+                &g(2t) && t \leq \frac{1}{2} \\
+                &x_0 && t \geq \frac{1}{2}
+            \end{aligned}
+            \right\} \right] \\
+            &= \left[ t \to \left\{
+            \begin{aligned}
+                &g(2t) && t \leq \frac{1}{2} \\
+                &f(2t-1) && t \geq \frac{1}{2}
+            \end{aligned}
+            \right\} \right] \\
+            &= [g \cdot f] \\
+            &= [g] \times [f]
+        \end{align*} 
+        As $[f], [g]$ were arbitrary, we have that $\pi_1(G, x_0)$ is abelian under both operations $\times$ and $\cdot$.
+        \item For $|A| = 0$, we have $\R^2\setminus A = \R^2$, which has a trivial $\pi_1$. This is a topological group under the usual vector addition. \bbni
+        For $|A| \geq 1$, we know that $\R^2 \setminus A$ retracts onto the wedge of $|A|$ circles, thus has $\pi_1$ isomorphic to the free group on $|A|$ generators. For $|A| > 1$, this is not abelian, thus $\R^2 \setminus A$ cannot be a topological group. For $A = 1$, one gets a space homeomorphic to $\R^2 \setminus \{0\}$, which is homeomorphic to $\C^\times$ on which one can place the group operation of complex multiplication to get a topological group. 
     \end{enumerate}
-\end{problem}
+\end{solution}
+
+
 \newpage
 
-\begin{problem}{3}(50 points) 
+
+\begin{problem}{3} (50 points) 
     
-    \begin{defn} Let $\mathcal{C}, \mathcal{D}$ be (locally small) categories and let $F, G: \mathcal{C} \to \mathcal{D}$ be functors. 
+    \begin{definition} Let $\mathcal{C}, \mathcal{D}$ be (locally small) categories and let $F, G: \mathcal{C} \to \mathcal{D}$ be functors. 
     \begin{itemize}
 
     \item A \emph{natural transformation} $\eta$ from $F$ to $G$ is the data of a morphism $\eta_X  \in \hom_{\mathcal{D}} (F(X), G(X))$ for every object $X$ in $\mathcal{C}$ such that for every $f \in \hom_\mathcal{C}(X,Y)$, $\eta_Y \circ F(f) = G(f) \circ \eta_X$. 
@@ -63,7 +194,7 @@
     \item The functor $F:  \mathcal{C} \to \mathcal{D}$ is an \emph{equivalence of categories} if there is a functor $F':\mathcal{D} \to \mathcal{C}$ such that $F' \circ F$ is naturally isomorphic to the identity functor on $\mathcal{C}$ and $F \circ F'$ is naturally isomorphic to the identity functor on $\mathcal{D}$. If such a functor exists, $\mathcal{C}$ and $\mathcal{D}$ are said to be equivalent.
     \end{itemize}
 
-    \end{defn}
+    \end{definition}
     
     For a topological space $X$, let $\Pi(X)$ be the fundamental groupoid of $X$. 
     \begin{enumerate}
@@ -81,44 +212,144 @@
     \item Give an example of homotopic continuous functions $f$ and $g$ such that $\Pi(f)$ and $\Pi(g)$ are not equal.
     \end{enumerate}
 \end{problem}
-\newpage
- 
-\begin{problem}{4}(50 points) 
-    \begin{defn}
-        Given an open cover $\mathcal{U} = \{ U_i \}_{i \in I}$ of a topological space $X$, we define the \v{C}ech complex as
-        \[ \check{C}^k(X, \mathcal{U}) = \prod_{(i_0, \hdots, i_k) \in I^{k+1}} \mathcal{F}(U_{i_0} \cap \hdots \cap U_{i_k}) \]
-        where $\mathcal{F}(Y) = \{ f \colon Y \to \Z : f \text{ is continuous}\}$ where $\Z$ has the discrete topology. For $f \in \check{C}^k(X, \mathcal{U})$, denote by $f_{i_0, \hdots, i_k}$ the component in $\mathcal{F}(U_{i_0} \cap \hdots \cap U_{i_k})$. Then, define 
-        \[ d \colon \check{C}^k(X, \mathcal{U}) \to \check{C}^{k+1} (X, \mathcal{U}) \]
-        by
-        \[ (df)_{i_0, \hdots, i_{k+1}} = \sum_{j=0}^{k+1} (-1)^j f_{i_0, \hdots, \hat{i_j}, \hdots i_k}|_{U_{i_0} \cap \hdots \cap U_{i_k}} \]
-    \end{defn}
-    \begin{enumerate}
-    
-    \item Verify that the \v{C}ech complex is a cochain complex for any $X, \mathcal{U}$. 
 
-    \item Denoting the cohomology groups of the \v{C}ech complex by $\check{H}^k(X, \mathcal{U})$, describe $\check{H}^0(X, \mathcal{U})$ for any $X, \mathcal{U}$.
+\begin{solution}
+\bbni 
+\begin{enumerate}
+    \item Assume $F: \calC \to \calD$ is an equivalence of categories and there exists an isomorphism $f \in \hom_\calD(F(X), F(Y))$. Since $F$ is an equivalence of categories, there exists functor $F': \calD \to \calC$ such that $F' \circ F$ is naturally isomorphic to $\id_\calC$. Since $F'$ is a functor, $F'(f) \in \hom_\calC(F'F(X), F'F(Y))$ is an isomorphism. Moreover, we have isomorphisms $\eta_X \in \hom_\calC(F'F(X), X)$ and $\eta_Y \in \hom_\calC(F'F(Y), Y)$. Thus, we have an isomorphism:
+    \[\eta_Y \circ F'(f) \circ \eta_X^{-1}: X \to Y\]
+    We assumed Homework 1 Problem 4 in this proof. \bbni
+    Take $X = \R$ with the indiscrete topology (just $\emptyset$ and $X$ are open) and $Y = \R$ with the discrete topology. The only continuous maps $X \to Y$ are constant (any non-empty preimage is all of $X$), which are not invertible. Thus, $X$ and $Y$ are not isomorphic. However, the forgetful functor maps them to the underlying sets $\R$ and $\R$, which are isomorphic as sets using the identity map. \bbni
+    Let $X = S^2$ and $Y = \R^2$ with their usual topologies. We know that these are not isomorphic since their $H_2$ groups are not isomorphic. However, applying $\pi_1$ functor, as both of these spaces are simply connected, we have $\pi_1(X) = \pi_1(Y) = \{0\}$. \bbni
+    Thus, in both cases, the property we just we do not have an equivalence of categories.
 
-    \item Find two covers of $S^1$ whose \v{C}ech cohomology groups do not coincide. 
+    \item  Let $x \in X$ be arbitrary. We define a functor $F': \Pi(X) \to \pi_1(X, x)$ as follows. For $y \in \Pi(X)$, we define $F'(y) = x$, i.e. $F'$ is the constant map with value $x$ on objects. For $[\gamma] \in \hom_{\Pi(X)}(y, z)$, we define $F'([\gamma]) = [\alpha_y \cdot \gamma \cdot \alpha_z^{-1}]$, where $\alpha_y$ and $\alpha_z$ are some choice of paths from $x$ to $y$ and $z$, respectively with $\alpha_x$ being the identity on $x$. We check that this is a functor: 
+    \begin{itemize}
+        \item Let $[\gamma] \in \hom_{\Pi(X)}(y, z)$ and $[\delta] \in \hom_{\Pi(X)}(z, w)$. Then, we have:
+        \begin{align*}
+            F'([\gamma]) \cdot F'([\delta]) &= [\alpha_y \cdot \gamma \cdot \alpha_z^{-1}] \cdot [\alpha_z \cdot \delta \cdot \alpha_w^{-1}] \\
+            &= [\alpha_y \cdot \gamma \cdot \delta \cdot \alpha_w^{-1}] \\
+            &= F'([\gamma \cdot \delta])
+        \end{align*}
+        Thus, $F'$ preserves composition.
+        \item Let $[\id_y] \in \hom_{\Pi(X)}(y, y)$. Then, we have:
+        \[ F'([\id_y]) = [\alpha_y \cdot \id_y \cdot \alpha_y^{-1}] = [\alpha_y \cdot \alpha_y^{-1}] = [\id_x]\]
+        Thus, $F'$ preserves identities.
+    \end{itemize}
+    Thus, $F'$ is a functor. Now, we check that $F' \circ F \cong \id_{\pi_1(X, x)}$ and $F \circ F' \cong \id_{\Pi(X)}$. \bbni 
+    First, we check $F' \circ F \cong \id_{\pi_1(X, x)}$. For $x \in \pi_1(X, x)$ (the only object), note that $F' \circ F(x) = F'(x) = x$. Thus, let $\eta_x = [\id_x] \in \hom_{\pi_1(X, x)}(F'F(x), x)$. This is clearly an isomorphism. Moreover, it clearly satisfies the naturality condition, since for any other morphism $[\gamma] \in \hom_{\pi_1(X, x)}(x, x)$ (noting $x$ is the only object), we have:
+    \begin{align*}
+        \eta_x \circ F'F([\gamma]) &= F'F([\gamma]) \cdot \eta_x\\
+        &= F'([\gamma]) \cdot [\id_x] \\
+        &= [\id_x \cdot \gamma \cdot \id_x] \\
+        &= [\id_x] \cdot [\gamma] \\
+        &= \id_{\pi_1(X, x)}([\gamma]) \circ \eta_x
+    \end{align*}
+    Thus, $F' \circ F \cong \id_{\pi_1(X, x)}$. \bbni
+    Finally, we check $F \circ F' \cong \id_{\Pi(X)}$. For any object $y \in \Pi(X)$, note that:
+    \[ F\circ F'(y) = F(x) = x \]
+    Thus, we let $\eta_y = [\alpha_y] \in \hom_{\Pi(X)}(FF'(y), y)$. This is clearly an isomorphism (everything in a groupoid is). Moreover, for any morphism $[\gamma] \in \hom_{\Pi(X)}(y, z)$, we have:
+    \begin{align*}
+        \eta_z \circ FF'([\gamma]) &= FF'([\gamma]) \cdot \eta_z \\
+        &= F([\alpha_y \cdot \gamma \cdot \alpha_z^{-1}]) \cdot [\alpha_z] \\
+        &= [\alpha_y \cdot \gamma \cdot \alpha_z^{-1}] \cdot [\alpha_z] \\
+        &= [\alpha_y \cdot \gamma] \\
+        &= [\gamma] \circ [\alpha_y] \\
+        &= \id_{\Pi(X)}([\gamma]) \circ \eta_y
+    \end{align*}
+    Thus, $F \circ F' \cong \id_{\Pi(X)}$. Thus, we have show than $F$ is an equivalence of categories.
+    \item Define the functor $\Pi(f)$ by sending $x \in X$ to $\Pi(f)(x) = f(x)$ and $\gamma \in \hom_{\Pi(X)}(x,y)$ to $f_*([\gamma]) := [f \circ \gamma] \in \hom_{\Pi(Y)}(f(x), f(y))$ (the composition makes sense if you see $\gamma$ as a map $I \to X$). Then, we check that this is a functor:
+    \begin{itemize}
+        \item Let $\gamma \in \hom_{\Pi(X)}(x,y)$ and $\delta \in \hom_{\Pi(X)}(y,z)$. Then, we have:
+        \[ f_*([\gamma]) \cdot f_*([\delta]) = [(f \circ \gamma) \cdot (f \circ \delta)] = [f \circ (\gamma \cdot \delta)] = f_*([\gamma \cdot \delta])\]
+        where the 2nd equality follows from noting that $f \circ (\gamma \cdot \delta)$ is doing $f \cdot \gamma$ first and then $f \cdot \delta$. Thus, $f_*$ preserves composition.
+        \item Let $\id_x$ be the constant path on $x \in X$ in $\Pi(X)$. Then, we have:
+        \[ f_*([\id_x]) = [f \circ \id_x] = [\id_{f(x)}]\]
+        Thus, $f_*$ preserves identities.
+    \end{itemize}
+    Thus, $\Pi(f)$ is a functor.
+    \item Let $H: X \times I \to Y$ be a homotopy from $f$ to $g$. For each $x \in X$, we let $\eta_x \in \hom_{\Pi(Y)}(f(x), g(x))$ be $\eta_x: I \to Y$ given by $\eta_x(t) = H(x, t)$. Since $\Pi(Y)$ is a groupoid, $\eta_x$ is an isomorphism. Next, let $[\gamma] \in \hom_{\Pi(X)}(y,z)$ be a path in $X$. Then, we construct a path-homotopy that $H': I \times I \to Y$ from $\id_{f(y)} \cdot \eta_y \cdot g_*([\gamma])$ to $f_*([\gamma]) \cdot \eta_z \cdot \id_{g(z)}$. We define $H'$ by:
+    \[ H'(t, s) = \begin{cases}
+        H(\gamma(3ts), 0) & t \leq \frac{1}{3}\\ 
+        H(\gamma(s),3t-1) & \frac13 \leq t \leq \frac{2}{3} \\
+        H(\gamma(s+(3t-2)(1-s)), 1) & t \geq \frac{2}{3}
+    \end{cases}\]
+    First, we check that $H'$ is continuous. By the pasting lemma, we only need to check it is well-defined on the boundaries. 
+    \begin{itemize}
+        \item For $t = \frac13$: 
+        \[ H(\gamma(3ts), 0) = H(\gamma(s), 0) = H(\gamma(s), 3t-1)\]
+        \item For $t = \frac23$:
+        \[ H(\gamma(s+(3t-2)(1-s)), 1) = H(\gamma(s), 1) = H(\gamma(s), 3t-1)\]
+    \end{itemize}
+    Finally, we check that $H'$ is a path-homotopy as described:
+    \begin{itemize}
+        \item Noting that $\gamma(0) = y$, we have
+        \begin{align*}
+            H'(t, 0) &= \begin{cases}
+                H(y, 0) & t \leq \frac{1}{3}\\ 
+                H(y,3t-1) & \frac13 \leq t \leq \frac{2}{3} \\
+                H(\gamma(3t-2), 1) & t \geq \frac{2}{3}
+            \end{cases} \\
+            &= \id_{f(y)} \cdot \eta_y \cdot g_*([\gamma]) 
+        \end{align*}
+        \item Noting that $\gamma(1) = z$, we have: 
+            \begin{align*}
+                H'(t, 1) &= \begin{cases}
+                H(\gamma(3t), 0) & t \leq \frac{1}{3}\\ 
+                H(z,3t-1) & \frac13 \leq t \leq \frac{2}{3} \\
+                H(z, 1) & t \geq \frac{2}{3}
+            \end{cases} \\
+            &= f_*([\gamma]) \cdot \eta_z \cdot \id_{g(z)}
+        \end{align*}
+        \item $H'(0, s) = H(\gamma(0), 0) = f(\gamma(0)) = f(y)$
+        \item $H'(1, s) = H(\gamma(s+(1-s)), 1) = g(\gamma(1)) = g(z)$
+    \end{itemize}
+    Thus, $H'$ is a path-homotopy. Therefore, we have:
+    \[ [f_*([\gamma]) \cdot \eta_z \cdot \id_{g(z)}] = [\id_{f(y)} \cdot \eta_y \cdot g_*([\gamma])]\]
+    Since the constant paths $\id_{-}$ are the identity morphisms for their respective objects, we conclude:
+    \[ [f_*([\gamma]) \cdot \eta_z] = [\eta_y \cdot g_*([\gamma])]\]
+    Thus, we conclude that $\Pi(f)$ and $\Pi(g)$ are naturally isomorphic.
+    \item If $X$ and $Y$ are homotopy equivalent, there exist maps $f: X \to Y$ to $g: Y \to X$ such that $f \circ g \cong \id_Y$ (homotopic). Thus, we have that the functor $\Pi(f\circ g)$ is naturally isomorphic to $\Pi(\id_Y)$. Next, we claim that $\Pi(f \circ g) = \Pi(f) \circ \Pi(g)$ and $\Pi(\id_Y) = \id_{\Pi(Y)}$. To see this, note:
+    \begin{itemize}
+        \item On objects $y \in \Pi(Y)$, we have: 
+        \[ \Pi(f)\circ \Pi(g)(y) = \Pi(f)(g(y)) = f\circ g(y) = \Pi(f \circ g)(y) \]
+        and: 
+        \[ \Pi(\id_Y)(y) = \id_Y(y) = y\]
+        \item On morphisms $[\gamma] \in \hom_{\Pi(Y)}(y,z)$, we have:
+        \begin{align*}
+            \Pi(f) \circ \Pi(g)([\gamma]) &= \Pi(f)([g \circ \gamma]) = [f \circ g \circ \gamma] = \Pi(f \circ g)([\gamma])
+        \end{align*}
+        and: 
+        \[ \Pi(\id_Y)([\gamma]) = [\id_Y \circ \gamma] = [\gamma]\]
+    \end{itemize}
+    Thus, we have that $\Pi(f) \circ \Pi(g)$ is naturally isomorphic to $\id_{\Pi(Y)}$. By the same argument, we have that $\Pi(g) \circ \Pi(f)$ is naturally isomorphic to $\id_{\Pi(X)}$. Thus, we have that $\Pi(X)$ and $\Pi(Y)$ are equivalent as categories. \bbni
+    We can conclude the next part by showing that equivalence of categories is an equivalence relation (assuming functor composition is associative, not difficult. reflexivity and symmetry are immediate from the definition). However, we will do this more directly. \bbni
+    Note that $\Pi(f)$ and $\Pi(g)$ induce maps $f_*: \Aut_{\Pi(X)}(x) = \pi_1(X, x) \to \Aut_{\Pi(Y)}(f(x)) = \pi_1(Y, f(x))$ and $g_*: \Aut_{\Pi(Y)}(f(x)) = \pi_1(Y, f(x)) \to \Aut_{\Pi(X)}(gf(x)) = \pi_1(X, gf(x))$. These are group homomorphisms as $\Pi(f)$ and $\Pi(g)$ are functors, thus preserve compositions and the identity. \bbni 
+    Next, as we have a natural isomorphism from $\Pi(g\circ f)$ to $\id_{\Pi(X)}$, we have an isomorphism $\eta_x \in \hom_{\Pi(X)}(gf(x), x)$ such that for any $[\gamma] \in \Aut_{\Pi(X)}(x)$, we have:
+    \[ \eta_x \circ g_*f_*([\gamma])= [\gamma] \circ \eta_x\]
+    Thus, we have that:
+    \[ g_*f_*([\gamma]) = \eta_x^{-1} \circ [\gamma] \circ \eta_x\]
+    We show that this is an isomorphism. First, assume $g_*f_*([\gamma]) = [\id_{gf(x)}]$. Then, we have:
+    \[ \id_{gf(x)}  = \eta^{-1}_x \circ [\gamma] \circ \eta_x \]
+    This yields:
+    \[ [\gamma]  = \eta_x \circ \id_{gf(x)} \circ \eta^{-1}_x = \eta_x \circ \eta^{-1}_x =  \id_{x} \]
+    Thus, $g_*f_*$ is injective. Next, let $[\delta] \in \Aut_{\Pi(X)}(gf(x))$ be arbitrary. Then, we have: 
+    \begin{align*}
+        g_*f_*(\eta_x \circ [\delta] \circ \eta_x^{-1}) &= \eta_x^{-1} \circ \eta_x \circ [\delta] \circ \eta_x^{-1} \circ \eta_x \\
+        &= [\delta]
+    \end{align*}
+    Thus, $g_*f_*$ is surjective. Thus, $g_*f_*$ is an isomorphism. \bbni
+    Using the same argument with the natural isomorphism from $\Pi(f \circ g)$ to $\id_{\Pi(Y)}$, we note that $f_*g_*$ is also an isomorphism. \bbni
+    Finally, since $g_*f_*$ is an isomorphism, we have that $f_*$ is injective. Since $f_*g_*$ is also an isomorphism, we have that $f_*$ is surjective as well. Thus, as $f_*$ is a group homomorphism, we conclude that $f_*$ is an isomorphism. \bbni
 
-    \item A cover $\mathcal{V} = \{V_j\}_{j \in J}$ is a \emph{refinement} of $\mathcal{U} = \{ U_i \}_{i \in I}$ if for every $j \in J$, there is an $i \in I$ such that $V_j \subseteq U_i$. Show that if $\mathcal{V}$ is a refinement of $\mathcal{U}$, then there is a chain map $\check{C}^\bullet (X, \mathcal{U} ) \to \check{C}^\bullet (X, \mathcal{V})$ given by restriction. 
-    \end{enumerate}
+    % Thus, $f_*$ is injective. Using the same argument with the natural isomorphism from $\Pi(f \circ g)$ to $\id_{\Pi(Y)}$, we get that there is $\xi_y \in \hom_{\Pi(Y)}(fg(y), y)$ such that for any $[\gamma] \in \Aut_{\Pi(Y)}(f(y))$, we have:
+    % \[ f_*g_*([\gamma]) = \xi_y^{-1} \circ [\gamma] \circ \xi_y\]
 
-    We say that $\mathcal{U}$ is a \emph{good cover} if every non-empty intersection $U_{i_0} \cap \hdots \cap U_{i_k}$ is contractible. Here is a theorem that can be proved using a similar argument that we deployed for barycentric subdivision in singular homology once one proves that the \v{C}ech cohomology of a contractible space with respect to any cover agrees with the \v{C}ech cohomology of point, e.g., by proving homotopy invariance.
-
-    \begin{theorem} 
-    If $\mathcal{U}$ is a good cover of $X$ and the $\mathcal{V}$ is a refinement of $\mathcal{U}$, the chain map from the previous part induces an isomorphism on \v{C}ech cohomology. Moreover, $\check{H}^k(X, \mathcal{U}) \cong H^k(X)$ for all $k$. 
-    \end{theorem} 
-
-    \begin{enumerate}[resume]
-        \item Find good covers and explicitly compute the cohomology of a sphere $S^n$ and an orientable genus $g$ surface $M_g$ using the previous theorem. \\
-        (\emph{Remark/challenge:} These computations give you explicit generators. There is a natural way to phrase the cup product in \v{C}ech cohomology -- can you compute it in these examples? To be clear, I'm not grading you on this remark, but just leaving something to think about.)
-    \end{enumerate}
-    
-\end{problem}
-% \item(
-
-
-
+    % However, we can also restrict $\Pi(f)$ to the $\pi_1(X, x)$ with one object $x$ and morphisms $\hom(x,x)$ with image in $\pi_1(Y, f(x))$ defined similarly. This is the map $f_*: \pi_1(X, x) \to \pi_1(Y, f(x))$ on the morphisms. Since $\Pi(f)$ is a functor, and respects composition and identities, we have that $f_*$ is a group homomorphism. Thus, we just need to show that $f_*$ is bijective. \bbni
+    % First, assume $f_*(\gamma) = \id_{f(x)}$. Then, since $f_* \circ g_*
+    \item Consider $\id: \R^n \to \R^n$. Since $\R^n$ is contractible, $\id$ is homotopic to a constant map, call it $\lambda$. Then, notice that $\Pi(\id) = \id_{\Pi(\R^n)}$ which maps $\Pi(\R^n)$ to itself (which has one object for each point in $\R^n$). But $\Pi(\lambda)$ maps every object $x \in \Pi(\R^n)$ to the same object $\lambda(x)\in \Pi(\R^n)$. Thus, these maps are not equal.  
+\end{enumerate}
+\end{solution}
 
 
 

@@ -17,11 +17,13 @@
 
 
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem*}{Theorem}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{prop}[theorem]{Proposition}
 \newtheorem{remark}[theorem]{Remark}
+
 
 
 
@@ -46,10 +48,10 @@
 
 \setlength{\hfuzz}{4pt}
 
-\newcommand{\calC}{\mathcal{C}}
-\newcommand{\calF}{\mathcal{F}}
 \let\H\relax
+\let\P\relax
 \newcommand{\H}{\mathbb H}
+\newcommand{\P}{\mathbb P}
 \newcommand{\C}{\mathbb C}
 \newcommand{\N}{\mathbb N}
 \newcommand{\Q}{\mathbb Q}
@@ -65,18 +67,20 @@
 \newcommand{\norm}[1]{\left\vert\left\vert#1\right\vert\right\vert}
 \newcommand{\dbar}{\overline{\partial}}
 \let\d\relax
-\let\calF\relax
 \newcommand{\d}{\partial}
 \newcommand{\calO}{\mathcal{O}}
 \newcommand{\calF}{\mathcal{F}}
 \newcommand{\calG}{\mathcal{G}}
 \newcommand{\calH}{\mathcal{H}}
 \newcommand{\calE}{\mathcal{E}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+
 
 \let\1\relax
 \newcommand{\1}{\mathbf{1}}
 \newcommand{\fr}[2]{\left(\frac{#1}{#2}\right)}
-
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO:} #1}}
 \newcommand{\vecz}{\mathbf{z}}
 \newcommand{\vecr}{\mathbf{r}}
 \DeclareMathOperator{\Cinf}{C^{\infty}}
