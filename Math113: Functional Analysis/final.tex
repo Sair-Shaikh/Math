@@ -20,14 +20,14 @@
 \begin{solution}
     First assume that $\rho_1$ and $\rho_2$ are strongly equivalent. Then, there exist positive constants $c$ and $d$ such that:
     \[c \|x - y\|_1 \leq \|x - y\|_2 \leq d \|x - y\|_1\quad \text{for all } x, y \in X \]
-    Using Problem 5, we note that $\rho_1$ and $\rho_2$ are equivalent if and only if they have the same convergent sequences. Thus, let $(x_n) \subset (X, \rho_2)$ converge to $x$. Let $\epsilon > 0$. Then, there exists $N$ such that for all $n \geq N$, we have: 
+    Using Problem 10, we note that $\rho_1$ and $\rho_2$ are equivalent if and only if they have the same convergent sequences. Thus, let $(x_n) \subset (X, \rho_2)$ converge to $x$. Let $\epsilon > 0$. Then, there exists $N$ such that for all $n \geq N$, we have: 
     \[ \rho_2(x_n, x) < c \cdot \epsilon\]
     Then, since $c > 0$, we have for all $n \geq N$:
     \[ \rho_1(x_n, x) \leq \frac{1}{c}\rho_2(x_n, x) < \epsilon\]
     Thus, $(x_n) \to x$ in $(X, \rho_1)$. Moreover, manipulating the inequalities above, we also have: 
     \[\frac{1}{d} \|x - y\|_2 \leq \|x - y\|_1 \leq \frac{1}{c} \|x - y\|_2 \quad \text{for all } x, y \in X \]
-    Then, as $\frac{1}{d} > 0$, we can use the same argument to show that a sequence converging in $(X, \rho_1)$ also converges in $(X, \rho_2)$. Thus, $\rho_1$ and $\rho_2$ have the same convergent sequences and thus, by Problem 5, they are equivalent. \bbni
-    Next, assume that $\rho_1$ and $\rho_2$ are equivalent, i.e. they generate the same topology on $X$. Then, by Problem 5, they have the same convergent sequences. Assume to the contrary that there is no such $c > 0$ such that $\norm{x-y}_1 \leq c\cdot \norm{x-y}_2$ for all $x, y \in X$. Thus, for each $n \in \N$, there exists $x_n, y_n \in X$ such that:
+    Then, as $\frac{1}{d} > 0$, we can use the same argument to show that a sequence converging in $(X, \rho_1)$ also converges in $(X, \rho_2)$. Thus, $\rho_1$ and $\rho_2$ have the same convergent sequences and thus, by Problem 10, they are equivalent. \bbni
+    Next, assume that $\rho_1$ and $\rho_2$ are equivalent, i.e. they generate the same topology on $X$. Then, by Problem 10, they have the same convergent sequences. Assume to the contrary that there is no such $c > 0$ such that $\norm{x-y}_1 \leq c\cdot \norm{x-y}_2$ for all $x, y \in X$. Thus, for each $n \in \N$, there exists $x_n, y_n \in X$ such that:
     \[ \norm{x_n-y_n}_1 > n \cdot \norm{x_n-y_n}_2\]
     Thus, noting that $\norm{x_n-y_n}_1 > n > 0$ by the previous inequality, we get:
     \[\frac{\norm{x_n-y_n}_2}{\norm{x_n-y_n}_1} < \frac{1}{n}\]
@@ -50,22 +50,42 @@
     Let $X$ be a Banach space and $Y$ a closed subspace. We say that $Y$ is \emph{complemented} in $X$ if there is a closed subspace $Z$ such that $X = Y \oplus Z$. Show that $Y$ is complemented in $X$ if and only if there is a bounded linear map $P : X \to X$ such that $P = P^2$ and $P(X) = Y$. That is, $Y$ is complemented if and only if there is a continuous projection $P$ with range $Y$. (To show $P$ is continuous, I used the Closed Graph Theorem.)
 \end{problem}
 \begin{solution}
-    First, assume that $Y$ is complemented in $X$, i.e. there exists a subspace $Z$ such that $X = Y \oplus Z$. Then, every $x \in X$ can be written uniquely as $x = y+z$ for $y \in Y$ and $z \in Z$. Define the map $P: X \to X$ by $P(x) = y$. We show that $P$ is a bounded linear map satisfying $P = P^2$ and $P(X) = Y$. \bbni
+    First, assume that $Y$ is complemented in $X$, i.e. there exists a subspace $Z$ such that $X = Y \oplus Z$. Then, every $x \in X$ can be written uniquely as $x = y+z$ for $y \in Y$ and $z \in Z$. Define the map $P: X \to X$ by $P(x) = y$ (this is well-defined by the uniqueness of the direct sum decomposition). We show that $P$ is a bounded linear map satisfying $P = P^2$ and $P(X) = Y$. \bbni
     First, we show linearity. Let $x_1, x_2 \in X$ and $\alpha \in \F$. Let $x_1 = y_1 + z_1$ and $x_2 = y_2 + z_2$ for $y_1, y_2 \in Y$ and $z_1, z_2 \in Z$. Then, we have:
     \begin{align*}
         P(\alpha x_1 + x_2) &= P(\alpha(y_1 + z_1) + (y_2 + z_2)) \\
-        &= \alpha P(y_1) + \alpha P(z_1) + P(y_2) + P(z_2) \\
+        &= P((\alpha y_1 + y_2)+(\alpha z_1 + z_2)) \\
         &= \alpha y_1 + y_2 \\
         &= \alpha P(x_1) + P(x_2)
     \end{align*}
-    Hence, $P$ is linear. \bbni
-    Next, we use the Closed Graph Theorem to show that $P$ is bounded. Let $x_n \to x$ in $X$ and $P(x_n) \to y'$ in $X$. Let $x = y+z$ where $y \in Y, z \in Z$. We need to show that $y' = P(x) = y$. Since $x_n \to x$, we can write $x_n = y_n + z_n$ for $y_n \in Y$ and $z_n \in Z$. Then, note that:
+    where we notice that $\alpha y_1 + y_2 \in Y$ and $\alpha z_1 + z_2 \in Z$ as they are subspaes. Hence, $P$ is linear. \bbni
+    Next, we use the Closed Graph Theorem to show that $P$ is bounded. Let $x_n \to x$ in $X$ and $P(x_n) \to y'$ in $X$. Let $x = y+z$ where $y \in Y, z \in Z$. We need to show that $y' = P(x) = y$. We can write $x_n = y_n + z_n$ for $y_n \in Y$ and $z_n \in Z$. Then, note that:
     \[ P(x_n) = y_n \]
-    Thus, by uniqueness of limits (Hausdorff space), it suffices to show that $y_n \to y$. Notice that since $X = Y \oplus Z$, we have an (vector space) isomorphism from $X \to Y \times Z$ given by $x' \mapsto (y', z')$ where $x' = y'+z'$, $y' \in Y, z' \in Z$ is the unique decomposition. Bijectivity and linearity are both immediate. \todo{What?} Since $Y$ and $Z$ are closed, they are Banach spaces with the subspace topology. Using the results of Problem 27, we conclude that $Y \times Z$ is a Banach space under the product metric $\delta((y_1, z_1), (y_2, z_2)) = \norm{y_1 - y_2} + \norm{z_1 - z_2}$. Moreover, since $(x_n) \to x$ in $X$, we must have $(y_n) \to y$ in $Y$ and $(z_n) \to z$ in $Z$ (Problem 27). Thus, we have shown that: 
+    Thus, by uniqueness of limits (Hausdorff space), it suffices to show that $y_n \to y$. Notice that since $X = Y \oplus Z$, we have an bounded linear bijection $\Psi: X \to Y \times Z$ given by $x' \mapsto (y', z')$ where $x' = y'+z'$, $y' \in Y, z' \in Z$ is the unique decomposition, and $Y \times Z$ has the product metric $\delta((y_1, z_1), (y_2, z_2)) = \norm{y_1 - y_2} + \norm{z_1 - z_2}$. By the assumption of Problem 27, as $Y$ and $Z$ are closed, hence Banach with the inherited metric, $Y \times Z$ is Banach under the produce metric. Bijectivity, linearity, and boundedness are immediate. We show this quickly: 
+    \begin{itemize}
+        \item If $\Psi(x') = 0 \in Y \times Z$, then if $x' = y' + z'$ with $y' \in Y$ and $z' \in Z$, we must have $y' = z' = 0$. Thus, $x' = 0$. $\Psi$ is injective. 
+        \item For $(y', z') \in Y \times Z$, we let $x' = y'+z' \in X$. Then, $\Psi(x') = (y', z')$. Thus, $\Psi$ is surjective. 
+        \item For linearity, let $x_1' = y_1' + z_1'$ and $x_2' = y_2' + z_2'$ be in $X$ and $\alpha \in \F$. Then, we have:
+        \begin{align*}
+            \Psi(\alpha x_1' + x_2') &= \Psi(\alpha(y_1' + z_1') + (y_2' + z_2')) \\
+            &= \Psi((\alpha y_1' + y_2') + (\alpha z_1' + z_2')) \\
+            &= (\alpha y_1' + y_2', \alpha z_1' + z_2') \\
+            &= \alpha(y_1', z_1') + (y_2', z_2') \\
+            &= \alpha \Psi(x_1') + \Psi(x_2')
+        \end{align*}
+        \item For boundedness, let $x' = y' + z' \in X$. Then, we have:
+        \begin{align*}
+            \norm{\Psi(x')} &= \norm{(y', z')} \\
+            &= \norm{y'} + \norm{z'} \\
+            &\leq 2\max(\norm{y'}, \norm{z'}) \\
+            &\leq 2\norm{x'}
+        \end{align*}
+        where the last inequality follows as $Y \cap Z = \{0\}$.
+    \end{itemize}
+    Moreover, since $\Psi$ is continuous, if we have $(x_n) \to x$ in $X$, we must have $(y_n, z_n) \to (y, z) \in Y \times Z$. Thus, $(y_n) \to y$ in $Y$ and $(z_n) \to z$ in $Z$ (Problem 27). Thus, we have shown that: 
     \[ (P(x_n)) = (y_n) \to y = P(x)\]
-    Thus, $P$ is continuous and bounded by the Closed Graph Theorem. \\
-    \todo{Check this argument!} \bbni
-    By definition of $P$, we have that $P(x) \in Y$ for all $x \in X$. Thus, $P(X) \subset Y$. Moreover, also by definition, we have $P(y) = y$ for $y \in Y$. This implies $Y = P(Y) \subset P(X)$. Thus, $P(X) = Y$. \bbni
+    Thus, $P$ is continuous and bounded by the Closed Graph Theorem. \bbni    
+    By definition of $P$, we have that $P(x) \in Y$ for all $x \in X$. Thus, $P(X) \subset Y$. Moreover, also by definition, we have $P(y) = y$ for $y \in Y$. This implies $Y = P(Y) \subset P(X)$. Thus, $P(X) = Y$. Also note that for $z \in Z$, we have $P(z) = 0$. \bbni
     Finally, for any $x \in X$, as $P(x) \in Y$, we have that $P$ acts as the identity on $Y$. Thus, we have:
     \[ P^2(x) = P(x)\]
     Hence, $P = P^2$. \bbni
@@ -73,29 +93,17 @@
     First, we show that $P$ is the identity on $Y$. Let $y \in Y$. Then, there exists $x \in X$ such that $P(x) = y$ as $P(X) = Y$. Then, 
     \[ P(y) = P^2(x) = P(x) = y\]
     Thus, $P$ acts as the identity on $Y$. \bbni 
-    Let $Z = \ker(P)$. Since $\{0\}$ is closed, $Z = P^{-1}(0)$ is closed as $P$ is continous. Moreover, since $P$ is the identity on $Y$, for $y \in Y$, $P(y) = 0$ implies $y = 0$. Thus, $Y \cap Z = \{0\}$. Hence, we only need to show that $X = Y \oplus Z$.  \bbni    
-    Consider the map $I-P \in \mathcal L(X)$, where $I$ is the identity map. We claim that that $(I-P)^2 = I-P$ and $(I-P)(X) = Z$. To see this, note that for $x = y+z \in X$, with $y \in Y$ and $z \in Z$, we have:
-    \[ (I-P)(x) = (I-P)(y+z) = (y-P(y))+(z-P(z)) = (y-y)+(z-0) = z\]
-    Thus, $(I-P)(X) = Z$. Moreover, if $z \in Z$, we have: 
+    Let $Z = \ker(P)$. Since $\{0\}$ is closed, $Z = P^{-1}(0)$ is closed as $P$ is continous. Moreover, since $P$ is the identity on $Y$, for $y \in Y$, $P(y) = 0$ implies $y = 0$. Thus, $Y \cap Z = \{0\}$. Hence, we only need to show that $X = Y + Z$.  \bbni    
+    Consider the map $I-P \in \mathcal L(X)$, where $I$ is the identity map. We claim that that $(I-P)^2 = I-P$ and $(I-P)(X) = Z$. To see this, note that for $x \in X$, we have:
+    \[ P(I-P)(x) = Px-P^2(x) = 0 \]
+    Thus, $(I-P)(x) \in \ker(P) = Z$. Thus, $(I-P)(X) \subset Z$. Then, take $z \in Z$ and note: 
     \[ (I-P)(z) = z-P(z) = z\]
-    Thus, $(I-P)$ acts as the identity on $Z$. Thus, $Z = (I-P)(Z) \subset (I-P)(X)$. Additionally, for $x \in X$, as $(I-P)(x) \in Z$, as $(I-P)$ acts as the identity on $Z$, we have: 
+    Thus, $Z \subseteq (I-P)(X)$. Hence, we have $(I-P)(X) = Z$ and that $(I-P)$ acts as the identity on $Z$. \bbni
+    Additionally, for $x \in X$, as $(I-P)(x) \in Z$, and $(I-P)$ acts as the identity on $Z$, we have: 
     \[ (I-P)^2(x) = (I-P)(x)\]
     Finally, as we can write the identity map as $I = P + (I-P)$, we have a unique way to write, for every $x \in X$, 
     \[ x = P(x) + (I-P)(x)\]
-    with $P(x) \in Y$ and $(I-P)(x) \in Z$. Thus, we have $X = Y \oplus Z$ and $Y$ is complemented by $\ker(P)$. \bbni
-
-
-
-
-
-
-    % Noting that $x_n$ is Cauchy, we claim that $y_n$ and $z_n$ are also Cauchy. Assume $y_n$ was not Cauchy, there there exists $\epsilon > 0$ such that for all $N$, there exists $n, m \geq N$ such that $\norm{y_n - y_m} \geq \epsilon$.
-    
-    
-    % We claim that for $x = y+z \in X$, with $y \in Y$, $z \in Z$, that we must have $P(y) = y$. For any $y \in Y$, we have that $y = P(x)$ for some $x \in X$, as $P(X) = Y$. Then, 
-    % \[ P(y) = P^2(x) = P(x) = y\]
-    % Thus, $P$ is the identity on $Y$. Next, write $x = P(x) + (x - P(x))$. 
-    
+    with $P(x) \in Y$ and $(I-P)(x) \in Z$. Thus, we have $X = Y \oplus Z$ and $Y$ is complemented by $\ker(P)$.    
 \end{solution}
 \newpage
 
@@ -105,8 +113,8 @@
 \begin{solution}
     We will write $[x]$ for $q(x)$ throughout this solution. \bbni
     First assume that $Y = 0$, then $X = X/Y = Z$. In this case, let $\Psi$ be the identity map, which is clearly a continous isomorphism. Next, assume $Z = \{0\}$. Then, $X = Y$ and thus, $X/Y = \{0\}$. Thus, let $\Psi$ be the identity map. This is also a continous isomorphism. \bbni
-    Now, we assume that both $Y$ and $Z$ are proper subspaces of $X$. By the previous problem, as $Z$ is closed and complemented, we know that there exists a continous projection $P: X \to Z$. Additionally, we know that $\ker(P) = Y$ from the proof of the previous problem. \todo{Check this!} \bbni
-    Then, using Problem 31, since $Y \subset \ker(P)$ is a proper closed subspace, there exists a unique bounded linear map $\Psi: X/Y \to X$ satisfying $\Psi([x]) = P(x)$ for all $x \in X$ and satisfying $\norm{\Psi} = \norm{P}$. Since $P(X) = Z$, we actually have $\Psi: X/Y \to Z$. Thus, we only need to show that $\Psi$ is a bijection. \bbni
+    Now, we assume that both $Y$ and $Z$ are proper subspaces of $X$. By the previous problem, as $Z$ is closed and complemented, we know that there exists a continous projection $P: X \to Z$. Additionally, we know that $\ker(P) = Y$ from the proof of the previous problem. \bbni
+    Then, using Problem 31, since $Y \subset \ker(P)$ is a proper closed subspace, there exists a unique bounded linear map $\Psi: X/Y \to X$ satisfying $\Psi([x]) = P(x)$ for all $x \in X$ and satisfying $\norm{\Psi} = \norm{P}$ (hence it is bounded). Since $P(X) = Z$, we actually have $\Psi: X/Y \to Z$. Thus, we only need to show that $\Psi$ is a bijection. \bbni
     To show injectivity, let $[x]\in X/Y$ be such that $\Psi([x]) = 0$. Then, $P(x) = 0$, which implies that $x \in Y = \ker(P)$. Thus, $[x] = [0]$. Hence, $\Psi$ is injective. \bbni
     To show surjectivity, let $z \in Z \subset X$. Then, note that: 
     \[ \Psi([z]) = P(z) = z\]
@@ -129,9 +137,9 @@
     \bbni
     \begin{enumerate}
         \item Let $(x^{(k)}) \subset c_0$ be a sequence converging to $x \in \ell^\infty$. We need to show that $x \in c_0$. \bbni
-        Let $\epsilon > 0$. Since $x^{(k)} \to x$, there exists $N$ such that for all $k \geq N$, we have:
+        Let $\epsilon > 0$. Since $x^{(k)} \to x$, there exists $N \in \N$ such that for all $k \geq N$, we have:
         \[ \norm{x^{(k)} - x}_\infty < \frac\epsilon 2\]
-        Moreover, since $x^{(N)} \in c_0$, there exists $M$ such that for all $n \geq M$, we have: 
+        Moreover, since $x^{(N)} \in c_0$, there exists $M \in \N$ such that for all $n \geq M$, we have: 
         \[ |x^{(N)}_n| < \frac\epsilon 2\]
         Thus, for all $n \geq M$, we have: 
         \begin{align*}
@@ -140,11 +148,11 @@
             &< \frac\epsilon 2 + \frac\epsilon 2 \\
             &= \epsilon
         \end{align*}
-        Thus, $\lim_n |x_n| = 0$. Therefore, $x \in c_0$, and hence $c_0$ is closed in $\ell^\infty$.
+        Thus, $\lim_n x_n = 0$. Therefore, $x \in c_0$, and hence $c_0$ is closed in $\ell^\infty$.
         \item Let $x \in \ell^\infty$. Recall the quotient norm is defined as: 
         \[ \norm{q(x)} = \inf\{ \norm{x-y}_\infty: y \in c_0 \} = \inf\{ \norm{x+y}_\infty: y \in c_0 \}\]
-        Pick $(y^{(k)}) \subset c_0$ such that $y_i^{(k)} = x_i$ for $i < k$ and $y_i^{(k)} = 0$ for $i \geq k$. Note that by definition, $\lim_n y^{(k)}_n = 0$. Notice that since the first $k$ entries of $x-y^{(k)}$ are $0$, we have:
-        \[ \norm{x-y^{(k)}} = \sup_{n\geq k} |x_n-y_n| = \sup_{n\geq k} |x_n|\]
+        Pick $(y^{(k)}) \subset c_0$ such that $y_i^{(k)} = x_i$ for $i < k$ and $y_i^{(k)} = 0$ for $i \geq k$. Note that by definition, $\lim_n y^{(k)}_n = 0$ for all $k$ (thus they are in $c_0$). Notice that since the first $k$ entries of $x-y^{(k)}$ are $0$, we have:
+        \[ \norm{x-y^{(k)}}_\infty = \sup_{n\geq k} |x_n-y_n| = \sup_{n\geq k} |x_n|\]
         Using this, we compute: 
         \begin{align*}
             \norm{q(x)} &= \inf\{\norm{x-y}_\infty: y \in c_0\} \\
@@ -152,12 +160,13 @@
             &= \inf_k \sup_{n \geq k} |x_n| \\
             &= \limsup_n |x_n|
         \end{align*}
-        Where the last equality follows as $\sup_{n \geq k'} |x_n| \leq \sup_{n \geq k} |x_n|$ for all $k' \geq k$, i.e., since it is non-increasing, the infimum is the limit. \todo{Check this!} \bbni
+        Where the last equality follows as $\sup_{n \geq k'} |x_n| \leq \sup_{n \geq k} |x_n|$ for all $k' \geq k$, i.e., since it is non-increasing, the infimum is the limit. \bbni
         To show the other direction, we need to show that $\norm{q(x)}$ gets arbitrarily close to $\limsup_n |x_n|$, i.e. for $\epsilon > 0$, we have: 
         \[ \norm{q(x)} \geq \limsup_n |x_n| - \epsilon\]
-        Let $y \in c_0$ be arbitrary. Then, there exists $N$ such that $|y_n| < \epsilon$. Then, we have:
+        Let $y \in c_0$ be arbitrary. Then, there exists $N \in \N$ such that for all $n \geq N$, $|y_n| < \epsilon$. Then, we have:
         \begin{align*}
             \norm{x+y}_\infty &\geq \limsup_n |x_n + y_n| \\
+            &\geq \limsup_n \mid |x_n| - |y_n|\mid \\
             &\geq \limsup_n |x_n| - \limsup_n |y_n| \\
             &\geq \limsup_n |x_n| - \epsilon
         \end{align*}
@@ -165,6 +174,7 @@
         \[ \norm{q(x)} \geq \limsup_n |x_n| - \epsilon\]
         Therefore, we conclude:
         \[ \norm{q(x)} = \limsup_n |x_n|\]
+        (For this argument, I later realized that we just know that $\limsup_n |y_n| = \lim_n |y_n| = 0$ as $y \in c_0$, so we can show this without using any $\epsilon$.)
     \end{enumerate}
 \end{solution}
 \newpage
@@ -173,7 +183,8 @@
     Let $E$ and $F$ be closed subspaces of a Hilbert space $H$ with $\dim E < \infty$ and $\dim E < \dim F$. Show that $E^\perp \cap F \neq \{0\}$.
 \end{problem}
 \begin{solution}
-    Assume for the sake of contradiction that $E^\perp \cap F = \{0\}$. Since $E$ is closed, we can write $H = E \oplus E^\perp$. Then, consider the projection map $P : H \to E$. For $f \neq 0 \in F$, we have $f \not\in E^\perp$. Thus, $P(f) \neq 0$. Taking the contrapositive, this implies for $f \in F$, $P(f) = 0$ if and only if $f = 0$. Thus, $P|_F$ is injective. Since $\dim E < \infty$ and $\dim E < \dim F$, this is a contradiction. Thus, $E^\perp \cap F \neq \{0\}$.
+    Assume for the sake of contradiction that $E^\perp \cap F = \{0\}$. Since $E$ is closed, we can write $H = E \oplus E^\perp$. Then, consider the projection map $P : H \to E$. For $f \neq 0 \in F$, we have $f \not\in E^\perp$. Thus, $P(f) \neq 0$. \bbni  
+    Taking the contrapositive, we have that for $f \in F$, $P(f) = 0$ implies $f = 0$. Thus, $P|_F$ is injective. Since $\dim E < \infty$ and $\dim E < \dim F$, this is a contradiction. Thus, $E^\perp \cap F \neq \{0\}$.
 \end{solution}
 \newpage
 
@@ -188,9 +199,8 @@
     Note that by the definition of the weak topology, $\phi_h$ is continuous for all $h \in H$. Thus, $\phi_h \circ T: (H, \norm{\cdot}) \to \F$ is a composition of continuous maps, and hence is continuous. Thus, $\phi_h \circ T$ is bounded for all $h \in H$. \bbni 
     Now, let $x_\lambda \to x \subset (H, \norm{\cdot})$ be a convergent net. Then, since $\phi_h \circ T$ is continuous, by Problem 48, we have that:
     \[ \phi_h(T(x_\lambda))  \to \phi_h(T(x))\]
-    Then, note that $T(x_\lambda)$ is a net, such that for each $\phi_h$, we have $\phi_h(T(x_\lambda)) \to \phi_h(T(x))$. Moreover, as we proved in class, every functional in $H^*$ is of the form $\phi_h$. Thus, by Problem 49, we have that $T(x_\lambda) \to T(x)$ in the weak topology. \bbni
+    Then, note that $T(x_\lambda)$ is a net, such that for each $\phi_h$, we have $\phi_h(T(x_\lambda)) \to \phi_h(T(x))$. Moreover, as we proved in class, every functional in $H^*$ is of the form $\phi_h$ for some $h \in H$. Thus, as $\phi_h(T(x_\lambda)) \to \phi_h(T(x))$ for all functionals $\phi_h \in H^*$, by Problem 49, we have that $T(x_\lambda) \to T(x)$ in the weak topology. \bbni
     Thus, we have shown that $T$ takes a convergent net to a convergent net. By Problem 48, this implies that $T$ is continuous. Thus, $T$ is bounded.    
-    \todo{Check this whole thing!}
 \end{solution}
 
 
