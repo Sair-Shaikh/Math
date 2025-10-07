@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+
+
+\begin{problem}{6}
+    Prove that 
+    \[ \text{STRONGCON} := \{ \langle G\rangle : G \text{ is a strongly connected directed graph } \}\] 
+    is NL-complete.
+\end{problem}
+
+\begin{proof}
+    To show that STRONGCON is NL-complete, we need to show that $\text{STRONGCON} \in \text{NL}$ and STRONGCON is NL-hard. We do each of these seperately. \bbni
+    First, we show that STRONGCON is in NL. It suffices to show that $\text{STRONGCON} \in \text{coNL}$ as NL = coNL. Thus, we consider the complement: 
+    \[\overline{\text{STRONGCON}} = \{ \langle G \rangle : \exists u, v: \text{ there is no path } u \to v\}\]
+    We need to show that this is in NL. We do this in the following way: 
+    \begin{enumerate}
+        \item Guess $u$ and $v$ non-deterministically. Concretely we can do this by counting up from $1$ to $|V|$ (we can figure out $|V|$ by parsing the input and maintaining a counter) in a binary counter and choosing whether to stop at each particular point. Thus, this can be done in $O(\log(|V|))$ space. 
+        \item Simulate the NDTM associated to $\overline{\text{STCONN}}$ on $\langle G, u, v \rangle$. We have $G$ on our input tape and $u, v$ on the work-tape, so this requires only a slight modification and can be done in log-space. Note that since NL = coNL, $\overline{\text{STCONN}} \in \text{NL}$ thus this NDTM exists. 
+        \item If the simulation ACCEPTS, then there is no path from $u$ to $v$, thus, $G$ is not strongly connected, and we ACCEPT. Otherwise, we REJECT. This takes no space.
+    \end{enumerate}
+    Thus, we conclude that $\overline{\text{STRONGCON}} \in \text{NL}$. Thus, $\text{STRONGCON} \in \text{coNL} = \text{NL}$. \bbni
+    Finally, we need to show STRONGCON is NL-hard. Since STCONN is NL-hard, it suffices to show a log-space reduction from STCONN to STRONGCON. \bbni 
+    Let $\langle G, s, t \rangle$ be some encoding of a graph and two vertices. We first create a graph $G'$ with the property that: 
+    \[ \text{there is a path } s \to t \text{ in } G \iff G' \text{ is strongly connected} \]
+    Let $G'$ have the same vertex set as $G$, but with the following edges added: 
+    \begin{itemize}
+        \item Edge $(u, s)$ for all $u \in V(G)$ if they do not exist
+        \item Edge $(t, v)$ for all $v \in V(G)$ if they do not exist
+    \end{itemize}
+    We show that $G'$ satisfies the given property. First assume there is a path from $s \to t$ in $G$. Let $u, v \in V(G')$ be any vertices. We know there exists an edge $(u, s)$, path $s \to t$, and edge $(t, v)$. Thus, there is a path from $u \to v$. Since $u, v$ were arbitrary, $G'$ is strongly connected. \\
+    Next, assume that $G'$ is strongly connected. Then, there is at least one path from $s \to t$ in $G'$. Let $p$ be (one of) the shortest path(s) from $s$ to $t$. We claim that $p$ only uses edges already present in $G$. Indeed, if any edge $(u, s)$ appeared in $p$, the path $p$ can be shortened by taking the section after this edge. By the minimality of $p$, no such edge exists in $p$. Similarly, we see that no edge $(t, v)$ can exist in $p$. In particular, $p$ avoids all the edges we appended to $G$ to create $G'$. Thus, $p$ only uses edges in $G$, hence there is a path from $s \to t$ in $G$. \bbni
+    Note that in terms of our languages, we can write this property as: 
+    \[ \langle G, s, t \rangle \in \text{STCONN} \iff \langle G' \rangle \in \text{STRONGCON}\]
+    We only need to show that we can construct $G'$ from $G$ in log-space. We only need to stream the list of vertices and the list of edges for $G'$. Streaming the list of vertices and the edges already contained in $G$ requires no additional space, as we just read the input and regurgitate it. Thus, we only need to worry about outputting $(u, s)$ and $(t, u)$ for all $u \in V(G)$. But this can be done in logspace as it only requires one to maintain a counter to track which vertex we are on as we loop over the vertex set, which is of size $O(\log(|V|))$, which is at most logarithmic in the description of the entire graph ($s$ and $t$ can be read from the input tape each time). \bbni 
+    Thus, we have shown a logspace reduction of STCONN to STRONGCON. Hence, STRONGCONN is NL-hard, therefore NL-complete. \bbni 
+    
+    
+    
+\end{proof}
+
+
+
+
+
+\end{document}
