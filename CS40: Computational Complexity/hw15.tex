@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+
+
+
+% \begin{problem}{29}
+% Prove that if a language $A$ has a PCP-verifier using $r$ random bits and $q$ \emph{adaptive} queries (i.e., the locations to be queried may depend on the outcomes of previous queries), then 
+% \[ A \in \mathrm{PCP}[r, 2^q] \]
+% \end{problem}
+
+% \begin{solution}
+%     We consider the decision tree of the PCP-verifier using $q$ adaptive queries associated to $A$. Let $A_r$ be the instance of $A$ using some fixed string $r$ as ``randomness''. 
+% \end{solution}
+
+% \newpage
+
+\begin{problem}{30}
+Prove that for every constant $q$, we have
+\[ \mathrm{PCP}_{s : 1}[r, q] \subseteq \mathrm{PCP}_{1 - (1 - s)/q : 1}[r + \lceil \log q \rceil, 2]_{\{0,1\}^q}. \]
+
+\end{problem}
+
+\begin{solution}
+    Let $\Sigma = \{0, 1\}^q$. Let $A \in \mathrm{PCP}_{s : 1}[r, q]$, and let $V$ be the associated verifier. \bbni
+    
+    For each random string $r$, $V$ makes $q$ queries to $\pi$ to recieve $q$ binary answers. We wish to replace this with one super-query receiving a member of a larger alphabet $\Sigma$. Towards this goal, let $i_{1, u}, \cdots, i_{q, u}$ be the indices that $V$ would query given a proof string $\pi$ when run with randomness $u$. We can construct a table $T \in \Sigma^*$ from a proof string $\pi$ with $T[u] = (\pi(i_{1, u}), \cdots, \pi(i_{q, u}))$. Provided the table is filled honestly, a verifier $V'$ run with randomness $u$ can query $T[u]$ once and recieve the same information as $V$, and thus enact the same protocol. \bbni
+    However, a table may be filled dishonestly, i.e. not come from encoding a proof string as described above. To check for this, we additionally encode $\pi$ in $\Sigma^*$ by appending $q-1$ $0$s to each character, and then check one random bit of $T[u]$ against this $\pi$. Then, given any proof of this format, $(T, \pi)$ (concatenated as strings), the verifier $V'$ follows the following protocol: 
+    \begin{enumerate}
+        \item Use the first $r$ bits of randomness, $u$, to query $T[u]$. 
+        \item Use $u$ to determine the original query locations of $V$. Use the last $\lceil \log q \rceil$ bits of randomness to pick an index $j \in [1, \cdots, q]$. Query $\pi(i_{j, u})$. These steps are non-adaptive as we can always pre-compute and then query. 
+        \item Simulate $V$'s verification process on $T[u]$, reject if $V$ would have rejected. 
+        \item Check $T[u][j]$ against the extra bit $\pi(i_{j, u})$ to check $T[u]$ for consistency against $\pi$. Reject if different, otherwise accept. 
+    \end{enumerate}
+    We claim that this protocol shows that $A \in \mathrm{PCP}_{1 - (1 - s)/q : 1}[r + \lceil \log q \rceil, 2]_{\{0,1\}^q}$. The claim on the alphabet, query complexity, randomness complexity, as well as probabilistic polynomial runtime are clear. Thus, we only need to verify the completeness and the soundness. \bbni
+
+    First, assume $x \in A$. Then there exists a proof $\pi^*$ that makes $V$ accept $x$ with certainity. Using $\pi^*$, we can construct $T^*$ ``honestly'' as described above. Then, $V'$ run on $(T^*, \pi^*)$ passes Step 3 with certainity, as it recieves the same responses as $V$ and enacts the same computation. Moreover, since $T^*$ is constructed to be consistent with $\pi^*$, Step 4 passes with certainity. Thus, this protocol has completeness $1$ when deciding $A$. \bbni
+
+    Now consider $x \not \in A$. Let $(T, \pi)$ be an arbitrary proof string. We claim that $V'$ rejects $x$ with probability $\geq \frac{1-s}{q}$. Observe that $V$ rejects $x$ with probability $\geq 1-s$. Let $R \subseteq \{0,1\}^r$ be the set of values for the randomness that make $V$ reject (with proof string $\pi$). Then $\Pr[u \in R] \geq 1-s$ by definition. We claim that if $u \in R$, then $V'$ rejects $x$ (using randomness $u$ for the first $r$ bits) with probability $\geq \frac{1}{q}$. We condition on whether $T[u]$ is consistent with the corresponding values in $\pi$. 
+    \begin{enumerate}
+        \item If $T[u]$ is consistent with $\pi$, then $V'$ recieves the same responses as $V$ would (run with randomness $u$ and proof $\pi$). As $u \in R$, $V$ would reject, thus $V'$ would reject in Step 3 with certainity. 
+        \item If $T[u]$ is not consistent with $\pi$, then there is at least $1$ place where it is inconsistent. Thus, the probability of picking $j$ that leads to Step 4 rejecting is $\geq \frac{1}{q}$. Thus, the probability of rejecting is Step 3 or Step 4 is $\geq \frac{1}{q}$. 
+    \end{enumerate}
+    Thus, we have shown that: 
+    \[ \Pr[V'(x, u, T, \pi) = 0 | u \in R] \geq \frac{1}{q} \]
+    Then, we can use the law of total probability and the bounds computed before to compute:
+    \begin{align*}
+        \Pr[V'(x, u, T, \pi) = 0] &\geq \Pr[V'(x, u, T, \pi) = 0 | u \in R]\Pr[u \in R] \\
+        &\geq \left(\frac{1}{q}\right)(1-s)  = \left(\frac{1-s}{q}\right)
+    \end{align*}
+    Thus, the soundness error is as claimed: 
+    \[ \Pr[V'(x, u, T, \pi) = 1] \leq 1-\left(\frac{1-s}{q}\right) \]
+    Thus, we have shown $A \in \mathrm{PCP}_{1 - (1 - s)/q : 1}[r + \lceil \log q \rceil, 2]_{\{0,1\}^q}$. 
+    
+\end{solution}
+
+
+\end{document}

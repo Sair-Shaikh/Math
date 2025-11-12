@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+\begin{problem}{1}
+Suppose that $x \in \{0,1\}^n$ is an unknown $n$-bit string. A helper reveals to us the bits $\langle x, r^{(i)} \rangle$ (for $1 \le i \le n$) where the strings $r^{(1)}, \ldots, r^{(n)} \in_R \{0,1\}^n$ are chosen uniformly at random and independently. Describe a deterministic algorithm that successfully reconstructs $x$ from this information, with probability at least $1/4$. 
+\end{problem}
+
+\begin{solution}
+    The algorithm is as follows: Return $\sum_{i=1}^n \langle x, r^{(i)}\rangle r^{(i)}$. We need to show that this returns $x$ with probability at least $\frac{1}{4}$. We break this down into two claims: 
+    \begin{enumerate}
+        \item If $r^{(i)}$ are all linearly independent, then the algorithm returns correctly with certainity. 
+        \item The probability that $r^{(i)}$ are all linearly independent is at least $\frac{1}{4}$. 
+    \end{enumerate}
+    To show claim $(1)$, notice that if $r^{(i)}$ are linearly independent, they make up a basis as there are $n = \dim_{\mathbb{F}_2}(\{0,1\}^n)$ of them. Then, $x$ can be written as: 
+    \[ x = \sum_i \lambda_i r^{(i)}\]
+    where $\lambda_i = \langle x, r^{(i)} \rangle$ (linear algebra fact). Thus, 
+    \[ x = \sum_{i=1}^n \langle x, r^{(i)}\rangle r^{(i)} \]
+    Next, we show claim 2. Let $\overline{E}$ be the event that $r^{(1)}, \cdots, r^{(n-1)}$ are linearly independent. Then, we can write:  
+    \[ \Pr[\text{all $n$ indep}] = \Pr[ r^{(n)} \text{ lin. indep. of first n-1}| \overline{E}]\Pr[\overline{E}] \] 
+    Next, we analyze $\overline{E}$ by analyzing $E$, the event that the first $n-1$ are linearly dependent. Then, there exists $2 \leq i \leq n-1$ such that $r^{(1)}, \cdots, r^{(i-1)}$ are linearly independent but $r^{(i)}$ is linearly dependent on these. Note that $i = 1$ is not valid as a single vector is always linearly independent. Then, let $E_i$ be the events such that $r^{(i)}$ is dependent on the first $i-1$, given the first $i-1$ are linearly independent. Then, using the union bound: 
+    \[ \Pr[E] = \Pr\left[\bigcup_{i=2}^n E_i \right] \leq \sum_{i=2}^n \Pr[E_i] \]
+    Thus, we consider $\Pr[E_i]$. The first $i-1$ linearly independent vectors have a span of dimension $i-1$. Thus, the cardinality of their span is $2^{i-1}$. Thus, the probability that the next uniform independent random vector, $r^{(i)} \in \opspan\{r^{(i)}, \cdots, r^{(i-1)}\}$ is $\frac{2^{i-1}}{2^n}$. Thus, $\Pr[E_i] = \frac{2^{i-1}}{2^n}$. \bbni
+    Then, we calculate: 
+    \begin{align*}
+         \Pr[E]  &\leq \sum_{i=2}^n \Pr[E_i] \\
+         &= \frac{1}{2^{n-1}} + \frac{1}{2^{n-2}} + \cdots + \frac{1}{4} < \frac{1}{2} 
+    \end{align*}
+    where the inequality follows from the geometric series sum $\frac{1}{2}\sum_i^\infty 2^{-i} = \frac{1}{2}$, as a partial sum is smaller than the sum of the series as all terms are positive. Thus, overall, we have: 
+    \[\Pr[\overline{E}] \geq \frac{1}{2}\]
+    Next, note that by our previous argument for $E_i$, $\Pr[ r^{(n)} \text{ lin. indep. of first n-1}| \overline{E}] = \frac{2^{n-1}}{2^n} = \frac{1}{2}$. Combining these, we have: 
+    \[\Pr[\text{all $n$ indep}] = \Pr[ r^{(n)} \text{ lin. indep. of first n-1}| \overline{E}]\Pr[\overline{E}] \geq \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}\] 
+    That proves claim (2). Together with claim (1) this completes the proof. 
+
+\end{solution}
+
+
+\newpage
+
+\begin{problem}{2}
+A function $f : \{0,1\}^* \to \{0,1\}^*$ is said to be \emph{weakly one-way} if there exists a constant $d > 0$ such that for every randomized polynomial-time algorithm $A$ that attempts to invert $f$, for large enough $n$,
+\[
+\Pr_{x \in_R \{0,1\}^n} [A(f(x), 1^n) \notin f^{-1}(f(x))] > n^{-d}.
+\]
+
+Suppose we construct a new function family $F$ by setting 
+\[
+F(x_1, \ldots, x_m) = (f(x_1), \ldots, f(x_m)),
+\]
+where each $x_i \in \{0,1\}^n$ and $m = 2 n^{1+d}$. Prove that $F$ is a (strongly) one-way function, i.e., what we’ve defined in class as a “one-way function.” \\
+
+[Omitted part of the question] \bbni 
+
+Fix an $i \in [m]$ and, for this $i$, consider a single iteration of the inner loop, when \textsc{INVERT} is called with input $f(x)$. Intuitively, this iteration has some non-negligible probability of successfully returning a value for an average $x$. Let’s consider the good set $G_i$ of all $x$’s for which such success happens with probability at least $1/(2m n^c)$. Prove the following two claims.
+
+\begin{itemize}
+    \item \textbf{Claim 1.} There exists $i \in [m]$ such that 
+    \[
+    \Pr_{x \in_R \{0,1\}^n}[x \in G_i] \ge 1 - \frac{1}{2 n^d}.
+    \]
+    You’ll have to use the fact that $m = 2 n^{1+d}$ somewhere.
+
+    \item \textbf{Claim 2.} For the particular $i$ guaranteed by the previous claim, the probability that \textsc{INVERT} successfully outputs a value in the $i$th iteration of the outer loop is at least $1 - n^{-d}$. This probability is taken over both $x \in \{0,1\}^n$ (where $y = f(x)$ is the input to \textsc{INVERT}) and the internal randomness of \textsc{INVERT}. 
+
+    \textit{Hint:} Split the failure event into two parts: one where $x \in G_i$ and one where $x \notin G_i$.
+\end{itemize}
+
+Finally, using the two claims, obtain the contradiction that $f$ isn’t weakly one-way after all.
+
+\end{problem}
+
+
+\begin{solution}{Claim 1.}
+We will prove this by contrapositive. Assume that: 
+\[ \forall i \in [m]: \Pr_{x\in_R \{0, 1\}^n}[x \in G_i] < 1-\frac{1}{2n^d} \]
+We will show that this implies that $B$ cannot successfully invert with a high enough probability. \\
+Let $A$ be the event that all (randomly chosen) $x_i \in G_i$ for all $i \in [m]$ and $\overline{A}$ be the event that $x_i \not \in G_i$ for at least one $i$. Using law of total probability, we can write: 
+\[ \Pr_{\forall i: x_i \in_R \{0, 1\}^{n}}[B \text{ inverts}] = \Pr[B \text{ inverts} | A]\Pr[A] + \Pr[B \text{ inverts}|\overline{A}]\Pr[\overline{A}]\]
+where $B$ inverts implies inverting on $x_1, \cdots, x_m$. \bbni
+First, we bound $\Pr[A]$, noting that the $x_i$ are chosen independently, as follows: 
+\begin{align*}
+    \Pr[A] &= \Pr\left[\bigwedge_{i=0}^m x_i \in G_i\right] \\
+    &= \prod_{i=1}^m \Pr[x_i \in G_i] \\
+    &< (1-\frac{1}{2n^d})^m \\
+    &\leq e^{-\frac{2n^{1+d}}{2n^d}} = e^{-n}
+\end{align*}
+where we used $(1-\alpha) \leq e^{-\alpha}$ in the last step. Next, we will upper-bound $\Pr[B \text{ inverts} | \overline{A}]$. Define $E_i$ to be the event that $B$ sucessfully inverts given $x_i \not \in G_i$. Since $\overline{A}$ is the event that at least one $x_i \not \in G_i$, we can write: 
+\[ \Pr[B \text{ inverts}| \overline{A}]  \leq \Pr\left[\bigcup_{i=1}^m E_i\right]\]
+By definition of $G_i$, we know that $\Pr[E_i] < \frac{1}{2mn^c}$ for each $i$. Thus, using the union-bound, we get:
+\begin{align*}
+    \Pr[B \text{ inverts} | \overline{A}] \leq \sum_{i=1}^m \Pr[E_i] \leq m \cdot \frac{1}{2mn^c} = \frac{1}{2n^c}
+\end{align*}
+Using these two bounds, we conclude, 
+\begin{align*}
+    \Pr[B \text{ inverts}] &= \Pr[B \text{ inverts} | A]\Pr[A] + \Pr[B \text{ inverts}|\overline{A}]\Pr[\overline{A}] \\
+    &\leq \Pr[A] + \Pr[B \text{ inverts} | \overline{A}] \\
+    &< e^{-n} + \frac{1}{2n^c} \\
+    &= \frac{1}{n^c}
+\end{align*}
+where the last inequality is because $e^{-n} < \frac{1}{2n^c}$ for sufficiently large $n$. Thus, by contrapositive, as $B$ succeeds with probability $> n^{-c}$, we note that there is at least one such $i$ such that $\Pr[x \in G_i] \geq 1-\frac{1}{2n^d}$.
+\end{solution}
+\bbni
+
+\begin{solution}{Claim 2.}
+    Use the $i$ from the previous part to fix an iteration $i$ of the outer loop. Let $E$ be the event that INVERT does not invert $f(x)$ (in the $i$th outer loop). We want to show that: 
+    \[ \Pr[E] < \frac{1}{n^d}\]
+    where the probability is over the randomness of INVERT and $x$.  Using the law of total probability, we write this: 
+    \[ \Pr[E] = \Pr[E | x \in G_i]\Pr[x \in G_i] + \Pr[E | x \not \in G_i]\Pr[x \not \in G_i]\]
+    From the guarantee provided by the last part, we note that: 
+    \[ \Pr[x \not \in G_i ] \leq \frac{1}{2n^d}\]
+    Next, we look to bound $\Pr[E | x \in G_i]$. Let $E_j$ be the event that INVERT does not invert $f(x)$ on the $j$th iteration of the inner loop (still in the outer loop $i$). Then, from the definition of $G_i$, we note that: 
+    \[ \Pr[E_j | x \in G_i] < 1-\frac{1}{2mn^c}\]
+    Moreover, we have: 
+    \[ \Pr[E | x\in G_i] = \Pr\left[\bigcap_{i=1}^{2mn^{1+c}} E_j | x \in G_i\right]\]
+    Since the inner loops all share the same ith entry, i.e. $f(x)$, they only depend on the randomness of INVERT. In particular, as each inner loop iteration uses independent randomness for each of the other entries, the events $E_j$ are independent given any $x$. Thus, we can bound: 
+    \begin{align*}
+        \Pr[E | x \in G_i] &= \prod_{i=1}^{2mn^{1+c}} \Pr[E_j | x \in G_i] \\
+        &\leq \left(1-\frac{1}{2mn^c}\right)^{2mn^{1+c}} \\
+        &\leq e^{-\frac{2mn^{1+c}}{2mn^c}} \\
+        &= e^{-n} < \frac{1}{n^d}
+    \end{align*}
+    where the 2nd last inequality again uses $(1-\alpha) \leq e^{-\alpha}$, and the last holds for large enough $n$. Thus, for large enough $n$, we have: 
+    \[\Pr[E] < \frac{1}{n^d} \]
+    Thus, the probability that INVERT successfully inverts $f(x)$ in the $i$th iteration is at least $1-n^{-d}$. Since INVERT checks before returning an inversion, it only fails if it fails to return in any iteration of the outer loop. Since the probability INVERT successfully inverts in any outer loop iteration is at least as much as the probability it successfully inverts in the $i$th iteration, we conclude that INVERT is a randomized algorithm that can invert $f(x)$ with probability $\geq 1-n^{-d}$ (where the probability is over $x$ and the randomness of INVERT). Thus, $f$ is not weakly one-way.  
+\end{solution}
+
+
+
+
+
+\end{document}

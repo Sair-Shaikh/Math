@@ -3,4 +3,7 @@
 *.log
 *.synctex.gz
 *.DS_Store*
-*distractions*
+*Dataset*
+*Fq_tables*
+*.venv*
+*.vscode*
