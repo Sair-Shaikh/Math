@@ -4,6 +4,6 @@
 *.synctex.gz
 *.DS_Store*
 *Dataset*
-*Fq_tables*
+**/Fq_tables**
 *.venv*
 *.vscode*

@@ -13,15 +13,16 @@ import "magma_scripts/Utils.m" : ConvertToPolys, CppHeaderTextCubic, GetCubicCoe
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 NumQuadSols := function(K, A, B, C)
+    // This only counts affine solutions 
     if A eq 0 then 
         if B eq 0 then 
             if C eq 0 then 
                 return #K;
             else 
-                return 1;
+                return 0;
             end if;
         else 
-            return 2;
+            return 1;
         end if;
     else 
         L := B/A;
@@ -47,9 +48,11 @@ NumCubicSols := function(K, A, B, C, D)
         return 1+NumQuadSols(K, B, C, D); 
 
     else 
-        // From how we compute coefficients, it should already be depressed
-        assert A eq 1 and B eq 0;
-        P := C; Q := D;
+        // Make it depressed:
+        P := (B/A)^2 + (C/A);
+        Q := (B/A)*(C/A) + (D/A);
+
+
         if Q eq 0 then 
             if P eq 0 then  // t^3 = 0
                 return 1;
@@ -62,8 +65,13 @@ NumCubicSols := function(K, A, B, C, D)
             end if;
         else 
             if P eq 0 then // t^3 + Q = 0
+                // This part is not correct
                 if Q in {e^3 : e in K} then
-                    return 1;
+                    if (#K-1) mod 3 eq 0 then 
+                        return 3;
+                    else
+                        return 1;
+                    end if;
                 else       
                     return 0;
                 end if;
@@ -73,7 +81,6 @@ NumCubicSols := function(K, A, B, C, D)
             end if;
         end if;
     end if;
-
 end function;
 
 F := Open("Dataset/orbits_lines_secrtpt2.m", "r");

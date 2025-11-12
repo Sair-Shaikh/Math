@@ -4,13 +4,17 @@
 #include <iostream>
 #include <assert.h>
 #include <set>
-#include "tableio.h"
+#include "tables.h"
 
 #ifndef EXT_COEFFS
 #include "coeffs_quad.h"
 #endif
 
 unsigned NULL_Fq_elt = q;
+unsigned** mult;
+unsigned** divi;
+unsigned** quadratic_roots;
+
 
 // function prototypes
 // int contribution_of_fibre_over_P2_point(unsigned, unsigned, unsigned, const std::set<ff2k_t>&, int);

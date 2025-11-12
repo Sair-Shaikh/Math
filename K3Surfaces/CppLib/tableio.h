@@ -6,9 +6,7 @@
 #include <set>
 #include "constants.h"
 
-std::tuple<unsigned*, unsigned*, unsigned*> generate_orbit_tables();
-
-std::tuple<unsigned**, unsigned**, unsigned**, unsigned*, unsigned*, unsigned*> generate_all_tables();
+std::tuple<unsigned**, unsigned**, unsigned**, unsigned**, unsigned*, unsigned*> generate_all_tables();
 
 
 void write_table(unsigned* table, int size, std::string fname);
@@ -23,93 +21,6 @@ unsigned*** read_table(int size1, int size2, int size3, std::string fname);
 
 const std::string dirname = "/Users/sairshaikh/Math/K3Surfaces/Fq_tables/";
 
-std::tuple<unsigned**, unsigned**, unsigned**, unsigned*, unsigned*, unsigned*> generate_all_tables() {
-
-  unsigned **mult, **divi;
-  unsigned **quadratic_roots;
-
-  mult = new unsigned*[q];
-  divi = new unsigned*[q];
-  for (unsigned i = 0; i < q; i++) {
-    mult[i] = new unsigned[q];
-    divi[i] = new unsigned[q];
-  }
-
-
-  for (unsigned i = 0; i < q; i++) {
-    for (unsigned j = 0; j <= i; j++) {
-      
-      // main multiplication algorithm
-      unsigned a = i, b = j, ij = 0;
-      while (b != 0) {
-        // b = const + higher-deg part
-        if (b & 1) ij ^= a;
-        // kill const, divide higher-deg part by x
-        b >>= 1;
-        // multiply a by x
-        a <<= 1;
-        if (a & q) a ^= p;
-            }
-        mult[i][j] = ij;
-        mult[j][i] = ij;
-        divi[ij][i] = j;
-        divi[ij][j] = i;
-    }
-  }
-
-  // lookup table for roots of quadratics
-  // allocate and initialize
-  quadratic_roots = new unsigned*[q];
-  for (int i = 0; i < q; i++) {
-    quadratic_roots[i] = new unsigned[q];
-    for (int j = 0; j < q; j++) {
-      quadratic_roots[i][j] = 0;
-    }
-  }
-  // fill the table
-  for (int i = 0; i < q; i++)
-    for (int j = i; j < q; j++) {
-      // x^2 + ax + b = (x+i)(x+j)
-      unsigned a = i ^ j, b = mult[i][j];
-      quadratic_roots[a][b] = 1;
-      if (j > i)
-        quadratic_roots[a][b] = 2;
-    }
-
-  // Frobenius orbits
-  // allocate and initialize
-  unsigned *orbit_rep = new unsigned[q];
-  for (unsigned i = 0; i < q; i++)
-    orbit_rep[i] = q; // means null
-  
-  unsigned* orbit_size = new unsigned[q]; // only valid if i == orbit_rep[i]
-
-  // fill the tables
-  for (unsigned i = 0; i < q; i++) {
-    if (orbit_rep[i] != q) continue; // already filled
-    unsigned j = i;
-    int size = 1;
-    while (1) {
-      orbit_rep[j] = i;
-      j = mult[j][j];
-      if (j == i) {
-        orbit_size[i] = size;
-        break;
-      }
-      size++;
-    } 
-  }
-
-  // Artin-Schreier Solutions
-  unsigned* ASSols = new unsigned[q];
-    for (ff2k_t a = 0; a < q; ++a) {
-        ASSols[a]  = mult[a][a] ^ a;
-    }
-
-  return std::make_tuple(quadratic_roots,
-                         mult, divi, orbit_rep, orbit_size, ASSols);
-
-}
 
 /////////////////
 // Saving
@@ -138,7 +49,6 @@ void write_table(int* table, int size, std::string fname){
   file.close();
   return;
 }
-
 
 void write_table(unsigned** table, int size1, int size2, std::string fname){
 

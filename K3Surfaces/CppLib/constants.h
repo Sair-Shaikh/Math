@@ -57,13 +57,11 @@ const unsigned polynomials[] = {1, // placeholder
 };
 
 // Setup aliasing for the value of q.
-#ifndef N
-#define N 11
-#endif
+// #ifndef N
+// #define N 11
+// #endif
 
-const unsigned FINITEFIELDBITSIZE = N;
-const unsigned q = 1 << (FINITEFIELDBITSIZE);
-const unsigned p = polynomials_addington[FINITEFIELDBITSIZE];
-unsigned** mult;
-unsigned** divi;
-unsigned** quadratic_roots;
+// const unsigned FINITEFIELDBITSIZE = N;
+// const unsigned q = 1 << (FINITEFIELDBITSIZE);
+// const unsigned p = polynomials[FINITEFIELDBITSIZE];
+

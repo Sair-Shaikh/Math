@@ -141,7 +141,7 @@ def compile_and_run(cpp_lines):
         for i in range(8,12):
             # FQ_HEADERN = BASE_DIR / f"Fq_N{i}.h"
             # compile_cmd = ["g++","-std=c++17", f"-include{FQ_HEADERN}",f"-include{header_path}", str(CPP_FILE),"-o", str(executable),"-O2"]
-            compile_cmd = ["g++","-std=c++17",f"-include{header_path}", str(CPP_FILE),"-o", str(executable),"-O2",f"-DN={i}"]
+            compile_cmd = ["g++","-std=c++17",f"-include{header_path}", str(CPP_FILE),"-o", str(executable),"-O2",f"-DN={i}", "-DEXT_COEFFS=1"]
             subprocess.run(compile_cmd, check=True)
 
             # Run executable and capture output
