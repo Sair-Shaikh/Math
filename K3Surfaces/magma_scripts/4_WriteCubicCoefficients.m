@@ -77,19 +77,20 @@ NumCubicSols := function(K, A, B, C, D)
                 end if;
             else          // t^3 + Pt + Q = 0
                 // Just default to looping -- no need to Cardano's for such few solves
-                return #{x : x in K | x^3+P*x+Q eq 0};        
+                P; Q;
+                return #{e : e in K | e^3 + K!P*e + K!Q eq 0};        
             end if;
         end if;
     end if;
 end function;
 
-F := Open("Dataset/orbits_lines_secrtpt2.m", "r");
+F := Open("Dataset/orbits_lines_sec.m", "r");
 orbits := ReadObject(F);
 delete F;
 "Smooth Surfaces With A Secant Line: ", #orbits;
 
 batch := 1;
-fname := Sprintf("Dataset/CppCoeffs/container_cube_coeffs_table_%o.txt", batch);
+fname := Sprintf("Dataset/CppCoeffs/container_cube_coeffs_table_1%o.txt", batch);
 
 // Clear the coefficients file
 F := Open(fname, "w");
@@ -118,6 +119,12 @@ time for key in Keys(orbits) do
     f2_int := orbit["f2int"];
     f3_int := orbit["f3int"];
     f2, f3 := ConvertToPolys(f2_int, f3_int, R, G, Bit2, Bit3);  // Now f2, f3 are in R
+
+    if f2_int eq 1281 then 
+        perm := [ x[2], x[1], x[3], x[4], x[5]];
+        f2 := Evaluate(f2, perm);
+        f3 := Evaluate(f3, perm);
+    end if;
     
     // Pullback f2 to P2[ u : v : w ] with coefficients in F2[a, b, c] and divide by u to work with the blow-up
     subs_map := hom<R -> R3 | [ u*a, u*b, u*c, v, w]>;
@@ -169,9 +176,8 @@ time for key in Keys(orbits) do
         Embed(F2, Fq);
         corr := 0;
 
-        // First, find the number of rational points of X on the line -- should be at least 1
+        // First, find the number of rational points of X on the line
         rt_pts := NumCubicSols(Fq, Art, Brt, Crt, Drt);
-        assert rt_pts ge 1;
         corr +:= -q*rt_pts;
 
         // Contribution over singular fibers, i.e. where f2 vanishes -- do this in the dumbest way possible too
@@ -217,8 +223,19 @@ time for key in Keys(orbits) do
 
 end for;
 
-F := Open("Dataset/orbits_count_corrs_secanters.m", "w");
-WriteObject(F, new_orbits);
+
+F := Open("Dataset/orbits_count_corrs_secanters.m", "r");
+old_orbits := ReadObject(F);
+delete F;
+
+#old_orbits;
+for k -> v in new_orbits do 
+    old_orbits[k] := v;
+end for;
+#old_orbits;
+
+F := Open("Dataset/orbits_count_corrs_secanters2.m", "w");
+WriteObject(F, old_orbits);
 delete F;
 
 

@@ -157,7 +157,7 @@ PointCount := function(q, A, B, C, D, A2, B2, C2, D2)
     s3 := 0;
     s3  +:= ContributionAtFiber(K, fibA, fibB, fibC, fibD);
 
-    printf "s3 = %o, s3+s2 = %o, s1+s2+s3 = %o \n", s3, s2+s3, s1+s2+s3;
+    // printf "s3 = %o, s3+s2 = %o, s1+s2+s3 = %o \n", s3, s2+s3, s1+s2+s3;
 
     return (s1 + s2 + s3);
 end function;
@@ -183,10 +183,10 @@ V3, Bit3 := GModule(G, R, 3);
 
 count := 0;
 // Main Loop
-extensions_range := [1..6];
+extensions_range := [1..10];
 for key in Keys(orbits) do
-    // orbit := orbits["5-484431"];
-    orbit := orbits[key];
+    orbit := orbits["7-887005"];
+    // orbit := orbits[key];
 
     // Convert from int to polynomials
     f2_int := orbit["f2int"];

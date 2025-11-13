@@ -7,3 +7,5 @@
 **/Fq_tables**
 *.venv*
 *.vscode*
+**/Coeffs**
+*.o*

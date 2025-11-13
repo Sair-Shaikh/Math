@@ -3,64 +3,146 @@ import re
 import uuid
 import subprocess
 from pathlib import Path
-from concurrent.futures import ProcessPoolExecutor, as_completed
 import pandas as pd
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 # === Paths ===
-BASE_DIR = Path("K3Surfaces/CppLib")
-DATA_FILE = Path("K3Surfaces/Dataset/container_quad_coeffs_table.txt")
-HEADER_PATH = Path("K3Surfaces/CppLib/coeffs.h")
-CPP_FILE = Path("K3Surfaces/CppLib/point_count_containers.cpp")
-EXECUTABLE = Path("K3Surfaces/CppLib/point_count_containers.out")
-FQ_HEADER = Path("K3Surfaces/CppLib/Fq.h")
-CONST_HEADER = Path("K3Surfaces/CppLib/constants.h")
-FQ_GCH = FQ_HEADER.with_suffix(".gch")
-CONST_GCH = CONST_HEADER.with_suffix(".gch")
+BASE_PATH = Path("Dataset")
+COEFFS_DIR = Path("CppLib/Coeffs")
+CPP_FILE = Path("CppLib/count_cubic_batched.cpp")
+EXECUTABLE = Path("CppLib/count_cubic_batched.out")
+CONST_HEADER = Path("CppLib/constants.h")
+DATA_FILES = [ Path("Dataset/CppCoeffs/container_cube_coeffs_table_1.txt"), 
+               Path("Dataset/CppCoeffs/container_cube_coeffs_table_2.txt"), 
+               Path("Dataset/CppCoeffs/container_cube_coeffs_table_3.txt"), 
+               Path("Dataset/CppCoeffs/container_cube_coeffs_table_4.txt"), 
+               Path("Dataset/CppCoeffs/container_cube_coeffs_table_5.txt"), 
+            ]
 
 # === Regex patterns for parsing ===
 key_pattern = re.compile(r"^Key:\s*(.+)")
 corrections_pattern = re.compile(r"^Corrections:\s*\[(.*?)\]")
 
+BATCH_SIZE = 100
+
 # === Stream Chunks ===
 def stream_chunks():
-    results = {}
-
-    with open(DATA_FILE, "r") as f:
+    for file in DATA_FILES:
         key = None
         cpp_lines = []
         in_cpp_block = False
+        with open(file, "r") as f:
+            for line in f:
 
-        for line in f:
+                key_match = key_pattern.match(line)
+                corr_match = corrections_pattern.match(line)
 
-            key_match = key_pattern.match(line)
-            corr_match = corrections_pattern.match(line)
+                if key_match:
+                    key = key_match.group(1).strip()
+                    in_cpp_block = True
+                    continue
 
-            if key_match:
-                key = key_match.group(1).strip()
-                in_cpp_block = True
-                continue
+                elif corr_match:
+                    # End of chunk
+                    corrections = [int(x) for x in re.findall(r"-?\d+", corr_match.group(1))]
+                    in_cpp_block = False
 
-            elif corr_match:
-                # End of chunk
-                corrections = [int(x) for x in re.findall(r"\d+", corr_match.group(1))]
-                in_cpp_block = False
+                    if key and cpp_lines:
+                        yield (key, cpp_lines, corrections)
+                        key, cpp_lines = None, []
+                        cpp_lines = []
+                    continue
 
-                if key and cpp_lines:
-                    yield (key, cpp_lines, corrections)
-                    key, cpp_lines = None, []
-                    cpp_lines = []
-                continue
+                elif in_cpp_block:
+                    if "ABC" not in line and line.strip():
+                        line = line.strip()
+                        if not line.endswith("\\"): 
+                            if not line.endswith(";"): # First chunk ends here
+                                line += "; \\[SPLIT]"
+                            else:
+                                line += " \\"
+                        cpp_lines.append(line)
+                else:
+                    raise NotImplementedError
 
-            elif in_cpp_block:
-                cpp_lines.append(line)
-            else:
-                raise NotImplementedError
+def stream_batched_chunks():
+    BATCH_SIZE = 100
+
+    results = {}
+    count = 0
+    out_lines = []
+    out_lines_temp = []
+    out_lines.append("// Auto-generated batched header\n")
+    out_lines.append("#define BATCHED_ABCD \\\n")
+    out_lines_temp.append("#define BATCHED_ABCD2 \\\n")
+    for key, macro, corr in stream_chunks():
+
+        body = "\n\t".join(macro)
+        j = count % BATCH_SIZE
+        results[j] = (key, corr)
+
+        body_mod = re.sub(r'\bA\s*=', f"As[{j}] =", body)
+        body_mod = re.sub(r'\bB\s*=', f"Bs[{j}] =", body_mod)
+        body_mod = re.sub(r'\bC\s*=', f"Cs[{j}] =", body_mod)
+        body_mod = re.sub(r'\bD\s*=', f"Ds[{j}] =", body_mod)
+
+        first, second, _ = body_mod.split(sep="[SPLIT]")
+        first, second = first.strip(), second.strip()
+
+        out_lines.append(f"        /* Key: {key} */ \\\n        {first}\n")
+        out_lines_temp.append(f"        /* Key: {key} */ \\\n        {second}\n")
+
+        count += 1
+        if not (count % BATCH_SIZE):
+            # Write to file
+            file_text = "".join(out_lines) + "\n\n\n" + "".join(out_lines_temp)
+            yield (results, file_text)
+            
+            # Reset
+            out_lines = []
+            out_lines_temp = []
+            out_lines.append("// Auto-generated batched header\n")
+            out_lines.append("#define BATCHED_ABCD \\\n")
+            out_lines_temp.append("#define BATCHED_ABCD2 \\\n")
+            results = {}
 
 def process_chunk(chunk):
-    key, cpp_header, corrections = chunk
-    uncorrected_counts = compile_and_run(cpp_header)
-    result = {k : v+corrections[k-1] for k, v in uncorrected_counts.items()}
-    return key, result
+    results, text = chunk
+
+    # Write header with coefficients
+    id = uuid.uuid4()
+    header_path = COEFFS_DIR / f"coeffs_{id}.h"
+    header_path.write_text(text)
+
+    executable = COEFFS_DIR / f"exec_{id}"
+
+    try: 
+        compile_cmd = ["g++","-std=c++17",f"-include{header_path}", str(CPP_FILE),"-o", str(executable),"-O2", f"-DBATCH_SIZE={BATCH_SIZE}", "-DEXT_COEFFS=1"]
+        subprocess.run(compile_cmd, check=True)
+
+        # Run executable and capture output
+        run_result = subprocess.run(
+            [str(executable)],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        output_str = run_result.stdout.strip()
+        try:
+            numbers = [int(n) for n in output_str.split()]
+            curr_results = { k : [numbers[i*BATCH_SIZE + j]+corrs[i] for i in range(11)] for j, (k, corrs) in results.items()} 
+
+        except ValueError:
+            raise ValueError(f"Result could not be parsed correctly: {output_str[:50]}")
+
+    finally: 
+        # Clean up generated files
+        pass
+        if header_path.exists():
+            header_path.unlink()
+        if executable.exists():
+            executable.unlink()
+    return curr_results
 
 def process_chunks_in_batches(chunk_generator, max_workers=None, batch_size=None):
     if max_workers is None:
@@ -68,7 +150,7 @@ def process_chunks_in_batches(chunk_generator, max_workers=None, batch_size=None
     if batch_size is None:
         batch_size = max_workers  # submit one batch per core by default
 
-    results = {}
+    all_results = {}
     progress = 0
     batch = []
 
@@ -84,19 +166,18 @@ def process_chunks_in_batches(chunk_generator, max_workers=None, batch_size=None
             # If batch is full, wait for some futures to complete
             if len(futures) >= batch_size:
                 done, futures = wait_some(futures)
-                for key, result in done:
-                    results[key] = result
+                for results in done:
+                    all_results = {**all_results, **results}
+
                     progress += 1
+                    if progress % 10 == 0:
+                        print(f"Number of Batches Completed: {progress}")
+                        # breaker = True
+
                     if progress % 100 == 0:
-                        print(f"Progress: {progress}")
-                        breaker = True
-
-                    if progress % 50 == 0:
-                        df = pd.DataFrame.from_dict(results, orient="index")
-                        df.to_csv(BASE_DIR / "partial_progress.csv",  mode="a")
-                        results = {}
-
-                batch.clear()
+                        df = pd.DataFrame.from_dict(all_results, orient="index")
+                        df.to_csv(BASE_PATH / "point_counts.csv",  mode="a", index=False)
+                        all_results = {}
 
             if breaker: 
                 break
@@ -104,12 +185,12 @@ def process_chunks_in_batches(chunk_generator, max_workers=None, batch_size=None
         # Process remaining futures
         while futures:
             done, futures = wait_some(futures)
-            for key, result in done:
-                results[key] = result
+            for results in done:
+                all_results = {**all_results, **results}
                 progress += 1
-                df = pd.DataFrame.from_dict(results, orient="index")
-                df.to_csv(BASE_DIR / "partial_progress.csv", mode="a")
-                results = {}
+                df = pd.DataFrame.from_dict(all_results, orient="index")
+                df.to_csv(BASE_PATH / "partial_progress.csv", mode="a", index=False)
+                all_results = {}
 
 
     return results
@@ -125,55 +206,13 @@ def wait_some(futures):
     results = [f.result() for f in done_futures]
     return results, remaining_futures
 
-# === For each chunk: write, compile, run, collect, clean ===
-def compile_and_run(cpp_lines):
 
-    # Write coeffs.h
-    id = uuid.uuid4()
-    header_path = BASE_DIR / f"coeffs_{id}.h"
-    header_path.write_text("".join(cpp_lines))
-
-    executable = BASE_DIR / f"exec_{id}"
-
-    results = {}
-
-    try: 
-        for i in range(8,12):
-            # FQ_HEADERN = BASE_DIR / f"Fq_N{i}.h"
-            # compile_cmd = ["g++","-std=c++17", f"-include{FQ_HEADERN}",f"-include{header_path}", str(CPP_FILE),"-o", str(executable),"-O2"]
-            compile_cmd = ["g++","-std=c++17",f"-include{header_path}", str(CPP_FILE),"-o", str(executable),"-O2",f"-DN={i}", "-DEXT_COEFFS=1"]
-            subprocess.run(compile_cmd, check=True)
-
-            # Run executable and capture output
-            run_result = subprocess.run(
-                [str(executable)],
-                capture_output=True,
-                text=True,
-                check=True,
-            )
-            output_str = run_result.stdout.strip()
-            try:
-                value = int(output_str)
-            except ValueError:
-                print(f"Warning: Non-integer output: N={i}: {output_str}")
-                value = None
-            results[i] = value
-    finally: 
-        # Clean up generated files
-        if header_path.exists():
-            header_path.unlink()
-        if executable.exists():
-            executable.unlink()
-
-    return results
 
 # === Run ===
 if __name__ == "__main__":
-    # for i in range(8,11): 
-    #     # Compile constants.h and Fq.h with N plugged in
-    #     FQ_GCH = BASE_DIR / f"Fq_N{i}.h.gch"
-    #     subprocess.run(["g++","-std=c++17","-O2",f"-DN={i}","-x", "c++-header",str(FQ_HEADER),"-o", FQ_GCH], check=True)
-    
+
     progress = 0
-    results = process_chunks_in_batches(stream_chunks(), max_workers=os.cpu_count(), batch_size=8)
+    process_chunks_in_batches(stream_batched_chunks(), max_workers=os.cpu_count(), batch_size=8)
+
+
 
