@@ -3,9 +3,9 @@
 *.log
 *.synctex.gz
 *.DS_Store*
-*Dataset*
+*/Dataset*
 **/Fq_tables**
 *.venv*
 *.vscode*
 **/Coeffs**
-*.o*
+*.o

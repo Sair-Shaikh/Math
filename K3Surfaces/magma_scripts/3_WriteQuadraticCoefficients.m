@@ -18,7 +18,7 @@ delete F;
 "Smooth Surfaces Containing a Line: ", #orbits;
 
 // Clear the coefficients file
-fname := "Dataset/container_quad_coeffs_table.txt";
+fname := "Dataset/CppCoeffs/quad_coeffs_table3.txt";
 F := Open(fname, "w");
 delete F; 
 
@@ -101,14 +101,14 @@ for key in Keys(orbits) do
         
         for i in [1..11] do 
             q := 2^i;
-            over  := (1-HasU2Term)*(q+1);
+            over  := (1-HasU2Term)*q+1;
             if not disc eq 0 then 
                 // Conic is smooth -- has q+1 points
                 under := (q+1);
             else
                 // TODO: Conic is not smooth -- could do Arf Invariants
                 K := GF(q);
-                under := #Points(Curve(Proj(Fiber), cc));
+                under := #Points(Curve(Proj(Fiber), cc), K);
             end if;
             Append(~corrections, under-over);
         end for;

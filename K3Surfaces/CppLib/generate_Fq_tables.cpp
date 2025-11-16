@@ -17,7 +17,7 @@ int main() {
   unsigned* orbit_rep;
   unsigned* orbit_size;
 
-  for (int N = 1; N < 12; N++) {
+  for (int N = 1; N < 15; N++) {
 
     const unsigned q = 1 << N;
     const unsigned p = polynomials[N];
@@ -26,9 +26,6 @@ int main() {
 
     // Write data to file.
     std::string qq = std::to_string(q);
-
-    printf("deb2: %d \n", depressed_cubic_roots[0][1]);
-
 
     write_table(quadratic_roots, q, q, "quadratic_roots_" + qq);
     write_table(depressed_cubic_roots, q, q, "depressed_cubic_roots_" + qq);

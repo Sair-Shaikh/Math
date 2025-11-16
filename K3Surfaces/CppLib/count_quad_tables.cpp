@@ -4,16 +4,17 @@
 #include <iostream>
 #include <assert.h>
 #include <set>
-#include "tables.h"
+#include "tableio.h"
 
 #ifndef EXT_COEFFS
 #include "coeffs_quad.h"
 #endif
 
-unsigned NULL_Fq_elt = q;
+
 unsigned** mult;
 unsigned** divi;
 unsigned** quadratic_roots;
+unsigned** depressed_cubic_roots;
 
 
 // function prototypes
@@ -87,16 +88,6 @@ int contribution_of_fibre_over_P2_point(unsigned y_0, unsigned y_1, unsigned y_2
         ff2k_t L = divi[B][A];
         ff2k_t M = divi[C][A];
         return quadratic_roots[L][M];
-
-        // ff2k_t L = ff2k_divi(B, A);
-        // ff2k_t M = ff2k_divi(C, A);
-        // if (L == 0) {
-        //     return 1;
-        // } else if (S.count(ff2k_divi(M, ff2k_square(L))) > 0) {
-        //     return 2;
-        // } else {
-        //     return 0;
-        // }
     }
 
     // default return (shouldn't reach here)

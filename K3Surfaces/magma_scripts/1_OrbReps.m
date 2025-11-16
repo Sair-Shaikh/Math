@@ -127,8 +127,6 @@ K3_smooth := AssociativeArray();
 smooth_count := 0;
 bs_count := 0;
 for i in [1..#V2_orbreps] do
-
-
     // Setup
     curr_count := 0;
     "V2 Orbit #", i, "out of", #V2_orbreps;

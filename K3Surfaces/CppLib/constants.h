@@ -56,12 +56,3 @@ const unsigned polynomials[] = {1, // placeholder
   (t << 22) + (t << 12) + (t << 11) + (t << 10) + (t << 9) + (t << 8) + (t << 6) + (t << 5) + 1
 };
 
-// Setup aliasing for the value of q.
-// #ifndef N
-// #define N 11
-// #endif
-
-// const unsigned FINITEFIELDBITSIZE = N;
-// const unsigned q = 1 << (FINITEFIELDBITSIZE);
-// const unsigned p = polynomials[FINITEFIELDBITSIZE];
-

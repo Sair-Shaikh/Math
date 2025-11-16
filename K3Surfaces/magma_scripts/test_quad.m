@@ -108,10 +108,7 @@ PointCount := function(q, A, B, C, A2, B2, C2)
 
     s3 := 0;
     s3  +:= ContributionAtFiber(q, S, fibA, fibB, fibC);
-
-    fibA, fibB, fibC;
-
-    printf "s1 = %o, s2 = %o, s3 = %o \n", s1+s2+s3, s2+s3, s3;
+    // printf "s1 = %o, s2 = %o, s3 = %o \n", s1+s2+s3, s2+s3, s3;
 
     return (s1 + s2 + s3);
 end function;
@@ -145,16 +142,17 @@ new_orbits := AssociativeArray();
 extensions_range := [1..10];
 
 for key in Keys(orbits) do
-    orbit := orbits["7-1351494"];
+    orbit := orbits["5-852054"];
 
     // Convert from int to polynomials
     f2_int := orbit["f2int"];
     f3_int := orbit["f3int"];
     f2, f3 := ConvertToPolys(f2_int, f3_int, R, G, Bit2, Bit3);  // Now f2, f3 are in R
 
-    if f2_int eq 144 then continue; end if;
+    f2_int;
+    // if f2_int eq 144 then continue; end if;
     
-    // Pullback f2 to P2[ u : v : w ] with coefficients in F2[a, b, c] -- affine patch not including L
+    // Pullback f2 to P2[ u : v : w ] with coefficients in F2[a, b, c]
     // other line: q*u + lv*v + lw*w = 0.
     subs_map := hom<R -> R3 | [ u*a, u*b, u*c, v, w]>;
     other_line := subs_map(f2) div u;    
@@ -165,13 +163,24 @@ for key in Keys(orbits) do
     lv := MonomialCoefficient(other_line, v);
     lw := MonomialCoefficient(other_line, w);
     
-    subs_map_2 := hom<R3 -> R2 | [ lv*s + lw*t, q*s, q*t]>; 
-    subs_map_3 := hom<R3 -> R2 | [ t, lw*s, lv*s]>;
-    other_line := subs_map_2(other_line);
-    quadratic := subs_map_2(conic);  // bivariate
-    quadratic2 := subs_map_3(conic); // bivariate
+    if q eq 0 then 
+        // This parametrization is valid for all fibers
+        assert lv eq b and lw eq a;  // Assumed
+        line_para1 := hom<R3 -> R2 | [ t, lw*s, lv*s]>;
+        quadratic  := line_para1(conic);  // Deg 2 in P1
+        quadratic2 := quadratic;
 
-    assert other_line eq 0;
+    else // q neq  0
+        // We need two parametrizations for q = 0 and q neq 0. 
+        // We assume surfaces are such that if q \neq 0, then q = a^2
+        assert q eq a^2;
+        line_para1 := hom<R3 -> R2 | [ lv*s + lw*t, q*s, q*t]>; // Span([lv, 0, q], [lw, q, 0])) -- when q neq 0, this is valid
+        line_para2 := hom<R3 -> R2 | [ t, lw*s, lv*s]>;         // Span([1, 0, 0],  [0, lw, lv]) -- when q = 0, this is valid
+
+        quadratic  := line_para1(conic);  // Deg 2 in P1
+        quadratic2 := line_para2(conic);  // Deg 2 in P1
+
+    end if;
 
     A  := MonomialCoefficient(quadratic, s^2);
     B  := MonomialCoefficient(quadratic, s*t);
