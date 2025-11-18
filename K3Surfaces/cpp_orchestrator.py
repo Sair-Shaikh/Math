@@ -9,31 +9,21 @@ import time
 
 BASE_PATH = Path("Dataset")
 COEFFS_DIR = Path("CppLib/Coeffs")
-# CPP_FILE = Path("CppLib/count_cubic_batched.cpp")
-CPP_FILE = Path("CppLib/count_quad_batched.cpp")
-CSV_FILE = BASE_PATH / "point_counts_quad_2.csv"
+CPP_FILE = Path("CppLib/count_cubic_batched.cpp")
+# CPP_FILE = Path("CppLib/count_quad_batched.cpp")
+# CSV_FILE = BASE_PATH / "point_counts_quad.csv"
+CSV_FILE = BASE_PATH / "point_counts_cubic.csv"
+
 CONST_HEADER = Path("CppLib/constants.h")
 DATA_FILES = [ 
-                Path("Dataset/CppCoeffs/quad_coeffs_table3.txt"),
+                # Path("Dataset/cpp_coeffs/quad_coeffs_table_12.txt"),
+                Path("Dataset/cpp_coeffs/cube_coeffs_table_122.txt"),
             #    Path("Dataset/CppCoeffs/cube_coeffs_table_1.txt"), 
             #    Path("Dataset/CppCoeffs/cube_coeffs_table_2.txt"), 
             #    Path("Dataset/CppCoeffs/cube_coeffs_table_3.txt"), 
             #    Path("Dataset/CppCoeffs/cube_coeffs_table_4.txt"), 
             #    Path("Dataset/CppCoeffs/cube_coeffs_table_5.txt"), 
             ]
-
-# MISSING_KEYS = ["7-960699","7-1171368", "7-78040","5-115860","7-1351482","7-258285","7-119622",
-#                 "7-420257","7-798571","7-240306","5-794630","7-420220","7-438238","7-618572",
-#                 "7-1349484","7-240287","7-79843","7-1351485","7-1349505","7-258291","7-258289",
-#                 "7-101626","7-798575","7-240312","5-614635","7-101630","7-60047","7-1351491",
-#                 "7-1351511","7-960709","7-101631","7-61850","5-115870","7-600540","7-1349512",
-#                 "7-780540","7-978712","7-1171341","7-60049","7-60051","7-61851","7-79851","7-618541",
-#                 "5-614798","7-438230","6-300799","6-299447","7-1490780","7-843888","6-297780",
-#                 "6-299655","6-300325","6-301358","6-300680","6-297619","6-305232","6-297987",
-#                 "7-1496123","6-302989","6-304923","6-305123","6-300784","6-300327","6-301342", 
-#                 "7-1171366", "7-61876","5-434693","7-258283","7-438255","7-600567","7-1349499","7-1351499"  
-#                 ]
-
 
 key_pattern = re.compile(r"^Key:\s*(.+)")
 corrections_pattern = re.compile(r"^Corrections:\s*\[(.*?)\]")
@@ -63,14 +53,14 @@ def stream_chunks():
                     in_cpp_block = False
 
                     if key and cpp_lines:
-                        if key.startswith("5"):
-                            yield (key, cpp_lines, corrections)
+
+                        yield (key, cpp_lines, corrections)
                         key, cpp_lines = None, []
                         cpp_lines = []
                     continue
 
                 elif in_cpp_block:
-                    if "ABC" not in line and line.strip():
+                    if "ABCD" not in line and line.strip():
                         line = line.strip()
                         if not line.endswith("\\"): 
                             if not line.endswith(";"): # First chunk ends here
@@ -89,9 +79,10 @@ def stream_batched_chunks():
     out_lines = []
     out_lines_temp = []
     out_lines.append("// Auto-generated batched header\n")
-    out_lines.append("#define BATCHED_ABC \\\n")
-    out_lines_temp.append("#define BATCHED_ABC2 \\\n")
+    out_lines.append("#define BATCHED_ABCD \\\n")
+    out_lines_temp.append("#define BATCHED_ABCD2 \\\n")
     for key, macro, corr in stream_chunks():
+
         body = "\n\t".join(macro)
         j = count % BATCH_SIZE
         results[j] = (key, corr)
@@ -99,7 +90,7 @@ def stream_batched_chunks():
         body_mod = re.sub(r'\bA\s*=', f"As[{j}] =", body)
         body_mod = re.sub(r'\bB\s*=', f"Bs[{j}] =", body_mod)
         body_mod = re.sub(r'\bC\s*=', f"Cs[{j}] =", body_mod)
-        # body_mod = re.sub(r'\bD\s*=', f"Ds[{j}] =", body_mod)
+        body_mod = re.sub(r'\bD\s*=', f"Ds[{j}] =", body_mod)
 
         first, second, _ = body_mod.split(sep="[SPLIT]")
         first, second = first.strip(), second.strip()
@@ -117,8 +108,8 @@ def stream_batched_chunks():
             out_lines = []
             out_lines_temp = []
             out_lines.append("// Auto-generated batched header\n")
-            out_lines.append("#define BATCHED_ABC \\\n")
-            out_lines_temp.append("#define BATCHED_ABC2 \\\n")
+            out_lines.append("#define BATCHED_ABCD \\\n")
+            out_lines_temp.append("#define BATCHED_ABCD2 \\\n")
             results = {}
     
     # Final batch, if there is any
@@ -151,7 +142,7 @@ def process_chunk(chunk):
         output_str = run_result.stdout.strip()
         try:
             numbers = [int(n) for n in output_str.split()]
-            curr_results = { k : [numbers[i*BATCH_SIZE + j]+corrs[i] for i in range(11)] for j, (k, corrs) in results.items()} 
+            curr_results = { k : [numbers[i*BATCH_SIZE + j]+corrs[i] for i in range(12)] for j, (k, corrs) in results.items()} 
 
         except ValueError:
             raise ValueError(f"Result could not be parsed correctly: {output_str[:50]}")
@@ -194,7 +185,7 @@ def process_chunks_in_batches(chunk_generator, max_workers=None):
                         print(f"Progress: {progress*100}")
                         # breaker = True
 
-                    if progress % 100 == 0:
+                    if progress % 10 == 0:
                         df = pd.DataFrame.from_dict(all_results, orient="index")
                         df.to_csv(CSV_FILE,  mode="a", index=True)
                         all_results = {}
@@ -237,4 +228,4 @@ def wait_some(futures):
 if __name__ == "__main__":
 
     progress = 0
-    process_chunks_in_batches(stream_batched_chunks(), max_workers=8)
+    process_chunks_in_batches(stream_batched_chunks(), max_workers=6)

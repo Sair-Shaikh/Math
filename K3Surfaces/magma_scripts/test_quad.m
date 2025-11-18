@@ -142,15 +142,12 @@ new_orbits := AssociativeArray();
 extensions_range := [1..10];
 
 for key in Keys(orbits) do
-    orbit := orbits["5-852054"];
+    orbit := orbits["7-178"];
 
     // Convert from int to polynomials
     f2_int := orbit["f2int"];
     f3_int := orbit["f3int"];
     f2, f3 := ConvertToPolys(f2_int, f3_int, R, G, Bit2, Bit3);  // Now f2, f3 are in R
-
-    f2_int;
-    // if f2_int eq 144 then continue; end if;
     
     // Pullback f2 to P2[ u : v : w ] with coefficients in F2[a, b, c]
     // other line: q*u + lv*v + lw*w = 0.

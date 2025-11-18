@@ -77,24 +77,28 @@ NumCubicSols := function(K, A, B, C, D)
                 end if;
             else          // t^3 + Pt + Q = 0
                 // Just default to looping -- no need to Cardano's for such few solves
-                P; Q;
                 return #{e : e in K | e^3 + K!P*e + K!Q eq 0};        
             end if;
         end if;
     end if;
 end function;
 
-F := Open("Dataset/orbits_lines_sec.m", "r");
+F := Open("Dataset/orbits_count_corrs_secanters2.m", "r");
 orbits := ReadObject(F);
 delete F;
 "Smooth Surfaces With A Secant Line: ", #orbits;
 
-batch := 1;
-fname := Sprintf("Dataset/CppCoeffs/container_cube_coeffs_table_1%o.txt", batch);
+// fname := "Dataset/cpp_coeffs/cube_coeffs_table_12.txt";
 
 // Clear the coefficients file
-F := Open(fname, "w");
-delete F; 
+// F := Open(fname, "w");
+// delete F; 
+
+// Omit everything that is not solved by coutning up to 12
+F := Open("Dataset/zeta_functions/zeta_fails.m", "r");
+selected_orbits := ReadObject(F);
+delete F;
+selected_orbits := selected_orbits[12];
 
 // Setup
 F2 := GF(2);
@@ -112,6 +116,8 @@ V3, Bit3 := GModule(G, R, 3);
 new_orbits := AssociativeArray();
 count := 0;
 time for key in Keys(orbits) do
+
+    if not key in selected_orbits then continue; end if;
 
     orbit := orbits[key];
 
@@ -170,7 +176,7 @@ time for key in Keys(orbits) do
     rt_cubic := Evaluate(f3, [0, 0, 0, s, t]);
     Art, Brt, Crt, Drt := GetCubicCoeffs(rt_cubic);
     corrections := [];
-    for i in [1..11] do 
+    for i in [1..12] do 
         q := 2^i;
         Fq := GF(q);
         Embed(F2, Fq);
@@ -198,7 +204,8 @@ time for key in Keys(orbits) do
     str cat:= CppHeaderTextCubic(A, B, C, D, A2, B2, C2, D2);
     str cat:= "\n";
     str cat:= "Corrections: " cat Sprint(corrections);
-    PrintFile(fname, str);
+    printf(Sprint(corrections) cat "\n");
+    // PrintFile(fname, str);
 
     // Also save these in a magma file
     new_orbits[key] := orbit;
@@ -209,34 +216,8 @@ time for key in Keys(orbits) do
         printf "Progress: %o/%o\n", count, #orbits;
     end if;
 
-
-    if count mod 100000 eq 0 then 
-        // Change the coefficients File
-        batch +:= 1;
-        fname := Sprintf("Dataset/CppCoeffs/container_cube_coeffs_table_%o.txt", batch);
-
-        // Clear the new coefficients file
-        F := Open(fname, "w");
-        delete F; 
-
-    end if;
-
 end for;
 
-
-F := Open("Dataset/orbits_count_corrs_secanters.m", "r");
-old_orbits := ReadObject(F);
-delete F;
-
-#old_orbits;
-for k -> v in new_orbits do 
-    old_orbits[k] := v;
-end for;
-#old_orbits;
-
-F := Open("Dataset/orbits_count_corrs_secanters2.m", "w");
-WriteObject(F, old_orbits);
-delete F;
 
 
 

@@ -16,39 +16,50 @@ import "magma_scripts/Utils.m" : ConvertToPolys;
     Then you use Newton's Identities to convert these: 
     Tr(From^m | H^2) = \sum \alpha^m
 
-    Using the functional equation, we can determine #X(F_q^n) for n = 12, ..., 22 using #X(F_q^n) for n = 1, ,,, 11.
-    (Details)
-
-    Using Newton's formulas
-
-
+    Using the functional equation, we can determine #X(F_q^n) for n = 12, ..., 22 using #X(F_q^n) for n = 1, ..., 11.
 */
-
 
 HalfWeil := function(point_counts) 
 
-    assert #point_counts eq 11;
+    R<T> := PolynomialRing(Rationals());
+    assert #point_counts ge 11;
 
-    traces := [(point_counts[i] - 1 - 2^(2*i)) : i in [1..11]];
-    // c := [Rationals() ! -2^31 : i in [1..11]]; // Initialize
+    traces := [(point_counts[i] - 1 - 2^(2*i)) : i in [1..#point_counts]];
+
+
+    // c := [Rationals() ! -2^31 : i in [1..#point_counts]]; // Initialize
     // c[1] := -traces[1];
-    // for k in [2..11] do
+    // for k in [2..#point_counts] do
     //     c[k] := (traces[k] + &+[c[i]*traces[k-i] : i in [1..k-1]])/(-k);
     // end for;
     // [1] cat c;
-    // FrobeniusTracesToWeilPolynomials(traces, 2, 2, 22)[1];
-    return FrobeniusTracesToWeilPolynomials(traces, 2, 2, 22);
-end function;
 
+    cands := FrobeniusTracesToWeilPolynomials(traces, 2, 2, 22);
+
+    // Divide by q^22 and substitute T -> qT to make this symmetric up to a sign
+    // Check (1-qT) divides the polynomial, i.e. 1 is a root of the new polynomials
+    new_cands := [];
+    for cand in cands do
+        new_poly := R!(Evaluate(cand, 2*T)/2^22);
+
+        // Check if T = 1, i.e. T = 1/q is a root
+        atOne := Evaluate(new_poly, Rationals()!1);
+
+        // Artin-Tate: Divide this by (1-T) then check if evaluation at one is a square:
+        // at_poly := 2*Quotrem(new_poly, 1-T);
+        if atOne eq 0 then 
+            Append(~new_cands, new_poly);
+        end if;
+        assert HasAllRootsOnUnitCircle(new_poly);
+
+    end for;
+
+    return new_cands;
+end function;
 
 F := Open("Dataset/orbits_point_counts.m", "r");
 orbits := ReadObject(F);
 delete F;
-
-counts := AssociativeArray();
-counts[0] := 0;
-counts[1] := 0;
-counts[2] := 0;
 
 // Setup
 F2 := GF(2);
@@ -62,55 +73,60 @@ failures := AssociativeArray();
 for key in Keys(orbits) do 
     orbit := orbits[key];
 
-
     // Convert from int to polynomials in R<x>
     f2_int := orbit["f2int"];
     f3_int := orbit["f3int"];
     f2, f3 := ConvertToPolys(f2_int, f3_int, R, G, Bit2, Bit3);  // Now f2, f3 are in R
 
     pt_count := orbit["pt_count"];
-    X := Scheme(ProjectiveSpace(R), [f2, f3]);
 
-    for i in [1..4] do 
-        q := 2^i;
-        Fq := GF(q); 
-        XFq := BaseChange(X, Fq);
-        n := #Points(XFq);
-
-        if not n eq pt_count[i] then 
-            key;
-            break;
-        end if;
-
-    end for;
-    
     char_polys := HalfWeil(pt_count);
+
+    assert #char_polys gt 0;
 
     if #char_polys eq 2 then 
         // Find lowest index above 11 for which coeff is 0
         coeffs := Coefficients(char_polys[1]);
         assert coeffs[12] eq 0;
 
-        for i in [1..11] do 
-            if not coeffs[12+i] eq 0 then 
-                if not IsDefined(failures, i) then 
-                    failures[i] := 0;
+        for i in [13..22] do 
+            if not coeffs[i] eq 0 then 
+                if not IsDefined(failures, i-1) then 
+                    failures[i-1] := [];
                 end if;
-                failures[i] +:= 1; 
+                Append(~failures[i-1], key); 
                 break;
             end if;
         end for;
-
     end if;
 
     prog +:= 1;
-    if prog mod 1000 eq 0 then 
-        printf "%o\n", prog;
+    if prog mod 20000 eq 0 then 
+        printf "Progress: %o\n", prog;
         for i in Keys(failures) do 
-            printf "%o : %o \n", 11+i, failures[i];
+            printf "%o : %o \n", i, #failures[i];
         end for;
         printf "\n";
     end if;
-
-
 end for;
+
+for i in Keys(failures) do 
+    printf "%o : %o \n", i, #failures[i];
+end for;
+printf "\n";
+
+// for i in Keys(failures) do 
+//     if not IsDefined(failures, i) then continue; end if;
+//     fname := Sprintf("Dataset/zeta_functions/zeta_fails_%o.txt", i);
+
+//     str := "";
+//     failed_keys := failures[i];
+//     for key in failed_keys do 
+//         str cat:= Sprint(key) cat "\n";
+//     end for;
+//     PrintFile(fname, str);
+// end for;
+
+// F := Open("Dataset/zeta_functions/zeta_fails.m", "w");
+// WriteObject(F, failures);
+// delete F;

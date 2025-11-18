@@ -27,7 +27,16 @@ ReadPointCountsCSV := function(file_paths)
             // Convert the remaining entries into integers
             nums := [];
             for i in [2..#fields] do
-                Append(~nums, StringToInteger(Trim(fields[i])));
+                s := Trim(fields[i]);
+                if s eq "" then continue; end if;
+                pos := Index(s, ".");   // position of decimal point, or 0 if none
+
+                if pos ne 0 then
+                    // keep only the part before the decimal
+                    s := s[1..pos-1];
+                end if;
+
+                Append(~nums, StringToInteger(s));
             end for;
 
             // Store into the associative array
@@ -41,9 +50,9 @@ ReadPointCountsCSV := function(file_paths)
     return point_counts;
 end function;
 
-file_paths := ["Dataset/point_counts_cubic.csv", "Dataset/point_counts_quad.csv"];
+file_paths := ["Dataset/zeta_functions/point_counts_cubic_alt.csv", "Dataset/zeta_functions/point_counts_quad_alt.csv"];
 point_counts := ReadPointCountsCSV(file_paths);
-orbit_paths := ["Dataset/orbits_lines_contain.m", "Dataset/orbits_lines_secrtpt2.m", "Dataset/orbits_lines_sec.m"];
+orbit_paths := ["Dataset/orbits_lines_contain.m", "Dataset/orbits_lines_secrtpt.m", "Dataset/orbits_lines_sec.m"];
 
 printf "Number of orbits with point counts: %o\n", #point_counts;
 
@@ -55,6 +64,7 @@ for file_path in orbit_paths do
 
     for key in Keys(orbits) do 
         orbit := orbits[key];
+        if orbit["f3int"] eq 0 then continue; end if;
 
         if not IsDefined(point_counts, key) then 
             key;

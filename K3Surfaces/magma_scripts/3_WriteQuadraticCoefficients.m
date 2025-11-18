@@ -18,9 +18,16 @@ delete F;
 "Smooth Surfaces Containing a Line: ", #orbits;
 
 // Clear the coefficients file
-fname := "Dataset/CppCoeffs/quad_coeffs_table3.txt";
+fname := "Dataset/cpp_coeffs/quad_coeffs_table_12.txt"; // Writing those that need counting up to 12
 F := Open(fname, "w");
 delete F; 
+
+// Omit everything that is not solved by coutning up to 12
+F := Open("Dataset/zeta_functions/zeta_fails.m", "r");
+selected_orbits := ReadObject(F);
+delete F;
+selected_orbits := selected_orbits[12];
+
 
 // Setup
 F2 := GF(2);
@@ -37,6 +44,7 @@ V3, Bit3 := GModule(G, R, 3);
 new_orbits := AssociativeArray();
 count := 0;
 for key in Keys(orbits) do
+    if not key in selected_orbits then continue; end if;
 
     orbit := orbits[key];
 
@@ -99,7 +107,7 @@ for key in Keys(orbits) do
         cc := A*b^2 + B*b*c + C*c^2 + D*a*b + E*a*c + F*a^2; // reusing a, b, c -- doesnt matter
         disc := A*E^2 + B^2*F + C*D^2 -B*D*E; 
         
-        for i in [1..11] do 
+        for i in [1..12] do 
             q := 2^i;
             over  := (1-HasU2Term)*q+1;
             if not disc eq 0 then 
@@ -113,7 +121,7 @@ for key in Keys(orbits) do
             Append(~corrections, under-over);
         end for;
     else 
-        corrections := [ 0 : i in [1..11]];
+        corrections := [ 0 : i in [1..12]];
     end if;
 
 
@@ -136,15 +144,12 @@ for key in Keys(orbits) do
     new_orbits[key]["ptct_corr"] := corrections;
 
     count +:= 1;
-    if count mod 10000 eq 0 then 
+    if count mod 2000 eq 0 then 
         printf "Progress: %o/%o\n", count, #orbits;
     end if;
 
 end for;
 
-F := Open("Dataset/orbits_count_corrs_containers.m", "w");
-WriteObject(F, new_orbits);
-delete F;
 
 
 

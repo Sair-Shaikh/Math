@@ -23,7 +23,7 @@ int* contribution_of_fibre_over_P2_point(unsigned, unsigned, unsigned, unsigned,
 
 int main(int argc, char **argv) {
 
-    for (int N = 1; N < 12; N ++ ) {
+    for (int N = 1; N < 13; N ++ ) {
         
         const unsigned q = 1 << N;
 
@@ -69,9 +69,7 @@ int main(int argc, char **argv) {
             printf("%d\n", count[i]);
         }                    
     }
-
         return 0;
-
 }
 
 // Count points on a quadratic
