@@ -6,32 +6,31 @@ from pathlib import Path
 import pandas as pd
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import time
-import csv
 
-N = 13
+# What N to count for:
+N = 15
 MAX_WORKERS = 4
-BATCH_SIZE = 100
+BATCH_SIZE = 2
 
 
-BASE_PATH = Path("Dataset")
+BASE_PATH = Path("Dataset/zeta_functions")
 COEFFS_DIR = Path("CppLib/Coeffs")
-# CPP_FILE = Path("CppLib/count_cubic_batched.cpp")
-# CSV_FILE = BASE_PATH / f"point_counts_cubic_{N}.csv"
+CONST_HEADER = Path("constants.h")
 
-CPP_FILE = Path("CppLib/count_quad_batched.cpp")
-CSV_FILE = BASE_PATH / f"point_counts_quad_{N}.csv"
-
-CONST_HEADER = Path("CppLib/constants.h")
-DATA_FILES = [ 
-                Path(f"Dataset/cpp_coeffs/quad_coeffs_table_{N}.txt"),
-                # Path(f"Dataset/cpp_coeffs/cube_coeffs_table_{N}.txt"),
-            ]
-SELECTED_KEYS = set(map(str.strip, list(open( BASE_PATH / f"zeta_functions/zeta_fails_{N}.txt").readlines())))
-
-# Omit the ones already done:
+# For surfaces without a line
+CPP_FILE = Path("CppLib/count_cubic_bigq.cpp")
+CSV_FILE = BASE_PATH / f"point_counts_cubic_bigq_{N}.csv"
+DATA_FILES = [BASE_PATH / f"cubic_coeffs_bigq_{N}.txt" ]
+SELECTED_KEYS = set(map(str.strip, list(open(BASE_PATH/ f"zeta_fails_{N}.txt").readlines())))
 print(f"Computing values for N={N} and {len(SELECTED_KEYS)} surfaces")
-SELECTED_KEYS -= {row[0] for row in csv.reader(f"Dataset/point_counts_cubic_{N}.csv")}
-# print(f"Computing values for N={N} and {len(SELECTED_KEYS)} surfaces")
+
+
+# SELECTED_KEYS -= {row[0] for row in csv.reader(open(CSV_FILE))}
+
+# For surfaces with a line
+# CPP_FILE = Path("CppLib/count_quad_batched.cpp")
+# CSV_FILE = BASE_PATH / "point_counts_quad.csv"
+# DATA_FILES = [Path(f"Dataset/cpp_coeffs/cubic_coeffs_table_{n}.txt")]
 
 
 
@@ -61,8 +60,10 @@ def stream_chunks():
                     corrections = [int(x) for x in re.findall(r"-?\d+", corr_match.group(1))]
                     in_cpp_block = False
 
+                    assert len(corrections) == 1
+
                     if key and cpp_lines:
-                        if key in SELECTED_KEYS:
+                        if key in SELECTED_KEYS: 
                             yield (key, cpp_lines, corrections)
                         key, cpp_lines = None, []
                         cpp_lines = []
@@ -109,7 +110,7 @@ def stream_batched_chunks():
         count += 1
         if not (count % BATCH_SIZE):
             # Write to file
-            file_text = "".join(out_lines) + "\n\n\n" + "".join(out_lines_temp)
+            file_text = "".join(out_lines).rstrip("\\\n") + "\n\n\n" + "".join(out_lines_temp).rstrip("\\\n") + "\n\n"
             yield (results, file_text)
             
             # Reset
@@ -123,12 +124,12 @@ def stream_batched_chunks():
     # Final batch, if there is any
     # Write to file
     if len(out_lines) > 2: 
-        file_text = "".join(out_lines) + "\n\n\n" + "".join(out_lines_temp)
+        file_text = "".join(out_lines).rstrip("\\\n") + "\n\n\n" + "".join(out_lines_temp).rstrip("\\\n") + "\n\n"
         yield (results, file_text)
 
 def process_chunk(chunk):
     results, text = chunk
-
+    
     # Write header with coefficients
     id = uuid.uuid4()
     header_path = COEFFS_DIR / f"coeffs_{id}.h"
@@ -137,7 +138,7 @@ def process_chunk(chunk):
     executable = COEFFS_DIR / f"exec_{id}"
 
     try: 
-        compile_cmd = ["g++","-std=c++17",f"-include{header_path}", str(CPP_FILE),"-o", str(executable),"-O2", f"-DBATCH_SIZE={min(len(results), BATCH_SIZE)}", "-DEXT_COEFFS=1"]
+        compile_cmd = ["g++","-std=c++17", f"-include{header_path}", str(CPP_FILE),"-o", str(executable),"-O2", f"-DBATCH_SIZE={BATCH_SIZE}", "-DEXT_COEFFS=1", f"-DN={N}"]
         subprocess.run(compile_cmd, check=True)
 
         # Run executable and capture output
@@ -148,16 +149,22 @@ def process_chunk(chunk):
             check=True,
         )
         output_str = run_result.stdout.strip()
+        print(output_str)
+
         try:
-            numbers = [int(n) for n in output_str.split()]
-            curr_results = { k : [numbers[i*min(len(results), BATCH_SIZE) + j]+corrs[i] for i in range(N)] for j, (k, corrs) in results.items()} 
+            numbers = [int(i) for i in output_str.split()]
+            print(numbers)
+
+            assert len(numbers) == min(BATCH_SIZE, len(results))
+            curr_results = { k : [numbers[j]+corrs[0]] for j, (k, corrs) in results.items()} 
 
         except ValueError:
             raise ValueError(f"Result could not be parsed correctly: {output_str[:50]}")
+    except Exception as e:
+        print(e)
 
     finally: 
         # Clean up generated files
-        pass
         if header_path.exists():
             header_path.unlink()
         if executable.exists():
@@ -190,15 +197,15 @@ def process_chunks_in_batches(chunk_generator, max_workers=None):
 
                     progress += 1
                     if progress % 10 == 0:
-                        print(f"Progress: {progress*100}")
+                        print(f"Progress: {progress*BATCH_SIZE}")
                         # breaker = True
 
-                    if progress % 10 == 0:
+                    if progress % 25 == 0:
                         df = pd.DataFrame.from_dict(all_results, orient="index")
                         df.to_csv(CSV_FILE,  mode="a", index=True)
                         all_results = {}
                         print(f"Total Time Taken: {time.time()-start_time}")
-
+                        
             if breaker: 
                 break
                         
@@ -218,8 +225,6 @@ def process_chunks_in_batches(chunk_generator, max_workers=None):
                 df = pd.DataFrame.from_dict(all_results, orient="index")
                 df.to_csv(CSV_FILE, mode="a", index=True)
                 all_results = {}
-
-
     return all_results
 
 def wait_some(futures):
@@ -230,10 +235,14 @@ def wait_some(futures):
         remaining_futures = futures - done_futures
         done_futures
         break  # only wait for one to complete
-    results = [f.result() for f in done_futures]
+    results = []
+    for f in done_futures:
+        try: 
+            results.append(f.result())
+        except Exception as e:
+            print(e)
     return results, remaining_futures
 
 if __name__ == "__main__":
-
     progress = 0
     process_chunks_in_batches(stream_batched_chunks(), max_workers=MAX_WORKERS)

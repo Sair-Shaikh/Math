@@ -1,5 +1,5 @@
 // Auto-generated batched header
-#define BATCHED_ABCD \
+#define BATCHED_ABC \
     /* Key: 7-162259 */ \
     As[0] = mult[mult[mult[mult[mult[y_0][y_0]][y_0]][y_0]][y_0]][y_0] ^ \
 	mult[mult[mult[mult[mult[y_0][y_0]][y_0]][y_0]][y_1]][y_1] ^ \
@@ -2104,7 +2104,7 @@
 
 
 
-#define BATCHED_ABCD2 \
+#define BATCHED_ABC2 \
     /* Key: 7-162259 */ \
     As[0] = 1, \
 	Bs[0] = 0, \

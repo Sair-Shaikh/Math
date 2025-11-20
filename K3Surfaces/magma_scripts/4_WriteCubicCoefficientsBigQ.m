@@ -1,4 +1,4 @@
-import "magma_scripts/Utils.m" : ConvertToPolys, CppHeaderTextCubic, GetCubicCoeffs;
+import "magma_scripts/Utils.m" : ConvertToPolys, CppHeaderTextCubicBigQ, GetCubicCoeffs;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // This script 
@@ -88,17 +88,19 @@ orbits := ReadObject(F);
 delete F;
 "Smooth Surfaces With A Secant Line: ", #orbits;
 
-fname := "Dataset/cpp_coeffs/cube_coeffs_table_13.txt";
+// Only include that need 2^16 count
+N := 19;
+F := Open("Dataset/zeta_functions/zeta_fails.m", "r");
+selected_orbits := ReadObject(F);
+delete F;
+selected_orbits := selected_orbits[N];
+
+
+fname := Sprintf("Dataset/zeta_functions/cubic_coeffs_bigq_%o.txt", N);
 
 // Clear the coefficients file
 F := Open(fname, "w");
 delete F; 
-
-// Omit everything that is not solved by coutning up to 13
-F := Open("Dataset/zeta_functions/zeta_fails.m", "r");
-selected_orbits := ReadObject(F);
-delete F;
-selected_orbits := selected_orbits[13];
 
 // Setup
 F2 := GF(2);
@@ -115,6 +117,7 @@ V3, Bit3 := GModule(G, R, 3);
 
 count := 0;
 SetColumns(0);
+
 time for key in Keys(orbits) do
 
     if not key in selected_orbits then continue; end if;
@@ -176,35 +179,34 @@ time for key in Keys(orbits) do
     rt_cubic := Evaluate(f3, [0, 0, 0, s, t]);
     Art, Brt, Crt, Drt := GetCubicCoeffs(rt_cubic);
     corrections := [];
-    for i in [1..13] do 
-        q := 2^i;
-        Fq := GF(q);
-        Embed(F2, Fq);
-        corr := 0;
 
-        // First, find the number of rational points of X on the line
-        rt_pts := NumCubicSols(Fq, Art, Brt, Crt, Drt);
-        corr +:= -q*rt_pts;
+    i := N;
+    q := 2^i;
+    Fq := GF(q);
+    Embed(F2, Fq);
+    corr := 0;
 
-        // Contribution over singular fibers, i.e. where f2 vanishes -- do this in the dumbest way possible too
-        P2Fq       := ProjectiveSpace(Fq, 2);
-        R3Fq       := ChangeRing(R3, Fq);
-        singular_points := Points(Scheme(P2Fq, [qq, lv, lw]), Fq);
-        coeffs, mons := CoefficientsAndMonomials(elliptic);
-        for fib in singular_points do 
-            new_coeffs := [ Evaluate(co, Eltseq(fib)) : co in coeffs ];
-            f3_new     := &+[ new_coeffs[i]*R3Fq!mons[i] : i in [1..#new_coeffs] ];
-            corr      +:= #Points(Curve(P2Fq, f3_new))-1;  // -1 because the "incorrect" fibration will count 1 point
-        end for;
-        Append(~corrections, corr);
+    // First, find the number of rational points of X on the line
+    rt_pts := NumCubicSols(Fq, Art, Brt, Crt, Drt);
+    corr +:= -q*rt_pts;
+
+    // Contribution over singular fibers, i.e. where f2 vanishes -- do this in the dumbest way possible too
+    P2Fq       := ProjectiveSpace(Fq, 2);
+    R3Fq       := ChangeRing(R3, Fq);
+    singular_points := Points(Scheme(P2Fq, [qq, lv, lw]), Fq);
+    coeffs, mons := CoefficientsAndMonomials(elliptic);
+    for fib in singular_points do 
+        new_coeffs := [ Evaluate(co, Eltseq(fib)) : co in coeffs ];
+        f3_new     := &+[ new_coeffs[i]*R3Fq!mons[i] : i in [1..#new_coeffs] ];
+        corr      +:= #Points(Curve(P2Fq, f3_new))-1;  // -1 because the "incorrect" fibration will count 1 point
     end for;
+    Append(~corrections, corr);
 
     // Write coefficients and corrections to text file -- we will import this into Python to do C++ orchestration
     str := "Key: " cat key cat "\n";
-    str cat:= CppHeaderTextCubic(A, B, C, D, A2, B2, C2, D2);
+    str cat:= CppHeaderTextCubicBigQ(A, B, C, D, A2, B2, C2, D2);
     str cat:= "\n";
     str cat:= "Corrections: " cat Sprint(corrections);
-    // printf(Sprint(corrections) cat "\n");
     PrintFile(fname, str);
 
     count +:= 1;

@@ -24,7 +24,7 @@ int* contribution_of_fibre_over_P2_point(unsigned, unsigned, unsigned, unsigned,
 
 int main(int argc, char **argv) {
 
-    for (int N = 1; N < 13; N ++ ) {
+    for (int N = 1; N <= 13; N ++ ) {
         
         const unsigned q = 1 << N;
 
@@ -82,9 +82,9 @@ int* contribution_of_fibre_over_P2_point(unsigned q, unsigned y_0, unsigned y_1,
     unsigned* As = new unsigned[BATCH_SIZE], *Bs = new unsigned[BATCH_SIZE], *Cs = new unsigned[BATCH_SIZE], *Ds = new unsigned[BATCH_SIZE];
     int* results = new int[BATCH_SIZE];
     if (type == 1) {
-        BATCHED_ABCD;
+        BATCHED_ABC;
     } else if (type == 2) {
-        BATCHED_ABCD2;
+        BATCHED_ABC2;
     } else {
         const char type_error[] = "Fiber Type needs to be 1 or 2.\n";
         std::cerr << type_error << std::endl;

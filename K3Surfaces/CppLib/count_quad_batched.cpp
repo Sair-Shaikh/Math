@@ -23,7 +23,7 @@ int* contribution_of_fibre_over_P2_point(unsigned, unsigned, unsigned, unsigned,
 
 int main(int argc, char **argv) {
 
-    for (int N = 1; N < 13; N ++ ) {
+    for (int N = 1; N <= 13; N ++ ) {
         
         const unsigned q = 1 << N;
 
@@ -85,9 +85,9 @@ int* contribution_of_fibre_over_P2_point(unsigned q, unsigned y_0, unsigned y_1,
         std::cerr << type_error << std::endl;
         return new int[BATCH_SIZE];
     }
-        for (int i = 0; i < BATCH_SIZE; i++) {
-            unsigned A = As[i], B = Bs[i], C = Cs[i];
-                if (A == 0) {
+    for (int i = 0; i < BATCH_SIZE; i++) {
+        unsigned A = As[i], B = Bs[i], C = Cs[i];
+        if (A == 0) {
             if (B == 0) {
                 if (C == 0) {
                     results[i] = (q + 1);

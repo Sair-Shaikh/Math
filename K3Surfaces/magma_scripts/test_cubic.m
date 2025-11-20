@@ -162,7 +162,7 @@ PointCount := function(q, A, B, C, D, A2, B2, C2, D2)
     return (s1 + s2 + s3);
 end function;
 
-F := Open("Dataset/orbits_lines_secrtpt2.m", "r");
+F := Open("Dataset/orbits_lines_secrtpt.m", "r");
 orbits := ReadObject(F);
 delete F;
 
@@ -185,7 +185,7 @@ count := 0;
 // Main Loop
 extensions_range := [1..10];
 for key in Keys(orbits) do
-    orbit := orbits["7-887005"];
+    orbit := orbits["5-852295"];
     // orbit := orbits[key];
 
     // Convert from int to polynomials

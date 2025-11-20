@@ -19,42 +19,38 @@ import "magma_scripts/Utils.m" : ConvertToPolys;
     Using the functional equation, we can determine #X(F_q^n) for n = 12, ..., 22 using #X(F_q^n) for n = 1, ..., 11.
 */
 
-HalfWeil := function(point_counts) 
+GetPointCountAndKnownFactor := function(orbit) 
+    R<T> := PolynomialRing(Rationals());
+    assert IsDefined(orbit, "pt_count");
+    assert IsDefined(orbit, "contains_line");
+
+    pt_count := orbit["pt_count"];
+
+    if orbit["contains_line"] eq 1 then
+        known_factor :=  (T-2)^2;
+    else 
+        known_factor := (T-2)^1;
+    end if;
+
+    return pt_count, known_factor;
+
+end function;
+
+
+HalfWeil := function(point_counts, known_factor) 
 
     R<T> := PolynomialRing(Rationals());
     assert #point_counts ge 11;
 
     traces := [(point_counts[i] - 1 - 2^(2*i)) : i in [1..#point_counts]];
 
+    wps := FrobeniusTracesToWeilPolynomials(traces, 2, 2, 22 : KnownFactor := known_factor);
 
-    // c := [Rationals() ! -2^31 : i in [1..#point_counts]]; // Initialize
-    // c[1] := -traces[1];
-    // for k in [2..#point_counts] do
-    //     c[k] := (traces[k] + &+[c[i]*traces[k-i] : i in [1..k-1]])/(-k);
-    // end for;
-    // [1] cat c;
+    if #wps eq 1 then return wps; end if;
 
-    cands := FrobeniusTracesToWeilPolynomials(traces, 2, 2, 22);
+    wps := [wp : wp in wps | CheckWeilPolynomial(wp, 2, 1 : SurfDeg := 6)];
 
-    // Divide by q^22 and substitute T -> qT to make this symmetric up to a sign
-    // Check (1-qT) divides the polynomial, i.e. 1 is a root of the new polynomials
-    new_cands := [];
-    for cand in cands do
-        new_poly := R!(Evaluate(cand, 2*T)/2^22);
-
-        // Check if T = 1, i.e. T = 1/q is a root
-        atOne := Evaluate(new_poly, Rationals()!1);
-
-        // Artin-Tate: Divide this by (1-T) then check if evaluation at one is a square:
-        // at_poly := 2*Quotrem(new_poly, 1-T);
-        if atOne eq 0 then 
-            Append(~new_cands, new_poly);
-        end if;
-        assert HasAllRootsOnUnitCircle(new_poly);
-
-    end for;
-
-    return new_cands;
+    return wps;
 end function;
 
 F := Open("Dataset/orbits_point_counts.m", "r");
@@ -76,17 +72,18 @@ for key in Keys(orbits) do
     // Convert from int to polynomials in R<x>
     f2_int := orbit["f2int"];
     f3_int := orbit["f3int"];
-    f2, f3 := ConvertToPolys(f2_int, f3_int, R, G, Bit2, Bit3);  // Now f2, f3 are in R
+    f2, f3 := ConvertToPolys(f2_int, f3_int, R, G, Bit2, Bit3);
 
-    pt_count := orbit["pt_count"];
+    pt_count, known_factor := GetPointCountAndKnownFactor(orbit);
 
-    char_polys := HalfWeil(pt_count);
+    char_polys := HalfWeil(pt_count, known_factor);
 
     assert #char_polys gt 0;
 
     if #char_polys eq 2 then 
         // Find lowest index above 11 for which coeff is 0
         coeffs := Coefficients(char_polys[1]);
+        // #coeffs, coeffs;
         assert coeffs[12] eq 0;
 
         for i in [13..22] do 
@@ -94,9 +91,14 @@ for key in Keys(orbits) do
                 if not IsDefined(failures, i-1) then 
                     failures[i-1] := [];
                 end if;
-                Append(~failures[i-1], key); 
+                Append(~failures[i-1], key);
                 break;
             end if;
+            if not IsDefined(failures, i-1) then 
+                failures[i-1] := [];
+            end if;
+            Append(~failures[i-1], key);
+
         end for;
     end if;
 
@@ -115,18 +117,17 @@ for i in Keys(failures) do
 end for;
 printf "\n";
 
-// for i in Keys(failures) do 
-//     if not IsDefined(failures, i) then continue; end if;
-//     fname := Sprintf("Dataset/zeta_functions/zeta_fails_%o.txt", i);
+for i in Keys(failures) do 
+    fname := Sprintf("Dataset/zeta_functions/zeta_fails_%o.txt", i);
 
-//     str := "";
-//     failed_keys := failures[i];
-//     for key in failed_keys do 
-//         str cat:= Sprint(key) cat "\n";
-//     end for;
-//     PrintFile(fname, str);
-// end for;
+    str := "";
+    failed_keys := failures[i];
+    for key in failed_keys do 
+        str cat:= Sprint(key) cat "\n";
+    end for;
+    PrintFile(fname, str);
+end for;
 
-// F := Open("Dataset/zeta_functions/zeta_fails.m", "w");
-// WriteObject(F, failures);
-// delete F;
+F := Open("Dataset/zeta_functions/zeta_fails.m", "w");
+WriteObject(F, failures);
+delete F;

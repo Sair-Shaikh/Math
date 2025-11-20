@@ -50,7 +50,7 @@ ReadPointCountsCSV := function(file_paths)
     return point_counts;
 end function;
 
-file_paths := ["Dataset/zeta_functions/point_counts_cubic_alt.csv", "Dataset/zeta_functions/point_counts_quad_alt.csv"];
+file_paths := ["Dataset/zeta_functions/point_counts_cubic_alt2.csv", "Dataset/zeta_functions/point_counts_quad_alt.csv"];
 point_counts := ReadPointCountsCSV(file_paths);
 orbit_paths := ["Dataset/orbits_lines_contain.m", "Dataset/orbits_lines_secrtpt.m", "Dataset/orbits_lines_sec.m"];
 
@@ -69,9 +69,18 @@ for file_path in orbit_paths do
         if not IsDefined(point_counts, key) then 
             key;
         else 
+
+            if file_path eq orbit_paths[1] then 
+                orbit["contains_line"] := 1;
+            else 
+                orbit["contains_line"] := 0;
+            end if;
+
             orbit["pt_count"] := point_counts[key];
             new_orbits[key] := orbit;
+
         end if;
+
     end for; 
 end for;
 

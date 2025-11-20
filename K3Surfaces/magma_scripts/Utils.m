@@ -33,8 +33,7 @@ GetCubicCoeffs := function(f)
 
 end function;
 
-
-PolyToCpp := function(h)
+PolyToCpp := function(h, typ)
     if h eq 0 then return "0"; end if;
     if h eq 1 then return "1"; end if;
 
@@ -47,8 +46,13 @@ PolyToCpp := function(h)
                 if str eq "" then
                     str := Sprintf("y_%o", k);
                 else
-                    // str := Sprintf("ff2k_mult(%o, y_%o)", str, k);
-                    str := Sprintf("mult[%o][y_%o]", str, k);
+                    if typ eq 1 then 
+                        str := Sprintf("mult[%o][y_%o]", str, k);
+                    elif typ eq 2 then 
+                        str := Sprintf("ff2k_mult(%o, y_%o)", str, k);
+                    else
+                        assert false;
+                    end if;
                 end if;
             end for;
         end for;
@@ -63,16 +67,16 @@ end function;
 CppHeaderTextQuad := function(A, B, C, A2, B2, C2) 
     str := "";
     str cat:= "#define ABC \\" cat "\n";
-    str cat:= "    A = " cat PolyToCpp(A) cat ", \\" cat "\n";
-    str cat:= "    B = " cat PolyToCpp(B) cat ", \\" cat "\n";
-    str cat:= "    C = " cat PolyToCpp(C) cat "\n";
+    str cat:= "    A = " cat PolyToCpp(A, 1) cat ", \\" cat "\n";
+    str cat:= "    B = " cat PolyToCpp(B, 1) cat ", \\" cat "\n";
+    str cat:= "    C = " cat PolyToCpp(C, 1) cat "\n";
 
     str cat:= "\n\n";
 
     str cat:= "#define ABC2 \\" cat "\n";
-    str cat:= "    A = " cat PolyToCpp(A2) cat ", \\" cat "\n";
-    str cat:= "    B = " cat PolyToCpp(B2) cat ", \\" cat "\n";
-    str cat:= "    C = " cat PolyToCpp(C2) cat "\n";
+    str cat:= "    A = " cat PolyToCpp(A2, 1) cat ", \\" cat "\n";
+    str cat:= "    B = " cat PolyToCpp(B2, 1) cat ", \\" cat "\n";
+    str cat:= "    C = " cat PolyToCpp(C2, 1) cat "\n";
 
     return str;
 end function;
@@ -80,17 +84,35 @@ end function;
 
 CppHeaderTextCubic := function(A, B, C, D, A2, B2, C2, D2) 
     str := "";
-    str cat:= "#define ABCD \\" cat "\n";
-    str cat:= "    A = " cat PolyToCpp(A) cat ", \\" cat "\n";
-    str cat:= "    B = " cat PolyToCpp(B) cat ", \\" cat "\n";
-    str cat:= "    C = " cat PolyToCpp(C) cat ", \\" cat "\n";
-    str cat:= "    D = " cat PolyToCpp(D) cat "\n";
+    str cat:= "#define ABC \\" cat "\n";
+    str cat:= "    A = " cat PolyToCpp(A, 1) cat ", \\" cat "\n";
+    str cat:= "    B = " cat PolyToCpp(B, 1) cat ", \\" cat "\n";
+    str cat:= "    C = " cat PolyToCpp(C, 1) cat ", \\" cat "\n";
+    str cat:= "    D = " cat PolyToCpp(D, 1) cat "\n";
     str cat:= "\n\n";
 
-    str cat:= "#define ABCD2 \\" cat "\n";
-    str cat:= "    A = " cat PolyToCpp(A2) cat ", \\" cat "\n";
-    str cat:= "    B = " cat PolyToCpp(B2) cat ", \\" cat "\n";
-    str cat:= "    C = " cat PolyToCpp(C2) cat ", \\" cat "\n";
-    str cat:= "    D = " cat PolyToCpp(D2) cat "\n";
+    str cat:= "#define ABC2 \\" cat "\n";
+    str cat:= "    A = " cat PolyToCpp(A2, 1) cat ", \\" cat "\n";
+    str cat:= "    B = " cat PolyToCpp(B2, 1) cat ", \\" cat "\n";
+    str cat:= "    C = " cat PolyToCpp(C2, 1) cat ", \\" cat "\n";
+    str cat:= "    D = " cat PolyToCpp(D2, 1) cat "\n";
+    return str;
+end function;
+
+
+CppHeaderTextCubicBigQ := function(A, B, C, D, A2, B2, C2, D2) 
+    str := "";
+    str cat:= "#define ABC \\" cat "\n";
+    str cat:= "    A = " cat PolyToCpp(A, 2) cat ", \\" cat "\n";
+    str cat:= "    B = " cat PolyToCpp(B, 2) cat ", \\" cat "\n";
+    str cat:= "    C = " cat PolyToCpp(C, 2) cat ", \\" cat "\n";
+    str cat:= "    D = " cat PolyToCpp(D, 2) cat "\n";
+    str cat:= "\n\n";
+
+    str cat:= "#define ABC2 \\" cat "\n";
+    str cat:= "    A = " cat PolyToCpp(A2, 2) cat ", \\" cat "\n";
+    str cat:= "    B = " cat PolyToCpp(B2, 2) cat ", \\" cat "\n";
+    str cat:= "    C = " cat PolyToCpp(C2, 2) cat ", \\" cat "\n";
+    str cat:= "    D = " cat PolyToCpp(D2, 2) cat "\n";
     return str;
 end function;

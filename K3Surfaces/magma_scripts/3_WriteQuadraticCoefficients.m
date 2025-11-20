@@ -11,23 +11,22 @@ import "magma_scripts/Utils.m" : ConvertToPolys, CppHeaderTextQuad;
 // (5) The corrections are stored with each orbits data. 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+N := 13;
 F := Open("Dataset/orbits_lines_contain.m", "r");
 orbits := ReadObject(F);
 delete F;
 "Smooth Surfaces Containing a Line: ", #orbits;
 
 // Clear the coefficients file
-fname := "Dataset/cpp_coeffs/quad_coeffs_table_12.txt"; // Writing those that need counting up to 12
+fname := "Dataset/cpp_coeffs/quad_coeffs_table_13.txt"; // Writing those that need counting up to 12
 F := Open(fname, "w");
 delete F; 
 
-// Omit everything that is not solved by coutning up to 12
+// Omit everything that is not solved by coutning up to 13
 F := Open("Dataset/zeta_functions/zeta_fails.m", "r");
 selected_orbits := ReadObject(F);
 delete F;
-selected_orbits := selected_orbits[12];
-
+selected_orbits := selected_orbits[N];
 
 // Setup
 F2 := GF(2);
@@ -41,7 +40,7 @@ R2<s, t>     := PolynomialRing(Fiber, 2);
 V2, Bit2 := GModule(G, R, 2);
 V3, Bit3 := GModule(G, R, 3);
 
-new_orbits := AssociativeArray();
+SetColumns(0);
 count := 0;
 for key in Keys(orbits) do
     if not key in selected_orbits then continue; end if;
@@ -107,7 +106,7 @@ for key in Keys(orbits) do
         cc := A*b^2 + B*b*c + C*c^2 + D*a*b + E*a*c + F*a^2; // reusing a, b, c -- doesnt matter
         disc := A*E^2 + B^2*F + C*D^2 -B*D*E; 
         
-        for i in [1..12] do 
+        for i in [1..N] do 
             q := 2^i;
             over  := (1-HasU2Term)*q+1;
             if not disc eq 0 then 
@@ -121,7 +120,7 @@ for key in Keys(orbits) do
             Append(~corrections, under-over);
         end for;
     else 
-        corrections := [ 0 : i in [1..12]];
+        corrections := [ 0 : i in [1..N]];
     end if;
 
 
@@ -138,10 +137,6 @@ for key in Keys(orbits) do
     str cat:= "\n";
     str cat:= "Corrections: " cat Sprint(corrections);
     PrintFile(fname, str);
-
-    // Also save these in a magma file
-    new_orbits[key] := orbit;
-    new_orbits[key]["ptct_corr"] := corrections;
 
     count +:= 1;
     if count mod 2000 eq 0 then 

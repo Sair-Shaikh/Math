@@ -4,10 +4,6 @@
 #include <fstream>
 #include <cstdio>
 #include <set>
-#include "constants.h"
-
-std::tuple<unsigned**, unsigned**, unsigned**, unsigned**, unsigned*, unsigned*> generate_all_tables();
-
 
 void write_table(unsigned* table, int size, std::string fname);
 void write_table(int* table, int size, std::string fname);
