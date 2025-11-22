@@ -47,7 +47,7 @@
 	ff2k_mult(ff2k_mult(ff2k_mult(ff2k_mult(ff2k_mult(y_1, y_1), y_1), y_1), y_2), y_2) ^ \
 	ff2k_mult(ff2k_mult(ff2k_mult(ff2k_mult(ff2k_mult(y_1, y_1), y_1), y_2), y_2), y_2) ^ \
 	ff2k_mult(ff2k_mult(ff2k_mult(ff2k_mult(ff2k_mult(y_1, y_2), y_2), y_2), y_2), y_2) ^ \
-	ff2k_mult(ff2k_mult(ff2k_mult(ff2k_mult(ff2k_mult(y_2, y_2), y_2), y_2), y_2), y_2); 
+	ff2k_mult(ff2k_mult(ff2k_mult(ff2k_mult(ff2k_mult(y_2, y_2), y_2), y_2), y_2), y_2)
 
 
 #define BATCHED_ABC2 \

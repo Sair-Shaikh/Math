@@ -272,12 +272,12 @@ int count_quadratic_roots(unsigned A, unsigned B, unsigned C) {
   if (A == 0) {
     if (B == 0) {
       if (C == 0) {
-        return q;
+        return q+1;
       } else {
-        return 0;
+        return 1;
       }
     } else {
-      return 1;
+      return 2;
     }  
   } else if (B == 0) { // The quadratic has a double root.
       return 1;
@@ -360,4 +360,12 @@ std::string int128_to_string(__int128 num) {
         num = (num - digit) / 10;
     } while (num != 0);
     return str;
+}
+
+static inline unsigned __int128 to_uint128(const char* s) {
+    unsigned __int128 x = 0;
+    for (int i = 0; s[i]; i++) {
+        x = x * 10 + (s[i] - '0');
+    }
+    return x;
 }

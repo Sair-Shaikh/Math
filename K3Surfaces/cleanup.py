@@ -5,18 +5,27 @@ quad_path = "Dataset/point_counts_quad.csv"
 cubic_path = "Dataset/point_counts_cubic.csv"
 
 df = pd.read_csv(cubic_path, index_col=0)
-
 df = df[~df.index.duplicated(keep='last')]
 df = df[df.index != ""]
-print(len(df))
+
+df2 = pd.read_csv(quad_path, index_col=0)
+df2 = df2[~df2.index.duplicated(keep='last')]
+df2 = df2[df2.index != ""]
+
 
 
 for N in range(14,21): 
-    fname = f"Dataset/point_counts_cubic_bigq_{N}.csv"
-    if os.path.exists(fname):
-        dfN = pd.read_csv(fname, index_col=0)
+    fname1 = f"Dataset/zeta_functions/point_counts_cubic_bigq_{N}.csv"
+    fname2 = f"Dataset/zeta_functions/point_counts_quad_bigq_{N}.csv"
+
+    if os.path.exists(fname1):
+        dfN = pd.read_csv(fname1, index_col=0)
         df = pd.concat([df, dfN], ignore_index=True, axis="columns")
+    if os.path.exists(fname2):
+        dfN = pd.read_csv(fname2, index_col=0)
+        df2 = pd.concat([df2, dfN], ignore_index=True, axis="columns")
 df.to_csv("Dataset/zeta_functions/point_counts_cubic_alt2.csv")
+df2.to_csv("Dataset/zeta_functions/point_counts_quad_alt2.csv")
 
 
 

@@ -1,0 +1,161 @@
+
+
+\documentclass[12pt]{article}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+\subsection*{Background: [1 slides]}
+There is an earlier proof that $P \neq NP$ does not relativize, as in there exist oracles A and A' such that in the relativized world you can prove $P \neq NP$ or $P = NP$. Thus, any proof technique that relativizes is not effective against $P \neq NP$. \bbni
+This paper says you cant use ``natural" circuit lower bound arguments to decide $P \neq NP$. Thus, similarly, if your proof ``naturalizes'', it is fruitless against $P \neq NP$ and you may as well abandon it.
+
+\subsection*{Idea: [1 Slide]}
+Here's a common way in which you may hope to show $P \neq NP$ using circuit lower bounds.
+\begin{enumerate}
+    \item Formulate some measure of ``variation" or ``scatter" on Boolean functions. 
+    \item Show that polynomial sized circuits can only compute functions of low ``variation". This is some combinatorial property $C_n$. 
+    \item Show that SAT or some other function in NP has high "variation". 
+\end{enumerate}
+This paper shows that if PRGs exist and $C_n$ is ``natural" then such a proof cannot work.
+
+
+\subsection*{Natural Combinatorial Properties: [2 Slides]} 
+A combinatorial property is some subset $\bigcup_n \{ C_n \subset F_n  \}$. 
+A function $f_n$ is said to have the combinatorial property if $f_n \in C_n$. 
+
+The combinatorial property $C_n$ is $\Gamma$-\textbf{natural} if it contains $C^*_n$ satisfying the following: 
+\begin{enumerate}
+    \item Constructivity: $f_n \in C^*_n$ can be decided in $\Gamma$. Note that the ``input sizes'' here are $2^n$, i.e. $f_n$ as a truth-table. 
+    \item Largeness: $|C^*_n| \geq 2^{-O(n)}*|F_n| = |F_n|/N^k$ where $N = 2^n$. Intuitively, there is a non-negligible chance for a random $f_n$ to have this property. 
+\end{enumerate}
+When we say ``natural'' without qualification, we mean P/poly-natural. \bbni
+A property is \textbf{useful} against P/poly if every sequence of functions ${f_n}$ with $f_n \in C_n$ is superpolynomial. That is, for any $k$, there exists an $n$, such that $f_n$ has a circuit lower bound $\geq n^k$. 
+
+
+\subsection*{Natural Proofs: [2 slides]} 
+A proof is natural against P/poly if it contains some ``natural combinatorial property" that is "useful" against P/poly.
+This definition is a little vague and you might have to work to show some property used in some proof is ``natural". Towards the end of the talk, we will see that most things we can consider are natural.
+
+Main Theorem: Such a property can be used to break any PRG. 
+
+Any proof that some function $f_n$ does not have small circuits must either:
+\begin{enumerate}
+    \item Use some very specialized property of $f_n$, one shared by only a negligible fraction of functions. 
+    \item Must define a property so complicated that it is outside the bounds of mathematical experience. 
+\end{enumerate}
+That is, the proof must be unnatural by violating either ``largeness" or ``constructivity." \\
+The authors claim there are no such examples in the literature, and there are theoretical reasons for why finding these is difficult. 
+
+
+\subsection*{Theorem Idea: [1 Slide]}
+A natural proof that some function $f$ is not in P/poly must distinguish $f$ from a pseudo-random function in P/poly. This can be converted into an algorithm that can tell $f$ from a pseudorandom function in P/poly. This can be used to break a PRG. 
+
+\subsection*{Theorem Statement: [1 Slide]} 
+Define the hardness $H(G_k)$ of a pseudorandom generator $G_k: {0,1}^k \to {0,1}^{2k}$ as the minimal $S$ for which there exists a circuit of size $\leq S$:
+\[ Pr[C(G_k(x)) = 1 ] - Pr[C(y) = 1] \geq 1/S \]
+
+\begin{theorem*}  
+There is no P/poly-natural proof against P/poly unless $H(G_k) \leq 2^{k^{o(1)}}$ for every psedorandom generator $G_k$. 
+In particular, if $2^{n^\epsilon}$-hard functions exist, then there is no P/poly-natural proof against P/poly. 
+\end{theorem*}
+
+\subsection*{Proof: [7 Slides]}
+
+[1st Slide]:\\
+Assume for the sake of contradiction such a natural proof exists. Let $C_n$ be the associated large and constructible property useful against P/poly. Let $G: \{0,1\}^k \to \{0,1\}^{2k}$ be a pseudo-random generator. Let $\epsilon > 0$ and $n = \ceil{k^\epsilon}$. We will do this in $3$-steps: 
+\begin{enumerate}
+    \item Use $G$ to construct ``pseudo-random" boolean function in $F_n$.
+    \item Use $C_n$ to provide a statistical test distinguishing random functions in $F_n$ from ``psuedo-random" these functions.
+    \item Convert this statistical test to a statistical test against $G$.  
+\end{enumerate}
+
+[2nd Slide]: \\
+\textbf{Step 1:} Use $G$ to construct ``pseudo-random" boolean function in $F_n$. \bbni
+Let $G_0, G_1: \{0, 1\}^k \to \{0, 1\}^k$ be the first and last $k$ bits of $G$. For $y \in \{0, 1\}^n$, let $G_y = G_{y_n} \circ G_{y_{n-1}} \circ \cdots \circ G_{y_0}$. Let $f(x)(y)$ be the first bit of $G_y(x)$. Then, $f(x)$ is a Boolean function. \bbni 
+Visual: For some fixed $x$, take input $y$. Send $x$ through $G$, take the first or second half based on $y_0$, send this through $G$, take first or second half using $y_1$, and so on. \bbni
+Thus, $f(x)(y)$ is in $P$, and in particular, computable by poly-sized circuits. \bbni
+
+[3rd Slide]: \\
+\textbf{Step 2:} Use $C_n$ to provide a statistical test distinguishing random functions in $F_n$ from ``psuedo-random" functions $f(x)$, $x \in \{0, 1\}^k$.  \bbni
+
+As $C_n$ is useful against $P/poly$, $f(x)$ is not in $C_n$ for any fixed $x \in \{0, 1\}^k$ and sufficiently large $k$. \\
+Explanation: For fixed $x$, $f(x)$ defines a family of functions as you can input any length $y$. These have circuits upperbounded in size by some polynomial in $n$ ($n$ and $k$ are polynomially related). Thus, we can go far enough to get some instance of $f(x)$ that's not in $C_n$. \bbni
+
+Thus, $C_n$ has empty intersection with $\{f(x) : x \in {0, 1}^k\}$. This provides a statistical test:
+\[ |\Pr[C_n(\textbf{f}_n) = 1] - \Pr[C_n(f(\textbf{x})) = 1]| \geq 2^{-O(n)} \]
+which is computable by circuits of size $2^{O(n)}$. \bbni
+Note: By largeness, $\Pr[C_n(\textbf{f}_n)] \geq 2^{-O(n)}$ and the second term is $0$. By constructivity, this is computable by circuits of polynomial size in $2^n$, i.e. in $2^{O(n)}$. \bbni
+
+[4th Slide]: \\
+\textbf{Step 3:} Convert this statistical test to a statistical test against $G$. \bbni
+We represent the computation of $f(x)$ for all $y \in \{0, 1\}^n$ as the binary tree $T$, i.e. the split at the $i$th level represents each successive bit of $y$, and the leafs represent the outputs. \todo{visual here}.  \bbni
+
+[5th Slide]:\\
+We order the internal vertices ``children first", i.e. if $v_i \to v_j$ than $j < i$. Thus, we get $v_1, \cdots, v_{2^n-1}$. \bbni
+
+Then, we look at all the sub-trees of the form $T_i$ which contain all vertices upto $v_i$ and all leaves. Let $v_i(y)$ be the root of the subtree containing $y$ and $h_{v_i}(y)$ be the height of this subtree. Define $G_{i, y} = G_{y_n} \circ \cdots \circ G_{i, y_{n-h_{v_i}(y)+1}}$. \todo{Visual here.}\bbni
+
+[6th Slide]: \\
+Define random collection $\textbf{f}_{i, n}$ by setting $\textbf{f}_{i, n}(y)$ to the first bit of $G_{i,y}(\textbf{x}_{v_i(y)})$ for $\textbf{x}_{v_i(y)}$ being uniformly and independently random. \bbni
+Notice that $\textbf{f}_{0, n} = \textbf{f}_n$ and $\textbf{f}_{2^n-1, n} = f(\textbf{x})$. Note: $h_{v_0}(y) = 1$ and $h_{v_{2^n-1}}(y) = n$. \bbni 
+So, we get for some $i$, 
+\[ |\Pr[C_i(f_{i+1, n}(x)) = 1] - \Pr[C_{i}(f_{i,n}(x)) = 1]| \geq \frac{2^{-O(n)}}{2^n} = 2^{-O(n)}\]
+
+[7th Slide]: \\
+Next, fix $\textbf{x}_v$ for roots $v$ of all subtrees in $T_{i+1}$ except $v_{i+1}$. Then, we have a statistical test to distinguish $G(\textbf{x}_{v_{i+1}})$ from $(\textbf{x}_{v_i'}, \textbf{x}_{v_i''})$ where $v_i', v_i''$ are the children of $v_i$. \bbni
+Then, $H(G) \leq 2^{O(n)} \leq 2^{O(k^\epsilon)}$. As $\epsilon$ was arbitrary, we have broken $G$. 
+
+\subsection*{More general comments: [1 Slide] }
+More generally, if a complexity class $\Lambda$ contains a pseudo-random function generator $G$ that are sufficiently secure against $\Gamma$ -- i.e. any algorithm in $\Gamma$ can only break $G$ with exponentially small probability, then there is no $\Gamma$-natural proof against $\Lambda$.
+
+
+\subsection*{Formal complexities measures are large: [3 Slides] }
+[1st Slide] \\
+Define a formal complexity measure $\mu: F_n \to \Z$ to be an integer-valued function to satisfy the following: 
+\begin{enumerate}
+    \item $\mu(f) \leq 1$ if $f$ is a $x_i$ or $\lnot x_i$. 
+    \item $\mu(f \land g) \leq \mu(f) + \mu(g)$
+    \item $\mu(f \lor g) \leq \mu(f) + \mu(g)$
+\end{enumerate}
+That is to say, $\mu(f)$ is a lower bound on the formula size for $f$. \bbni 
+Examples: 
+\begin{enumerate}
+    \item Circuit complexity.
+    \item The degree or number of monomials of the polynomial obtained by arithmetization.
+\end{enumerate}
+
+[2nd Slide] \\
+Any combinatorial property based on $\mu$ already satisfies the ``largeness'' condition. In particular, we have the following theorem: 
+\begin{theorem*}
+    Let $\mu$ be a formal complexity measure on $F_n$ and let $\mu(f) = t$ for some $f$. Then, 
+    \begin{enumerate}
+        \item For at least $\frac{1}{4}$ of all functions $g \in F_n$, $\mu(g) \geq \frac{t}{4}$.
+        \item For any $\epsilon = \epsilon(n)$, for at least $(1-\epsilon)$ fraction of $g \in F_n$, 
+        \[ \mu(g) \geq \Omega\left(\frac{t}{\left(n+\log\left(\frac{1}{\epsilon}\right)\right)^2}\right)-n\]
+    \end{enumerate}
+\end{theorem*}
+If you plug in $\epsilon = 1-2^{-O(n)}$, you get that for at least $2^{-O(n)}$ fraction of $g \in F_n$ have complexity $\frac{\alpha t}{n^2}$ for some $\alpha > 0$. Thus, for this to prove $P \neq NP$ the cutoff on what circuits can compute will have to be between $t/\text{poly}(n)$ and $t$. \bbni 
+
+[3rd Slide] \\
+Proof of (a): \\
+Let $g$ be a uniformly random function in $F_n$. Write $f = h \oplus g$ with $h = f \oplus g$. Then, 
+    \[ f = (\lnot h \land g) \lor (h \land \lnot g) \]
+Note that $g, h, \lnot g, \lnot h$ are all uniformly random. Now imagine $\{g : \mu(g) \leq t/4\}$ at least $\frac{3}{4}$ of all functions. Then, by the union bound, 
+\[ \Pr[\mu(g), \mu(h), \mu(\lnot g), \mu(\lnot h) < t/4] > 0 \] 
+But then $\mu(f) < t$ for this choice of $g$. Contradiction. \bbni
+The general idea for $(b)$ is similar, i.e. write $f$ as a boolean combination of a small number combinations involving random variables, then use union bound and the probabilistic method.  
+
+
+\textbf{Total: 20 slides}
+
+
+
+\end{document}
+
+

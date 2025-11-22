@@ -50,6 +50,10 @@ HalfWeil := function(point_counts, known_factor)
 
     wps := [wp : wp in wps | CheckWeilPolynomial(wp, 2, 1 : SurfDeg := 6)];
 
+    // if #wps eq 1 then return wps; end if;
+    // // Check if rk(Pic) = 2 and in that case enforce multiplicity of q > multiplicity of -q
+    // wps := [ wp : wp in wps | (not WeilPolynomialToRankBound(wp, 2) eq 2) or (Valuation(wp, T-2) gt Valuation(wp, T+2)) ];
+
     return wps;
 end function;
 

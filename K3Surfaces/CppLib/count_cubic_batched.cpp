@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <set>
 #include "tableio.h"
+#include "constants.h"
 
 #ifndef EXT_COEFFS
 #include "batched_coeffs_cubic.h"

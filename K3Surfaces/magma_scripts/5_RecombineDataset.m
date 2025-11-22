@@ -50,7 +50,7 @@ ReadPointCountsCSV := function(file_paths)
     return point_counts;
 end function;
 
-file_paths := ["Dataset/zeta_functions/point_counts_cubic_alt2.csv", "Dataset/zeta_functions/point_counts_quad_alt.csv"];
+file_paths := ["Dataset/zeta_functions/point_counts_cubic_alt2.csv", "Dataset/zeta_functions/point_counts_quad_alt2.csv"];
 point_counts := ReadPointCountsCSV(file_paths);
 orbit_paths := ["Dataset/orbits_lines_contain.m", "Dataset/orbits_lines_secrtpt.m", "Dataset/orbits_lines_sec.m"];
 
