@@ -1,0 +1,11 @@
+The following surfaces have no viable zetas, so I messed up the counting somewhere. 
+Maybe even messed up the counting for the whole batch of them. 
+I'm not exactly sure which of the several methods I used to compute for them.
+They are all in quadratic 15 or 16.
+Maybe this implies that the current counting for quadratics, the one that's going on for 17s currently, is not viable. 
+Actually, nevermind. These are the last 4 orbits counted for in the 15s using the "old" method. 
+I recall this was the batch that was not being saved. Maybe just these are problematic. The rest all work. 
+7-170465
+7-170446
+7-168439
+7-673327

@@ -3,9 +3,11 @@
 *.log
 *.synctex.gz
 *.DS_Store*
-*/Dataset*
 **/Fq_tables**
 *.venv*
 *.vscode*
 **/Coeffs**
 *.o
+*/Dataset/*
+!zeta_functions/
+!zeta_functions/**

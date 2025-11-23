@@ -20,14 +20,20 @@ for N in range(14,21):
 
     if os.path.exists(fname1):
         dfN = pd.read_csv(fname1, index_col=0)
-        df = pd.concat([df, dfN], ignore_index=True, axis="columns")
+        df = pd.concat([df, dfN], axis="columns")
     if os.path.exists(fname2):
         dfN = pd.read_csv(fname2, index_col=0)
-        df2 = pd.concat([df2, dfN], ignore_index=True, axis="columns")
-df.to_csv("Dataset/zeta_functions/point_counts_cubic_alt2.csv")
-df2.to_csv("Dataset/zeta_functions/point_counts_quad_alt2.csv")
+        df2 = pd.concat([df2, dfN], axis="columns")
+df.to_csv("Dataset/zeta_functions/point_counts_cubic.csv")
+df2.to_csv("Dataset/zeta_functions/point_counts_quad.csv")
 
+df_merged = pd.concat([df2, df])
+# df_merged = df_merged.sort_values(by="key", ascending=True)
+df_merged = df_merged.assign(non_nan_count=-df_merged.count(axis=1)) \
+       .sort_values(["non_nan_count", "key"], ascending=True) \
+       .drop(columns="non_nan_count")
 
+df_merged.to_csv("Dataset/zeta_functions/point_counts_all.csv")
 
 
 

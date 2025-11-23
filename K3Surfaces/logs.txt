@@ -1,0 +1,12 @@
+Running N=14
+Computing values for N=14 and 12811 surfaces
+Computing values for N=14 and 8328 surfaces
+Running N=15
+Computing values for N=15 and 5989 surfaces
+Computing values for N=15 and 3971 surfaces
+Running N=16
+Computing values for N=16 and 2862 surfaces
+Computing values for N=16 and 1997 surfaces
+Running N=17
+Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces

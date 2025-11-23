@@ -82,7 +82,8 @@ for key in Keys(orbits) do
 
     char_polys := HalfWeil(pt_count, known_factor);
 
-    assert #char_polys gt 0;
+    if #char_polys eq 0 then key; end if;
+    // assert #char_polys gt 0;
 
     if #char_polys eq 2 then 
         // Find lowest index above 11 for which coeff is 0
@@ -121,17 +122,17 @@ for i in Keys(failures) do
 end for;
 printf "\n";
 
-for i in Keys(failures) do 
-    fname := Sprintf("Dataset/zeta_functions/zeta_fails_%o.txt", i);
+// for i in Keys(failures) do 
+//     fname := Sprintf("Dataset/zeta_functions/zeta_fails_%o.txt", i);
 
-    str := "";
-    failed_keys := failures[i];
-    for key in failed_keys do 
-        str cat:= Sprint(key) cat "\n";
-    end for;
-    PrintFile(fname, str);
-end for;
+//     str := "";
+//     failed_keys := failures[i];
+//     for key in failed_keys do 
+//         str cat:= Sprint(key) cat "\n";
+//     end for;
+//     PrintFile(fname, str);
+// end for;
 
-F := Open("Dataset/zeta_functions/zeta_fails.m", "w");
-WriteObject(F, failures);
-delete F;
+// F := Open("Dataset/zeta_functions/zeta_fails.m", "w");
+// WriteObject(F, failures);
+// delete F;
