@@ -10,3 +10,24 @@ Computing values for N=16 and 1997 surfaces
 Running N=17
 Computing values for N=17 and 1148 surfaces
 Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces
+Computing values for N=17 and 1148 surfaces
+Running N=18
+Computing values for N=18 and 519 surfaces
+Computing values for N=18 and 519 surfaces
+Computing values for N=18 and 519 surfaces
+Computing values for N=18 and 519 surfaces
+Computing values for N=18 and 519 surfaces
+Computing values for N=18 and 519 surfaces
+Command '['CppLib/Coeffs/exec_85cb2d91-ef52-4d46-8d27-c7b455d352b3']' died with <Signals.SIGTERM: 15>.
+Command '['CppLib/Coeffs/exec_95fb4b6f-8aab-4b72-a6f4-29b49b04c1ff']' died with <Signals.SIGTERM: 15>.

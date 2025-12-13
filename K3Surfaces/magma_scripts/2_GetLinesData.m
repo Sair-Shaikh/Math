@@ -85,10 +85,8 @@ V2, Bit2 := GModule(G, R, 2);
 V3, Bit3 := GModule(G, R, 3);
 
 orbs_with_lines := AssociativeArray();
-containers := AssociativeArray();
-rat_pters := AssociativeArray();
-leftovers := AssociativeArray();
-
+contains_line := AssociativeArray();
+not_contains_line := AssociativeArray();
 
 unique_f2s := [];
 progress := 0;
@@ -124,7 +122,6 @@ for key in Keys(K3_smooth) do
                 selected_line := rref;
                 contains_line := true;
             end if;
-            
             continue;
         end if;
 
@@ -163,34 +160,48 @@ for key in Keys(K3_smooth) do
     orbit["f2int"] := Seqint([Integers() !Bit2(f2)[i] : i in [1..#Basis(V2)]], 2);
     orbit["f3int"] := Seqint([Integers() !Bit3(f3)[i] : i in [1..#Basis(V3)]], 2);
     orbit["lines_data"] := lines_data;
-    orbs_with_lines[key] := orbit;
 
     // Maintain counts and partition into the correct dicts
     if contains_line then 
-        containers[key] := orbit;
+        orbit["contains_line"] := 1;
+        contains_line[key] := orbit;
     elif secant_with_ratpt then 
-        rat_pters[key] := orbit;
+        orbit["contains_line"] := 0;
+        not_contains_line[key] := orbit;
     else 
-        leftovers[key] := orbit;
+        orbit["contains_line"] := 0;
+        not_contains_line[key] := orbit;
     end if;
-    
+    orbs_with_lines[key] := orbit;
+
     progress +:= 1;
     if progress mod 1000 eq 0 then
         "Progress: ", progress;
-        "Contains Line: ", #containers;
-        "Sec with RatPt: ", #rat_pters;
-        "The Rest: ", #leftovers;
+        "Contains Line: ", #contains_line;
+        "Does Not Contain Line: ", #not_contains_line;
         "";
     end if;
 end for;
 
+// Save previous calculations
+F := Open("orbits_lines.m", "w");
+WriteObject(F, orbs_with_lines);
+delete F;
+
+F := Open("orbits_lines_contain.m", "w");
+WriteObject(F, contains_line);
+delete F;
+
+F := Open("orbits_lines_not_contain.m", "w");
+WriteObject(F, not_contains_line);
+delete F;
 
 
 /*
     Post-Process by permuting x1, x2, x3 to be in standard forms. 
 */
 
-orbits := containers;
+orbits := contains_line;
 new_orbits := AssociativeArray();
 count := 0;
 for key in Keys(orbits) do
