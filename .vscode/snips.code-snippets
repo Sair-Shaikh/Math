@@ -51,7 +51,18 @@
 			"\\[$1\\]",
 		],
 		"description": "Insert a Math line"
-	}
+	},
+	"exercise/sol": {
+		"scope": "tex,latex",
+		"prefix": "ex",
+		"body": [
+			"\\begin{exercise}{$1} \n",
+			"\\end{exercise}",
+			"\\begin{solution}\n",
+			"\\end{solution}",
+		],
+		"description": "Setup a new Math document"
+	},
 
 
 }
