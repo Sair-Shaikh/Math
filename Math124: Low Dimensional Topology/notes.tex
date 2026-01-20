@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+\section{Smooth Structures:}
+A smooth structure on a topological manifold is the choice of a maximal atlas. \\
+Exercise: Every smooth atlas $\mathcal{A}$ is contained in a unique maximal atlas. \\
+Exercise: Two smooth atlasses of $X$ determine the same smooth structure if and only if their union is a smooth atlas. \bbni
+
+One notion of equivalence of smooth structures is compatibility of atlasses. Under this equivalence, every positive dimensional topological manifold has infinitely many distinct smooth structures. \\
+Example: Two smooth structures on $\R$:
+\begin{itemize}
+    \item $(\R, \id)$
+    \item $(\R, \phi)$ where $\phi(x) = x^3$
+\end{itemize}
+
+\section{Knots:}
+Knots are smooth embeddings $S^1 \to S^3$. \\
+Reidemeister moves are isotopies between two knot projections of the same class. \\
+\textbf{Connected sum of $K_1$ and $K_2$} A diagram. Knot starts with $K_1$, goes to $K_2$, does $K_2$, then comes back. As maps into $S^3$, this is like connect-sum of the spheres. \\
+Connect sum is only well defined if $K_1$ and $K_2$ are oriented and the connected sum ``respects'' the orientation. \\
+One can assign signs to crossings based on rotating strands of a crosssing and assigning $+1$ or $-1$. The sum over all crossings is called the \textbf{writhe} of a knot. \\
+$W(\text{left-handed trefoil}) = -3$, $W(\text{right-handed trefoil}) = 3$. \\
+This is not really a invariant due to some issues with `framing'. \bbni
+\subsection{Satellite Knots}
+The notion of meridian and longitude of a knot $K \to S^3$. If you take a tubular neighborhood of the knot, then the meridian and longitude are what you'd expect of the torus you get. The longitude lives in the boundary of the torus. \bbni
+Consider $H_1(S^3 \setminus N(K)) \cong \Z\langle m\rangle$. This is a sphere with a solid torus removed. The generator of $H_1(S^3\setminus N(K))$ representended as a closed curve in $S^3 \setminus N(K)$. This $H_1$ is always $\Z$. Apparently we did this in Math 74. \bbni
+Exercise: Compute $\pi_1(S^3 \setminus N(K))$ for a non-trivial $K$. \bbni
+
+A \textbf{canonical longitude} of a knot $K$ is a closed curve $l \in S^3 \setminus N(K)$ such that $[l] = 0 \in H_1(S^3 \setminus N(K))$. \bbni
+The \textbf{Linking number} of $K_1$ and $K_2$ is a signed count of the crossings between $K_1$ and $K_2$. In particular, $lk(l, K) = 0$. This is equivalent to the definition of canonical longitude. \bbni
+
+Exercise: (provided visual of the blackboard longitude of a trefoil) $lk(l, K) = -6 / -3$. \bbni
+If you add three or six positive twists, then you get the canonical longitude. \bbni 
+
+Homologous curves on $S^3 \setminus N(K)$ are isotopic. Look into what this means more precisely. \bbni
+
+A satellite knot has two components. A \textbf{pattern knot} $P$ and a companion knot $K$. Here $P \to T:=  S^1 \times D^2 \subset S^3$ and $K'$ is a knot in $S^3$.\bbni
+
+Define a homeomorphism of $f: T \to N(K)$ such that $f$ sends $S^1 \times \{pt\} \in S^1 \times D^2$ to the canonical longitude of $K$ in $\partial N(K)$. Then $P(K) := f(P)$. \bbni
+
+Very important visual for this. Need to work a bit more on understanding this. \bbni 
+Different pattern knots have names. We saw $(2,1)-cable$ pattern and Whitehad pattern. \bbni
+
+Exercise: Realize $K_1 \# K_2$ as a satellite operation. \bbni
+
+Invariant: \textbf{Unkotting number} minimum number of crossing changed needed to turn a knot into an unknot, where the minimum is taken over all possible sets of crossing changed over all diagrams of $K$. \bbni
+
+Exercise: Trefoil has $U(T_{2,3}) =1$. \bbni
+
+Is it true that $U(K_1 \# K_2) = U(K_1) + U(K_2)$. The $\leq$ direction is trivial. This was open for 100 years and answered last year. In 2025, Brittenham and Hermiller showed $U(7_1 \# \overline{7}_1) = 5 < 3+3 = U(7_1) + U(\overline{7}_1)$.
+
+\end{document}

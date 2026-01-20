@@ -1,0 +1,485 @@
+\documentclass[12pt]{article}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+
+\section{Intro to Sheaves: }
+
+\subsection{Presheaves, Sheaves, and Stalks:}
+\begin{exercise}{2.1.A} 
+    Show that $\mathfrak{m}_{p}$ is the only maximal ideal of $\calO_p$ where $\calO$ is the sheaf of smooth functions on a smooth manifold. (Hint: Show every element in $\calO_p \setminus \mathfrak{m}_p$ is invertible.)
+\end{exercise}
+\begin{solution}
+    Let $(f, U) \in \calO_p \setminus \mathfrak{m}_p$. Then, we know that $f(p) \neq 0$. Since $f$ is continuous, there exists neighborhood $W$ such that $f$ does not vanish anywhere on $W$. Then, on $U \cap W$, we construct the inverse $\frac{1}{f}$. As $\frac{1}{t}$ is smooth everywhere except at $0$ (where it is not defined), we have that $\frac{1}{f} \equiv \frac{1}{t} \circ f$ is smooth. As $f$ has an inverse on an open neighborhood of $p$, $f$ is invertible in $\calO_p$.   
+\end{solution}
+
+\begin{exercise}{2.2.A.} 
+    Show that a presheaf is the same data as a contravariant functor from the open sets of $X$ to sets. 
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{2.2.B.} 
+    Show that the following are presheafs but not sheaves on $\C$ with its usual topology: 
+    \begin{enumerate}[itemsep=1pt, topsep=1pt]
+        \item The set of bounded functions on $\C$.
+        \item The set of holomorphic functions with a holomorphic square-root.
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{2.2.C.} 
+    The identity and gluability axioms may be interpreted as saying $\calF(\bigcup_{i \in I} U_i)$ is a certain limit. What is this limit?
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{2.2.D.} 
+    \begin{enumerate}[itemsep=1pt, topsep=1pt]
+        \item Verify that the sheaf of smooth functions and continuous functions on a real manifold are indeed sheafs. 
+        \item Show that continuous real-valued functions on the open sets of a topological space $X$ form a sheaf. 
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{2.2.E.} 
+    Let $\calF(U)$ be the set of maps $U \to S$ that are locally constant, i.e. for any point $p \in U$, there is an open neighborhood of $p$ where the function is constant. Show that this is a sheaf. We denote this, the constant sheaf, by $\underline{S}$.
+\end{exercise}
+\begin{solution}
+     \todo{}
+\end{solution}
+
+\begin{exercise}{2.2.F.} 
+    Let $Y$ be a topological space. To each open set $U$ of $X$, associate the set of continuous maps $U \to Y$. Show that this forms a sheaf. (2.2.D(b) and 2.2.E are special cases.) 
+\end{exercise}
+\begin{solution}
+    We define the sheaf $\calF$ on $X$ as follows:
+    \begin{enumerate}[itemsep=1pt, topsep=1pt]
+        \item $\calF(U)$ is the set of continuous maps to $Y$
+        \item For $V \subseteq U$, $res_{U,V}(f) = f|_V$, the usual restriction.
+    \end{enumerate}
+    This is clearly a presheaf via the usual properties of functions. We have to show the identity and gluability axioms. \\
+    For the identity axiom, note that a continuous map is determined by the map on underlying sets. Thus, if two functions agree on an open cover, they agree on the underlying set, and thus constitute the same function. \\
+    For the gluability axiom, let $\{U_i\}$ be an open cover of $X$ and $f_i \in \calF(U_i)$ be continuous functions to $Y$ such that $f_i|_{U_i \cap U_j} \equiv f_j|_{U_i \cap U_j}$. Let $f$ be the (unique) function of sets that agrees with this information. We need to show $f$ is continuous. \\
+    Let $V \subseteq Y$ be open. Let $U = f^{-1}(V)$. Then, 
+    \[ U = f^{-1}(V) = \bigcup_i f_i^{-1}(V) \]
+    with each of the $f_i^{-1}(V)$ open (pre-image of an open set under a continuous function). Let $p \in U$ be arbitrary. Then, $p \in f_i^{-1}(V)$ for some $i$. Thus, $U$ is open. Thus, $f$ is continuous.
+\end{solution}
+
+\begin{exercise}{2.2.G.}
+    \begin{enumerate}[itemsep=1pt, topsep=1pt]
+        \item Suppose we are given a continuous map $\mu: Y \to X$. Show that ``section of $\mu$'' form a sheaf. That is, to each open set $U$ of $X$ associate the set of continuous maps $s: U \to Y$ such that $\mu \circ s = \id_U$. Show that this forms a sheaf.
+        \item Suppose that $Y$ is a topological group. Show that continuous maps to $Y$ form a sheaf of groups.
+    \end{enumerate}
+    
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{2.2.H.} 
+    Suppose you have a map $\pi: X \to Y$ and a presheaf $\calF$ on $X$. Construct the pushforward presheaf on $Y$ by $\pi_*(V) := \calO(\pi^{-1}(V))$ for $V \subseteq Y$. Prove that this is a presheaf and is a sheaf if $\calF$ is.
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{2.2.I.} 
+    Show that the pushforward of sheaves induces a map on stalks $\pi_*(\calF)_{q} \to \calF_p$ where $q = \pi(p)$. 
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{2.2.J.} 
+    If $(X, \calO_X)$ is a ringed space and $\calF$ is a $\calO_X$-module, show that $\calF_p$ is a $\calO_{X, p}$-module.
+\end{exercise}
+\begin{solution}
+    As $\calF$ is a $\calO_X$-module, we have the following commutative diagram for $V \subseteq U$:
+    \[
+    \xymatrix{
+    \calO(U) \times \calF(U) \ar[r] \ar[d]_{res_{U,V} \times res_{U,V}} & \calF(U) \ar[d]^{res_{U,V}} \\
+    \calO(V) \times \calF(V) \ar[r] &\calF(V)
+    }
+    \]
+    Let $[(f, U)] \in \calO_{X,p}$ and $[(\chi, V)] \in \calF_p$. Define the action of $\calO_{X,p}$ by $[(f,U)] \cdot [(\chi, V)] = [(f \cdot \chi, U \cap V)]$. We need to show this is well-defined with respect to the equivalence relation on sections yielding the stalk. \\
+    Suppose $[(f, U)] = [(g, U')] $. Then, there exists $W \subseteq U \cap U'$ such that $f|_W \equiv g|_W$. This also holds for $W \cap V$. Thus, $[(f \cdot \chi, U \cap V)] = [(g \cdot \chi, U' \cap V)]$ as the representatives agree over $W \cap V \subset U \cap U' \cap V$. An analogous argument holds for being well-defined with respect to the second entry.  
+\end{solution}
+
+\subsection{Morphisms of (Pre)Sheaves:}
+\begin{exercise}{2.3.A.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.3.B.} 
+    Suppose $\pi: X \to Y$ is continuous. Show that the pushforward gives a functor $\pi_*: Sets_X \to Sets_Y$. 
+\end{exercise}
+\begin{solution}
+    Define the pushforward functor as follows: 
+    \begin{enumerate}[topsep=1pt, itemsep=1pt]
+        \item For $\calF \in Sets_X$, $\pi_*(\calF)(U) := \calF(\pi^{-1}(U))$ for $U \subseteq Y$ open.
+        \item For $f: \calF \to \calG$ sheaf morphism with $\calF, \calG \in Sets_X$, define $\pi_*(f): \pi_*(\calF) \to \pi_*(\calG)$ by $\pi_*(f)(U) := f(\pi^{-1}(U))$.
+    \end{enumerate}
+    We need to show that $\pi_*$ preserves identities and compositions. \\
+
+    Let $\calF$, $\calG$ and $\calH$ be sheafs on $X$ with sheaf morphisms $f: \calF \to \calG$ and $g: \calG \to \calH$. 
+\end{solution}
+
+\begin{exercise}{2.3.C.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.3.D.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.3.E.} 
+
+\end{exercise}
+\begin{solution}
+ 
+\end{solution}
+
+\begin{exercise}{2.3.F.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.3.G.}
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.3.H.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.3.I.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.3.J.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\subsection{Stalks and Sheafification:}
+
+\begin{exercise}{2.4.A.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.B.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.C.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.D.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.E.} 
+
+\end{exercise}
+\begin{solution}
+ 
+\end{solution}
+
+\begin{exercise}{2.4.F.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.G.}
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.H.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.I.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.J.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.K.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.L.}
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.M.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.N.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.O.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.4.P.} 
+
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\subsection{Sheaf on a base:}
+
+
+\begin{exercise}{2.5.A.} 
+    Let $\{B_i\}$ is the base of a topology on $X$. You are given the information $\{\calF(B_i), res_{B_i, B_j} \}$. Show that you can recover the entire sheaf from this.
+\end{exercise}
+\begin{solution}
+    We will show that you can recover germs and their compatibility through this information. \\
+    Take $[(f, W)] \in \calF_p$. Then there exists a $B_i \subseteq W$ containing $p$. Then $(res_{W, B_i}(f), B_i)$ represents the same germ as $(f, W)$. Thus, we can recover all germs using just the sheaf on the base. \bbni 
+    Similarly, if $[(f, U)] = [(g, V)]$ are compatible germs then there exists $W \subseteq U \cap V$ with $f|_W \equiv g|_W$. Then, there exists $B_i \subseteq W$ containing $p$ where this equivalence also holds. Thus, the sheaf on a base determines the equivalence of germs. \\
+    Thus, as this information is sufficient to determine the stalks, it is sufficient to determine the sheaf.
+\end{solution}
+
+\begin{exercise}{2.5.B.} 
+    Verify that $F(B) \to \calF(B)$ is an isomorphism, likely by showing that it is injective and surjective (or else by describing the inverse map and verifying that it is indeed inverse). (Hint: elements of $\calF(B)$ are determined by stalks, as are elements of $F(B)$.)
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{2.5.C.}{ \textbf{(Morphisms of Sheaves $\leftrightarrow$ morphisms of sheaves on a base)}} \\
+    Suppose $\{B_i\}$ is a base for the topology on $X$. Suppose you are given a sheaf morphism $\calF \to \calG$ on the base, i.e., you have for $B_j \subseteq B_i$: 
+    \[ 
+        \xymatrix{ \calF(B_i) \ar[r] \ar[d]_{res_{B_i, B_j}} &\calG(B_i) \ar[d]^{res_{B_i, B_j}} \\ 
+        \calF(B_j) \ar[r] &\calG(B_j)}
+    \]
+    Show that: 
+    \begin{enumerate}[topsep=1pt, itemsep=1pt]
+        \item Verify that a morphism of sheaves is determined by the induced morphism of sheaves on a base. 
+        \item Show that morphism of sheaves on a base gives a morphism of induced sheaves. 
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    % We do the following:
+    % \begin{enumerate}[topsep=1pt]
+    %     \item We need to show that the induced morphism of sheaves on a base determines the morphism on arbitrary open sets. Let $U$ be an arbitrary open set and $f \in \calF(U)$ be a section. By properties of the base, there exists a cover $U = \bigcup_{i \in I_U} B_i$. Via restrictions, we get sections $f_i \in \calF(B_i)$ for each $i \in I_U$ that agree on intersections. Using the morphism on a base, we get sections $g_i \in \calG(B_i)$. These agree on intersections by definition (i.e. commutative diagram above). Thus, these glue to a unique section of $\calG(U)$. This determines the sheaf morphism on arbitrary open set $U$.
+    %     \item \todo{ Need to more precisely understand how morphisms on stalks determine morphism of sheaves.}
+    % \end{enumerate}
+
+\end{solution}
+
+\begin{exercise}{2.5.D.} 
+    Suppose $X = \bigcup U_i$ is an open cover of $X$ and we have sheaves $\calF_i$ on $U_i$ along with isomorphism $\phi_{ij}: \calF_i|_{U_i \cap U_j} \to \calF_j|_{U_i \cap U_j}$ that agree on triple overlaps, i.e. $\phi_{jk} \circ \phi_{ij} = \phi_{ik}$ (cocycle condition). Show that these can be glued together into a sheaf $\calF$ on $X$ which is unique up to unique isomorphism with obvious restrictions. 
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+% \subsection{Sheaves of abelian groups form abelian categories}
+
+% \begin{exercise}{2.6.A.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.6.B.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.6.C.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.6.D.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.6.E.} 
+
+% \end{exercise}
+% \begin{solution}
+ 
+% \end{solution}
+
+% \begin{exercise}{2.6.F.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.6.G.}
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.6.H.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.6.I.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.6.J.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \subsection{The inverse image sheaf}
+
+% \begin{exercise}{2.7.A.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.7.B.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.7.C.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.7.D.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.7.E.} 
+
+% \end{exercise}
+% \begin{solution}
+ 
+% \end{solution}
+
+% \begin{exercise}{2.7.F.} 
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+% \begin{exercise}{2.7.G.}
+
+% \end{exercise}
+% \begin{solution}
+
+% \end{solution}
+
+\end{document}
