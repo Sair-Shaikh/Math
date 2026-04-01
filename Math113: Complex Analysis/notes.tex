@@ -1,0 +1,183 @@
+\documentclass[12pt]{article}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+\section{Background}
+
+\subsection{The Complex Numbers}
+Basic vector space structure. Euclidean metric. Definition of functions between complex numbers. Example: $f: z \to \frac{1}{z}$. \\
+
+\begin{proposition}[W 1.7]
+    Suppose $D \subset \R^2$ is open and connected and $u: D \subseteq \R^2 \to \R$ is such that $u_x \equiv 0 \equiv u_y$. Then $u$ is constant. 
+\end{proposition}
+
+\begin{definition}
+    $F: D \subseteq \R^2 \to \R^2$ is differentiable at a interior point $z_0 \in D$ if there is a linear map $T: \R^2 \to \R^2$ such that: 
+    \[ \lim_{z \to 0} \frac{1}{||z||} ||F(z+z_0) - F(z_0) -T(z)|| = 0 \]
+\end{definition}
+
+\begin{remark}
+    If $F(z) = (u(x, y), v(x, y))$ is differentiable at $z_0$, then $u$ and $v$ have first partials at $z_0$ and the matrix of $T$ with respect to the standard basis is:
+    \[ [T]_\sigma = \begin{pmatrix}
+        u_x(z_0) & u_y(z_0) \\
+        v_x(z_0) & v_y(z_0)
+    \end{pmatrix}\]
+    The converse fails! W Ex. 1.2.2.
+\end{remark}
+
+
+\begin{theorem}[W 1.8]
+    Suppose that $F : D \subset \R^2 \to \R^2$ is given by $F(x, y) = (u(x,y), v(x,y))$ and $D_r(z_0) \subset D$. If the first partials of $u$ and $v$ exist in $D$ and are continous at $z_0$ then $F$ is differentiable at $z_0$. 
+\end{theorem}
+
+If the partials are defined in the neighborhood of $z_0$, it makes sense to talk about their partials, giving us the 2nd derivatives, i.e. $u_{xx}, u_{xy}, u_{yx}, u_{yy}$. 
+\begin{theorem}[W 1.9, Clauraut]
+    If $u_{xy}$ and $u_{yx}$ are continous at $z_0$, then $u_{xy} = u_{yx}$. 
+\end{theorem} 
+
+Now we want to defined some interesting functions of complex variables. 
+\begin{definition}
+    We define the complex exponential $exp: \C \to \C$ by: 
+        \[ \exp(x+iy) = e^x\cos (y) + ie^x\sin(y)\]
+\end{definition}
+
+
+\begin{proposition}[W 1.16] 
+    The exponential has the following properties: 
+    \begin{enumerate}
+        \item $e^{z+2\pi i} = e^z$. 
+        \item $e^{z+w} = e^z \cdot e^w$
+        \item $e^{-1} = \frac{1}{e^z}$
+        \item $e^z = e^w \iff w = z + 2\pi i k$ for $k \in \Z$. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Work it out. 
+\end{proof}
+
+\begin{definition}
+    We say $\tau \in \C$ is unimodular if $|z| = 1$. This happens if and only if $z = e^{i\theta}$ when $\theta \in \R$. \\
+    If $z \in \C \setminus \{0\}$, then the polar form is:
+    \[ z = |z| \frac{z}{|z|} = re^{i\theta}\]
+    where $\theta$ is called the argument. We have:
+    \[ \arg(z) = \{\theta \in \R : z = |z|e^{i\theta}\}\]
+    and if $z = re^{i\theta_0}$ then: 
+    \[ \arg(z) = \{\theta_0 + 2\pi k : k \in \Z\}\] 
+    Note that $\arg$ is a set-valued function in $\C \setminus \{0\}$. 
+\end{definition}
+
+\begin{proposition}[W 1.2.2]
+    Let $f(z) = \exp(z)$. Then, $f$ maps $\C$ to $\C \setminus \{0\}$. Then, 
+    \[ \{w \in \C : e^w = z\} = \{\ln(|z|) + i\theta : \theta \in \arg(z)\} = \ln(|z|) + i\arg(z) \]
+\end{proposition}
+
+\begin{definition}
+    If $z \neq 0$, then we define the (set-valued) logarithm:
+    \[ \log(z) = \ln(|z|) + i\arg(z)\]
+\end{definition}
+
+Now, we need to talk about picking branches to get honest-to-goodness functions. 
+\begin{definition}
+    Suppose that $f$ is a set-valued function on a set $D$. Then a branch of $f$ is $D$ is a continous function $F: D \to \C$ such that: 
+    \[ F(z) \in f(z) \quad \forall z \in \C \]
+\end{definition}
+
+\begin{example}
+    Let $z \in \C \setminus \{0\}$ then $\exists! \theta \in (-\pi, \pi]$ such that $\theta \in \arg(z)$. Then we can define: 
+    \[ \Arg: \C \setminus \{0\}  \to (-\pi, \pi]\]
+    such that $\Arg(z) \in arg(z)$. \\
+    This has a jump discontinuity on $(-\infty, 0]$ but is continous elsewhere. See W Lemma 1.26.
+\end{example}
+
+A branch of $\arg$ in $D$ gives us a branch of the logarithm in $D$. We call: 
+\[ \Log(z) = \ln(|z|) + i \Arg(z)\]
+the principal branch of log in $D^*$. \\
+
+This is highly non-unique. One thing we would want to show is that there is no cut you can make to get a logarithm continous everywhere. 
+
+\begin{exercise}{1.4.1.}
+    Show the following properties for the complex exponential: 
+    \begin{enumerate}
+        \item $e^{z+2\pi i} = e^z$
+        \item $e^{z+w} = e^ze^w$
+        \item $e^{z-w} = \frac{e^z}{e^w}$
+        \item $e^{-z} = \frac{1}{e^z}$
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+\newpage 
+
+\begin{exercise}{1.4.8(a).}
+    Use $(1.6)$, De Moivre's Formula, and the geometric sum $1+z + \cdots z^n = \frac{z^{n+1}-1}{z-1}$ to prove the following assuming $0 < \theta < 2\pi$. 
+    \[ 1 + \cos(\theta) + \cdots + \cos(n\theta) = \frac{1}{2} + \frac{\sin((n+1/2)\theta)}{2\sin(\theta/2)}\]
+\end{exercise}
+\begin{solution} 
+    % Note that we can write, 
+    % \[ \cos(k\theta) = \frac{e^{ik\theta}+e^{-ik\theta}}{2}\]
+    % Substituting this into the sum, we get,
+    % \[ \sum_{k=0}^n \cos(n\theta) = \frac{1}{2}\sum_{k=0}^n e^{ik\theta} + e^{-ik\theta} \]
+    % Using the geometric sum formula, we get,
+    % \begin{align*}
+    %     \sum_{k=0}^n \cos(n\theta)  &= \frac{1}{2} \left(\frac{e^{i(n+1)\theta}-1}{e^{i\theta}-1} + \frac{e^{-i(n+1)\theta}-1}{e^{-i\theta}-1}\right) \\
+    %     &= \frac{1}{2} \cdot \frac{(e^{i(n+1)\theta}-1)(e^{-i\theta}-1) + (e^{-i(n+1)\theta}-1)(e^{i\theta}-1)}{(e^{i\theta}-1)(e^{-i\theta}-1)} \\
+    %     &= \frac{e^{in\theta} + e^{-in\theta} - e^{i(n+1)\theta} - e^{-i(n+1)\theta} + e^{i\theta} + e^{-i\theta} - 2}{2(2 - e^{i\theta} - e^{-i\theta})} \\
+    %     &= \frac{\cos(n\theta) - \cos((n+1)\theta) + \cos(\theta) - 1}{2(1 - \cos(\theta))} \\
+    % % &= \frac{\sin((n+1/2)\theta)}{2\sin(\theta/2)} + \frac{1}{2}
+    % \end{align*}
+    
+    Consider instead the sum, 
+    \begin{align*}
+        1+\cos(\theta) + \cdots + \cos(n\theta) + i(\sin(\theta) + \cdots + \sin(n\theta)) &= \sum_{k = 0}^n \cos(k\theta) + i\sin(k\theta) \\
+    \end{align*}
+    By De Moivre's formula, we get:
+    \begin{align*}
+        \sum_{k = 0}^n \cos(k\theta) + i\sin(k\theta)  &= \sum_{k=0}^n (\cos(\theta) + i\sin(\theta))^k = \sum_{k=0}^n e^{ik\theta}\\
+    \end{align*}
+    Using the geometric sum formula, we get:
+    \begin{align*} 
+        \sum_{k = 0}^n \cos(k\theta) + i\sin(k\theta)  &= \frac{(e^{i\theta})^{n+1}-1}{e^{i\theta}-1}
+    \end{align*}
+    Next, we note that we can re-write this expression as follows, 
+    \begin{align*}
+        \frac{(e^{i(n+1)\theta})-1}{e^{i\theta}-1} &= \frac{e^{i(n+1)\theta/2}(e^{i(n+1)\theta/2}-e^{-i(n+1)\theta/2})}{e^{i\theta/2}(e^{i\theta/2}-e^{-i\theta/2})} \\
+        &= \frac{e^{in\theta/2}(2i\sin((n+1)\theta/2))}{(2i\sin(\theta/2))} \\
+        &= \frac{\sin((n+1)\theta/2)}{\sin(\theta/2)}e^{in\theta/2}
+\   \end{align*}   
+    Substituting this and taking the real parts, we get,
+    \begin{align*}
+        \sum_{k = 0}^n \cos(k\theta) = \frac{\sin((n+1)\theta/2)}{\sin(\theta/2)}\cos(n\theta/2)
+    \end{align*}
+
+\end{solution}
+
+\newpage
+\begin{exercise}{1.4.9.}
+    Observe that the $n$th roots of $1$ are given by $\{1, \omega, \cdots, \omega^{n-1}\}$, where $\omega = e^{2\pi i/n}$. Assuming $n > 1$, show that $1+\omega+\cdots+\omega^{n-1} = 0$. Prove a similar result for the $n$th-roots of $-1$. 
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}{1.4.13.}
+    Suppose that $p(z) = a_nz^n + \cdots + a_1z + a_0$ has real coefficients. 
+    \begin{enumerate}
+        \item Show that if $z_0$ is a root of $p$, then either $z_0$ is real or $\overline{z}_0$ is also a root of $p$. 
+        \item Assuming the Fundamental Theorem of Algebra, show that $p$ must factor as a product: 
+        \[ p(z) = a_n(z-r_1)\cdots(z-r_k)q_1(z)\cdots q_s(z)\]
+        \item Factor $p(z) = z^4 + z^3 + z^2 + z + 1$ into a product of irreducible quadratics. 
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\end{document}

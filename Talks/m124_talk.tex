@@ -1,0 +1,221 @@
+\documentclass[12pt]{amsart}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\title{Math 124: Low Dimensional Topology}
+
+\author{Sair Shaikh}
+\maketitle
+
+\section{The story, so far:}
+
+Let $X$ be a closed, oriented, topological $4$-manifold $X$ throughtout this talk. We have a symmetric, bilinear, unimodular form, called the intersection form $Q_X: H^2(X, \Z) \times H^2(X, \Z) \to \Z$. We know that $Q_X$ is unimodular by Poincare duality (the polar map has to be an isomorphism). 
+
+We quickly recall some invariants of $Q_X$, 
+\begin{enumerate}
+    \item The rank $\rk(Q_X)$ is the dimension of its underlying space, i.e. $b_2$.  
+    \item If we diagonalize $Q_X$ over $H^2(X, \Z) \otimes_\Z \R$, then the diagonal is a number of $+1$s and $-1$s. $b_2^+$ is the number of $1$s and $b_2^-$ is the number of $-1$s. 
+    \item The signature $\sigma(Q)$ is $b_2^+ - b_2^-$. Also, $\rk(Q_X) = b_2^+ + b_2^-$. 
+    \item $Q$ is even if $Q(\alpha, \alpha) \equiv 0 \pmod{2}$ for all $\alpha$ and odd otherwise.
+    \item $Q$ is positive/negative definite if $\rk(Q) = \sigma(Q)$ or $\rk(Q) = -\sigma(Q)$ (i.e. all eigenvalues positive or negative), and indefinite otherwise.
+\end{enumerate}
+
+
+Due to Freeman, we have the following classification in the topological category: 
+\begin{theorem}(Freedman)
+    For every unimodular symmetric bilinear form $Q$ there exists a simply-connected, closed, topological $4$-manifold $X$ such that $Q_X \cong Q$. If $Q$ is even, this manifold is unique (up to homemorphism). If $Q$ is odd, there are two exactly two different homeomorphism types at most one of which is smooth-able. 
+\end{theorem}
+
+A natural next question one might ask is: 
+\begin{enumerate}
+    \item[Q.] Which of these forms arise as intersection forms of a smooth manifold?
+\end{enumerate}
+
+For indefinite unimodular forms, we have the following classification: 
+\begin{theorem}
+    Let $Q$ be an indefinite unimodular form. 
+    \begin{enumerate}
+        \item If $Q$ is odd, then it is isomorphic to $b_2^+\langle 1 \rangle \oplus b_2^{-}\langle -1 \rangle$.
+        \item If $Q$ is even, then it is isomorphic to $\frac{\sigma(Q)}{8}E_8 \oplus \frac{\rk(Q) - |\sigma(Q)|}{2}H$
+    \end{enumerate} 
+    where $E_8$ and $H$ are specific forms we have seen. \\
+    In particular, $Q$ is determined by its parity, rank, and signature. 
+\end{theorem}
+
+In the definite case, there is no such nice description. For a given rank, there are finitely many definite symmetric unimodular forms, but this number is huge. However, we have the following theorem by Donaldson (Fields Medal 1986):
+\begin{theorem}[Donaldson]
+    If the intersection form $Q_X$ of a smooth, simply connected, closed $4$-manifold $X$ is positive/negative definite, then $Q_X$ is equivalent to $n\langle \pm 1\rangle$ (i.e. diagonalizable over the integers). 
+\end{theorem}
+
+Furthermore, we saw the following result in class:
+\begin{lemma}
+    Given $4$-manifolds $X_1$ and $X_2$, we have:
+    \[ Q_{X_1 \# X_2} = Q_{X_1} \oplus Q_{X_2}\]
+\end{lemma}
+\begin{remark}
+    There is a more general result where you glue along a homology $3$-sphere rather than $S^3$. Moreover, the converse is also true.
+\end{remark}
+
+Together with knowing:
+\begin{enumerate}
+    \item $Q_{\CP^2} = \langle 1 \rangle$
+    \item $Q_{\overline{\CP^2}} = \langle -1 \rangle$
+\end{enumerate}
+We can say that that every definite form meeting Donaldson's theorem and every odd indefinite form is realizable by a simply-connected, closed, smooth $4$-manifold. 
+
+This leaves us with even indefinite ones.
+
+\section{Hypersurfaces in $\CP^3$:}
+
+For the even indefinite case, we know the following:
+\begin{theorem}[Rokhlin]
+    If $Q_X$ is even, then $\sigma(X)$ is divisible by $16$.
+\end{theorem}
+
+Additionally, we have the conjecture: 
+\begin{theorem}[11/8-Conjecture]
+    If $X$ is a simply connected, closed, oriented, smooth $4$-manifold and $Q_X = 2aE_8 \oplus bH$, then we must have 
+    \[ b \geq 3|a| \] \\
+    Noting that $\sigma(Q_X) = 2a \cdot 8 = 16a$ and $\rk(Q_X) = 16a + 2b$, this translates to:
+    \[ \rk(Q_X) \geq \frac{11}{8} \sigma(Q_X)\]
+\end{theorem}
+
+Due to Furuta, we know the inequality $b \geq 2|a|+1$ must hold.
+
+For the rest of this, I want to sketch a proof showing that the condition by Rokhlin and the $11/8$ths conjecture are all the conditions. That is, for every form satisfying these, there exists a simply-connected, closed, smooth $4$-manifold with that intersection form. \bbni
+
+These examples are all hypersurfaces in $\CP^3$. 
+
+Define:
+    \[ S_d = \left\{ [z_0 : z_1 : z_2 : z_3] \in \C\P^3 | \sum_{i=0}^4 z_i^d = 0\right\}\]
+
+We want to calculate their intersection forms. As an example, we have seen the K3 surface: 
+\[ Q_{S_4} = 2E_8 \oplus 3H\]
+
+To calculate the intersection form, we want to calculate the parity, rank, and signature of the intersection form. Turns out, we can figure all of these using characteristic classes of the tangent bundle of $S_d$.
+
+
+\section{Characteristic Classes:}
+
+There are several different characteristic classes that apply in different settings. We first consider the Chern classes of a complex vector bundle, which measure some form of ``twisting'' of the bundle or give obstructions to the existence to a certain number of linearly independent vector bundles.  
+
+\begin{definition}
+    For every complex vector bundle $\xi$ over $B$ there are classes $c_i(\xi) \in H^{2i}(B; \Z)$ such that the following properties hold: 
+    \begin{enumerate}
+        \item If $\xi$ is an rank $n$ bundle over $B$, then $c_i(\xi) = 0$ for $i > n$.
+        \item For any continuous map $f: A \to B$, 
+        \[ c_i(f^*\xi) = f^*c_i(\xi)\]
+        where the respective pullbacks are pullbacks as vector bundles / pullbacks in cohomology.
+        \item For two vector bundles $\xi_1$ and $\xi_2$ over $B$, 
+        \[  c(\xi_1 \oplus \xi_2) = c(\xi_1)c(\xi_2)\]
+        where $c = 1 + c_1 + c_2 + \cdots \in H^*(B; \Z)$ is called the ``total chern class''. Multiplication here is the cup product in cohomology. 
+        \item If $\gamma$ is the canonical line bundle over $\CP^\infty$ then $c_1(\gamma)$ generates $H^2(\CP^\infty, \Z)$. 
+    \end{enumerate}
+\end{definition}
+
+There are two perspectives to see how such classes can be constructed. 
+
+Firstly, one may try to classify all rank $k$ bundles as subbundles of some universal bundle. For a rank $k$ bundle $\xi$ over $B$, each fiber is an $k$ dimensional subspace of $\C^k$ for some large $N$. Thus, $\xi$ can be realized as a continuous map $B \to \mathrm{Gr}_k(\C^N)$. Thus, we can construct $\mathrm{Gr}_k(\C^\infty)$ as the limit of these spaces because $\mathrm{Gr}_k(\C^{N_1}) \to \mathrm{Gr}_k(\C^{N_2})$ is a bundle map induced by $\C^{N_1} \to \C^{N_2}$ for $N_1 \leq N_2$. Then, one can consider the canonical bundle $\gamma$ on $\mathrm{Gr}_k(\C^{N_2})$. There is a theorem that all rank $k$ bundles are pullbacks of this canoncial bundle under the map $B \to \mathrm{Gr}(\C^\infty)$. 
+
+Secondly, we have this theorem called the Splitting principle. 
+\begin{theorem}
+    For a rank $r$ complex bundle $\xi \to X$, there is a space $Y$ and a continuous map $f: Y \to X$ such that $f^* \xi$ splits as $L_1 \oplus \cdots \oplus L_r$ and $f^*$ is injective.  
+\end{theorem}
+Thus, one only needs to define the Chern classes for a line bundle. This is just defining $c_1$ for a line bundle. Which we do in the fourth axiom. 
+
+Given this, for the sake of time, I'll just cite some theorems that follow for the case of the tangent bundle to $X = S_d$: 
+\begin{enumerate}
+    \item The top Chern number $\langle c_2(TX), [X]\rangle = \chi(X) = 2 + \rk(Q_X)$. 
+    \item The Hirzebruch signature theorem for $4$-manifolds gives: $c_1^2(TX) -2\chi(TX) = 3 \sigma(Q_X)$.
+    \item $c(T\CP^3) = (1+\gamma)^4 = 1+4\gamma+6\gamma^2+4\gamma^3$ where $\gamma$ is the hyperplane class $\in H^2(X, \Z)$.
+\end{enumerate} 
+
+Using these, we can compute the Chern classes of $X = S_d$ to get: 
+\begin{enumerate}
+    \item $c_1(TX) = (4-d)x$
+    \item $c_2(TX) = (d^2-4d+6)x^2$
+    \item $Q_X$ is even if and only if $c_1(TX) \equiv 0 \pmod 2$. 
+\end{enumerate}
+where $x = \iota^*(\gamma)$ where $\iota: X \to \CP^3$ is the inclusion. 
+\begin{proof}[Proof Sketch.]
+    First, decompose the tangent bundle of $\CP^3$ restricted to $X$ into $TX$ and $\nu X$ (normal bundle).\\ 
+    Use the pullback to write these in terms of $x$. \\ 
+    Use the Whitney product formula. \\
+    Compute the first Chern class of the normal bundle as follows via some intersection theory and using the Euler class to realize it is $dx$. 
+\end{proof}
+
+Then, you get the following intersection forms:
+\begin{enumerate}
+    \item If $d$ is odd, then $Q_X$ is odd and equals:
+    \[ Q_X =  \frac{1}{3}(d^3-6d^2+11d-3)\langle 1 \rangle \oplus \frac{1}{3}(d-1)(2d^2-4d+3)\langle -1 \rangle\]
+    \item If $d$ is even, then $Q_X$ is even and equals:
+    \[ Q_X =  -\frac{1}{24} d(d^2-4) E_8 \oplus \frac{1}{3}(d^3-6d^2+11d-3)H\]
+\end{enumerate}
+
+We can confirm:
+\begin{enumerate}
+    \item $S_1 = \CP^2$, $Q_{\CP^2} = \langle 1 \rangle$. 
+    \item $S_2 = \CP^1 \times \CP^1$, $Q_{\CP^1 \times \CP^1} = H$.
+    \item $S_4 = K3$, $Q_{K3} = -2E_8 \oplus 3H$. 
+\end{enumerate}
+
+% The results we want to use from characteristic classes: 
+% \begin{enumerate}
+%     \item Chern classes commute with pullbacks
+%     \item Whitney Product Formula
+%     \item $c_2[S_d] = \chi(S_2)$
+%     \item $c_1^2[S_d] = 3\sigma(S_d)+ 2\chi(S_d)$. This needs also the Pontrjagin classes. 
+%     \item $c_1(S_d) \equiv \omega_2(S_d) \pmod{2}$
+%     \item $Q_{S_d}$ even if and only if $\omega(S_d) = 0$
+%     \item Total Chern class for $\CP^3$. 
+% \end{enumerate}
+
+% There are at least 4 different ways to see Chern classes that I've found. (1) Via the topological definition we will use, (2) Via the exponential exact sequence (only the first), (3) Via a connection, (4) Obstruction theoretically. Not fully clear what presentation I should present. We also need 4 different characteristic classes, Chern, Steifel-Whitney, Euler, and Pontrjagin. 
+
+% Definition of the first Chern class for a line bundle via the homomorphism from $\mathcal{L}_X \to H^2(X; \Z)$. Extend to a direct sum of line bundles. Prove the Splitting principle. The book only sketches the proofs for these. Uses the Leray-Hirsch Theorem. 
+
+% Then, we have that it commutes with pullbacks and satisfies the Whitney product formula. We can also compute the chern classes for CP and show the relation between $c_i$ and $w_{2i}$. 
+
+% Then we need the Hirzebruch signature theorem for $4$-manifolds and the Noether formula. 
+
+
+
+
+% Thus, determining the parity, rank, and signature of $Q_{S_d}$ is determined by the Chern classes $c_1$ and $c_2$. To compute these, we prove the following two lemmas: 
+
+
+% First, define what $g$ is and what the pullback of $g$ is. 
+% \begin{lemma}
+%     The Chern classes of $S_d$ are given by $c_1(S_d) = (4-d)x$ and $c_2(S_d) = (d^2-4d+6)x^2$. \\
+%     Moreover, $\langle x^2, [S_d]\rangle = d$, hence $\chi(X_d) = (d^2-4d+6)d$ and $c_1^2[S_d] = (4-d)^2d$. \\
+%     In addition, $Q_{S_d}$ is even if and only if $d$ is even. 
+% \end{lemma}
+
+% \begin{lemma}
+%     The first Chern class of the normal bundle $\nu S_d$ equals $d\cdot x$. 
+% \end{lemma}
+
+% Using these, the theorem is a routine computation. \\
+
+
+% \begin{theorem}
+%     The hypersurface $S_d$ is a smooth, sinply connected, complex surface. \\
+%     If $d$ is odd, then $Q_{S_d}$ is equivalent to $\lambda_d\langle 1 \rangle \oplus \mu_d\langle -1 \rangle$ where $\lambda_d = \frac{1}{3}(d^3 - 6d^2 + 11d - 3)$ and $\mu_d = \frac{1}{3}(d-1)(2d^2 - 4d+3)$. \\
+%     If $d$ is even, then $Q_{S_d}$ is equivalent to $l_d(-E_8) \oplus m_dH$ where $l_d = \frac{1}{24}d(d^2-4)$ and $m_d = \frac{1}{3}(d^3 - 6d^2 + 11d -3)$. 
+% \end{theorem}
+
+
+
+
+
+
+
+
+
+
+\end{document}

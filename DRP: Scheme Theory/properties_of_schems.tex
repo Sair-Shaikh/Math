@@ -1,0 +1,120 @@
+\documentclass[12pt]{article}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+
+
+\section{Varieties over a field:}
+\begin{definition}
+    A variety over a field $k$, or a $k$-variety, is a reduced, separated scheme of finite type over $k$. 
+\end{definition}
+
+\begin{definition}
+    The category of $k$-schemes, denoted by $\mathrm{Sch}_k$ (where $k$ is a field), is: 
+    \begin{itemize}
+        \item The objects are morphisms of the form $X \to \Spec k$.
+        \item The morphisms are the commutative diagrams: 
+        \[  \xymatrix{ X \ar[rd] \ar[rr] & & Y \ar[ld] \\ & \Spec k &} \]
+    \end{itemize}
+The morphisms $X \to \Spec k$ are called ``structure morphisms''. 
+\end{definition}
+
+
+\begin{proposition}
+    The structure morphism give rings of functions, stalks, and residue fields the structure of $k$-algebras. 
+\end{proposition}
+
+\begin{proof}
+    Let $X$ be a $k$-scheme with structure morphism $\pi: X \to \Spec k$. For any open set $U \subseteq X$, we have a morphism of rings $\pi^\#: k = \OO_{\Spec k}(\Spec k) \to \OO_X(U)$, giving $\OO_X(U)$ the structure of a $k$-algebra. In particular, for any point $p \in X$, we have a morphism of local rings $\pi_p^\#: k = \OO_{\Spec k, \mathfrak{m}} \to \OO_{X,p}$, giving the stalk $\OO_{X,p}$ the structure of a $k$-algebra. Finally, composing with the quotient map $\OO_{X,p} \to \kappa(p)$ gives a morphism $k \to \kappa(p)$, giving the residue field $\kappa(p)$ the structure of a $k$-algebra.    
+\end{proof}
+
+\begin{definition}
+    A scheme $X$ over a field $k$ is \emph{locally of finite type} over $k$ if it can be covered by affine open sets $\Spec B_i$ where each $B_i$ is a finitely generated $k$-algebra. Moreover, it is \emph{of finite type} if it is also quasicompact, i.e. can be covered by a finite number of such affine opens.
+\end{definition}
+
+\begin{definition}
+    Let $\pi: X \to Y$ be a morphism of schemes. The diagonal morphism is the unique morphism $\Delta_\pi: X \to X \times_Y X$ whose composition with both projection maps $p_1, p_2$ is the identity map.
+\end{definition}
+
+\begin{definition}
+    Let $f: X \to Y$. We say that the morphism $f$ is separated if the diagonal morphism $\Delta_f$ is a closed immersion. We also say $X$ is separated over $Y$. A scheme $X$ is separated if it is separated over $\Spec \Z$. 
+\end{definition}
+
+\begin{proposition}
+    Every morphism of affine schemes is separated.
+\end{proposition}
+
+\begin{corollary}
+    An arbitrary morphism $f: X \to Y$ is separated if and only if the image of the diagomal morphism is a closed subset of $X \times_Y X$.
+\end{corollary}
+
+\section{The Frobenius on a Scheme over $\F_q$:}
+\begin{definition}
+    For $X/K$ a variety, the degree of a closed point $x \in X_{cl}$ is $\deg(x) = [k(x) : K]$.
+\end{definition}
+
+\subsection{Extensions and rational points:}
+\begin{proposition}
+    Let $L/K$ be a algebraic extension and $X$ an scheme over $K$. Then, 
+    \[ X(L) \cong \bigsqcup_{x \in X} \Hom_{K-alg}(k(x), L)\]
+    If $X$ is a variety (reduced, seperated, finite type), then this reduces to:
+    \[ X(L) \cong \bigsqcup_{x \in X_{cl}} \Hom_{K-alg}(k(x), L)\]
+\end{proposition}
+
+\begin{proposition}
+    If $X$ is a variety over $K$, then for every $x \in X_{cl}$, the residue field $k(x)/K$ is a finite extension. 
+\end{proposition}
+
+\begin{proposition}
+    Let $X$ be a variety over $K$ and $x \in X_{cl}$ with $k(x) \cong K[x]/(f(x))$. Then, 
+    \[ \Hom_{K-alg}(k(x), L) \leftrightarrow  \{ y \in L : f(y) = 0\}\]
+\end{proposition}
+
+
+\begin{proposition}
+    Let $X$ be an affine variety over $K$, i.e. $X - \Spec K[x_1, \cdots, x_n]/(f_1, \cdots, f_k)$. Then an $L$-rational point of $K$ is equivalent to a tuple $(\alpha_1, \cdots, \alpha_n) \in L^n$ such that $f_i(\alpha_1, \cdots, \alpha_n) = 0$ for all $1 \leq i \leq k$.
+\end{proposition}
+
+\begin{proposition}
+    Let $L/K$ be a field extension. 
+    \begin{enumerate}
+        \item Taking $L$-points on a $K$-scheme defines a functor $\mathrm{Sch}_K \to \mathrm{Sets}$.
+        \item If $U_i$ is an open cover of $X$, then $\bigcup_i U_i(L) = X(L)$. 
+        \item For any $K$-schemes $X$ and $Y$, we have $(X \times_K Y)(L) = X(L) \times Y(L)$
+    \end{enumerate}
+\end{proposition}
+
+\subsection{$\F_q$-rational points and the Frobenius:}
+\begin{proposition}
+    Let $X$ be a variety over $\F_q$. Then, 
+    \[ |X(\F_q)| = \sum_{e | r} e \cdot | \{x \in X_{cl} : \deg(x) = e\}| \]
+\end{proposition}
+
+\begin{definition}
+    The (absolute) Frobenius morphism on a scheme $X$ over $\F_q$ is denoted $\Frob_{X,q}: X \to X$ and given by the identity on the topological space $X$ and by $f \mapsto f^q$ on the $\OO_X$. It is an $\F_q$-morphism.
+\end{definition}
+
+\begin{theorem}
+    Let $X$ be a variety over $\F_q$ and fix an embedding $\F_q \hookrightarrow \overline{\F_q}$. The natural embedding $X(\F_{q^r}) \hookrightarrow X(\overline{\F_q})$ identifies $X(\F_{q^r})$ with the fixed points of $\Frob_{X,q}^r$ in $X(\overline{\F_q})$.
+\end{theorem}
+
+\subsection{Zeta function:}
+\begin{proposition}
+    For every variety $X$ over $\F_q$, we have: 
+    \[ Z(X, t) = \prod_{x \in X_{cl}} (1 - t^{\deg(x)})^{-1}\]
+\end{proposition}
+
+\section{Singular Cohomology:}
+
+
+\section{Weil Cohomology Theories:}
+
+
+\end{document}

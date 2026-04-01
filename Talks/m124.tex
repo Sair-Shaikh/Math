@@ -1,0 +1,565 @@
+\documentclass[12pt]{article}
+
+
+\include{../style}
+
+\begin{document}
+
+
+\title{Characteristic Classes}
+\date{}
+\author{Sair Shaikh}
+\maketitle
+
+
+In this note, we will learn about characteristic classes. As a motivation, we will discuss the classification problem for (topological or smooth) $4$-manifolds using their intersection forms. We will see that the theory of characteristic classes will help us compute the intersection forms of hypersurfaces in $\CP^3$, such as the K3 surface, providing further examples of forms realized as intersection forms of smooth manifolds. 
+
+\section{Motivation:}
+
+Let $X$ be a closed, oriented, topological $4$-manifold $X$ throughtout this talk. We have a symmetric, bilinear form called the intersection form $Q_X: H^2(X, \Z) \times H^2(X, \Z) \to \Z$ that descends to the mod-torsion part (thus, we will not worry about torsion). We can easily show that $Q_X$ is unimodular by Poincare duality. 
+
+\begin{remark}
+On a closed, oriented smooth $4$-manifold $X$, the intersection pairing on $H^2(X;\Z)$ admits a geometric interpretation. By Poincaré duality, a class $a \in H^2(X;\Z)$ corresponds to a homology class $\alpha = PD(a) \in H_2(X;\Z)$, which can be represented by a smoothly embedded oriented surface $\Sigma_\alpha \subset X$. If $a,b \in H^2(X;\Z)$ and $\Sigma_\alpha,\Sigma_\beta$ are chosen generically so that they intersect transversely, then each intersection point contributes a sign determined by the orientations of $\Sigma_\alpha$, $\Sigma_\beta$, and $X$. The intersection number is the signed count of these intersection points and coincides with the value of the intersection form $Q_X(a,b)$.
+\end{remark}
+
+In the topological category, Freedman classified all $4$-manifolds in terms of their intersection forms, winning him the Fields Medal (1986). We define a form $Q$ to be \emph{even} if $Q(\alpha, \alpha) \equiv 0 \pmod{2}$ and \emph{odd} otherwise.
+
+\begin{theorem}(Freedman, '82)
+    For every unimodular symmetric bilinear form $Q$ there exists a simply-connected, closed, topological $4$-manifold $X$ such that $Q_X \cong Q$. If $Q$ is even, this manifold is unique (up to homemorphism). If $Q$ is odd, there are two exactly two different homeomorphism types at most one of which is smooth-able.
+\end{theorem}
+
+A natural next question could be, what does this classification look like in the smooth category. This breaks down into two questions: 
+\begin{enumerate}
+    \item[Q1.] For each form $Q$, is there a simply-connected, closed, smooth $4$-manifold $X$ such that $Q \cong Q_X$.
+    \item[Q2.] For each $Q_X$, how many diffeomorphism classes of smooth manifolds are there?   
+\end{enumerate}
+
+In this note, we will focus on the first of these, about which we know quite a lot. Before we move forwards, we want some form of classification of forms $Q$ to break our answer into simpler cases. We quickly recall some invariants of unimodular, symmetric, quadratic forms $Q$, 
+\begin{enumerate}
+    \item The rank $\rk(Q)$ is the dimension of its underlying space. In our case, this is the 2nd betti number $b_2$.
+    \item If we diagonalize $Q$ after extending scalars $H^2(X, \Z) \otimes_\Z \R$, then the diagonal consists of $\pm 1$. Let $b_2^+$ be the number of $1$s and $b_2^-$ be the number of $-1$s. The signature $\sigma(Q)$ is $b_2^+ - b_2^-$. 
+    \item $Q$ is positive/negative definite if $\rk(Q) = \sigma(Q)$ or $\rk(Q) = -\sigma(Q)$ (i.e. all eigenvalues positive or negative), and indefinite otherwise.
+\end{enumerate}
+
+For indefinite unimodular forms, we have the following classification via linear algebra arguments:
+\begin{theorem}
+    Let $Q$ be an indefinite unimodular form. 
+    \begin{enumerate}
+        \item If $Q$ is odd, then it is isomorphic to $b_2^+\langle 1 \rangle \oplus b_2^{-}\langle -1 \rangle$.
+        \item If $Q$ is even, then it is isomorphic to $\frac{\sigma(Q)}{8}E_8 \oplus \frac{\rk(Q) - |\sigma(Q)|}{2}H$
+    \end{enumerate} 
+    where $E_8$ and $H$ are the following: 
+    \[
+    E_8 =
+    \begin{pmatrix}
+    2 & -1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    -1 & 2 & -1 & 0 & 0 & 0 & 0 & 0 \\
+    0 & -1 & 2 & -1 & 0 & 0 & 0 & -1 \\
+    0 & 0 & -1 & 2 & -1 & 0 & 0 & 0 \\
+    0 & 0 & 0 & -1 & 2 & -1 & 0 & 0 \\
+    0 & 0 & 0 & 0 & -1 & 2 & -1 & 0 \\
+    0 & 0 & 0 & 0 & 0 & -1 & 2 & 0 \\
+    0 & 0 & -1 & 0 & 0 & 0 & 0 & 2
+    \end{pmatrix}, \qquad 
+    H = \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{pmatrix}  
+    \]
+    In particular, $Q$ is determined by its parity, rank, and signature. 
+\end{theorem}
+
+In the definite case, there is no such nice description. For a given rank, there are finitely many definite symmetric, unimodular forms, but this number is huge. However, we have the following theorem of Donaldson that also won him the Fields Medal (1986).
+\begin{theorem}[Donaldson]
+    If the intersection form $Q_X$ of a smooth, simply connected, closed $4$-manifold $X$ is positive/negative definite, then $Q_X$ is equivalent to $n\langle \pm 1\rangle$ (i.e. diagonalizable over the integers). 
+\end{theorem}
+
+Thus, we do have a nice classification for all forms that can be realized as intersection forms of smooth manifolds. Furthermore, we also have the following result that makes realizing some of these intersection forms easy.
+\begin{lemma}
+    Given $4$-manifolds $X_1$ and $X_2$, we have:
+    \[ Q_{X_1 \# X_2} = Q_{X_1} \oplus Q_{X_2}\]
+\end{lemma}
+\begin{proof}
+    Exercise. Hint: Mayer-Vietoris.
+\end{proof}
+\begin{remark}
+    There is a more general result where you glue the manifolds along a homology $3$-sphere rather than along an $S^3$. Moreover, the converse of the statement is also true.
+\end{remark}
+
+Recalling that, $Q_{\CP^2} = \langle 1 \rangle$ and $Q_{\overline{\CP^2}} = \langle -1 \rangle$, we can produce examples of simply-connected, closed, smooth manifolds realizing every odd indefinite form and every definite form meeting Donaldson's theorem. This leaves us only with the even indefinite intersection forms. 
+
+Towards this, we know of two constraints, the first proven and the second a conjecture. 
+\begin{theorem}[Rokhlin, '52]
+    If $Q_X$ is even, then $\sigma(Q_X)$ is divisible by $16$.
+\end{theorem}
+
+\begin{theorem}[11/8-Conjecture]
+    If $Q_X = 2aE_8 \oplus bH$, then we must have 
+    \[ b \geq 3|a| \]
+    Noting that $\sigma(Q_X) = 2a \cdot 8 = 16a$ and $\rk(Q_X) = 16a + 2b$, this translates to:
+    \[ \rk(Q_X) \geq \frac{11}{8} \sigma(Q_X)\]
+\end{theorem}
+\begin{remark}
+    Due to a recent result of Furuta (2001), we know that $b \leq 2|a|$ no smooth structure exists. This translates to $\rk(Q_X) \leq \frac{10}{8}\sigma(Q_X)$. 
+\end{remark}
+
+We want to show that the conditions imposed by Rokhlin and the $11/8$ths conjecture are all the conditions we need for the form to be realized as the intersection form of some simply-connected, closed, oriented, smooth $4$-manifold. 
+
+In fact, we can realize all of these forms using connect sums with hypersurfaces in $\CP^3$. 
+
+Define:
+    \[ S_d = \left\{ [z_0 : z_1 : z_2 : z_3] \in \C\P^3 | \sum_{i=0}^4 z_i^d = 0\right\}\]
+
+We would like to calculate the intersection form of $S_d$. As a concrete example, we might have seen the intersection form for the K3 surface $(S_4)$: 
+\[ Q_{S_4} = 2E_8 \oplus 3H\]
+
+To calculate the intersection form for $S_d$, it suffices to calculate its parity, rank, and signature. Turns out, we can figure all of these out by using the theory of characteristic classes on the tangent bundle of $S_d$. 
+
+\section{Characteristic Classes:}
+
+There are many perspectives from which characteristic classes are useful. One motivation to define characteristic classes is to measure how far they are from being trivial, i.e. how twisted they are. Characteristic classes are topological invariants that measure this twisting, providing various obstructions.
+
+More formally, characteristic classes of a vector bundle $\pi: E \to X$ are classes in the cohomology ring of $X$ satisfying certain naturality and compatibility conditions. These come in various flavors based on the type of vector bundles under consideration, i.e. Steifel-Whitney classes or Pontrjagin classes for all real vector bundles, the Euler class for oriented real vector bundles, and Chern classes for complex vector bundles. 
+
+\subsection{The Euler Class:}
+The first characteristic class we will consider is the \emph{Euler class} of an oriented real vector bundle. Intuitively, the Euler class encodes the generic intersection of a section with the zero-section and therefore presents an obstruction to finding a nowhere-vanishing section of the bundle. In the case of the tangent bundle of a manifold, this corresponds to the familiar question of whether we can choose a nonzero tangent vector at every point (for instance, the hairy ball theorem says this is impossible on $S^2$).
+
+First, we define the orientation for a vector space in terms of relative cohomology. 
+\begin{definition}
+    Let $V$ be an $n$-dimensional vector space. An orientation on $V$ is a choice of generator for $H^n(V, V_0; \Z)$ where $V_0 = V\setminus \{0\}$. 
+\end{definition}
+\begin{remark}
+This definition agrees with the usual notion of orientation. Indeed,
+\[ H^n(V,V_0;\Z) \cong H^n(D^n,S^{n-1};\Z) \cong H^{n-1}(S^{n-1};\Z) \cong \Z  \]
+If $f:V \to V$ is a linear isomorphism, it induces a map
+\[ f^*:H^n(V,V_0;\Z) \to H^n(V,V_0;\Z) \]
+which can be shown to be multiplication by $\sgn(\det f)$. Thus an orientation corresponds precisely to choosing which linear isomorphisms are orientation preserving.
+\end{remark}
+
+We now extend this notion fiberwise to vector bundles.
+\begin{definition}
+    Let $\pi: E \to X$ be a rank $n$ vector bundle. An orientation for $E$ is the choice of orientations $u_x \in H^n(F_x, (F_x)_0; \Z)$ for each fiber $F_x$ for $x \in X$ subject to the following condition: There exists a cover $\{U_\alpha\}$ of $X$ and classes $u_\alpha \in H^n(\pi^{-1}(U_\alpha), \pi^{-1}(U_\alpha)_0;\Z)$ that restrict to $u_x$ for $x \in U_\alpha$.  
+\end{definition}
+\begin{remark}
+    In terms of local trivializations, this condition is equivalent to requiring that the transition functions of $E$ have positive determinant. Thus this definition recovers the usual notion of an oriented vector bundle.
+\end{remark}
+
+A fundamental result shows that these fiberwise orientations assemble into a single global cohomology class.
+\begin{theorem}[Thom Isomorphism Theorem]
+Let $E\to X$ be an oriented rank $n$ vector bundle. There exists a unique class
+\[ u \in H^n(E,E_0;\Z) \]
+whose restriction to each fiber $(F_x,(F_x)_0)$ equals the chosen orientation $u_x$. Moreover, the map
+\[ H^k(E;\Z) \longrightarrow H^{k+n}(E,E_0;\Z), \qquad y \mapsto y \smile u \]
+is an isomorphism for all $k$. We call $u$ the \emph{Thom class} of $E$. 
+\end{theorem}
+\begin{proof}
+    An elementary proof is given in a full chapter (Chapter 10) in Milnor-Stasheff. 
+\end{proof}
+\begin{remark}
+    The intuition for the Thom class is best seen through its de Rham analogue, where it is a form representing the fiber directions. In this smooth setting, the relative cohomology $H^n(E,E_0;\R)$ loosely corresponds to forms with compact support in each fiber. Geometrically, the Thom class acts as a localized "bump form" concentrated around the zero section. By integrating to exactly $1$ along each fiber, this form encodes both the zero-section and an orientation for each fiber.
+    The Thom isomorphism is made clearer by realizing $H^k(E; \Z) \cong H^k(X; \Z)$ as $E$ deformation retracts to the zero-section. The theorem then says ``all the fiberwise compactly supported forms on $E$ come from forms on $X$ thickened along the fiber-directions''. The inverse map is just integrating along fibers.
+\end{remark}
+
+Thom classes satisfy some nice properties. 
+\begin{proposition}
+Let $E\to X$ be an oriented vector bundle of rank $n$.
+\begin{enumerate}
+    \item Let $f:Y\to X$ be continuous, and let $\widetilde f:f^*E\to E$ be the induced bundle map. If $u_E\in H^n(E,E_0;\Z)$ is the Thom class of $E$, then
+    \[
+    \widetilde f^{\,*}(u_E)=u_{f^*E}\in H^n(f^*E,(f^*E)_0;\Z),
+    \]
+    where $u_{f^*E}$ is the Thom class of the pullback bundle.
+
+    \item Let $E_1\to X$ and $E_2\to X$ be oriented vector bundles of ranks $n_1$ and $n_2$, and let $u_1,u_2$ denote their Thom classes. Give $E_1\oplus E_2$ the product orientation. Then the Thom class of $E_1\oplus E_2$ is
+    \[
+    u_{E_1\oplus E_2}=p_1^*(u_1)\smile p_2^*(u_2),
+    \]
+    where $p_i:E_1\oplus E_2\to E_i$ are the projections.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We prove the two statements in order.
+
+\begin{enumerate}
+    \item For each $y\in Y$, the map $\widetilde f$ restricts on the fiber over $y$ to the linear isomorphism
+    \[ (f^*E)_y \xrightarrow{\sim} E_{f(y)} \]
+    Since the pullback bundle is given the induced orientation, this linear isomorphism is orientation-preserving. Therefore the restriction of $\widetilde f^{\,*}(u_E)$ to the fiber $((f^*E)_y,((f^*E)_y)_0)$ is exactly the chosen orientation class. By the uniqueness statement in the Thom isomorphism theorem, $\widetilde f^{\,*}(u_E)$ must be the Thom class of $f^*E$.
+
+    \item Let
+    \[ v:=p_1^*(u_1)\smile p_2^*(u_2)\in H^{n_1+n_2}\bigl(E_1\oplus E_2,(E_1\oplus E_2)_0;\Z\bigr) \]
+    We check that $v$ has the defining property of the Thom class.
+
+    Fix $x\in X$. Restricting to the fiber over $x$, we obtain
+    \[ v|_{(E_{1,x}\oplus E_{2,x},(E_{1,x}\oplus E_{2,x})_0)} = p_1^*(u_1|_{(E_{1,x},(E_{1,x})_0)})\smile p_2^*(u_2|_{(E_{2,x},(E_{2,x})_0)})\]
+    This is exactly the product of the orientation generators on the fibers $E_{1,x}$ and $E_{2,x}$, hence it is the orientation generator for $E_{1,x}\oplus E_{2,x}$ with the product orientation. Therefore $v$ restricts on every fiber to the chosen orientation class. By uniqueness of the Thom class, $v=u_{E_1\oplus E_2}$.
+\end{enumerate}
+\end{proof}
+
+Naturally, we are also interested in comparing vector bundles. Although the Thom class is nice, it lives in the cohomology of the vector bundle, preventing such comparisons. The idea behind defining the Euler class is to get reflect the Thom class within the cohomology of the base manifold itself.
+
+Observe that the inclusion $j:(E,\varnothing)\hookrightarrow (E,E_0)$ induces a map
+\[ j^*:H^n(E,E_0;\Z)\to H^n(E;\Z) \]
+Moreover, we have the canonical isomorphism:
+\[ s_0^*: H^n(E;\Z) \to H^n(X; \Z)\]
+where $s_0$ is the zero-section. We use these to define the Euler class.
+
+\begin{definition}
+Let $u\in H^n(E,E_0;\Z)$ be the Thom class of $E$. The \emph{Euler class} of $E$ is the class
+\[ e(E) \in H^n(X;\Z) \]
+defined by
+\[ e(E) = s_0^*(j^*(u)) \]
+\end{definition}
+
+\begin{remark}
+    In the smooth category, the Euler class is best understood through intersection theory. Recall that the Thom class $u$ represents a ``bump form'' tightly concentrated along the zero section. When we apply $j^*$, we drop the relative condition and treat $u$ as a standard form on $E$. Pulling this class back to $X$ via $s_0^*$ geometrically corresponds to computing the self-intersection of the zero section. That is, if we perturb the zero section to any generic smooth section $s: X \to E$ that intersects the zero section transversally, the Euler class $e(E)$ is exactly the Poincare dual in $X$ of this intersection submanifold. This provides some intuition for why it obstructs a nowhere vanishing section -- we will make this precise next. 
+\end{remark}
+
+The Euler class also satisfies several naturality and compatability properties, making it easy to compute and compare: 
+\begin{theorem}
+Let $E\to X$ be an oriented rank $n$ vector bundle. Then:
+\begin{enumerate}
+    \item For a continuous map $f:Y\to X$, one has
+    \[  e(f^*E)=f^*e(E) \]
+    \item For oriented vector bundles $E_1,E_2\to X$,
+    \[ e(E_1\oplus E_2)=e(E_1)\smile e(E_2) \]
+    \item If $\overline{E}$ denotes the bundle $E$ with the opposite orientation, then
+    \[ e(\overline{E})=-e(E) \]
+    \item If $E$ admits a nowhere-vanishing section, then
+    \[ e(E)=0 \]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We prove the four statements in order.
+
+\begin{enumerate}
+    \item Let $u_E\in H^n(E,E_0;\Z)$ be the Thom class of $E$, and let $\widetilde f:f^*E\to E$ be the induced bundle map covering $f$. Let $s_0^Y:Y\to f^*E$ and $s_0^X:X\to E$ denote the zero sections. By naturality of Thom classes, 
+    \[ \widetilde f^{\,*}(u_E)=u_{f^*E} \]
+    Moreover, the square
+    \[ 
+        \xymatrix{ Y \ar[r]^{s_0^Y} \ar[d]_f & f^*E \ar[d]^{\widetilde f} \\
+        X \ar[r]_{s_0^X} & E
+        }     
+    \]
+    commutes. Therefore
+    \begin{align*}
+        e(f^*E)
+        &= (s_0^Y)^*j^*(u_{f^*E}) \\
+        &= (s_0^Y)^*j^*\widetilde f^{\,*}(u_E) \\
+        &= (s_0^Y)^*\widetilde f^{\,*}j^*(u_E) \\
+        &= f^*(s_0^X)^*j^*(u_E) \\
+        &= f^*e(E)
+    \end{align*}
+    where $j$ represents the appropriate inclusion.
+
+    \item Let $u_1$ and $u_2$ be the Thom classes of $E_1$ and $E_2$. By Proposition
+    \[ u_{E_1\oplus E_2}=p_1^*(u_1)\smile p_2^*(u_2) \]
+    Let $s_0:X\to E_1\oplus E_2$ be the zero section, and let $s_i:X\to E_i$ be the zero section of $E_i$. Since $p_i\circ s_0=s_i$, we obtain
+    \begin{align*}
+    e(E_1\oplus E_2)
+    &= s_0^*j^*(u_{E_1\oplus E_2}) \\
+    &= s_0^*j^*\bigl(p_1^*(u_1)\smile p_2^*(u_2)\bigr) \\
+    &= s_0^*p_1^*j^*(u_1)\smile s_0^*p_2^*j^*(u_2) \\
+    &= s_1^*j^*(u_1)\smile s_2^*j^*(u_2) \\
+    &= e(E_1)\smile e(E_2)
+    \end{align*}
+    where $j$ represents the appropriate inclusion.
+
+    \item Reversing the orientation on a rank $n$ bundle replaces the chosen generator on each fiber by its negative. Hence the Thom class changes sign:
+    \[ u_{\overline E}=-u_E. \]
+    Pulling back to the zero section gives
+    \[ e(\overline E)=s_0^*j^*(u_{\overline E}) =s_0^*j^*(-u_E) =-\,s_0^*j^*(u_E) =-e(E)
+    \]
+
+    \item Suppose $s:X\to E$ is a nowhere-vanishing section. Then $s(X)\subset E_0$, so the pullback
+    \[ s^*:H^n(E,E_0;\Z)\to H^n(X,X;\Z) \]
+    is the zero map. In particular,
+    \[ s^*(u_E)=0 \]
+    On the other hand, since each fiber of $E$ is a vector space, the homotopy
+    \[ H:X\times I\to E,\qquad H(x,t)=t\,s(x) \]
+    is a homotopy from the zero section $s_0$ to the section $s$. Hence $s^*=s_0^*$ on $H^n(E;\Z)$. Applying this to $j^*(u_E)$ gives
+    \[ e(E)=s_0^*j^*(u_E)=s^*j^*(u_E). \]
+    But since $s$ factors through $E_0$, the composite
+    \[ H^n(E,E_0;\Z)\xrightarrow{j^*} H^n(E;\Z)\xrightarrow{s^*} H^n(X;\Z) \]
+    is zero. Therefore
+    \[ e(E)=s^*j^*(u_E)=0 \]
+\end{enumerate}
+\end{proof}
+
+We now turn to the case we care about. That is, we consider what Euler classes can tell us about the tangent bundle on a smooth, compact, oriented manifold. 
+\begin{theorem}
+    If $X$ is a smooth, compact, oriented manifold then 
+    \[ \langle e(TX), [X]\rangle = \chi(X)\] 
+    where $\chi(X) = \sum_{i=0}^{\dim(X)}(-1)^i \rk(H^i(X, \Z))$ is the Euler characteristic of $X$.
+\end{theorem}
+Note that for a simply-connected $4$-manifold, this says that the Euler class determines the 2nd betti number, i.e. the rank of its intersection form.
+
+\begin{proof}[Proof Sketch.]
+    Choose a smooth section \(s \colon X \to TX\), i.e. a smooth vector field on \(X\), which is transverse to the zero section. Transversality implies that its zero set
+    \[
+        Z(s)=\{p\in X : s(p)=0\}
+    \]
+    is finite.
+    
+    Next, we use the geometric meaning of the Euler class (that we did not prove). That is $\langle e(E),[X]\rangle$ is the signed count of the zeros of \(s\). Applied to \(E=TX\), this gives
+    \[
+    \langle e(TX),[X]\rangle = \sum_{p\in Z(s)} \operatorname{ind}_p(s),
+    \]
+    where \(\operatorname{ind}_p(s)\in \{\pm 1\}\) is the index/degree/local intersection number which can be defined in many equivalent ways (Many of us saw this in detail in Math150).
+
+    Thus, it remains to identify this count with $\chi(X)$. This is precisely the content of the Poincare-Hopf theorem, stated next.
+\end{proof}
+
+\begin{theorem}[Poincare-Hopf]
+    If $X$ is a closed, smooth manifold and $V$ a vector field on $X$. Then, 
+    \[  \sum_{p: V(p) = 0} \operatorname{ind}_p(V) = \chi(X)\]
+\end{theorem}
+\begin{proof}[Proof Idea.]
+    The proof is via intersection theory. First, one obtains a diffeomorphism of $X$ from $V$ as $f:= \exp(tV)$ for small $t$. Under this association, the zeros of $V$ correspond to the fixed points of $f$. Geometrically, this allows us to associate $\sum_{p: V(p) = 0} \operatorname{ind}_p(V)$ to the intersection number $(\Gamma_f \cdot \Delta)$ where $\Gamma_f, \Delta \subset X \times X$ are the graph of $f$ and the diagonal respectively. Via the Lefschetz fixed point theorem, we get:
+    \[ (\Gamma_f \cdot \Delta) = \sum_{i=0}^{\dim(X)} (-1)^i \Tr(f^*|H^i(X))\]
+    Since $f$ is a diffeomorphism, this evaluates to $\chi(X)$. All of these statements can be made precise.
+\end{proof}
+
+\subsection{Chern Classes:}
+Having introduced the Euler class for oriented real vector bundles, we will next define the Chern classes for a complex vector bundle $E \to X$. We take an axiomatic approach in analogy with the properties that made the Euler class useful. We will prove many useful properties that these classes possess, including those relevant to the tangent bundle of a complex manifold. We will not however show their existence or uniqueness besides a short discussion following the definition.
+
+\begin{definition}
+    For every complex vector bundle $E$ over $X$ there are classes $c_i(E) \in H^{2i}(X; \Z)$ such that the following properties hold: 
+    \begin{enumerate}
+        \item If $E$ is rank $n$, then $c_i(E) = 0$ for $i > n$.
+        \item (Naturality) For any continuous map $f: Y \to X$, 
+        \[ c_i(f^*E) = f^*c_i(E)\]
+        where the pullbacks are pullbacks as vector bundles and pullbacks in cohomology.
+        \item For two vector bundles $E_1$ and $E_2$ over $X$, 
+        \[  c(E_1 \oplus E_2) = c(E_1)c(E_2)\]
+        where $c = 1 + c_1 + c_2 + \cdots \in H^*(X; \Z)$ is called the ``total chern class'' and $E_1 \oplus E_2$ denotes the Whitney product (fiberwise direct sum). 
+        \item If $\gamma$ is the tautological line bundle over $\CP^\infty$ then $c_1(\gamma^\vee) = 1 \in H^2(\CP^\infty, \Z)$.
+    \end{enumerate}
+\end{definition}
+
+To give some idea for how the Chern classes can be constructed, we first quote the Splitting principle. 
+\begin{theorem}
+    For a rank $r$ complex bundle $E \to X$, there is a space $Y$ and a continuous map $f: Y \to X$ such that $f^* E$ splits as $L_1 \oplus \cdots \oplus L_r$ and $f^*$ is injective.  
+\end{theorem}
+Thus, by naturality under pullback and the Whitney sum formula, it suffices to define Chern classes for line bundles. This can be done by realizing that the set of isomorphism classes of line bundles on $X$ is canonically isomorphic to $H^2(X;\Z)$ (for instance, induced via the exponential exact sequence of sheaves or via the classifying maps into $\CP^\infty$). 
+
+The first consequences are immediate.
+
+\begin{proposition}
+Let \(E\to X\) be a complex vector bundle of rank \(n\). Then:
+\begin{enumerate}
+    \item If \(\varepsilon^r\) is the trivial complex bundle of rank \(r\), then
+    \[
+    c(\varepsilon^r)=1.
+    \]
+    \item For any complex vector bundle \(E\to X\) and any \(r\geq 0\),
+    \[ c(E\oplus \varepsilon^r)=c(E) \]
+    \item Let \(E\to X\) and \(F\to X\) be complex vector bundles of ranks \(m\) and \(n\), respectively. Then
+    \[ c_{m+n}(E\oplus F)=c_m(E)c_n(F) \]
+    More generally,
+    \[ c_k(E\oplus F)=\sum_{i+j=k} c_i(E)c_j(F) \]
+    \item The Whitney sum formula extends to short exact sequences. If
+        \[ 0\to E' \to E \to E'' \to 0 \]
+    is a short exact sequence of complex vector bundles over \(X\), then
+        \[ c(E)=c(E')\,c(E'') \]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For (1), since $\varepsilon^r = \oplus_{i=1}^r \varepsilon^1$, we reduce down to show $c(\varepsilon^1)$ via the Whitney sum formula. Let $p: X \to *$ be the map to a point. Then, $\varepsilon^1$ is the pullback along $p$ of the trivial bundle over $*$. But $H^2(*; \Z)$ is trivial. By naturality, $c_1(\varepsilon^1) = 0$. Thus, $c(\varepsilon^1) = 1$. 
+
+(2) is an immediate consequence of (1) and the Whitney sum formula. (3) is just the Whitney sum formula expanded. 
+
+(4) is essentially a consequence of the fact that short exact sequences of vector spaces split. Choose a Hermitian metric on \(E\). Then \(E'\) has an orthogonal complement \((E')^\perp\subseteq E\), and the projection \(E\to E''\) restricts to an isomorphism
+\[
+(E')^\perp \xrightarrow{\sim} E''.
+\]
+Thus \(E\cong E'\oplus E''\) as complex vector bundles. The result now follows from the Whitney sum formula.
+\end{proof}
+
+We will now show that the top Chern class agrees with the Euler class. Thus, the top Chern class also encodes an obstruction to a nowhere vanishing section. Recall that a complex vector bundle has a canonical orientation on its underlying real bundle, since each fiber is a complex vector space.
+
+\begin{theorem}
+Let \(E\to X\) be a complex vector bundle of rank \(n\). The Euler class of the underlying oriented real bundle \(E_{\R}\) is equal to the top Chern class:
+\[ e(E_{\R})=c_n(E)\in H^{2n}(X;\Z) \]
+\end{theorem}
+
+\begin{proof}[Proof Sketch.]
+    Note that the Euler class and the top Chern class satisfy the same naturality under pullback and Whitney sum formula. By the splitting principle, it suffices to consider the case of a complex line bundle. Complex line bundles are classified by homotopy classes of maps $f: X \to \CP^\infty$ and in fact obtained as the pullback of the tautological bundle under these maps. Thus, we reduce to checking that the top Chern class and the Euler class agree on $\gamma \in \CP^\infty$. Note that the inclusion $\CP^1 \to \CP^\infty$ induces an isomorphism $H^2(\CP^\infty; \Z) \to H^2(\CP^1; \Z)$. Then, one can explicitly use the intersection-theoretic property of the Euler class to show the agreement. 
+\end{proof}
+\begin{corollary}
+    For a two dimensional complex manifold $X$, $\langle c_2(TX), [X] \rangle = \chi(X)$.
+\end{corollary}
+
+Next, we will work out the Chern classes of the tangent bundle of projective space. Recall that the betti numbers of $\CP^n$ $1$ in even and $0$ in odd degree. 
+\begin{theorem}
+    Let $T\CP^n$ be the complex tangent bundle of $\CP^n$, and let $h \in H^2(\CP^n; \Z)$ be the positive generator. Then the total Chern class is
+    \[ c(T\CP^n) = (1+h)^{n+1} \]
+\end{theorem}
+
+\begin{proof}
+    Let $\gamma$ be the tautological line bundle over $\CP^n$, whose fiber at a point $\ell \in \CP^n$ is the complex line $\ell \subset \C^{n+1}$. Let $\gamma^\perp$ be the orthogonal complement bundle, so we have a Whitney sum decomposition into the trivial bundle of rank $n+1$:
+    \[ \gamma \oplus \gamma^\perp \cong \epsilon^{n+1} \]
+    The tangent space to $\CP^n$ at a line $\ell$ is naturally isomorphic to the space of complex linear maps from the line $\ell$ to its orthogonal complement $\ell^\perp$. Globally, this yields the vector bundle isomorphism:
+    \[ T\CP^n \cong \text{Hom}(\gamma, \gamma^\perp) \]
+    To compute the Chern class, we add a trivial complex line bundle $\epsilon^1$ to both sides. Notice that $\epsilon^1 \cong \text{Hom}(\gamma, \gamma)$ because every line has a canonical one-dimensional space of linear maps to itself (generated by the identity). Taking the Whitney sum, we get:
+    \[ T\CP^n \oplus \epsilon^1 \cong \text{Hom}(\gamma, \gamma^\perp) \oplus \text{Hom}(\gamma, \gamma) \]
+    By the linearity of the Hom functor, we can combine the right side:
+    \[ T\CP^n \oplus \epsilon^1 \cong \text{Hom}(\gamma, \gamma^\perp \oplus \gamma) \cong \text{Hom}(\gamma, \epsilon^{n+1}) \]
+    Since $\epsilon^{n+1}$ is just $n+1$ copies of the trivial bundle $\C$, $\text{Hom}(\gamma, \epsilon^{n+1})$ is isomorphic to $n+1$ copies of the dual line bundle $\gamma^*$:
+    \[ T\CP^n \oplus \epsilon^1 \cong (\gamma^\vee)^{\oplus (n+1)} \]
+    Now we apply the Whitney sum axiom. Since $c(\epsilon^1) = 1$, the left side gives $c(T\CP^n) \smile 1 = c(T\CP^n)$. Applying the axiom repeatedly to the right side yields:
+    \[ c(T\CP^n) = c(\gamma^\vee)^{n+1} \]
+    By our normalization axiom, $h = c_1(\gamma^\vee)$ is the positive generator of $H^2(\CP^n; \Z)$. Since $\gamma^\vee$ is a line bundle, its total Chern class is simply $1 + c_1(\gamma^\vee) = 1 + h$. Substituting this into our equation completes the proof:
+    \[ c(T\CP^n) = (1+h)^{n+1} \]
+\end{proof}
+
+Finally, we quote a non-trivial theorem of Hirzebruch ('53) for the specific case of $4$-manifolds. 
+\begin{theorem}
+    If $X$ is a smooth, closed, oriented $4$-dimensional manifold, then its signature $\sigma(X)$ is equal to $\frac{1}{3}\langle c_1^2(X) - 2c_2(X), [X] \rangle$.
+\end{theorem}
+\begin{corollary}
+    In particular, using $c_1(X) = e(X) = \chi(X)$, we have that $c_2[X] = 3\sigma(X) + 2\chi(X)$. 
+\end{corollary}
+
+\section{Intersection form for hypersurfaces in $\CP^3$}
+After the long interlude defining characteristic classes, we return to calculating the intersection forms of $S_d$, the degree $d$ hypersurface in $\CP^3$. 
+
+\begin{lemma}
+    Let $\gamma$ be the tautological line bundle on $\CP^3$ and $h = c_1(\gamma^\vee)$. Let $x = \iota^*(h)$ under the inclusion $\iota: S_d \hookrightarrow \CP^3$. Then, the Chern classes of $S_d$ are $c_1(S_d) = (4-d)x$ and $c_2(S_d) = (d^2-4d+6)x^2$. 
+\end{lemma}
+\begin{proof}
+    Recall that $c(T\CP^3) = (1+h)^4$. Restricting to $S_d$, this becomes $c(T\CP^3|_{S_d}) = (1+x)^4$. Note that $T\CP^3|_{S_d} \cong TS_d \oplus N$ where $N$ is the normal bundle. By the Whitney sum formula, 
+    \[ c(TS_d) = c(T\CP^3|_{S_d})c(N)^{-1} = (1+x)^4c(N)^{-1}\]
+    Thus, we only need to compute $c(N)$. Note that $N$ is a rank $1$ bundle, thus we only need to calculate $c_1(N)$ which is equal to $e(N)$. We claim $c_1(N) = dx$. 
+
+    To this end, we use the intersection theoretic description of the Euler class. Let $S_{d}'$ be another hypersurface in $\CP^3$ that intersects $S_d$ transversely. Let $V = S_d \cap S_d'$.   
+
+    \todo{Finish this}
+\end{proof}
+
+Knowing the Chern classes, we are close to computing the parity, signature, and rank of the intersection form $Q_{S_d}$. We start with the rank. 
+\begin{lemma}
+    \[ \langle x^2,[S_d]\rangle = d \]
+    In particular,
+    \[  \rk(Q_{S_d}) = \chi(X) - 2 = \langle c_2(S_d), [S_d] \rangle - 2 = d^3-4d^2+6d-2\]
+\end{lemma}
+
+\begin{proof}
+We compute using naturality of pullback and the adjunction between $i^*$ and $i_*$.
+
+First note
+\[ x^2=(i^*h)^2 = i^*(h^2) \]
+
+Hence
+\[ \langle x^2,[S_d]\rangle = \langle i^*(h^2),[S_d]\rangle \]
+
+By the adjunction,
+\[ \langle x^2,[S_d]\rangle = \langle h^2,i_*[S_d]\rangle \]
+
+Next we compute the homology class $i_*[S_d]$. Since $S_d$ is a degree-$d$ hypersurface in $\CP^3$, by a standard result, its homology class is
+\[ [S_d] = d[S_1] \in H_4(\CP^3;\Z) \]
+where $S_1$ denotes a hyperplane. Equivalently,
+\[ PD([S_d]) = d h \]
+
+Thus 
+\[ \langle h^2,i_*[S_d]\rangle = \langle h^2 \smile PD(i_*[S_d]),[\CP^3]\rangle = \langle h^2 \smile d h,[\CP^3]\rangle \]
+
+Hence
+\[ \langle x^2,[S_d]\rangle = d \langle h^3,[\CP^3]\rangle \]
+
+Since $h$ generates $H^2(\CP^3)$ and
+\[ \langle h^3,[\CP^3]\rangle =1 \]
+we conclude
+\[ \langle x^2,[S_d]\rangle = d \]
+
+The rest follows by linearity.
+\end{proof}
+
+Next, we turn towards parity. 
+\begin{lemma}
+    $Q_{S_d}$ is even if and only if $d$ is even. 
+\end{lemma}
+\begin{proof}
+    First, assume $d$ is odd. By definition of the intersection form, 
+    \[ Q_{S_d}(x, x) = \langle x^2, [S_d]\rangle = d\]
+    is odd. Thus, $Q_{S_d}$ is odd. 
+
+    Next, assume $d$ is even. Recall that $c_1(X) = (4-d)x$. Since $d$ is even, $4-d$ is also even. Thus, $c_1(S_d) \cong 0 \pmod{2}$. This implies that $S_d$ is a spin manifold and thus its intersection form is even. \todo{Elaborate on why via the Steifel-Whitney classes}
+\end{proof}
+
+
+Finally, we calculate the signature using the Hirzebruch signature theorem. 
+\begin{lemma}
+    The signature $\sigma(Q_{S_d})$ is:
+    \[ \sigma(X) = \frac{d(4-d^2)}{3}\]    
+\end{lemma}
+
+\begin{proof}
+    By the Hirzebruch signature theorem,
+    \[ \sigma(S_d)=\frac{1}{3}\left\langle c_1(S_d)^2-2c_2(S_d),[S_d]\right\rangle \]
+    Therefore
+    \[ c_1(S_d)^2=(4-d)^2x^2 \]
+    so
+    \[ c_1(S_d)^2-2c_2(S_d) = \Bigl((4-d)^2-2(d^2-4d+6)\Bigr)x^2 \]
+    Expanding gives
+    \[ c_1(S_d)^2-2c_2(S_d)=(4-d^2)x^2 \]
+    Pairing with the fundamental class, 
+    \[ \sigma(S_d)=\frac{4-d^2}{3}\langle x^2, [S_d] \rangle = \frac{d(4-d^2)}{3}\]
+\end{proof}
+
+Using these results, we can calculate the intersection form for $S_d$. 
+\begin{theorem}
+    The intersection form $Q_{S_d}$ for $S_d$, the degree $d$ hypersurface is as follows: 
+    \begin{enumerate}
+        \item If $d$ is odd, then $Q_{S_d}$ is equivalent to $\lambda_d\langle 1 \rangle \oplus \mu_d\langle -1 \rangle$ where $\lambda_d = \frac{1}{3}(d^3 - 6d^2 + 11d - 3)$ and $\mu_d = \frac{1}{3}(d-1)(2d^2 - 4d+3)$.
+        \item If $d$ is even, then $Q_{S_d}$ is equivalent to $l_d(-E_8) \oplus m_dH$ where $l_d = \frac{1}{24}d(d^2-4)$ and $m_d = \frac{1}{3}(d^3 - 6d^2 + 11d -3)$.
+    \end{enumerate}     
+\end{theorem}
+\begin{proof}
+    Using our calculations for parity, signature, and rank as well as Theorem 1.2, the result is an exercise in arithmetic. 
+\end{proof}
+
+Using this formula, we can check that the results line up with what we know:
+\begin{enumerate}
+    \item $S_1 = \CP^2$, $Q_{\CP^2} = \langle 1 \rangle$. 
+    \item $S_2 = \CP^1 \times \CP^1$, $Q_{\CP^1 \times \CP^1} = H$.
+    \item $S_4 = K3$, $Q_{K3} = -2E_8 \oplus 3H$. 
+\end{enumerate}
+
+Using these, we can realize all even indefinite intersection forms allowed by Donaldson's theorem and the 11/8ths conjecture. 
+
+\begin{theorem}
+Let 
+\[ Q \cong 2kE_8 \oplus lH \]
+be an even indefinite unimodular intersection form with $l \ge |3k|$. Then there exists a smooth closed $4$–manifold $X$ such that
+\[ Q_X \cong Q \]
+\end{theorem}
+
+\begin{proof}
+Assume
+\[ Q \cong 2kE_8 \oplus lH \]
+Since $l \ge |3k|$, we may write
+\[ Q \cong (2kE_8 \oplus |3k|H) \oplus (l-|3k|)H  \]
+
+Note that $S_4$ is the K3 surface and its intersection form is
+\[ Q_{S_4} \cong -2E_8 \oplus 3H  \]
+Let $\overline{S_4}$ denote the same manifold with the opposite orientation, so
+\[ Q_{\overline{S_4}} \cong 2E_8 \oplus 3H \]
+
+If $k \le 0$, define
+\[ X = \#^{\,|k|} S_4 \;\#\; (l-|3k|)(S^2 \times S^2) \]
+We can compute,
+\[ Q_X \cong |k|(-2E_8 \oplus 3H) \oplus (l-|3k|)H \cong 2kE_8 \oplus lH \]
+
+Similarly, if $k>0$, define
+\[ X = \#^{\,k} \overline{S_4} \;\#\; (l-3k)(S^2 \times S^2) \]
+to get
+\[ Q_X \cong k(2E_8 \oplus 3H) \oplus (l-3k)H \cong 2kE_8 \oplus lH \]
+
+Thus in both cases there exists a smooth closed $4$–manifold $X$ whose intersection form is isomorphic to $Q$.
+\end{proof}
+
+
+\end{document}
