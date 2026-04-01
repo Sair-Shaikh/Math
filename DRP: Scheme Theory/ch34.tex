@@ -1,65 +1,470 @@
-\documentclass[12pt]{article}
-
-
-\include{../style}
-
-
-\begin{document}
-
-
-\input{title}
-
-
 \section{Schemes: }
 
+\subsection{The set underlying an affine scheme:}
+\begin{exercise}{3.2.A}
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
 
-% \section{Affine Schemes}
+\begin{exercise}{3.2.C}
 
-% \begin{definition}
-% An affine scheme $X = \Spec{A}$ is an extension of a space. It consists of data at three levels: 
-% \begin{itemize}
-%     \item The points of the space $X$ consists of all the prime ideals of $A$.
-%     \item The topology on $X$ is defined by declaring $V(f)$ closed and extending to a topology. $V(f)$ is the vanishing set of $f \in A$, i.e. the set where $f$ evaluates to $0$. We evaluate $f \in A$ at a prime ideal $\mathfrak{p}$ by mapping $f$ into $A/\mathfrak{p}$ (or the fraction field thereof). In particular, $\mathfrak{p} \in V(f) \iff f \equiv 0 \pmod{\mathfrak{p}} \iff f \in \mathfrak{p}$. \\
-%     The distinguished open sets $D(f) := X\setminus V(f)$ form a base for the topology. 
-%     \item The structure sheaf $\calO_X$. Assign to $D(f)$ the localization of $A$ at the multiplicative set of all functions that do not vanish on $D(f)$, i.e. functions $g$ such that $D(f) \subseteq D(g)$. In some sense, ``rational functions'' where the denominators do not vanish on $D(f)$. The restriction maps from $D(f)$ to $D(f')$ with $D(f') \subseteq D(f)$ are given by further localization.
-% \end{itemize}
-    
-% \end{definition}
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
 
-% \subsection{The set}
+\begin{exercise}{3.2.D}
+    If $k$ is a field, show that $\Spec k[x]$ has infinitely many points. 
+\end{exercise}
+\begin{solution}
+    Assume there are only finitely many prime ideals in $k[x]$, $\mathfrak p_1, \cdots, \mathfrak p_n$. As $k[x]$ is a PID, let $p_1, \cdots, p_n$ be the generators of the ideals. Then, $p_1\cdots p_n + 1$ has gcd $1$ with every prime ideal, thus is not contained in any of them (else these ideals would be the whole ring). Thus, there is a maximal ideal that contains this that is not amongst our finite primes. Contradiction. 
+\end{solution}
 
-% \subsection{The topology}
-% \begin{definition}
-%     A topological space is quasicompact if every open cover has a finite subcover. This is the AG term for compact.
-% \end{definition}
-% \begin{exercise}{3.5.BC and 3.6.G(a)}
-%     Show that $\Spec A$ is quasicompact. 
-% \end{exercise}
-% \begin{proof}
-%     We first show that $\Spec A = \bigcup_{i \in I} D(f_i)$ is equivalent to $(\{f_i\}_{i \in I}) = A$. \\
-%     Assume $\Spec A = \bigcup_{i \in I} D(f_i)$. It suffices to show $1 \in (\{f_i\}_{i \in I})$. Suppose not. Then $(\{f_i\}_{i \in I})$ is a proper ideal of $A$ and is thus contained in some maximal ideal $\mathfrak{m}$. Thus, $\mathfrak{m} \in \bigcap_{i\in I} V(f_i)$. This implies $\mathfrak{m} \not \in \bigcup_{i \in I} D(f_i)$ which is a contradiction. Conversely, assume $(\{f_i\}_{i \in I}) = A$ and let $\mathfrak p$ be some prime ideal. Since $A \not \subseteq \mathfrak p$, there is some $f_i \not \in \mathfrak p$. Thus, $\mathfrak p \in D(f_i)$ for this $i$. \\ 
-%     Now, note that $\Spec A = \bigcup_{i \in I} D(f_i)$ implies $1 = \sum_{i \in I} a_if_i$ where all but finitely many $a_i$ are zero. Thus, picking these $i$ in a set $J$, we get a finite subcover:
-%     \[ \Spec A = \bigcup_{i\in J} D(f_i)\]
-% \end{proof}
+\begin{exercise}{3.2.F}
 
-% \begin{exercise}{3.5.E}
-%     Show that $D(f) \subseteq D(g)$ if and only if $f^n \in (g)$ if and only if $g$ is invertible in $A_f$. 
-% \end{exercise}
-% \begin{proof}
-%     $(2) \iff (3)$ is trivial as if we have $g^{-1} = \frac{g'}{f^n} \in A_f$ with $g' \in A$ then $gg' = f^n$. \\
-%     $(1) \implies (2)$. Taking the complement, $V(g) \subseteq V(f)$. Thus, $f$ vanishes at all points of $\Spec(A/(g))$. Thus, $f$ is nilpotent in $A/(g)$ so $f^n \in (g)$. More algebraically, $V(g) \subseteq V(f)$ means every prime ideal that contains $g$ also contains $f$. As $\sqrt{g} = \bigcap_{\mathfrak{p}\supseteq (g)} \mathfrak{p}$ (Ex. 3.4.F), $f \in \sqrt{g}$. \\
-%     $(2) \implies (1)$. Same as above. $f^n \in (g)$ implies $f \in \sqrt{(g)}$ implies $V(g) \subseteq V(f)$ implies $D(f) \subseteq D(g)$.  
-% \end{proof}
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.2.G}
+    Show that if $A$ is an integral domain that is a finite $k$-algebra, then $A$ is a field. 
+\end{exercise}
+\begin{solution}
+    Define $\phi_a: A \to A$ as multiplication by $a$, where $a \neq 0$. Then, $\phi_a$ is a $k$-linear map. Moreover, it is injective as $A$ is an integral domain. Thus, it is an isomorphism. So there exists $y \in A$ such that $\phi_a(y) = ay = 1$.
+\end{solution}
 
 
-% \subsection{The structure sheaf}
+\begin{exercise}{3.2.J}
+Suppose $A$ is a ring, and $I$ an ideal of $A$. Let $\phi \colon A \to A/I$.
+Show that $\phi^{-1}$ gives an inclusion-preserving bijection between prime
+ideals of $A/I$ and prime ideals of $A$ containing $I$. Thus we can picture
+$\Spec A/I$ as a subset of $\Spec A$.
+\end{exercise}
+\begin{solution}
+    Let $J$ be an ideal in $A/I$. We first show that $\phi^{-1}(J)$ is an ideal containing $I$. \bbni
+    First, note that $0 \in J$, thus, $I \in \phi^{-1}(J)$. Next, take $f, g \in \phi^{-1}(J)$. Then, $\phi(f), \phi(g) \in J$, thus $\phi(f)+\phi(g) = \phi(f+g) \in J$. Thus, $f+g \in \phi^{-1}(J)$. Similarly, take $a \in A$ and $f \in \phi^{-1}(J)$. Then, $\phi(af) \in J$ thus $af \in \phi^{-1}(J)$. \bbni
+    Next, we need to show that this is a bijection. For injectivity, note that since the quotient is surjective, two sets with the same pre-image are equal. Similarly, since $\phi$ is surjective, if $J$ is an ideal of $A$, $\phi(J)$ is an ideal of $A/I$. \todo{}
+\end{solution}
 
-% \begin{exercise}{4.1.A}
-%     The natural map $A_f \to \calO_X(D(f))$ is an isomorphism.    
-% \end{exercise}
-% \begin{proof}
-%     Exercise 3.5.E shows that $D(f) \subset D(g)$ if and only if $\frac{1}{g} \in A_f$. Thus, the map is bijective.
-% \end{proof}
+\begin{exercise}{3.2.K}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.2.L}
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.2.M}
+    If $\phi: B \to A$ is a map of rings and $\mathfrak p$ is a prime ideal of $A$, show that $\phi^{-1}(\mathfrak p)$ is a prime ideal of $B$. 
+\end{exercise}
+\begin{solution}
+    Let $f, g \in \phi^{-1}(\mathfrak p)$ and $b \in B$. First, note that $f + g \in \phi^{-1}(\mathfrak p)$ as $\phi(f+g) = \phi(f)+\phi(g) \in \mathfrak p$. Similarly, $af \in \phi^{-1}(\mathfrak p)$ as $\phi(af) = \phi(a)\phi(f) \in \mathfrak p$. Thus, $\phi^{-1}(\mathfrak p)$ is an ideal. Then, assume $fg \in \phi^{-1}(\mathfrak p)$. Then $\phi(fg) = \phi(f)\phi(g) \in \mathfrak p$. Thus, either $\phi(f)$ or $\phi(g)$ in $\mathfrak p$. Thus, $f \in \phi^{-1}(\mathfrak p)$ or $g \in \phi^{-1}(\mathfrak p)$. 
+\end{solution}
+
+\begin{exercise}{3.2.N}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.2.O}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.2.P}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.2.Q}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.2.S}
+    Show that $\mathfrak R(A)$ is the intersection of all prime ideals of $A$. 
+\end{exercise}
+\begin{solution}
+    \todo{} 
+\end{solution}
 
 
-\end{document}
+\subsection{Topology of affine schemes:}
+
+\begin{exercise}{3.4.D}
+    Show that $\sqrt{I}$ is an ideal. Show that $V(\sqrt{I}) = V(I)$. 
+\end{exercise}
+\begin{solution}
+    Consider the map $R \to R/I$. This maps $\sqrt{I} \to \mathfrak{R}$. By $(3.2.R(b))$, $\mathfrak R$ is an ideal. Thus, its preimage is an ideal containing $I$. However, the preimage is exactly $\sqrt{I}$ by definition of a radical. \\
+    Moreover, as $I \subseteq \sqrt{I}$, $V(\sqrt{I}) \subseteq V(I)$. Next, let $\mathfrak p \in V(I)$ and $f \in \sqrt{I}$ with $f^n \in I$. Then, as $I \subseteq \mathfrak p$, $f^n \in \mathfrak p$. Thus, $f \in \mathfrak p$ by primality.   
+\end{solution}
+
+\begin{exercise}{3.4.E}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.4.F}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.4.H}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.4.I}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.4.J}
+    Suppose $I \subseteq B$ is an ideal. Show that $f$ vanishes on $V(I)$ if and only if $f \in \sqrt{I}$. 
+\end{exercise}
+\begin{solution}
+    $f$ vanishes on $V(I)$ if and only if $f$ is contained in every prime ideal that contains $I$ if and only if $f$ is contained in every prime ideal in $B/I$ if and only if $f \in \mathfrak R(B/I)$ if and only if $f^n \in I$ if and only if $f \in \sqrt{I}$. 
+\end{solution}
+
+\begin{exercise}{3.4.K}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\subsection{Base for the topology:}
+\begin{exercise}{3.5.A}
+    Show that the distinguished open sets form a base for the topology of $\Spec R$. 
+\end{exercise}
+\begin{solution}
+    Let $U \subseteq \Spec R$ be an open set. Then, $\Spec R \setminus U$ is (Zariski) closed, thus can be written as $V(I)$ for some ideal $I$. We claim that $U = \bigcup_{f \in I} D(f)$. \\
+    Let $\mathfrak p \in U$. Then, there is $f \in I$ such that $f \not \in \mathfrak p$. That is, $\mathfrak p \in D(f)$. \\
+    Conversely, let $\mathfrak p \in D(f)$ for $f \in I$. Then, $f \not \in \mathfrak p$. Thus, $\mathfrak p \not \in V(I)$. Thus, $\mathfrak p \in U$. \\
+    We are done. 
+\end{solution}
+
+\begin{exercise}{3.5.B}
+Suppose $f_i \in A$ as $i$ runs over some index set $J$.
+Show that
+\[ \bigcup_{i \in J} D(f_i) = \Spec A \]
+if and only if $(\{f_i\}_{i \in J}) = A$, or equivalently and very usefully,
+if there are $a_i$ $(i \in J)$, all but finitely many $0$, such that
+\[ \sum_{i \in J} a_i f_i = 1. \]
+\end{exercise}
+\begin{solution}
+    Assume $(\{f_i\}_{i \in J}) = A$. Let $\mathfrak p \in \Spec A$ be a prime ideal. Then, there exists $i \in J$ such that $f_i \not \in \mathfrak p$ as $\mathfrak p \subsetneq A$. Thus, $\mathfrak p \in D(f_i)$. Thus, $\Spec A = \bigcup_{i \in J} D(f_i)$. \\
+    Assume $\bigcup_{i \in J} D(f_i) = \Spec A$. Let $I = (\{f_i\}_{i \in J})$. If $I$ was a proper ideal of $A$, then $I \subseteq \mathfrak m$, where $\mathfrak m$ is some maximal ideal. However, $\mathfrak m \in D(f_i)$ for some $i$, thus, $f_i \not \in \mathfrak m$. Thus, $\mathfrak m$ cannot exist and $I$ cannot be proper. Thus, $I = A$. \\
+    The latter fact follows from the definition of an ideal. 
+\end{solution}
+
+\begin{exercise}{3.5.C}
+Show that if $\Spec A$ is an infinite union of distinguished open sets
+$\bigcup_{i \in J} D(f_i)$, then in fact it is a union of a finite number
+of these, i.e., there is a finite subset $J' \subset J$ so that
+\[ \Spec A = \bigcup_{j \in J'} D(f_j) \]
+\end{exercise}
+\begin{solution}
+    Assume $\Spec A = \bigcup_{i \in J} D(f_i)$. By 3.5.B, we know that $(\{f_i\}_{i \in J}) = A$. Thus, 
+    \[ 1 = \sum_{i \in J' \subset J} a_if_i\]
+    where $a_i \in A$ and $J'$ is finite. Then, $(\{f_i\})_{i \in J'} = A$. By 3.5.B, we have $\Spec A = \bigcup_{i \in J'} D(f_i)$. 
+\end{solution}
+
+\begin{exercise}{3.5.D}
+    Show that
+        \[ D(f) \cap D(g) = D(fg) \]
+\end{exercise}
+\begin{solution}
+    Let $\mathfrak p \in D(fg)$. Then, $fg \not \in \mathfrak p$. Thus, $f,g \not \in \mathfrak p$. Thus, $\mathfrak p \in D(f) \cap D(g)$. \\
+    Let $\mathfrak p \in D(f) \cap D(g)$. Then, $f, g \not \in \mathfrak p$. As $\mathfrak p$ is a prime ideal, $fg \not \in \mathfrak p$ (contrapositive of the prime property). Thus, $\mathfrak p \in D(fg)$. We are done. 
+\end{solution}
+
+\begin{exercise}{3.5.E}
+    Show that $D(f) \subseteq D(g)$ if and only if $f^n \in (g)$ for some $n \geq 1$ if and only if $g$ is invertible in $A_f$. 
+\end{exercise}
+\begin{solution}
+    First, we show $(2) \iff (3)$. Assume $f^n \in (g)$. Then, there exists $a \in A$ such that $f^n = ag$. Thus, in $A_f$, $g$ has inverse $\frac{a}{f^n}$. Similarly, assume $g$ is invertible in $A_f$. Then, there exists $\frac{a}{f^m} \in A_f$ with $a \in A$ satisfying $g\left(\frac{a}{f^n}\right) = 1$. Then, $ag = f^n$. \\
+    Next, we show $(2) \implies (1)$. Assume $f^n \in (g)$. Let $\mathfrak p \in V(g)$. Then, $f^n \in \mathfrak p$ and thus $f \in \mathfrak p$. This implies $V(g) \subseteq V(f)$, or, taking the complement $D(f) \subseteq D(g)$. \\
+    Finally, we show $(1) \implies (3)$. Assume $D(f) \subseteq D(g)$. Then, $V(g) \subseteq V(f)$. Thus, $f$ vanishes on $V(g)$. By 3.4.J, $f \in \sqrt{(g)}$, i.e. $f^n \in (g)$ for some $n$. 
+\end{solution}
+
+\begin{exercise}{3.5.F}
+    Show that $D(f) = \emptyset$ if and only if $f \in \mathfrak R$. 
+\end{exercise}
+\begin{solution}
+    This follows from $\mathfrak R$ being the intersection of all prime ideals. $f \in \mathfrak R$ if and only if it is contained in every prime ideal if and only if $D(f) = \emptyset$.
+\end{solution}
+
+\subsection{The dictionary, so far:}
+\begin{exercise}{3.7.A}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.7.B}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.7.C}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.7.D}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.7.E}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.7.F}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{3.7.G}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\subsection{The Structure Sheaf: }
+\begin{exercise}{4.1.A}
+    Show that the natural map $A_f \to \OO_{\Spec A}(D(f))$ is an isomorphism.
+\end{exercise}
+\begin{solution}
+    Note that $\OO_{\Spec A}(D(f))$ is the localization of $A$ at all functions $g$ such that $D(f) \subseteq D(g)$. From $(3.5.E)$, we know such $g$ are already invertible in $A_f$. Certainly, $A_f \subseteq \OO_{\Spec A}(D(f))$ (via appropriate further localization). Thus, $A_f \simeq \OO_{\Spec A}(D(f))$.
+\end{solution}
+
+\begin{exercise}{4.1.D}
+    Suppose $M$ is an $A$ module. Show that the following describes a sheaf $\widetilde{M}$ on the distinguished base. $\widetilde{M}(D(f))$ is the localization of $M$ at the multiplicative set of all functions that do not vanish outside of $V(f)$. Restriction maps are obtained by further localizations. Also show that this is an $\OO_{\Spec A}$ module. 
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.1.E}
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.1.F}
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+
+\begin{exercise}{4.1.G}
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+
+\subsection{Schemes in general:}
+
+\begin{exercise}{4.3.A}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.3.B}
+Suppose $f \in A$. Show that under the identification of $D(f)$ in $\Spec A$ with $\Spec A_f$ there is a natural isomorphism of ringed spaces
+\[ \bigl(D(f), \OO_{\Spec A}\!\mid_{D(f)}\bigr)
+\;\cong\; \bigl(\Spec A_f, \OO_{\Spec A_f}\bigr).
+\]
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.3.C}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.3.D}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.3.E}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.3.F}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.3.G}
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\subsection{First examples:}
+\begin{exercise}{4.4.A}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.4.B}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.4.C}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.4.D}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.4.E}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\subsection{The Proj construction:}
+
+\begin{exercise}{4.5.F}
+    \begin{enumerate}
+        \item Show that an ideal $I$ is homogenous if and only if it contains the degree n piece of each ofi ts elements. 
+        \item Show that the set of homogenous ideals of a given $\Z$-graded ring $S_\bullet$ is closed under sum, product, intersection, and radical. 
+        \item Show that a homogenous ideal $I \subseteq S_\bullet$ is prime if $I \neq S_\bullet$ and if for any homogenous $a, b \in S_\bullet$, if $ab \in I$ then either $a \in I$ or $b \in I$.
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.5.H}
+    Suppose $f \in S_+$ is homogenous. Give a bijection between the prime ideals of $((S_\bullet)_f)_0$ and the homogenous prime ideals of $(S_\bullet)_f$.
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.5.I}
+    Interpret the set of prime ideals of $((S_\bullet)_f)_0$ in terms of $\text{Proj } S_\bullet$. Show that this corresponds to $D_+(f)$.
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.5.K}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.5.L}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.5.M}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.5.N}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.5.O}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+
+\begin{exercise}{4.5.Q}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}
+
+\begin{exercise}{4.5.S}
+
+\end{exercise}
+\begin{solution}
+    \todo{}
+\end{solution}

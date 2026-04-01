@@ -242,53 +242,53 @@
 
 \begin{problem}{3}(The Hodge Decomposition for Curves)
     Let $X$ be a compact connected complex curve. We have the differential:
-    \[d: \calO_X \to \Omega_X\]
+    \[d: \OO_X \to \Omega_X\]
     between the sheaf of homolormphic functions and the sheaf of holomorphic differentials.
     \begin{enumerate}
         \item[(a)] Show that $d$ is surjective with kernel equal to the constant sheaf $\C$. Hence, we have an exact sequence: 
-        \[ 0 \to \C \to \calO_X \rightarrow \to \Omega_X \to 0\]
+        \[ 0 \to \C \to \OO_X \rightarrow \to \Omega_X \to 0\]
         \item[(b)] Deduce from Serre duality that $H^1(X, \Omega_X) \cong \C$. Deduce from Poincare duality that $H^2(X, \C) = \C$. 
         \item[(c)] Show that $(6.15)$ induces a short exact sequence: 
-        \[ 0 \to H^0(X, \Omega_X) \to H^1(X, \C) \to H^1(X, \calO_X) \to 0\]
-        \item[(d)] Show that the map which to a holomorphic form $\alpha$ associates the class of $\overline{\alpha}$ in $H^1(X, \calO_X)$ is injective.
+        \[ 0 \to H^0(X, \Omega_X) \to H^1(X, \C) \to H^1(X, \OO_X) \to 0\]
+        \item[(d)] Show that the map which to a holomorphic form $\alpha$ associates the class of $\overline{\alpha}$ in $H^1(X, \OO_X)$ is injective.
         \item[(e)] Deduce from Serre duality that it is also surjective and that we have the decomposiiton: 
         \[ H^1(X, \C) = H^0(X, \Omega_X) \oplus \overline{H^0(X, \Omega_X)}\]
         with 
-        \[ \overline{H^0(X, \Omega_X)} \cong H^1(X, \calO_X)\]
+        \[ \overline{H^0(X, \Omega_X)} \cong H^1(X, \OO_X)\]
     \end{enumerate}
 
 \end{problem}
 \begin{solution}
     \bbni 
     \begin{enumerate}
-        \item Let $U$ be an open set of $X$. Let $\omega \in \Omega_X(U)$ be a section. Then $\omega = f dz$ in local coordinates. Since holomorphic functions are analytic, they have a primitive locally. Thus, there exists $g \in \calO_X(U)$ such that $dg/dz = f$. Then, we have that $d(g) = f dz = \omega$. Thus, $d$ is surjective. \bbni
-        Now let $f \in \calO_X(U)$ such that $df = 0$. Thus, $f$ is locally constant. Since $X$ is compact and connected, $f$ extends to a globally constant function in $\calO_X(X)$. Thus, $\ker(d) = \C$, the constant sheaf. \bbni
+        \item Let $U$ be an open set of $X$. Let $\omega \in \Omega_X(U)$ be a section. Then $\omega = f dz$ in local coordinates. Since holomorphic functions are analytic, they have a primitive locally. Thus, there exists $g \in \OO_X(U)$ such that $dg/dz = f$. Then, we have that $d(g) = f dz = \omega$. Thus, $d$ is surjective. \bbni
+        Now let $f \in \OO_X(U)$ such that $df = 0$. Thus, $f$ is locally constant. Since $X$ is compact and connected, $f$ extends to a globally constant function in $\OO_X(X)$. Thus, $\ker(d) = \C$, the constant sheaf. \bbni
         Thus, we have the exact sequence:
-        \[ 0 \to \C \to \calO_X \xrightarrow{d} \Omega_X \to 0\]
+        \[ 0 \to \C \to \OO_X \xrightarrow{d} \Omega_X \to 0\]
         \item Recall that Serre duality gives us the isomorphism:
         \[ H^1(X, \Omega_X) \cong H^0(X, \Omega_X^\vee \otimes \Omega_X)^\vee\]
-        However, $\Omega_X^\vee \otimes \Omega_X \cong \calO_X$ (by contracting). Thus, we have:
-        \[ H^1(X, \Omega_X) \cong H^0(X, \calO_X)^\vee\]
-        However, $H^0(X, \calO_X) \cong \C$ as global holomorphic functions on a compact connected surface are constant. Thus, $H^1(X, \Omega_X) \cong H^0(X, \calO_X)^\vee \cong \C$. \bbni
+        However, $\Omega_X^\vee \otimes \Omega_X \cong \OO_X$ (by contracting). Thus, we have:
+        \[ H^1(X, \Omega_X) \cong H^0(X, \OO_X)^\vee\]
+        However, $H^0(X, \OO_X) \cong \C$ as global holomorphic functions on a compact connected surface are constant. Thus, $H^1(X, \Omega_X) \cong H^0(X, \OO_X)^\vee \cong \C$. \bbni
         Recall that Poincare duality gives us the isomorphism:
         \[ H^2(X, \C) \cong H^0(X, \C)^\vee\]
         Similar to before, as $X$ is compact and connected, we have that $H^0(X, \C) \cong \C$. Thus, we have:
         \[ H^2(X, \C) \cong H^0(X, \C)^\vee \cong \C\]
         \item We obtain the long exact sequence in cohomology from the short exact sequence. 
         \begin{align*}
-            \to H^0(X, \C) \to H^0(X, \calO_X) \xrightarrow{d} H^0(X, \Omega_X) \to H^1(X, \C) \to \cdots
+            \to H^0(X, \C) \to H^0(X, \OO_X) \xrightarrow{d} H^0(X, \Omega_X) \to H^1(X, \C) \to \cdots
         \end{align*}
-        Note that $H^0(X, \C)$ are the globally constant functions, which are the same as the global holomorphic functions on a compact connected manifold. Thus, the first map is an isomorphism. Thus, $d:H^0(X, \calO_X) \to H^0(X, \Omega_X)$ is $0$. Thus, the sequence becomes:
-        \[0 \to H^0(X, \Omega_X) \to H^1(X, \C) \to H^1(X,\calO_X) \to H^1(X, \Omega_X) \to H^2(X, \C) \to  H^2(X, \calO_X) \]
-        Then, since $H^2(X, \calO_X) = H^{0,2}(X) = 0$, the last map is $0$. Thus, the map $H^1(X, \Omega_X) \to H^2(X, \C)$ is an isomorphism. Thus, the map before it is $0$, and we get:
-        \[0 \to H^0(X, \Omega_X) \to H^1(X, \C) \to H^1(X,\calO_X) \to 0  \]   
-        \item Let $\alpha \in H^0(X, \Omega_X)$ be a global holomorphic form. Then, $\overline{\alpha} \in H^1(X, \C)$ is of type $(0, 1)$ (antiholomorphic). If $[\overline{\alpha}] = 0 \in H^1(X, \calO_X)$, then $\overline{\alpha}$ is in $\img(H^0(X, \Omega_X) \to H^1(X, \C))$. But this is an inclusion map (the connecting morphism deals solely with holomorphic objects), thus, we would have $\overline{\alpha} = \beta$ for some global holomorphic form $\beta$. This implies $\alpha = 0$. Thus, the map is injective. 
+        Note that $H^0(X, \C)$ are the globally constant functions, which are the same as the global holomorphic functions on a compact connected manifold. Thus, the first map is an isomorphism. Thus, $d:H^0(X, \OO_X) \to H^0(X, \Omega_X)$ is $0$. Thus, the sequence becomes:
+        \[0 \to H^0(X, \Omega_X) \to H^1(X, \C) \to H^1(X,\OO_X) \to H^1(X, \Omega_X) \to H^2(X, \C) \to  H^2(X, \OO_X) \]
+        Then, since $H^2(X, \OO_X) = H^{0,2}(X) = 0$, the last map is $0$. Thus, the map $H^1(X, \Omega_X) \to H^2(X, \C)$ is an isomorphism. Thus, the map before it is $0$, and we get:
+        \[0 \to H^0(X, \Omega_X) \to H^1(X, \C) \to H^1(X,\OO_X) \to 0  \]   
+        \item Let $\alpha \in H^0(X, \Omega_X)$ be a global holomorphic form. Then, $\overline{\alpha} \in H^1(X, \C)$ is of type $(0, 1)$ (antiholomorphic). If $[\overline{\alpha}] = 0 \in H^1(X, \OO_X)$, then $\overline{\alpha}$ is in $\img(H^0(X, \Omega_X) \to H^1(X, \C))$. But this is an inclusion map (the connecting morphism deals solely with holomorphic objects), thus, we would have $\overline{\alpha} = \beta$ for some global holomorphic form $\beta$. This implies $\alpha = 0$. Thus, the map is injective. 
         \item By Serre duality, we noted that
-        \[ H^1(X, \Omega_X) \cong H^0(X, \calO_X)^\vee\]
+        \[ H^1(X, \Omega_X) \cong H^0(X, \OO_X)^\vee\]
         Moreover, since these are finite-dimensional vector spaces, the dual has the same dimension as the original space. Thus, 
-        \[ \dim(H^1(X, \Omega_X)) = \dim(H^0(X, \calO_X))\]
+        \[ \dim(H^1(X, \Omega_X)) = \dim(H^0(X, \OO_X))\]
         Thus, an injective linear map is also surjective. Thus, the map given is an isomorphism. Since taking the complex conjugate is also an isomorphism, we must have that: 
-        \[ \overline{H^0(X, \Omega_X)} \cong H^1(X, \calO_X)\]
+        \[ \overline{H^0(X, \Omega_X)} \cong H^1(X, \OO_X)\]
         Then, also noting that an SES of vector spaces splits, we get: 
         \[ H^1(X, \C) = H^0(X, \Omega_X) \oplus \overline{H^0(X, \Omega_X)}\]
     \end{enumerate}

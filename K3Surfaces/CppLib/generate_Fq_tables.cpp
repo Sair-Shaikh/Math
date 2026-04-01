@@ -5,6 +5,8 @@
 #include <fstream>
 #include <tuple>
 #include "tableio.h"
+#include "constants.h"
+
 
 std::tuple<unsigned**, unsigned**, unsigned**, unsigned**, unsigned*, unsigned*> generate_all_tables(unsigned, unsigned);
 

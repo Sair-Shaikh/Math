@@ -699,11 +699,11 @@
     \item[Thm.] (Bessel's Inequality). $H$ is an inner product space $\{e_n : n \in \N\}$ be an orthonormal subset. Then $\forall x \in H$: 
     \[ ||x||^2 \geq \sum_{n=1}^\infty |(x\mid e_n)|^2\]
     \item[Corr.] Let $\{e_n : n \in \N\}$ be an orthonomal subset of a Hilber space $H$ and let:
-    \[\calE = \overline{\opspan\{e_n : n \in \N\}}\] 
+    \[\EE = \overline{\opspan\{e_n : n \in \N\}}\] 
     Then, for all $h \in H$, 
     \[ \sum_{n=1}^\infty (h\mid e_n)e_n\]
     converges in $H$ and: 
-    \[ P_\calE (h) = \sum_{n=1}^\infty (h\mid e_n)e_n\]
+    \[ P_\EE (h) = \sum_{n=1}^\infty (h\mid e_n)e_n\]
     Proof. Pictures. 
     \item[Defn.] An orthonormal subset $\{e_\alpha\}_{\alpha \in A}$ is a basis for $H$ if $\opspan\{e_\alpha : \alpha \in A\}$ is dense. 
     \item[Prop.] Every Hilbert space $H$ has an orthonormal basis. \\
@@ -728,7 +728,7 @@
     \[ w_0^\perp = \overline{w_0}^\perp = \{0\}\]
     (2) $\implies$ (1). If $w_0^\perp = \{0\}$, then: 
     \[ \overline{w_0} = w_0^{\perp\perp} = H\]
-    (1) $\implies$ (3). Apply the $P_\calE$ corollary with $\calE = H$. \\
+    (1) $\implies$ (3). Apply the $P_\EE$ corollary with $\EE = H$. \\
     (3) $\implies$ (4). $\phi_k(\cdot) = (\cdot \mid k)$ is continous. \\
     (4) $\implies$ (5). Let $k = h$. \\
     (5) $\implies$ (1). Suppose $w_0 = \overline{\opspan\{e_n\}} \neq H$. Then, $\exists h \in H \setminus \{0\}$ such that $(h|e_n) = 0$ for all $n \in \N$. \\
@@ -890,7 +890,7 @@
     \item[Prop.] Suppose that $T \in \mathcal{L}(H)$ diagonaziable with $\{e_n : n \in \N\}$ and $T(e_n) = \lambda_n e_n$. Then $T \in \mathcal{K}(H)$ (compact) if and only if $(\lambda_n) \in c_0$. \bbni
     Proof. We showed that if $T \in \mathcal{K}(H)$, then $(\lambda_n) \in c_0$. Now suppose $(\lambda_n) \in c_0$. Let:
     \[ T_n = \sum_{k=1}^n \lambda_k \Theta_{e_k, e_k}\]
-    Then, $T_n \in \mathcal{L}_{\calF}(H)$. \\
+    Then, $T_n \in \mathcal{L}_{\FF}(H)$. \\
     If $\norm{x} \leq 1$, 
     \begin{align*}
         \norm{(T-T_n)(x)}^2 &= \norm{\sum_{k=n+1}^\infty \lambda_k (x \mid e_k)e_k}^2 \\
@@ -899,7 +899,7 @@
         &\leq \sup_{k \geq n} |\lambda_k|^2 ||x||^2 \\
         &\leq \sup_{k \geq n} |\lambda_k|^2
     \end{align*}
-    Thus, $\norm{T-T_n} \leq \sup_{k \geq n} |\lambda_k|^2$. Thus, $T_n \to T$ in the operator norm. Thus, $T \in \mathcal{K}(H)$ since $(T_n) \subset \mathcal{L}_{\calF}(H)$.
+    Thus, $\norm{T-T_n} \leq \sup_{k \geq n} |\lambda_k|^2$. Thus, $T_n \to T$ in the operator norm. Thus, $T \in \mathcal{K}(H)$ since $(T_n) \subset \mathcal{L}_{\FF}(H)$.
     \item[Defn.] If $T \in \mathcal{L}(H)$ then the numerical range of $T$ is: 
     \[ n(T) = \sup\{|(Tx \mid x)| : ||x|| \leq 1\}\]
     \item[Ex.] Let $\F = \R$ and:

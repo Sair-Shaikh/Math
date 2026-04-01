@@ -21,8 +21,10 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{remark}[theorem]{Remark}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{example}[theorem]{Example}
 
 
 \newtheorem*{exercisehelper}{Exercise.}
@@ -66,6 +68,8 @@
 \newcommand{\Z}{\mathbb Z}
 \newcommand{\F}{\mathbb F}
 \newcommand{\br}{\mathbf{r}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\V}{\mathbb{V}}
 \newcommand{\RP}{\mathbb{RP}}
 \newcommand{\CP}{\mathbb{CP}}
 \newcommand{\nbit}[1]{\{0, 1\}^{#1}}
@@ -75,18 +79,20 @@
 \newcommand{\dbar}{\overline{\partial}}
 \let\d\relax
 \newcommand{\d}{\partial}
-\newcommand{\calO}{\mathcal{O}}
-\newcommand{\calF}{\mathcal{F}}
-\newcommand{\calG}{\mathcal{G}}
-\newcommand{\calH}{\mathcal{H}}
-\newcommand{\calE}{\mathcal{E}}
-\newcommand{\calC}{\mathcal{C}}
-\newcommand{\calD}{\mathcal{D}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\DD}{\mathcal{D}}
 
 \let\1\relax
 \newcommand{\1}{\mathbf{1}}
 \newcommand{\fr}[2]{\left(\frac{#1}{#2}\right)}
 \newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO:} #1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
 \newcommand{\vecz}{\mathbf{z}}
 \newcommand{\vecr}{\mathbf{r}}
 \DeclareMathOperator{\Cinf}{C^{\infty}}
@@ -94,6 +100,12 @@
 \DeclareMathOperator{\Ell}{Ell}
 \DeclareMathOperator{\CL}{\mathcal{CL}}
 
+\DeclareMathOperator{\Log}{Log}
+
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Alt}{Alt}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\ann}{ann}
@@ -124,6 +136,9 @@
 \DeclareMathOperator{\parent}{parent}
 \DeclareMathOperator{\argmin}{argmin}
 \DeclareMathOperator{\excess}{excess}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Frob}{Frob}
+
 \let\Pr\relax
 \DeclareMathOperator{\Pr}{\mathbf{Pr}}
 \DeclareMathOperator{\Exp}{\mathbb{E}}

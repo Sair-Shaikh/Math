@@ -216,7 +216,7 @@
 \begin{solution}
 \bbni 
 \begin{enumerate}
-    \item Assume $F: \calC \to \calD$ is an equivalence of categories and there exists an isomorphism $f \in \hom_\calD(F(X), F(Y))$. Since $F$ is an equivalence of categories, there exists functor $F': \calD \to \calC$ such that $F' \circ F$ is naturally isomorphic to $\id_\calC$. Since $F'$ is a functor, $F'(f) \in \hom_\calC(F'F(X), F'F(Y))$ is an isomorphism. Moreover, we have isomorphisms $\eta_X \in \hom_\calC(F'F(X), X)$ and $\eta_Y \in \hom_\calC(F'F(Y), Y)$. Thus, we have an isomorphism:
+    \item Assume $F: \CC \to \DD$ is an equivalence of categories and there exists an isomorphism $f \in \hom_\DD(F(X), F(Y))$. Since $F$ is an equivalence of categories, there exists functor $F': \DD \to \CC$ such that $F' \circ F$ is naturally isomorphic to $\id_\CC$. Since $F'$ is a functor, $F'(f) \in \hom_\CC(F'F(X), F'F(Y))$ is an isomorphism. Moreover, we have isomorphisms $\eta_X \in \hom_\CC(F'F(X), X)$ and $\eta_Y \in \hom_\CC(F'F(Y), Y)$. Thus, we have an isomorphism:
     \[\eta_Y \circ F'(f) \circ \eta_X^{-1}: X \to Y\]
     We assumed Homework 1 Problem 4 in this proof. \bbni
     Take $X = \R$ with the indiscrete topology (just $\emptyset$ and $X$ are open) and $Y = \R$ with the discrete topology. The only continuous maps $X \to Y$ are constant (any non-empty preimage is all of $X$), which are not invertible. Thus, $X$ and $Y$ are not isomorphic. However, the forgetful functor maps them to the underlying sets $\R$ and $\R$, which are isomorphic as sets using the identity map. \bbni
