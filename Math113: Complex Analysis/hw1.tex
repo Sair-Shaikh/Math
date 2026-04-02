@@ -1,0 +1,217 @@
+\documentclass[12pt]{amsart}
+
+
+\include{../style}
+
+
+\begin{document}
+
+\input{title}
+
+\begin{problem}{1.4.1.}
+    Show the following properties for the complex exponential: 
+    \begin{enumerate}
+        \item $e^{z+2\pi i} = e^z$
+        \item $e^{z+w} = e^ze^w$
+        \item $e^{z-w} = \frac{e^z}{e^w}$
+        \item $e^{-z} = \frac{1}{e^z}$
+    \end{enumerate}
+\end{problem}
+\begin{solution}
+    To show (1), we use the periodicity of sine and cosine. Let $z = x+iy$ be a complex number, then,
+        \begin{align*}
+            \exp(z+ 2\pi i) &= \exp(x+i(y+2\pi)) \\
+            &= e^x\cos(y+2\pi) + ie^x\sin(y+2\pi) \\
+            &= e^x\cos(y) + ie^x\sin(y) \\
+            &= \exp(x+iy) = \exp(z)
+        \end{align*}
+        For (2), we recall the angle sum formulae, 
+        \begin{align*}
+            \sin(\alpha + \beta) = \sin(\alpha)\cos(\beta) + \cos(\alpha)\sin(\beta)\\
+            \cos(\alpha + \beta) = \cos(\alpha)\cos(\beta) - \sin(\alpha)\sin(\beta)
+        \end{align*}
+        Let $z = x+iy$ and $w = u+iv$, then
+        \begin{align*}
+            \exp(z+ w) &= e^{x + u}(\cos(y+ v)+i\sin(y+ v)) \\
+            &= e^{x + u}(\cos(y)\cos(v)- \sin(y)\sin(v) + i\sin(y)\cos(v)+ i\cos(y)\sin(v)) \\
+            &= e^xe^{u}( \cos(y)(\cos(v)+ i\sin(v)) + \sin(y)(i\cos(v)- \sin(v))) \\
+            &= e^xe^{u}( \cos(y)(\cos(v)+ i\sin(v)) + i\sin(y)(\cos(v)+ i\sin(v))) \\
+            &= e^x(\cos(y)+i\sin(y)) \cdot e^{u}(\cos(v) + i\sin(v)) \\
+            &= e^x(\cos(y)+i\sin(y)) \cdot e^{u}(\cos(v) + i\sin(v)) \\
+            &= \exp(z)\exp(w)
+        \end{align*}
+        Next, for (4), we use the fact that $\sin(-x) = -\sin(x)$ and $\cos(-x) = \cos(x)$. For $z = x+iy$, note
+        \begin{align*}
+            \exp(z)\exp(-z) &= e^x(\cos(y)+i\sin(y)) \cdot e^{-x}(\cos(-y)+i\sin(-y)) \\
+            &= (\cos(y)+i\sin(y))(\cos(y)-i\sin(y)) \\
+            &= \cos^2(y)+\sin^2(y) \\
+            &= 1
+        \end{align*}
+        Thus, $\exp(-z) = \frac{1}{\exp(z)}$.
+
+        Finally, (3) follows from (2) and (4) together, i.e.
+        \[ \exp(z-w) = \exp(z)\exp(-w) = \frac{\exp(z)}{\exp(w)}\]
+\end{solution}
+\newpage 
+
+\begin{problem}{1.4.8(a).}
+    Use $(1.6)$, De Moivre's Formula, and the geometric sum $1+z + \cdots z^n = \frac{z^{n+1}-1}{z-1}$ to prove the following assuming $0 < \theta < 2\pi$. 
+    \[ 1 + \cos(\theta) + \cdots + \cos(n\theta) = \frac{1}{2} + \frac{\sin((n+1/2)\theta)}{2\sin(\theta/2)}\]
+\end{problem}
+\begin{solution}     
+    Consider instead the sum, 
+    \begin{align*}
+        1+\cos(\theta) + \cdots + \cos(n\theta) + i(\sin(\theta) + \cdots + \sin(n\theta)) &= \sum_{k = 0}^n \cos(k\theta) + i\sin(k\theta) \\
+    \end{align*}
+    By De Moivre's formula, we get:
+    \begin{align*}
+        \sum_{k = 0}^n \cos(k\theta) + i\sin(k\theta)  &= \sum_{k=0}^n (\cos(\theta) + i\sin(\theta))^k = \sum_{k=0}^n e^{ik\theta}\\
+    \end{align*}
+    Using the geometric sum formula, we get:
+    \begin{align*} 
+        \sum_{k = 0}^n \cos(k\theta) + i\sin(k\theta)  &= \frac{(e^{i\theta})^{n+1}-1}{e^{i\theta}-1}
+    \end{align*}
+    Next, we note that we can re-write this expression as follows, 
+    \begin{align*}
+        \frac{(e^{i(n+1)\theta})-1}{e^{i\theta}-1} &= \frac{e^{i(n+1)\theta/2}(e^{i(n+1)\theta/2}-e^{-i(n+1)\theta/2})}{e^{i\theta/2}(e^{i\theta/2}-e^{-i\theta/2})} \\
+        &= \frac{e^{in\theta/2}(2i\sin((n+1)\theta/2))}{(2i\sin(\theta/2))} \\
+        &= \frac{\sin((n+1)\theta/2)}{\sin(\theta/2)}e^{in\theta/2}
+\   \end{align*}   
+    Substituting this and taking the real parts, we get,
+    \begin{align*}
+        \sum_{k = 0}^n \cos(k\theta) = \frac{\sin((n+1)\theta/2)}{\sin(\theta/2)}\cos(n\theta/2)
+    \end{align*}
+    Next, recall the following trignometric identity derived from the angle sum formula,
+    \[ \sin(\alpha)\cos(\beta) = \frac{1}{2}\left(\sin(\alpha+\beta)+\sin(\alpha-\beta)\right)\]
+    Applying this to the numerator, we get what we wanted,
+    \begin{align*}
+        \sum_{k = 0}^n \cos(k\theta) = \frac{\sin((n+1/2)\theta)+\sin(\theta/2)}{2\sin(\theta/2)} = \frac{1}{2} + \frac{\sin((n+1/2)\theta)}{2\sin(\theta/2)}
+    \end{align*}
+\end{solution}
+\newpage 
+
+\begin{problem}{1.4.9.}
+    Observe that the $n$th roots of $1$ are given by $\{1, \omega, \cdots, \omega^{n-1}\}$, where $\omega = e^{2\pi i/n}$. Assuming $n > 1$, show that $1+\omega+\cdots+\omega^{n-1} = 0$. Prove a similar result for the $n$th-roots of $-1$. 
+\end{problem}
+\begin{solution}
+    Using the geometric sum formula and problem 1.4.1, we get: 
+    \begin{align*}
+        1 + \omega + \cdots + \omega^{n-1} &= \frac{\omega^n -1}{\omega -1} \\
+        &= \frac{e^{2n\pi i/n}-1}{e^{2\pi i/n}-1} \\
+        &= \frac{e^{2\pi i}-1}{e^{2\pi i/n}-1} \\
+        &= \frac{e^0 - 1}{e^{2\pi i/n}-1} \\
+        &= 0     
+    \end{align*}
+    The $n$-th roots of $-1$ are the solutions to $z^n = -1$. Let $\eta = e^{\pi i/n}$. We can check that $\eta^k$ is an $n$-th root of $-1$ for $k$ odd, 
+    \[ (\eta^k)^n = e^{nk\pi i/n} = e^{ik\pi} = \cos(k\pi) + i\sin(k\pi) = -1\]
+    Thus, the set $\{\eta^k : 0 < k < 2n, k \text{ odd}\}$ is a set of $n$th roots of $-1$. It is not difficult to see these are all distinct by using the definition of the complex exponential and noticing that no two values make both the real and imaginary components equal simultaneously. Thus, the cardinality of the set is exactly $n$. By the fundamental theorem of algebra, these are all the $n$th roots of $-1$. 
+
+    Thus, we next compute the sum similarly as above: 
+    \begin{align*}
+        \eta + \eta^3 + \cdots + \eta^{2n-1} &= \frac{\eta^{2n}-1}{\eta-1} \\
+        &= \frac{e^{2n\pi/n}-1}{e^{\pi/n}-1} \\
+        &= 0
+    \end{align*}
+    And we win. 
+\end{solution}
+\newpage
+
+\begin{problem}{1.4.13.}
+    Suppose that $p(z) = a_nz^n + \cdots + a_1z + a_0$ has real coefficients. 
+    \begin{enumerate}
+        \item Show that if $z_0$ is a root of $p$, then either $z_0$ is real or $\overline{z}_0$ is also a root of $p$. 
+        \item Assuming the Fundamental Theorem of Algebra, show that $p$ must factor as a product: 
+        \[ p(z) = a_n(z-r_1)\cdots(z-r_k)q_1(z)\cdots q_s(z)\]
+        where $r_i$ are real and $q_i$ are irreducible quadratic polynomials with real coefficients and no real roots. 
+        \item Factor $p(z) = z^4 + z^3 + z^2 + z + 1$ into a product of irreducible quadratics. 
+    \end{enumerate}
+\end{problem}
+\begin{solution}
+    For (1), we first show that conjugation commutes with addition and multiplication. Let $z = x+iy$ and $w = u+iv$, then
+    \begin{align*}
+        \overline{z} + \overline{w} = x-iy + u-iv = (x+u) -i(y+v) = \overline{z+w} \\
+        \overline{z} \cdot \overline{w} = (x-iy)(u-iv) = xu-yv-i(xv+yu) = \overline{zw}
+    \end{align*}
+    Next, let $z_0$ be a root of $p$. Then, 
+    \[ p(z_0) = a_nz_0^n + \cdots + a_0 = 0 \]
+    Taking the complex conjugate of both sides, we get:
+    \begin{align*}
+        \overline{a_n}\cdot \overline{z_0}^n + \cdots + \overline{a_0} = \overline{0}
+    \end{align*}
+    However, real numbers are invariant under complex conjugation, thus, this becomes,
+    \[ a_n\overline{z_0}^n + \cdots + a_0 = 0 \]
+    Hence, $\overline{z_0}$ is also a root of $p$.
+
+    For (2), first, since $a_n \neq 0$, we can write $p(z) = a_nq(z)$ with $q(z) = z^n + \frac{a_{n-1}}{a_n} + \cdots + \frac{a_0}{a_n}$. Using the Fundamental Theorem of Algebra, we can factor $q$ completely into linear factors. 
+    \[ q(z) = (z-z_0)(z-z_1)\cdots (z-z_n)\]
+    where $z_i$ are the roots of $q$. If $z_i = x + iy $ and $z_j = x -iy$ are a conjugate pair, the corresponding linear factors can be multiplied together to yield a quadratic with real coefficients, as follows, 
+    \begin{align*}
+        (z-z_i)(z-\overline{z_1}) &= z^2 + (z_i+\overline{z_i})z + z_i\overline{z_i} \\
+        &= z^2 + 2xz + (x^2+y^2) \\
+        &= z^2 + 2\Re(z) + |z|^2 
+    \end{align*}
+    Moreover, these quadratics have no real roots (by the fundamental theorem they have two roots, both of which we know to be not real) and are thus irreducible over the reals.
+
+    Then, using (1), we know each root $z_i$ is either real or comes in conjugate pairs that can be multiplied to yield a quadratic with real coefficients. Thus, by relabelling, we get the factorization,
+    \[ q(z) = (z-r_1)\cdots(z-r_k)q_1(z)\cdots q_s(z)\]
+    This gives us the required factorization for $p$. 
+
+    For (3), we know that the factorization must look like, 
+    \[ z^4 + z^4 + z^2 + z + 1 = (z^2 + az+1)(z^2+bz+1)\]
+    by comparing the first and last coefficients. Comparing the other three coefficients, we get the system, 
+    \begin{align*}
+        z^3: a + b &= 1 \\
+        z^2: 2+ab &= 1 \implies ab = -1 \\
+        z: a+b  &= 1
+    \end{align*}
+    Solving this system, we get $a = \frac{1+\sqrt{5}}{2}$ and $b = \frac{1-\sqrt{5}}{2}$. 
+\end{solution}
+
+\begin{problem}{1.5.2}
+    Let $c \in \C \setminus \{0\}$ and $a \in \C$. Show that the geometric series $P: \sum_{n=0}^\infty ca^n$ converges to $\frac{c}{1-a}$ if $|a| < 1$ and diverges otherwise. 
+\end{problem}
+\begin{solution}
+    We use the ratio test. Notice that, 
+    \[ L = \lim_{n\to \infty} \left|\frac{ca^{n+1}}{ca^{n}}\right| = \left|a\right| \]
+    Thus, by the ratio test, if $|a| < 1$, then the series converges absolutely and if $|a| > 1$, then it diverges. 
+
+    If $|a| = 1$, \todo{Finish this}
+
+    Next, we want to show that for $|a| < 1$, the geometric series converges to $\frac{c}{1-a}$. Equivalently, we show that, 
+    \[ (1-a)\sum_{n=0}^\infty ca^n \to c \]
+    Consider the partial sums, 
+    \begin{align*}
+        S_N := (1-a)\sum_{n=0}^N ca^n &= \sum_{n=0}^N ca^n - \sum_{n=0}^N ca^{n+1} \\
+        &= \sum_{n=0}^N ca^n - \sum_{n=1}^{N+1} ca^{n} \\
+        &= c-ca^{N+1}
+    \end{align*}
+    Thus, we get that:
+    \[ \lim_n S_n = c\lim_n 1 - c \lim_n a^{n+1} = c - c\lim_n a^{n+1}\]
+    To show our result, it suffices to show that, 
+    \[ \lim_n a^{n+1} = 0 \]
+    However, we know that $|a^{n+1}| = |a|^{n+1}$. Thus, if $|a| < 1$, then $\lim_{n} a^{n+1} = 0$ and we are done. 
+\end{solution}
+
+\begin{problem}{1.5.8}
+    Prove Dini's theorem: Suppose that $(h_n)$ is a sequence of continuous non-negative functions on a compact set $K$ converging monotonically to zero on $K$. Then $h_n \searrow 0$ uniformly on $K$. 
+\end{problem}
+\begin{solution}
+    Let $\epsilon > 0$. Note that $I_\epsilon := (-\epsilon, \epsilon)$ is open in $\R$. Define $E_n$ to be $h_n^{-1}(I_{\epsilon})$. Since $h_n$ is continuous $E_n$ is open for all $n$. 
+    
+    Next, we claim that $E_a \subseteq E_b$ if $a < b$. Let $x \in E_a$. Then, $|h_a(x)| < \epsilon$. As $(h_n)$ converge (point-wise) monotonically to $0$, we have $h_b(x) < h_a(x)$. Since these functions are non-negative, we have $|h_b(x)| < |h_a(x)| < \epsilon$. Thus, $x \in h_b^{-1}(I_\epsilon) = E_b$. Thus, $E_a \subseteq E_b$.   
+    
+    Furthermore, we claim that $\bigcup_{n} E_n = K$ is an open cover. To see this, we pick $x \in K$ to be some element and show its contained in $E_n$ for some $n$. We know that, $\lim_n h_n(x) = 0$. Thus, there exists an $N$ such that for all $n > N$,
+    \[ |h_n(x)| < \epsilon \]
+    Equivalently, this says,
+    \[ x \in h_n^{-1}(I_\epsilon) = E_n \qquad \forall n > N \]
+
+    Thus, we have shown that $\{E_n\}$ forms an open cover of $K$. Since $K$ is compact, there is a finite subcover of $K$, say by $E_{n_1}, E_{n_2}, \cdots, E_{n_s}$ with $n_1 < n_2 < \cdots < n_s$. By our previous argument, we know $E_{n_i} \subseteq E_{n_s}$. Thus, we must have $E_{n_s} = K$. Additionally, we must also have $E_{j} = K$ for all $j \geq n_s$.  
+
+    Translating this back, this means that for all $x \in K$, we have for all $j \geq n_s$:
+    \[ |h_j(x)| < \epsilon \]
+    Thus, $(h_n)$ converge uniformly to $0$. 
+\end{solution}
+
+
+
+\end{document}

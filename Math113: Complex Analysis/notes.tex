@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{amsart}
 
 
 \include{../style}
@@ -59,7 +59,7 @@ Now we want to defined some interesting functions of complex variables.
     \end{enumerate}
 \end{proposition}
 \begin{proof}
-    Work it out. 
+    Problem 1 on PSet 1.  
 \end{proof}
 
 \begin{definition}
@@ -111,61 +111,15 @@ This is highly non-unique. One thing we would want to show is that there is no c
         \item $e^{-z} = \frac{1}{e^z}$
     \end{enumerate}
 \end{exercise}
-\begin{solution}
-
-\end{solution}
-\newpage 
 
 \begin{exercise}{1.4.8(a).}
     Use $(1.6)$, De Moivre's Formula, and the geometric sum $1+z + \cdots z^n = \frac{z^{n+1}-1}{z-1}$ to prove the following assuming $0 < \theta < 2\pi$. 
     \[ 1 + \cos(\theta) + \cdots + \cos(n\theta) = \frac{1}{2} + \frac{\sin((n+1/2)\theta)}{2\sin(\theta/2)}\]
 \end{exercise}
-\begin{solution} 
-    % Note that we can write, 
-    % \[ \cos(k\theta) = \frac{e^{ik\theta}+e^{-ik\theta}}{2}\]
-    % Substituting this into the sum, we get,
-    % \[ \sum_{k=0}^n \cos(n\theta) = \frac{1}{2}\sum_{k=0}^n e^{ik\theta} + e^{-ik\theta} \]
-    % Using the geometric sum formula, we get,
-    % \begin{align*}
-    %     \sum_{k=0}^n \cos(n\theta)  &= \frac{1}{2} \left(\frac{e^{i(n+1)\theta}-1}{e^{i\theta}-1} + \frac{e^{-i(n+1)\theta}-1}{e^{-i\theta}-1}\right) \\
-    %     &= \frac{1}{2} \cdot \frac{(e^{i(n+1)\theta}-1)(e^{-i\theta}-1) + (e^{-i(n+1)\theta}-1)(e^{i\theta}-1)}{(e^{i\theta}-1)(e^{-i\theta}-1)} \\
-    %     &= \frac{e^{in\theta} + e^{-in\theta} - e^{i(n+1)\theta} - e^{-i(n+1)\theta} + e^{i\theta} + e^{-i\theta} - 2}{2(2 - e^{i\theta} - e^{-i\theta})} \\
-    %     &= \frac{\cos(n\theta) - \cos((n+1)\theta) + \cos(\theta) - 1}{2(1 - \cos(\theta))} \\
-    % % &= \frac{\sin((n+1/2)\theta)}{2\sin(\theta/2)} + \frac{1}{2}
-    % \end{align*}
-    
-    Consider instead the sum, 
-    \begin{align*}
-        1+\cos(\theta) + \cdots + \cos(n\theta) + i(\sin(\theta) + \cdots + \sin(n\theta)) &= \sum_{k = 0}^n \cos(k\theta) + i\sin(k\theta) \\
-    \end{align*}
-    By De Moivre's formula, we get:
-    \begin{align*}
-        \sum_{k = 0}^n \cos(k\theta) + i\sin(k\theta)  &= \sum_{k=0}^n (\cos(\theta) + i\sin(\theta))^k = \sum_{k=0}^n e^{ik\theta}\\
-    \end{align*}
-    Using the geometric sum formula, we get:
-    \begin{align*} 
-        \sum_{k = 0}^n \cos(k\theta) + i\sin(k\theta)  &= \frac{(e^{i\theta})^{n+1}-1}{e^{i\theta}-1}
-    \end{align*}
-    Next, we note that we can re-write this expression as follows, 
-    \begin{align*}
-        \frac{(e^{i(n+1)\theta})-1}{e^{i\theta}-1} &= \frac{e^{i(n+1)\theta/2}(e^{i(n+1)\theta/2}-e^{-i(n+1)\theta/2})}{e^{i\theta/2}(e^{i\theta/2}-e^{-i\theta/2})} \\
-        &= \frac{e^{in\theta/2}(2i\sin((n+1)\theta/2))}{(2i\sin(\theta/2))} \\
-        &= \frac{\sin((n+1)\theta/2)}{\sin(\theta/2)}e^{in\theta/2}
-\   \end{align*}   
-    Substituting this and taking the real parts, we get,
-    \begin{align*}
-        \sum_{k = 0}^n \cos(k\theta) = \frac{\sin((n+1)\theta/2)}{\sin(\theta/2)}\cos(n\theta/2)
-    \end{align*}
 
-\end{solution}
-
-\newpage
 \begin{exercise}{1.4.9.}
     Observe that the $n$th roots of $1$ are given by $\{1, \omega, \cdots, \omega^{n-1}\}$, where $\omega = e^{2\pi i/n}$. Assuming $n > 1$, show that $1+\omega+\cdots+\omega^{n-1} = 0$. Prove a similar result for the $n$th-roots of $-1$. 
 \end{exercise}
-\begin{solution}
-
-\end{solution}
 
 \begin{exercise}{1.4.13.}
     Suppose that $p(z) = a_nz^n + \cdots + a_1z + a_0$ has real coefficients. 
@@ -176,8 +130,148 @@ This is highly non-unique. One thing we would want to show is that there is no c
         \item Factor $p(z) = z^4 + z^3 + z^2 + z + 1$ into a product of irreducible quadratics. 
     \end{enumerate}
 \end{exercise}
-\begin{solution}
 
-\end{solution}
+
+
+
+\newpage
+
+\subsection{Sequences and Series}
+Recall that if $(a_n)_{n=1}^\infty$ is a sequence in $\C$ then the series 
+\[ \sum_{n=1}^\infty a_n\]
+converges if the sequence $(s_n)$ of partial sums converges and then:
+\[\sum_{n=1}^\infty a_n = \lim_{n\to \infty} s_n \]
+We say the series converges absolutely if $\sum_{n=1}^\infty |a_n| < \infty$. 
+
+\begin{lemma}[W 1.2.9]
+    An absolutely convergent series is convergent.
+\end{lemma}
+\begin{proof}
+    Suppose $\sum_{n=1}^\infty |a_n| < \infty$ is absolutely convergent. Then given $\epsilon > 0$, $\exists N$ such that $n \geq N \implies \sum_{n=N}^\infty |a_n| < \epsilon$. Now if $m > n \geq N$, we have: 
+    \[ |s_m - s_n| \leq \sum_{k=n+1}^m | a_k | \leq \sum_{k = N}^\infty |a_k| < \epsilon\]
+    Thus, $(s_n)$ is Cauchy and by completeness of $\C$, it converges. 
+\end{proof}
+
+\begin{theorem}[W 1.1.30]
+    Let $(a_n) \subset \C$. Then,
+    \begin{enumerate}
+        \item If $|a_n| < b_n$ and $\sum_{n=1}^\infty b_n < \infty$, then the series $\sum a_n$ is absolutely convergent. 
+        \item If $\lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| = L$, then $\sum_{n=1}^\infty a_n$ is absolutely convergent if $L < 1$ and diverges if $L > 1$. 
+        \item Let $L = \limsup |a_n|^{1/n}$. If $L < 1$, then $\sum a_n$ converges absolutely and diverges if $L > 1$. 
+    \end{enumerate}
+\end{theorem}
+
+Recall, the definition of a $\limsup$. For $(a_n)$, let $\alpha_n = \sup \{ a_k : k \geq n\}$. This is monotonic decreasing. Then, $\limsup_n a_n = \lim_n \sup_{k\geq n} a_k$. 
+
+Recall, if $(f_n)$ is a sequence of $\C$ valued functions on $D \subseteq \C$ then we say $(f_n)$ converges pointwise on $D$ to some function $f: D \subset \C \to \C$ if:
+\[ \lim_{n\to \infty} f_n(z) = f(z) \qquad \forall z \in D\]
+We say $(f_n)$ converges uniformly to $f$ on $D$ if $\forall \epsilon > 0$, there exists $N$ such that $n \geq N$ implies
+\[ |f_n(z)-f(z)| < \epsilon \qquad \forall z \in D\]
+
+We use the same terminology for the series $\sum_{n=1}^\infty f_n$ by condering the appropriate partial sums. 
+
+\begin{theorem}[W 1.31, Weierstrass M-test]
+    Suppose $D \subseteq \C$ and $(f_n)$ is a sequence of $\C$-valued functions on $D$ such that $|f_n(z)| \leq M_n$ for all $z \in D$. If $\sum_{n=1}^\infty M_n < \infty$, then $\sum_{n=1}^\infty f_n$ converges uniformly on $D$ to some $f: D \subseteq \C \to \C$. 
+\end{theorem}
+
+\begin{proof}
+    Note that $\forall z \in D$, $\sum_{n=1}^\infty f_n(z)$ converges to some $f(z) \in \C$ by comparision test. If $\epsilon > 0$, then $\exists N$ such that $n \geq N \implies \sum_{n=N}^\infty M_n < \epsilon$. If $n \geq N$, then
+    \begin{align*}
+        |f(z) - s_n(z)| &= |f(z) - \sum_{k=1}^n f_k(z)| \\
+        &= \left|\sum_{k = n+1}^\infty f_k(z)\right| \\
+        &\leq \sum_{k=n+1}^\infty |f_k(z)| \\
+        &\leq \sum_{k=n+1}^\infty M_k < \epsilon
+    \end{align*}
+\end{proof}
+
+\begin{definition}
+    Let $(a_n)_{n=0}^\infty \subset \C$ and $z_0 \in \C$, then the series: 
+    \[ \sum_{n=0}^\infty a_n(z-z_0)^n = a_0 + a_1(z-z_0) + \cdots \]
+    is called a power series centered at $z_0$ with coefficients $a_k$. 
+\end{definition}
+
+\begin{theorem}[W 1.34]
+    Consider  
+    \[ P : \sum_{n=0}^\infty a_n(z-z_0)^n = a_0 + a_1(z-z_0) + \cdots \]
+    Then, there exists $R \in [0, \infty]$ such that: 
+    \begin{enumerate}
+        \item $P$ converges absolutely if $|z-z_0| < R$
+        \item $P$ diverges if $|z-z_0| > R$
+        \item and if $0 < r < R$, then $P$ converges uniformly on $D_r(z_0)$. 
+    \end{enumerate}
+    Furthermore,
+    \[ \frac{1}{R} = \limsup_n|a_n|^{1/n} \]
+\end{theorem}
+
+\begin{proof}
+    Can assume $z_0 = 0$ without loss of generality. $P$ always converges at $z = 0$. If $P$ converges only at $z = 0$, then take $R = 0$ so that $(a)$ and $(b)$ hold and $(c)$ is vacuous. 
+    
+    Otherwise, suppose the $P$ converges at another point $z_1$ with $|z_1| > 0$. Then, $\exists M$ such that:
+    \[ |a_nz_1^n| \leq M \qquad \forall n\]
+    If $|z| < |z_1|$, then, 
+    \begin{align*}
+        |a_nz^n| = |a_nz_1^n| \left|\frac{z}{z_1}^n\right| \leq M \left|\frac{z}{z_1}^n\right|
+    \end{align*}
+    and $P$ converges absolutely at $z$ by the comparison test. 
+
+    Let $R = \sup \{ |z| : P \text{ converges at } z\}$. If $|z| < R$, then $\exists z$ such that $P$ converges at $z$ and $|z| < |z_1|$. But then, $P$ converges absolutely at $z$. If $|z| > R$, we know that $P$ diverges at $z$. Thus, $(a)$ and $(b)$ hold with $R$. 
+
+    If $0 < r < R$, then $P$ converges absolutely at $z = r$, and we can let $M_n = |a_n|r^n$ and then $P$ converges uniformly on $D_r(0)$ and (c) holds.
+    Now let,
+    \[ R_0^{-1} = \limsup_n |a_n|^{1/n}\]
+    If $0 < |z| < R_0$, then
+    \[ \limsup_n |a_nz^n|^{1/n} = R_0^{-1}|z| < 1\]
+    Thus, $P$ converges absolutely at $z$. 
+    
+    If $|z| > R_0$, then, 
+    \[  \limsup_n |a_nz^n|^{1/n} = R_0^{-1} |z| > 1\]
+    Thus, $P$ diverges. 
+
+    Thus, $R_0 = R$. 
+\end{proof}
+
+Recall, that a subset $D \subset \C$ is connected if it does not admit a non-trivial partition into relatively open subsets.
+\begin{remark}
+    $A \subset \C$ is connected if given open sets $U, V \in \C$ such that $\{ A \cap U, A \cap V \}$ is a partition and $A \cap U$ is not empty, then $A \cap V$ is empty. 
+\end{remark} 
+
+\begin{definition}
+    We call a connected, open subset $D \subset \C$ a domain. 
+\end{definition}
+
+If $E \subset \C$ and $z \in E$, then 
+\[ E(z) := \bigcup \{ A \subset \C : z \in A \subset E \text{ and } A \text{ connected} \}\]
+Then $E(z)$ is connected and if $E(z) \cap E(w) \neq 0$ then, $E(z) = E(w)$. These form a partition of $A$ and are called the connected components of $E$. 
+
+Since disks $D_r(z_0)$ are connected, it follows that the connected components of an open set $U$ are open. (W Ex. 2.1.2). That is, every open subset is a countable union of domains. 
+
+We say $E \subset \C$ is path connected if given $z, w \in E$, there is a continous function: 
+\[ \gamma: [0, 1] \to E \]
+such that $\gamma(0) = z$ and $\gamma(1) = w$. Since $[0, 1]$ is connected, it follows that path-connected sets are connected. 
+
+For an connected open set, the converse holds (because disks are path-connected). 
+
+Questions for next time. 
+$(a_n) \subset \R$. Suppose $\sum_{n=1}^\infty a_n$ converges. 
+\begin{enumerate}
+    \item[Q1.] Does $\sum_{n=1}^\infty a_n^2$ converge? 
+    \item[Q2.] Does $\sum_{n=1}^\infty a_n^3$ converge? 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
