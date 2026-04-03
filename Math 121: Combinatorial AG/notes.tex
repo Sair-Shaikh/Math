@@ -1,0 +1,361 @@
+\documentclass[12pt]{article}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+
+\section{Intro to Toric Geometry:}
+
+There are $2$ mottos in toric geometry. 
+\begin{enumerate}
+    \item Toric geometry is the study of solutions to polynomoial equations in the preserve of a large torus.
+    \item The action of a torus should give combinatorial/algebraic structure.
+\end{enumerate}
+
+To make sense of this, we need to understand what solutions to polynomial equations are and what is a large torus. 
+
+A geometric torus is $\underbrace{S^1 \times S^1 \times \cdots \times S^1}_{n \text{ times}}$. An algebraic torus is $(\C^\times)^\times$ or, more generally, $(k^\times)^n$ for some field $k$. 
+
+We will now do an interlude in basic algebraic geometry. 
+
+Let $k$ be a field. We call $\A_k^n = k^n$ the affine $n$-space. Next, we define algebraic sets and the Zariski topology. 
+
+We give some examples of algebraic sets: The vanishings of $x^2+y^2$, $xy$, $x^2y-y$, and $z^2-x^2-y^2$ in the appropriate affine spaces. 
+
+\begin{definition}
+    An affine algebraic vareirt is an algebraic subset of $\A^n_k$ such that it is irreducible in the Zariski topology.
+\end{definition}
+
+\begin{theorem}[Nullstellensatz]
+    There is an order reversing bijection:
+    \[ \left\{\text{Algebraic varieties in $\A^n_k$} \right\} \leftrightarrow \left\{ I \subseteq k[x_1, \cdots, x_n] \text{ such that $I$ is prime. }\right\}\]
+\end{theorem}
+
+Coming back to toruses, note that $k^\times \subset \A^1$ is a torus living in our affine space. Thus, $A^1$ is a toric variety. Similarly, $(k^\times)^n = \A^n \setminus \V(x_1\cdots x_n) \subseteq \A^n$ is an big torus. Hence, $\A^n$ is a toric variety. 
+
+\begin{definition}
+    If $X \subseteq \A^n$ is an algebraic set, the coordinate ring is: 
+    \[ k[X] = k[x_1,\cdots, x_n]/I_X\]
+    where $I_X = \langle f \in k[x_1, \cdots, x_n] | f(p) = 0 \, \forall x \in X \rangle$.
+\end{definition}
+
+\begin{lemma}
+    If $f \in S = k[x_1, \cdots, x_n]$, then the set $D(f) = \A^n \setminus \V(f)$ is such that $k[D(f)] \equiv S\left[\frac{1}{f}\right]$
+\end{lemma}
+
+Then, as examples, we get that the large tori:
+\begin{enumerate}
+    \item $k[(k^\times)] = k[x, x^{-1}]$
+    \item $k[(k^\times)^n] = k[x_1, x_1^{-1}, \cdots, x_n, x_n^{-1}]$
+\end{enumerate}
+
+Now we can define what a toric variety is. 
+\begin{definition}
+    An affine toric vareity is an affine algebraic variety $X$ together with an open dense torus $T \subseteq X$ such that the action of $T$ on itself extends to $X$. That is, there is an action $k^\times \times \A^1 \to \A$ that restricts to the torus' action on itself on $k^\times \times k^\times$. 
+\end{definition}
+
+We now discuss what the action of the torus means. Let $T = (k^\times)$. Then $T$ is also a group with multiplication $(s,t) \mapsto st$ and inverse $t \mapsto t^{-1}$.
+
+\begin{example}
+    Let $k^\times \subset \A^1$. Then, $k^\times$ acts on itself. We extend this by letting the action on $0$ be such that $t \times 0 = 0$ for all $t \in k^\times$. 
+\end{example}
+
+Now we make all of this precise. We have the following definition:
+\begin{definition}
+    An algebraic group is an algebraic variety $G$ together with maps: 
+    \[ \times: G \times G \to G \qquad (-)^{-1}: G \to G\]
+    that are regular and satisfy the usual group axioms.
+\end{definition}
+
+\begin{example}
+    $G = (k^\times)^n$ with coordinate with multiplication and inverses. 
+\end{example}
+
+\begin{definition}
+    A split torus over a field $k$ is algebraic group $G$ isomorphisc over $k$ to $(k^\times)^n$ for some $n$. 
+\end{definition}
+
+\begin{definition}
+    An algebraic torus over a field $k$ is an algebraic group $T$ such that after an extension, $T \times_k F \cong (F^\times)^n$. 
+\end{definition}
+
+\begin{remark}
+    To motivate this definition, consider $S^1$. We want $S^1$ to be a torus. That is, $S^1 = \V(x^2+y^2-1) \subseteq \A^2_\R$ is not $(\R^\times)^n$ for any $n$. However, if we consider $S^1 = \V(x^2+y^2-1) \subseteq \A^2_\C$, we can factor the polynomial to write it as $\V(zw-1)$. Considering $\C[z,w]/\langle zw-1\rangle \cong \C[x, x^{-1}]$. 
+\end{remark}
+
+\begin{definition}
+    An affine toric variety is an affine algebraic variety $X$ together with a torus $T \subseteq X$ that is open and dense together with an algebraic action: 
+    \[ \xymatrix{T \times X \ar[r] & T \\ T \times T \ar[u] \ar[r] & T \ar[u] } \]
+\end{definition}
+
+\begin{definition}
+    Let $X \subseteq \A^n$ and $Y \subseteq \A^m$ be affine algebraic varieties. A morphism is globally given by polynomials $(f_1, \cdots, f_m)$ that restrict to a map from $X$ to $Y$.
+\end{definition}
+
+\begin{lemma}
+    $\Phi: X \to Y$ is a morphism of algebraic varities if and only if there is an induced (pullback) map of rings: 
+    \[ \Phi^*: k[Y] \to k[X]\]
+\end{lemma}
+
+\begin{example}[Toric Varieties]
+    .
+    \begin{enumerate}
+        \item $X = (k^\times)^n$
+        \item $X = \A^1$
+        \item $X = \A^n$. Extend entry-wise. 
+        \item $X = \V(x^3-y^2)$
+    \end{enumerate}
+\end{example}
+
+
+\section{Intro to Algebraic Geometry:}
+We are taking a detour and doing classical AG fast but properly before going into Toric Geometry. 
+
+Let $k$ be a field. You can imagine $k = \C$ for most of this. 
+\begin{definition}
+    An algebraic set is a subset: 
+    \[ \V(f_1, \cdots, f_t) = \{ x \in \A^n_k | f_1(x) = f_2(x) = \cdots = f_t(x) = 0 \}\]
+    where $f_i \in k[x_1, \cdots, x_n]$. 
+\end{definition}
+
+Given an ideal $I \subseteq k[x_1, \cdots, x_n]$. We define, 
+\[ \V(I) = \{ x \in \A^n_k | f(x) = 0 \, \forall f \in I\}\]
+\begin{remark}
+    By the Hilbert Basis theorem,
+    \[ I = \langle f_1, \cdots, f_t\rangle\]
+    because the ring is noetherian. Thus, $\V(I) = \V(f_1, \cdots, f_t)$ is an algebraic set. 
+\end{remark}
+
+\begin{definition}
+    If $V \subseteq \A^n$ is an algebraic set. We define, 
+    \[ \I(V) = \{ f \in k[x_1, \cdots, x_n] \, | f(x) = 0 \, \forall x \in V\} \]
+\end{definition}
+
+\begin{lemma}
+    $\I(V)$ is an ideal
+\end{lemma}
+
+\begin{lemma}
+    If $V \subseteq \A^n_k$, then 
+    \[ \V(\I(V)) = V\] 
+\end{lemma}
+\begin{proof}
+    \todo{Do this.}
+\end{proof}
+
+Warning: 
+\[ \I(\V(I)) \neq I\]
+
+\begin{example}
+    \begin{enumerate}
+        \item $k = \R$. Let $I = \langle x^2 + 1\rangle$. Then $\V(I) = \emptyset$ and $\I(\emptyset) = \R[x]$. 
+        \item $k = \overline{k}$ and $I = \langle x^2 \rangle \subseteq \A^1$. $\V(I) = \{0\}$ and $\I(\{0\}) = \langle x \rangle$. 
+    \end{enumerate}    
+\end{example}
+
+\begin{proposition}
+    If $k = \overline k$ and $I \subseteq k[x_1, \cdots, x_n]$ is an ideal 
+    \[ \I(\V(I)) = \{f \in k[x_1, \cdots, x_n] | \exists m : f^m \in I \} = \sqrt{I}\]
+\end{proposition}
+
+\begin{theorem}[Hilbert's Nullstellensatz]
+    Assume $k = \overline{k}$. Then, 
+    \begin{enumerate}
+        \item Let $m \subseteq k[x_1, \cdots, x_n]$ be an ideal. $m$ is maximal if and only if $m = \langle x_1-a_1, \cdots, x_n-a_n\rangle$ for some $(a_1, \cdots, a_n) \in \A^n_k$. 
+        \item There is an inclusion reversing bijection between algebraic subsets of $\A^n_k$ and radical ideals in $k[x_1, \cdots, x_n]$ given by $\I$ and $\V$. 
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+    A polynomial function on $\A^n_k$ is a function of the form $f: \A^n_k \to k$ given by $\overline{x} \mapsto f(\overline{x})$ where $f \in k[x_1, \cdots, x_n]$. 
+\end{definition}
+
+Now we wanna define polynomial functions on algebraic sets. We do this as follows:
+\begin{definition}
+    Let $V \subseteq \A^n$ is an algebraic set. A function $f: V \to k$ is a polynomial function if and only if there exists a polynomial function $F: \A^n \to k$ such that the following commutes, 
+        \[ \xymatrix{ \A^n \ar[rd]^F \\ V \ar[u] \ar[r]^f & k }\]
+\end{definition}
+
+The choice of lift is not unique. 
+\begin{example}
+    Let $V = \V(y-x^2)$. Let $F(x,y) = y$ and $G(x,y) = 2y-x^2$. Restricted to $V$ they are the same function as $2y-x^2 = y+(y-x^2) = y$. 
+\end{example}
+
+\begin{example}
+    Consider $F(x,y) = e^{x^2+y^2}$ and $V = \V(x^2+y^2-1)$. Then $F|_V(x,y) = e$, which is a polynomial. 
+\end{example}
+
+\begin{example}
+    Consider $V = \V(xy-1) \subseteq \A^2$. Consider $F(x,y) = \frac{1}{x}$. This is not a function on $\A^2$ but it is a function on $V$. Moreover, it is a polynomial function because $\frac{1}{x} = y$ on $V$. 
+\end{example}
+
+\begin{definition}
+    The coordinate ring of an algebraic set $V \subseteq \A^n$, $k[V]$ is the set of polynomials functions on $V$ with pointwise multiplication and addition. 
+\end{definition}
+
+\begin{lemma}
+    If $V \subset \A^n$ is an algebraic set, then the coordinate ring $k[V]$ is isomorphic to $k[x_1, \cdots, x_n]/\I(V)$. 
+\end{lemma}
+\begin{proof}
+    We have a map,
+    \[ k[x_1, \cdots, x_n] \twoheadrightarrow k[V] \]
+    sending $f \mapsto [x \mapsto f(x)]$. This fits in the exact sequence,
+    \[ 0 \to \I(V) \to k[x_1, \cdots, x_n] \to k[V] \to 0\]
+\end{proof}
+
+\begin{lemma}
+    If $k \supseteq \R$, then an algebraic set is closed in the Euclidean topology $\A^n_k$. 
+\end{lemma}
+\begin{proof}
+    The finite intersection of closed sets is closed.
+\end{proof}
+
+\begin{definition}
+    The Zariski topology $\A^n_k$ has closed sets equal to all the algebraic sets. 
+\end{definition}
+
+Furthermore, we set the Zariski topology on an algebraic set $V \subseteq \A^n$ to be the subspace topology $V \cap Z$ where $Z \subseteq \A^n_k$ is an algebraic set. 
+
+Given a set $S \subseteq \A^n_k$, we have $\overline{S} = \V(\I(S))$. 
+
+\begin{definition}
+    A morphism of algebraic sets $V \subset \A^n, W \subset \A^m$ is a function $f: V \to W$ such that, 
+    \[ \xymatrix{ \A^n \ar[r]^F & \A^m \\ V \ar[u] \ar[r]^f & W \ar[u] }\]
+    where $F: (x_1, \cdots, x_n) \mapsto (F_1(\overline x), \cdots, F_m(\overline x))$ with $F_1, \cdots, F_m \in k[x_1, \cdots, x_m]$.
+\end{definition}
+
+\begin{definition}
+    Algebraic sets are isomorphisc if and only if there exists morphisms that are mutually inverses. 
+\end{definition}
+
+\begin{remark}
+    These functions are continuous in the Zariski topology because closed sets are given by the vanishing of polynomials and pulling back polynomials by polynomials still give polynomials. 
+\end{remark}
+
+\begin{remark}
+    These maps are not closed. Consider $F(x,y) \mapsto y$. Then $\V(xy-1) \subseteq \A^2$ maps to $\A^1 \setminus \{0\} \subset \A^1$ not closed.  
+\end{remark}
+
+\begin{definition}
+    A finitely generated reduced $k$-algebrai is $k[x_1, \cdots, x_n]/I$ where $I$ is radical.     
+\end{definition}
+
+\begin{theorem}[Nullstellensatz II]
+    Assume $k = \overline{k}$. 
+    \begin{enumerate}
+        \item If $f: V \to W$ is a morphism of algebraic sets then there is a morphism of $k$-algebras, 
+        \begin{align*}
+            F^\#: k[V] &\to k[W] \\
+            [g: W \to k] &\mapsto [g\circ f: V \to k]
+        \end{align*}
+        \item If $I = \I(V)$ and $J = \I(W)$ and there exists a map $\sigma: k[x_1, \cdots, x_m]/J \to k[x_1, \cdots, x_n]/I$ then, pick $F_i \in k[x_1, \cdots, x_n]$ such that $\sigma(y_i) = F_i \text{ mod } I$. Then the map, 
+        \begin{align*}
+            \overline{F}: \A^n &\to \A^m \\
+            x &\mapsto (F_1(x), \cdots, F_m(x))
+        \end{align*}
+        restricts to a map $V \to W$ and this restriction is independent of choice. 
+        \item Moreover, $F^\# = \sigma$. 
+        \item $V \cong W \iff k[V] \cong k[W]$. 
+        \item There is an (anti)-equivalence of categories between categories of algebraic sets and their morphisms and finitely generated reduced $k$-algebras. 
+    \end{enumerate}
+\end{theorem}
+
+We have now defined the major correspondence that's studied in a first semester graduate course in classical AG. The work we have still left is translating from one language to another, i.e. dimension, singularities, etc. 
+
+
+We have a glaring problem because we are working in an ambient affine space. So, we expand first to projective space. 
+
+\begin{definition}
+    Projective $n$-space/$k$ is 
+    \[ \P^n_k = \{ \text{ one-dim subspaces of $k^{n+1}$ }\}\]
+\end{definition}
+
+\begin{lemma}
+    \[ \P^n = (k^{n+1}\setminus \{0\})/~\]
+    where $(a_0, \cdots, a_n) \sim (b_0, \cdots, b_n)$ if and only if there exists $\lambda \in k^\times$ such that one is a scalar multiple of the other. 
+\end{lemma}
+
+Next, we define the homogeneous coordinates. 
+\begin{definition}
+    The coordinates on $\P^n$ can be given as $[a_0 : a_1 : \cdots : a_n]$. This is only unique up to scaling by $k^\times$. In other words, $(a_0, \cdots, a_n)$ and $(b_0, \cdots, b_n) \in \A^{n+1}$ define the same point if the $2x2$ minors of 
+    \[ \begin{pmatrix} 
+        a_0 & \cdots & a_n \\ 
+        b_0 & \cdots & b_n 
+    \end{pmatrix} \] 
+    are all $0$. 
+\end{definition}
+
+\begin{example}
+    Consider $\P^1_\R$. We drew the picture where we picked the reference line $x_0 = 1$ and mapped all lines to the point on this line, i.e. a line goes to $(1, \lambda)$ where $\lambda$ is its slope. We got a map, 
+    \begin{align*}
+        \P^1_R &\to \R \cup \{\infty\} 
+        [x_0 : x_1] \mapsto \begin{cases}
+            \frac{x_1}{x_2} \qquad x_0 \neq 0 \\
+            \infty \qquad x_0 = 0
+        \end{cases}
+    \end{align*}
+    Thus, we got $\P^1$ as a circle. Then, we did the same thing for $\P^2$ showing $\P^2 \cong \R^2 \cup \P^1$. 
+\end{example}
+
+\begin{lemma}
+    For $i = 0, \cdots, n$, 
+    \[ U_i = \{ [x_0 : \cdots : x_n ] \subseteq \P^n_k | x_i = 0\}\]
+    \begin{enumerate}
+        \item $\psi_i : \P^n_k \to \A^n \cup \P^{n-1}$ is a bijection (details)
+        \item $\psi_i|_{U_i}$ is a bijection.  
+        \item $\P^n = \bigcup_i U_i$
+        \item $\psi_j \circ \psi_i^{-1}: \psi_i(U_i \cap U_j) \to \psi_j(U_i \cap U_j)$ is a rational function in the coordinates on $\A^n$. 
+    \end{enumerate}
+\end{lemma}
+
+\begin{example}
+    Explicltly showed that the functions compose to a rational function. 
+\end{example}
+
+\begin{theorem}[Fact.]
+    If $k = \R, \C$ then $\P^n_\R$ or $\P^n_\C$ are compact $\R$ or $\C$ manifolds. 
+\end{theorem}
+
+We cannot define the algebraic sets for $\P^n$ using global functions. For instance, $\P^n_\C \to \C$ every holomorphic function is constant. 
+
+\begin{definition}
+    A polynomial $f \in k[x_0, \cdots, x_n]$ is homogenenous $\iff$ every term of $f$ has the same degree $\iff$ $f(\lambda x) = \lambda^{\deg(f)}f(x)$ for $\lambda \in k^\times$. 
+\end{definition}
+
+Now, we are defining functions. 
+\begin{example}
+    $\P^1_\C \to \C$ given by $[x: y] \mapsto x$ is homogenous but is not well-defined. 
+\end{example}
+
+\begin{definition}
+    A projective algberaic set is a subset $V \subset \P^n_k$ of the form, 
+    \[ V = \V(f_1, \cdots, f_t) = \{ x \in \P^n : f_1(x) = \cdots = f_t(x) = 0 \}\]
+    for $f_i \in k[x_0, \cdots, x_n]$ homogeneous.  
+    If $I \subset k[x_0, \cdots, x_n]$ is a homogeneous ideal then
+    \[ \V(I) = \{ x \in \P^n : f(x) = 0 \, \forall f \in I\}\]
+\end{definition}
+
+\begin{definition}
+    If $V \subseteq \P^n$ is a projective algebraic set, 
+    \[ \I(V) = \langle f \in k[x_1, \cdots, x_n] | \, f \text{ hom. and } f(x) = 0 \, \forall x \in V\rangle \]
+\end{definition}
+
+\begin{theorem}[Proj. Nullstellensatz]
+    Assume $k = \overline{k}$. 
+    \begin{enumerate}
+        \item If $I \subseteq k[x_0, \cdots, x_n]$ is a homogeneous ideal,
+        \[ \V(I) = \emptyset \iff \langle x_0, \cdots, x_n \rangle^m \subseteq I)\]
+        for some $m$.  
+        \item $\I(\V(I)) = \sqrt{I}$. 
+        \item There is a bijection between projective algebraic subsets in $\P^n$ and homogeneous radical ideals $k[x_0, \cdots, x_n]$ not equal to $\langle x_0, \cdots, x_n \rangle$. 
+    \end{enumerate}
+\end{theorem}
+
+
+\end{document}
