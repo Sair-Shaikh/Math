@@ -258,12 +258,145 @@ $(a_n) \subset \R$. Suppose $\sum_{n=1}^\infty a_n$ converges.
     \item[Q2.] Does $\sum_{n=1}^\infty a_n^3$ converge? 
 \end{enumerate}
 
+\section{Complex Differentiability}
+
+\begin{definition}
+    Suppose that $f: D \subset \C \to \C$ and that $z_0 \in D$ is an interior point. Then $f$ is complex differentiable at $z_0$ if 
+    \[ f'(z_0) = \lim_{h\to 0} \frac{f(z_0+h) - f(z_0)}{h}\]
+    exists. Then we call the $f'(z_0)$ the derivative of $f$ at $z_0$. If $D$ is open and $f'(z)$ exists for all $z \in D$, then we say that $f$ is holomorphic on $D$ and write $H(D)$ for the set of all holomorphic functions on $D$. If $f \in H(\C)$, then we say $f$ is entire. 
+\end{definition}
+
+\begin{remark}
+    If $f(z) = z^n$ for $n \in \N$, then $f'(z) = nz^{n-1}$ with the usual proof. Similarly, the sum, product, quotient, and chain rules all apply with the usual proofs. 
+\end{remark}
+
+\begin{remark}
+    Polynomials are entire. Rational functions are holomorphic on their natural domains.
+\end{remark}
+
+\begin{example}
+    Let $f(z) = |z|^2$. Thus, if $z = x+iy$, $f(z) = x^2 + y^2$. Consider $\C = \R^2$, this function is $(x, y) \mapsto (x^2 + y^2, 0)$. Recall, that $|z|^2 = z\overline{z}$. Thus, 
+    \begin{align*}
+        f'(z) &= \lim_{h \to 0} \frac{|z+h|^2 - |z|^2}{h} \\
+        &= \lim_{h \to 0} \frac{z\overline h + \overline z h + h \overline h}{h}\\
+        &= \overline{z} + z \lim_{h \to 0 }\frac{\overline h}{h}
+    \end{align*}
+    Suppose $f'(z)$ exists and $h = x+iy$. Then, 
+    \begin{align*}
+        f'(x) &= \overline{z} + z\lim_{x+iy \to 0} \frac{x+iy}{x+iy} \\
+        &= \overline{z} + z \lim_{x \to 0} \frac{x}{x} = \overline{z} + z
+    \end{align*}
+    Simultaneously, 
+    \[ f'(z) = \overline{z} + z\lim_{y\to 0} \frac{-y}{y} = \overline{z} - z\]
+    These force $z = 0$ and $f'(0) = 0$. 
+\end{example}
+
+\begin{theorem}[W 2.4]
+    Suppose $r > 0$ and
+    \[ f(z) = \sum_{n = 0}^\infty a_n(z-z_0)^n\]
+    for $z \in D_r(z_0)$.  Then $f \in H(D_r(z_0))$ and 
+    \[ f'(z) = \sum_{n=1}^\infty na_n(z-z_0)^{n-1}\]
+\end{theorem}
+
+\begin{proof}
+    Since $\lim_{n \to \infty} n^{1/n} = 1$, the radisu of convergence of the function and its derivative are equal. Thus, $\forall z \in D_r(z_0)$ it suffices to see that $f'(z)$ exists and equals $g(z) = \sum_{n=1}^\infty na_n(z-z_0)^{n-1}$. 
+
+    Using a change of variables, we can assume $z_0 = 0$. Fix $z \in D_r(0)$ and $p$ such that $0 \leq |z| < p < r$. If $w \neq z$, then, 
+    \begin{align*}
+        \frac{f(w)-f(z)}{w-z} -g(z) &= \sum_{n = 1}^\infty \left(\frac{a_nw^n - a_nz^n}{w-z} - na_nz^{n-1} \right)\\
+        &= \sum_{n=1}^\infty a_nA_n
+    \end{align*}
+    where $A_1 = 0$ and for $n \geq 2$, 
+    \begin{align*}
+        A_n &= \frac{w^n -z^n}{w-z} - nz^{n-1} \\
+        &= \sum_{k=0}^{n-1} \frac{w^{n-1-k}z^k} - nz^{n-1}
+    \end{align*}
+    We claim this equals, 
+    \[ (w-z) \sum_{k=1}^{n-1} kz^{k-1}w^{n-k-1}\]
+    To see this, expand it out. 
+
+    Thus if $|w| < p$ and $n \geq 2$, then 
+    \begin{align*}
+        |A_n| &\leq |w-z| \sum_{k=1}^{n-1} kp^{n-2} \\
+        &= |w-z| p^{n-2}\frac{n(n-1)}{2}
+    \end{align*}
+    Thus if $|w| < p$, 
+    \begin{align*}
+        \left| \frac{f(w) - f(z)}{w-z} -g(z) \right| \leq |w-z| \sum_{n=2}^{\infty} n^2 |a_n| p^{n-2}
+    \end{align*}
+    But, we also have
+    \begin{align*}
+        \limsup_n |a_n|^{1/n} = \frac{1}{R} \qquad p < r \leq R
+    \end{align*}
+    This implies, 
+    \[ \sum_{n=2}^\infty n^z |a_n|p^{n-2}\]
+    converges to some $m > 0$. 
+
+    Therefore, $|w| < p$, then 
+    \begin{align*}
+        \left| \frac{f(w) -f(z)}{w-z} - g(z)\right| \leq |w-z|M
+    \end{align*}
+    Thus $f'(z)$ exists and equals $g(z)$. 
+\end{proof}
 
 
+\begin{corollary}[W 2.7]
+    If $f(z) = \sum_{n=0}^\infty a_n(z-z_0)^n$ for all $z \in D_r(z_0)$, then $f$ has derivatives of all orders in $D_r(z_0)$ and the $a_n = \frac{f^{(n)}(z_0)}{n!}$. In particular, the $a_n$ are uniquely determined by $f$ at $z_0$. 
+\end{corollary}
+
+\begin{proof}
+    Not difficult. Induction. 
+\end{proof}
+
+This is related to 2.1.8 in some way \todo{What is 2.1.8?}
+
+\begin{definition}
+    If $f$ has derivatives of all orders at $z_0$, then 
+    \[ \sum_{n=0}^\infty \frac{f^{(n)}(z_0)}{n!}(z-z_0)^n\]
+    is the taylor series for $f$ about $z_0$. 
+\end{definition}
+
+This corollary is very important. In the real case, such a taylor series may not converge or may converge to something besides $f$. \todo{Look into this.}
+
+As a consequence, take, 
+\[ \frac{1}{1-z} = 1+z+z^2 + \cdots \]
+Hence, 
+\[ \frac{1}{1-z^2} = 1-z^2 + z^4 - z^6\]
+You can tell all the derivatives of $\frac{1}{1-z^2}$ from these coefficients. 
+
+\begin{definition}
+    Suppose that $D \subset \C$ is open. We say $f: D \subset \C \to \C$ is analytic if it is locally given by a power series. That is, given $z_0 \in D$ and $r > 0$ such that $D_r(z_0) \subset D$ then $\exists a_n$ such that 
+    \[ f(z) = \sum_{n=0}^\infty a_n(z-z_0)^r \qquad \forall z \in D_r(z_0)\]
+\end{definition}
+
+\begin{remark}
+    This is less easy than this seems. Currently, we have written power series centered at some point $z_0$. This requires that the functions can be written as a power series centered at any point $z \in D$ in some open disk around $z$ contained in $D$. 
+\end{remark}
+
+Note: Exercise 2.17. 
+
+Now we give an alternative characterization of holomorphic. Given $f: D \subset \C \to \C$, 
+\[ f(x+iy) = u(x,y) + iv(x,y)\]
+where $u,v: D \subset \R^2 \to \R$. The companion function is $F(x,y) = (u(x,y), v(x,y))$. 
+
+\begin{example}
+    For instance, take
+    \[ f(x+iy) = (x+iy)^3 = x^3 -3xy^2 + i(3x^2y-y^3)\]
+    So $u = x^3 -3xy^2$ and $v = 3x^2y-y^3$. 
+\end{example}
 
 
+\begin{definition}
+    We say $f(x+iy) = u(x,y) + iv(x,y)$ satisfies the Cauchy-Riemann equations at $z_0$ if 
+    \[ u_x(z_0) = v_y(z_0) \qquad u_y(z_0) = -v_x(z_0)\]
+    If we use the notation $f_x = u_x + iv_x$ and $f_y = u_y + iv_y$, then these become
+    \[ f_x(z_0) = - if_y(z_0) \]
+\end{definition}
 
-
+\begin{theorem}
+    If $f$ and $F$ are as above. Assume $z_0$ is an interior point of $D$. Then if $f$ is complex differentiable at $z_0$ if and only if $F$ is differentiable at $z_0$ and the Cauchy-Riemann equations hold. In the case $f'(z_0)$ exists, then, 
+    \[ f'(z_0) = f_x(z_0) = -if_y(z_0)\]
+\end{theorem}
 
 
 

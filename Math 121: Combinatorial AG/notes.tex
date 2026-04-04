@@ -357,5 +357,125 @@ Now, we are defining functions.
     \end{enumerate}
 \end{theorem}
 
+Beginning day 3 (Apr 3). 
+
+\begin{definition}
+    The homogenous coordinate ring of a projective algebraic set $V \subseteq \P^n_k$ is 
+    \[ k[V] = k[x_0, \cdots, x_n]/\I(V)\]
+\end{definition}
+Warning: These are not functions on $V$. 
+
+We define the Zariski topology the same way. 
+\begin{definition}
+    The Zariski topology on $\P^n_k$ has projective algebraic sets as its closed sets. The topology on an proj. alg. set is the subspace topology. 
+\end{definition}
+
+\begin{definition}
+    A morphism $F: V \to W$ of projective algebraic sets $V \subseteq \P^n_k$ is a function such that $\forall p \in V$ there exists an open set $p \in U \subseteq V$ and polynomials $F_1, \cdots, F_m \in \C[x_0, \cdots, x_n]$ homogeneous of degree $d$ such that: 
+    \[ F|_U: U \to \P^m\]
+    An isomorphism is a function with an inverse function. 
+\end{definition}
+
+\begin{example}
+    Let $C = \V(zx-y^2)$ There is map $F: C \to \P^1$ defined by,
+    \[ [x:y:z ] \mapsto \begin{cases}
+        [x:y] \qquad x \neq 0 \\
+        [y:z] \qquad z \neq 0
+    \end{cases}\]
+    If $x \neq 0$ and $z \neq 0$, then $y \neq 0$. Then, 
+    \begin{align*}
+        [x: y] = [xy: y^2] = [xy : xz] = [y : z]
+    \end{align*}
+    Next, take the map, 
+    \[ \P^1 \to \C \qquad [s:t] \mapsto [s^2 : st : t^2]\]
+    This is well-defined. It is a morphism (given as polynomial globally). We can check these are inverses. 
+    \begin{align*}
+        [s: t] \mapsto [s^2 : st : t^2] \mapsto \begin{cases}
+            [s^2 : st] = [s:t] \qquad s \neq 0 \\
+            [st : t^2] = [s:t] \qquad t \neq 0
+        \end{cases}
+    \end{align*}
+    Thus, these are isomorphisms. 
+
+    However, note that: 
+    \[ k[\P^1] = k[s, t] \not \cong k[C] = k[x,y,z]/\langle xz -y^2\rangle\]
+    The projective coordinate ring depends on the embedding!
+\end{example}
+
+
+Recall, a locally closed set in a topological space $X$ is a closed subset of an open set. That is, it is given as $U \cap Z$ for $U$ open and $Z$ closed. 
+
+\begin{definition}
+    A quasiprojective variety is a locally closed subset of $\P^n_k$. 
+\end{definition}
+
+\begin{example}
+    The following are quasiprojective varieties.
+    \begin{enumerate}
+        \item Open subsets of $\P^n_k$. 
+        \item Projective algberaic sets. 
+        \item Algebraic sets. (Some things need to be shown, we show them next.)
+    \end{enumerate}
+\end{example}
+
+Take $V \subseteq \A^n_k$ and $V = \V(f_1, \cdots, f_t)$. Define, 
+\[ f_i^h = x_0^{\deg(f_i)} f_i\left(\frac{x_1}{x_0}, \cdots, \frac{x_n}{x_0}\right)\]
+Then $f^h(x_0, \cdots, x_n) = 0 \iff f_i(x_1, \cdots, x_n) = 0$.
+
+
+\begin{example}
+    $(k^\times)^n$ is quasiprojective. It is $\A^n \setminus \V(x_1, \cdots, x_n)$. 
+\end{example}
+
+\begin{definition}
+    A function $\Phi: V \subset \P^n \to W \subset \P^m$ is a morphism of quasiprojective varieties if and only if $\forall p \in V$ there exists $F_1, \cdots, F_m$ homg. of degree $d$ in $k[x_0, \cdots, x_n]$ such that,
+    \[ \Phi|_U: x \mapsto [F_0(x), \cdots, F_m(x)]\] 
+\end{definition}
+
+\begin{example}
+    Take the sets $V = \V(xy-1)$ (closed in affine space) and $W = \A^1 \setminus \{0\}$ (open in affine space). First, we can homogenize to consider these in projective space. That is these live in $\P^2$ and $\P^1$ and are quasiprojective varieties. 
+    \begin{align*}
+        \xymatrix{ 
+            \P^2 & \P^1 \ar[l] \\
+            \{z \neq 0 \} \cap \V(xy-z^2) \ar[u] & \A^1 \setminus \{0 \} \ar[l] \ar[u] \\
+        }
+    \end{align*}
+    \todo{Complete this.}
+
+\end{example}
+
+\begin{definition}
+    A quasiprojective variety $V \subseteq \P^m_k$ is affine if and only if there's some algebraic set $W \subseteq \A^n_k$ such that $V \cong W$ as quasiprojective varieties. 
+\end{definition}
+
+If $V$ is a quasiprojective variety that is affine 
+\[ k[V] := k[W]\]
+for $W$. 
+
+If $V \subseteq \A_k^n$ and $W \subseteq \A^n_k$. We need to show, 
+\[ V \cong_{qp} W \iff V \cong_{AS} W \]
+
+\begin{lemma}
+    Let $V =\V(f_1, \cdots, f_t) \subseteq \A^n$ be an algebraic set and $g \in k[V]$ be some function. Let $V \setminus \V(g) =: U_f$ is affine. Moreover, 
+    \[ k[U_f] \equiv k[V][g^{-1}]\]
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        \A^n &\to \A^{n+1} \\
+        (x_1, \cdots, x_n) \in U_f  &\mapsto \left(x_1, \cdots, x_n, \frac{1}{g(x_1, \cdots, x_n)}\right)
+    \end{align*}
+    Make sure this lands in the right place. 
+\end{proof}
+
+\begin{definition}
+    A quasiprojective variety $V \subseteq \P^m_k$ is projective if and only if there's some projective algebraic set $W \subseteq \P^n_k$ such that $V \cong W$ as quasiprojective varieties. 
+\end{definition}
+
+
+\begin{proposition}
+    Every quasiprojective variety is covered by affine varieties. 
+\end{proposition}
+
+
 
 \end{document}

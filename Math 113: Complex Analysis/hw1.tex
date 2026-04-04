@@ -166,6 +166,7 @@
     \end{align*}
     Solving this system, we get $a = \frac{1+\sqrt{5}}{2}$ and $b = \frac{1-\sqrt{5}}{2}$. 
 \end{solution}
+\newpage
 
 \begin{problem}{1.5.2}
     Let $c \in \C \setminus \{0\}$ and $a \in \C$. Show that the geometric series $P: \sum_{n=0}^\infty ca^n$ converges to $\frac{c}{1-a}$ if $|a| < 1$ and diverges otherwise. 
@@ -191,6 +192,7 @@
     \[ \lim_n a^{n+1} = 0 \]
     However, we know that $|a^{n+1}| = |a|^{n+1}$. Thus, if $|a| < 1$, then $\lim_{n} a^{n+1} = 0$ and we are done. 
 \end{solution}
+\newpage 
 
 \begin{problem}{1.5.8}
     Prove Dini's theorem: Suppose that $(h_n)$ is a sequence of continuous non-negative functions on a compact set $K$ converging monotonically to zero on $K$. Then $h_n \searrow 0$ uniformly on $K$. 
@@ -211,7 +213,43 @@
     \[ |h_j(x)| < \epsilon \]
     Thus, $(h_n)$ converge uniformly to $0$. 
 \end{solution}
+\newpage 
 
+\begin{problem}{2.1.8}
+Let \( A_r(z_0) = \{ z \in \mathbb{C} : |z - z_0| > r > 0 \} \) and suppose that
+\[ g(z) = \sum_{j=1}^{\infty} \frac{b_j}{(z - z_0)^j} \]
+converges for all \( z \in A_r(z_0) \) as in Ex 1.5.10. Show that both \( g \) and \( g' \) are holomorphic on \( A_r(z_0) \) and that
+\[ g'(z) = \sum_{j=1}^{\infty} \frac{-j b_j}{(z - z_0)^{j+1}} \]
+for all \( z \in A_r(z_0) \).
 
+Show also that the coefficients \( b_j \) appearing in the first equation are uniquely determined by \( g \).
+\end{problem}
+\begin{solution}
+    
+\end{solution}
+\newpage 
+\begin{problem}{2.2.3}
+    Suppose that $D$ is a domain and $f \in H(D)$. Show that if $f$ is real-valued in $D$, then $f$ is constant. 
+\end{problem}
+\begin{solution}
+    
+\end{solution}
+\newpage 
+
+\begin{problem}{2.2.5}
+    Let \( f : D \subset \mathbb{C} \to \mathbb{C} \) be a function of the form \( f(z) = u(z) + i v(z) \), and let \( F : D \subset \mathbb{R}^2 \to \mathbb{R}^2 \) be the companion function \( F(x,y) = (u(x,y), v(x,y)) \). Let \( z_0 = x_0 + i y_0 \in D \). Show that \( f'(z_0) \) exists if and only if the Cauchy-Riemann equations hold at \( z_0 \) and \( F \) is differentiable at \( (x_0, y_0) \).
+    
+    % (Hint: if we let \( z = h + i k \) and if \( T \) is given by the matrix
+    % \[ [T] =  \begin{pmatrix}
+    %     u_x(x_0,y_0) & -v_x(x_0,y_0) \\
+    %     v_x(x_0,y_0) & u_x(x_0,y_0)
+    % \end{pmatrix}, \]
+    % then
+    % \[ \|F(x_0 + h, y_0 + k) - F(x_0, y_0) - T(h,k)\| = |f(z + z_0) - f(z_0) - w z| \]
+    % where \( w = u_x(x_0,y_0) + i v_x(x_0,y_0) = f_x(z_0) \). Then remember Ex 2.2.1.)
+\end{problem}
+\begin{solution}
+    
+\end{solution}
 
 \end{document}
