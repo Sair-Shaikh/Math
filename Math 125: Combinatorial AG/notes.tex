@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{amsart}
 
 
 \include{../style}
@@ -14,7 +14,7 @@
 
 There are $2$ mottos in toric geometry. 
 \begin{enumerate}
-    \item Toric geometry is the study of solutions to polynomoial equations in the preserve of a large torus.
+    \item Toric geometry is the study of solutions to polynomoial equations in the presence of a large torus.
     \item The action of a torus should give combinatorial/algebraic structure.
 \end{enumerate}
 
@@ -62,9 +62,9 @@ Now we can define what a toric variety is.
 
 We now discuss what the action of the torus means. Let $T = (k^\times)$. Then $T$ is also a group with multiplication $(s,t) \mapsto st$ and inverse $t \mapsto t^{-1}$.
 
-\begin{example}
+\begin{example*}
     Let $k^\times \subset \A^1$. Then, $k^\times$ acts on itself. We extend this by letting the action on $0$ be such that $t \times 0 = 0$ for all $t \in k^\times$. 
-\end{example}
+\end{example*}
 
 Now we make all of this precise. We have the following definition:
 \begin{definition}
@@ -73,9 +73,9 @@ Now we make all of this precise. We have the following definition:
     that are regular and satisfy the usual group axioms.
 \end{definition}
 
-\begin{example}
+\begin{example*}
     $G = (k^\times)^n$ with coordinate with multiplication and inverses. 
-\end{example}
+\end{example*}
 
 \begin{definition}
     A split torus over a field $k$ is algebraic group $G$ isomorphisc over $k$ to $(k^\times)^n$ for some $n$. 
@@ -103,7 +103,7 @@ Now we make all of this precise. We have the following definition:
     \[ \Phi^*: k[Y] \to k[X]\]
 \end{lemma}
 
-\begin{example}[Toric Varieties]
+\begin{example*}[Toric Varieties]
     .
     \begin{enumerate}
         \item $X = (k^\times)^n$
@@ -111,7 +111,7 @@ Now we make all of this precise. We have the following definition:
         \item $X = \A^n$. Extend entry-wise. 
         \item $X = \V(x^3-y^2)$
     \end{enumerate}
-\end{example}
+\end{example*}
 
 
 \section{Intro to Algebraic Geometry:}
@@ -152,12 +152,12 @@ Given an ideal $I \subseteq k[x_1, \cdots, x_n]$. We define,
 Warning: 
 \[ \I(\V(I)) \neq I\]
 
-\begin{example}
+\begin{example*}
     \begin{enumerate}
         \item $k = \R$. Let $I = \langle x^2 + 1\rangle$. Then $\V(I) = \emptyset$ and $\I(\emptyset) = \R[x]$. 
         \item $k = \overline{k}$ and $I = \langle x^2 \rangle \subseteq \A^1$. $\V(I) = \{0\}$ and $\I(\{0\}) = \langle x \rangle$. 
     \end{enumerate}    
-\end{example}
+\end{example*}
 
 \begin{proposition}
     If $k = \overline k$ and $I \subseteq k[x_1, \cdots, x_n]$ is an ideal 
@@ -183,17 +183,17 @@ Now we wanna define polynomial functions on algebraic sets. We do this as follow
 \end{definition}
 
 The choice of lift is not unique. 
-\begin{example}
+\begin{example*}
     Let $V = \V(y-x^2)$. Let $F(x,y) = y$ and $G(x,y) = 2y-x^2$. Restricted to $V$ they are the same function as $2y-x^2 = y+(y-x^2) = y$. 
-\end{example}
+\end{example*}
 
-\begin{example}
+\begin{example*}
     Consider $F(x,y) = e^{x^2+y^2}$ and $V = \V(x^2+y^2-1)$. Then $F|_V(x,y) = e$, which is a polynomial. 
-\end{example}
+\end{example*}
 
-\begin{example}
+\begin{example*}
     Consider $V = \V(xy-1) \subseteq \A^2$. Consider $F(x,y) = \frac{1}{x}$. This is not a function on $\A^2$ but it is a function on $V$. Moreover, it is a polynomial function because $\frac{1}{x} = y$ on $V$. 
-\end{example}
+\end{example*}
 
 \begin{definition}
     The coordinate ring of an algebraic set $V \subseteq \A^n$, $k[V]$ is the set of polynomials functions on $V$ with pointwise multiplication and addition. 
@@ -291,7 +291,7 @@ Next, we define the homogeneous coordinates.
     are all $0$. 
 \end{definition}
 
-\begin{example}
+\begin{example*}
     Consider $\P^1_\R$. We drew the picture where we picked the reference line $x_0 = 1$ and mapped all lines to the point on this line, i.e. a line goes to $(1, \lambda)$ where $\lambda$ is its slope. We got a map, 
     \begin{align*}
         \P^1_R &\to \R \cup \{\infty\} 
@@ -301,7 +301,7 @@ Next, we define the homogeneous coordinates.
         \end{cases}
     \end{align*}
     Thus, we got $\P^1$ as a circle. Then, we did the same thing for $\P^2$ showing $\P^2 \cong \R^2 \cup \P^1$. 
-\end{example}
+\end{example*}
 
 \begin{lemma}
     For $i = 0, \cdots, n$, 
@@ -314,9 +314,9 @@ Next, we define the homogeneous coordinates.
     \end{enumerate}
 \end{lemma}
 
-\begin{example}
+\begin{example*}
     Explicltly showed that the functions compose to a rational function. 
-\end{example}
+\end{example*}
 
 \begin{theorem}[Fact.]
     If $k = \R, \C$ then $\P^n_\R$ or $\P^n_\C$ are compact $\R$ or $\C$ manifolds. 
@@ -329,9 +329,9 @@ We cannot define the algebraic sets for $\P^n$ using global functions. For insta
 \end{definition}
 
 Now, we are defining functions. 
-\begin{example}
+\begin{example*}
     $\P^1_\C \to \C$ given by $[x: y] \mapsto x$ is homogenous but is not well-defined. 
-\end{example}
+\end{example*}
 
 \begin{definition}
     A projective algberaic set is a subset $V \subset \P^n_k$ of the form, 
@@ -376,7 +376,7 @@ We define the Zariski topology the same way.
     An isomorphism is a function with an inverse function. 
 \end{definition}
 
-\begin{example}
+\begin{example*}
     Let $C = \V(zx-y^2)$ There is map $F: C \to \P^1$ defined by,
     \[ [x:y:z ] \mapsto \begin{cases}
         [x:y] \qquad x \neq 0 \\
@@ -400,7 +400,7 @@ We define the Zariski topology the same way.
     However, note that: 
     \[ k[\P^1] = k[s, t] \not \cong k[C] = k[x,y,z]/\langle xz -y^2\rangle\]
     The projective coordinate ring depends on the embedding!
-\end{example}
+\end{example*}
 
 
 Recall, a locally closed set in a topological space $X$ is a closed subset of an open set. That is, it is given as $U \cap Z$ for $U$ open and $Z$ closed. 
@@ -409,30 +409,30 @@ Recall, a locally closed set in a topological space $X$ is a closed subset of an
     A quasiprojective variety is a locally closed subset of $\P^n_k$. 
 \end{definition}
 
-\begin{example}
+\begin{example*}
     The following are quasiprojective varieties.
     \begin{enumerate}
         \item Open subsets of $\P^n_k$. 
         \item Projective algberaic sets. 
         \item Algebraic sets. (Some things need to be shown, we show them next.)
     \end{enumerate}
-\end{example}
+\end{example*}
 
 Take $V \subseteq \A^n_k$ and $V = \V(f_1, \cdots, f_t)$. Define, 
 \[ f_i^h = x_0^{\deg(f_i)} f_i\left(\frac{x_1}{x_0}, \cdots, \frac{x_n}{x_0}\right)\]
 Then $f^h(x_0, \cdots, x_n) = 0 \iff f_i(x_1, \cdots, x_n) = 0$.
 
 
-\begin{example}
+\begin{example*}
     $(k^\times)^n$ is quasiprojective. It is $\A^n \setminus \V(x_1, \cdots, x_n)$. 
-\end{example}
+\end{example*}
 
 \begin{definition}
     A function $\Phi: V \subset \P^n \to W \subset \P^m$ is a morphism of quasiprojective varieties if and only if $\forall p \in V$ there exists $F_1, \cdots, F_m$ homg. of degree $d$ in $k[x_0, \cdots, x_n]$ such that,
     \[ \Phi|_U: x \mapsto [F_0(x), \cdots, F_m(x)]\] 
 \end{definition}
 
-\begin{example}
+\begin{example*}
     Take the sets $V = \V(xy-1)$ (closed in affine space) and $W = \A^1 \setminus \{0\}$ (open in affine space). First, we can homogenize to consider these in projective space. That is these live in $\P^2$ and $\P^1$ and are quasiprojective varieties. 
     \begin{align*}
         \xymatrix{ 
@@ -442,7 +442,7 @@ Then $f^h(x_0, \cdots, x_n) = 0 \iff f_i(x_1, \cdots, x_n) = 0$.
     \end{align*}
     \todo{Complete this.}
 
-\end{example}
+\end{example*}
 
 \begin{definition}
     A quasiprojective variety $V \subseteq \P^m_k$ is affine if and only if there's some algebraic set $W \subseteq \A^n_k$ such that $V \cong W$ as quasiprojective varieties. 
@@ -476,6 +476,288 @@ If $V \subseteq \A_k^n$ and $W \subseteq \A^n_k$. We need to show,
     Every quasiprojective variety is covered by affine varieties. 
 \end{proposition}
 
+(April 7th)
 
+\begin{definition}
+    Let $U \subseteq V$ be open inside an affine variety and $U \to k$ some function. Then, 
+    \begin{enumerate}
+        \item For $p \in U$, $f$ is regular at $p$ if and only if $\exists p \in U' \subset U$ open and $g, h \in k[V]$ such that $f|_{U'} = \frac{g}{h}|_{U'}$ with $h \neq 0$ on $U'$.
+        \item $f$ is regular on $U$ if and only if it is regular at $p \, \forall p \in U$. 
+        \item Let $\OO_V(U)$ be the ring of regular functions on $U$ with pointwise operations. 
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    \[ \OO_V(V) \cong k[V] \]
+\end{theorem}
+
+\begin{example*}
+    $f: U = \A^2 \setminus \V(x) \to k$ given by $(x,y) \to \frac{y}{x}$ is a regular function. 
+\end{example*}
+
+\begin{definition}
+    If $U \subseteq V$ is a quasiprojective variety with a function $f: U \to k$ then $f$ is regular at a point $p \in U$ if $p \in V' \subseteq V$ such that $f|_{V'}$ is regular on $V'$ and $V'$ affine. 
+\end{definition}
+
+\begin{definition}
+    We define $\OO_V(U)$ to be the ring of regular function on $U$. 
+\end{definition}
+
+\begin{lemma}
+    $\OO_V(U)$ is a sheaf. 
+\end{lemma}
+
+\begin{definition}
+    A function $\psi: V \to W$ of quasiprojective varieties is a morphism of quasiprojective varieties if and only if $\forall p \in V$ if there exist affine opens 
+    \[ \xymatrix{ V \ar[r]^\psi & W \\ U \ar[u]^\iota \ar[r] & U' \ar[u]^\iota }\]
+    where the bottom arrow is given by regular functions. 
+\end{definition}
+
+\begin{definition}
+    An abstract algebraic variety is a topological space $X$ with a sheaf of rings $\OO_X$ such that there is an open conver $X = \bigcup U_i$ such that $(U_i, \OO_X(U_i))$ are isomorphic (as ringed spaces) to $(W_i, \OO_{W_i}(W_i))$ for $W_i$ an affine variety. 
+\end{definition}
+
+\begin{remark}
+    Informally, this is the data of
+    \[ \{V_\alpha\}_{\alpha \in \Lambda}, \{V_{\alpha, \beta}\}_{\alpha, \beta \in \Lambda}, \{g_{\alpha\beta}\}\]
+    with $V_\alpha$ affine varieties, $V_{\alpha\beta} \subset V_\alpha$ being open affine subsets and $g_{\alpha\beta}: V_{\alpha\beta} \to^\sim V_{\beta\alpha}$ such that: 
+    \begin{enumerate}
+        \item $g_{\alpha\alpha} = \Id_{V_{\alpha\alpha}}$
+        \item cocycle condition 
+    \end{enumerate}
+    Then, $X = \bigcup_{\alpha} X_\alpha / \sim$ with $x \in X_\alpha \sim u \in X_\beta$ iff $g_{\alpha\beta}(x) = y$. 
+\end{remark}
+
+\section{Toric Varieties:}
+
+\begin{definition}
+    A toric variety is a variety $X$ together with a dense torus $T \subseteq X$ and an algebraic action satisfying: 
+    \[ \xymatrix{ T \times X  \ar[r] & X \\ T\times T \ar@{^{(}->}[u] \ar[r] & T \ar@{^{(}->}[u] }\]    
+\end{definition}
+
+From now on, we assume $k = \overline{k}$. 
+
+\begin{definition}
+    A group variety is a variety $G$ together with morphisms, 
+    \begin{align*}
+        m: G \times G &\to G \\
+        i: G &\to G \\
+        e: * &\to G 
+    \end{align*}
+    i.e. multiplication, inverse, and identity satisfiying the group axioms. \\
+    Thus, $G$ is a group. 
+\end{definition}
+
+\begin{example}
+    $k^\times = \A^1 \setminus \{0\}$ is a group variety. Our maps are, 
+    \begin{align*}
+        m: (x,y) \mapsto xy \\
+        i: x \mapsto \frac{1}{x} \\
+        e: * \mapsto 1
+    \end{align*}
+\end{example}
+
+\begin{proposition}
+    Let $G$ be an affine variety. Then $G$ is a group variety if and only if $k[G]$ is a finitely generate commutative $k$-Hopf algebra. That is, it is a finitely generated polynomial ring mod an ideal satisfying the Hopf condition, i.e. there exist maps 
+    \begin{align*}
+        m^\#: k[G] &\to k[G\times G] \cong k[G] \otimes k[G] \\
+        i^\#: k[G] &\to k[G] \\
+        e^\#: k[G] &\to k
+    \end{align*}
+    satisfying the equivalent group conditions. 
+\end{proposition}
+
+Another way to write this is, 
+\begin{definition}
+    $R$ is Hopf algebra if 
+    \begin{align*}
+        \Delta: R \to R \otimes R \\
+        S: R \to R \\
+        \varepsilon: R \to R
+    \end{align*}
+    called the co-multiplication, antipode, and counit satisfying the group axioms. 
+\end{definition}
+
+In particular, $\Delta$ has a nice description,
+\begin{align*}
+    \Delta: k[G] &\to k[G \times G] \cong k[G] \otimes k[G] \\
+    f &\mapsto \Delta(f) = m^\#(f)
+\end{align*}
+is given by 
+\[ \xymatrix{ G \times G \ar[d] \ar[r]^{m^\#(f)}& k \\ G \ar[ur]^f }\]
+In particular, 
+\[ m^\#(f): G \times G \to k \qquad m^\#(f)(g,h) = f(gh)\]
+
+\begin{definition}
+    An algebraic torus is a variety $T$ isomorphic to $\G_m^n$ for some $n$ where $\G_m \cong k^\times$. 
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item This is not true if $k \neq \overline{k}$. 
+        \item If $T \cong \G_m^n \cong \A^n \setminus \V(x_1, \cdots, x_n)$.
+        \item $k[T] \cong k[\G_m^n] \cong k[\A^n\setminus \V(x_1, \cdots, x_n)]$
+    \end{enumerate}
+    Moreover, recall, 
+    \begin{align*}
+        k[\A^n \setminus \V(x_1, \ldots, x_n)] &\cong k[x_1, \ldots, x_n]\left[\frac{1}{x_1\cdots x_n}\right] \\
+        &\cong k\left[x_1, \ldots, x_n, \frac{1}{x_1}, \cdots, \frac{1}{x_n}\right] \\
+        &\cong k[x_1^\pm, \ldots, x_n^\pm]
+    \end{align*}
+    where this is called the ring of Laurent polynomials.
+\end{remark}
+
+
+\begin{lemma}
+    \[(k[\G_m^n])^\times = \{ cx_1^{m_1} \cdots x_n^{m_n} : c \in k^\times, m_i \in \Z\}\]
+\end{lemma}
+
+\begin{definition}
+    A character of a group variety $G$ is a group variety map $\chi: G \to \G_m = k^\times$. Note that as $k^\times \cong \GL_1(k)$, this is a one dimensional representaion. 
+\end{definition}
+
+\begin{lemma}
+    Every character $\chi: \G_m^n \to \G_m^n$ is of the form 
+    \[ \chi(t_1, \cdots, t_n) \to t_1^{m_1}\cdots t_n^{m_n} \]
+    for some $(m_1, \cdots, m_n) \in \Z^n$ and all such maps appear, 
+    \[ \Hom_{Grp. Var}(\G_m^n, \G_m) \equiv \Z^n \] 
+\end{lemma}
+
+\begin{proof}
+    Let $\chi: \G_m^n \to \G_m$ be a character. This gives, 
+    \[ \chi^\#: k[\G_m] \to k[G_m^n]\] 
+    But this is, 
+    \[ \chi^\#: k[t, t^{-1}] \to k[x_1^\pm, \ldots, x_n^\pm]\]
+    Thus, $\chi^\#$ is determined by where it takes $t$. Since $t$ is a unit, it must go to a unit, i.e.
+    \[ \chi^\#(t) = cx_1^{m_1}\cdots x_n^{m_n} =: f\]
+    with $m_i \in \Z$. Thus, we only need to show $c = 1$. 
+    
+    We use the Hopf algebra structure. 
+    \begin{align*}
+        \Delta(f)(g, h) &= f(gh) \\
+        &= \chi(gh) \\
+        &= \chi(g)\chi(h) 
+    \end{align*}
+    Thus, $f(gh) = f(g)f(h)$ for all $g, h \in G$. Thus, $f$ is a group homomorphism and $\Delta(f) = f \otimes f$. Thus,
+    \begin{align*}
+        \Delta(f) &= \Delta(cx_1^{m_1}\cdots x_n^{m_n}) \\
+        &= c\Delta(x_1^{m_1}\cdots x_n^{m_n})
+    \end{align*}
+    However, on the other hand, $\Delta$ is a $k$-algebra map, thus, 
+    \begin{align*}
+        \Delta(f) = f \otimes f = cx_1^{m_1}\cdots x_n^{m_n} \otimes cx_1^{m_1}\cdots x_n^{m_n} = c^2\Delta(x_1^{m_1}\cdots x_n^{m_n})
+    \end{align*}
+    Thus, $c^2 = c$ thus $c =1$.  
+
+    To complete the proof, show all of these are realized. Not so hard. 
+\end{proof}
+
+\begin{corollary}
+    \[ \Hom_{GV}(\G_m^r, \G_m^r) \cong \Mat_{r\times n}(\Z)\]
+    That is, if $\phi: \G_m^n \to \G_m^r$ is a group variety map,
+    \[ \phi(t_1, \cdots, t_n) = \left(\prod_{i=1}^n t_i^{a_{1i}}, \ldots, \prod_{i=1}^n t_i^{a_{ni}}\right)\]
+    That is, maps of tori are monomial maps. 
+\end{corollary}
+\begin{proof}
+    Composing with the $i$th projection gives a character, 
+    \[ \G_m^n \to \G_m^r \to \G_m\]
+\end{proof}
+
+\begin{corollary}
+    \[ \Aut(\G_m^n) \cong \GL_n(\Z)\]
+\end{corollary}
+
+\begin{definition}
+    Let $T$ be an algebraic torus. The character lattice of $T$ is
+    \[ X^*(T) = \Hom_{GV}(T, \G_m) \]
+    We showed this is a lattice of rank $n = \dim(T)$, where a lattice if a finitely generated free abelian group.  
+\end{definition}
+
+Abstractly, $X^\times(T) \cong \Z^n$ but we write $X^*(T)$ multiplicatively but $\Z^n$ additively. 
+
+\begin{definition}
+    We introduce the following notational short-hand: 
+    \[ M = X^*(T)\]
+    This is also the regular functions on the torus.
+\end{definition}
+
+
+For $\G_m^n$, we have 
+\begin{enumerate}
+    \item $k[\G_m^n] \cong k[x_1^\pm, \ldots, x_n^\pm]$.
+    \item $\Hom_{GV}(\G_m^n, \G_m) \cong \{ \text{ Laurent mons. }\} \cong \Z^n$
+\end{enumerate}
+Thus, $k[\G_m^n] \cong k[\Z^n]$. Moreover,
+\[ k[\Z^n] \cong \bigoplus_{m \in \Z^n} k \cdot \chi^m \]
+where $\chi^m \cdot \chi^n = \chi^{m+n}$. 
+
+Thus we are able to identify regular functions on the torus $\G_m^n$ with sums of characters with a direct sum decomposition. 
+
+\begin{definition}
+    If $A$ is a finitely generated abelian group its group algebra 
+    \[ k[A] \cong \bigoplus_{a \in A} k\chi^a \]
+    with $\chi^\alpha \cdot \chi^\beta = \chi^{\alpha + \beta}$. 
+\end{definition}
+
+\begin{theorem}
+    Let $T$ be an $n$-dimensional torus. Fix $m_1, \cdots, m_n$ a basis for $M$. 
+    \begin{enumerate}
+        \item Viewing $m_1, \cdots, m_n$ as regular functions on $T$ there is a morphism, 
+        \[ T \to^{(m_1, \ldots, m_n)} \G_m^n\]
+        is an isomorphism of group varieties. 
+        \item There is an isomorphism of commutative Hopf $k$-algebras, 
+        \begin{align*}
+            k[M] &\to^\sim k[T] \\
+            \chi^m &\mapsto m
+        \end{align*}
+    \end{enumerate}
+\end{theorem}
+
+Motto: A torus is recovered from its $M$ lattice. 
+
+Where are we heading with this? Say we have $X$ affine with $T \subset X$ a torus. Then, we get a map, 
+\[ k[X] \to k[T] \]
+\begin{corollary}
+    \[ (k[T])^\times \cong \{ c\chi^m : c \in k^\times, m \in M\}\]
+    That is the set of invertible regular functions on $T$ are the characters. 
+\end{corollary}
+
+\begin{proof}
+    Let $e_1, \ldots, e_n$ be the standard basis for $\Z^n = X^*(\G_m^n)$. 
+    \[ e_i(t_1, \ldots, e_n) = t_i\]
+    Since $T$ is a torus, we may fix an isomorphism 
+    \[ \alpha: T \to \G_m^n\]
+    This induces an isomorphism of rings, 
+    \[ \alpha^\#: k[\G_m^n] \to k[T]\]
+    which is an isomorphism of character lattices contained in these. 
+    
+    Define $u_i = (\alpha^\#)^{-1}(m_i) \in X^*(\G_m^n)$. Since $\alpha^\#$ is and isomorphism and $m_i$ are a basis, we have $u_1, \cdots, u_n$ is a basis for $X^*(\G_m^n) \cong \Z^n$. 
+
+    Now we have two bases given by the $e_i$ and the $u_i$ for $\Z^n$. Thus ther exists $A \in \GL_n(\Z)$ taking $e_i \mapsto u_i$. 
+
+    Then $A$ is a (monomial) automorphism of $\mu_A: \G_m^n \to^\sim \G_m^n$ with the property that $\mu^\#_A(e_i) = u_i$. 
+
+    Now consider,
+    \[ \xymatrix{ T \ar[r]^\sim_a \ar[rd]^\Psi & \G_m^n \ar[d]^{\mu_A} \\ 
+    & \G_m^n }\]
+    We want to show that this diagram commutes. We check this on coordinate rings. Dualizing this picture, we get, 
+    \[ \xymatrix{ k[T] & k[\G_m^n] \ar[l]^\sim_{a^\#}  \\ 
+    & k[\G_m^n] \ar[u]_{\mu_A} \ar[ul]^{\Psi^\#}  }\]
+
+    It is enough to check this on $e_1, \cdots, e_n$. We have, 
+    \begin{align*}
+        (\mu_A \circ \alpha)^\#(e_i) &= \alpha^\#(\mu^\#_A(e_i)) \\ 
+        &= \alpha^\#(u_i) \\
+        &= m_i \\
+        &= \Psi^\#(e_i)
+    \end{align*}
+
+    For the second part, we know, 
+    \begin{align*}
+        k[x_1^\pm, \cdots, x_n^\pm]  &\to k[M] \\
+        x_i &\mapsto \chi^{m_i}
+    \end{align*}
+    Argument similar to before show this is an isomorphism and $k[x_1^\pm, \cdots, x_n^\pm] \cong k[T]$. 
+\end{proof}
 
 \end{document}

@@ -299,7 +299,7 @@ $(a_n) \subset \R$. Suppose $\sum_{n=1}^\infty a_n$ converges.
 \end{theorem}
 
 \begin{proof}
-    Since $\lim_{n \to \infty} n^{1/n} = 1$, the radisu of convergence of the function and its derivative are equal. Thus, $\forall z \in D_r(z_0)$ it suffices to see that $f'(z)$ exists and equals $g(z) = \sum_{n=1}^\infty na_n(z-z_0)^{n-1}$. 
+    Since $\lim_{n \to \infty} n^{1/n} = 1$, the radius of convergence of the function and its derivative are equal. Thus, $\forall z \in D_r(z_0)$ it suffices to see that $f'(z)$ exists and equals $g(z) = \sum_{n=1}^\infty na_n(z-z_0)^{n-1}$. 
 
     Using a change of variables, we can assume $z_0 = 0$. Fix $z \in D_r(0)$ and $p$ such that $0 \leq |z| < p < r$. If $w \neq z$, then, 
     \begin{align*}
@@ -309,7 +309,7 @@ $(a_n) \subset \R$. Suppose $\sum_{n=1}^\infty a_n$ converges.
     where $A_1 = 0$ and for $n \geq 2$, 
     \begin{align*}
         A_n &= \frac{w^n -z^n}{w-z} - nz^{n-1} \\
-        &= \sum_{k=0}^{n-1} \frac{w^{n-1-k}z^k} - nz^{n-1}
+        &= \sum_{k=0}^{n-1} w^{n-1-k}z^k - nz^{n-1}
     \end{align*}
     We claim this equals, 
     \[ (w-z) \sum_{k=1}^{n-1} kz^{k-1}w^{n-k-1}\]
@@ -329,8 +329,8 @@ $(a_n) \subset \R$. Suppose $\sum_{n=1}^\infty a_n$ converges.
         \limsup_n |a_n|^{1/n} = \frac{1}{R} \qquad p < r \leq R
     \end{align*}
     This implies, 
-    \[ \sum_{n=2}^\infty n^z |a_n|p^{n-2}\]
-    converges to some $m > 0$. 
+    \[ \sum_{n=2}^\infty n^2 |a_n|p^{n-2}\]
+    converges to some $M > 0$. 
 
     Therefore, $|w| < p$, then 
     \begin{align*}
@@ -365,12 +365,12 @@ Hence,
 You can tell all the derivatives of $\frac{1}{1-z^2}$ from these coefficients. 
 
 \begin{definition}
-    Suppose that $D \subset \C$ is open. We say $f: D \subset \C \to \C$ is analytic if it is locally given by a power series. That is, given $z_0 \in D$ and $r > 0$ such that $D_r(z_0) \subset D$ then $\exists a_n$ such that 
+    Suppose that $D \subset \C$ is open. We say $f: D \subset \C \to \C$ is analytic if it is locally given by a power series. That is, $\forall z_0 \in D$, there exists $r > 0$ and $a_n$ such that $D_r(z_0) \subset D$ and 
     \[ f(z) = \sum_{n=0}^\infty a_n(z-z_0)^r \qquad \forall z \in D_r(z_0)\]
 \end{definition}
 
 \begin{remark}
-    This is less easy than this seems. Currently, we have written power series centered at some point $z_0$. This requires that the functions can be written as a power series centered at any point $z \in D$ in some open disk around $z$ contained in $D$. 
+    Clearly, analytic implies holomorphic. But analytic is less easy than this seems. Currently, we have written power series centered at some point $z_0$. This requires that the functions can be written as a power series centered at any point $z \in D$ in some open disk around $z$ contained in $D$. 
 \end{remark}
 
 Note: Exercise 2.17. 
@@ -389,22 +389,151 @@ where $u,v: D \subset \R^2 \to \R$. The companion function is $F(x,y) = (u(x,y),
 \begin{definition}
     We say $f(x+iy) = u(x,y) + iv(x,y)$ satisfies the Cauchy-Riemann equations at $z_0$ if 
     \[ u_x(z_0) = v_y(z_0) \qquad u_y(z_0) = -v_x(z_0)\]
-    If we use the notation $f_x = u_x + iv_x$ and $f_y = u_y + iv_y$, then these become
+    Note that, 
+    \[ f_x(z_0) = \lim_{\substack{x\to 0 \\ x \in \R}} \frac{f(z_0+x)-f(z_0)}{x} = u_x(z_0) +iv_x(z_0)\]
+    and similarly for $f_y$. Using this notation, these become
     \[ f_x(z_0) = - if_y(z_0) \]
+
 \end{definition}
 
 \begin{theorem}
-    If $f$ and $F$ are as above. Assume $z_0$ is an interior point of $D$. Then if $f$ is complex differentiable at $z_0$ if and only if $F$ is differentiable at $z_0$ and the Cauchy-Riemann equations hold. In the case $f'(z_0)$ exists, then, 
+    If $f(x+iy) = u(x,y) + iv(x,y)$ and $F$ is the companion function. Assume $z_0$ is an interior point of $D$. Then if $f$ is complex differentiable at $z_0$ if and only if $F$ is differentiable at $z_0$ and the Cauchy-Riemann equations hold at $z_0$. In the case $f'(z_0)$ exists, then, 
     \[ f'(z_0) = f_x(z_0) = -if_y(z_0)\]
 \end{theorem}
 
+\begin{proof}
+    Suppose $f'(z_0)$ does exist. Then, by definition,
+    \begin{align*}
+        f'(z_0) &= \lim_{x+iy \to 0} \frac{f(z_0)+x+iy - f(z_0)}{x+iy} \\
+        &= \lim_{x \to 0} \frac{f(z_0+x)}{x} = f_x(z_0)  = f_x(z_0)\\
+        &= \lim_{y \to 0} \frac{f(z_0 + iy)-f(z_0)}{iy} = -if_y(z_0)
+    \end{align*}
+    The rest is Exercise 2.2.5 on the homework. 
+\end{proof}
 
+\begin{example}
+    Consider $f(z) = \overline{z}$. Then, $u(x,y) = x$ and $v(x,y) = -y$. Then $u_x \equiv 1 \not \equiv -1 \equiv v_y$. Thus, this function is not complex differentiable anywhere. But $F(x,y) = (x,-y)$ is pretty nice!
+\end{example}
 
+\begin{theorem}[W 2.15]
+    Suppose $D$ is open and $F: D \subset \C \to \C$ has continuous first partials in $D$. If Cauchy-Riemann equations hold throughout $D$, then $f \in H(D)$.
+\end{theorem}
 
+\begin{proof}
+    We have to show that if you have continuous partials, then the companion function is differentiable. 
+\end{proof}
 
+\begin{corollary}
+    The complex exponential function $f(z) = \exp(z)$ is entire and $f'(z) = f(z)$ for all $z \in \C$. 
+\end{corollary}
 
+\begin{proof}
+    We have $f(x+iy) = e^x\cos(y) +ie^x\sin(y)$. Thus,
+    \begin{align*}
+        u_x(x,y) &= e^x\cos(y) = v_y \\
+        u_y(x,y) &= -e^x\sin(y) = -v_x
+    \end{align*}
+    Thus, the CR equations hold everywhere, i.e. $f$ is entire. Moreover, 
+    \[ f'(x+iy) = f_x(x+iy) = e^x\cos(y) + ie^x\sin(y) = f(x+iy)\]
+\end{proof}
 
+\begin{remark}
+    If $f(z) = \exp(z)$ then $f$ has derivatives of all orders. Thus, it has a Taylor series at $z_0 = 0$, 
+    \[ \sum_{n=0}^\infty \frac{z^n}{n!} \]
+\end{remark}
 
+\begin{remark}
+    A taylor series, generally, does not have to have anything with the original function. It could not converge outside of the center, it can converge but not agree with the original function except at the center, etc, in the real case. This won't happen to us in the complex world. 
+\end{remark}
+
+\begin{proposition}
+    Suppose $D$ is a domain and $f \in H(D)$. If $f'(z) = 0$ for all $z \in D$, then $z$ is constant. 
+\end{proposition}
+\begin{proof}
+    Let $f(z) = u(z) + iv(z)$. Since $f'(z) = f_x(z) = -if_y(z)$, this means, 
+    \[ u_x \equiv u_y \equiv v_x \equiv v_y \equiv 0\]
+    As the domain is connected, $u$ and $v$ are constant, hence $f$ is constant. 
+\end{proof}
+
+\begin{lemma}[2.19]
+    Suppose $f$ is a branch of $\log(z)$ on a domain $D$. Then $\Re(f(z)) = \ln(|z|)$, $f \in H(D)$, and $f'(z) = \frac{1}{z}$ for all $z \in D$. 
+\end{lemma}
+\begin{proof}
+    By definition, $f$ is continuous and $\exp(f(z)) = z$ for all $\forall z \in D$. Taking modulus on both sides, we get, 
+    \begin{align*}
+        &|z| = |\exp(f(z))| = \exp(\Re(f(z))) \\
+        \implies & \ln(|z|) = \Re(f(z))
+    \end{align*}
+    Now let $z_0 \in D$. We want to show, 
+    \[ \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z-z_0} = \frac{1}{z_0} \]
+    Let $w_0 = f(z_0)$ and fix $\epsilon > 0$. Since, 
+    \begin{align*}
+        \lim_{w \to w_0} \frac{e^w - e^{w_0}}{w-w_0} = e^{w_0} = z_0
+    \end{align*}
+    Since $e^{w_0} \neq 0$, then there exists $\delta' > 0$, such that,
+    \[ 0 \leq |w-w_0| < \delta' \implies e^w - e^{w_0} \neq 0 \]
+    and 
+    \begin{align*}
+        \left| \frac{w-w_0}{e^w - e^{w_0} - \frac{1}{z_0}}\right| < \epsilon
+    \end{align*}
+    Since $f$ is continuous, $\exists \delta > 0$ such that $0 \leq |z-z_0| < \delta$, we have,
+    \[ |f(w) -f(w_0)| < \delta' \]
+    Now if we write $w = f(z)$, then, 
+    \begin{align*}
+        \left| \frac{f(z)-f(z_0)}{z-z_0} - \frac{1}{z_0}\right| \\
+        &= \left| \frac{w-w_0}{e^w-e^{w_0}} - \frac{1}{z_0}\right| < \epsilon
+    \end{align*}
+    Since $0 \leq |w-w_0| < \delta'$, 
+    \[ f'(z_0) = \frac{1}{z_0}\]
+\end{proof}
+
+\begin{definition}
+    Suppose that $u: D \subseteq \R^2 \to \R$ has continous 2nd partials in $D$. Then $u$ is harmonic on $D$ if, 
+    \[\Delta u(x,y) = \frac{\d u}{\d x^2}(x,y) + \frac{\d u}{\d y^2}(x,y)  = 0\]
+    That is, 
+    \[ u_{xx}(x,y) + u_{yy}(x,y) = 0\]
+\end{definition}
+
+\begin{proposition}
+    Suppose $D$ is a domain and that $f(x+iy) = u(x,y) + iv(x,y)$ is in $H(D)$. If $u$ and $V$ have continuous 2nd partials, then $u$ and $v$ are harmonic in $D$. 
+\end{proposition}
+
+\begin{proof}
+    We can use Clairaut's Theorem. 
+    \begin{align*}
+        u_{xx} = \frac{\d}{\d x} u_x = \frac{\d}{\d x} v_y = \frac{\d}{\d y} v_x = -\frac{\d}{\d y} u_y = u_{yy}
+    \end{align*}
+    Note that $v = \Re(-if)$ thus this proof works for the imaginary part too. 
+\end{proof}
+
+\begin{definition}
+    If $u$ is harmonic in $D$, then we call $v$ a harmonic conjugate in $D$ if 
+    \[ f(z) = u(z) + iv(z)\]
+    is holomorphic in $D$. 
+\end{definition}
+
+\begin{lemma}
+    Suppose that $v$ and $w$ are harmonic conjugates for $u$ in a domain $D$. Then $\exists r \in \R$ such that, 
+    \[ w(z) = v(z) + r \qquad \forall z \in D\] 
+    By assumption, $f = u+iv$ and $g = u+iw$ are in $H(D)$. Thus, 
+    \[ h = -i(f-g) \in H(D)\]
+    but this is real-valued, hence constant. 
+\end{lemma}
+
+\begin{exercise}{2.2.12}
+    Show that, 
+    \[ u(z) = \ln(|z|) = \frac{1}{z} \ln(x^2+y^2)\]
+    is harmonic in $\C \setminus \{0\}$. But $u$ does not have a harmonic conjugate in $\C \setminus \{0\}$. 
+\end{exercise}
+\begin{corollary}
+    There is no branch of the logarithm in $\C \setminus \{0\}$. 
+\end{corollary}
+\begin{proof}[Sketch.]
+    We have $\Log(z) = \ln(|z|) + i \Arg(z)$ is holomorphic in $D^* = \C \setminus (-\infty, 0]$. We can take another branch, 
+    \[ \LL_0(z) = \ln(|z|) + i\arg_0(z)\]
+    where $\arg_0 \in (0, 2\pi]$ is holomorphic on $D_0^* = \C \setminus [0, \infty)$. So this is harmonic evertywhere \todo{Complete this}
+
+\end{proof}
 
 
 \end{document}

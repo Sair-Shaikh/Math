@@ -8,7 +8,7 @@
 
 \input{title}
 
-\begin{problem}{1.4.1.}
+\begin{problem}{1.4.1}
     Show the following properties for the complex exponential: 
     \begin{enumerate}
         \item $e^{z+2\pi i} = e^z$
@@ -52,16 +52,16 @@
         Finally, (3) follows from (2) and (4) together, i.e.
         \[ \exp(z-w) = \exp(z)\exp(-w) = \frac{\exp(z)}{\exp(w)}\]
 \end{solution}
-\newpage 
+\newpage
 
-\begin{problem}{1.4.8(a).}
+\begin{problem}{1.4.8(a)}
     Use $(1.6)$, De Moivre's Formula, and the geometric sum $1+z + \cdots z^n = \frac{z^{n+1}-1}{z-1}$ to prove the following assuming $0 < \theta < 2\pi$. 
     \[ 1 + \cos(\theta) + \cdots + \cos(n\theta) = \frac{1}{2} + \frac{\sin((n+1/2)\theta)}{2\sin(\theta/2)}\]
 \end{problem}
 \begin{solution}     
     Consider instead the sum, 
     \begin{align*}
-        1+\cos(\theta) + \cdots + \cos(n\theta) + i(\sin(\theta) + \cdots + \sin(n\theta)) &= \sum_{k = 0}^n \cos(k\theta) + i\sin(k\theta) \\
+        1+\cos(\theta) + \cdots + \cos(n\theta) + i(0+\sin(\theta) + \cdots + \sin(n\theta)) &= \sum_{k = 0}^n \cos(k\theta) + i\sin(k\theta)
     \end{align*}
     By De Moivre's formula, we get:
     \begin{align*}
@@ -90,7 +90,7 @@
 \end{solution}
 \newpage 
 
-\begin{problem}{1.4.9.}
+\begin{problem}{1.4.9}
     Observe that the $n$th roots of $1$ are given by $\{1, \omega, \cdots, \omega^{n-1}\}$, where $\omega = e^{2\pi i/n}$. Assuming $n > 1$, show that $1+\omega+\cdots+\omega^{n-1} = 0$. Prove a similar result for the $n$th-roots of $-1$. 
 \end{problem}
 \begin{solution}
@@ -106,17 +106,19 @@
     \[ (\eta^k)^n = e^{nk\pi i/n} = e^{ik\pi} = \cos(k\pi) + i\sin(k\pi) = -1\]
     Thus, the set $\{\eta^k : 0 < k < 2n, k \text{ odd}\}$ is a set of $n$th roots of $-1$. It is not difficult to see these are all distinct by using the definition of the complex exponential and noticing that no two values make both the real and imaginary components equal simultaneously. Thus, the cardinality of the set is exactly $n$. By the fundamental theorem of algebra, these are all the $n$th roots of $-1$. 
 
-    Thus, we next compute the sum similarly as above: 
+    Thus, we next compute the sum similarly using the geometric series formula, 
     \begin{align*}
-        \eta + \eta^3 + \cdots + \eta^{2n-1} &= \frac{\eta^{2n}-1}{\eta-1} \\
-        &= \frac{e^{2n\pi/n}-1}{e^{\pi/n}-1} \\
+        \eta + \eta^3 + \cdots + \eta^{2n-1}
+        &= \eta\left(1+\eta^2+\eta^4+\cdots+\eta^{2n-2}\right) \\
+        &= \eta \cdot \frac{\eta^{2n}-1}{\eta^2-1} \\
+        &= \eta \cdot \frac{e^{2\pi i}-1}{e^{2\pi i/n}-1} \\
         &= 0
     \end{align*}
     And we win. 
 \end{solution}
 \newpage
 
-\begin{problem}{1.4.13.}
+\begin{problem}{1.4.13}
     Suppose that $p(z) = a_nz^n + \cdots + a_1z + a_0$ has real coefficients. 
     \begin{enumerate}
         \item Show that if $z_0$ is a root of $p$, then either $z_0$ is real or $\overline{z}_0$ is also a root of $p$. 
@@ -142,11 +144,11 @@
     \[ a_n\overline{z_0}^n + \cdots + a_0 = 0 \]
     Hence, $\overline{z_0}$ is also a root of $p$.
 
-    For (2), first, since $a_n \neq 0$, we can write $p(z) = a_nq(z)$ with $q(z) = z^n + \frac{a_{n-1}}{a_n} + \cdots + \frac{a_0}{a_n}$. Using the Fundamental Theorem of Algebra, we can factor $q$ completely into linear factors. 
+    For (2), first, since $a_n \neq 0$, we can write $p(z) = a_nq(z)$ with $q(z) = z^n + \frac{a_{n-1}}{a_n}z^{n-1} + \cdots + \frac{a_0}{a_n}$. Using the Fundamental Theorem of Algebra, we can factor $q$ completely into linear factors. 
     \[ q(z) = (z-z_0)(z-z_1)\cdots (z-z_n)\]
     where $z_i$ are the roots of $q$. If $z_i = x + iy $ and $z_j = x -iy$ are a conjugate pair, the corresponding linear factors can be multiplied together to yield a quadratic with real coefficients, as follows, 
     \begin{align*}
-        (z-z_i)(z-\overline{z_1}) &= z^2 + (z_i+\overline{z_i})z + z_i\overline{z_i} \\
+        (z-z_i)(z-\overline{z_i}) &= z^2 + (z_i+\overline{z_i})z + z_i\overline{z_i} \\
         &= z^2 + 2xz + (x^2+y^2) \\
         &= z^2 + 2\Re(z) + |z|^2 
     \end{align*}
@@ -164,7 +166,8 @@
         z^2: 2+ab &= 1 \implies ab = -1 \\
         z: a+b  &= 1
     \end{align*}
-    Solving this system, we get $a = \frac{1+\sqrt{5}}{2}$ and $b = \frac{1-\sqrt{5}}{2}$. 
+    Solving this system, we get $a = \frac{1+\sqrt{5}}{2}$ and $b = \frac{1-\sqrt{5}}{2}$. Thus, 
+    \[ z^4 + z^3 + z^2 + z + 1 = \left(z^2 + \frac{1+\sqrt{5}}{2}z + 1\right)\left(z^2 + \frac{1-\sqrt{5}}{2}z + 1\right)\]
 \end{solution}
 \newpage
 
@@ -174,9 +177,7 @@
 \begin{solution}
     We use the ratio test. Notice that, 
     \[ L = \lim_{n\to \infty} \left|\frac{ca^{n+1}}{ca^{n}}\right| = \left|a\right| \]
-    Thus, by the ratio test, if $|a| < 1$, then the series converges absolutely and if $|a| > 1$, then it diverges. 
-
-    If $|a| = 1$, \todo{Finish this}
+    Thus, by the ratio test, if $|a| < 1$, then the series converges absolutely and if $|a| > 1$, then it diverges. If $|a| = 1$, then the magnitudes of the terms in the summation do not go to zero, thus the series does not converge. 
 
     Next, we want to show that for $|a| < 1$, the geometric series converges to $\frac{c}{1-a}$. Equivalently, we show that, 
     \[ (1-a)\sum_{n=0}^\infty ca^n \to c \]
@@ -198,7 +199,7 @@
     Prove Dini's theorem: Suppose that $(h_n)$ is a sequence of continuous non-negative functions on a compact set $K$ converging monotonically to zero on $K$. Then $h_n \searrow 0$ uniformly on $K$. 
 \end{problem}
 \begin{solution}
-    Let $\epsilon > 0$. Note that $I_\epsilon := (-\epsilon, \epsilon)$ is open in $\R$. Define $E_n$ to be $h_n^{-1}(I_{\epsilon})$. Since $h_n$ is continuous $E_n$ is open for all $n$. 
+    Let $\epsilon > 0$. Note that $I_\epsilon := (-\epsilon, \epsilon)$ is open in $\R$. Define $E_n$ to be $h_n^{-1}(I_{\epsilon})$. Since $h_n$ is continuous, $E_n$ is open for all $n$. 
     
     Next, we claim that $E_a \subseteq E_b$ if $a < b$. Let $x \in E_a$. Then, $|h_a(x)| < \epsilon$. As $(h_n)$ converge (point-wise) monotonically to $0$, we have $h_b(x) < h_a(x)$. Since these functions are non-negative, we have $|h_b(x)| < |h_a(x)| < \epsilon$. Thus, $x \in h_b^{-1}(I_\epsilon) = E_b$. Thus, $E_a \subseteq E_b$.   
     
@@ -225,31 +226,84 @@ for all \( z \in A_r(z_0) \).
 Show also that the coefficients \( b_j \) appearing in the first equation are uniquely determined by \( g \).
 \end{problem}
 \begin{solution}
-    
+    Without loss of generality, we can change coordinates to take $z_0 = 0$. We can consider the function $h(z) := g\left(\frac{1}{z}\right)$, 
+    \[ h(z) = \sum_{j=1}^\infty b_jz^j\]
+    Note that, we also have $g(z) = h\left(\frac{1}{z}\right)$. Thus, $h(z)$ converges 
+    for $\frac{1}{z} \in A_r(0)$, i.e. for $z \in D_{\frac{1}{r}}(0)$. Thus, we can use Theorem 2.4 on $h$ to get that $h$ and $h'$ are holomorphic on $D_{\frac{1}{r}}(0)$ and that
+    \[ h'(u) = \sum_{j=1}^\infty jb_jz^{j-1}\]
+    Then, using the chain rule (which we proved via intimidation), we calculate, 
+    \begin{align*}
+        g'(z) &= \left(h\left(\frac{1}{z}\right)\right)' \\
+        &= h'\left(\frac{1}{z}\right) \cdot \frac{-1}{z^2} \\
+        &= \sum_{j=1}^\infty \frac{jb_j}{z^{j-1}} \cdot \frac{-1}{z^2} \\
+        &= \sum_{j=1}^\infty -\frac{jb_j}{z^{j+1}}
+    \end{align*}
+    as required. Moreover, as $h$ is holomorphic on $D_{\frac{1}{r}}(0)$, $g$ is holomorphic on $A_r(0)$. Since $\lim_{j \to \infty} j^{1/j} = 1$, $g'$ has the same domain of convergence at $g$ by the root test. Moreover, by corrollary 2.7, the coefficients $b_j$ are uniquely determined by $h$, which is uniquely determined by $g$. 
 \end{solution}
 \newpage 
 \begin{problem}{2.2.3}
     Suppose that $D$ is a domain and $f \in H(D)$. Show that if $f$ is real-valued in $D$, then $f$ is constant. 
 \end{problem}
 \begin{solution}
-    
+    Since $f$ is real-valued, we can write $f(x+iy) = u(x,y) + iv(x,y)$ with $v \equiv 0$ on $D$. Let $z_0 = x_0 + iy_0 \in D$ be an arbitrary (interior) point. Since $f$ is holomorphic, by Theorem 2.4, it satisfies the Cauchy-Riemann equations at $z_0$. In particular, since $v \equiv 0$ on $D$, this implies, 
+    \[ u_x(x_0, y_0) = u_y(x_0, y_0) = 0\] 
+    Since $z_0$ was arbritrary, the partials $u_x$ and $u_y$ are identically zero on $D$. Since $D$ is a domain, hence open connected, this implies that $f$ is constant.
 \end{solution}
 \newpage 
 
 \begin{problem}{2.2.5}
     Let \( f : D \subset \mathbb{C} \to \mathbb{C} \) be a function of the form \( f(z) = u(z) + i v(z) \), and let \( F : D \subset \mathbb{R}^2 \to \mathbb{R}^2 \) be the companion function \( F(x,y) = (u(x,y), v(x,y)) \). Let \( z_0 = x_0 + i y_0 \in D \). Show that \( f'(z_0) \) exists if and only if the Cauchy-Riemann equations hold at \( z_0 \) and \( F \) is differentiable at \( (x_0, y_0) \).
-    
-    % (Hint: if we let \( z = h + i k \) and if \( T \) is given by the matrix
-    % \[ [T] =  \begin{pmatrix}
-    %     u_x(x_0,y_0) & -v_x(x_0,y_0) \\
-    %     v_x(x_0,y_0) & u_x(x_0,y_0)
-    % \end{pmatrix}, \]
-    % then
-    % \[ \|F(x_0 + h, y_0 + k) - F(x_0, y_0) - T(h,k)\| = |f(z + z_0) - f(z_0) - w z| \]
-    % where \( w = u_x(x_0,y_0) + i v_x(x_0,y_0) = f_x(z_0) \). Then remember Ex 2.2.1.)
 \end{problem}
 \begin{solution}
-    
+    First, suppose that $f'(z_0)$ exists. Then, by definition, 
+    \begin{align*}
+        f'(z_0) &= \lim_{x+iy\to 0} \frac{f(z_0+x+iy) -f(z_0)}{x+iy}
+    \end{align*}
+    Taking this limit in two different directions, 
+    \begin{align*}
+        f'(z_0) &= \lim_{x \to 0} \frac{f(z_0+x)-f(z_0)}{x} = f_x(z_0) \\
+        &= \lim_{iy \to 0} \frac{f(z+0+iy)-f(z_0)}{iy} = -if_y(z_0)
+    \end{align*}
+    Since these must agree, the Cauchy-Riemann equations are satisfied. 
+    Furthermore, the limit existing implies that, 
+    \begin{align*}
+        \lim_{x+iy \to 0} \frac{1}{||x+iy||} ||f(z_0+x+iy)-f(z_0)-f'(z_0)(x+iy)|| \to 0
+    \end{align*}
+    We will translate this from $\C$ to $\R^2$. Note that multiplication by any complex scalar $z$, i.e. $m_z: z' \mapsto zz'$ is an $\R$-linear map from $\R^2 \to \R^2$. Let $T$ be the matrix of the $\R$-linear map from $\R^2 \to \R^2$ that is the companion to multiplying by $f'(z_0)$. Then we have, 
+    \begin{align*}
+        \lim_{(x,y) \to 0} \frac{1}{||x^2+y^2||} ||F(x_0+x, y_0+y)-F(x_0, y_0)-T(x,y)|| \to 0
+    \end{align*} 
+    Thus, the companion function $F$ is differentiable at $(x_0, y_0)$. 
+
+    Conversely, assume that $F: D \subseteq \R^2 \to \R^2$ is differentiable at $(x_0, y_0)$ and the Cauchy-Riemann equations hold at $z_0 = x_0 + iy_0$. Then, there exists linear map $T: \R^2 \to \R^2$ such that,
+    \[ \lim_{(x,y) \to (0,0)} \frac{1}{||x^2+y^2||} ||F(x+x_0, y+y_0) - F(x+x_0, y+y_0) - T(x,y)|| = 0 \]
+    Moreover, $T$ is given in the standard basis as,
+    \[ [T]_\sigma = \begin{pmatrix}
+        u_x(x_0, y_0) & u_y(x_0, y_0) \\
+        v_x(x_0, y_0) & v_y(x_0, y_0) 
+    \end{pmatrix}\]
+    Using the Cauchy-Riemann relations, we may re-write $T$ using just derivatives in $x$, i.e. 
+    \[ [T]_\sigma = \begin{pmatrix}
+        u_x(x_0, y_0) & -v_x(x_0, y_0) \\
+        v_x(x_0, y_0) & u_x(x_0, y_0) 
+    \end{pmatrix}\]
+    Expanding and reinterpreting $\R^2$ as $\C$, we get, 
+    \begin{align*}
+        0 &= \lim_{(x,y) \to (0,0)} \frac{1}{x^2+y^2} ||F(x+x_0, y+y_0) - F(x_0, y_0) - T(x,y)||  \\
+        &= \lim_{(x,y) \to (0,0)} \frac{1}{x^2+y^2} \left|\left|F(x+x_0, y+y_0) - F(x_0, y_0) - \begin{pmatrix}
+            u_x(x_0, y_0)x-v_x(x_0, y_0)y \\
+            v_x(x_0, y_0)x+u_x(x_0, y_0)y
+        \end{pmatrix} \right|\right| \\
+        &= \lim_{x+iy \to 0} \frac{1}{||x+iy||} || f(z_0+x+iy) - f(z_0) - (u_x(z_0) + iv_x(z_0))(x+iy) || 
+    \end{align*}
+    Using the multiplicativity of the norm, we get, 
+    \begin{align*}
+        0 &= \lim_{x+iy \to 0} \left|\left| \frac{f(z_0+x+iy) - f(z_0) - (u_x(z_0) + iv_x(z_0))(x+iy)}{x+iy}\right|\right| \\
+        &= \lim_{x+iy \to 0} \left|\left| \frac{f(z_0+x+iy) - f(z_0)}{x+iy} - (u_x(z_0) + iv_x(z_0))\right|\right|
+    \end{align*}
+    Taking $z = x+iy$, this implies that, 
+    \[ \lim_{z \to 0 } \frac{f(z_0+z) - f(z_0)}{z} = u_x(z_0) + iv_x(z_0) = f_x(z_0) \]
+    Thus, $f'(z_0)$ exists. 
 \end{solution}
 
 \end{document}
