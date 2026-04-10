@@ -3,9 +3,7 @@
 
 \include{../style}
 
-
 \begin{document}
-
 
 \input{title}
 
@@ -62,9 +60,9 @@ Now we can define what a toric variety is.
 
 We now discuss what the action of the torus means. Let $T = (k^\times)$. Then $T$ is also a group with multiplication $(s,t) \mapsto st$ and inverse $t \mapsto t^{-1}$.
 
-\begin{example*}
+\begin{example}
     Let $k^\times \subset \A^1$. Then, $k^\times$ acts on itself. We extend this by letting the action on $0$ be such that $t \times 0 = 0$ for all $t \in k^\times$. 
-\end{example*}
+\end{example}
 
 Now we make all of this precise. We have the following definition:
 \begin{definition}
@@ -73,9 +71,9 @@ Now we make all of this precise. We have the following definition:
     that are regular and satisfy the usual group axioms.
 \end{definition}
 
-\begin{example*}
+\begin{example}
     $G = (k^\times)^n$ with coordinate with multiplication and inverses. 
-\end{example*}
+\end{example}
 
 \begin{definition}
     A split torus over a field $k$ is algebraic group $G$ isomorphisc over $k$ to $(k^\times)^n$ for some $n$. 
@@ -91,7 +89,7 @@ Now we make all of this precise. We have the following definition:
 
 \begin{definition}
     An affine toric variety is an affine algebraic variety $X$ together with a torus $T \subseteq X$ that is open and dense together with an algebraic action: 
-    \[ \xymatrix{T \times X \ar[r] & T \\ T \times T \ar[u] \ar[r] & T \ar[u] } \]
+    \[ \xymatrix{ T \times X \ar[r] & T \\ T \times T \ar[u] \ar[r] & T \ar[u] } \]
 \end{definition}
 
 \begin{definition}
@@ -103,7 +101,7 @@ Now we make all of this precise. We have the following definition:
     \[ \Phi^*: k[Y] \to k[X]\]
 \end{lemma}
 
-\begin{example*}[Toric Varieties]
+\begin{example}[Toric Varieties]
     .
     \begin{enumerate}
         \item $X = (k^\times)^n$
@@ -111,7 +109,7 @@ Now we make all of this precise. We have the following definition:
         \item $X = \A^n$. Extend entry-wise. 
         \item $X = \V(x^3-y^2)$
     \end{enumerate}
-\end{example*}
+\end{example}
 
 
 \section{Intro to Algebraic Geometry:}
@@ -152,12 +150,12 @@ Given an ideal $I \subseteq k[x_1, \cdots, x_n]$. We define,
 Warning: 
 \[ \I(\V(I)) \neq I\]
 
-\begin{example*}
+\begin{example}
     \begin{enumerate}
         \item $k = \R$. Let $I = \langle x^2 + 1\rangle$. Then $\V(I) = \emptyset$ and $\I(\emptyset) = \R[x]$. 
         \item $k = \overline{k}$ and $I = \langle x^2 \rangle \subseteq \A^1$. $\V(I) = \{0\}$ and $\I(\{0\}) = \langle x \rangle$. 
     \end{enumerate}    
-\end{example*}
+\end{example}
 
 \begin{proposition}
     If $k = \overline k$ and $I \subseteq k[x_1, \cdots, x_n]$ is an ideal 
@@ -183,17 +181,17 @@ Now we wanna define polynomial functions on algebraic sets. We do this as follow
 \end{definition}
 
 The choice of lift is not unique. 
-\begin{example*}
+\begin{example}
     Let $V = \V(y-x^2)$. Let $F(x,y) = y$ and $G(x,y) = 2y-x^2$. Restricted to $V$ they are the same function as $2y-x^2 = y+(y-x^2) = y$. 
-\end{example*}
+\end{example}
 
-\begin{example*}
+\begin{example}
     Consider $F(x,y) = e^{x^2+y^2}$ and $V = \V(x^2+y^2-1)$. Then $F|_V(x,y) = e$, which is a polynomial. 
-\end{example*}
+\end{example}
 
-\begin{example*}
+\begin{example}
     Consider $V = \V(xy-1) \subseteq \A^2$. Consider $F(x,y) = \frac{1}{x}$. This is not a function on $\A^2$ but it is a function on $V$. Moreover, it is a polynomial function because $\frac{1}{x} = y$ on $V$. 
-\end{example*}
+\end{example}
 
 \begin{definition}
     The coordinate ring of an algebraic set $V \subseteq \A^n$, $k[V]$ is the set of polynomials functions on $V$ with pointwise multiplication and addition. 
@@ -291,7 +289,7 @@ Next, we define the homogeneous coordinates.
     are all $0$. 
 \end{definition}
 
-\begin{example*}
+\begin{example}
     Consider $\P^1_\R$. We drew the picture where we picked the reference line $x_0 = 1$ and mapped all lines to the point on this line, i.e. a line goes to $(1, \lambda)$ where $\lambda$ is its slope. We got a map, 
     \begin{align*}
         \P^1_R &\to \R \cup \{\infty\} 
@@ -301,7 +299,7 @@ Next, we define the homogeneous coordinates.
         \end{cases}
     \end{align*}
     Thus, we got $\P^1$ as a circle. Then, we did the same thing for $\P^2$ showing $\P^2 \cong \R^2 \cup \P^1$. 
-\end{example*}
+\end{example}
 
 \begin{lemma}
     For $i = 0, \cdots, n$, 
@@ -314,9 +312,9 @@ Next, we define the homogeneous coordinates.
     \end{enumerate}
 \end{lemma}
 
-\begin{example*}
+\begin{example}
     Explicltly showed that the functions compose to a rational function. 
-\end{example*}
+\end{example}
 
 \begin{theorem}[Fact.]
     If $k = \R, \C$ then $\P^n_\R$ or $\P^n_\C$ are compact $\R$ or $\C$ manifolds. 
@@ -329,9 +327,9 @@ We cannot define the algebraic sets for $\P^n$ using global functions. For insta
 \end{definition}
 
 Now, we are defining functions. 
-\begin{example*}
+\begin{example}
     $\P^1_\C \to \C$ given by $[x: y] \mapsto x$ is homogenous but is not well-defined. 
-\end{example*}
+\end{example}
 
 \begin{definition}
     A projective algberaic set is a subset $V \subset \P^n_k$ of the form, 
@@ -376,7 +374,7 @@ We define the Zariski topology the same way.
     An isomorphism is a function with an inverse function. 
 \end{definition}
 
-\begin{example*}
+\begin{example}
     Let $C = \V(zx-y^2)$ There is map $F: C \to \P^1$ defined by,
     \[ [x:y:z ] \mapsto \begin{cases}
         [x:y] \qquad x \neq 0 \\
@@ -400,7 +398,7 @@ We define the Zariski topology the same way.
     However, note that: 
     \[ k[\P^1] = k[s, t] \not \cong k[C] = k[x,y,z]/\langle xz -y^2\rangle\]
     The projective coordinate ring depends on the embedding!
-\end{example*}
+\end{example}
 
 
 Recall, a locally closed set in a topological space $X$ is a closed subset of an open set. That is, it is given as $U \cap Z$ for $U$ open and $Z$ closed. 
@@ -409,30 +407,30 @@ Recall, a locally closed set in a topological space $X$ is a closed subset of an
     A quasiprojective variety is a locally closed subset of $\P^n_k$. 
 \end{definition}
 
-\begin{example*}
+\begin{example}
     The following are quasiprojective varieties.
     \begin{enumerate}
         \item Open subsets of $\P^n_k$. 
         \item Projective algberaic sets. 
         \item Algebraic sets. (Some things need to be shown, we show them next.)
     \end{enumerate}
-\end{example*}
+\end{example}
 
 Take $V \subseteq \A^n_k$ and $V = \V(f_1, \cdots, f_t)$. Define, 
 \[ f_i^h = x_0^{\deg(f_i)} f_i\left(\frac{x_1}{x_0}, \cdots, \frac{x_n}{x_0}\right)\]
 Then $f^h(x_0, \cdots, x_n) = 0 \iff f_i(x_1, \cdots, x_n) = 0$.
 
 
-\begin{example*}
+\begin{example}
     $(k^\times)^n$ is quasiprojective. It is $\A^n \setminus \V(x_1, \cdots, x_n)$. 
-\end{example*}
+\end{example}
 
 \begin{definition}
     A function $\Phi: V \subset \P^n \to W \subset \P^m$ is a morphism of quasiprojective varieties if and only if $\forall p \in V$ there exists $F_1, \cdots, F_m$ homg. of degree $d$ in $k[x_0, \cdots, x_n]$ such that,
     \[ \Phi|_U: x \mapsto [F_0(x), \cdots, F_m(x)]\] 
 \end{definition}
 
-\begin{example*}
+\begin{example}
     Take the sets $V = \V(xy-1)$ (closed in affine space) and $W = \A^1 \setminus \{0\}$ (open in affine space). First, we can homogenize to consider these in projective space. That is these live in $\P^2$ and $\P^1$ and are quasiprojective varieties. 
     \begin{align*}
         \xymatrix{ 
@@ -442,7 +440,7 @@ Then $f^h(x_0, \cdots, x_n) = 0 \iff f_i(x_1, \cdots, x_n) = 0$.
     \end{align*}
     \todo{Complete this.}
 
-\end{example*}
+\end{example}
 
 \begin{definition}
     A quasiprojective variety $V \subseteq \P^m_k$ is affine if and only if there's some algebraic set $W \subseteq \A^n_k$ such that $V \cong W$ as quasiprojective varieties. 
@@ -491,9 +489,9 @@ If $V \subseteq \A_k^n$ and $W \subseteq \A^n_k$. We need to show,
     \[ \OO_V(V) \cong k[V] \]
 \end{theorem}
 
-\begin{example*}
+\begin{example}
     $f: U = \A^2 \setminus \V(x) \to k$ given by $(x,y) \to \frac{y}{x}$ is a regular function. 
-\end{example*}
+\end{example}
 
 \begin{definition}
     If $U \subseteq V$ is a quasiprojective variety with a function $f: U \to k$ then $f$ is regular at a point $p \in U$ if $p \in V' \subseteq V$ such that $f|_{V'}$ is regular on $V'$ and $V'$ affine. 
@@ -759,5 +757,257 @@ Where are we heading with this? Say we have $X$ affine with $T \subset X$ a toru
     \end{align*}
     Argument similar to before show this is an isomorphism and $k[x_1^\pm, \cdots, x_n^\pm] \cong k[T]$. 
 \end{proof}
+
+
+Start of class 4/9. 
+
+Standing assumption $k = \overline{k}$. 
+
+Recall, a torus is a group variety $T$ such that, 
+\[ T \cong \G_m^n = (k^\times)^n\]
+
+There can be more than one group structures on a variety. 
+\begin{example}
+    $X = \G_m \times \A^1$. First consider the group action, 
+    \[ (t, x) \cdot (s, y) = (ts, x+y) \]
+    Secondly, the group structure, 
+    \[ (t, x) \star (s,y) = (ts, x+ty) \]
+    Hopefully, these are $2$ distinct group structures on a variety. 
+\end{example}
+It isn't necessarily true that two group varieties being abstractly isomorphic as varieties and as groups means they are isomorphic as group varieties. 
+
+
+Further, recall, the character lattice, 
+\[ M = X^\times(T) = \Hom_{GV}(T, \G_m)\]
+and that, 
+\[ k[T] \cong k[M] \cong \bigoplus_{m \in M} k\chi^m\]
+
+Now, we do new stuff. 
+\begin{definition}
+    A one parameter subgroup of a group variety $G$ is a group variety homomorphism, 
+    \[ \lambda: \G_m \to G\]
+    The set of these is $\Hom_{GV}(\G_m, G)$. 
+\end{definition}
+
+\begin{lemma}
+    \[ \Hom_{GV}(\G_m, \G_m^n) \cong \Z^n \]
+\end{lemma}
+\begin{proof}
+    Every map of standard tori is monomial. We know that $\lambda: \G_m \to \G_m^n$ is the same as giving $\lambda^\#: k[x_1^\pm, \cdots, x_n^\pm] \to k[t^\pm]$ and we have complete freedom for where every variable goes.     
+\end{proof}
+
+We define the following notation. The co-character lattice of $T$ is, 
+\[ N := X_*(T) := \Hom_{GV}(\G_m, T)\]
+and we have $\rk(N) = \dim(X)$. 
+
+For $u \in N$, we normally write, 
+\[ \lambda_u: \G_m \to T\]
+for the corresponding $m$. 
+
+\begin{example}
+    Consider the torus $X = \G_m^2$. Take, $u_1 = (1, -1)$ and $u_2 = (0, 1)$, and $u_3 = (-2, -2)$, $u_4 = (0, 0)$. These correspond to maps $\G_m \to \G_m^2$. These maps are, 
+    \[ u_1(t) = (t, t^{-1}), \qquad u_2(t) = (t^0, t^1), \qquad u_3(t) = (t^{-2}, t^{-2}), \qquad u_4(t) = (0, 0)\]
+    These can be drawn on the plane. We should also consider what point is the limit as $t \to 0$. 
+\end{example}
+
+Fix $m \in M$ and $u \in N$. We take $\chi^m: T \to \G_m$ and $\lambda_u: \G_m \to T$. Now we have, 
+\[ \G_m \to^{\lambda_u} T \to^{\chi^m} \G_m\]
+The composition is $t \mapsto t^a$ for some unique $\alpha$ in $\Z$. This defines a pairing.
+ 
+\begin{definition}
+    For a torus $T$, there is a pairing, 
+    \[ \langle, \rangle: M \times N \to \Z \]
+    By $\langle m, n \rangle = a \in \Z$ such that $\chi^m \circ \lambda_u = t^a$. 
+\end{definition}
+
+\begin{example}
+    Let $T = \G_m^n$. Let $M = \Z^n$ and $N = \Z^n$. Then, a choice of $m$ and $n$ is the choice of a tuples $(m_i)$ and $(u_i)$ in $\Z^n$. Then, 
+    \[ \lambda_u: t \mapsto (t^{u_i})\]
+    and
+    \[ \chi^m(x_1, \cdots, x_n) \to \prod_i x_i^{m_i}\]
+    Overall, we get, 
+    \[ (t^{u_1}, \cdots, t^{u_n}) \mapsto t^{\langle u, m \rangle}\]
+    That is, 
+    \[ \langle m, u \rangle = m \cdot u\]
+\end{example}
+
+\begin{definition}
+    The pairing
+    \[ \langle \cdot, \cdot \rangle : M \times N \to \Z\]
+    is perfect if and only if $\forall m \neq 0 \in M$, there exists $n \in N$ such that $\langle m, n \rangle \neq 0$. Equivalently, it induces an isomorphism, 
+    \[ \Hom_\Z(M, \Z) \cong N \qquad \Hom_\Z(N, \Z) \cong M\]
+\end{definition}
+
+\begin{theorem}
+    If $T$ is a torus, the pairing $\langle \cdot , \cdot \rangle: M \times N \to \Z$ is perfect. 
+\end{theorem}
+
+Thus, we have the following maps, 
+\begin{align*}
+    T &\mapsto X^*(T) \\
+    \{k-\text{tori}\} &\mapsto \{\text{lattice}\} \\
+    T &\mapsto X_*(T)
+\end{align*}
+We want a map, 
+\[ \{\text{lattices}\} \mapsto \{\text{tori}\}\]
+
+We create this as follows. 
+
+Let $M = \Hom_\Z(N, \Z)$. $k[M]$ is a finitely generateed reduced $k$-algebra. Thus, $T_N$ is the torus that corresponds to $k[M]$. 
+
+\begin{theorem}
+    Let $N$ and $N'$ be lattices. If $\phi: N \to N'$ is a homomorphism, there is a torus homomorphism $f_\phi: T_N \to T_{N'}$. This is given on coordinate rings by
+    \begin{align*}
+        f_\phi^\#: k[T_{N'}] &\to k[T_N] \\
+        \chi^{m'} &\mapsto  \chi^{\phi^\vee(m')}
+    \end{align*}
+    where $\phi^\vee: M' \to M$ with $M'$ dual of $N'$ and $M$ dual to $N$. 
+
+    Moreover, all morphisms $T_N \to T_{N'}$ arise this way. That is, 
+    \[ \Hom_{GV}(T_N, T_{N'}) \cong \Hom_\Z(N, N')) \cong \Hom_\Z(M', M) \]
+\end{theorem}
+
+\begin{theorem}
+    There is an equivalence of categories between $k$-tori and lattices given by co-characters $X_*(T)$ and $T \mapsto T_N$. Together these functors give, 
+    \begin{align*}
+        &\{\text{lattices}\} \to^\vee \{\text{lattices}\} \to^{k[-]} k-\text{alg} \to^{\Spec} \text{tori} \\
+        &N \mapsto M \mapsto k[M] \mapsto \text{tori}
+    \end{align*}
+\end{theorem}
+
+\begin{example}
+    Suppose we have: column $\phi = (2,1)$ from $\Z \to \Z^2$. The dual of this is $\Z^2 \to \Z$ given by row $\phi^\vee = (2, 1)$. Then, we get, 
+    \begin{align*}
+        k[\G_m^2] &\to k[\G_m] \\
+        x &\mapsto t^2 \\
+        y &\mapsto t
+    \end{align*}
+    and 
+    \[ \G_m \to \G_m^2, \qquad t \mapsto (t^2, t) \]
+\end{example}
+
+\begin{proposition}[Smith Normal Form for Tori]
+    If $\phi: N \to N'$ be a lattice map and $f_\phi: T_N \to T_{N'}$ be the induced map on tori. Then there exists bases $\{e_i\}$ and $\{e_i'\}$ of $N$ and $N'$ respectively such that 
+    \begin{align*}
+        \phi(e_i) = \begin{cases}
+            d_ie_i' \qquad 1 \leq i \leq r \\
+            0 \qquad \text{otherwise}
+        \end{cases}
+    \end{align*}
+    where $r = \rk(\phi)$, $d_i \in \Z$ and $d_i | d_{i+1}$. 
+
+    Thus, up to automorphisms of the tori, we know that, 
+    \[ f_\phi(t_1, \cdots, t_n) = (t_1^{d_1}, \cdots, t_r^{d_r}, 1, \cdots, 1)\]
+\end{proposition}
+
+\begin{corollary}
+    If $\phi: T \to T'$ is a map of tori then $\img(\phi) \subset T'$ is a subtori. 
+\end{corollary}
+
+\begin{proof}
+    Up to automorphism, $\img(\phi) \cong \{(t_1, \cdots, t_r, 1, \cdots, 1) | t_i \in \G_m\}$. We can take $d$th roots to ignore the $d_i$. 
+\end{proof}
+
+\begin{exercise}
+    Consider $\Z^3 \to \Z^4$ given by the matrix, 
+    \begin{align*}
+        \begin{pmatrix}
+            1 & 1 & 0 \\ 
+            1 & -1 & 0 \\
+            0 & 0 & 2 \\
+            0 & 0 & 0
+        \end{pmatrix}
+    \end{align*}
+    The smith normal for is, 
+    \[ 
+        \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 2 & 0 \\
+            0 & 0 & 2 \\
+            0 & 0 & 0
+        \end{pmatrix}
+    \]
+    This gives us a map of tori, 
+    \[ f_\phi(x_1, x_2, x_3) \to (x_1, x_2^2, x_3^2, 1)\]
+\end{exercise}
+
+\begin{corollary}
+    With $f_\phi: T_N \to T_{N'}$, the following are equivalent, 
+    \begin{enumerate}
+        \item $f_\phi$ is surjective
+        \item $\rk(\phi) = \rk(N')$
+        \item $\coker(\phi)$ finite
+        \item $\phi^\vee$ injective
+    \end{enumerate}
+    and similarly, 
+    \begin{enumerate}
+        \item $f_\phi$ is a closed embedding
+        \item $\phi^\vee$ is surjective
+        \item $\phi$ injective and $\phi(N) \subset N'$ saturated. 
+    \end{enumerate}
+\end{corollary}
+
+\begin{definition}
+    Let $L' \subseteq L$ be lattices. $L'$ is saturated in $L$ if and only if $mv \in L'$ for $m > 0$, $v \in L$ implies $v \in L'$. 
+\end{definition}
+
+\begin{lemma}
+    $L' \subset L$ saturated iff $L/L'$ free. 
+\end{lemma}
+
+\begin{lemma}
+    Let $G$ be an affine group variety. If $\chi_1, \cdots, \chi_n: G \to \G_m$ are distinct characters then they are linearly indepdendent over $k$ as elements in $k[G]$. 
+\end{lemma}
+
+\begin{proof}
+    Suppose not. Choose a minimal length relation $\psi: G \to k$ given by $\sum_i a_i\chi_i = 0$. with $a_i \in k^\times$. $\Psi: G \to k$. Pick $g \in G$. Then, 
+    \begin{align*}
+        G &\to G \to k \\
+        h &\mapsto gh \mapsto \psi(gh) 
+    \end{align*}
+    is a regular function. 
+
+    Then, 
+    \begin{align*}
+        \psi(gh) &= (\sum_i a_i \chi_i)(gh) \\
+        &= \sum_i a_i\chi_i(gh) \\
+        &= \sum_i a_i \chi_i(g)\chi_i(h) \\
+        &= 0
+    \end{align*}
+    Lets substract $a_1\chi_1(g)\Psi(-)$. Then, 
+    \begin{align*}
+        0 &= \Psi_g(-) - a_1\chi_1\Psi(-) \\
+        &= \sum_{i} a_i\chi_i(g)\chi_i(-) - \sum_i \chi_1(g)a_i\chi_i(-) \\
+        &= a_2(\chi_2(g) - \chi(g))\chi_2(-) + \cdots + a_r(\chi_r(g) - \chi_r(g))\chi_r(-)
+    \end{align*} 
+    Since $\chi_1(g) \neq 0$, this gives us a relation that is smaller. 
+\end{proof}
+
+\begin{definition}
+    Let $N$ be a lattice with $M$ its dual so that $k[T_N] \cong k[M]$. Let $H \subset T_N$ be a closed group subvariety. 
+    \[ L_H = \{ m \in M | \chi^m|_H = 1\}\]
+    and 
+    \[ I_H = \langle \chi^l -1 | l \in L_H \rangle \]
+\end{definition}
+
+\begin{theorem}
+    With notation as before, if $H \subset T_N$ is a closed subvariety group then 
+    \begin{enumerate}
+        \item $\I(H) = I_H$
+        \item $k[H] = k[M]/I_H \cong k[M/L_H]$
+    \end{enumerate}
+\end{theorem}
+
+\begin{example}
+    Let $N = \Z^2$, $k[\G_m^2] \cong k[x^\pm, y^\pm]$, $x = \chi^{(1, 0)}$, $y = \chi^{(0, 1)}$. Then, 
+    \begin{align*}
+        I_H &= \langle \chi^{(m, m)} - 1 | m \in \Z \rangle = \langle xy-1 \rangle \\
+        L &= \Z\langle 1, 1 \rangle  = \{ m(1,1) | m \in \Z \}\subset M \cong \Z^2 
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Same setup. Take $L = \Z\langle 2, 0 \rangle = \{ (2m, 0) | m \in \Z\}$. 
+\end{example}
 
 \end{document}

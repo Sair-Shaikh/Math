@@ -348,7 +348,7 @@ $(a_n) \subset \R$. Suppose $\sum_{n=1}^\infty a_n$ converges.
     Not difficult. Induction. 
 \end{proof}
 
-This is related to 2.1.8 in some way \todo{What is 2.1.8?}
+Look at problem 2.1.8 for a similar result on Laurent series. 
 
 \begin{definition}
     If $f$ has derivatives of all orders at $z_0$, then 
@@ -531,8 +531,143 @@ where $u,v: D \subset \R^2 \to \R$. The companion function is $F(x,y) = (u(x,y),
 \begin{proof}[Sketch.]
     We have $\Log(z) = \ln(|z|) + i \Arg(z)$ is holomorphic in $D^* = \C \setminus (-\infty, 0]$. We can take another branch, 
     \[ \LL_0(z) = \ln(|z|) + i\arg_0(z)\]
-    where $\arg_0 \in (0, 2\pi]$ is holomorphic on $D_0^* = \C \setminus [0, \infty)$. So this is harmonic evertywhere \todo{Complete this}
+    where $\arg_0 \in (0, 2\pi]$. This is holomorphic on $D_0^* = \C \setminus [0, \infty)$. Thus, $u(z) = \ln(|z|)$ is harmonic everywhere on $\C \setminus \{0\}$. 
 
+    But $u$ has no harmonic conjugate on $\C \setminus \{0\}$. If $v$ was such a harmonic conjugate, it would be a harmonic conjugate to $u$ in $D^* = \C \setminus (-\infty, 0]$. 
+
+    That is, $v(z) = \Arg(z) + r$ for all $z \in D^*$. 
+\end{proof}
+
+\section{Line Integrals:}
+
+\begin{definition}
+    If $X$ is a topological space, then a curve in $X$ is a continuous function $\gamma: [a, b] \subset \R \to X$. We call $[a,b]$ the parameter space and write $\gamma^*$ for the image $\gamma([a,b]) \subset X$. If $\gamma(a) = \gamma(b)$, we call $\gamma$ closed and we also have $\gamma(s) \neq \gamma(t)$ when $a \leq s < t < b$, then we say $\gamma$ is a simple closed curve. 
+\end{definition}
+
+We're almost always going to have $X \subset \C$. Then we write, 
+\[ \gamma(t) = x(t) + iy(t) \]
+We let
+\[ \gamma'(t) = \lim_{h \to 0} \frac{1}{h} (\gamma(t+h)-\gamma(t))\]
+if it exists. This happens if and only if $x'(t)$ and $y'(t)$ exist. Then, 
+\[ \gamma'(t) = x'(t) + y'(t) \]
+
+We say that $\gamma$ is smooth if $\gamma'(t)$ exists and is non-zero for all $t \in [a,b]$. 
+
+\begin{example}
+    Consider $\gamma_1(t) = t+it^2$ if $t \in [-1, 1]$ and $\gamma_2(t) = t^3+it^6$ for $t \in [-1, 1]$. The first one is smooth and the second one is not. 
+\end{example}
+
+\begin{example}
+    Take $\gamma(t) = t^3 + it^2$ for $t \in [-1,1]$. This is $y = x^{\frac{2}{3}}$. 
+\end{example}
+
+\begin{theorem}[Jordan Curve Theorem.]
+    If $\gamma$ is a Jordan curve, then $\C \setminus \gamma^*$ consists of two domains, each of which has $\gamma^*$ as its boundary. 
+\end{theorem}
+
+\begin{remark}
+    Since $\gamma^*$ is compact, it is contained in some $D_R(0)$ and hence exactly one of the components of $\C \setminus \gamma^*$ is bounded and we call that the interior of $\gamma$. 
+\end{remark}
+
+\begin{definition}
+    A curve $\gamma: [a,b] \to \C$ is called a path or a contour if there is a partition 
+    \[ \mathcal P = \{ a = t_0 < t_1 < \cdots < t_n = b\}\]
+    of $[a,b]$ such that $\gamma'(t)$ is continuous on $[t_{k=1}, t_k]$ for $1 \leq k \leq n$. If $D \subset \C$, then we say $\gamma$ is a path in $D$ if $\gamma^* \subset D$. 
+\end{definition}
+
+\begin{definition}
+    Let $\gamma: [a, b] \to \C$ be a curve. Say $\gamma(t) = x(t)+iy(t)$. We define, 
+    \[ \int_{a}^b \gamma(t)dt = \int_{a}^b x(t)dt + i\int_a^b y(t)dt\]    
+    If $\gamma$ is continuous, we have, 
+    \[ \int_{a}^b \gamma'(t)dt = x(b)-x(a) +i(y(b)-y(a))\]    
+\end{definition}
+\begin{remark}
+    You can do the whole Riemann sums business and then use the completeness of $\C$ to show this, but we just skip that by defining this. 
+\end{remark}
+
+\begin{proposition}
+    Suppose $\gamma$ and $\sigma$ are curves defined on $[a,b]$. Then, 
+    \begin{enumerate}
+        \item[a)] $\int_a^b (\gamma(t) + \sigma(t))  = \int_a^b \gamma(t)dt + \int_a^b \sigma(t)dt$.
+        \item[b)] If $\alpha \in \C$, then $\int_a^b \alpha\gamma(t)dt = \alpha \int \gamma(t)dt$. 
+        \item[c)] $\left| \int \gamma(t)dt\right|  \leq \int|\gamma(t)|dt$
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    We are not allowed to use the word trivial. Thus, we say that the proof for a) is straightforward. Similarly, b) is routine if $\alpha \in \R$. If $\alpha = a+ib$, we can multiply it out and use the defintion. For c), we let $\tau$ be a unimodular constant such that,
+    \[ |\int \gamma(t)dt| = \tau \int \gamma(t)dt \]
+    Now, 
+    \begin{align*}
+        \left|\int \gamma(t) dt \right| &= \int \tau \gamma(t)dt \\
+        &= \Re( \int \tau \gamma(t)dt) \\ 
+        &= \int \Re(\tau\gamma(t))dt \\
+        &\leq \int |\tau\gamma(t)|dt \\
+        &= \int |\gamma(t)| dt
+    \end{align*}
+\end{proof}
+
+\begin{definition}
+    If $\gamma: [a,b] \to \C$ is a path, then the opposite path, $-\gamma$ is $-\gamma: [a,b] \to \C$ where 
+    \[ -\gamma(t) = \gamma(b+a-t) \]
+\end{definition}
+
+\begin{definition}
+    If $z, w \in \C$, then $[z, w]$ is the path $\gamma: [0,1] \to \C$ such that $\gamma(t) = z+t(w-z)$. 
+\end{definition}
+
+\begin{remark}
+    Note that $-[z, w] = [w, z]$. 
+\end{remark}
+
+\begin{remark}
+    If $\gamma: [a,b] \to \C$ is a path and $\gamma(t) = x(t) + iy(t)$ then there exists $\mathscr P = \{a = t_0 < t_1 < \cdots < t_n = b\}$ such that $\gamma'(t)$ is continuous on $[t_{k-1}, t_k]$. Then $x'$ and $y'$ are Riemann integrable on $[a,b]$. 
+\end{remark}
+
+\begin{definition}
+    If $\gamma: [a,b] \to \C$ is any curve, then we can define, 
+    \[ \int_a^b \sigma(t)\gamma'(t)dt = \sum_{k=1}^n \int_{t_{k-1}}^{t_k} \sigma(t)\gamma'(t)dt \]
+    Similarly, we'll write, 
+    \[ \int |\gamma'(t)|dt = \sum_{k=1}^n \int_{t_{k-1}}^{t_k} |\gamma'(t)|dt\]
+\end{definition}
+
+\begin{definition}
+    If $\gamma: [a,b] \to \C$ is a path and if $f \in C(\gamma^*)$. Then, the path integral (or contour integral) of $f$ along $\gamma$ is, 
+    \[ \int_\gamma f(z)dz = \int_a^b f(\gamma_)\gamma'(t)dt \]
+\end{definition}
+
+This is really a linear combination of line integrals of. Look at Ex 3.2.6. 
+
+If $f,g \in C(\gamma^*)$, then,
+\begin{align*}
+    \int (f(z)+g(z))dz = \int_\gamma f(z)dz + \int_\gamma g(z)dz 
+    \int \alpha f(z)dz = \alpha \int f(z)dz  
+    \int_{-\gamma} f(z)dz = -\int_\gamma f(z)dz
+\end{align*}
+
+\begin{remark}
+    We call $\gamma: [0, 2\pi] \to \C$ given by 
+    \[ \gamma(t) = a + re^{it}\]
+    the postively oriented circle of radius $r$ centered at $a$. 
+\end{remark}
+
+\begin{lemma}[Homer's Cauchy Theorem]
+    Let $\gamma(t) = a+re^{it}$ with $r > 0$ and $t \in [0, 2\pi]$. Then if $n \in \Z$, we have, 
+    \begin{align*}
+        \int_\gamma (z-a)^ndz = \begin{cases}
+            0 \qquad if n \neq -1 \\
+            2\pi i \qquad n = -1
+        \end{cases}
+    \end{align*}
+\end{lemma}
+\begin{proof}
+    If $\sigma(t) = e^{\alpha t}$ with $\alpha \in \C$, then, 
+    \[ \sigma'(t) = \alpha e^\alpha t\]
+    Thus, $\gamma'(t) = rie^{it}$. If $n \neq -1$, then, 
+    \begin{align*}
+        \int_\gamma (z-a)^ndz &= \int_\gamma (re^{it})^n rie^{it} dt \\
+        &= r^{n+1}i\int_0^{2\pi} e^{i(n+1)t} \\
+        &= ir^{n+1} \frac{e^{i{n+1}t}}{i(n+1)}\big|_0^{2\pi} = 0
+    \end{align*}
 \end{proof}
 
 
