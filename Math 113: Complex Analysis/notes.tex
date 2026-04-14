@@ -671,4 +671,300 @@ If $f,g \in C(\gamma^*)$, then,
 \end{proof}
 
 
+\begin{definition}
+    Two paths $\gamma_1$ and $\gamma_2$ with $\gamma_1^* = \gamma_2^*$ are called equivalent if 
+    \[ \int_{\gamma_1} f(z)dz = \int_{\gamma_2} f(z)dz\]
+    for all $f \in C(\gamma_1^*)$. 
+\end{definition}
+
+
+\begin{lemma}[W 3.20]
+    Suppose $\gamma: [a,b] \to \C$ is a path and that $\phi: [c,d] \to [a,b]$ is differentiable with $\phi(c) = a$ and $\phi(d) = b$. Let $\sigma(t) = \gamma(\phi(t))$. Then $\sigma$ is a path defined on $[c,d]$ which is equivalent to $\gamma$. 
+\end{lemma}
+\begin{proof}
+    \todo{Do this}.
+\end{proof}
+
+\begin{corollary}
+    Every path is equivalent to a path defined on $[0, 1]$. 
+\end{corollary}
+
+Now we define the join. 
+\begin{definition}
+    Suppose $\gamma: [a, b] \to \C$ and $\sigma: [c, d] \to \C$ are paths so that $\gamma(b) = \sigma(c)$. Then theire join is the path $\gamma+\sigma: [0, 1] \to \C$ given by, 
+    \[ \gamma+\sigma(t) = \begin{cases}
+        \tilde{\gamma}(t)  \qquad 0 \leq t \leq \frac{1}{2} \\
+        \tilde{\sigma}(t)  \qquad \frac{1}{2} \leq t \leq 1
+    \end{cases}\]
+    where $\tilde{\gamma}$ and $\tilde{\sigma}$ are equivalent to $\gamma$ and $\delta$ and defined on $\left[0, \frac{1}{2}\right]$ and $\left[\frac{1}{2}, 1\right]$.
+\end{definition}
+
+\begin{remark}
+    We could be definite and write .... \todo{Finish this. }
+\end{remark}
+
+
+\begin{lemma}[W 3.7]
+    Suppose $\gamma: [a,b] \to D$ is a path in a domain $D$ and $f \in H(D)$. Suppose that $f'$ is continuous and $\gamma'$ is continuous. Then $\sigma(t) = f(\gamma(t))$ is a path on $[a,b]$ such that, 
+    \[ \sigma'(t) = f'(\gamma(t))\gamma'(t)\]
+\end{lemma}
+\begin{proof}
+    \todo{Finish this.}
+\end{proof}
+
+\begin{theorem}[Fundamental Theorem for path integrals]
+    Suppose $D$ is a domain and that $F: D \subset \C \to \C$ is continouso. Suppose that $F \in H(D)$ and $F'(z) = f(z)$ for all $z \in D$. Then if $\gamma: [a,b] \to D$ is any path in $D$, 
+    \[ \int_\gamma f(z) dz = F(\gamma(b)) - F(\gamma(a))\]
+\end{theorem}
+
+\begin{proof}
+    We have, 
+    \begin{align*}
+        \int_\gamma f(z)dz &= \int_a^b f(\gamma(t))\gamma'(t) dt \\
+        &= \sum_{k=1}^n \int_{t_{k-1}}^{t_k} f(\gamma(t))\gamma'(t)dt 
+    \end{align*}
+    where $\gamma'$ is continouos on $[t_{k-1}, t_k]$. But, 
+    \[ \frac{d}{dt}( t\mapsto F(\gamma(t))) = f(\gamma(t))\gamma'(t) = \sum_{k=1}^n F(\gamma(t_k))-F(\gamma(t_{k-1}))\]
+\end{proof}
+
+\begin{definition}
+    Let $\gamma: [a,b] \to \C$ is a path, then the length of $\gamma$ is,
+    \[l(\gamma) = \int_{a}^b |\gamma'(t)|dt\]
+\end{definition}
+(See Remark 3.2.7)
+
+\begin{warning}
+    Length is not equal for equivalent paths. 
+\end{warning}
+
+\begin{proposition}
+    Suppose $\gamma: [a,b] \to \C$ is a path and $f \in C(\gamma^*)$. Then, 
+    \begin{enumerate}
+        \item If $|f(z)| \leq M$ for all $z \in \gamma^*$, then, 
+        \[ |\int_\gamma f(z)dz \leq Ml(\gamma)\]
+        \item If $(f_n) \subset C(\gamma^*)$ and if $f_n \to f$ uniformly on $\gamma^*$, then, 
+        \[ \lim_{n \to \infty} \int_\gamma f_n(z)dz = \int_gamma f(z)dz\]
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    For (a), we have, 
+    \begin{align*}
+        | \int_\gamma f(z)dz| &= |\int_a^b f(\gamma(t))\gamma'(t)dt| \\
+        &\leq \int_a^b |f(\gamma(t))||\gamma'(t)| dt \\
+        &\leq M\int_a^b |\gamma'(t)|dt = Ml(\gamma)
+    \end{align*}
+    For b), let $\epsilon > 0$. Then $\exists N$ such that $n \geq N$ implies for all $z \in \gamma^*$, 
+    \[ |f_n(z)-f(z)| < \frac{\epsilon}{l(\gamma)+1}\]
+    Now using (a), 
+    \begin{align*}
+        |\int_\gamma f(z)dz -\int_\gamma f_n(z)dt | &= |\int_\gamma (f(z)-f_n(z))dz  \\
+        &\leq \frac{\epsilon}{l(\gamma)+1}l(\gamma) < \epsilon
+    \end{align*}
+
+\end{proof}
+
+\begin{theorem}[W 3.31]
+    Suppose that $\gamma$ is a path and that $f \in C(\gamma^*)$. Let $D = \C \setminus \gamma^*$. Define, 
+    \[ F(z) = \int_\gamma \frac{f(w)}{w-z}dw \qquad \forall z \in D\]
+    Then $F$ is analytic on $D$. For $n \geq 0$, 
+    \[ F^{(n)}(z) = n! \int_\gamma \frac{f(w)}{(w-z)^{n+1}}dw\]
+    Moreover, the radius of converge of the series for $F$ about $a \in D$ is at least $\sup\{R : D_R(a) \subset D\}$. 
+\end{theorem}
+\begin{proof}
+    Fix $a \in D$. Since $D$ is open, there exists $R > 0$ such that $D_R(a) \subset D$. If $z \in D_R(a)$ and $\omega \in \gamma^*$, then 
+    \begin{align*}
+        \left|\frac{z-a}{w-a}\right| \leq \frac{|z-a|}{R} < 1
+    \end{align*}
+    Hence, 
+    \begin{align*}
+        \frac{1}{w-z} &= \frac{1}{w-a -(z-a)} \\
+        &= \frac{1}{w-a} \frac{1}{1-\frac{z-a}{w-a}} \\
+        &= \frac{1}{w-a} \sum_{n=0}^\infty \left( \frac{z-a}{w-a}\right)^n \\
+        &= \sum_{n=0}^\infty \frac{(z-a)^n}{(w-a)^{n+1}} 
+    \end{align*}
+    Note that if $w \in \gamma^*$, then $|w-a| \geq R$ and $\exists M$ such that $|f(w)| \leq M$ for all $w \in \gamma^*$. Hence, 
+    \begin{align*}
+        \left|f(w) \frac{(z-a)^n}{(w-a)^{n+1}}\right| \leq \frac{M}{R}\left(\frac{|z-a|}{R}\right)^n
+    \end{align*}
+    Thus, for fixed $z \in D_R(a)$, 
+    \begin{align*}
+        \frac{f(w)}{w-z} = \sum_{n=0}^\infty f(w)\frac{(z-a)^n}{(w-a)^{n+1}}
+    \end{align*}
+    uniformly in $w$ by Weierstrauss $M$-test. 
+
+    Thus, $\forall z \in D_R(a)$, we have, 
+    \begin{align*}
+        F(z) &= \int_\gamma \frac{f(w)}{w-z}dw \\
+        &= \int_\gamma \left(\sum_{n=0}^\infty f(w) \frac{(z-a)^n}{(w-a)^{n+1}} \right) dw \\
+        &= \sum_{n=0}^\infty \left(\frac{f(z)}{(w-a)^{n+1}}dw\right)(z-a)^n
+    \end{align*}
+    Thus, $F$ is analytic and 
+    \[ \frac{F^{(n)}(a)}{n!} = \int_\gamma \frac{F(w)}{(w-a)^{n+1}}dw\]
+\end{proof}
+
+\begin{remark}
+    Recall, that if  $F(z) = \sum_{n=0}^\infty f_n(z)$, converges uniformly, we can do the following, 
+    \begin{align*}
+        s_n \to F &\implies \int_\gamma s_n \to \int_\gamma F(z)dz  \\
+        &\implies \sum_{k=0}^n \int_\gamma F_k(z)dz \to \int_\gamma F(z)dz 
+    \end{align*}
+\end{remark}
+
+\section{Cauchy's Theorem}
+
+\begin{definition}
+    If $\gamma$ is a closed path and $z_0 \in \C \setminus \gamma^*$, then the index of $\gamma$ about $z_0$ is 
+    \begin{align*}
+        \Ind_\gamma(z_0) = \frac{1}{2\pi i} \int_\gamma \frac{1}{z-z_0} dz
+    \end{align*}
+\end{definition}
+
+The antiderivative of $\frac{1}{z-z_0}$ is 
+\[ \ln(|z-z_0|) +i\arg(z-z_0)\]
+Then, 
+\begin{align*}
+    \Ind_\gamma(z_0) = \frac{1}{2\pi}(\arg(\gamma(b)-z_0) -\arg(\gamma(a)-z_0))
+\end{align*}
+That is, this counts the number of times $\gamma$ loops around $z_0$.
+
+\begin{remark}
+    Since $\gamma^*$ is compact, there exist $R > 0$ such that $\gamma^* \subset D_R(0)$ and since $D_R(0)^c$ is connected, exactly one o the connected components of $\C \setminus \gamma^*$ is unbounded. 
+\end{remark}
+
+\begin{theorem}
+    Let $\gamma: [a,b] \to \C$ be a closed path. Then $\Ind_\gamma$ is integer valued on $D = \C \setminus \gamma^*$. Furthermore, $\Ind_\gamma$ is constant on the connected components of $D$ and $0$ on the unbounded component. 
+\end{theorem}
+
+\begin{proof}
+    Fix $z \in D$. Then 
+    \[ 2\pi i \Ind_\gamma(z) = \int_a^b \frac{\gamma'(t)}{\gamma(t)-z} dz \] 
+    Now, let, 
+    \[  \phi(t) = \exp\left(\int_a^t \frac{\gamma'(s)}{\gamma(s)-z}\right)\]
+    To see that $\Ind_\gamma(z) \in \Z$, then it suffices to see that $\phi(b) = 1$. Now as in the proof of the FTFLI, 
+    \[ \phi'(t) = \frac{\gamma'(t)}{\gamma(t)-z}\phi(t) \]
+    whenever $\gamma'(t)$ exists. 
+
+    Hence, there exists a finite set $F \subset [a,b]$ such that, 
+    \[ \phi'(t) \cdot (\gamma(t)-z) = \gamma'(t)\phi(t)\]
+    Therefore, 
+    \[ g(t) = \frac{\phi(t)}{\gamma(t)-z} \]
+    is continous in $[a,b]$ and $g'(t)$ if $t \in [a,b] \setminus F$. 
+
+    This implies $g$ is constant. Since $\phi(a) = 1$, 
+    \begin{align*}
+        &\frac{\phi(t)}{\gamma(t)-z} = \frac{1}{\gamma(a)-z} \\
+        \implies &\phi(t) = \frac{\gamma(t)-z}{\gamma(a)-z}
+    \end{align*}
+    Last time, we saw that $\Ind_\gamma \in H(D)$. Hence, $\Ind_\gamma$ is continuous on $D$. Thus it is constant on connected components.
+
+    Next, we show it is zero on the unbounded component. Since $\gamma^*$ is compact, let $R$ be such that $\gamma^* \subset D_R(0)$. Then if $|a| > R$, then, 
+    \begin{align*}
+        |\Ind_\gamma(a)| &= \frac{1}{2\pi} \left|\int_\gamma \frac{1}{z-a} dz\right| \\
+        &\leq \frac{1}{2\pi} \frac{1}{|a|-R} l(\gamma)
+    \end{align*}
+    But $\Ind_\gamma$ is constant on components and $|a|$ is large enough, $|\Ind_\gamma(a)| < 1$, thus its constant on the unbounded component and equal to $0$.
+\end{proof}
+
+\begin{lemma}
+    Let $\gamma(t) = a + re^{it}$ for $t \in [0, 2\pi]$. Then if $z \not \in \gamma^*$, 
+    \begin{align*}
+        \Ind_\gamma(z) = \begin{cases}
+            1 \qquad |z-a| < r \\
+            0 \qquad |z-a| > r
+        \end{cases}
+    \end{align*}
+\end{lemma}
+
+\begin{proof}
+    We know $D = \C \setminus \gamma^*$ has two components and $\{z : |z-a| > r\}$ is the unbounded one. But $\Ind_\gamma(a) = 1$ by Homer's Cauchy's theorem. Then, the index has to be $1$ on the interior of the circle. 
+\end{proof}
+
+\begin{remark}
+    By the FTFLI, if $F$ has an antiderivative in a domain $D$ and if $\gamma$ is a closed path in $D$, then, 
+    \[ \int_\gamma f(z) dz = 0 \]
+\end{remark}
+
+\begin{lemma}
+    If $\gamma$ is a closed path, then, 
+    \[ \int_\gamma z^dz = 0 \qquad n = 0, 1, \ldots\]
+    and if $0 \in \gamma^*$, then, 
+    \[ \int_\gamma z^ndz = 0 \qquad n = -2, -3, \ldots\]
+\end{lemma}
+
+\begin{remark}
+    Recall that if $a,b,c \in \C$, then $\Delta(a,b,c)$ is the convex hull of $\{a,b,c\}$. By definition,
+    \[ \d\Delta(a,b,c) = [a,b] + [b,c] + [c,a]\]
+\end{remark}
+
+\begin{theorem}[Cauchy's Theorem for Triangles]
+    Suppose $D$ is open and $\Delta(a,b,c) \subset D$. Suppose that $F: D \subset \C \to \C$ is continuous and $f \in H(D \setminus \{p\})$ for some $p \in D$. Then, 
+    \[ \int_{\d\Delta} f(z)dz = 0\]
+\end{theorem}
+
+\begin{proof}
+    We start by assuming $p \not \in D$. If $a,b,c$ are colinear, then the result is easy.
+
+    Otherwise, let $a', b', c'$ be the midpoints of $[a,b]$, $[b,c]$, and $[c,a]$. We make some new triangles, 
+    \begin{align*}
+        \Delta^1 &= \Delta(a, a', c') \\
+        \Delta^2 &= \Delta(a', b, b') \\
+        \Delta^3 &= \Delta(b', c, c') \\
+        \Delta^4 &= \Delta(a', b', c')
+    \end{align*}
+    Then, \begin{align*}
+        J = \int_{\d\Delta} f(z)dz = \sum_{k=1}^4 \int_{\d\Delta^k} f(z)dz
+    \end{align*}
+    For some $k$, 
+    \begin{align*}
+        \left|\int_{\d \Delta^k} f(z)dz \right| \geq \frac{1}{4}|J|
+    \end{align*}
+    Call that triangle $\Delta_1$. Then $\Delta_1$ is similar to $\Delta$ with sides $\frac{1}{2}$ the length of the original. Now, iterate to get, 
+    \[ \Delta \supset \Delta_1 \supset \Delta_2 \supset \ldots \]
+    Next, note that, 
+    \begin{enumerate}
+        \item $l(\d\Delta_n) = 2^{-n}L$ where $L = l(\d\Delta)$. 
+        \item $|J| \leq 4^n \left|\int_{\d\Delta_n} f(z)dz\right|$
+        \item $\text{diam}(\Delta_n) \leq 2^{-n}L$. 
+    \end{enumerate}
+    Since $\Delta$ is compact, $\Delta_n$ is closed in $\Delta$, and the diameters go to $0$, there exists a unique $w \in \Delta$ such that $w \in \Delta_n$.
+
+    Since $p \not \in \Delta$, $f'(w)$ exists. Thus, given $\epsilon > 0$, there exists $\delta$ such that if $|z-w| < \delta$ then,
+    \[ |f(z)-f(w) - f'(w)(z-w)| < \epsilon|z-w|\]
+    We can assume $n$ is large enough such that $z \in \Delta_n \implies |z-w| < \delta$. 
+
+    Hence, 
+    \begin{align*}
+        |f(z)-f(w) -f'(w)(z-w) | < \epsilon|z-w| < \epsilon 2^{-n}L
+    \end{align*}
+
+    On the other hand, by a previous lemma (FLFLI), 
+    \begin{align*}
+        \int_{\d\Delta_n} &= \int_{d\Delta_n} (f(z)-f(w)-f'(w)(z-w))dz
+    \end{align*}
+    Thus, 
+    \begin{align*}
+        \left|\int_{\d\Delta_n}f(z)dz \right| &\leq \epsilon 2^{-n}Ll(\d\Delta_n) \\
+        &\leq \epsilon(2^{-n}L^2) ..
+    \end{align*}
+    Now by $(b)$, 
+    \begin{align*}
+        \left|\int_{\d \Delta} f(z)dz\right| = |J| \leq \epsilon L^2
+    \end{align*}
+
+    Thus, taken care of the case $p \not \in \Delta$. Now suppose $p$ is vertex. Say $p = a$. Since $f$ is continuous on the compact set $\Delta$, there exist $w \in [a,b]^*$ and $y \in [c,a]^*$, such that, 
+    \begin{align*}
+        \left|\int_{\d\Delta(a,w,y)}\right| < \epsilon
+    \end{align*}
+    Then, by inspecting the picture, we get,
+    \begin{align*}
+        J = \int_{\d\Delta(a, w, y)} f(z)dz + \int_{\d \Delta(w, b, c)} f(z)dz + \int_{\d\Delta(w, c, y)} f(z)dz 
+    \end{align*}
+    The latter two are $0$, thus, $|J| < \epsilon$ and $J = 0$ as $\epsilon$ is arbitrary. 
+\end{proof}
+
+In the next lecture, we will upgrade this. 
+
+
+
 \end{document}

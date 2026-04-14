@@ -10,10 +10,78 @@
 \input{title}
 
 
+\begin{problem}{EP-1}
+    Suppose that $D$ is a domain and that $0 \not \in D$. Show that there is a branch of $\log z$ in $D$ if and only if $\frac{1}{z}$ has an antiderivative on $D$. 
+\end{problem}
+\begin{solution}
+    First assume that $\frac{1}{z}$ has an antiderivative on $D$. That is, there exists differentiable (hence continuous) $f(z)$ such that $f'(z) = \frac{1}{z}$ for all $z \in D$. We will show that $f(z)$ is a branch of the logarithm on $D$. 
+    
+    Consider the function,
+    \[ h(z) = \frac{z}{\exp(f(z))}\]
+    Taking its complex derivative and noting that $\exp(z) \neq 0$ for any $z$,  we get, 
+    \begin{align*}
+        h'(z) &= \frac{\exp(f(z)) -z\exp(f(z))f'(z)}{\exp(f(z))^2} = \frac{\exp(f(z))\left(1-\frac{z}{z}\right)}{\exp(f(z))^2} = 0 
+    \end{align*}
+    Using the CR relations and $h'(x+iy) = h_x(x+iy) = -ih_y(x+iy)$, we conclude that both partials of the real and imaginary parts of $h$ are identically zero. Since $D$ is a domain, and thus connected, we note that this implies $h$ is constant. Thus, there exists $C \in \C$ such that, 
+    \begin{align*}
+        &\frac{z}{\exp(f(z))} = C
+    \end{align*} 
+    Note that $\exp(z) = C$ has infinitely many solutions for $z$. Picking $z_0$ to be one of them, we can rewrite, 
+    \begin{align*}
+        &\frac{z}{\exp(f(z))} = \exp(z_0) \\
+        \implies &\exp{f(z)}\exp(z_0) = \exp(f(z)+z_0) = z \\
+        \implies &f(z)+z_0 \in \log(z)
+    \end{align*}
+    However, $f(z) + z_0$ is continous on $D$, thus is a branch of the logarithm. 
 
+    Conversely, assume that $f(z)$ is a branch of the logarithm on $D$. Then by Lemma 2.19, $f'(z) = \frac{1}{z}$ for all $z \in D$. Thus, $\frac{1}{z}$ has an antiderivative on $D$.
+\end{solution}
+\newpage
 
+\begin{problem}{3.2.2}
+    Let $\gamma: [0, 1] \to \C$ be a Jordan curve. Show that the set $\gamma^*$ has no interior.
+\end{problem}
+\begin{solution}
+    Assume $\gamma^*$ has interior. Then it has an interior point $z_0$. Thus, there exists open disk $D$ centered at $z_0$ contained in $\gamma^* \subset \C$. We will show that this is not possible. 
 
+    Consider $S^1$ as the quotient of $\pi: [0, 1] \to [0,1]/~$ identifying $0 \sim 1$. Then, since $\gamma$ is closed (i.e. $\gamma(0) = \gamma(1))$, $\gamma$ descends to a continuous map $\tilde{\gamma}: S^1 \to \C$ with $\gamma^* = \tilde{\gamma}^*$ by properties of the quotient topology. Moreover, since $\gamma$ is simple and closed, $\tilde{\gamma}$ is injective. Thus, $\tilde{\gamma}$ is a continuous bijection from a compact set $S^1$ to its image $\gamma^* \subset \C$. Since both the domain and codomain are Haussdorff, $\tilde{\gamma}$ is a homeomorphism. In particular, $S^1 \cong \gamma^*$. 
+    
+    From point-set, we know that every open set in $S^1$ is homeomorphic to a union of open intervals of $\R$. Assume $D \subset \gamma^*$ is homeomorphic to a union of open intervals of $\R$. Since $D$ is connected, it must be homeomorphic to a single open interval of $\R$. However, $D$ stays connected if we remove one point, say $z_0$ at the center, but open intervals of $\R$ do not have this property. Thus, we have a contradiction. 
+\end{solution}
+\newpage
 
+\begin{problem}{3.2.5}
+    Let $S$ be a nonempty subset of the plane. Let $\text{Conv}(S)$ be the collection of the sums of the form, 
+    \[ \sum_{k=1}^n t_kz_k\]
+    such that $n \in \N$, each $t_k \geq 0$, each $z_k \in S$, and $\sum_{k=1}^n t_k = 1$. Show that $\text{Conv}(S)$ is the convex hull of $S$; that is, show that $\text{Conv}(S)$ is the smallest convex subset of the plane containing $S$. 
+\end{problem}
+\begin{solution}
+    We know that $\text{Conv}(S)$ contains $S$ as points of $S$ can be trivially written in the manner mentioned. Next, we want to show that $\text{Conv}(S)$ is convex. Let $a = \sum_{k=1}^n t_kz_k$ and $b = \sum_{k=1}^m s_kw_k$ be two elements in $\text{Conv}(S)$. The line $[a,b]^*$ is parametrized by $\gamma: [0, 1] \to [a,b]^*$ by $\gamma(t) = ta + (1-t)b$. We can write, 
+    \begin{align*}
+        ta + (1-t)b = \sum_{k=1}^n tt_kz_k + \sum_{k=1}^n (1-t)s_kw_k
+    \end{align*}
+    We claim that $ta+(1-t)b \in \text{Conv}(S)$. This is already written as a finite sum with positive coefficients of points ($z_k, w_k$) in $S$ (noting $t, 1-t$ are non-negative). Thus, we only need to show $\sum_{k=1}^n tt_k + \sum_{k=1}^m (1-t)s_k = 1$. But this is clear because, 
+    \begin{align*}
+        \sum_{k=1}^n tt_k + \sum_{k=1}^m (1-t)s_k &= t \cdot \left(\sum_{k=1}^n t_k\right) + (1-t)\cdot \left(\sum_{k=1}^m s_k\right) \\
+        &= t \cdot 1 + (1-t) \cdot 1 \\
+        &= 1
+    \end{align*}
+    Thus, $\text{Conv}(S)$ is a convex set containing $S$. \bbni
+
+    Let $C$ be an arbitrary convex set containing $S$. We claim that $\text{Conv}(S) \subset C$. Let $A_n$ be the set of all elements in $\text{Conv}(S)$ of the form $\sum_{k=1}^n t_kz_k$, $\sum t_k = 1$ and $z_k \in S$. We proceed by induction on $n$. 
+
+    For $n = 1$, $A_1 = S$. Thus, $A_1 \subset C$. 
+
+    Then assume for $m < n$ that $A_m \subset \text{Conv}(S)$. 
+    
+    Consider $a = \sum_{k=1}^n t_kz_k \in A_n$. If $t_n = 1$, $a \in A_{1}$ and we are done by the base case. Otherwise, $\sum_{k=1}^{n-1} t_k = 1-t_n \implies \frac{1}{1-t_n}\sum_{k=1}^{n-1} t_k = 1$. Thus, 
+    \[ b := \sum_{k=1}^{n-1}\frac{t_k}{1-t_n}z_k \in A_{n-1}\]
+    By the induction hypothesis, $b \in C$. Moreover, we can write $a$ as, 
+    \[ a = t_nz_n + (1-t_n)b\]
+    This is a point on the line $[z_n, b]^*$. By convexity of $C$, $ a \in C$. Thus, $A_n \subseteq C$. 
+
+    By induction, $\text{Conv}(S) \subseteq C$ and thus $\text{Conv}(S)$ is the minimal convex set containing $S$.  
+\end{solution}
 
 
 \end{document}

@@ -1,8 +1,6 @@
 \documentclass[12pt]{article}
 
-
 \include{../style}
-
 
 \begin{document}
 
@@ -200,6 +198,117 @@ We explain Serre Duality with an example.
     \[ h^0(\OO_C(D)) = h^0(\omega_C(-D)) \leq d + 1 - h^0(\omega_C)\]
     Serre Duality says that this is an equality and the terms in this expression agree with the Riemann-Roch theorem. 
 \end{example}
+\newpage
 
+\section{Serre Duality and Complex Analysis}
+\todo{Skipped Another Lecture}
+\newpage
+
+\section{Vector Bundles on $\P^1$}
+
+\begin{theorem}
+    Any vector bundle (locally free sheaf) $\EE$ on $\P^1$ can be written uniquely as $\bigoplus \OO(a_i)$.  
+\end{theorem}
+
+\begin{warning}
+    On most schemes, vector bundles do not always split as a direct sum of line bundles. 
+\end{warning}
+
+For $m >>0$, $\Hom(\OO(m), \EE) = 0$. When $m << 0$, $\Hom(\OO(m), \EE) \neq 0$. This is because $\Hom(\OO(m), \EE) = \EE(-m)$.  \todo{Understand this.}
+
+Let $a_r$ be the maximum $m$ such that $\Hom(\OO(m), \EE) \neq 0$. 
+
+Consider the exact sequence, 
+\begin{align*}
+    0 \to \OO(a_r) \to \EE \to \FF \to 0
+\end{align*}
+The map $\OO(q) \to \EE$ must be injective on fibers at every point $p \in \P^1$. 
+
+Why? If not, $\OO(a_r) \to \EE(-p) = \EE \otimes \II_p$. This implies $\OO(a_r+1) \to \EE$ contradicting the maximality of $a_r$. 
+
+This implies $F$ is locally free because it is the quotient of locally free sheaves. 
+
+By induction, $F = \bigoplus_{i=1}^{r-1} \OO(a_i)$. In some sense, we are splitting $\OO(a_r)$s out of $\EE$ to get this direct sum. \todo{Why?}
+
+\begin{claim}
+    $a_r \geq a_i \quad \forall i$
+\end{claim} 
+Why? We have the sequence, 
+\begin{align*}
+    0 \to \OO(-1) \to \EE(-a_r-1) \to \bigoplus \OO(a_i-a_r-1) \to 0
+\end{align*}
+Taking the long exact sequence in cohomology, we get, 
+\begin{align*}
+    \xymatrix{ 
+        ... \ar[r] &H^-(\EE(-a_r-1)) \ar[r] &H^0\left(\bigoplus \OO(a_i-a_r-1)\right) \ar[r] &H^1(\OO(-1)) \ar[r] &... \\ 
+        ... \ar[r] &0 \ar[r] &H^0\left(\bigoplus \OO(a_i-a_r-1)\right) \ar[r] &0 \ar[r] &...
+    }  
+\end{align*}
+Thus, \todo{Finish this}. 
+
+
+\begin{claim}
+    The previous exact sequence splits. 
+\end{claim}
+
+FOAG has an argument involving transition functions. 
+
+Easier argument: 
+\[ \Ext^1\left(\bigoplus \OO(a_i), \OO(a_r)\right) = H^1\left(\bigoplus \OO(a_r-a_i)\right) = 0\] 
+
+This uses the local-to-global $\Ext$ spectral sequence to get $H^p(\Ext^q(\FF, \GG)) \to \Ext^{p+q}(\FF, \GG)$.
+
+
+\subsection{Hilbert Functions / Polynomials}
+Let $X$ be a projective $k$-scheme, embedded in $\P^n$ and $F$ a coherent sheaf on $X$. 
+
+\begin{definition}
+    The Hilbert function 
+    \begin{align*}
+        h_F(m) &= h^0(X, F(m)) \\
+        h_X(m) &= h_{\OO_x}(m)
+    \end{align*}
+    This depends on the embedding. 
+\end{definition}
+
+\begin{theorem}
+    $\chi(X, F(m))$ is a polynomial of degree $\dim \Supp F$. Hence, $h^1(X, F(m))$ is a poylnomial of degree $\dim( \Supp F)$ for $m >> 0$. 
+\end{theorem}
+
+\begin{definition}
+    We call this polynomial the Hilbert Polynomials $p_F(m)$ and write $p_X(m) = p_{\OO_X}(m)$. 
+\end{definition}
+
+\begin{proof}
+    Extend $k$ infinite. \todo{Finish this}
+\end{proof}
+
+\begin{definition}
+    The degree $\deg X := \text{leading coeff. of $p_X(m)$} \cdot n!$. 
+\end{definition}
+
+\begin{exercise}{?}
+    If $X$ is a degree $d$ hypersurface. Then $\deg X = d$. 
+\end{exercise}
+
+\begin{theorem}[Bezout]
+    Let $X$ be a projective $k$-scheme in $\P^n$. Let $H$ be a hypersurface not containing any associated point of $X$. 
+    \[ \deg(H \cap X) = (\deg H)(\deg X)\]
+    In particular, $C_1$ \todo{Finish}. 
+\end{theorem}
+
+\subsection{Arithmetic Genus of a Plane Curve}
+Let $C = \P^2$ be a degree $d$ plane curve. What is $p_a(C) = 1-p_C(d)$?
+
+Lets calculate the whole Hilbert polynomial. Consider the exact sequence 
+\begin{align*}
+    0 \to \OO_{\P^2}(m-d) \to \OO_{\P^2}(m) \to \OO_C(m) \to 0
+\end{align*}
+Thus, 
+\begin{align*}
+    p_C(m) &= p_{\P^2}(m) - p_{\P^2}(n--d) \\
+    &= \binom{m+2}{2} - \binom{m-d+2}{2} \\
+    \implies p_C(0) &= -\frac{d^2-3d}{2}
+\end{align*}
 
 \end{document}

@@ -1,0 +1,103 @@
+\documentclass[12pt]{amsart}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+
+\section{Ring of Integers}
+
+\begin{definition}
+    Let $L$ be a field containing an integral domain $A$. An element $\alpha$ of $L$ is said to be \textbf{integral} over $A$ if it is a root of a monic polynomial with coefficients in $A$.
+\end{definition}
+\bbni
+
+\subsection{The Ring of Integers is a Ring:}
+
+\begin{theorem}
+    The elements of $L$ that are integral over $A$ form a ring.
+\end{theorem}
+
+\todo{Why algebraically closed?}
+
+\begin{theorem}
+    Let $L$ be a field containing $A$. An element $\alpha \in L$ is integral over $A$ if and only if there exists a non-zero finitely generated $A$-module $M \subseteq L$ such that $\alpha M \subset M$. 
+\end{theorem}
+
+
+
+
+\bbni
+
+\subsection{Basic Properties:}
+\begin{definition}
+    The ring of elements of $L$ integral over $A$ is called the \textbf{integral closure} of $A$ in $L$. The integral closure of $\Z$ in an algebraic number field $L$ is called the \textbf{ring of integers} of $\OO_L$ in $L$. 
+\end{definition}
+
+\begin{proposition}
+    Let $K$ be a field of fractions of $A$, and let $L$ be a field containing $K$. If $\alpha \in L$ is algebraic over $K$, then there exists a non-zero $d \in A$ such that $d\alpha$ is integral over $A$.
+\end{proposition}
+
+
+\begin{corollary}
+    Let $A$ be an integral domain with field of fractions $K$, and let $B$ be the integral closure of $A$ in a field $L$ containing $K$. If $L$ is algebraic over $K$, then it is the field of fractions of $B$.  
+\end{corollary}
+
+
+\begin{definition}
+    A ring $A$ is \textbf{integrally closed} if it is its own integral closure in its field of fractions $K$, i.e. $\alpha \in K$ integral over $A \implies \alpha \in A$. 
+\end{definition}
+
+\begin{proposition}
+    A unique factorization domain is integrally closed. 
+\end{proposition}
+
+
+\begin{remark}
+    We have found a criteria describing whether a ring is a UFD. That is, if it is not integrally closed, it cannot be a UFD.
+\end{remark} 
+
+\begin{example} \bbni
+    \begin{enumerate}
+        \item The rings $\Z$ and $\Z[i]$ are integrally closed because both are principal ideal domains.
+        \item Unique factorization fails in $\Z[\sqrt{-3}]$ because $4 = 2 \times 2 = (1+\sqrt{-3})(1-\sqrt{-3})$ all irreducible. Similarly, the integral closure of $\Z[\sqrt{-3}]$ in $\Q[\sqrt{-3}]$ is $\Z[\zeta_3]$, which is a PID and bigger that $\Z[\sqrt{-3}]$. 
+        \item For every field $k$, the integral closure of $k[S_1, \cdots, S_m]$ in $k(X_1, \cdots, X_m)$ is $k[X_1, \cdots, X_m]$. Being integral over $k[S_1, \cdots, S_m]$ implies integral over $k[X_1, \cdots, X_m]$ as $S_i$ are polynomials in $X_i$. Conversely, you can take an $f$ can similar to the proof of Theorem 1.2, create a monic symmetric polynomial in $X_i$ with $f(X_1, \cdots, X_n)$ as a root.
+    \end{enumerate}
+\end{example}
+
+\begin{proposition}
+    Let $K$ be the field of fractions of $A$, and let $L$ be an extension of $K$ of finite degree. Assume $A$ is integrally closed. An element $\alpha \in L$ is integral over $A$ if and only if its minimum polynomial over $K$ has coefficients in $A$. 
+\end{proposition}
+
+
+\begin{proposition}
+    If $B$ is integral over $A$ and finitely generated as an $A$-algebra, then it is finitely generated as an $A$-module. 
+\end{proposition}
+
+
+\begin{lemma}
+    Let $A \subset B \subset C$ be rings. If $B$ is finitely generated as an $A$-module, and $C$ is finitely generated as a $B$-module, then $C$ is finitely generated as an $A$-module. 
+\end{lemma}
+
+\begin{proposition}
+    Consider integral domains $A \subset B \subset C$. If $B$ is integral over $A$ and $C$ is integral over $B$, then $C$ is integral over $A$. 
+\end{proposition}
+
+\begin{corollary}
+    The integral closure of $A$ in an algebraic extension of its field of fractions is integrally closed. 
+\end{corollary}
+
+\begin{remark}
+    The ring of integers in a number field is integrally closed. We want this because we want our ring of integers to have the best chance of being a UFD. 
+\end{remark}
+
+\begin{example}
+    Let $k$ be a finite field, and let $K$ be a finite extension of $k(X)$. Let $\OO_K$ be the integral closure of $k[X]$ in $K$. The arithmetic of $\OO_K$ is very similar to that of the ring of integers in a number field.
+\end{example}
+
+\end{document}

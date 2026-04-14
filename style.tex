@@ -26,6 +26,7 @@
 \newtheorem*{remark}{Remark}
 \newtheorem*{claim}{Claim}
 \newtheorem*{example}{Example}
+\newtheorem*{warning}{Warning}
 
 
 \newtheorem*{exercisehelper}{Exercise.}
@@ -90,6 +91,7 @@
 \newcommand{\HH}{\mathcal{H}}
 \newcommand{\LL}{\mathcal{L}}
 \newcommand{\OO}{\mathcal{O}}
+\newcommand{\II}{\mathcal{II}}
 
 
 \let\1\relax
@@ -98,8 +100,6 @@
 \newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO:} #1}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
-\newcommand{\vecz}{\mathbf{z}}
-\newcommand{\vecr}{\mathbf{r}}
 \DeclareMathOperator{\Cinf}{C^{\infty}}
 \DeclareMathOperator{\Id}{Id}
 \DeclareMathOperator{\Ell}{Ell}
@@ -110,8 +110,11 @@
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\Arg}{Arg}
 \DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Supp}{Supp}
 \DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\disc}{disc}
 \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Nm}{Nm}
 \DeclareMathOperator{\Alt}{Alt}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\ann}{ann}
@@ -128,30 +131,25 @@
 \DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{\Tor}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\img}{img}
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\Spec}{Spec}
-\DeclareMathOperator{\CandE}{CandE}
-\DeclareMathOperator{\CandO}{CandO}
 \DeclareMathOperator{\argmax}{argmax}
-\DeclareMathOperator{\first}{first}
-\DeclareMathOperator{\last}{last}
-\DeclareMathOperator{\cost}{cost}
-\DeclareMathOperator{\dist}{dist}
-\DeclareMathOperator{\path}{path}
-\DeclareMathOperator{\parent}{parent}
 \DeclareMathOperator{\argmin}{argmin}
-\DeclareMathOperator{\excess}{excess}
 \DeclareMathOperator{\Proj}{Proj}
 \DeclareMathOperator{\Frob}{Frob}
+\let\limsup\relax
+\DeclareMathOperator{\limsup}{limsup}
+\DeclareMathOperator{\Ind}{Ind}
+
 
 \let\Pr\relax
 \DeclareMathOperator{\Pr}{\mathbf{Pr}}
 \DeclareMathOperator{\Exp}{\mathbb{E}}
 \DeclareMathOperator{\Var}{\mathbf{Var}}
-\let\limsup\relax
-\DeclareMathOperator{\limsup}{limsup}
 %Paired Delims
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{ \rfloor}
