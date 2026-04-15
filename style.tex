@@ -14,7 +14,6 @@
 \usepackage{amsxtra}
 \usepackage{enumitem}
 \usepackage{euler}
-\newcommand{\bb}{\mathbb}
 
 
 \newtheorem{theorem}{Theorem}[section]
@@ -53,14 +52,12 @@
 {\begin{enumerate}\renewcommand{\labelenumi}{\textnormal{(\roman{enumi})}}}
 {\end{enumerate}}
 
-\newcommand{\defi}[1]{\textsf{#1}} % for defined terms
-
-
-
-\setlength{\hfuzz}{4pt}
-
 \let\H\relax
 \let\P\relax
+\let\Pr\relax
+\let\d\relax
+\let\limsup\relax
+\let\1\relax
 \newcommand{\H}{\mathbb H}
 \newcommand{\P}{\mathbb P}
 \newcommand{\C}{\mathbb C}
@@ -81,7 +78,6 @@
 \newcommand{\bbni}{\bigbreak \noindent}
 \newcommand{\norm}[1]{\left\vert\left\vert#1\right\vert\right\vert}
 \newcommand{\dbar}{\overline{\partial}}
-\let\d\relax
 \newcommand{\d}{\partial}
 \newcommand{\CC}{\mathcal{C}}
 \newcommand{\DD}{\mathcal{D}}
@@ -91,22 +87,21 @@
 \newcommand{\HH}{\mathcal{H}}
 \newcommand{\LL}{\mathcal{L}}
 \newcommand{\OO}{\mathcal{O}}
-\newcommand{\II}{\mathcal{II}}
-
-
-\let\1\relax
+\newcommand{\II}{\mathcal{I}}
 \newcommand{\1}{\mathbf{1}}
 \newcommand{\fr}[2]{\left(\frac{#1}{#2}\right)}
 \newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO:} #1}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\defi}[1]{\textsf{#1}} % for defined terms
+\newcommand{\bb}{\mathbb}
+\newcommand{\dagstar}{*}
+\newcommand{\tbigwedge}{{\textstyle{\bigwedge}}}
 
 \DeclareMathOperator{\Cinf}{C^{\infty}}
 \DeclareMathOperator{\Id}{Id}
 \DeclareMathOperator{\Ell}{Ell}
 \DeclareMathOperator{\CL}{\mathcal{CL}}
-
 \DeclareMathOperator{\Log}{Log}
-
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\Arg}{Arg}
 \DeclareMathOperator{\Res}{Res}
@@ -141,22 +136,15 @@
 \DeclareMathOperator{\argmin}{argmin}
 \DeclareMathOperator{\Proj}{Proj}
 \DeclareMathOperator{\Frob}{Frob}
-\let\limsup\relax
 \DeclareMathOperator{\limsup}{limsup}
 \DeclareMathOperator{\Ind}{Ind}
-
-
-\let\Pr\relax
 \DeclareMathOperator{\Pr}{\mathbf{Pr}}
 \DeclareMathOperator{\Exp}{\mathbb{E}}
 \DeclareMathOperator{\Var}{\mathbf{Var}}
-%Paired Delims
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{ \rfloor}
 
-
-\newcommand{\dagstar}{*}
-
-\newcommand{\tbigwedge}{{\textstyle{\bigwedge}}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt}
+\setlength{\hfuzz}{4pt}
+

@@ -311,4 +311,45 @@ Thus,
     \implies p_C(0) &= -\frac{d^2-3d}{2}
 \end{align*}
 
+\newpage 
+\todo{Missed a lecture}
+
+\newpage 
+
+From projective to proper. We have seen a number of things we have shown are true for projective morphisms, but claimed they still work for proper morphisms. We are going to cover some lemmas that make this possible. 
+
+The first is Chow's lemma. 
+\begin{lemma}
+    Let $\pi: X \to \Spec A$ be proper and $A$ noetherian. Then there exists $\mu: X' \to X$ surjective + projective + birational such that $\pi \circ \mu$ is projective. 
+\end{lemma}
+
+\begin{proof}[Idea.]
+    \bbni
+    \begin{enumerate}
+        \item Cover $X$ by affines. 
+        \item Compactify each affine to a projective $A$-scheme. 
+        \item Consider graph of the rational map to their product. 
+    \end{enumerate}
+\end{proof}
+
+
+\subsection{Grothendieck's Coherence Theorem}
+Let $\pi: X \to Y$ proper morphism of locally noetherian schemes. Let $F$ be coeherent over $X$. Then $R^i \pi_* F$ is coherent.
+
+\begin{proof}[Idea.]
+    Reduce to $Y = \Spec A$ and apply Chow's lemma. 
+    \[\xymatrix{
+        X' \ar[r]^\mu \ar[d]_{\pi \circ \mu} & X \ar[ld]^\pi \\
+        \Spec A
+    }\]
+    Then approximate $F$ by $\mu_* \mu^* F$. Then, 
+    \[ 0 \to S \to F \to \mu_*\mu^*F \to Q \to 0\]
+    where if $S$ and $Q$ are supported on something of smaller dimension. Then, $R^i \pi_*$ coherent by induction. 
+
+    Let $G$ be $\mu^* F$. Then, use the Leray spectral sequence, 
+    \begin{align*}
+        R^p \pi_*(R^q \mu_* G) \implies R^{p+q}(\pi \circ \mu)_* G
+    \end{align*}
+\end{proof}
+
 \end{document}
