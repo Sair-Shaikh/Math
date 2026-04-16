@@ -1,0 +1,373 @@
+\documentclass[11pt]{article} 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,esint, dsfont,mathtools}	
+\usepackage{graphicx}		
+\usepackage{hyperref}
+\usepackage{cases}			
+\usepackage{textcomp, gensymb}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+% diagrams
+\usepackage{quiver}
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	\def\@currentlabel{#2}
+	\label{#1}\endgroup
+}
+\makeatother
+
+\setlength{\parindent}{0pt} 	% first line in paragraph will not be indented
+
+\usepackage[parfill]{parskip}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\newcommand{\ind}{{\mathds{1}}}
+
+% math fonts
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\ka}{\mathfrak{a}}
+\newcommand{\kb}{\mathfrak{b}}
+\newcommand{\kc}{\mathfrak{c}}
+\newcommand{\kd}{\mathfrak{d}}
+\newcommand{\ke}{\mathfrak{e}}
+\newcommand{\kg}{\mathfrak{g}}
+\newcommand{\kf}{\mathfrak{f}}
+\newcommand{\kh}{\mathfrak{h}}
+\newcommand{\ki}{\mathfrak{i}}
+\newcommand{\kj}{\mathfrak{j}}
+\newcommand{\kk}{\mathfrak{k}}
+\newcommand{\kl}{\mathfrak{l}}
+\newcommand{\km}{\mathfrak{m}}
+\newcommand{\kn}{\mathfrak{n}}
+\newcommand{\ko}{\mathfrak{o}}
+\newcommand{\kp}{\mathfrak{p}}
+\newcommand{\kq}{\mathfrak{q}}
+\newcommand{\kr}{\mathfrak{r}}
+\newcommand{\ks}{\mathfrak{s}}
+\newcommand{\kt}{\mathfrak{t}}
+\newcommand{\ku}{\mathfrak{u}}
+\newcommand{\kv}{\mathfrak{v}}
+\newcommand{\kw}{\mathfrak{w}}
+\newcommand{\kx}{\mathfrak{x}}
+\newcommand{\ky}{\mathfrak{y}}
+\newcommand{\kz}{\mathfrak{z}}
+
+\newcommand{\kA}{\mathfrak{A}}
+\newcommand{\kB}{\mathfrak{B}}
+\newcommand{\kC}{\mathfrak{C}}
+\newcommand{\kD}{\mathfrak{D}}
+\newcommand{\kE}{\mathfrak{E}}
+\newcommand{\kG}{\mathfrak{G}}
+\newcommand{\kF}{\mathfrak{F}}
+\newcommand{\kH}{\mathfrak{H}}
+\newcommand{\kI}{\mathfrak{I}}
+\newcommand{\kJ}{\mathfrak{J}}
+\newcommand{\kK}{\mathfrak{K}}
+\newcommand{\kL}{\mathfrak{L}}
+\newcommand{\kM}{\mathfrak{M}}
+\newcommand{\kN}{\mathfrak{N}}
+\newcommand{\kO}{\mathfrak{O}}
+\newcommand{\kP}{\mathfrak{P}}
+\newcommand{\kQ}{\mathfrak{Q}}
+\newcommand{\kR}{\mathfrak{R}}
+\newcommand{\kS}{\mathfrak{S}}
+\newcommand{\kT}{\mathfrak{T}}
+\newcommand{\kU}{\mathfrak{U}}
+\newcommand{\kV}{\mathfrak{V}}
+\newcommand{\kW}{\mathfrak{W}}
+\newcommand{\kX}{\mathfrak{X}}
+\newcommand{\kY}{\mathfrak{Y}}
+\newcommand{\kZ}{\mathfrak{Z}}
+
+%some math symbol commands redefined:
+\DeclareMathOperator{\C}{\mathcal{C}}
+\DeclareMathOperator{\power}{\mathcal{P}}
+\DeclareMathOperator{\vspan}{\text{span}}
+\DeclareMathOperator{\vnull}{\text{null}}
+\DeclareMathOperator{\range}{\text{range}}
+\DeclareMathOperator{\re}{\text{Re}}
+\DeclareMathOperator{\im}{\text{Im}}
+\DeclareMathOperator{\erf}{\text{erf}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdvv}[2]{\frac{\partial^2 #1}{\partial #2}}
+\DeclareMathOperator{\tr}{\operatorname{Tr}}
+\newcommand{\Deck}{\operatorname{Deck}}
+\newcommand{\Conj}{\mathrm{Conj}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\PROJ}{\mathit{Proj}}
+
+% category names
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Ring}{\mathsf{Ring}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Sch}{\mathsf{Sch}}
+
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\pre}{\text{pre}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\Char}{\operatorname{char}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Bl}{\mathrm{Bl}}
+\newcommand{\codim}{\mathrm{codim}}
+\newcommand{\val}{\operatorname{val}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Gr}{\operatorname{Gr}}
+
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\Rk}{\operatorname{Rk}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+
+% category theory symbols
+\DeclareMathOperator{\Mor}{\operatorname{Mor}}
+
+\newenvironment{solution}{\begin{trivlist}\item[]{\textcolor{blue}{Solution:}}}{\qed \end{trivlist}}
+
+
+\usepackage[shortlabels]{enumitem}
+\title{MATH 2060 Homework 6}
+\author{Zhengyu Zou}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\textbf{Collaborators:} Ethan Bove
+
+\section*{FOAG 19.5.C.}
+
+\begin{solution}
+    A hyperelliptic involution $\sigma: C \rightarrow C$ is uniquely characterized by the nontrivial Galois automorphism $\sigma^{\sharp}: K(C) \rightarrow K(C)$. This map is the unique map that makes the following triangle commute:
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJDIl0sWzIsMCwiQyJdLFsxLDEsIlxcUFBeMSJdLFswLDEsIlxcc2lnbWEiXSxbMCwyLCJ8XFxvbWVnYV9DfCIsMl0sWzEsMiwifFxcb21lZ2FfQ3wiXV0=
+    \[\begin{tikzcd}
+        C && C \\
+        & {\PP^1}
+        \arrow["\sigma", from=1-1, to=1-3]
+        \arrow["{|\omega_C|}"', from=1-1, to=2-2]
+        \arrow["{|\omega_C|}", from=1-3, to=2-2]
+    \end{tikzcd}\]
+    The uniqueness follows from the fact that the field extension $K(C) / K(\PP^1)$ is a degree-2 Galois extension. 
+
+    Now, given any $g \in \Aut(C)$, we may consider the map $C \rightarrow \PP^1$ given by $g \circ |\omega_C|$, which is a degree-2 map since $g$ is an automorphism. It follows that the following diagram commutes:
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJDIl0sWzIsMCwiQyJdLFsxLDEsIlxcUFBeMSJdLFswLDEsImdeey0xfSBcXGNpcmMgXFxzaWdtYSBcXGNpcmMgZyJdLFswLDIsImcgXFxjaXJjIHxcXG9tZWdhX0N8IiwyXSxbMSwyLCJnIFxcY2lyYyB8XFxvbWVnYV9DfCJdXQ==
+    \[\begin{tikzcd}
+        C && C \\
+        & {\PP^1}
+        \arrow["{g^{-1} \circ \sigma \circ g}", from=1-1, to=1-3]
+        \arrow["{g \circ |\omega_C|}"', from=1-1, to=2-2]
+        \arrow["{g \circ |\omega_C|}", from=1-3, to=2-2]
+    \end{tikzcd}\]
+    Then, since $C$ has genus $\geq 2$, the map $g \circ |\omega_C|$ is precisely the map $|\omega_C$, so $g^{-1} \circ \sigma \circ g = \sigma$ by the characterization of the hyperelliptic involution. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.7.B.}
+
+\begin{solution}
+    The space of quartics on $\PP^2$ is parametrized by $\PP^{n}$ where $n = \binom{2 + 4}{4} - 1 = 14$. The dimension of the moduli space $\cM_3$ of nonhyperelliptic curves of genus 3 equals the dimension of the space of quartics on $\PP^2$ minus the dimension of the automorphisms of $\PP^2$. The space of automorphisms of $\PP^2$ is $\PGL(3, k) \cong \GL(3, k) / \langle \Id \rangle$, which had dimension $\dim \GL(3, k) - \dim k = 8$. Therefore, the dimension of $\cM_3$ is $14 - 8 = 6$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.7.C.}
+
+\begin{solution}
+    Let $p \in C$ be a closed point of degree 1. We will construct a map $C \rightarrow \PP^1$ using two linearly independent sections of the line bundle $\omega_C(-p)$. To show that $h^0(C, \omega_C(-p)) \geq 2$, we observe from Riemann Roch and Serre duality that 
+    \[
+        h^0(C, \cO_C(p)) - h^0(C, \omega_C(-p)) = \deg \cO(p) - g + 1
+        = -2
+    \]
+    Also, since the constant section $1 \in h^0(C, \cO_C)$ doesn't vanish at $p$, it is a nontrivial section of $\cO_C(p)$. It follows that $h^0(C, \cO_C(p)) \geq 1$, so $h^0(C, \omega_C(-p)) \geq 2$. Finally, since $\deg(\omega_C(-p)) = \deg \omega_C - \deg p = 4 - 1 = 3$, we see that the map $C \rightarrow \PP^1$ is a degree-3 map. Since the map is nondegenerate, it must be a surjection, so it is a degree-3 covering map. 
+\end{solution}
+
+% We know that every nonelliptic genus 3 curves $C$ are quartics in $\PP^2$. Apply a projective transformation so that $[0:0:1] \in C$. Let $p$ be the homogeneous quartic polynomial that cuts out $C$ in $\PP^2$. Since $p(0,0,1) = 0$, we know that the coefficient for the $z^4$ term in $p$ must be zero. Consider a map $\PP^2 \setminus \{[0:0:1]\} \rightarrow \PP^1$ given by $[x:y:z] \mapsto [x:y]$. This map induces a projection map $C \setminus \{[0:0:1]\} \rightarrow \PP^1$. By the curve-to-projective theorem, there is a unique map $C \rightarrow \PP^1$ that extends this map. We claim that this map is a degree-3 map. To see that the map is surjective, given any closed point $[x_0:y_0] \in \PP^1$, the preimage in $C$ corresponds to the intersection of $C$ with the line $(y_0 x - x_0 y)$. In particular, $C$ is reduced and nondegenerate, so the line $(y_0 x - x_0 y)$ does not contain an associated point of $C$. By Bezout's theorem, the preimage is degree-4. However, since one of the points of the intersection is $[0:0:1]$, which is the point at infinity, we lose a degree-1 point (assuming that the line $(y_0 x - x_0 y)$ is not the tangent line of $C$ at $[0:0:1]$), which gives us degree-3 as desired. Finally, the map is surjective, since if not, then there exists a point $[x_0:y_0]$ not in the image of $C$, which implies the intersection of $C$ and $(y_0 x - x_0 y)$ is empty, but that violates Bezout's theorem. We conclude that the map $C \rightarrow \PP^1$ is the desired degree-3 cover map. 
+
+\newpage
+
+\section*{FOAG 19.7.D.}
+
+\begin{solution}
+    Given a genus-3 nonhyperelliptic curve, we consider the canonical embedding $|\omega_C|: C \hookrightarrow \PP^2$. Let $s_0, s_1, s_2$ be the three linearly independent sections that are pullbacks of $x_0, x_1, x_2 \in \Gamma(\PP^2, \cO(1))$. We know that $s_0, s_1, s_2$ forms a basis for $\omega_C$. Now, given any automorphism $\varphi: C \rightarrow C$, we have an induced isomorphism $\varphi_*: \omega_C \rightarrow \varphi^*\omega_C \cong \omega_C$, which corresponds to a matrix $M \in \GL(3, k)$ with respect to the basis $(s_0, s_1, s_2)$. We claim that the matrix $M$ induces an automorphism of $\PP^2$ that fixes $C$. To see this, let $\varphi'$ be the induced automorphism of $\PP^2$ by the map $M: \cO(1) \rightarrow (\varphi')^*\cO(1) \cong \cO(1)$ with respect to the basis $(x_0, x_1, x_2)$. Notice that the embedding $|\omega_C| \circ \varphi: C \hookrightarrow \PP^2$ is induced by the complete linear system $(\omega_C, (M(s_0), M(s_1), M(s_2)))$. On the other hand, the map $\varphi' \circ |\omega_C|$ is also induced by the same complete linear system $(\omega_C, (M(s_0), M(s_1), M(s_2)))$, so they are the same map. We conclude that the following diagram commutes:
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJDIl0sWzEsMCwiQyJdLFswLDEsIlxcUFBeMiJdLFsxLDEsIlxcUFBeMiJdLFswLDEsIlxcdmFycGhpIl0sWzAsMiwifFxcb21lZ2FfQ3wiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsxLDMsInxcXG9tZWdhX0N8IiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiwzLCJcXHZhcnBoaV9NIiwyXV0=
+    \[\begin{tikzcd}
+        C & C \\
+        {\PP^2} & {\PP^2}
+        \arrow["\varphi", from=1-1, to=1-2]
+        \arrow["{|\omega_C|}"', hook, from=1-1, to=2-1]
+        \arrow["{|\omega_C|}", hook, from=1-2, to=2-2]
+        \arrow["{\varphi'}"', from=2-1, to=2-2]
+    \end{tikzcd}\]
+    This in particular implies the automorphism $\varphi'$ of $\PP^2$ fixes $C$. 
+
+    Next, we check that every automorphism $\psi$ of $\PP^2$ that fixes $C$ descends to an automorphism $\psi'$ of $C$. It's easy to see that $\psi$ descends to an automorphism of $C$, since it has an inverse which is induced by $\psi^{-1}$. We claim that these two operations are inverses of each other. We will not check it. 
+\end{solution}
+
+% To see that this map is an inverse of the map $\varphi \mapsto \varphi'$, it suffices to check that the corresponding matrix $M': \cO(1) \rightarrow \psi^*\cO(1)$ induces the map $M': \omega_C \rightarrow (\psi')^* \omega_C$ that agrees 
+
+\newpage
+
+\section*{FOAG 19.8.B.}
+
+\begin{solution}
+    We know that a nonhyperelliptic surface of genus 4 corresponds bijectively to complete intersections of a quadric surface $H_1$ and a cubic surface $H_2$ in $\PP^3$. We have the following computation:
+    \begin{itemize}
+        \item The space of quadric surfaces in $\PP^3$ has dimension $h^0(\PP^3, \cO_{\PP^3}(2)) - 1 = 10 - 1 = 9$, where we subtract one by quotienting the defining polynomial by scalar multiplications. 
+        \item The space of homogeneous cubic surfaces in $\PP^3$ that has complete intersection with a fixed quadric $H_1$ is $h^0(\PP^3, \cO_{\PP^3}(3)) - 4 - 1 = 15$. Here, $h^0(\PP^3, \cO_{\PP^3}(3))$ is the dimension of the space of homogeneous cubic polynomials in four variables, and we lose 4 dimension by not considering the homogeneous cubics that are multiplies of the quadratic given by $H_1$. Finally, we subtract another 1 by quotienting by scalar multiplication. 
+    \end{itemize}
+    It follows that the dimension of the space of complete intersections $H_1 \cap H_2$ is $9 + 15 = 24$. Finally, since the dimension of the automorphism group of $\PP^3$ is $\dim \GL(4, k) - 1 = 16 - 1 = 15$, the moduli space should have dimension $25 - 16 = 9$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.8.C.}
+
+\begin{solution}
+    Since $C$ has genus 5, $\deg \omega_C = 2g - 2 = 8$ and $h^0(C, \omega_C) = g = 5$. It follows that the canonical embedding $|\omega_C| : C \hookrightarrow \PP^4$ is a degree-8 curve in $\PP^3$. To understand whether $C$ is contained in a quadric hypersurface, we can look at the restriction of $\cO_{\PP^4}(2)$ to $C$. Consider the restriction map $H^0(\PP^4, \cO_{\PP^4}(2)) \rightarrow H^0(C, i^* \cO_{\PP^4}(2))$. We know that $h^0(\PP^4, \cO_{\PP^4}(2)) = \binom{6}{2} = 15$. On the other hand, $(i^* \cO_{\PP^4}(1))^{\otimes 2} \cong \omega_C^{\otimes 2}$. In particular, $\deg \omega_C^{\otimes 2} = 2 \deg \omega_C = 4g - 4 > 2g - 2$, we know that 
+    \[
+        h^0(C, \omega_C^{\otimes 2})
+        = \deg \omega_C^{\otimes 2} - g + 1 
+        = 3g - 3 
+        = 12.
+    \]  
+    This implies the kernel of the restriction map $H^0(\PP^4, \cO_{\PP^4}(2)) \rightarrow H^0(C, i^* \cO_{\PP^4}(2))$ has dimension at least 3. Taking a linearly independent set of three sections of $\cO_{\PP^4}(2)$, we obtain three quadric hypersurfaces $H_1, H_2, H_3$ such that $H_1 \cap H_2 \cap H_3$ is a complete intersection that contains the degree-8 curve $C$.
+
+    To show that $C$ is canonically embedded, it suffices to show that any degree-8 embedding $C \hookrightarrow \PP^4$ of a nonhyperelliptic genus 5 curve is the embedding induced by the complete linear series $|\omega_C|$. It suffices to show that $\cO_C(1) \cong \omega_C$, where $\cO_C(1)$ is the restriction of $\cO_{\PP^4}(1)$ to $C$. We will show that $\cO_C(1)$ has at least 5 sections. To see this, we first show that $\cI_C(1)$ has no global sections. Let $p, q, r$ be the equations of the quadric that cuts out $C$. Notice that $p, q, r$ are linearly independent. This gives us the following exact sequence:
+    \[
+        0 \rightarrow \cO(-5) \xrightarrow{f} \cO(-3)^3 \xrightarrow{g} \cO(-1)^3 \xrightarrow{h} \cI_C(1) \rightarrow 0
+    \]
+    where 
+    \[
+        f = 
+        \begin{pmatrix}
+            r \\ q \\ p
+        \end{pmatrix} ; \hspace{10pt}
+        g = 
+        \begin{pmatrix}
+            -q & p & 0 \\
+            -r & 0 & -p \\
+            0 & -r & q
+        \end{pmatrix} ; \hspace{10pt}
+        h = 
+        \begin{matrix}
+            p & q & r
+        \end{matrix}
+    \]
+    Notice that the above long exact sequence can be split into two short exact sequences:
+    \[
+        0 \rightarrow \cO(-5) \xrightarrow{f} \cO(-3)^3 \xrightarrow{g} \Ker(h) \rightarrow 0 ; \hspace{10pt}
+        0 \rightarrow \Coker(f) \xrightarrow{g} \cO(-1)^3 \xrightarrow{h} \cI_C(1) \rightarrow 0
+    \]
+    Notice that $\Coker(f) = \cO(-3)^3 / \Im(f) = \cO(-3)^2 / \Ker(g) \cong \Im(g) = \Ker(h)$. We first compute $h^i(\PP^4, \Ker(h))$ for $i = 0, 1$ using the first exact sequence. We know that $H^i(\PP^4,\cO(n)) = 0$ for $i = 0, 1, 2$ and $n < 0$, so by the long exact sequence in cohomology we must have 
+    \[
+        0 \rightarrow H^0(\PP^4, \Ker(h)) \rightarrow 0 \rightarrow 0 \rightarrow H^1(\PP^4, \Ker(h)) \rightarrow 0.
+    \]
+    It follows that $h^0(\PP^4, \Ker(h)) = h^1(\PP^4, \Ker(h)) = 0$. Next, we compute $h^0(\PP^4, \cI_C(1))$. The second short exact sequence gives us 
+    \[
+        0 = H^0(\PP^4, \cO(-1)^3) \rightarrow H^0(\PP^4, \cI_C(1)) \rightarrow H^1(\PP^4, \Coker(f)) = H^1(\PP^4, \Ker(h)) = 0.
+    \]
+    It follows that $h^0(\PP^4, \cI_C) = 0$. Finally, consider the short exact sequence 
+    \[
+        0 \rightarrow \cI_C \rightarrow \cO_{\PP^4}(1) \rightarrow \cO_C(1) \rightarrow 0
+    \]
+    gives us the long exact sequence of cohomology 
+    \[
+        0 = H^0(\PP^4, \cI_C(1)) \rightarrow H^0(\PP^4, \cO_{\PP^4}(1)) \rightarrow H^0(\PP^4, \cO_C(1)) \rightarrow H^1(\PP^4, \cI_C(1)) \rightarrow 0.
+    \]
+    This implies $h^0(\PP^4, \cO_C(1)) = h^0(\PP^4, \cO_{\P^4}(1)) + h^1(\PP^4 \cI_C(1)) \geq 5$. Then, since $\cO_C(1)$ is degree-8, and that the only degree-8 invertible sheaf on a genus 5 curve $C$ with 5 sections in $\omega_C$, we know that any complete intersection of three quadrics is a canonical genus 5 curve. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.8.D.}
+
+\begin{solution}
+    We claim that the space of complete intersections of thre quadrics in $\PP^4$ is parametrized by $\Gr(3, 15)$, which has dimension $3 \cdot (15-3) = 36$. To see this, notice that the space of quadrics in $\PP^4$ corresponds to a line in $k^{15}$. The space of linearly independent unordered 3-tuple of quartics is then equivalent to the space of 3-dimensional subspaces of $k^{15}$, but that's precisely $\Gr(3, 15)$. Next, since the dimension of the automorphisms of $\PP^4$ is $\dim \PGL(5, k) = 25 - 1 = 24$, the dimension of $\cM_5$ is heuristically $36 - 24 = 12$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.8.E.}
+
+\begin{solution}
+    Consider a canonical embedding $|\omega_C|: C \hookrightarrow \PP^{g-1}$, we know that the embedding is induced by the $g$ linearly independent sections of $\omega_C$, so it is nondegenerated. This implies $C$ is not contained in any hyperplane of $\PP^{g-1}$. Now, suppose $C$ is a complete intersection of $g-2$ many surfaces $H_1, \ldots, H_{g-2}$. Then, we know that $\deg H_i \geq 2$ for all $i$, so by Bezout's theorem, $\deg \cap_i H_i = \prod_i \deg H_i \geq 2^{g-2}$. On the other hand, $\deg C = \deg \omega_C = 2g - 2$, so $2g - 2 \geq 2^{g-2}$. However, this contradicts $g > 5$ (by an easy induction argument we can show that $2g - 2 \leq 2^{g-2}$ for all $g > 5$). 
+\end{solution}
+
+\end{document}

@@ -1,0 +1,426 @@
+\documentclass[11pt]{article} 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,esint, dsfont,mathtools}	
+\usepackage{graphicx}		
+\usepackage{hyperref}
+\usepackage{cases}			
+\usepackage{textcomp, gensymb}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+% diagrams
+\usepackage{quiver}
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	\def\@currentlabel{#2}
+	\label{#1}\endgroup
+}
+\makeatother
+
+\setlength{\parindent}{0pt} 	% first line in paragraph will not be indented
+
+\usepackage[parfill]{parskip}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\newcommand{\ind}{{\mathds{1}}}
+
+% math fonts
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\ka}{\mathfrak{a}}
+\newcommand{\kb}{\mathfrak{b}}
+\newcommand{\kc}{\mathfrak{c}}
+\newcommand{\kd}{\mathfrak{d}}
+\newcommand{\ke}{\mathfrak{e}}
+\newcommand{\kg}{\mathfrak{g}}
+\newcommand{\kf}{\mathfrak{f}}
+\newcommand{\kh}{\mathfrak{h}}
+\newcommand{\ki}{\mathfrak{i}}
+\newcommand{\kj}{\mathfrak{j}}
+\newcommand{\kk}{\mathfrak{k}}
+\newcommand{\kl}{\mathfrak{l}}
+\newcommand{\km}{\mathfrak{m}}
+\newcommand{\kn}{\mathfrak{n}}
+\newcommand{\ko}{\mathfrak{o}}
+\newcommand{\kp}{\mathfrak{p}}
+\newcommand{\kq}{\mathfrak{q}}
+\newcommand{\kr}{\mathfrak{r}}
+\newcommand{\ks}{\mathfrak{s}}
+\newcommand{\kt}{\mathfrak{t}}
+\newcommand{\ku}{\mathfrak{u}}
+\newcommand{\kv}{\mathfrak{v}}
+\newcommand{\kw}{\mathfrak{w}}
+\newcommand{\kx}{\mathfrak{x}}
+\newcommand{\ky}{\mathfrak{y}}
+\newcommand{\kz}{\mathfrak{z}}
+
+\newcommand{\kA}{\mathfrak{A}}
+\newcommand{\kB}{\mathfrak{B}}
+\newcommand{\kC}{\mathfrak{C}}
+\newcommand{\kD}{\mathfrak{D}}
+\newcommand{\kE}{\mathfrak{E}}
+\newcommand{\kG}{\mathfrak{G}}
+\newcommand{\kF}{\mathfrak{F}}
+\newcommand{\kH}{\mathfrak{H}}
+\newcommand{\kI}{\mathfrak{I}}
+\newcommand{\kJ}{\mathfrak{J}}
+\newcommand{\kK}{\mathfrak{K}}
+\newcommand{\kL}{\mathfrak{L}}
+\newcommand{\kM}{\mathfrak{M}}
+\newcommand{\kN}{\mathfrak{N}}
+\newcommand{\kO}{\mathfrak{O}}
+\newcommand{\kP}{\mathfrak{P}}
+\newcommand{\kQ}{\mathfrak{Q}}
+\newcommand{\kR}{\mathfrak{R}}
+\newcommand{\kS}{\mathfrak{S}}
+\newcommand{\kT}{\mathfrak{T}}
+\newcommand{\kU}{\mathfrak{U}}
+\newcommand{\kV}{\mathfrak{V}}
+\newcommand{\kW}{\mathfrak{W}}
+\newcommand{\kX}{\mathfrak{X}}
+\newcommand{\kY}{\mathfrak{Y}}
+\newcommand{\kZ}{\mathfrak{Z}}
+
+%some math symbol commands redefined:
+\DeclareMathOperator{\C}{\mathcal{C}}
+\DeclareMathOperator{\power}{\mathcal{P}}
+\DeclareMathOperator{\vspan}{\text{span}}
+\DeclareMathOperator{\vnull}{\text{null}}
+\DeclareMathOperator{\range}{\text{range}}
+\DeclareMathOperator{\re}{\text{Re}}
+\DeclareMathOperator{\im}{\text{Im}}
+\DeclareMathOperator{\erf}{\text{erf}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdvv}[2]{\frac{\partial^2 #1}{\partial #2}}
+\DeclareMathOperator{\tr}{\operatorname{Tr}}
+\newcommand{\Deck}{\operatorname{Deck}}
+\newcommand{\Conj}{\mathrm{Conj}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\PROJ}{\mathit{Proj}}
+
+% category names
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Ring}{\mathsf{Ring}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Sch}{\mathsf{Sch}}
+
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\pre}{\text{pre}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\Char}{\operatorname{char}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Bl}{\mathrm{Bl}}
+\newcommand{\codim}{\mathrm{codim}}
+\newcommand{\val}{\operatorname{val}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Gr}{\operatorname{Gr}}
+
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\Rk}{\operatorname{Rk}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+
+% category theory symbols
+\DeclareMathOperator{\Mor}{\operatorname{Mor}}
+
+\newenvironment{solution}{\begin{trivlist}\item[]{\textcolor{blue}{Solution:}}}{\qed \end{trivlist}}
+
+
+\usepackage[shortlabels]{enumitem}
+\title{MATH 2060 Homework 9}
+\author{Zhengyu Zou}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\textbf{Collaborators:} Ethan Bove, Roberta Pagliaro, Anamaria Perez
+
+\section*{FOAG 21.3.B.}
+
+\begin{solution}
+    Assuming that $\pi: C \rightarrow \PP^1$ has distinct branch points $p_1, \ldots, p_{2g+2}$ that are not $0$ or $\infty$. Let $f(x) = \prod_i (x - p_i)$. We then have the following charts for $C$: 
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXFNwZWMgXFxmcmFje1xcQ0NbeCx5XX17KHleMiAtIGYoeCkpfSJdLFswLDEsIlxcU3BlYyBcXENDW3hdIl0sWzIsMCwiXFxTcGVjIFxcZnJhY3tcXENDW3osdV19eyh6XjIgLSB1XnsyZysyfWYoMS91KSl9Il0sWzIsMSwiXFxTcGVjIFxcQ0NbdV0iXSxbMCwxLCJcXHBpIiwyXSxbMiwzLCJcXHBpIl0sWzAsMiwieiA9IHkgLyB4XntnKzF9Il0sWzIsMCwieSA9IHogLyB1XntnKzF9Il0sWzEsMywidSA9IDEveCJdLFszLDEsInggPSAxL3UiXV0=
+    \[\begin{tikzcd}
+        {\Spec \frac{\CC[x,y]}{(y^2 - f(x))}} && {\Spec \frac{\CC[u,z]}{(z^2 - u^{2g+2}f(1/u))}} \\
+        {\Spec \CC[x]} && {\Spec \CC[u]}
+        \arrow["{z = y / x^{g+1}}", from=1-1, to=1-3]
+        \arrow["\pi"', from=1-1, to=2-1]
+        \arrow["{y = z / u^{g+1}}", from=1-3, to=1-1]
+        \arrow["\pi", from=1-3, to=2-3]
+        \arrow["{u = 1/x}", from=2-1, to=2-3]
+        \arrow["{x = 1/u}", from=2-3, to=2-1]
+    \end{tikzcd}\]
+    Call the topleft affine patch $U$, and the topright affine patch $V$. It follows that $\pi^*dx$ is $dx$ on $U$ and $-1/u^2 du$ on $V$. 
+    
+    We claim that $dx$ has $2g + 2$ zeros and no poles on $U \cap V$, and $-1/u^2 du$ has 4 poles on $V$. First, from $y^2 - f(x) = 0$ we see that $2ydy - f'(x) dx = 0$. In particular, $f'(p_i) \neq 0$ for all the $p_i$'s, so the points $(p_i, 0)$ are contained in $D(f'(x)) \cap U$. In particular, we see that $dx = \frac{2y}{f'(x)} dy$ in $D(f'(x)) \cap U$, so $dx$ has zeros of order 1 at $(0, p_i)$ for $i = 1, \ldots, 2g+2$. Also, $dx$ has no poles on $U$ since it's a regular section on $U$. 
+
+    Next, we show that $dx$ has no zeros and 4 poles on $V$ (counting multiplicity). Recall that $dx = 1/u^2 du$, which has a pole of order-2 at $u = 0$. Notice that since $f$ doesn't vanish at $\infty$, the polynomial $g(u) = u^{2g+2} f(1/u)$ satisfies $g(0) \neq 0$, so $1/u^2 du$ has poles of order 2 at the two points $(0, \pm \sqrt{g(0)})$. Also, from the argument above we see that $du$ has zeros at $(0, 1/p_i)$ for $i = 1, \ldots, 2g+2$, but these are precisely points in $U \cap V$. 
+    
+    We conclude that the nonzero section $\pi^* dx \in H^0(C, \Omega_{C/k})$ has $2g + 2$ zeros and 4 poles, so $\deg \Omega_{C/k} = 2g - 2$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 21.3.C.}
+
+\begin{solution}
+    We will denote by $U = \Spec \CC[x,y]/(y^2 - f(x))$, $V = \Spec \CC[u,z]/(z^2 - u^{2g+2} f(1/u))$. 
+    \begin{enumerate}[(a)]
+        \item Suppose we are given $\omega = gdx + hdy$ for some $g, h \in \CC[x,y]/(y^2 - f(x))$ that is preserved under the map $y \mapsto -y$. From $y^2 - f(x) = 0$ we see that $2ydy = f(x) dx$, so we can take $h$ to be a polynomial in $x$ only. Denote by $i$ the hyperelliptic involution. It follows that $i^* \omega = g(x,-y) dx - h(x)dy = g(x,y) dx + h(x) dy$. This tells us $-h(x) = h(x)$, so $h(x) \equiv 0$. Also, $g(x,-y) = g(x,y)$, so the terms $x^ay^b$ in $g(x,y)$ where $b$ is odd must all have coefficients 0. It follows that we can write $g(x,y) = \tilde g(x,y^2) = \tilde g(x, f(x)) = G(x) \in \CC[x]$, so $\omega = G(x) dx$ is the pullback of $G(x) dx \in \Omega_{\CC[x]/k}$. 
+        
+        \item By a symmetric argument on $V$ we see that any differential $\omega$ that is invariant under $i$ is a pullback differential from $\Omega_{\CC[u]/k}$. It follows that any $\omega \in \Omega_{C/k}$ invariant under $i$ is the pullback of a section on $\Omega_{\PP^1/k}$, but then since $h^0(\Omega_{\PP^1/k}) = 0$, we see that $\omega = 0$. Now, given any differential $\eta \in H^0(C, \Omega_{C/k})$, we can express $\eta$ as $\eta = yg(x) dx + h(x) dy$ by substituting all the $y^2$ terms by $f(x)$. It follows that $i^* \eta = -y g(x) dx - h(x) dy = -\eta$ on $U$. We can similarly check that $i^*\eta = -\eta$ on $V$. 
+        
+        \item First, $\frac{dx}{y}$ is clearly regular on $D(y)$. We also know from 21.3.B.\ that $V(y) \subset D(f'(x))$, so $\frac{dx}{y} = \frac{dy}{f'(x)}$ on $D(f'(x))$, which is clearly regular on $V(y)$. Now, to see that $\omega_i = \frac{x^i dx}{y}$ extends to a global differential on $C$, we see that $\frac{x^i dx}{y}$ maps to $\frac{-u^{-i-2}du}{z/u^{g+1}} = \frac{-u^{g-i-1}du}{z}$. Since $i < g$, $g - i - 1 \geq 0$, so $-u^{g-i-1} \frac{du}{z}$ is a regular section on $V$, hence on the whole curve $C$. 
+        
+        \item Let $p, q$ be closed points in $C$ such that $\pi^{-1}(0) = \{p, q\}$. Suppose for any $s \geq 0$, we have a $k$-linear combination $\eta = \sum_{i=s}^{g-1} a_i \omega_i = 0$ with $a_s \neq 0$. Notice that the valuation of $\omega_i = \frac{x^i dx}{y}$ at $p$ is $i$ (we know that $0$ is not a root of $f(x)$, so $p$ must have coordinates $(0, y_0)$ for some $y_0 \neq 0$). We see that the valuation of $\eta$ at $p$ is $s$, so $\eta \neq 0$. It follows that the $\omega_i$'s are linearly independent. 
+        
+        \item Given $\omega \in H^0(C, \Omega_{C/k})$, we can express $\omega|_U$ as $yg(x) dx + h(x) dy$. Since $p,q \in D(y)$, we see that $dy = \frac{f(x)dx}{2y}$. It follows that 
+        \[
+            \omega = y g(x) dx + \frac{f(x)}{2y} dx 
+            = \left( f(x)g(x) + \frac{f(x)}{2} \right) \frac{dx}{y}.
+        \]
+        Now, for $i = 0, \ldots, g-1$, let $a_i$ be the coefficient of the term $x^i$ in $f(x)g(x) + \frac{f(x)}{2}$. It follows that 
+        \[
+            \eta = \omega - \sum_{i=0}^{g-1} a_i \omega_i 
+            = x^g \tilde f(x) \frac{dx}{y}.
+        \]
+        This implies $\eta$ vanishes at $p$ with order $\geq g$. From Part (b) we know that $i^*\eta = -\eta$, and since $-\eta$ vanishes at $p$ with order $\geq g$, we see that $\eta$ vanishes at $q$ with order $\geq g$. Now, if $\eta$ is the zero section, then we have $\omega = \sum_i a_i \omega_i$, and we are done. Otherwise, we must have $\deg \eta \geq 2g$ (since $\eta$ is regular), but that contradicts $\deg \Omega_{C/k} = 2g - 2$. 
+    \end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 21.3.D.}
+
+\begin{solution}
+    Again, we will denote by $U = \Spec \CC[x,y]/(y^2 - f(x))$, $V = \Spec \CC[u,z]/(z^2 - u^{2g+2} f(1/u))$. 
+    \begin{enumerate}[(a)]
+        \item From Riemann-Roch for curves, we see that 
+        \[
+            \chi(C, \Omega_{C/k}) 
+            = \deg \Omega_{C/k} + \chi(C, \cO_C) 
+            = (2g - 2) + (1 - g) 
+            = g - 1.
+        \]
+        It follows that $h^1(C, \Omega_{C/k}) = - (g-1 - h^0(C, \Omega_{C/k})) = 1$. 
+
+        To interpret the generator of $H^1(C, \Omega_{C/k})$, we may consider the C\v ech complex 
+        \[
+            0 
+            \longrightarrow \Gamma(U, \Omega_{C/k}) \times \Gamma(V, \Omega_{C/k}) 
+            \longrightarrow \Gamma(U \cap V, \Omega_{C/k}) 
+            \longrightarrow 0.
+        \]
+        We know that $H^1$ is simply $\Gamma(U \cap V, \Omega_{C/k})$ modulo the kernel of the map from $\Gamma(U) \times \Gamma(V)$, so it is represented by any nontrivial element of $\Gamma(U \cap V, \Omega_{C/k})$. Notice also that $U \cap V = U \cap D(x)$, so the section $x^{-1} dx$ is a basis for $H^1$. Finally, recall that $\Omega_{\PP^1/k} \cong \cO_{\PP^1}(-2)$, and $h^1(\PP^1, \cO_{\PP^1}(-2)) = \binom{1}{0} = 1$, and that using the C\v ech complex $0 \rightarrow \Gamma(D(x)) \times \Gamma(D(u)) \rightarrow \Gamma(D(x) \cap D(u)) \rightarrow 0$ we see that $x^{-1}dx$ also generates $H^1(\PP^1, \cO_{\PP^1}(-1))$. Therefore, the pullback map $H^1(\PP^1, \Omega_{\PP^1/k}) \rightarrow H^1(C, \Omega_{C/k})$ is an isomorphism. 
+
+        \item The natural map $H^0(C, \Omega_{C/k}) \times H^1(C, \cO_C) \rightarrow H^1(C, \Omega_{C/k})$ comes from the cup product 
+        \[
+            H^i(X, F) \times H^j(X, G) \longrightarrow H^{i+j}(X, F \otimes G)
+        \]
+        of any two coherent sheaves $F, G$ over $C$. On the level of C\v ech complexes, the map takes in a global section $\omega$ of $\Omega_{C/k}$ and a cocycle $f$ of $\cO_C$ on some intersection $U \cap V$ of open covers and output the section $\omega \otimes f = f \omega$ that is a cocycle of $\Omega_{C/k}$ restricted to $U \cap V$. 
+    \end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 21.4.K.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+    \item By the curve-to-projective theorem, it suffices for us to describe a rational map $\pi: C \dashrightarrow C'$, which is determined by a map on the function fields $K(C)^G \rightarrow K(C)$. We can simply take the inclusion map $K(C)^G \hookrightarrow K(C)$. To see that this map has degree $|G|$, we observe that we can measure degree at the generic point, which is given by the degree of the field extension $K(C)^G \hookrightarrow K(C)$, but then this is clearly a Galois extension, so $\deg \pi = |G|$. Finally, the action of $G$ on $C$ induces a Galois action on $K(C)$ over $K(C)^G$, so clearly we have $\pi \circ g = \pi$ for all $g \in G$. 
+    
+    \item Let $p_i \in C'$ be one of the $n$ branch points of $\pi$ with ramification points $\pi^{-1}(p_i) = \{q_1, \ldots, q_m\}$. Since $G$ acts transitively on $\pi^{-1}(p_i)$, and that $\pi \circ g = \pi$ for all $g \in G$, we see that the ramification index of any $q_i$ must be the same as the index of $g(q_i)$. 
+    
+    \item Let $I$ index the ramification points of the map $\pi: C \rightarrow C'$. Denote by $R$ the ramification divisor. We know from part (b) that $R = \sum_{i=1}^n \sum_{q \in \pi^{-1}(p_i)} (r_i-1)[q]$, wuere $|\pi^{-1}(p_i)| = \frac{|G|}{r_i}$. The Riemann-Hurwitz formula then implies 
+    \begin{align*}
+        2g - 2 
+        &= |G| (2g(C') - 2) + \deg R \\
+        &= |G| (2g(C') - 2) + \sum_{i=1}^n \frac{|G| (r_i - 1)}{r_i} \\
+        &= |G| \left( 2g(C') - 2 + \sum_{i=1}^n \frac{r_i - 1}{r_i} \right).
+    \end{align*}
+    This is the desired formula. 
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 21.5.B.}
+
+\begin{solution}
+    By 14.2.N., we know that anytime we have an exact sequence of finite rank locally free sheaves $0 \rightarrow F \rightarrow G \rightarrow H \rightarrow 0$, we have $\det G \cong \det F \otimes \det H$. Now, since $i: Z \hookrightarrow X$ is a smooth closed embedding, we have the conormal exact sequence 
+    \[
+        0 \longrightarrow \cN_{Z/X}^\vee \longrightarrow i^* \Omega_{X} \longrightarrow \Omega_Z \longrightarrow 0.
+    \]
+    It follows that $\det i^* \Omega_{X} \cong \det \cN_{Z/X}^\vee \otimes \det \Omega_Z$. Now, observe that $\det i^* \Omega_X \cong i^* (\det \Omega_X) \cong \cK_X |_Z$, and $\det \Omega_Z \cong \cK_Z$. It follows that $\cK_X|_Z \cong \cK_Z \otimes \det \cN_{Z/X}^\vee$, which gives us $\cK_Z \cong \cK_X|_Z \otimes \det \cN_{Z/X}$ as desired. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 21.5.C.}
+
+\begin{solution}
+    From 21.5.B.\ we know that $\cK_Z \cong (\cK_{\PP^3} \otimes \cO_{\PP^3}(Z))|_Z$. From the Euler sequence 
+    \[
+        0 \longrightarrow \Omega_{\PP^n/k} \longrightarrow \cO^{n+1}_{\PP^n}(-1) \longrightarrow \cO_{\PP^n} \longrightarrow 0
+    \]
+    we see that $\cK_{\PP^n} \cong \bigwedge^n \Omega_{\PP^n/k} \otimes \cO_{\PP^n} \cong \bigwedge^{n+1} \cO_{\PP^n}(-1) \cong \cO_{\PP^n}(-n-1)$. Also, $\cO_{\PP^3}(Z) \cong \cO_{\PP^3}(d)$. It follows that $\cK_Z \cong \cO_{\PP^3}(d-4)|_Z$. Now, using the closed subscheme exact sequence, we have
+    \[
+        0 \longrightarrow \cO_{\PP^3}(-4) 
+        \longrightarrow \cO_{\PP^3}(d-4) 
+        \longrightarrow \cO_{\PP^3}(d-4)|_Z 
+        \longrightarrow 0.
+    \]
+    Since $h^0(\cO_{\PP^3}(-4)) = h^1(\cO_{\PP^3}(-4)) = 0$, we have 
+    \begin{equation*}
+        h^0(Z, \cK_Z) = h^0(\PP^3, \cO_{\PP^3}(d-4)) = 
+        \begin{cases}
+            \frac{(d-1)(d-2)(d-3)}{6} & d \geq 4 \\
+            0 & d < 4
+        \end{cases}
+    \end{equation*}
+
+    Now, by plugging in $d = 4$ we see that $h^0(Z, \cK_Z) = 1$. On the other hand, since $\cK_{\PP^2} \cong \cO_{\PP^2}(-3)$, we see that $h^0(\PP^2, \cK_{\PP^2}) = 0$, so $Z$ is not rational. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 21.5.M.}
+
+\begin{solution}
+    The Euler exact sequence gives us 
+    \[
+        0 \longrightarrow \Omega_{\PP^n/k} \longrightarrow \cO_{\PP^n}^{n+1}(-1) \longrightarrow \cO_{\PP^n} \longrightarrow 0.
+    \]
+    By 14.2.N, for all $p$ we have a filtration 
+    \[
+        \bigwedge^p \cO_{\PP^n}^{n+1}(-1) = \cG^0 \supset \cG^1 \supset \cdots \supset \cG^p \supset \cG^{p+1} = 0 ; 
+        \hspace{10pt} 
+        \cG^r / \cG^{r+1} \cong \Omega^r_{\PP^n/k} \otimes \left( \bigwedge^{p-r} \cO_{\PP^n} \right).
+    \]
+    Notice that $\bigwedge^{p-r} \cO_{\PP^n} = 0$ for all $p-r > 1$, or equivalently for all $r < p - 1$. This reduces the above filtration to an exact sequence $0 \rightarrow \Omega^{p}_{\PP^n/k} \rightarrow \bigwedge^p \cO_{\PP^n}^{n+1}(-1) \rightarrow \Omega^{p-1}_{\PP^n/k} \rightarrow 0$. In particular, $\bigwedge^p \cO_{\PP^n}^{n+1}(-1) \cong \cO_{\PP^n}^P(-p)$, where $P = \binom{n+1}{p}$. Thus, for $0 \leq p < n+1$ and any $q \geq 0$, we see that 
+    \[
+        H^q \left( \PP^n, \bigwedge^p \cO_{\PP^n}^{n+1}(-1) \right)
+        = H^q (\PP^n, \cO_{\PP^n}^{P}(-p))
+        = H^q (\PP^n, \cO_{\PP^n}(-p))^{P}
+        = 0.
+    \]
+    It follows that $h^q(\Omega_{\PP^n/k}^p) = h^{q-1} (\Omega_{\PP^n/k}^{p-1})$ for all $p \leq n$. Now, recall that $\Omega_{\PP^n/k}^n = \cK_{\PP^n} \cong \cO_{\PP^n}(-n-1)$, so $h^i(\PP^n, \Omega_{\PP^n/k}^n) = 0$ for all $i < n$ and $h^n(\PP^n, \Omega_{\PP^n/k}^n) = 1$. It follows that $h^{p,q} = 0$ for all $p \neq q$ and $h^{p,q} = 1$ for $0 \leq p = q \leq n$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 21.5.O.}
+
+\begin{solution}
+    Denote by $X = \PP^1 \times \PP^1$. 
+    We can first compute $h^{2,0}$, $h^{2,1}$, and $h^{2,2}$ for $X$. Recall that $X$ is isomorphic to a quadric surface in $\PP^3$. By 21.5.C., we know that $\cK_{X} \cong \cO_{\PP^3}(-2)|_X$, so we may use the following exact sequence:
+    \[
+        0 \longrightarrow \cO_{\PP^3}(-4) \longrightarrow \cO_{\PP^3}(-2) 
+        \longrightarrow \cO_{\PP^3}(-2)|_{X} \longrightarrow 0
+    \]
+    to compute $h^{2,0}$, $h^{2,1}$, and $h^{2,2}$. We know that $h^i(\PP^3, \cO_{\PP^3}(-4)) = 0$ for $i < 3$, and $h^3(\PP^3, \cO_{\PP^3}(-4)) = 1$. It follows that $h^{2,i} = h^{i}(\PP^3, \cO_{\PP^3}(-2)) = 0$ for $i = 0, 1$. Moreover, since $h^j(\PP^3, \cO_{\PP^3}(-2)) = 0$ for $j = 2$ and $3$, we see that $h^{2,2} = h^3(\PP^3, \cO_{\PP^3}(-4)) = 1$. 
+
+    Next, we would like to compute $h^{0,0}$ and $h^{1,0}$. Note that $h^{0,0} = h^0(X, \cO_X) = 1$, since $X$ is a smooth projective $k$-scheme. Notice also that $\cO_X \cong \cO_{\PP^3}|_X$, so by the closed subscheme exact sequence, we have 
+    \[
+        0 \longrightarrow \cO_{\PP^3}(-2) \longrightarrow \cO_{\PP^3} \longrightarrow \cO_{\PP^3}|_X \longrightarrow 0,
+    \]
+    so from $h^1(\PP^3, \cO_{\PP^3}) = h^2(\PP^3, \cO_{\PP^3}(-2)) = 0$, we have $h^{1,0} = h^{0,1} = h^1(X, \cO_X) = 0$. 
+
+    It remains to show that $h^{1,1} = 2$. To see this, we will invoke 21.2.U.. Denote by $p_i$ the projection of $X$ onto its $i$-th factor. We know that $\Omega_{X/k} \cong p_1^* \Omega_{\PP^1/k} \oplus p_2^* \Omega_{\PP^1/k} \cong \cO_X(-2,0) \otimes \cO_X(0,-2)$. It then follows that $H^1(X, \Omega_{X/k}) \cong H^1(X, \cO_X(-2,0)) \oplus H^1(X, \cO_X(0,-2))$, so $h^{1,1} = 2 h^1(X, \cO_X(-2,0))$. Now, we have a closed subscheme sequence
+    \[
+        0 \longrightarrow \cO_{X}(-2, 0) \longrightarrow \cO_X \longrightarrow \cO_{\PP^1 \sqcup \PP^1} \longrightarrow 0
+    \]
+    from the embedding of $\PP^1 \sqcup \PP^1$ into $\PP^1 \times \{0, \infty\}$. The long exact sequence in cohomology then gives us 
+    \[
+        0 \rightarrow H^0(X, \cO_{X}(-2, 0)) \rightarrow H^0(X, \cO_X) \rightarrow H^0(\PP^1, \cO_{\PP^1})^2 \rightarrow H^1(X, \cO_X(-2,0)) \rightarrow H^1(X, \cO_X) \rightarrow \cdots
+    \]
+    We know that $h^0(X, \cO_X) = 1$ and $h^0(\PP^1, \cO_{\PP^1}) = 1$. Also, since $h^{1,0} = 0$, we know that 
+    \[
+        0 = h^{1,0} = h^0(X, \Omega_{X/k})
+        = h^0(X, \cO_X(-2,0)) + h^0(X, \cO_{X}(0, -2))
+        = 2h^0(X, \cO_X(-2,0)).
+    \]
+    It follows that the first term in the exact sequence is 0. We also know that the last term is $0$ because $h^{0, 1} = 0$. We are then left with a short exact sequence 
+    \[
+        0 \longrightarrow H^0(X, \cO_X) \longrightarrow H^0(\PP^1, \cO_{\PP^1})^2 \longrightarrow H^1(X, \cO_X(-2,0)) \longrightarrow 0.
+    \]
+    It follows that $h^1(X, \cO_X(-2,0)) = 2h^0(\PP^1, \cO_{\PP^1}) - h^0(X, \cO_X) = 1$, so $h^{1,1} = 2$ as desired. 
+\end{solution}
+
+\end{document}

@@ -1,0 +1,344 @@
+\documentclass[11pt]{article} 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,esint, dsfont,mathtools}	
+\usepackage{graphicx}		
+\usepackage{hyperref}
+\usepackage{cases}			
+\usepackage{textcomp, gensymb}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+% diagrams
+\usepackage{quiver}
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	\def\@currentlabel{#2}
+	\label{#1}\endgroup
+}
+\makeatother
+
+\setlength{\parindent}{0pt} 	% first line in paragraph will not be indented
+
+\usepackage[parfill]{parskip}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\newcommand{\ind}{{\mathds{1}}}
+
+% math fonts
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\ka}{\mathfrak{a}}
+\newcommand{\kb}{\mathfrak{b}}
+\newcommand{\kc}{\mathfrak{c}}
+\newcommand{\kd}{\mathfrak{d}}
+\newcommand{\ke}{\mathfrak{e}}
+\newcommand{\kg}{\mathfrak{g}}
+\newcommand{\kf}{\mathfrak{f}}
+\newcommand{\kh}{\mathfrak{h}}
+\newcommand{\ki}{\mathfrak{i}}
+\newcommand{\kj}{\mathfrak{j}}
+\newcommand{\kk}{\mathfrak{k}}
+\newcommand{\kl}{\mathfrak{l}}
+\newcommand{\km}{\mathfrak{m}}
+\newcommand{\kn}{\mathfrak{n}}
+\newcommand{\ko}{\mathfrak{o}}
+\newcommand{\kp}{\mathfrak{p}}
+\newcommand{\kq}{\mathfrak{q}}
+\newcommand{\kr}{\mathfrak{r}}
+\newcommand{\ks}{\mathfrak{s}}
+\newcommand{\kt}{\mathfrak{t}}
+\newcommand{\ku}{\mathfrak{u}}
+\newcommand{\kv}{\mathfrak{v}}
+\newcommand{\kw}{\mathfrak{w}}
+\newcommand{\kx}{\mathfrak{x}}
+\newcommand{\ky}{\mathfrak{y}}
+\newcommand{\kz}{\mathfrak{z}}
+
+\newcommand{\kA}{\mathfrak{A}}
+\newcommand{\kB}{\mathfrak{B}}
+\newcommand{\kC}{\mathfrak{C}}
+\newcommand{\kD}{\mathfrak{D}}
+\newcommand{\kE}{\mathfrak{E}}
+\newcommand{\kG}{\mathfrak{G}}
+\newcommand{\kF}{\mathfrak{F}}
+\newcommand{\kH}{\mathfrak{H}}
+\newcommand{\kI}{\mathfrak{I}}
+\newcommand{\kJ}{\mathfrak{J}}
+\newcommand{\kK}{\mathfrak{K}}
+\newcommand{\kL}{\mathfrak{L}}
+\newcommand{\kM}{\mathfrak{M}}
+\newcommand{\kN}{\mathfrak{N}}
+\newcommand{\kO}{\mathfrak{O}}
+\newcommand{\kP}{\mathfrak{P}}
+\newcommand{\kQ}{\mathfrak{Q}}
+\newcommand{\kR}{\mathfrak{R}}
+\newcommand{\kS}{\mathfrak{S}}
+\newcommand{\kT}{\mathfrak{T}}
+\newcommand{\kU}{\mathfrak{U}}
+\newcommand{\kV}{\mathfrak{V}}
+\newcommand{\kW}{\mathfrak{W}}
+\newcommand{\kX}{\mathfrak{X}}
+\newcommand{\kY}{\mathfrak{Y}}
+\newcommand{\kZ}{\mathfrak{Z}}
+
+%some math symbol commands redefined:
+\DeclareMathOperator{\C}{\mathcal{C}}
+\DeclareMathOperator{\power}{\mathcal{P}}
+\DeclareMathOperator{\vspan}{\text{span}}
+\DeclareMathOperator{\vnull}{\text{null}}
+\DeclareMathOperator{\range}{\text{range}}
+\DeclareMathOperator{\re}{\text{Re}}
+\DeclareMathOperator{\im}{\text{Im}}
+\DeclareMathOperator{\erf}{\text{erf}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdvv}[2]{\frac{\partial^2 #1}{\partial #2}}
+\DeclareMathOperator{\tr}{\operatorname{Tr}}
+\newcommand{\Deck}{\operatorname{Deck}}
+\newcommand{\Conj}{\mathrm{Conj}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\PROJ}{\mathit{Proj}}
+
+% category names
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Ring}{\mathsf{Ring}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Sch}{\mathsf{Sch}}
+
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\pre}{\text{pre}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\Char}{\operatorname{char}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Bl}{\mathrm{Bl}}
+\newcommand{\codim}{\mathrm{codim}}
+\newcommand{\val}{\operatorname{val}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Gr}{\operatorname{Gr}}
+
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\Rk}{\operatorname{Rk}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+
+% category theory symbols
+\DeclareMathOperator{\Mor}{\operatorname{Mor}}
+
+\newenvironment{solution}{\begin{trivlist}\item[]{\textcolor{blue}{Solution:}}}{\qed \end{trivlist}}
+
+
+\usepackage[shortlabels]{enumitem}
+\title{MATH 2060 Homework 7}
+\author{Zhengyu Zou}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\textbf{Collaborators:} Ethan Bove, Roberta Pagliaro, Anamaria Perez
+
+\section*{FOAG 19.9.A.}
+
+\begin{solution}
+	Let $q \in E$ be a ramification point whose image in $\PP^1$ is $Q$. We can apply a projective transformation so that $Q = 0$ and also $p \mapsto \infty$. Suppose the degree-2 covering map $E \rightarrow \PP^1$ is defined by the complete linear system $[s:t]$ with $s, t \in h^0(\cO(2p))$. It follows that $\Div(t) = 2p$ and $\Div(s) = 2q$, but then that implies $t, s \in h^0(\cO(2q))$ since the latter consists of sections that has a pole of order $\leq 2$ at $q$. This shows us $\cO(2p) = \cO(2q) \subset K(E)^\times$ as subsets of rational sections of $E$, so they are isomorphic. In particular, since $\{s, t\}$ is base-point-free, we see that $q \neq p$. This shows us $\cO(2(q-p)) = \cO_E$, but $\cO(q-p) \neq \cO_E$, so $q$ is a 2-torsion point. 
+
+	Next, we show that if $q$ is a 2-torsion point, then $q$ is a ramification point of the map $|\cO(2p)|: E \rightarrow \PP^1$. We know that $\cO(2(q-p)) \cong \cO_E$, so $\cO(2q) \cong \cO(2p)$ via some isomorphism. Let $s \in h^0(\cO(2q))$ be the section that vanishes at $q$ with order 2. Consider its image $s' \in h^0(\cO(2p))$. Complete this to a complete linear system $s', t'$ of $\cO(2p)$. Notice that the map $[s':t']: E \rightarrow \PP^1$ differs from the original map $|\cO(2p)|: E \rightarrow \PP^1$ by a projective transformation $M$, and in particular $q$ is a ramification point whose image under $[s':t']$ is $\frac{s'}{t'}$. Therefore, $q$ is a ramification point whose image under $|\cO(2p)|$ is $M(\frac{s'}{t'})$. This completes the proof. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.9.E.}
+
+\begin{solution}
+	Our goal is to show that $h^0(\cI_E(2)) = \geq 2$. Consider the closed subscheme exact sequence:
+	\[
+		0 \longrightarrow \cI_E(2) \longrightarrow \cO_{\PP^3}(2) \longrightarrow \cO_{\PP^3}(2)|_E \longrightarrow 0.
+	\]
+	We first observe that $h^0(\cO_{\PP^3}(2)) = \binom{5}{2} = 10$, whereas $\deg(\cO_{\PP^3}(2)|_E) = 2 \deg(\cO_E(1)) \cong 8$. Since $8 > 0 = 2g-2$, by Riemann-Roch and Serre duality we have $h^0(\cO_{\PP^3}(2)|_E) = 8$, so $h^0(\cI_E(2)) \geq 2$ as desired. 
+
+	Let $f, g$ be two linearly independent sections of $\cI_E(2)$. Consider the two quadric surfaces $H_f = \Div(f)$ and $H_g = \Div(g)$. It follows that $E \subset H_f \cap H_g$. In particular, if $H_f$ is reducible, then it's the union of two planes in $\PP^3$, but then $E$ is nondegenerate, so $E$ is not contained in any hyperplane of $\PP^3$. It follows that $H_f$ and $H_g$ are both irreducible, so they share no components. By B\,ezout's theorem, $\deg(H_f \cap H_g) = \deg H_f \cdot \deg H_g = 4 = \deg E$. 
+
+	It then remains to check that these two subschemes have the same Hilbert polynomial. By a previous exercise, we know that the arithmetic genus of $H_f \cap H_g$ is 1, which equals the genus of $E$. Now, given any curve $C$, we know that the Hilbert polynomial $p_C(x)$ is linear, so it is completely determined by $p_C(0)$ and $p_C(1)$. Since $p_C(0) = \chi(C, \cO_C) = 1 - p_a(C)$, and $p_C(1) - p_C(0) = \chi(C, \cO_C(1)) - \chi(C, \cO_C) = \deg C$, we see that the degree and the genus of a curve compeletely determines the Hilbert polynomial, so $E$ and $H_f \cap H_g$ share the same polynomial, hence they must be the same subscheme. This concludes the proof. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.10.F.}
+
+\begin{solution}
+	An automorphism $\phi$ of $(E, p)$ gives a bijection on the 2-torsion points of $E$. This can be seen by the following. If $q \in E$ is a 2-torsion point, then $\cO(2(\phi(q) - p)) \cong \cO(2(q - p)) \cong \cO_E$, so $\phi(q)$ is again a 2-torsion point. Next, the invertible sheaf $\phi^* \cO(2p) = \phi^*( \cO(2\phi(p))) \cong \cO(2p)$ via some isomorphism $\phi^*: \cO(2p) \rightarrow \cO(2p)$, which induces an automorphism $\phi_*: \PP^1 \rightarrow \PP^1$ such that the following diagram commutes:
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJFIl0sWzEsMCwiRSJdLFswLDEsIlxcUFBeMSJdLFsxLDEsIlxcUFBeMSJdLFsyLDMsIlxccGhpXyoiXSxbMCwxLCJcXHBoaSJdLFswLDIsInxcXGNPKDJwKXwiLDJdLFsxLDMsInxcXGNPKDJwKXwiXV0=
+	\[\begin{tikzcd}
+		E & E \\
+		{\PP^1} & {\PP^1}
+		\arrow["\phi", from=1-1, to=1-2]
+		\arrow["{|\cO(2p)|}"', from=1-1, to=2-1]
+		\arrow["{|\cO(2p)|}", from=1-2, to=2-2]
+		\arrow["{\phi_*}", from=2-1, to=2-2]
+	\end{tikzcd}\]
+	In particular, $\phi_*$ fixes the images $P_1, P_2, P_3$ of the ramification points of $|\cO(2p)|$. Normalize so that $P_1 = 0$, $P_2 = 1$, and $P_3 = \lambda$ for some $\lambda \in k$. This gives us a map 
+	\[
+		\Aut(E, p) \longrightarrow \{\text{Automorphisms of $\PP^1$ fixing $\infty$ and $\{0, 1, \lambda\}$}\}.
+	\]
+	Denote by $\Aut(\PP^1; \infty, \{0, 1, \lambda\}) \subset \Aut(\PP^1)$ the latter group.
+	Since $\Char(k) \neq 2$, the kernel of this map is isomorphic to $\ZZ/2\ZZ$, where the generator is given by the hyperelliptic involution on $E$. This gives us an exact sequence 
+	\[
+		0 \longrightarrow \ZZ/2\ZZ \longrightarrow \Aut(E, p) \longrightarrow \Aut(\PP^1; \infty, \{0, 1, \lambda\}).
+	\]
+	We now analyze $\Aut(\PP^1; \infty, \{0, 1, \lambda\})$. First, since the automorphisms of $\PP^1$ are completely determined by their action on three points, we have an injection $\Aut(\PP^1; \infty, \{0, 1, \lambda\}) \hookrightarrow \cS_3$. We will show that either $\Aut(\PP^1; \infty, \{0, 1, \lambda\}) \cong 0$, $\ZZ/2\ZZ$, or $\ZZ/3\ZZ$. We now break into cases.
+	\begin{itemize}
+		\item If $\Aut(\PP^1; \infty, \{0, 1, \lambda\})$ contains an element $M$ of order 2, then we may WLOG assume $M(x) = ax + b$ sends $(0, 1, \lambda) \mapsto (0, \lambda, 1)$. This implies $b = 0$, $a = \lambda$, and $a \lambda = 1$. This gives us $\lambda^2 - 1 = 0$, and since $\Char(k) \neq 2$ we get $\lambda = -1$. It is easy to check that there exists no other affine transformation $M$ that permutes $(0, 1, -1)$, so $\Aut(\PP^1; \infty, \{0, 1, -1\}) \cong \ZZ/2\ZZ$. In particular, the above exact sequence implies $\Aut(E, p) \cong \ZZ/2\ZZ$, $(\ZZ/2\ZZ)^2$, or $\ZZ/4\ZZ$. 
+		
+		We will show that $\Aut(E, p) \cong \ZZ/4\ZZ$ by showing that it contains an element of order 4. The Weierstrass normal form of $E$ is given by $y^2 = x(x-1)(x+1) = x^3 - x$. The automorphism $(x, y) \mapsto (-x, iy)$ is then an order-4 automorphism of $(E, p)$. This completes the proof. 
+
+		\item If $\Aut(\PP^1; \infty, \{0, 1, \lambda\})$ contains an element $M$ of order 3, then we may WLOG assume $M(x) = ax + b$ sends $(0, 1, \lambda) \mapsto (1, \lambda, 0)$. This gives us $b = 1$, $a + 1 = \lambda$ and $a \lambda + 1 = 0$. It follows that $a^2 + a + 1 = 0$. Now, since $\Char(k) \neq 3$, the polynomial $a^3 - 1$ is separable (its derivative is $3a^2 \neq 0$, where $\gcd(a^3 - 1, 3a^2) = 1$), so $a = \pm \omega$ where $\omega$ is the third roots of unity in $k$, as $k$ is algebraically closed. It follows that $\lambda = -\omega^2$ or $\lambda = -\omega$. One can again check that there exists no affine involution that acts on $(0, 1, \lambda)$. Therefore, $\Aut(\PP^1; \infty, \{0, 1, \lambda\}) \cong \ZZ/3\ZZ$ iff $\lambda = -\omega^{\pm}$. In particular, the above exact sequence implies $\Aut(E, p) \cong \ZZ/2\ZZ \times \ZZ/3\ZZ \cong \ZZ/6\ZZ$, or $\ZZ/2\ZZ$.
+		
+		\item The above arguments also showed that if the $j$-invariant of $(E, p)$ is not $j_{-1}$ or $j_{-\omega}$ (here $j_z$ is the $j$-invariant by plugging in $\lambda = z$), then $\Aut(E, p) \cong \ZZ/2\ZZ$. This completes the proof. 
+	\end{itemize}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.10.H.}
+
+\begin{solution}
+	Consider the two curves $E_1$, $E_2$ over $\QQ$ with Weierstrass form $x^3 + xz^2 + z^3 - y^2z = 0$ and $x^3 + xz^2 + z^3 + y^2z = 0$. We first observe that if we extend scalars to $\CC$, there is an automorphism of $\PP^2$ given by $[x:y:z] \mapsto [x:iy:z]$ that retricts to an isomorphism from $E_1$ to $E_2$, so $E_1$ and $E_2$ have the same $j$-invariants. 
+	To see that they are not isomorphic, we show that they don't have the same Weierstrass form over $\QQ$. Notice that the equation that cuts out $E_1$ is already in the Weierstrass normal form. For the equation that cuts out $E_2$, we replace $z$ by $-z$ to get to the Weierstrass normal form:
+	\[
+		x^3 + xz^2 - z^3 - y^2z = 0.
+	\]
+	Taking $z = 1$ from both sides, we get $y^2 = x^3 + x - 1$. The $j$-invariant is given by $\frac{6912}{37}$, but from the previous problem we see that the elliptic curve with $j$-invariant $\frac{6912}{37}$ has no nontrivial isometry that permutes the 2-torsion points. This means the isomorphism $\phi: E_1 \rightarrow E_2$ (if exists) must come from a map that scales $y$, but that's precisely the map $y \mapsto iy$, which is not realized over $\QQ$ since $\sqrt{-1} \not\in \QQ$. We conclude that $E_1 \not\cong E_2$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.10.M.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+	\item We know that $E$ is the complete intersection of $Q$ and $K$, so by a previous problem we see that the genus of $E$ is a polynomial of $m = \deg (Q)$ and $n = \deg (K)$ by 
+	\[
+		\frac{(3 - m)(2 - m)(1 - m)}{6} + \frac{(3 - n)(2 - n)(1 - n)}{6} - \frac{(3 - m - n)(2 - m - n)(1 - m - n)}{6}.
+	\]
+	Plugging in $m = n = 2$, we get that the genus is 1.
+
+	\item Since $E = Q \cap K$ is a smooth curve, it is irreducible. By B\,ezout's theorem, $\deg (E) = \deg(Q \cap K) = 4$. If $K$ contains a line $l \subset Q$, then $E = Q \cap K$ must also contain $l$. Since $E$ is irrecucible, we must have $l = E$, but then $\deg(l) = 1 \neq \deg(E)$. It follows that $K$ does not contain $l$, nor does it contain any associated points of $l$. By B\'ezout's theorem, $\deg (K \cap l) = 2$, but then $K \cap l = K \cap Q \cap l = E \cap l$, so $E$ intersects $l$ at two points (with multiplicity). 
+	
+	\item Recall that $Q \cong \PP^1 \times \PP^1$, so the Picard group is generated by $\cO(1, 0)$ and $\cO(0, 1)$ whose divisors correspond to lines on $Q$. Denote by $\pi: E \rightarrow Q$ the embedding of $E$ into $Q$. From Part (b), we see that $\pi^* \cO(1, 0)$ is a degree-2 line bundle, so it is isomorphic to some $\cO(q + r)$ where $q, r \in E$ are $k$-valued points. 
+	Let $G: E \rightarrow E$ be the map that sends a $k$-valued point $p$ to the other point that is contained in the line $l$ induced by the ruling $\pi^*\cO(1, 0) \cong \cO(q + r)$, but we see that the other point is precisely $q + r - p$, since 
+	\[
+		\cO(p) \otimes \cO(q+r-p) \cong \cO(q+r) \cong \pi^* \cO(1, 0).
+	\] 
+	Then, since the group operation on $E$ is a morphism of schemes, we get that $G$ is a morphism of schemes also. 
+
+	\item From the argument of Part (c) we see that we can write the map $H: E \rightarrow E$ as $p \mapsto q' + r' - p$ for some $k$-valued points $q', r' \in E$. It follows that $F$ is the map $p \mapsto p + (q' + r') - (q + r)$. Now, suppose $F^n(p) = p$. This gives us 
+	\[
+		p + n ((q' + r') - (q + r)) = p.
+	\]
+	It follows that $n((q' + r') - (q + r)) = 0$, so for all $x \in E$, we have 
+	\[
+		F^n(x) = x + n((q' + r') - (q + r)) = x.
+	\]
+	This completes the proof. 
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.11.B.}
+
+\begin{solution}
+	Assume for contradiction that the map $t: E \rightarrow E$ corresponds to a regraded map of graded rings $f: S_{m \bullet} \rightarrow S_{n \bullet}$. It then follows that $f^* \cO_{\Proj S_{\bullet}}(n) \cong \cO_{\Proj S_{\bullet}}(m)$. On the other hand, observe that $\cO_{\Proj S_{\bullet}}(1) \cong \cO(3p)$ from the embedding $|\cO(3p)|: E \hookrightarrow \PP^3$. This implies $f^* \cO(3np) \cong \cO(3mp)$. In particular, since $\deg (\cO(3np)) = 3n$ and $\deg (\cO(3mp)) = 3m$, we must have $m = n$. Then, notice that $f^* \cO(3np) = \cO(3n t(p))$, which gives us $\cO(3nt(p)) \cong \cO(3np)$, or $\cO(3n(t(p) - p)) = 0$. Now, take $p$ to be the identity on $E$. It follows that $3nt(p) = 0$, so $t(p)$ is a torsion point, but that contradicts that $t$ is a translation by a non-torsion point. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.11.C.}
+
+\begin{solution}
+	Let $\cL$ be an arbitrary line bundle on $X$. We know that $\cL|_{X_1} \cong \cO(d_1)$ and $\cL_{X_2} \cong \cO(d_2)$ for some $d_1, d_2$. Suppose the gluing map $\phi: Z_1 \rightarrow Z_2$ is given by the translation $\phi(q) = q + p$. Let $e$ be the identity on $E \cong Z_1 \cong Z_2$. We then have an embedding $|\cO(2e)|: E \hookrightarrow X$ whose image is $Z_1$ and an embedding $|\cO(2p)|: E \hookrightarrow X$ whose image is $Z_2$. It follows that $\cO(d_1)|_{Z_1} \cong \cO(2d_1e)$ and $\cO(d_2)|_{Z_2} \cong \cO(2d_2 p)$, but then these two line bundles must agree with each other on the gluing $Z_1 \cong Z_2$. This gives us $\cO(2d_1e) \cong \cO(2d_2 p)$. We first observe that $2d_1 = \deg (\cO(2d_1e)) = \deg (\cO(2d_2p)) = 2d_2$, so $d_1 = d_2 = d$ for some positive integer $d$. Next, observe that $\cO(2de - 2dp) \cong \cO_E$, so $2d(p - e) = 2dp = 0$, but since $p$ is a non-torsion point, we must have $d = 0$. It follows that $\cL$ is locally trivial on $X_1$ and $X_2$ via some regular section $f_1 \in \Gamma(X_1)$ and $f_2 \in \Gamma(X_2)$. We now construct the trivialization map $\cO_X \rightarrow \cL$. Notice that $X_1 \cap X_2$ is a projective subscheme, so the sections $f_1$ and $f_2$ restrict to constants $x_1, x_2$ on $E$. It follows that the map $f: \cO_X \rightarrow \cL$ that restricts to $x_2 f_1$ on $\cO_{X_1}$ and $x_1 f_2$ on $\cO_{X_2}$ is the desired trivialization map. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.11.D.}
+
+\begin{solution}
+	We know that if $X$ is projective over $k$, then there exists an embedding $X \hookrightarrow \PP_k^n$ for some $n > 0$. It follows that $X$ has a very ample line bundle $\cL$, so $h^0(\cL) \geq 2$. However, this contradicts $\cL \cong \cO_X$, since $h^0(\cO_X) = 1$ as $X$ is proper. 
+\end{solution}
+
+\end{document}

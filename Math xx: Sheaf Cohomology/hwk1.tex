@@ -1,0 +1,53 @@
+\documentclass[12pt]{amsart}
+
+
+\include{../style}
+
+
+\begin{document}
+
+
+\input{title}
+
+\begin{problem}{15.4.B}
+    \begin{enumerate}
+        \item Verify that on $\A^1_k$, $\div\left(\frac{x^3}{x+1}\right) = 3[(x)] - [(x+1)]$ (that is, $3[0] -[-1]$).
+        \item On $\P^1_k$, there is a rational section of $\OO(1)$ corresponding to $\frac{x^2}{x+y}$. Figure out what this means, and calculate $\div\left(\frac{x^2}{x+y}\right)$. 
+    \end{enumerate}
+\end{problem}
+\newpage
+
+\begin{problem}{15.4.G}
+    Suppose $\LL$ is an invertible sheaf and $s$ is a nonzero rational section of $\LL$. 
+    \begin{enumerate}
+        \item Describe an isomorphism $\OO(\div s) \leftrightarrow \LL$. (Hint provided). 
+        \item Let $\sigma$ be the map from $K(X)$ to the rational sections of $\LL$, where $\sigma(t)$ is the rational section of $\OO_X(\div s) \cong \LL$ defined via 15.4.5.1 (as described in remark 15.4.7). Show that $\sigma$ sends the canonical section $1$ of $\OO_X(D)$ to $s$. More considely, $\sigma(1) = s$. (Hint provided).
+    \end{enumerate}
+\end{problem}
+\newpage
+
+\begin{problem}{15.5.A}
+    Show that all the automorphisms of projective space $\P_k^n$ (fixing $k$) corresponds to $(n+1) \times (n+1)$ invertible matrices over $k$, modulo scalars (aka $\PGL_{n+1}(k))$. (Hint provided.)
+\end{problem}
+\newpage 
+
+\begin{problem}{15.5.G}
+    Suppose that $Y$ is a hypersurface in $\P^n_k$ corresponding to an irreducible degree $d$ polynomial. Show that $\Pic(\P^n_k - Y) \cong \Z/(d)$. 
+\end{problem}
+\newpage 
+
+\begin{problem}{15.5.K}
+    Consider 
+    \begin{align*}
+        X = \P_k^1 \times \P_k^1 \cong \Proj k[w,x,y,z]/(wz-xy)
+    \end{align*}
+    a smooth quadric surface. Show that $\Pic X \cong \Z \oplus \Z$ as follows: Show that if $L = \{\infty\} \times_k \P^1 \subset X$ and $M = \P^1 \times_k \{\infty\} \subset X$, then $X-L-M \cong \A^2$. This will give you a surjection $\Z \oplus \Z \twoheadrightarrow \cl X$. Show that $\OO(L)$ restricts to $\OO$ on $L$ and $\OO(1)$ on $M$. Show that $\OO(M)$ restricts to $\OO$ on $M$ and $\OO(1)$ on $L$. 
+\end{problem}
+\newpage 
+
+\begin{problem}{15.5.N}
+    On the cone over the smooth quadric surface $X = \Spec k[w,x,y,z]/(wz-xy)$, let $Z$ be the Weil divisor cut out by $w = x = 0$. Exercise 13.1.D showed that $Z$ is not cut out scheme-theoretically by a single equation. Show more: that if $n \neq 0$, then $n[Z]$ is not locally principal. Hence, show that $Z$ is not even cut out locally set-theoretically by a single equation. (Hint provided.)
+\end{problem}
+
+
+\end{document}

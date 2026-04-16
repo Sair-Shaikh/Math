@@ -1,0 +1,361 @@
+\documentclass[11pt]{article} 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,esint, dsfont,mathtools}	
+\usepackage{graphicx}		
+\usepackage{hyperref}
+\usepackage{cases}			
+\usepackage{textcomp, gensymb}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+% diagrams
+\usepackage{quiver}
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	\def\@currentlabel{#2}
+	\label{#1}\endgroup
+}
+\makeatother
+
+\setlength{\parindent}{0pt} 	% first line in paragraph will not be indented
+
+\usepackage[parfill]{parskip}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\newcommand{\ind}{{\mathds{1}}}
+
+% math fonts
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\ka}{\mathfrak{a}}
+\newcommand{\kb}{\mathfrak{b}}
+\newcommand{\kc}{\mathfrak{c}}
+\newcommand{\kd}{\mathfrak{d}}
+\newcommand{\ke}{\mathfrak{e}}
+\newcommand{\kg}{\mathfrak{g}}
+\newcommand{\kf}{\mathfrak{f}}
+\newcommand{\kh}{\mathfrak{h}}
+\newcommand{\ki}{\mathfrak{i}}
+\newcommand{\kj}{\mathfrak{j}}
+\newcommand{\kk}{\mathfrak{k}}
+\newcommand{\kl}{\mathfrak{l}}
+\newcommand{\km}{\mathfrak{m}}
+\newcommand{\kn}{\mathfrak{n}}
+\newcommand{\ko}{\mathfrak{o}}
+\newcommand{\kp}{\mathfrak{p}}
+\newcommand{\kq}{\mathfrak{q}}
+\newcommand{\kr}{\mathfrak{r}}
+\newcommand{\ks}{\mathfrak{s}}
+\newcommand{\kt}{\mathfrak{t}}
+\newcommand{\ku}{\mathfrak{u}}
+\newcommand{\kv}{\mathfrak{v}}
+\newcommand{\kw}{\mathfrak{w}}
+\newcommand{\kx}{\mathfrak{x}}
+\newcommand{\ky}{\mathfrak{y}}
+\newcommand{\kz}{\mathfrak{z}}
+
+\newcommand{\kA}{\mathfrak{A}}
+\newcommand{\kB}{\mathfrak{B}}
+\newcommand{\kC}{\mathfrak{C}}
+\newcommand{\kD}{\mathfrak{D}}
+\newcommand{\kE}{\mathfrak{E}}
+\newcommand{\kG}{\mathfrak{G}}
+\newcommand{\kF}{\mathfrak{F}}
+\newcommand{\kH}{\mathfrak{H}}
+\newcommand{\kI}{\mathfrak{I}}
+\newcommand{\kJ}{\mathfrak{J}}
+\newcommand{\kK}{\mathfrak{K}}
+\newcommand{\kL}{\mathfrak{L}}
+\newcommand{\kM}{\mathfrak{M}}
+\newcommand{\kN}{\mathfrak{N}}
+\newcommand{\kO}{\mathfrak{O}}
+\newcommand{\kP}{\mathfrak{P}}
+\newcommand{\kQ}{\mathfrak{Q}}
+\newcommand{\kR}{\mathfrak{R}}
+\newcommand{\kS}{\mathfrak{S}}
+\newcommand{\kT}{\mathfrak{T}}
+\newcommand{\kU}{\mathfrak{U}}
+\newcommand{\kV}{\mathfrak{V}}
+\newcommand{\kW}{\mathfrak{W}}
+\newcommand{\kX}{\mathfrak{X}}
+\newcommand{\kY}{\mathfrak{Y}}
+\newcommand{\kZ}{\mathfrak{Z}}
+
+%some math symbol commands redefined:
+\DeclareMathOperator{\C}{\mathcal{C}}
+\DeclareMathOperator{\power}{\mathcal{P}}
+\DeclareMathOperator{\vspan}{\text{span}}
+\DeclareMathOperator{\vnull}{\text{null}}
+\DeclareMathOperator{\range}{\text{range}}
+\DeclareMathOperator{\re}{\text{Re}}
+\DeclareMathOperator{\im}{\text{Im}}
+\DeclareMathOperator{\erf}{\text{erf}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdvv}[2]{\frac{\partial^2 #1}{\partial #2}}
+\DeclareMathOperator{\tr}{\operatorname{Tr}}
+\newcommand{\Deck}{\operatorname{Deck}}
+\newcommand{\Conj}{\mathrm{Conj}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\PROJ}{\mathit{Proj}}
+
+% category names
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Ring}{\mathsf{Ring}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Sch}{\mathsf{Sch}}
+
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\pre}{\text{pre}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\Char}{\operatorname{char}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Bl}{\mathrm{Bl}}
+\newcommand{\codim}{\mathrm{codim}}
+\newcommand{\val}{\operatorname{val}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Sym}{\operatorname{Sym}}
+
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\Rk}{\operatorname{Rk}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+
+% category theory symbols
+\DeclareMathOperator{\Mor}{\operatorname{Mor}}
+
+\newenvironment{solution}{\begin{trivlist}\item[]{\textcolor{blue}{Solution:}}}{\qed \end{trivlist}}
+
+
+\usepackage[shortlabels]{enumitem}
+\title{MATH 2060 Homework 3}
+\author{Zhengyu Zou}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\textbf{Collaborators:} An Cao, Anamaria Perez, Ethan Bove, Roberta Pagliaro
+
+\section*{FOAG 18.4.P.}
+
+\begin{solution}
+    We first interpret $\cC \hookrightarrow \PP^2 \times \PP^5$ as a $\PP^4$-bundle over $\PP^2$. To obtain a $\PP^4$-bundle, we need to construct a vector bundle of rank 5 over $\PP^2$. Consider the trivial rank-6 vector bundle $\cO_{\PP^2}^6$ over $\PP^2$ generated by $y_{ij}$, where $i,j \in \{0, 1, 2\}$. We have a map $\cO_{\PP^2}^6 \rightarrow \cO_{\PP^2}(2)$ given by sending 
+    \[
+        y_{00} \mapsto x_0^2; \hspace{5pt}
+        y_{01} \mapsto x_0x_1; \hspace{5pt}
+        y_{02} \mapsto x_0x_2; \hspace{5pt}
+        y_{11} \mapsto x_1^2; \hspace{5pt}
+        y_{12} \mapsto x_1x_2; \hspace{5pt}
+        y_{22} \mapsto x_2^2.
+    \]
+    This map is surjective since the sections $x_ix_j$ where $i,j \in \{0, 1, 2\}$ generate $\cO_{\PP^2}(2)$. Also, it is a map of vector bundles, so the kernel of the map $\cK = \Ker(\cO_{\PP^2}^6 \rightarrow \cO_{\PP^2}(2))$ is a locally free sheaf of rank 5. Notice that an element $\sum_{i,j} a_{ij} y_{ij} \in \cK$ if and only if $\sum_{i,j} a_{ij} x_i x_j = 0$, but that's precisely the equation that cuts out $\cC$ in $\PP^5 \times \PP^2 \cong \PP ( \cO_{\PP^2}^6)$. Therefore, the scheme $\PP \cK \hookrightarrow \PP^5 \times \PP^2$ is precisely $\cC$. 
+    In particular, since $\PP^2$ and $\PP^4$ are both smooth, and a $\PP^4$-bundle over $\PP^2$ is locally a product of $\PP^4$ with some affine on $\PP^2$, we see that $\cC$ is smooth and has dimension 6. 
+
+    Next, to see that $\Pic(\cC) \cong \ZZ \times \ZZ$, we may consider the following two divisors $D_1 = [V(x_0)]$ and $D_2 = [V(a_{11})]$ (they are divisors because the vanishing locus of $x_0$ and $a_{11}$ in $\cC$ have codimension 1). Consider $\cC - (D_1 \cup D_2)$. We may interpret this as points of the form $[1: x_{1/0}: x_{2/0}]$ sitting on the conics with $a_{11} \neq 0$. Then, the base space is parametrized by the value of $x_{1/0}$ and $x_{2/0}$, which is a copy of $\AA^2$. For each given value of $x_{1/0}$ and $x_{2/0}$, we solve for 
+    \[
+        a_{00} + a_{01} x_{1/0} + a_{02} x_{2/0} + a_{11} x_{1/0}^2 + a_{12} x_{1/0} x_{2/0} + a_{22} x_{2/0}^2 = 0.
+    \]
+    Since $a_{11}$ is invertible, we have 
+    \[
+        x_{1/0}^2 
+        + \frac{a_{22}}{a_{11}} x_{2/0}^2
+        + \frac{a_{12}}{a_{11}} x_{1/0} x_{2/0}
+        + \frac{a_{01}}{a_{11}} x_{1/0} 
+        + \frac{a_{02}}{a_{11}} x_{2/0} 
+        + \frac{a_{00}}{a_{11}} 
+        = 0.
+    \]
+    This gives us a copy of $\AA^4$ where the coordinate functions are $b_{ij} = \frac{a_{ij}}{a_{11}}$, where $(i,j) \neq (0,0), (1,1)$. In particular, we could solve for $a_{00}$ once we know the values of the $b_{ij}$'s. Then, the excision exact sequence implies there exists a surjection $\ZZ \langle D_1, D_2 \rangle \rightarrow \Pic(\cC)$. 
+
+    It remains to show that the surjection is also injective. To see this, it suffices to show that $\cO(D_1)$ and $\cO(D_2)$ restrict to nontrivial line bundles on some smooth curve. Consider the curve $C_1 \subset \cC$ given by $a_{01} = 0$, $a_{02} = 0$, $a_{12} = 0$, $a_{00} - a_{11} = 0$, and $a_{00} - a_{22} = 0$. These five equations cuts out a curve in $\cC$ that corresponds to the conic $x_0^2 + x_1^2 + x_2^2 = 0$. The intersection of $D_1$ and $C_1$ is given by the point $[0:x_1:x_2]$ on the conic $x_0^2 + x_1^2 + x_2^2 = 0$, but that's precisely two points $[0:1:i]$ and $[0:1:-i]$. It follows that $\deg_{C_1} \cO(D_1) \geq 2$, so $\cO(D_1)|_{C_1}$ is not trivial on $C_1$. On the other hand, $D_2 \cap C_1 = \emptyset$, since conics parametrized by $D_2$ must have zero coefficient on the $x_1^2$ term. This shows that $(\cO(mD_1) \otimes \cO(nD_2))|_{C_1} \cong \cO_{C_1}$ only if $m = 0$. 
+    
+    Next, consider the curve $C_2$ given by $a_{00} = 0$, $a_{01} = 0$, $a_{02} = 0$, $a_{12} = 0$, $x_0 = 0$. These five equations correspond to points on the conics of the form $a_{11}x_1^2 + a_{22}x_2^2 = 0$ as well as the plane $x_0 = 0$. Now, if we let $a_{11} = 0$, then we have the conic $x_2^2 = 0$, but that only contains one point $[0:1:0]$ that lies simultaneously on the point $x_0 = 0$. It follows that $D_2 \cap C_2$ contains one closed point, but that would imply $\deg_{C_2} \cO(D_2) > 0$, so in order to get $\cO(nD_2)|_{C_1} \cong \cO_{C_1}$ we need $n = 0$. This shows that the map $\ZZ \langle D_1, D_2 \rangle \rightarrow \Pic(\cC)$ is injective, so $\Pic(\cC) \cong \ZZ^2$ with generators $\cO(D_1)$ and $\cO(D_2)$.
+\end{solution}
+
+\newpage
+
+\section*{FOAG 18.4.Q.}
+
+\begin{solution}
+    Without loss of generality, we can apply a projective transformation so that $l$ is the line $x_0 = 0$ and $q$ is the point $[0:1:0]$. The divisor $D_l$ is then precisely the divisor $D_1$ from the previous exercise, and the divisor $D_q$ parametrize conics $\sum_{i,j} a_{ij} x_i x_j$ that contains the point $[0:1:0]$, which is true iff $a_{11} = 0$. Therefore, $D_q = D_2$, and by the previous exercise, we see that $D_l$ and $D_q$ generates $\Pic(\cC)$.
+\end{solution}
+
+\newpage
+
+\section*{FOAG 18.4.R.}
+
+\begin{solution}
+    Since $D_q$ parametrizes conics $C$ such that $q \in C$, we see that $D_q \cap K = \emptyset$, so $\deg_{K} \cO(D_q) = \deg_K (D_q \cap K) = 0$. On the other hand, if a line $l$ doesn't lie on an integral conic $C$, then it doesn't contain any associated points of $C$. By Bezout's theorem, we must have $\deg (C \cap l) = \deg C \cdot \deg l = 2$. It follows that $\deg_K \cO (D_l) = \deg_K (D_l \cap K) = 2$. Finally, since $\cO(D_q)$ and $\cO(D_l)$ together generate $\Pic(\cC)$, we see that for all $\cL = \cO(mD_q) \otimes \cO(nD_l)$, we have 
+    \[
+        \deg_C(\cL) = m \deg_C \cO(D_q) + n \deg_C \cO(D_l) = 2n, 
+    \]
+    which is even.
+\end{solution}
+
+\newpage
+
+\section*{FOAG 18.4.S.}
+
+\begin{solution}
+    Let $\sigma: \PP^5 \dashrightarrow \cC$ be a rational section of the projection $\pi: \cC \rightarrow \PP^5$. That is, there exists an open $U \subset \PP^5$ such that $\pi \circ \sigma|_U = \Id_U$. It follows that the irreducible components of $\sigma(U) \subset \pi^{-1}(U)$ must have dimension 5, but that implies $\sigma(U)$ is a divisor on $\pi^{-1}(U)$, which is a smooth sixfold. Let $D$ be the closure of $\sigma(U)$ in $\cC$. Pick any point $r \in U$. Since $\pi \circ \sigma(r) = r$, we see that the image of $r$ under $\sigma$ is a single point (possibly with multiplicity). Let $s \in \cC$ be its scheme-theoretic image, with $\deg_{\kappa(r)} \kappa(s) = n$. Let $r'$ be the scheme-theoretic image of $s$ under $\pi$, but that's precisely $r$, so we must have $\deg_{\kappa(r)} \kappa(s) \cdot \deg_{\kappa(s)} \kappa(r) = 1$, but that forces $n = 1$. We conclude that $D$ meets the fibers of $\pi$ with multiplicity 1. Let $K = \pi^{-1}(r)$ be integral (pick any closed point $r \in \PP^5$). It follows that $\deg_K \cO(D) = \deg_K (D \cap K) = 1$, but that contradicts Exercise 18.4.R.. This concludes the proof. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 18.5.A.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+    \item Since $C$ is integral smooth projective over $k$, we know that $\Gamma(C, \cO_C) \cong k$, so $h^0(C, \cO_C) = 1$. Then, recall that the genus of $C$ is defined as 
+    \[
+        g = p_a(C)
+        = (-1)^1 (\chi(C, \cO_C) - 1)
+        = h^1(C, \cO_C)
+        = h^0(C, \omega_C \otimes \cO_C)
+        = h^0(C, \omega_C)
+    \]  
+    where the fourth equality comes from Serre duality.
+    
+    \item From Serre duality we have $h^1(C, \omega_C) = h^0(C, \cO_C) = 1$. Then, by Riemann-Roch, we have 
+    \[
+        \deg \omega_C 
+        = h^0(C, \omega_C) - h^1(C, \omega_C) + p_a(C) - 1 
+        = g - 1 + g - 1 
+        = 2g - 2.
+    \]
+    This completes the proof. 
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 18.5.B.}
+
+\begin{solution}
+    We know that $D$ is ample if $\cO(D)$ is ample. Since $D$ is effective, $\cO(D)$ is nonempty, so $D = V(s)$ set-theoretically, where $s \in \Gamma(X, \cO(D))$ is a nonzero section. Observe that there exists some $k$ large enough so that $\cO(D)^k \cong \cO(kD)$ is very ample. Now, consider $\omega_X \otimes \cO(iD)$ for $i = 0, \ldots, k-1$. By Serre vanishing, there exists $n_i$ such that $h^j(X, (\omega_X \otimes \cO(iD)) \otimes \cO(n_i)) = 0$ for all $j > 0$. Pick $n$ such that $\lfloor \frac{n}{k} \rfloor > \max_i n_i$. It follows from Serre duality that 
+    \begin{align*}
+        h^1 (X, \cO(-nD)) 
+        &= h^{N-1} (X, \omega_X \otimes \cO(nD)) \\
+        &= h^{N-1} (X, \omega_X \otimes \cO((n - \lfloor n/k \rfloor)D) \otimes \cO (\lfloor n/k \rfloor kD)) \\
+        &= h^{N-1} (X, \omega_X \otimes \cO((n - \lfloor n/k \rfloor)D) \otimes \cO (\lfloor n/k \rfloor)).
+    \end{align*}
+    Sicnce $\lfloor \frac{n}{k} \rfloor > \max_i n_i$ and $0 \leq n - \lfloor \frac{n}{k} \rfloor < k$, we must have $h^1(X, \cO(-nD)) = 0$. Then, the short exact sequence 
+    \[
+        0 \longrightarrow \cO(-nD) \longrightarrow \cO_X \longrightarrow \cO_{V(s^n)} \longrightarrow 0
+    \]
+    gives us the following long exact sequence on cohomology:
+    \[
+        0 \longrightarrow H^0(X, \cO(-nD)) \longrightarrow H^0(X, \cO_X) \longrightarrow H^0(X, \cO_{V(s^n)}) \longrightarrow H^1(X, \cO(-nD)) = 0.
+    \]
+    It follows that $h^0(X, \cO_{V(s^n)}) = h^0(X, \cO_X) - h^0(X, \cO_{-nD})$. Since $X$ is a connected smooth projective variety, we must have $h^0(X, \cO_X) = 1$, so $h^0(X, \cO_{V(s^n)}) \leq 1$. This implies $V(s^n)$ must be connected, for otherwise the constant functions on each connected component of $V(s^n)$ would contribute to add to the dimension of $h^0(X, \cO_{V(s^n)})$ by at least 1.
+\end{solution}
+
+\newpage
+
+\section*{FOAG 18.6.G.}
+
+\begin{solution}
+    A degree-$d$ hypersurface $i: H \hookrightarrow \PP^n$ is cut out by a homogeneous polynomial $f$ of degree $d$. We may consider the following exact sequence:
+    % https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiXFxjT197XFxQUF5ufSgtZCkiXSxbMiwwLCJcXGNPX3tcXFBQXm59Il0sWzMsMCwiXFxjT197SH0iXSxbNCwwLCIwIl0sWzAsMV0sWzEsMiwiXFx0aW1lcyBmIl0sWzIsM10sWzMsNF1d
+    \[\begin{tikzcd}
+        0 & {\cO_{\PP^n}(-d)} & {\cO_{\PP^n}} & {i_*\cO_{H}} & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow["{\times f}", from=1-2, to=1-3]
+        \arrow[from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+    \end{tikzcd}\]
+    Since Euler characteristics are additive in exact sequences, and that $h^j(\PP^n, i_* \cO_H) = h^j (H, \cO_H)$, we have that 
+    \begin{align*}
+        p_H(m) &= p_{\PP^n}(m) - p_{\PP^n}(m-d) 
+        = \binom{m+n}{n} - \binom{m+n-d}{n} \\
+        &= \frac{(m+1) \cdots (m+n)}{n!} - \frac{(m+1-d) \cdots (m+n-d)}{n!}
+    \end{align*}
+    The leading coefficient is given by $\frac{1}{n!} (\sum_{i=1}^n i - \sum_{i=1}^n (i - d)) = \frac{d}{(n-1)!}$, so the degree of $H$ is precisely $(n-1)! \cdot \frac{d}{(n-1)!} = d$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 18.6.L.}
+
+\begin{solution}
+    First, observe that a linear $\PP_k^d \subset \PP_k^N$ can be interpreted as the intersection of $N-d$ many hyperplanes $H_1, \ldots, H_{N-d}$. Therefore, it suffices to find $N-d$ many linearly independent hyperplanes $H_i$ in $\PP_k^N$ such that $C \subset H_i$ for each $i = 1, \ldots, N-d$. Since $k$ is algebraically closed, it is infinite, so we can pick $d+1$ points $p_0, \ldots, p_d$ on $C$. Let $H_i$ be a hyperplane that contains $p_0, \ldots, p_d$. Notice that the space of hyperplanes (parametrized by $\cO(1)$, the linear forms on $\PP_k^N$) has dimension $N+1$, and the points $p_0, \ldots, p_d$ gives $d+1$ many constraints on the dimension of the hyperplanes that contains these points. Therefore, we can find $(N+1) - (d+1) = N-d$ many linearly independent hyperplanes that contains these points. Now, suppose $C \not\subset H_i$, then since $C$ is integral, the only associated point of $C$ is the generic point (which is not contained in $H_i$). By Bezout's theorem, we have 
+    \[
+        d = \deg(C) \deg(H) = \deg(C \cap H) \geq d+1,
+    \]
+    but that's a contradiction. Therefore, the generic point of $C$ must be contained in $H_i$, which gives us $C \subset H_i$. Taking $\PP_k^d = \bigcap_i H_i$ completes the proof. 
+\end{solution}
+
+\end{document}

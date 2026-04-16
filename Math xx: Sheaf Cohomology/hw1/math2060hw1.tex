@@ -1,0 +1,292 @@
+\documentclass[11pt]{article} 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,esint, dsfont,mathtools}	
+\usepackage{graphicx}		
+\usepackage{hyperref}
+\usepackage{cases}			
+\usepackage{textcomp, gensymb}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+% diagrams
+\usepackage{quiver}
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	\def\@currentlabel{#2}
+	\label{#1}\endgroup
+}
+\makeatother
+
+\setlength{\parindent}{0pt} 	% first line in paragraph will not be indented
+
+\usepackage[parfill]{parskip}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\newcommand{\ind}{{\mathds{1}}}
+
+% math fonts
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\ka}{\mathfrak{a}}
+\newcommand{\kb}{\mathfrak{b}}
+\newcommand{\kc}{\mathfrak{c}}
+\newcommand{\kd}{\mathfrak{d}}
+\newcommand{\ke}{\mathfrak{e}}
+\newcommand{\kg}{\mathfrak{g}}
+\newcommand{\kf}{\mathfrak{f}}
+\newcommand{\kh}{\mathfrak{h}}
+\newcommand{\ki}{\mathfrak{i}}
+\newcommand{\kj}{\mathfrak{j}}
+\newcommand{\kk}{\mathfrak{k}}
+\newcommand{\kl}{\mathfrak{l}}
+\newcommand{\km}{\mathfrak{m}}
+\newcommand{\kn}{\mathfrak{n}}
+\newcommand{\ko}{\mathfrak{o}}
+\newcommand{\kp}{\mathfrak{p}}
+\newcommand{\kq}{\mathfrak{q}}
+\newcommand{\kr}{\mathfrak{r}}
+\newcommand{\ks}{\mathfrak{s}}
+\newcommand{\kt}{\mathfrak{t}}
+\newcommand{\ku}{\mathfrak{u}}
+\newcommand{\kv}{\mathfrak{v}}
+\newcommand{\kw}{\mathfrak{w}}
+\newcommand{\kx}{\mathfrak{x}}
+\newcommand{\ky}{\mathfrak{y}}
+\newcommand{\kz}{\mathfrak{z}}
+
+\newcommand{\kA}{\mathfrak{A}}
+\newcommand{\kB}{\mathfrak{B}}
+\newcommand{\kC}{\mathfrak{C}}
+\newcommand{\kD}{\mathfrak{D}}
+\newcommand{\kE}{\mathfrak{E}}
+\newcommand{\kG}{\mathfrak{G}}
+\newcommand{\kF}{\mathfrak{F}}
+\newcommand{\kH}{\mathfrak{H}}
+\newcommand{\kI}{\mathfrak{I}}
+\newcommand{\kJ}{\mathfrak{J}}
+\newcommand{\kK}{\mathfrak{K}}
+\newcommand{\kL}{\mathfrak{L}}
+\newcommand{\kM}{\mathfrak{M}}
+\newcommand{\kN}{\mathfrak{N}}
+\newcommand{\kO}{\mathfrak{O}}
+\newcommand{\kP}{\mathfrak{P}}
+\newcommand{\kQ}{\mathfrak{Q}}
+\newcommand{\kR}{\mathfrak{R}}
+\newcommand{\kS}{\mathfrak{S}}
+\newcommand{\kT}{\mathfrak{T}}
+\newcommand{\kU}{\mathfrak{U}}
+\newcommand{\kV}{\mathfrak{V}}
+\newcommand{\kW}{\mathfrak{W}}
+\newcommand{\kX}{\mathfrak{X}}
+\newcommand{\kY}{\mathfrak{Y}}
+\newcommand{\kZ}{\mathfrak{Z}}
+
+%some math symbol commands redefined:
+\DeclareMathOperator{\C}{\mathcal{C}}
+\DeclareMathOperator{\power}{\mathcal{P}}
+\DeclareMathOperator{\vspan}{\text{span}}
+\DeclareMathOperator{\vnull}{\text{null}}
+\DeclareMathOperator{\range}{\text{range}}
+\DeclareMathOperator{\re}{\text{Re}}
+\DeclareMathOperator{\im}{\text{Im}}
+\DeclareMathOperator{\erf}{\text{erf}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdvv}[2]{\frac{\partial^2 #1}{\partial #2}}
+\DeclareMathOperator{\tr}{\operatorname{Tr}}
+\newcommand{\Deck}{\operatorname{Deck}}
+\newcommand{\Conj}{\mathrm{Conj}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Res}{\operatorname{Res}}
+
+% category names
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Ring}{\mathsf{Ring}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Sch}{\mathsf{Sch}}
+
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\pre}{\text{pre}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\Char}{\operatorname{char}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Bl}{\mathrm{Bl}}
+\newcommand{\codim}{\mathrm{codim}}
+\newcommand{\val}{\operatorname{val}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\Cl}{\operatorname{Cl}}
+
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+
+% category theory symbols
+\DeclareMathOperator{\Mor}{\operatorname{Mor}}
+
+\newenvironment{solution}{\begin{trivlist}\item[]{\textcolor{blue}{Solution:}}}{\qed \end{trivlist}}
+
+
+\usepackage[shortlabels]{enumitem}
+\title{MATH 2060 Homework 1}
+\author{Zhengyu Zou}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\textbf{Collaborators}: Ethan Bove
+
+\section*{FOAG 15.4.B.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+    \item The divisors of $\AA_k^1$ are closed points of the affine line, which are represented by $[\kp] = [(x - a)]$ for some $a \in k$. Since $k[x]$ is a UFD, the valuation of the rational section $s = \frac{x^3}{x + 1}$ (in this case, a rational function on $\AA_k^1$) at $k[x]_{(x - a)}$ is nonzero if and only if $a = 0, -1$. In particular, $\val_{(x)} s = 3$ and $\val_{(x+1)} s = -1$. This gives us 
+    \begin{equation*}
+        \Div \left( \frac{x^3}{x+1} \right) = 3[(x)] - [(x+1)].
+    \end{equation*}
+
+    \item We examine the rational section $s = \frac{x^2}{x+y}$ of $\cO(1)$ in affine charts. On $D(x) = \Spec k[x,y]/(x-1)$ the section corresponds to the rational function $\frac{1}{y+1}$, which has a pole of order 1 at $(y + 1)$. On $D(y) = \Spec k[x,y]/(y-1)$ the section corresponds to the rational function $\frac{x^2}{x+1}$, which has a zero of order 2 at $(x)$ and a pole of order 1 at $(x + 1)$. Observe that the point $[(x+1)] \in D(y)$ is identified with $[(y+1)] \in D(x)$ via $x + 1 \mapsto 1 + x^{-1} = 1 + y$. Also, $s$ has valuation zero everywhere else in $D(x)$ and $D(y)$. Therefore, we have 
+    \begin{equation*}
+        \Div \left( \frac{x^2}{x + y} \right) = 2 [0 : 1] - [1 : 1].
+    \end{equation*}
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 15.4.G.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+    \item Let $\{U\}$ be an affine cover of $X$ on which $\cL$ is tirvializable. Clearly $U$ covers $X$, and by restricting to finer affines we see that $\{U\}$ forms a base for the Zariski topology of $X$. We show that for each such $U$, the map $\phi_U: \cO(\Div s)|_U \rightarrow \cL(U)$ is an isomorphism. WLOG we may assume that $U = \Spec A$ is affine on which $\cL$ is trivializable. This allows us to identify $\cL(U) \cong \cO_X(U)$. Observe that sections of $\cO(\Div s)|_U$ are rational functions $\frac{f}{g}$ with $f,g \in A$ where $D(\frac{sf}{g}) \geq 0$. In particular, the normality condition on $X$ implies the rational function $\frac{sf}{g}$ has no poles, so by the algebraic Hartog's lemma, it is a regular function on $\Spec A$, so it belongs to $\cO_X(U)$. This implies the map $\phi_U$ is well-defined. On the other hand, given any regular function $f \in A$, the inverse map $\phi_U^{-1}$ sends $f$ to $\frac{f}{s}$. It follows that $\Div|_U (\frac{f}{s}) + D|_U = \Div|_U (\frac{f}{s}) + \Div|_U(s) = \Div|_U(f) \geq 0$, so $\frac{f}{s}$ is a section of $\cO(\Div s)|_U$. This proves that $\phi_U$ is an isomorphism. 
+    Finally, since $\{U\}$ to see that $\phi: \cO(\Div s) \rightarrow \cL$ defined locally by $\phi_U$ is an isomorphism, and that $U$ forms a base for the Zariski topology of $X$, 
+
+    \item We claim that on $\Supp(s)$, the rational section ``1'' of $\cO_X(D)$ is in fact a regular section. This is because $\Div|_{\Supp(s)} s = 0$. Now, consider the map $\phi: \cO(\Div s) \rightarrow \cL$, which coincides with $\sigma$ on $\Supp(s)$. This shows that $\sigma(1)$ is the same rational section as the section $s \in \cL$, which completes the proof. 
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 15.5.A.}
+
+\begin{solution}
+    An automorphism $\pi: \PP_k^n \rightarrow \PP_k^n$ induces an isomorphism $\pi^*: \Pic(\PP_k^n) \rightarrow \Pic(\PP_k^n)$. Since $\Pic(\PP_k^n) \cong \ZZ = (\cO(1))$, we know that $\pi^*$ must send the generator $\cO(1)$ to another generator, which is either $\cO(1)$ or $\cO(-1)$. This implies $\pi^* \cO(1) \cong \cO(1)$ or $\pi^* \cO(1) \cong \cO(-1)$. However, since $\cO(-1)$ doesn't have any global sections, but $\cO(1)$ does, we cannot have $\pi^* \cO(1) \cong \cO(-1)$. Therefore, $\pi^* \cO(1) \cong \cO(1)$. This in particular gives us an isomorphism of the global sections $\pi^*: \Gamma(\PP^n. \cO(1)) \rightarrow \Gamma(\PP^n, \cO(1))$. Recall that $\Gamma(\PP^n, \cO(1)) \cong k^{n+1}$. An automorphism of $\RR^{n+1}$ is then determined by a matrix in $\GL(k, n+1)$. Then, since we have a bijection from maps $\PP_k^n \rightarrow \PP_k^n$ to isomorphism classes of linear series $\{\cL, s_0, \ldots, s_n\}$, we know that $\pi$ corresponds to an isomorphism class of $\{\cO(1), s_0, \ldots, s_n\}$, where $s_0, \ldots, s_n$ can be thought of as a basis of $\RR^{n+1}$ as the map $\lambda: \RR^{n+1} \rightarrow \cO(1)$ is an isomorphism. Then, since automorphisms of $\cO(1)$ are multiplications by global functions, and $\Gamma(\PP^n, \cO) \cong k^\times$, we see that the automorphisms of $\PP_k^n$ corresponds to $\GL(k, n+1) / k^\times \cong \PGL(k, n+1)$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 15.5.G.}
+
+\begin{solution}
+    Since $\PP_k^n$ is factorial, so is $\PP_k^n - Y$, so $\Pic(\PP_k^n - Y) \cong \Cl(\PP_k^n - Y)$. Also, since $Y$ corresponds to an irreducible polynomial, we see that $Y$ itself is also irreducible. We can then use the excision exact sequence 
+    \begin{equation*}
+        \ZZ \longrightarrow \Cl (\PP_k^n) \cong \ZZ \longrightarrow \Cl (\PP_k^n - Y) \longrightarrow 0.
+    \end{equation*} 
+    Notice that the first map sends $1$ to the irreducible divisor $Y$, which corresponds to a degree-$d$ polynomial $s$. We would like to show that the first map in the sequence is multiplication by $d$. Notice that $[Y] = \Div s$. Since $s$ is a degree-$d$ polynomial, we can think of it as a section of $\cO(d)$. It follows that the corresponding element in $\Pic(\PP_k^n)$ of $[Y] \in \Cl(\PP_k^n)$ is $\cO(d)$. Therefore, the first map is given by multiplication by $d$, so by exactness we have 
+    \begin{equation*}
+        \Pic (\PP_k^n - Y) \cong \Cl (\PP_k^n - Y) \cong \ZZ / d\ZZ.
+    \end{equation*}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 15.5.K.}
+
+\begin{solution}
+    Notice that $L \cup M$ is a closed codimension-1 subscheme of $X$, so by excision we have an exact sequence 
+    \begin{equation*}
+        \ZZ^2 \longrightarrow \Cl(X) \longrightarrow \Cl(X - L - M) \cong 0 \longrightarrow 0.
+    \end{equation*}
+    It follows that $\ZZ^2 \rightarrow \Cl(X)$ is a surjection given by sending $(1,0)$ to $[L]$ and $(0,1)$ to $[M]$, so $\Cl(X)$ is a quotient of $\ZZ^2$. 
+
+    It then suffices to show that $\Pic (X)$ contains a subgroup isomorphic to $\ZZ^2$, for then the subgroup $\ZZ^2 \hookrightarrow \Pic (X)$ injects into $\Cl(X)$, a quotient of $\ZZ^2$, but that means that $\Cl(X)$ has no torsion (otherwise the rank of $\Cl(X)$ must be less than 2), so $\Cl(X) \cong \ZZ^2$. Then, the rank of $\Pic(X)$ must be less than or equal 2, but since it contains a torsion-free rank-2 subgroup, it must be itself a rank-2 torsion-free group. 
+
+    It remains to construct a map $\ZZ^2 \hookrightarrow \Pic(X)$. Consider the map $\phi: \ZZ^2 \rightarrow \Pic(X)$ sending $(1,0)$ to $\cO(L)$ and $(0,1)$ to $\cO(M)$. We would like to show that this is injective. It suffices to show that $\cO(L)$ restricts to the structure sheaf on $L$ and $\cO(1)$ on $M$, while $\cO(M)$ restricts to $\cO(1)$ on $L$ and the structure sheaf on $M$, for then we have $\ZZ^2 \cong \Pic(L) \oplus \Pic(M) \cong \langle \cO(L), \cO(M) \rangle < \Pic(X)$. 
+
+    By symmetry it suffices to show that $\cO(L)$ pulls back to $\cO$ on $L$ and $\cO(1)$ on $M$. I ran out of time doing it, but I would assume that the correct way to do it is to look at affine opens of $\Proj k[w,x,y,z] / (wz - xy)$, $L = \Proj k[y, z]$, and $M = \Proj k[x, z]$, and then count the dimension of the space of global sections of the pullback bundles. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 15.5.N.}
+
+\begin{solution}
+    We first show that the complement of an effective Cartier divisor on an affine scheme is also affine. Suppose $Z \subset X$ is an effective Cartier divisor. Let $Y = X - Z$. It suffices to show that the inclusion morphism $i: Y \hookrightarrow X$ is affine. Since $Z$ is an effective Cartier divisor, we may cover $X$ with affine charts $\Spec B$ such that $Y|_{\Spec B} = \Spec A$ for some ring $A$. It then follows from 8.3.4 that the morphism $i: Y \hookrightarrow X$ is affine, so $Y = i^{-1}(X)$ is affine whenever $X$ is. Now, suppose some multiple of $Z$ is locally principal. This means at there is a covering of $X$ by neighborhoods $\{U\}$ on which $[Z \cap U] = \Div f$ for some rational function $f \in K(U)^\times$. Since $[Z]$ is effectiv (it is irreducible), $n[Z]$ is a locally principal effective divisor, which is an effective Cartier divisor, as $f$ can be chosen to be a regular function on $U$. It follows that $Y$ is affine, so the closed subscheme of $Y$ cut out by $y = z = 0$ must also be affine. We now examine the closed subscheme of $Y$ cut out by $y = z = 0$. It is the subscheme 
+    \begin{equation*}
+        \Spec \frac{k[x,y,z,w, 1/x]}{wx - yz, y, z} \cup \Spec \frac{k[x,y,z,w, 1/x]}{wx - yz, y, z} 
+        \cong \Spec k[x,w,1/x] \cup \Spec k[x,w,1/w].
+    \end{equation*}
+    The latter scheme is precisely $\AA_k^2$ taken out the origin, which is known to be not affine. We conclude that $Z$ is not a $\QQ$-Cartier divisor. 
+\end{solution}
+
+\end{document}

@@ -1,0 +1,448 @@
+\documentclass[11pt]{article} 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,esint, dsfont,mathtools}	
+\usepackage{graphicx}		
+\usepackage{hyperref}
+\usepackage{cases}			
+\usepackage{textcomp, gensymb}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+% diagrams
+\usepackage{quiver}
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	\def\@currentlabel{#2}
+	\label{#1}\endgroup
+}
+\makeatother
+
+\setlength{\parindent}{0pt} 	% first line in paragraph will not be indented
+
+\usepackage[parfill]{parskip}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\newcommand{\ind}{{\mathds{1}}}
+
+% math fonts
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\ka}{\mathfrak{a}}
+\newcommand{\kb}{\mathfrak{b}}
+\newcommand{\kc}{\mathfrak{c}}
+\newcommand{\kd}{\mathfrak{d}}
+\newcommand{\ke}{\mathfrak{e}}
+\newcommand{\kg}{\mathfrak{g}}
+\newcommand{\kf}{\mathfrak{f}}
+\newcommand{\kh}{\mathfrak{h}}
+\newcommand{\ki}{\mathfrak{i}}
+\newcommand{\kj}{\mathfrak{j}}
+\newcommand{\kk}{\mathfrak{k}}
+\newcommand{\kl}{\mathfrak{l}}
+\newcommand{\km}{\mathfrak{m}}
+\newcommand{\kn}{\mathfrak{n}}
+\newcommand{\ko}{\mathfrak{o}}
+\newcommand{\kp}{\mathfrak{p}}
+\newcommand{\kq}{\mathfrak{q}}
+\newcommand{\kr}{\mathfrak{r}}
+\newcommand{\ks}{\mathfrak{s}}
+\newcommand{\kt}{\mathfrak{t}}
+\newcommand{\ku}{\mathfrak{u}}
+\newcommand{\kv}{\mathfrak{v}}
+\newcommand{\kw}{\mathfrak{w}}
+\newcommand{\kx}{\mathfrak{x}}
+\newcommand{\ky}{\mathfrak{y}}
+\newcommand{\kz}{\mathfrak{z}}
+
+\newcommand{\kA}{\mathfrak{A}}
+\newcommand{\kB}{\mathfrak{B}}
+\newcommand{\kC}{\mathfrak{C}}
+\newcommand{\kD}{\mathfrak{D}}
+\newcommand{\kE}{\mathfrak{E}}
+\newcommand{\kG}{\mathfrak{G}}
+\newcommand{\kF}{\mathfrak{F}}
+\newcommand{\kH}{\mathfrak{H}}
+\newcommand{\kI}{\mathfrak{I}}
+\newcommand{\kJ}{\mathfrak{J}}
+\newcommand{\kK}{\mathfrak{K}}
+\newcommand{\kL}{\mathfrak{L}}
+\newcommand{\kM}{\mathfrak{M}}
+\newcommand{\kN}{\mathfrak{N}}
+\newcommand{\kO}{\mathfrak{O}}
+\newcommand{\kP}{\mathfrak{P}}
+\newcommand{\kQ}{\mathfrak{Q}}
+\newcommand{\kR}{\mathfrak{R}}
+\newcommand{\kS}{\mathfrak{S}}
+\newcommand{\kT}{\mathfrak{T}}
+\newcommand{\kU}{\mathfrak{U}}
+\newcommand{\kV}{\mathfrak{V}}
+\newcommand{\kW}{\mathfrak{W}}
+\newcommand{\kX}{\mathfrak{X}}
+\newcommand{\kY}{\mathfrak{Y}}
+\newcommand{\kZ}{\mathfrak{Z}}
+
+%some math symbol commands redefined:
+\DeclareMathOperator{\C}{\mathcal{C}}
+\DeclareMathOperator{\power}{\mathcal{P}}
+\DeclareMathOperator{\vspan}{\text{span}}
+\DeclareMathOperator{\vnull}{\text{null}}
+\DeclareMathOperator{\range}{\text{range}}
+\DeclareMathOperator{\re}{\text{Re}}
+\DeclareMathOperator{\im}{\text{Im}}
+\DeclareMathOperator{\erf}{\text{erf}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdvv}[2]{\frac{\partial^2 #1}{\partial #2}}
+\DeclareMathOperator{\tr}{\operatorname{Tr}}
+\newcommand{\Deck}{\operatorname{Deck}}
+\newcommand{\Conj}{\mathrm{Conj}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\PROJ}{\mathit{Proj}}
+
+% category names
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Ring}{\mathsf{Ring}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Sch}{\mathsf{Sch}}
+
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\pre}{\text{pre}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\Char}{\operatorname{char}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Bl}{\mathrm{Bl}}
+\newcommand{\codim}{\mathrm{codim}}
+\newcommand{\val}{\operatorname{val}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Gr}{\operatorname{Gr}}
+
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\Rk}{\operatorname{Rk}}
+\newcommand{\Tor}{\operatorname{Tor}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+
+% category theory symbols
+\DeclareMathOperator{\Mor}{\operatorname{Mor}}
+
+\newenvironment{solution}{\begin{trivlist}\item[]{\textcolor{blue}{Solution:}}}{\qed \end{trivlist}}
+
+
+\usepackage[shortlabels]{enumitem}
+\title{MATH 2060 Homework 11}
+\author{Zhengyu Zou}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\textbf{Collaborators:} Ethan Bove, Roberta Pagliaro, Anamaria Perez
+
+\section*{FOAG 23.3.A.}
+
+\begin{solution}
+    Let $\{M_i\}$ be a free resolution of $M$ and $\{N_j\}$ be a free resolution of $N$. Consider the following double complex:
+    % https://q.uiver.app/#q=WzAsMTUsWzIsMywiTV8yIFxcb3RpbWVzIE5fMCJdLFsxLDMsIk1fMSBcXG90aW1lcyBOXzAiXSxbMCwzLCJNXzAgXFxvdGltZXMgTl8wIl0sWzAsMiwiTV8wIFxcb3RpbWVzIE5fMSJdLFswLDEsIk1fMCBcXG90aW1lcyBOXzIiXSxbMSwwLCJcXHZkb3RzIl0sWzIsMCwiXFx2ZG90cyJdLFswLDAsIlxcdmRvdHMiXSxbMSwyLCJNXzEgXFxvdGltZXMgTl8xIl0sWzEsMSwiTV8xIFxcb3RpbWVzIE5fMiJdLFsyLDIsIk1fMiBcXG90aW1lcyBOXzEiXSxbMiwxLCJNXzIgXFxvdGltZXMgTl8yIl0sWzMsMywiXFxjZG90cyJdLFszLDIsIlxcY2RvdHMiXSxbMywxLCJcXGNkb3RzIl0sWzEsMl0sWzAsMV0sWzYsMTFdLFsxMSwxMF0sWzEwLDBdLFs1LDldLFs5LDhdLFs4LDFdLFs3LDRdLFs0LDNdLFszLDJdLFs4LDNdLFsxMCw4XSxbOSw0XSxbMTEsOV0sWzEyLDBdLFsxNCwxMV0sWzEzLDEwXV0=
+    \[\begin{tikzcd}
+        \vdots & \vdots & \vdots \\
+        {M_0 \otimes N_2} & {M_1 \otimes N_2} & {M_2 \otimes N_2} & \cdots \\
+        {M_0 \otimes N_1} & {M_1 \otimes N_1} & {M_2 \otimes N_1} & \cdots \\
+        {M_0 \otimes N_0} & {M_1 \otimes N_0} & {M_2 \otimes N_0} & \cdots
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-2, to=2-2]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=2-1, to=3-1]
+        \arrow[from=2-2, to=2-1]
+        \arrow[from=2-2, to=3-2]
+        \arrow[from=2-3, to=2-2]
+        \arrow[from=2-3, to=3-3]
+        \arrow[from=2-4, to=2-3]
+        \arrow[from=3-1, to=4-1]
+        \arrow[from=3-2, to=3-1]
+        \arrow[from=3-2, to=4-2]
+        \arrow[from=3-3, to=3-2]
+        \arrow[from=3-3, to=4-3]
+        \arrow[from=3-4, to=3-3]
+        \arrow[from=4-2, to=4-1]
+        \arrow[from=4-3, to=4-2]
+        \arrow[from=4-4, to=4-3]
+    \end{tikzcd}\]
+    We first take the rightward spectral sequence $E_{\rightarrow}$. Since each $N_i$ is free, tensoring with $N_i$ is exact, so the cohomology is zero except at the first column, which is given by the cokernel $M$ tensoring with $N_i$. It follows that the first page is given by 
+    % https://q.uiver.app/#q=WzAsMTUsWzIsMywiMCJdLFsxLDMsIjAiXSxbMCwzLCJNIFxcb3RpbWVzIE5fMCJdLFswLDIsIk0gXFxvdGltZXMgTl8xIl0sWzAsMSwiTSBcXG90aW1lcyBOXzIiXSxbMSwwLCJcXHZkb3RzIl0sWzIsMCwiXFx2ZG90cyJdLFswLDAsIlxcdmRvdHMiXSxbMSwyLCIwIl0sWzEsMSwiMCJdLFsyLDIsIjAiXSxbMiwxLCIwIl0sWzMsMywiXFxjZG90cyJdLFszLDIsIlxcY2RvdHMiXSxbMywxLCJcXGNkb3RzIl0sWzYsMTFdLFsxMSwxMF0sWzEwLDBdLFs1LDldLFs5LDhdLFs4LDFdLFs3LDRdLFs0LDNdLFszLDJdXQ==
+    \[\begin{tikzcd}
+        \vdots & \vdots & \vdots \\
+        {M \otimes N_2} & 0 & 0 & \cdots \\
+        {M \otimes N_1} & 0 & 0 & \cdots \\
+        {M \otimes N_0} & 0 & 0 & \cdots
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-2, to=2-2]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=2-1, to=3-1]
+        \arrow[from=2-2, to=3-2]
+        \arrow[from=2-3, to=3-3]
+        \arrow[from=3-1, to=4-1]
+        \arrow[from=3-2, to=4-2]
+        \arrow[from=3-3, to=4-3]
+    \end{tikzcd}\]
+    The second page is then given by 
+    % https://q.uiver.app/#q=WzAsMTUsWzIsMywiMCJdLFsxLDMsIjAiXSxbMCwzLCJcXFRvcl8wXkEoTSwgTikiXSxbMCwyLCJcXFRvcl8xXkEoTSwgTikiXSxbMSwwLCJcXHZkb3RzIl0sWzIsMCwiXFx2ZG90cyJdLFswLDAsIlxcdmRvdHMiXSxbMSwyLCIwIl0sWzEsMSwiMCJdLFsyLDIsIjAiXSxbMiwxLCIwIl0sWzMsMywiXFxjZG90cyJdLFszLDIsIlxcY2RvdHMiXSxbMywxLCJcXGNkb3RzIl0sWzAsMSwiXFxUb3JfMl5BKE0sIE4pIl1d
+    \[\begin{tikzcd}
+        \vdots & \vdots & \vdots \\
+        {\Tor_2^A(M, N)} & 0 & 0 & \cdots \\
+        {\Tor_1^A(M, N)} & 0 & 0 & \cdots \\
+        {\Tor_0^A(M, N)} & 0 & 0 & \cdots
+    \end{tikzcd}\]
+    and the sequence converges at the second page. By symmetry, the upward spectral sequence should also terminate at the second page:
+    % https://q.uiver.app/#q=WzAsMTUsWzIsMywiXFxUb3JfMl5BKE4sTSkiXSxbMSwzLCJcXFRvcl8xXkEoTixNKSJdLFswLDMsIlxcVG9yXzBeQShOLE0pIl0sWzAsMiwiMCJdLFsxLDAsIlxcdmRvdHMiXSxbMiwwLCJcXHZkb3RzIl0sWzAsMCwiXFx2ZG90cyJdLFsxLDIsIjAiXSxbMSwxLCIwIl0sWzIsMiwiMCJdLFsyLDEsIjAiXSxbMywzLCJcXGNkb3RzIl0sWzMsMiwiXFxjZG90cyJdLFszLDEsIlxcY2RvdHMiXSxbMCwxLCIwIl1d
+    \[\begin{tikzcd}
+        \vdots & \vdots & \vdots \\
+        0 & 0 & 0 & \cdots \\
+        0 & 0 & 0 & \cdots \\
+        {\Tor_0^A(N,M)} & {\Tor_1^A(N,M)} & {\Tor_2^A(N,M)} & \cdots
+    \end{tikzcd}\]
+    Since the filtrations formed by the diagonals are the same, and for each direction the second page has all but one nonzero entries in every diagonal, we see that $\Tor_i^A(M, N) \cong \Tor_i^A(N, M)$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 23.4.D.}
+
+\begin{solution}
+    We assume $X$ is quasicompact.
+
+    \begin{enumerate}[(a)]
+        \item First, we claim that it suffices to show that $\cF(X) \rightarrow \cF''(X)$ is surjective. If this is true, then since the global section functor is left exact, we have $0 \rightarrow \cF'(X) \rightarrow \cF(X) \rightarrow \cF''(X) \rightarrow 0$ exact. Then, since exactness of sheaf morphisms are stalk-local, the sequence $0 \rightarrow \cF'(U) \rightarrow \cF(U) \rightarrow \cF''(U) \rightarrow 0$ would be exact for all opens $U \subset X$. 
+
+        To see that $\cF(X) \rightarrow \cF''(X)$ is surjective, let $f$ be a global section of $\cF''$. For all $p \in X$, let $f|_p$ be the stalk of $f$. Then, since exactness is stalk-local, the sequence $0 \rightarrow \cF'_p \rightarrow \cF_p \rightarrow \cF''_p \rightarrow 0$ is exact, which implies there exists $g_p \in \cF_p$ that maps to $f|_p$. We claim that there exists a global section $g$ of $\cF$ such that $g|_p = g_p$ for all $p \in X$. To find $g$, we first notice that for each $p \in X$, there exists an open neighborhood $U_p$ and a section $g_{U_p}$ such that $g_{U_p}|_p = g_p$. Now, from quasicompactness of $X$, we see that finitely many $U_p$'s cover $X$. We will name them $U_1, \ldots, U_n$, which correspond to finitely many points $p_1, \ldots, p_n$. Also, denote by $g_i = g_{U_i}$. In particular, each $g_i$ maps to $f|_{U_i}$ because the stalks of the image of $g_i$ at all points $x \in U_i$ are precisely the stalks $f|_x$. 
+
+        Next, we will modify the $g_i$'s to glue them together along $X$ by induction on the number of opens $n$. When $n = 1$, there's nothing to prove. Now, suppose we can glue together the $g_i$'s from open covers of fewer than $n$ opens, and we are given an open cover $U_1, \ldots, U_n$. Consider the section $h_{12} = g_1|_{U_1 \cap U_2} - g_2|_{U_1 \cap U_2}$ on $U_1 \cap U_2$. Notice that the image of $h_{12}$ under the map $\cF \rightarrow \cF''$ is zero, so $h_{12}$ comes from a section of $\cF'$ over $U_1 \cap U_2$. Now, since the restriction maps of $\cF'$ are surjective, we can find $h_1 \in \cF'(U_1)$ that restricts to $h_{12}$. Let $g'_1 = g_1 - h_1$. It follows that $g'_1|_{U_1 \cap U_2} = g_1|_{U_1 \cap U_2} - h_{12} = g_2|_{U_1 \cap U_2}$, so $g'_1$ and $g_2$ glues along $U_1 \cap U_2$. In particular, the image of $g'_1$ under $\cF \rightarrow \cF''$ is again $f|_{U_1 \cup U_2}$, so we reduced to the case of $n-1$ opens $U_1 \cap U_2, U_3, \ldots, U_n$, and we are done.
+
+        \item We first show that if $\cF$ is flasque, then $\cF''$ is flasque. It suffices to show that for all $U \subset V \subset X$ and a section $f \in \cF''(U)$, there exists a section $f' \in \cF''(V)$ such that $f'|_U = f$. Since $\cF'$ is flasque, part (a) implies there exists a section $g \in \cF(U)$ that maps to $f$. Since $\cF$ is flasque, there exists a section $g' \in \cF(V)$ that restricts to $g$ on $U$. Let $f'$ be the image of $g$ under $\cF(V) \rightarrow \cF''(V)$. Since restrictions commute with morphisms of sheaves, we see that $f'|_U = f$, so $f'$ is the desired section.
+        
+        Next, we show that if $\cF''$ is flasque, then $cF$ is flasque. With the same setup, suppose $g \in \cF(U)$ is a section. Let $f$ be the image of $g$ under $\cF(U) \rightarrow \cF''(U)$. Since $\cF''$ is flasque, there exists a section $f' \in \cF''(V)$ that restricts to $f$ on $U$. Again, since $\cF'$ is flasque, part (a) implies there exists $g' \in \cF(V)$ that maps to $g$, but then $g'$ restricts to $g$ on $U$, which is what we wanted.
+    \end{enumerate}
+    
+\end{solution}
+
+\newpage
+
+\section*{FOAG 23.4.F.}
+
+\begin{solution}
+    We first show that given two sections $f, g$ on some open $W \subset Y$ such that $f|_{W_i} = g|_{W_i}$ for all $W_i$ where $\{W_i\}$ forms an open cover of $W$, then $f = g$. First, if $W$ is not a subset of $U$, then $i_{\!}^\pre \cF(W) = 0$ and we are automatically done. Otherwise, we are simply just working under $\cF$, and the identity axiom on $\cF$ would imply the statement.
+
+    Next, we show that $i_{\!}^\pre \cF$ needs not be a sheaf. Let $\cF$ be the sheaf of continuous functions on $\RR - \{0\}$, and consider the inclusion $i: \RR - \{0\} \rightarrow \RR$. Consider the function $f$ on $\RR - \{0\}$ defined by $f(x) = 0$ for $x \in [-1,0) \cap (0, 1]$, $f(x) = x - 1$ for $x \in [1. \infty)$, and $f(x) = 1 - x$ for $x \in (-\infty, 0]$. Let $g$ be the zero section on $(-1,1)$. Clearly, $f$ and $g$ agrees on $(-1,1) - \{0\}$, but they don't glue together to get a section on $\RR$ since sections on $\RR$ are all trivial.
+\end{solution}
+
+\newpage
+
+\section*{FOAG 23.4.I.}
+
+\begin{solution}
+    We follow the hint in the problem. Let $\cF$ be a flasque sheaf. Let $\cG$ be an injective sheaf with an inclusion $\cF \hookrightarrow \cG$. Let $\cH$ be the cokernel of this map. Then, we have an exact sequence $0 \rightarrow \cF \rightarrow \cG \rightarrow \cH \rightarrow 0$. In particular, since $\cF$ and $\cG$ are both flasque, 23.4.D implies $\cH$ is flasque. Also, 23.4.D implies we have an exact sequence $0 \rightarrow \Gamma(X, \cF) \rightarrow \Gamma(X, \cG) \rightarrow \Gamma(X, \cH) \rightarrow 0$, so in particular the long exact sequence on derived functor cohomology gives us $H^1(X, \cF) = 0$. Since this works for all $\cF$, we know that $H^1(X, \cF) = 0$ for all flasque sheaves.
+
+    Next, for the induction step, suppose $H^i(X, \cF) = 0$ for any flasque sheaf $\cF$ and any $i < n$. Consider the following part of the exact sequence: $0 = H^{i-1}(X, \cH) \rightarrow H^i(X, \cF) \rightarrow H^i(X, \cG)$. Since $\cG$ is injective, we get a simple injective resolution $0 \rightarrow \cG \rightarrow \cG \rightarrow 0 \rightarrow \cdots$. This in particular means $H^j(X, \cG) = 0$ for all $j > 0$, so in particular $H^i(X, \cG) = 0$. Then, we must have $H^i(X, \cF) = 0$, which completes the induction step.
+\end{solution}
+
+\newpage
+
+\section*{FOAG 24.1.G.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+    \item We first observe that $\cO_{X, p}$ is a local ring, so $\Spec \cO_{X, p}$ contains precisely the point $p$. It then suffices to show that $\cO_{X, p}$ is a flat $\cO_{X, p}$-module, but that's trivial since $\cO_{X, p}$ is a free $\cO_{X, p}$-module.
+    
+    \item It suffices to show that $A[x_1, \ldots, x_n]$ is a flat $A$-module, but then $A[x_1, \ldots, x_n]$ is clearly a free $A$-module, so it must be flat. 
+    
+    \item Since flatness is local on the target, it suffices for us to check on the trivializing neighborhoods of $\cF$. Let $\Spec A \subset X$ be a trivializing affine open of $\cF$, so $\cF|_{\Spec A} \cong A^{\oplus n}$ for some positive integer $n$. It then follows that the preimage of $\Spec A$ in $\PP \cF$ is $\Proj \Sym^{\bullet} A^{\oplus n} = \Proj A[x_0, \ldots, x_{n-1}] \cong \PP_A^{n-1}$. Therefore, it suffices to check that $\PP_A^n \rightarrow \Spec A$ is flat. Finally, since flatness is local on the source, we can check flatness on the affine patches of $\PP_A^n$, which are distinguished affine opens isomorphic to $\AA_A^n$. Hence, using Part (b), we conclude that $\PP \cF \rightarrow X$ is flat. 
+    
+    \item It suffices to show that $k$ is not a flat $k[t]/(t^2)$-module. Consider a short exact sequence of $k[t]/(t^2)$-modules:
+    \[
+        0 \longrightarrow k \longrightarrow \frac{k[t]}{(t^2)} \longrightarrow k \longrightarrow 0.
+    \]
+    Here, the first map is given by $1 \mapsto t$, and the second map is given by $1 \mapsto 1$ and $t \mapsto 0$. Now, tensoring by $k$ gives us $0 \rightarrow k \rightarrow k \rightarrow k \rightarrow 0$, where the first map is given by $1 \mapsto 0$, which is not injective. We conclude that $k$ is not a flat $k[t]/(t^2)$-module.
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 24.1.K.}
+
+\begin{solution}
+    Let $p \in X$ be an associated point that maps to a point $q \in Y$. 
+    Denote by $\cO_{X, p} = (A, \km)$ where $p = [\km]$ is the unique maximal ideal of the local ring $A$. Similarly, denote by $\cO_{Y,q} = (B, \kn)$. The map $\pi: X \rightarrow Y$ induces a map $\pi^\sharp: (B, \kn) \rightarrow (A, \km)$ on the local rings. Now, suppose $\kn$ is not an associated prime of $B$. Since $B$ is noetherian, it has only finitely many associated primes $\kp_1, \ldots, \kp_n$, so by 12.2.13 (prime avoidance) there must exist $f \in \kn - \bigcup_i \kp_i$. It follows that $f$ is a non-zerodivisor, as the zerodivisors are precisely $\bigcup_i \kp_i$. Now, $\pi^\sharp f \in \km$ is not a zerodivisor, since otherwise $A \xrightarrow{\times f} A$ would fail to be injective, but then that contradicts $A$ is flat over $B$. We have just shown that $\km$ contains a non-zerodivisor, but then that contradicts $\km = \Ann_A(g)$ for some $g \in A$. We conclude that $\kn$ must be an associated prime. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 24.1.L.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+    \item The associated point $[(x)]$ gets sent to the point $[(x)]$, but $(x)$ is not an associated prime of $k[x]$, as $k[x]$ is reduced. 
+    
+    \item The associated point $[(x,y)]$ gets sent to the point $[(x)]$, but by the same reason as part (a) we know that $[(x)]$ is not an associated prime of $k[x]$. 
+    
+    \item Consider the inclusion of the $x$-axis $\AA^1 \hookrightarrow \AA^2$. Then, the pullback of $\Bl_0 \AA^2 \rightarrow \AA^2$ under $\AA^2 \hookrightarrow \AA^2$ must also be flat over $\AA^1$. We can then compute the pullback on the level of affines. Recall that $\Bl_0 \AA^2 \cong \Proj k[x,y,X,Y] / (xY - yX)$, which is covered by two affines $D_+(X) = \Spec k[x,y,s]/(xs - y)$ and $D_+(Y) = \Spec k[x,y,t]/(x - yt)$, where $s = Y / X$ and $t = X / Y$ are the two coordinate functions. We can then compute $D_+(X) \times_{\AA^2} \Spec k[x]$ and $D_+(Y) \times_{\AA^2} \Spec k[x]$:
+    % https://q.uiver.app/#q=WzAsOCxbMCwwLCJrW3gseV0iXSxbMCwxLCJrW3hdIl0sWzEsMCwiXFxmcmFje2tbeCx5LHNdfXsoeHMgLSB5KX0iXSxbMSwxLCJcXGZyYWN7a1t4LHNdfXsoeHMpfSJdLFsyLDAsImtbeCx5XSJdLFsyLDEsImtbeF0iXSxbMywwLCJcXGZyYWN7a1t4LHksdF19eyh4IC0geXQpfSJdLFszLDEsImtbdF0iXSxbMCwyXSxbMCwxXSxbMiwzXSxbMSwzXSxbNCw2XSxbNiw3XSxbNCw1XSxbNSw3XV0=
+    \[\begin{tikzcd}
+        {k[x,y]} & {\frac{k[x,y,s]}{(xs - y)}} & {k[x,y]} & {\frac{k[x,y,t]}{(x - yt)}} \\
+        {k[x]} & {\frac{k[x,s]}{(xs)}} & {k[x]} & {k[t]}
+        \arrow[from=1-1, to=1-2]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-2, to=2-2]
+        \arrow[from=1-3, to=1-4]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-4, to=2-4]
+        \arrow[from=2-1, to=2-2]
+        \arrow[from=2-3, to=2-4]
+    \end{tikzcd}\]
+    In particular, we see that $D_+(X) \times_{\AA^2} \AA^1 \rightarrow \AA^1$ is the map $\Spec k[x,s]/(xs) \rightarrow \Spec k[x]$, which is not flat by part (a). Then, since $D_+(X) \times_{\AA^2} \AA^1 \hookrightarrow \Bl_0 \AA^2 \times_{\AA^2} \AA^1$ is an open embedding, it is flat, so $\Bl_0 \AA^2 \times_{\AA^2} \AA^1 \rightarrow \AA^1$ is not flat. We conclude that $\Bl_0 \AA^2 \rightarrow \AA^2$ is not flat.
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 24.1.P.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+    \item We will use the fact that pullbacks of effective Cartier divisors under flat morphisms are effective Cartier divisors. We will show that $(\Bl_Z Y) \times_Y X$ satisfies the universal property of blowing up $X$ along $Z \times_Y X$. First, we construct the following diagram:
+    % https://q.uiver.app/#q=WzAsOCxbMSwzLCJaIl0sWzMsMywiWSJdLFsyLDIsIlgiXSxbMCwyLCJaIFxcdGltZXNfWSBYIl0sWzAsMCwiXFx0aWxkZSBFIl0sWzEsMSwiRV9aIFkiXSxbMiwwLCIoXFxCbF9aIFkpIFxcdGltZXNfWSBYIl0sWzMsMSwiXFxCbF9aIFkiXSxbMCwxLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFszLDIsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzMsMF0sWzIsMV0sWzYsN10sWzcsMV0sWzUsMF0sWzUsNywiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNCw2LCIiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs0LDVdLFs0LDNdLFs2LDJdXQ==
+    \[\begin{tikzcd}
+        {\tilde E} && {(\Bl_Z Y) \times_Y X} \\
+        & {E_Z Y} && {\Bl_Z Y} \\
+        {Z \times_Y X} && X \\
+        & Z && Y
+        \arrow[hook, from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-2]
+        \arrow[from=1-1, to=3-1]
+        \arrow[from=1-3, to=2-4]
+        \arrow[from=1-3, to=3-3]
+        \arrow[hook, from=2-2, to=2-4]
+        \arrow[from=2-2, to=4-2]
+        \arrow[from=2-4, to=4-4]
+        \arrow[hook, from=3-1, to=3-3]
+        \arrow[from=3-1, to=4-2]
+        \arrow[from=3-3, to=4-4]
+        \arrow[hook, from=4-2, to=4-4]
+    \end{tikzcd}\]
+    Here, every face of the cube is a Cartesian diagram. In particular, we know that $\tilde E$ is an effective Cartier divisor of $(\Bl_Z Y) \times_Y X$. We now show that $\tilde E \hookrightarrow (\Bl_Z Y) \times_Y X$ satisfies the universal property. Given a Cartesian diagram 
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJaIFxcdGltZXNfWSBYIl0sWzEsMSwiWCJdLFsxLDAsIlciXSxbMCwwLCJWIl0sWzAsMSwiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiwxXSxbMywwXSxbMywyLCIiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dXQ==
+    \[\begin{tikzcd}
+        V & W \\
+        {Z \times_Y X} & X
+        \arrow[hook, from=1-1, to=1-2]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-2, to=2-2]
+        \arrow[hook, from=2-1, to=2-2]
+    \end{tikzcd}\]
+    with $V \hookrightarrow W$ an effective Cartier divisor, we can compose this with the bottom face of the cube to get 
+    % https://q.uiver.app/#q=WzAsNixbMCwxLCJaIFxcdGltZXNfWSBYIl0sWzEsMSwiWCJdLFsxLDAsIlciXSxbMCwwLCJWIl0sWzAsMiwiWiJdLFsxLDIsIlkiXSxbMCwxLCIiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsyLDFdLFszLDBdLFszLDIsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzEsNV0sWzQsNSwiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCw0XV0=
+    \[\begin{tikzcd}
+        V & W \\
+        {Z \times_Y X} & X \\
+        Z & Y
+        \arrow[hook, from=1-1, to=1-2]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-2, to=2-2]
+        \arrow[hook, from=2-1, to=2-2]
+        \arrow[from=2-1, to=3-1]
+        \arrow[from=2-2, to=3-2]
+        \arrow[hook, from=3-1, to=3-2]
+    \end{tikzcd}\]
+    By the universal property of $E_Z Y \hookrightarrow \Bl_Z Y$, there exists a unique Cartesian diagram extending the left face of the cube:
+    % https://q.uiver.app/#q=WzAsNixbMCwxLCJFX1ogWSJdLFsxLDEsIlxcQmxfWiBZIl0sWzEsMCwiVyJdLFswLDAsIlYiXSxbMCwyLCJaIl0sWzEsMiwiWSJdLFswLDEsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzIsMV0sWzMsMF0sWzMsMiwiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSw1XSxbNCw1LCIiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFswLDRdXQ==
+    \[\begin{tikzcd}
+        V & W \\
+        {E_Z Y} & {\Bl_Z Y} \\
+        Z & Y
+        \arrow[hook, from=1-1, to=1-2]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-2, to=2-2]
+        \arrow[hook, from=2-1, to=2-2]
+        \arrow[from=2-1, to=3-1]
+        \arrow[from=2-2, to=3-2]
+        \arrow[hook, from=3-1, to=3-2]
+    \end{tikzcd}\]
+    Now, by universal property of fibered product, we get a unique morphism of the pair $V \hookrightarrow W$ to the pair $\tilde E \hookrightarrow (\Bl_Z Y) \times_Y X$. This implies $\tilde E \hookrightarrow (\Bl_Z Y) \times_Y X$ is the blow-up of $X$ at $Z \times_Y X$. 
+
+    \item Let $X = \Spec k[x,y]/(xy)$, $Y = \Spec k[x]$, and $Z = \Spec k$, where the map $X \rightarrow Y$ is the canonical projection, and $Z \hookrightarrow Y$ is the inclusion of the origin. Since $Z$ is an effective Cartier divisor of $Y$, we see that $\Bl_Z Y = Y$ and $E_Z Y$ = $Z$. Therefore, $(\Bl_Z Y) \times_Y X = Y \times_Y X = X$, and $\tilde E = Z \times_Y X$, which is the origin in $\Spec k[x,y]/(xy)$. However, notice that $\tilde E$ is not an effective Cartier divisor of $X$, since the tangent space at the origin of $X$ has dimension 2, but the tangent space of $Z$ has dimension 0. Therefore, the pullback of $E_Z Y \hookrightarrow \Bl_Z Y$ along $X \rightarrow Y$ is not the blowup of $Z$ along $Z \times_Y X$. 
+\end{enumerate}
+\end{solution}
+
+\end{document}

@@ -1,0 +1,455 @@
+\documentclass[11pt]{article} 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,esint, dsfont,mathtools,stmaryrd}	
+\usepackage{graphicx}		
+\usepackage{hyperref}
+\usepackage{cases}			
+\usepackage{textcomp, gensymb}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+% diagrams
+\usepackage{quiver}
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	\def\@currentlabel{#2}
+	\label{#1}\endgroup
+}
+\makeatother
+
+\setlength{\parindent}{0pt} 	% first line in paragraph will not be indented
+
+\usepackage[parfill]{parskip}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\newcommand{\ind}{{\mathds{1}}}
+
+% math fonts
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\ka}{\mathfrak{a}}
+\newcommand{\kb}{\mathfrak{b}}
+\newcommand{\kc}{\mathfrak{c}}
+\newcommand{\kd}{\mathfrak{d}}
+\newcommand{\ke}{\mathfrak{e}}
+\newcommand{\kg}{\mathfrak{g}}
+\newcommand{\kf}{\mathfrak{f}}
+\newcommand{\kh}{\mathfrak{h}}
+\newcommand{\ki}{\mathfrak{i}}
+\newcommand{\kj}{\mathfrak{j}}
+\newcommand{\kk}{\mathfrak{k}}
+\newcommand{\kl}{\mathfrak{l}}
+\newcommand{\km}{\mathfrak{m}}
+\newcommand{\kn}{\mathfrak{n}}
+\newcommand{\ko}{\mathfrak{o}}
+\newcommand{\kp}{\mathfrak{p}}
+\newcommand{\kq}{\mathfrak{q}}
+\newcommand{\kr}{\mathfrak{r}}
+\newcommand{\ks}{\mathfrak{s}}
+\newcommand{\kt}{\mathfrak{t}}
+\newcommand{\ku}{\mathfrak{u}}
+\newcommand{\kv}{\mathfrak{v}}
+\newcommand{\kw}{\mathfrak{w}}
+\newcommand{\kx}{\mathfrak{x}}
+\newcommand{\ky}{\mathfrak{y}}
+\newcommand{\kz}{\mathfrak{z}}
+
+\newcommand{\kA}{\mathfrak{A}}
+\newcommand{\kB}{\mathfrak{B}}
+\newcommand{\kC}{\mathfrak{C}}
+\newcommand{\kD}{\mathfrak{D}}
+\newcommand{\kE}{\mathfrak{E}}
+\newcommand{\kG}{\mathfrak{G}}
+\newcommand{\kF}{\mathfrak{F}}
+\newcommand{\kH}{\mathfrak{H}}
+\newcommand{\kI}{\mathfrak{I}}
+\newcommand{\kJ}{\mathfrak{J}}
+\newcommand{\kK}{\mathfrak{K}}
+\newcommand{\kL}{\mathfrak{L}}
+\newcommand{\kM}{\mathfrak{M}}
+\newcommand{\kN}{\mathfrak{N}}
+\newcommand{\kO}{\mathfrak{O}}
+\newcommand{\kP}{\mathfrak{P}}
+\newcommand{\kQ}{\mathfrak{Q}}
+\newcommand{\kR}{\mathfrak{R}}
+\newcommand{\kS}{\mathfrak{S}}
+\newcommand{\kT}{\mathfrak{T}}
+\newcommand{\kU}{\mathfrak{U}}
+\newcommand{\kV}{\mathfrak{V}}
+\newcommand{\kW}{\mathfrak{W}}
+\newcommand{\kX}{\mathfrak{X}}
+\newcommand{\kY}{\mathfrak{Y}}
+\newcommand{\kZ}{\mathfrak{Z}}
+
+%some math symbol commands redefined:
+\DeclareMathOperator{\C}{\mathcal{C}}
+\DeclareMathOperator{\power}{\mathcal{P}}
+\DeclareMathOperator{\vspan}{\text{span}}
+\DeclareMathOperator{\vnull}{\text{null}}
+\DeclareMathOperator{\range}{\text{range}}
+\DeclareMathOperator{\re}{\text{Re}}
+\DeclareMathOperator{\im}{\text{Im}}
+\DeclareMathOperator{\erf}{\text{erf}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdvv}[2]{\frac{\partial^2 #1}{\partial #2}}
+\DeclareMathOperator{\tr}{\operatorname{Tr}}
+\newcommand{\Deck}{\operatorname{Deck}}
+\newcommand{\Conj}{\mathrm{Conj}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\PROJ}{\mathit{Proj}}
+
+% category names
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Ring}{\mathsf{Ring}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Sch}{\mathsf{Sch}}
+
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\pre}{\text{pre}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\Char}{\operatorname{char}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Bl}{\mathrm{Bl}}
+\newcommand{\codim}{\mathrm{codim}}
+\newcommand{\val}{\operatorname{val}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Gr}{\operatorname{Gr}}
+
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\Rk}{\operatorname{rk}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Hilb}{\operatorname{Hilb}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+
+% category theory symbols
+\DeclareMathOperator{\Mor}{\operatorname{Mor}}
+
+\newenvironment{solution}{\begin{trivlist}\item[]{\textcolor{blue}{Solution:}}}{\qed \end{trivlist}}
+
+
+\usepackage[shortlabels]{enumitem}
+\title{MATH 2060 Homework 13}
+\author{Zhengyu Zou}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\textbf{Collaborators:} Ethan Bove, Roberta Pagliaro, Anamaria Perez
+
+\section*{FOAG 25.1.G.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+	\item We first show that $\pi_* \Omega_{C/S}^{\otimes n}$ is a vector bundle of rank $(2n - 1)(g - 1)$. Let $q \in S$ be an arbitrary point. Consider the map $\Phi_q^1: R^1 \pi_* \Omega_{C/S}^{\otimes n} \rightarrow H^1(\Omega_{C/S}^{\otimes n}|_{C_p})$. Notice that $\Omega_{C/S}|_{C_p} \cong \omega_{C_p}$ is the dualizing sheaf, so by Serre duality and the fact that $\deg \omega_{C_p}^{\otimes n} = n(2g - 2) > 2g - 2$, we must have $h^1(\omega_{C_p}^{\otimes n}) = 0$. It follows that $\Phi_q^1$ is surjective. 
+
+	Now, from the Cohomology and Base Change Theorem (CBCT), we see that $\Phi_q^1$ is an isomorphism for all $q \in S$. This in particular implies $R^1 \pi_* \Omega_{C/S}^{\otimes n}|_q = 0$, so by the second part of CBCT, we see that the map $\Phi_q^0$ is an isomorphism, so $\pi_* \Omega_{C/S}^{\otimes n}|_q$ is isomorphic to $H^0(\omega_{C_p}^{\otimes n})$. Notice that the latter has rank 
+	\[
+		h^0(\omega_{C_p}^{\otimes n})
+		= \deg \omega_{C_p}^{\otimes n} + 1 - g 
+		= n(2g - 2) + 1 - g
+		= (2n - 1)(g - 1).
+	\]
+	Therefore, $\pi_* \Omega_{C/S}^{\otimes n}|_q$ must have the same rank, and in particular since $\Phi_q^{-1}$ is surjective, the second part of CBCT implies $\pi_* \Omega_{C/S}^{\otimes n}$ is locally free of rank $(2n - 1)(g - 1)$. 
+
+	Next, to see that the push-pull map of any morphism $\psi: S' \rightarrow S$ is an isomorphism, we consider the following Cartesian diagram:
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDJyJdLFsxLDAsIkMiXSxbMSwxLCJTIl0sWzAsMSwiUyciXSxbMSwyLCJcXHBpIl0sWzAsMywiXFxwaSciLDJdLFswLDEsIlxccmhvJyJdLFszLDIsIlxccmhvIiwyXV0=
+	\[\begin{tikzcd}
+		{C'} & C \\
+		{S'} & S
+		\arrow["{\rho'}", from=1-1, to=1-2]
+		\arrow["{\pi'}"', from=1-1, to=2-1]
+		\arrow["\pi", from=1-2, to=2-2]
+		\arrow["\rho"', from=2-1, to=2-2]
+	\end{tikzcd}\]
+	We know that the cotangent bundle commutes with base change, so $(\rho')^* \Omega_{C/S} \cong \Omega_{C'/S'}$. The push-pull map 
+	\[
+		\Phi_{S'}^0: \rho^* \pi_* \Omega_{C/S} \longrightarrow \pi'_* (\rho')^* \Omega_{C/S} \cong \pi'_* \Omega_{C'/S'}
+	\]
+	is an isomorphism.
+	
+	\item If $S$ is reduced, we may invoke Grauert's Theorem. It suffices to show that $h^0(C_p, \Omega_{C/S}|_{C_p})$ is locally constant and equals $g$. From the argument in part (a), we see that $\Omega_{C/S}|_{C_p} \cong \omega_{C_p}$, and we know that $h^0(C_p, \omega_{C_p}) = g$. Then, Grauert's Theorem tells us $\pi_* \Omega_{C/S}$ is locally free of rank $g$. The commutativity of base change follows from the same argument as part (a), so we will omit it.
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 25.1.I.}
+
+\begin{solution}
+    We first show that $\pi_* \cO_X$ is a line bundle, and the map $\cO_Y \rightarrow \pi_* \cO_X$ is surjective on fibers. To see the former, for each point $q \in X$, we may consider $\Phi_q^0: \pi_* \cO_X|_q \rightarrow H^0(\cO_{X_q})$. Notice that the latter ring is a ring of constant functions on the fiber $X_q \rightarrow q$, which is isomorphic to $\kappa(q)$. The composed map 
+	\[
+		\cO_Y \otimes \kappa(q) \rightarrow \pi_* \cO_X \otimes \kappa(q) \rightarrow H^0(\cO_{X_q}) \cong \kappa(q)
+	\]
+	maps the value of a function on $Y$ at the point $q$ to the constant function on $X_q$ that takes that specific value, so it is in particular surjective. It follows that the second map, which is precisely $\Phi_q^0$, must also be surjective. By CBCT, $\Phi_q^0$ is an isomorphism, so the map $\cO_Y|_q \rightarrow \pi_* \cO_X|_q$ is an isomorphism, which implies $\pi_* \cO_X|_q$ is a rank-1 vector space. In particular, CBCT implies $\pi_* \cO_X$ is a line bundle. In particular, since the map $\pi_* \cO_X \otimes \kappa(q) \rightarrow H^0(\cO_{X_q})$ is an isomorphism, we know that $\cO_Y \otimes \kappa(q) \rightarrow \pi_* \cO_X \otimes \kappa(q)$ must be surjective, so the map between line bundles $\cO_Y \rightarrow \pi_* \cO_X$ is surjective on the fibers. We conclude that this map of line bundles must locally be multiplication by a unit, so it's an isomorphism. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 25.3.A.}
+
+\begin{solution}
+	We start with a natural isomorphism of functors $\Hilb_{\ZZ} \PP^n \rightarrow \Mor( - , \Hilb_{\ZZ} \PP^n)$. Then, the identity map $\Hilb_{\ZZ} \PP^n \rightarrow \Hilb_{\ZZ} \PP^n$ corresponds uniquely to a closed subscheme $Z \hookrightarrow \Hilb_{\ZZ} \PP^n \times \PP_{\ZZ}^n$, with the following diagram: 
+	% https://q.uiver.app/#q=WzAsMyxbMSwwLCJcXEhpbGJfe1xcWlp9IFxcUFBebiBcXHRpbWVzIFxcUFBfe1xcWlp9Xm4iXSxbMCwwLCJaIl0sWzAsMSwiXFxIaWxiX3tcXFpafSBcXFBQXm4iXSxbMSwyLCJcXHRleHR7ZmxhdH0iLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsxLDAsIlxcdGV4dHtjbC4gZW1iLn0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dXQ==
+	\[\begin{tikzcd}
+		Z & {\Hilb_{\ZZ} \PP^n \times \PP_{\ZZ}^n} \\
+		{\Hilb_{\ZZ} \PP^n}
+		\arrow["{\text{closed}}", hook, from=1-1, to=1-2]
+		\arrow["{\text{flat}}"', hook, from=1-1, to=2-1]
+	\end{tikzcd}\]
+	Now, the morphism $\pi: B \rightarrow \Hilb_{\ZZ} \PP^n$ gets mapped to the morphism $\pi^*: \Mor(\Hilb_{\ZZ} \PP^n, \Hilb_{\ZZ} \PP^n) \rightarrow \Mor(B, \Hilb_{\ZZ} \PP^n)$ by precomposing with the map $\pi$. The map $\pi = \pi^* \Id$ (here the identity is over $\Hilb_{\ZZ} \PP^n$) then corresponds under the natural isomorphism $\Hilb_{\ZZ} \PP^n \rightarrow \Mor( - , \Hilb_{\ZZ} \PP^n)$ to the pullback 
+	% https://q.uiver.app/#q=WzAsNixbMiwxLCJcXEhpbGJfe1xcWlp9IFxcUFBebiBcXHRpbWVzIFxcUFBfe1xcWlp9Xm4iXSxbMSwxLCJaIl0sWzEsMiwiXFxIaWxiX3tcXFpafSBcXFBQXm4iXSxbMCwwLCJZIl0sWzEsMCwiXFxQUF9CXm4iXSxbMCwxLCJCIl0sWzEsMiwiXFx0ZXh0e2ZsYXR9IiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwwLCJcXHRleHR7Y2xvc2VkfSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzMsNSwiXFx0ZXh0e2ZsYXR9IiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMyw0LCJcXHRleHR7Y2xvc2VkfSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzMsMV0sWzUsMl0sWzQsMF1d
+	\[\begin{tikzcd}
+		Y & {\PP_B^n} \\
+		B & Z & {\Hilb_{\ZZ} \PP^n \times \PP_{\ZZ}^n} \\
+		& {\Hilb_{\ZZ} \PP^n}
+		\arrow["{\text{closed}}", hook, from=1-1, to=1-2]
+		\arrow["{\text{flat}}"', hook, from=1-1, to=2-1]
+		\arrow[from=1-1, to=2-2]
+		\arrow[from=1-2, to=2-3]
+		\arrow[from=2-1, to=3-2]
+		\arrow["{\text{closed}}", hook, from=2-2, to=2-3]
+		\arrow["{\text{flat}}"', hook, from=2-2, to=3-2]
+	\end{tikzcd}\]
+	This completes the proof. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 25.3.G.}
+
+\begin{solution}
+    Let $F$ be the map (the candidate natural bijection) that takes a rank-$k$ quotient $\cO_B^{\oplus n} \rightarrow \cQ$ to the flat family 
+	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXFBST0pfQiBcXFN5bV57XFxidWxsZXR9IFxcY1EiXSxbMSwwLCJcXFBQX0Jee24tMX0iXSxbMCwxLCJCIl0sWzAsMiwiXFx0ZXh0e2ZsYXQsIGYuIHByLn0iLDJdLFswLDEsIlxcdGV4dHtjbG9zZWR9IiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCJcXHBpIl1d
+	\[\begin{tikzcd}
+		{\PROJ_B \Sym^{\bullet} \cQ} & {\PP_B^{n-1}} \\
+		B
+		\arrow["{\text{closed}}", hook, from=1-1, to=1-2]
+		\arrow["{\text{flat, f. pr.}}"', from=1-1, to=2-1]
+		\arrow["\pi", from=1-2, to=2-1]
+	\end{tikzcd}\]
+	Let $G$ be the map that takes a flat family $X \hookrightarrow \PP_B^{n-1}$ over $B$ to the rank-$k$ quotient $\cO_B^{\oplus n} \rightarrow \pi_* \cO_X$. 
+
+	We would like to show that $G \circ F$ and $F \circ G$ are both identities. We start by showing $G \circ F$ is the identity. Given a rank-$k$ quotient $\cO_B^{\oplus n} \rightarrow \cQ$ over $B$ we would like to show that applying $G \circ F$ to $\cQ$ retrieves the same map. Denote by $X' = \PROJ_B \Sym^{\bullet} \cQ$, which is the closed subscheme we would obtain by applying $F$ to $\cQ$. More concretely, we have a diagram 
+	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXFBST0pfQiBcXFN5bV57XFxidWxsZXR9IFxcY1EiXSxbMSwwLCJcXFBST0pfQiBcXFN5bV57XFxidWxsZXR9IFxcY09fQl57XFxvdGltZXMgbn0iXSxbMCwxLCJCIl0sWzAsMiwiXFx0ZXh0e2ZsYXQsIGYuIHByLn0iLDJdLFswLDEsIlxcdGV4dHtjbG9zZWR9IiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCJcXHBpIl1d
+	\[\begin{tikzcd}
+		{X' = \PROJ_B \Sym^{\bullet} \cQ} & {\PROJ_B \Sym^{\bullet} \cO_B^{\oplus n}} \\
+		B
+		\arrow["{\text{closed}}", hook, from=1-1, to=1-2]
+		\arrow["{\text{flat, f. pr.}}"', from=1-1, to=2-1]
+		\arrow["\pi", from=1-2, to=2-1]
+	\end{tikzcd}\]
+	From the construction of global proj, we know that the sheaf $\pi_*\cO_{X'}(1)$ is the same as the sheaf $\cQ$ over $B$, and that the closed embedding $X' \hookrightarrow \PP_B^{n-1}$ is induced by the map of graded coherent sheaves $\Sym^{\bullet} \cO_B^{\oplus n} \rightarrow \Sym^{\bullet} \cQ$, where the first graded piece is given by $\cO_B^{\oplus n} \rightarrow \cQ$, but that's precisely the map $\pi_* \cO_{\PP_B^{n-1}}(1) \rightarrow \pi_* \cO_{X'}(1)$. This shows that $G \circ F$ is the identity.
+
+	Next, we show that $F \circ G$ is the identity. We would like to show that $X$ is isomorphic to $\PROJ_B \Sym^{\bullet} \pi_* \cO_X(1)$, and the image of the embedding $\PROJ_B \Sym^{\bullet} \pi_* \cO_X(1)\hookrightarrow \PP_B^{n-1}$ is precisely $X$. To see this, we show that both closed embeddings have the same ideal sheaf. The first closed embedding is 
+	\[
+		X'' = \PROJ_B \Sym^{\bullet} \pi_* \cO_X(1) \hookrightarrow \PROJ_B \Sym^{\bullet} \cO_B^{\oplus n},
+	\]
+	which corresponds to a map of graded sheaves $\Sym^{\bullet} \cO_B^{\oplus n} \rightarrow \Sym^{\bullet} \pi_* \cO_X(1)$. The first graded piece gives us a map $\cO_B^{\oplus n} = \pi_* \cO_{\PP_B^{n-1}}(1) \rightarrow \pi_* \cO_X(1)$. 
+
+	To understand the ideal sheaf $\cI_{\PP_B^{n-1} / X''}$ we need to understand the structure sheaf of $X''$. We claim that the structure sheaf of $X''$ is precisely $\cO_X$. This is because $\pi_*\cO_{X''}(1)$ is the first graded piece of $\Sym^{\bullet} \pi_* \cO_X(1)$ by construction of global proj, but that's simply $\pi_* \cO_X(1)$. It follows that $\pi_*\cO_{X}(1) \cong \pi_* \cO_{X''}(1)$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 25.3.H.}
+
+\begin{solution}
+	Let $p_1$ and $p_2$ be projections defined below:
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXFBQXm4gXFx0aW1lcyBcXFBQXntcXGJpbm9te24rZH17ZH0gLSAxfSJdLFswLDEsIlxcUFBebiJdLFsxLDAsIlxcUFBee1xcYmlub217bitkfXtkfS0xfSJdLFsxLDEsIlxcWloiXSxbMCwxLCJwXzEiLDJdLFswLDIsInBfMiJdLFsxLDNdLFsyLDNdXQ==
+	\[\begin{tikzcd}
+		{\PP^n \times \PP^{\binom{n+d}{d} - 1}} & {\PP^{\binom{n+d}{d}-1}} \\
+		{\PP^n} & \ZZ
+		\arrow["{p_2}", from=1-1, to=1-2]
+		\arrow["{p_1}"', from=1-1, to=2-1]
+		\arrow[from=1-2, to=2-2]
+		\arrow[from=2-1, to=2-2]
+	\end{tikzcd}\]
+	Consider the line bundle $\cL$ on $\PP^n \times \PP^{\binom{n+d}{d}-1}$ given by $p_1^* \cO(d) \otimes p_2^* \cO(1)$. Let $f$ be a global section given by 
+	\[
+		\sum_{|I| = d} a_I x^I,
+	\]
+	where $I$ is a multi-index over $0, 1, \ldots, n$, and $x^I = \prod_{i \in I} x_i$. We let $\cH$ be the vanishing locus of $f$. Denote by $i: \cH \hookrightarrow \PP^n \times \PP^{\binom{n+d}{d}-1}$ the closed embedding. We would like to show that $p_2 \circ i$ is flat and finitely presented. 
+
+	Clearly, $p_2$ is flat. Also, on the fibers of $i \circ p_2$, the section $f$ is then a degree-$d$ homogeneous polynomial over $x_0, \ldots, x_n$, which is a nonzero-divisor on the fiber $\PP^n$. By the slicing criterion on the source, the composition $i \circ p_2$ must also be flat. Finally, we can treat $p_2$ as the projection 
+	\[
+		\PP^n \times \PP^{\binom{n+d}{d}-1} \cong \PROJ_{\PP^{\binom{n+d}{d}-1}} \Sym^{\bullet} \cO_{\PP^{\binom{n+d}{d}-1}}^{\oplus (n+1)} \longrightarrow \PP^{\binom{n+d}{d}-1}.
+	\]
+	This map is clearly finitely presented, since the sheaf $\cO^{\oplus (n+1)}$ is finite-type over $\PP^{\binom{n+d}{d}-1}$. We conclude that $i \circ p_2$ is finitely presented. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 25.3.I.}
+
+\begin{solution}
+    Let $b \in B$ be an arbitrary point. We first observe that $H^i(\PP_{\kappa(b)}^n, \cO_{\PP^n_{\kappa(b)}}(d)) = 0$ for all $i > 0$ by the classification of cohomology groups of $\cO_{\PP^n}(m)$ over $\PP^n$. By CBCT, we see that $R^i \pi_* \cO_{\PP^n_B}(d)|_b = 0$ for all $b \in B$, so in particular $R^i \pi_* \cO_{\PP^n_B}(d) = 0$ for all $i > 0$. 
+		
+	Next, we know that $X_b$ is a degree-$d$ hypersurface in $\PP_{\kappa(b)}^n$. We then have an exact sequenece 
+	\[
+		0 \longrightarrow \cO_{\PP^n_{\kappa(b)}} \longrightarrow \cO_{\PP^n_{\kappa(b)}}(d) \longrightarrow \cO_{X_b}(d) \longrightarrow 0,
+	\]
+	which induces a long exact sequence with pieces 
+	\[
+		\cdots \longrightarrow H^i(\PP^n_{\kappa(b)}, \cO_{\PP^n_{\kappa(b)}}(d)) \longrightarrow H^i(X_b, \cO_{X_b}(d)) \longrightarrow H^{i+1}(\PP^n_{\kappa(b)}, \cO_{\PP^n_{\kappa(b)}}) \longrightarrow \cdots.
+	\]
+	Notice that for $i > 0$, the first and the third cohomology groups are both 0, so the middle one must also be 0. Again, by CBCT, $R^i \pi_* \cO_{X}(d)|_b = 0$ for all $b \in B$, so in particular $R^i \pi_I \cO_X(d) = 0$ for all $i > 0$. Moreover, the long exact sequence of cohomology groups 
+	\[
+		\cdots \longrightarrow H^i(X_b, \cO_{X_b}(d)) \longrightarrow H^{i+1}(\PP_{\kappa(b)}^n, \cI_{X}(d)) \longrightarrow H^{i+1}(\PP_{\kappa(b)}^n, \cO_{\PP^n_{\kappa(b)}}(d)) \longrightarrow \cdots
+	\]	
+	implies $H^{i+1}(\PP_{\kappa(b)}^n, \cI_{X}(d)) = 0$ for all $i > 0$, so $R^{i+1}\pi_* \cI_X(d) = 0$ for $i > 0$ by CBCT. 
+
+	We would like to show that $R^1 \pi_* \cI_X(d) = 0$. To see this, consider the following part of the long exact sequence
+	\[
+		\cdots 
+		\longrightarrow H^{0}(\PP_{\kappa(b)}^n, \cO_{\PP^n_{\kappa(b)}}(d)) 
+		\longrightarrow H^0(X_b, \cO_{X_b}(d)) 
+		\longrightarrow H^{1}(\PP_{\kappa(b)}^n, \cI_{X}(d))
+		\longrightarrow 0
+	\]
+	The map $H^{0}(\PP_{\kappa(b)}^n, \cO_{\PP^n_{\kappa(b)}}(d)) \rightarrow H^0(X_b, \cO_{X_b}(d))$ is simply restricting global functions on $\PP^n$ to a hypersurface, but since both schemes only admit constant global functions, the map is an isomorphism, so we have $H^{1}(\PP_{\kappa(b)}^n, \cI_{X}(d)) = 0$. By CBCT, $R^1 \pi_* \cI_X(d) = 0$. In particular, the following short exact sequence  
+	\[
+		0 
+		\longrightarrow \pi_* \cI_X(d)
+		\longrightarrow \pi_* \cO_{\PP^n_B}(d) 
+		\longrightarrow \pi_* \cO_X(d) 
+		\longrightarrow 0
+	\]
+	is a map of vector bundles. 
+
+	Finally, to compute the ranks of the three vector bundles, it suffices to compute them on the fibers. By CBCT, the fiber $\pi_* \cO_{\PP^n_B}(d)|_b$ at $b \in B$ is precisely $H^0(\PP^n_{\kappa(b)}, \cO_{\PP^n_{\kappa(b)}}(d))$, so the rank given by $h^0(\PP^n_{\kappa(b)}, \cO_{\PP^n_{\kappa(b)}}(d)) = \binom{n+d}{d}$. Similarly, the rank of $\pi_* \cO_X(d)$ is given by $h^0(X_b, \cO_{X_b}(d))$. To compute the latter, we consider again the long exact sequence on cohomology:
+	\[
+		0 
+		\longrightarrow H^0(\cO_{\PP^n})
+		\longrightarrow H^0(\cO_{\PP^n}(d))
+		\longrightarrow H^0(\cO_{X_b}(d)) 
+		\longrightarrow H^1(\cO_{\PP^n}) = 0.
+	\]
+	It follows that $h^0(\cO_{X_b}(d)) = h^0(\cO_{\PP^n}(d)) - h^0(\cO_{\PP^n}) = \binom{n+d}{d}-1$. Finally, the rank of $\pi_* \cI_X(d)$ is given by $\Rk \pi_* \cO_{\PP^n_B}(d) - \Rk \pi_* \cO_{X}(d) = 1$. This completes the proof. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 25.3.J.}
+
+\begin{solution}
+    Similar to 25.3.G, let $F$ be the map that takes a map $B \rightarrow \PP^{\binom{n+d}{d} - 1}$ to the degree-$d$ hypersurface obtained from pulling back the universal hypersurface $\cH \rightarrow \PP^{\binom{n+d}{d}-1}$. Let $G$ be the map that takes a degree-$d$ hypersurface $X \hookrightarrow \PP^n_B$ and outputs the map $B \rightarrow \PP^{\binom{n+d}{d}-1}$ given by the dual of the injection map $\pi_* \cI_X(d) \hookrightarrow \cO_B^{\oplus(n+1)}$, where $\pi: \PP^n_B \rightarrow B$ is the canonical projection map. 
+
+	We would like to show that $G \circ F$ and $F \circ G$ are both identities. We start by showing $G \circ F$ is the identity. A map $B \rightarrow \PP^{\binom{n+d}{d}-1}$ corresponds canonically to a line bundle $\cL$ over $B$ along with a basepoint free surjection $\cO_B^{\oplus\binom{n+d}{d}} \twoheadrightarrow \cL$. Let $\cH_B$ be the pullback 
+	% https://q.uiver.app/#q=WzAsNixbMSwxLCJcXGNIIl0sWzIsMSwiXFxQUF5uIFxcdGltZXMgXFxQUF57XFxiaW5vbXtuK2R9e2R9LTF9Il0sWzEsMiwiXFxQUF57XFxiaW5vbXtuK2R9e2R9LTF9Il0sWzAsMSwiQiJdLFsxLDAsIlxcUFBebl9CIl0sWzAsMCwiXFxjSF9CIl0sWzUsM10sWzUsNCwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs1LDBdLFszLDJdLFs0LDFdXQ==
+	\[\begin{tikzcd}
+		{\cH_B} & {\PP^n_B} \\
+		B & \cH & {\PP^n \times \PP^{\binom{n+d}{d}-1}} \\
+		& {\PP^{\binom{n+d}{d}-1}}
+		\arrow[hook, from=1-1, to=1-2]
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=1-1, to=2-2]
+		\arrow[from=1-2, to=2-3]
+		\arrow[from=2-1, to=3-2]
+		\arrow[hook, from=2-2, to=2-3]
+		\arrow[from=2-2, to=3-2]
+	\end{tikzcd}\]
+	Denote by $f_I$ the image of $a_I \in \cO_B^{\oplus \binom{n+d}{d}}$ under the surjection $\cO_B^{\oplus \binom{n+d}{d}} \twoheadrightarrow \cL$, where $I$ is a multi-index of size $d$ from the set $\{0, 1, \ldots, n\}$. We see that $\cH_B$ is cut out by the vanishing of the section 
+	\[
+		\sum_{|I| = d} f_I x^I
+	\]
+	from the line bundle $p_1^* \cL \otimes p_2^* \cO_{\PP^n}(d)$. Here, $p_1$ and $p_2$ are the projection maps from $\PP^n_B \cong B \times \PP^n$ to the factor $B$ and $\PP^n$ respectively. In particular, by the interpretation of the map $\pi_* \cI_{\cH_B}(d) \hookrightarrow \pi_* \cO_{\PP^n_B}(d) \cong \cO_B^{\oplus \binom{n+d}{d}}$ as the homogeneous degree-$d$ polynomial that cuts out $\cH_B$, we see that this map parametrizes precisely the section $\sum_{|I| = d} f_I x^I$, so taking its dual we recover the original map $B \rightarrow \PP^{\binom{n+d}{d}-1}$. This proves $G \circ F = \Id$. 
+
+	To show $F \circ G = \Id$, we are given a closed embedding $X \hookrightarrow \PP^n_B$ flat over $B$ such that the fibers over $b \in B$ are degree-$d$ hypersurfaces in $\PP^n_{\kappa(b)}$. This gives us a map $\pi_* \cI_X(d) \hookrightarrow \cO_B^{\oplus \binom{n+d}{d}}$ that corresponds to a section $\sum_{|I| = d} f_I x^I$ that pulls back to the degree-$d$ homogeneous polynomial over $\kappa(b)$ that cuts out $X_b \hookrightarrow \PP^n_{\kappa(b)}$. Then, the map $B \rightarrow \PP^{\binom{n+d}{d}-1}$ induced by the dual of the above map of vector bundles captures precisely this information, so when we pull back the universal hypersurface $\cH \rightarrow \PP^{\binom{n+d}{d}-1}$, we get the closed embedding $\cH_B \hookrightarrow \PP^n_B$ whose ideal sheaf is the same as the ideal sheaf of $X$. 
+\end{solution}
+
+\newpage
+
+\section*{Problem 8}
+
+Recall that any vector bundle on $\PP^1$ is isomorphic to $\bigoplus \cO_{\PP^1}(e_i)$ for integers $e_i$ that are unique up to reordering. We say that a vector bundle over $\PP^1$ is \emph{balanced} if $|e_i - e_j| \leq 1$ for all $i, j$. 
+
+Show that balancedness is an open property. In other words, let $\cE$ be a vector bundle on $B \times \PP^1$ (a ``family of vector bundles on $\PP^1$''). Then show $\{b \in B \, | \, \cE|_{b \times \PP^1} \text{ is balanced}\}$ is an open subset of $B$. 
+
+\begin{solution}
+    Let $b \in B$ be a point on which $\cE|_{\PP^1_b} \cong \cO_{\PP^1_b}(e)^{\oplus m} \oplus \cO_{\PP^1_b}(e+1)^{\oplus n}$ for some $e \in \ZZ$ and $m,n \in \ZZ_{\geq0}$. We will show that there exists a neighborhood $U \ni b$ such that for all $b' \in U$, $\cE|_{\PP^1_{b'}} \cong \cO_{\PP^1_{b'}}(e)^{\oplus m'} \oplus \cO_{\PP^1_{b'}}(e+1)^{\oplus n'}$ for some $m', n' \in \ZZ_{\geq 0}$.
+
+	Denote by $\pi: B \times \PP^1 \rightarrow B$ the projection map to the first factor, and $p: B \times \PP^1 \rightarrow \PP^1$ the projection map to the second factor. We first $\cE$ by $p^* \cO_{\PP^1}(-e-1)$. This gives us $\cE|_{\PP^1_b} \cong \cO_{\PP^1_b}(-1)^{\oplus m} \oplus \cO_{\PP^1_b}^{\oplus n}$. Notice that $H^1$ vanishes on $\PP^1_b$, so $\Phi^1_b$ is surjective, and by CBCT we see that $\Phi_b^1$ is an isomorphism. In particular, $(R^1 \pi_* \cE)|_U = 0$ in a neighborhood $U$ of $b$, and $h^1(\cE|_{\PP^1_{b'}}) = 0$ for all $b' \in U$. This implies $\cE|_{\PP^1_{b'}}$ cannot have a factor of $\cO(e')$ for $e' < -1$, because otherwise we would pick up some positive rank on $h^1$. This is equivalent to saying that the original $\cE$ does not admit a factor of $\cO(e')$ for $e' < e$ on the fiber of any $b' \in U$. 
+
+	Next, we twist $\cE$ by $p^* \cO_{\PP^1}(-e-2)$, so $\cE|_{\PP^1_b} \cong \cO_{\PP^1_b}(-2)^{\oplus m} \oplus \cO_{\PP^1_b}(-1)^{\oplus n}$. Notice that $H^0$ vanishes on $\PP^1_b$, so $\Phi^0_b$ is surjective, and by CBCT we see that $\Phi_b^1$ is an isomorphism. In particular, $(\pi_* \cE)|_V = 0$ in a neighborhood $V$ of $b$, and $h^0(\cE|_{\PP^1_{b'}}) = 0$ for all $b' \in V$. This implies $\cE|_{\PP^1_{b'}}$ cannot have a factor of $\cO(e'')$ for $e'' > -1$, because otherwise we would pick up some positive rank on $h^0$. This is equivalent to saying that the original $\cE$ does not admit a factor of $\cO(e'')$ for $e'' > e+1$ on the fiber of any $b' \in V$. 
+
+	We conclude that $U \cap V$ is an open neighborhood of $b$ on which $\cE$ is balanced. 
+\end{solution}
+
+\end{document}

@@ -1,0 +1,406 @@
+\documentclass[11pt]{article} 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,esint, dsfont,mathtools}	
+\usepackage{graphicx}		
+\usepackage{hyperref}
+\usepackage{cases}			
+\usepackage{textcomp, gensymb}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+% diagrams
+\usepackage{quiver}
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	\def\@currentlabel{#2}
+	\label{#1}\endgroup
+}
+\makeatother
+
+\setlength{\parindent}{0pt} 	% first line in paragraph will not be indented
+
+\usepackage[parfill]{parskip}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\newcommand{\ind}{{\mathds{1}}}
+
+% math fonts
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\ka}{\mathfrak{a}}
+\newcommand{\kb}{\mathfrak{b}}
+\newcommand{\kc}{\mathfrak{c}}
+\newcommand{\kd}{\mathfrak{d}}
+\newcommand{\ke}{\mathfrak{e}}
+\newcommand{\kg}{\mathfrak{g}}
+\newcommand{\kf}{\mathfrak{f}}
+\newcommand{\kh}{\mathfrak{h}}
+\newcommand{\ki}{\mathfrak{i}}
+\newcommand{\kj}{\mathfrak{j}}
+\newcommand{\kk}{\mathfrak{k}}
+\newcommand{\kl}{\mathfrak{l}}
+\newcommand{\km}{\mathfrak{m}}
+\newcommand{\kn}{\mathfrak{n}}
+\newcommand{\ko}{\mathfrak{o}}
+\newcommand{\kp}{\mathfrak{p}}
+\newcommand{\kq}{\mathfrak{q}}
+\newcommand{\kr}{\mathfrak{r}}
+\newcommand{\ks}{\mathfrak{s}}
+\newcommand{\kt}{\mathfrak{t}}
+\newcommand{\ku}{\mathfrak{u}}
+\newcommand{\kv}{\mathfrak{v}}
+\newcommand{\kw}{\mathfrak{w}}
+\newcommand{\kx}{\mathfrak{x}}
+\newcommand{\ky}{\mathfrak{y}}
+\newcommand{\kz}{\mathfrak{z}}
+
+\newcommand{\kA}{\mathfrak{A}}
+\newcommand{\kB}{\mathfrak{B}}
+\newcommand{\kC}{\mathfrak{C}}
+\newcommand{\kD}{\mathfrak{D}}
+\newcommand{\kE}{\mathfrak{E}}
+\newcommand{\kG}{\mathfrak{G}}
+\newcommand{\kF}{\mathfrak{F}}
+\newcommand{\kH}{\mathfrak{H}}
+\newcommand{\kI}{\mathfrak{I}}
+\newcommand{\kJ}{\mathfrak{J}}
+\newcommand{\kK}{\mathfrak{K}}
+\newcommand{\kL}{\mathfrak{L}}
+\newcommand{\kM}{\mathfrak{M}}
+\newcommand{\kN}{\mathfrak{N}}
+\newcommand{\kO}{\mathfrak{O}}
+\newcommand{\kP}{\mathfrak{P}}
+\newcommand{\kQ}{\mathfrak{Q}}
+\newcommand{\kR}{\mathfrak{R}}
+\newcommand{\kS}{\mathfrak{S}}
+\newcommand{\kT}{\mathfrak{T}}
+\newcommand{\kU}{\mathfrak{U}}
+\newcommand{\kV}{\mathfrak{V}}
+\newcommand{\kW}{\mathfrak{W}}
+\newcommand{\kX}{\mathfrak{X}}
+\newcommand{\kY}{\mathfrak{Y}}
+\newcommand{\kZ}{\mathfrak{Z}}
+
+%some math symbol commands redefined:
+\DeclareMathOperator{\C}{\mathcal{C}}
+\DeclareMathOperator{\power}{\mathcal{P}}
+\DeclareMathOperator{\vspan}{\text{span}}
+\DeclareMathOperator{\vnull}{\text{null}}
+\DeclareMathOperator{\range}{\text{range}}
+\DeclareMathOperator{\re}{\text{Re}}
+\DeclareMathOperator{\im}{\text{Im}}
+\DeclareMathOperator{\erf}{\text{erf}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdvv}[2]{\frac{\partial^2 #1}{\partial #2}}
+\DeclareMathOperator{\tr}{\operatorname{Tr}}
+\newcommand{\Deck}{\operatorname{Deck}}
+\newcommand{\Conj}{\mathrm{Conj}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Res}{\operatorname{Res}}
+
+% category names
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Ring}{\mathsf{Ring}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Sch}{\mathsf{Sch}}
+
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\pre}{\text{pre}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\Char}{\operatorname{char}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Bl}{\mathrm{Bl}}
+\newcommand{\codim}{\mathrm{codim}}
+\newcommand{\val}{\operatorname{val}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\Cl}{\operatorname{Cl}}
+
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\Rk}{\operatorname{Rk}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+
+% category theory symbols
+\DeclareMathOperator{\Mor}{\operatorname{Mor}}
+
+\newenvironment{solution}{\begin{trivlist}\item[]{\textcolor{blue}{Solution:}}}{\qed \end{trivlist}}
+
+
+\usepackage[shortlabels]{enumitem}
+\title{MATH 2060 Homework 2}
+\author{Zhengyu Zou}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\textbf{Collaborators}: Ethan Bove
+
+\section*{FOAG 15.7.D.}
+
+\begin{solution}
+	Let $S_{\bullet} = k[x]$, $M_{\bullet} = \frac{k[x]}{(x^2)}$. Since $(M_{\bullet})_n = 0$ for $n > 2$, we see that $M_{\bullet}$ and the trivial module $0$ agree in high enough degrees. It follows from Exercise 14.6.C. that $\widetilde{M_{\bullet}} = \widetilde{0} = 0$, so the map $M_{\bullet} \rightarrow \Gamma(\widetilde{M_{\bullet}})$ is not injective. 
+
+	Next, let $M_{\bullet} = xk[x]$. Since $M_{\bullet}$ agrees with the structure sheaf in degree $ \geq 1$, we see that $\Gamma(\widetilde{M_{\bullet}})$ is the structure sheaf $k[x]$, but the inclusion map $xk[x] \hookrightarrow k[x]$ is not surjective. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 16.2.G.}
+
+\begin{solution}
+    Since $\pi$ is finite, it is affine. By criterion (c''), we know that the opens $X_f$ which are affine cover $Y$, where $f$ is a section of $\cL^{\otimes n}$. For each $f$, we show that $\pi^*f$ doesn't vanish on $\pi^{-1}(Y_f)$. Since $\pi$ is an affine morphism, we can write $Y_f \cong \Spec B$ and $\pi^{-1}(Y_f) \cong \Spec A$. Restrict further so that $\cL^{\otimes n}$ is trivializable over $\Spec B$, which implies $f \in \Gamma(\cL^{\otimes n}, \Spec B) \cong B$ is invertible. It follows that $\frac{1}{f} \in A$. Next, observe that $\pi^* \cL^{\otimes n} \cong \pi^* \cO_{\Spec A} \cong A \otimes_B \cO(\Spec B) \cong A$. In particular, $\pi^*(f)$ corresponds to the element $\pi^{\sharp}(f) \in A$, where $\pi^{\sharp}: B \rightarrow A$ is the corresponding morphism of the structure sheaf. It follows that $\pi^{\sharp}(\frac{1}{f}) = \frac{1}{\pi^{\sharp}(f)} \in A$, so $\Spec A \subset X_{\pi^*f}$. Finally, since $\pi^*f$ vanishes at a point $p$ if $f$ vanishes at $\pi(p)$, we see that $X_{\pi^* f} \subset \pi^{-1}(Y_f)$, so in fact we have equality $X_{\pi^* f} = \pi^{-1}(Y_f)$. Then, since the $Y_f$'s cover $Y$, we see that $X_{\pi^* f}$ must also cover $X$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 16.3.D.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+	\item Since the map $\pi: C \rightarrow C'$ is finite, it is affine, so we may reduce to the affine case where $C \cong \Spec B$ and $C' \cong \Spec A$, where $A$ is some finite-type $k$-algebra. The closed point $p$ corresponds to a maximal ideal $\km$ of $A$ and embeds into $\Spec A$ as $\Spec A/\km \hookrightarrow \Spec A$. The scheme-theoretical preimage $\pi^{-1}(p)$ is then the pullback of $p \hookrightarrow \Spec A$ by the map $\pi: \Spec B \rightarrow \Spec A$. The maps between structure sheaves is given by the following correspondence:
+	% https://q.uiver.app/#q=WzAsOCxbMCwxLCJcXFNwZWMgQiJdLFsxLDEsIlxcU3BlYyBBIl0sWzEsMCwiXFxTcGVjIEEvXFxrbSJdLFswLDAsIlxcU3BlYyBCIFxcdGltZXNfe1xcU3BlYyBBfSBcXFNwZWMgQS9cXGttIl0sWzIsMCwiQSJdLFszLDAsIkIiXSxbMiwxLCJBL1xca20iXSxbMywxLCJBL1xca20gXFxvdGltZXNfQSBCIl0sWzMsMF0sWzAsMV0sWzMsMl0sWzIsMV0sWzQsNl0sWzYsN10sWzQsNV0sWzUsN11d
+	\[\begin{tikzcd}
+		{\Spec B \times_{\Spec A} \Spec A/\km} & {\Spec A/\km} & A & B \\
+		{\Spec B} & {\Spec A} & {A/\km} & {A/\km \otimes_A B}
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=1-2, to=2-2]
+		\arrow[from=1-3, to=1-4]
+		\arrow[from=1-3, to=2-3]
+		\arrow[from=1-4, to=2-4]
+		\arrow[from=2-1, to=2-2]
+		\arrow[from=2-3, to=2-4]
+	\end{tikzcd}\]
+	Since $\pi$ is finite, we know that $\deg(\pi)$ is the rank of $B$ over $A$ as an $A$-module. On the other hand, the degree of the point $p$ is the dimension of the residue field $\kappa(p) \cong A/\km$ over $k$. It follows that $\dim_k(A/\km \otimes_A B) = \dim_k(A/\km) \cdot \Rk_A(B) = \deg(\pi) \deg(p)$. 
+
+	\item (unfinished) Since $A$ is a finite-type $k$-algebra, we may write $A = \frac{k[x_1, \ldots, x_n]}{I}$. Since $B$ is a finitely generated $A$-module, we see that it is also a finite-type $k$-algebra, so we may write $B = \frac{k[y_1, \ldots, y_m]}{J}$. 
+	
+	Suppose now that $\pi^{-1}(p) = \{p_1, \ldots, p_n\}$, where each $p_i$ corresponds to a maximal ideal $\km_i$ of $\Spec B$. We may then write $A / \km \otimes_A B$ as the direct sum of $B / \km_i$'s. It follows that 
+	\begin{equation*}
+		\dim_{k} \left( A / \km \otimes_A B \right)
+		= \dim_k \left( \bigoplus_{i=1}^n B / \km_i \right)
+		= \sum_{i=1}^n \dim_k (B / \km_i) 
+		= 
+	\end{equation*}
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 16.3.E.}
+
+\begin{solution}
+    Let $C' \hookrightarrow C$ be the open where $s$ is defined and nonzero. Consider the linear series $(\cO_{C'}, s, s^{-1})$, which corresponds to a map $\pi': C' \rightarrow \PP^1$. By the curve-to-projective theorem, this map extends to a map $\pi: C \rightarrow \PP^1$. Since $C$ is regular, it is reduced, so by the reduced-to-separated theorem, such an extension is unique. Then, since $C$ is irreducible and regular, 16.3.D. implies 
+	\begin{equation*}
+		\deg(\pi) 
+		= \sum_{p_i \in \pi^{-1}(0)} \val_{p_i} (\pi^* t) \deg \frac{\kappa(p_i)}{\kappa(0)}
+		= \sum_{q_j \in \pi^{-1}(\infty)} \val_{q_j} (\pi^* s) \deg \frac{\kappa(q_j)}{\kappa(\infty)}.
+	\end{equation*}
+	Then, by construction of $\pi$, we see that $p_i \in \pi^{-1}(0)$ if and only if $s$ has a zero at $p_i$, and $q_j \in \pi^{-1}(\infty)$ if and only if $1/s$ has a zero at $q_j$, which is true if and only if $s$ has a pole at $q_j$. This completes the proof. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 16.4.I.}
+
+\begin{solution}
+    Since $V$ is 2-dimensional, we may write $V = \langle v, w \rangle$. It then suffices to check by plugging in basis elements into $v_1, v_2, v_3, v_4$. First, we observe that if more than three $v_i$'s equal $v$, then the whole expression is 0. Therefore, we only need to check for the following six configurations of $(v_1, v_2, v_3, v_4)$:
+	\begin{equation*}
+		(v, v, w, w); \hspace{5pt}
+		(v, w, v, w); \hspace{5pt}
+		(v, w, w, v); \hspace{5pt}
+		(w, v, v, w); \hspace{5pt}
+		(w, v, w, v); \hspace{5pt}
+		(w, w, v, v).
+	\end{equation*}
+	Denote by $A(v_1, v_2, v_3, v_4) = (v_1 \wedge v_2) (v_3 \wedge v_4) - (v_1 \wedge v_3) (v_2 \wedge v_4) + (v_1 \wedge v_4) (v_2 \wedge v_3)$. 
+	We have 
+	\begin{equation*}
+		\begin{cases}
+			A(v, v, w, w) &= 
+			- (v \wedge w) (v \wedge w) + (v \wedge w) (v \wedge w) = 0 ; \\
+			A(v, w, v, w) &= 
+			(v \wedge w) (v \wedge w) + (v \wedge w) (w \wedge v) = 0 ; \\
+			A(v, w, w, v) &= 
+			(v \wedge w) (w \wedge v) - (v \wedge w) (w \wedge v) = 0 ; \\
+			A(w, v, v, w) &= 
+			(w \wedge v) (v \wedge w) - (w \wedge v) (v \wedge w) = 0 ; \\
+			A(w, v, w, v) &=
+			(w \wedge v) (w \wedge v) + (w \wedge v) (v \wedge w) = 0 ; \\
+			A(w, w, v, v) &= 
+			- (w \wedge v) (w \wedge v) + (w \wedge v) (w \wedge v) = 0 .
+		\end{cases}
+	\end{equation*}
+	This completes the proof. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 16.4.J.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+	\item 
+	
+	\item We would like to implement a change of coordinates on $\PP^5$ to show that every quadratic over six variables $x_1, x_2, x_3, x_4, x_5, x_6$ is isomorphic to $x_1x_2 - x_3x_4 + x_5x_6$. Notice that a quadratic in six variables $f(x_1, x_2, x_3, x_4, x_5, x_6)$ corresponds to a symmetric $6 \times 6$-matrix $M$ in the following sense:
+	\begin{equation*}
+		f(x_1, x_2, x_3, x_4, x_5, x_6) = \sum_{i, j} M_{ij} x_i x_j.
+	\end{equation*}
+	By setting $M_{ii}$ to be the coefficient of $x_i^2$ and $M_{ij} = M_{ji}$ to be $\frac{1}{2}$ times the coefficient of $x_ix_j$ (here we use the fact that the characteristic of $k$ is not 2), we obtain a bijection between $f$ and $M$. In particular, the Jacobian matrix of $f$ is precisely $2M$, so $f$ is smooth iff $M$ is invertible. 
+
+	Next, we show that $M$ is diagonalizable. We show that any symmetric matrix over an algebraically closed field $k$ of characteristic not equal 2 is diagonalizable. This is equivalent to saying that any quadratic polynomial over $k$ in $n$ variables can be written as a sum of at most $n$ squares. To do so, suppose we have a quadratic $f(x_1, \ldots, x_n) = \sum_{ij} f_{ij} x_ix_j$. We may inductively complete the square in the following sense. First, write $f$ as 
+	\begin{equation*}
+		f(x_1, \ldots, x_n)
+		= \left( \sqrt{f_{11}} x_1 + \frac{\sum_{i \neq 1} f_{1i} x_i}{2} \right)^2 + g(x_2, \ldots, x_n)
+	\end{equation*}
+	where $g$ is a quadratic in $n-1$-variables. It follows that $M$ is diagonalizable. In particular, since $M$ is invertible, $M = ADA^{-1}$ where the diagonal entries of $D$ are all nonzero. This implies there exists an invertible $6 \times 6$-matrix such that $f(Ax_1, \ldots, Ax_6) = (Ax_1)^2 + \ldots + (Ax_6)^2$. Write $y_i = Ax_i$. It follows that every smooth quadric hypersurface in $\PP^5$ is isomorphic to the surface $y_1^2 + \ldots + y_6^2$. Finally, since the quadric surface $x_1x_2 - x_3x_4 + x_5x_6$ that cuts out $G(2,4)$ is smooth, we are done.
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 17.1.H.}
+
+\begin{solution}
+	We claim that the subset $X \subset \AA_k^{n+1} \times \PP_k^n$ is cut out by $\binom{n+1}{2}$ equations $x_iy_j - x_jy_i$ where $i \neq j$, and $i,j$ range over $0, \ldots, n$. This is because to identify the point $(x_0, \ldots, x_n) \in \AA_k^{n+1}$ with the line $[y_0: \ldots: y_n] \in \PP_k^n$, we require the matrix 
+	\begin{equation*}
+		\begin{pmatrix}
+			x_0 & x_1 & \cdots & x_n \\
+			y_0 & y_1 & \cdots & y_n
+		\end{pmatrix}
+	\end{equation*}
+	to be singular, but that is satisfied precisely when the 2-by-2 minors vanish, and the 2-by-2 minors are given by $x_iy_j - x_jy_i$. 
+	
+	Recall that $\AA_{k}^{n+1} \times \PP_k^n$ is covered by affines of the form $\AA_k^{n+1} \times D_+(y_i)$: 
+	\begin{equation*}
+		\Spec k[x_0, \ldots, x_n] \times \Spec \frac{k[y_{0/i}, \ldots, y_{n/i}]}{(y_{i/i} - 1)}
+		\cong \Spec \frac{k[x_0, \ldots, x_n, y_{0/i}, \ldots, y_{n/i}]}{(y_{i/i} - 1)} . 
+	\end{equation*}
+	Since $y_{j/i} = y_j / y_i$, we see that $X \cap (\AA_k^{n+1} \times D_+(y_i))$ is cut out by $x_k y_{j/i} - x_j y_{k/i}$. Then, since $y_{i/i} - 1 = 0$, we have $x_j - x_i y_{j/i} = 0$. This gives us 
+	\begin{equation*}
+		X \cap (\AA_k^{n+1} \times D_+(y_i)) 
+		\cong 
+		\Spec \frac{k[x'_i, y'_{0/i}, \ldots, y'_{n/i}]}{(y'_{i/i} - 1)}.
+	\end{equation*}
+	The inclusion map $X \cap (\AA_k^{n+1} \times D_+(y_i)) \hookrightarrow \AA_k^{n+1} \times D_+(y_i)$ is induced by a ring homomorphism sending $x_j \mapsto x'_i y'_{j/i}$ and $y_{j/i} \mapsto y'_{j/i}$. 
+	Then, on $D_+(y_i) \subset \PP_k^n$, the projection map $\pi: X \rightarrow \PP_k^n$ is given by the inclusion of the ring $y_{j/i} \mapsto y'_{j/i}$. 
+
+	We now show that $\pi^* \cO(1)$ corresponds to the line bundle $\cO(-1)$. To understand $\pi^* \cO(1)$ we need to know the transition functions between $\pi^{-1}(D_+(y_i))$ and $\pi^{-1}(D_+(y_j))$. The local generators of the sections on $\Gamma(D_+(y_i), \cO(1))$ are the $y_{j/i}$'s, which pull back to $y'_{j/i}$. The transition maps on $\PP_k^n$ are 
+	% https://q.uiver.app/#q=WzAsMixbMCwwLCJrW3lfezAsaX0sIFxcbGRvdHMsIHlfe24vaX1dLyh5X3tpLGl9LTEpIl0sWzEsMCwia1t5X3swLGp9LCBcXGxkb3RzLCB5X3tuL2p9XS8oeV97aixqfS0xKSJdLFswLDEsIlxcdGltZXMgeV97aS9qfSA9IHlfe2ovaX1eey0xfSIsMCx7ImN1cnZlIjotMn1dLFsxLDAsIlxcdGltZXMgeV97ai9pfSA9IHlfe2kvan1eey0xfSIsMCx7ImN1cnZlIjotMn1dXQ==
+	\[\begin{tikzcd}
+		{k[y_{0/i}, \ldots, y_{n/i}]/(y_{i/i}-1)} & {k[y_{0/j}, \ldots, y_{n/j}]/(y_{j/j}-1)}
+		\arrow["{\times y_{i/j} = y_{j/i}^{-1}}", curve={height=-12pt}, from=1-1, to=1-2]
+		\arrow["{\times y_{j/i} = y_{i/j}^{-1}}", curve={height=-12pt}, from=1-2, to=1-1]
+	\end{tikzcd}\]
+	These correspond to transition maps between $\pi^{-1}(D_+(y_i))$ and $\pi^{-1}(D_+(y_j))$ in the following way:
+
+\end{solution}
+
+\newpage
+
+\section*{Exercise 8.}
+Let $\cI$ be the ideal sheaf of the image of the morphism $\PP^1 \rightarrow \PP^3$ defined by
+\begin{equation*}
+	[s: t] \mapsto [s^3: s^2t: st^2: t^3].
+\end{equation*}
+Find a finite-length resolution of $\cI$ by direct sums of line bundles.
+
+\begin{solution}
+    Consider the following resolution of $\cI$: 
+	% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiXFxjTygtMyleMiJdLFsyLDAsIlxcY08oLTIpXjMiXSxbMywwLCJcXGNJIl0sWzQsMCwiMCJdLFswLDFdLFsxLDIsImRfMiJdLFsyLDMsImRfMSJdLFszLDRdXQ==
+	\[\begin{tikzcd}
+		0 & {\cO(-3)^2} & {\cO(-2)^3} & \cI & 0
+		\arrow[from=1-1, to=1-2]
+		\arrow["{d_2}", from=1-2, to=1-3]
+		\arrow["{d_1}", from=1-3, to=1-4]
+		\arrow[from=1-4, to=1-5]
+	\end{tikzcd}\]
+	The map $d_1$ and $d_2$ are given by 
+	\begin{equation*}
+		d_1 = 
+		\begin{pmatrix}
+			wy - x^2 & xz - y^2 & wz - xy
+		\end{pmatrix} ; \hspace{5pt}
+		d_2 = 
+		\begin{pmatrix}
+			z & y \\
+			x & w \\
+			-y & -x
+		\end{pmatrix}.
+	\end{equation*}
+	Since the twisted cubic is cut out by $wy - x^2, xz - y^2, wz - xy$, we know that $d_1$ is surjective. One can check that $d_1 \circ d_2 = 0$, and that $d_2$ is injective: suppose we have rational sections $a \otimes b \in \cO(-3)^2$ such that $d_2(a \otimes b) = 0$. We must have $xa + wb = 0$, which gives us $xa = -wb$. On the other hand, since $-ya - xb = 0$, we have $ya = -xb$. It follows that $xya = -ywb = -x^2b$, so $(x^2 - yw)b = 0$, which gives us $b = 0$. Similarly, we get $a = 0$, so $d_1$ is injective. 
+\end{solution}
+
+\end{document}

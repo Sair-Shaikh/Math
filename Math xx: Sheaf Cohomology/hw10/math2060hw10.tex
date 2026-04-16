@@ -1,0 +1,385 @@
+\documentclass[11pt]{article} 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,esint, dsfont,mathtools}	
+\usepackage{graphicx}		
+\usepackage{hyperref}
+\usepackage{cases}			
+\usepackage{textcomp, gensymb}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+% diagrams
+\usepackage{quiver}
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	\def\@currentlabel{#2}
+	\label{#1}\endgroup
+}
+\makeatother
+
+\setlength{\parindent}{0pt} 	% first line in paragraph will not be indented
+
+\usepackage[parfill]{parskip}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\newcommand{\ind}{{\mathds{1}}}
+
+% math fonts
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\ka}{\mathfrak{a}}
+\newcommand{\kb}{\mathfrak{b}}
+\newcommand{\kc}{\mathfrak{c}}
+\newcommand{\kd}{\mathfrak{d}}
+\newcommand{\ke}{\mathfrak{e}}
+\newcommand{\kg}{\mathfrak{g}}
+\newcommand{\kf}{\mathfrak{f}}
+\newcommand{\kh}{\mathfrak{h}}
+\newcommand{\ki}{\mathfrak{i}}
+\newcommand{\kj}{\mathfrak{j}}
+\newcommand{\kk}{\mathfrak{k}}
+\newcommand{\kl}{\mathfrak{l}}
+\newcommand{\km}{\mathfrak{m}}
+\newcommand{\kn}{\mathfrak{n}}
+\newcommand{\ko}{\mathfrak{o}}
+\newcommand{\kp}{\mathfrak{p}}
+\newcommand{\kq}{\mathfrak{q}}
+\newcommand{\kr}{\mathfrak{r}}
+\newcommand{\ks}{\mathfrak{s}}
+\newcommand{\kt}{\mathfrak{t}}
+\newcommand{\ku}{\mathfrak{u}}
+\newcommand{\kv}{\mathfrak{v}}
+\newcommand{\kw}{\mathfrak{w}}
+\newcommand{\kx}{\mathfrak{x}}
+\newcommand{\ky}{\mathfrak{y}}
+\newcommand{\kz}{\mathfrak{z}}
+
+\newcommand{\kA}{\mathfrak{A}}
+\newcommand{\kB}{\mathfrak{B}}
+\newcommand{\kC}{\mathfrak{C}}
+\newcommand{\kD}{\mathfrak{D}}
+\newcommand{\kE}{\mathfrak{E}}
+\newcommand{\kG}{\mathfrak{G}}
+\newcommand{\kF}{\mathfrak{F}}
+\newcommand{\kH}{\mathfrak{H}}
+\newcommand{\kI}{\mathfrak{I}}
+\newcommand{\kJ}{\mathfrak{J}}
+\newcommand{\kK}{\mathfrak{K}}
+\newcommand{\kL}{\mathfrak{L}}
+\newcommand{\kM}{\mathfrak{M}}
+\newcommand{\kN}{\mathfrak{N}}
+\newcommand{\kO}{\mathfrak{O}}
+\newcommand{\kP}{\mathfrak{P}}
+\newcommand{\kQ}{\mathfrak{Q}}
+\newcommand{\kR}{\mathfrak{R}}
+\newcommand{\kS}{\mathfrak{S}}
+\newcommand{\kT}{\mathfrak{T}}
+\newcommand{\kU}{\mathfrak{U}}
+\newcommand{\kV}{\mathfrak{V}}
+\newcommand{\kW}{\mathfrak{W}}
+\newcommand{\kX}{\mathfrak{X}}
+\newcommand{\kY}{\mathfrak{Y}}
+\newcommand{\kZ}{\mathfrak{Z}}
+
+%some math symbol commands redefined:
+\DeclareMathOperator{\C}{\mathcal{C}}
+\DeclareMathOperator{\power}{\mathcal{P}}
+\DeclareMathOperator{\vspan}{\text{span}}
+\DeclareMathOperator{\vnull}{\text{null}}
+\DeclareMathOperator{\range}{\text{range}}
+\DeclareMathOperator{\re}{\text{Re}}
+\DeclareMathOperator{\im}{\text{Im}}
+\DeclareMathOperator{\erf}{\text{erf}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdvv}[2]{\frac{\partial^2 #1}{\partial #2}}
+\DeclareMathOperator{\tr}{\operatorname{Tr}}
+\newcommand{\Deck}{\operatorname{Deck}}
+\newcommand{\Conj}{\mathrm{Conj}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\PROJ}{\mathit{Proj}}
+
+% category names
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Ring}{\mathsf{Ring}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Sch}{\mathsf{Sch}}
+
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\pre}{\text{pre}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\Char}{\operatorname{char}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Bl}{\mathrm{Bl}}
+\newcommand{\codim}{\mathrm{codim}}
+\newcommand{\val}{\operatorname{val}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Gr}{\operatorname{Gr}}
+
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\Rk}{\operatorname{Rk}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+
+% category theory symbols
+\DeclareMathOperator{\Mor}{\operatorname{Mor}}
+
+\newenvironment{solution}{\begin{trivlist}\item[]{\textcolor{blue}{Solution:}}}{\qed \end{trivlist}}
+
+
+\usepackage[shortlabels]{enumitem}
+\title{MATH 2060 Homework 10}
+\author{Zhengyu Zou}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\textbf{Collaborators:} Ethan Bove, Roberta Pagliaro, Anamaria Perez
+
+\section*{FOAG 22.2.E.}
+
+\begin{solution}
+    Need to show that we can reduce to the case where $W$ is affine. 
+
+    Suppose $W = \Spec B$ for some ring $B$, where the map $W \rightarrow \Spec A$ is given by the ring map $f: A \rightarrow B$. Suppose we have a Cartesian diagram 
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXFNwZWMgQi8ocykiXSxbMCwxLCJcXFNwZWMgQS8odCkiXSxbMSwxLCJcXFNwZWMgQSJdLFsxLDAsIlxcU3BlYyBCIl0sWzAsMV0sWzEsMiwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyXSxbMCwzLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dXQ==
+    \[\begin{tikzcd}
+        {\Spec B/(s)} & {\Spec B} \\
+        {\Spec A/(t)} & {\Spec A}
+        \arrow[hook, from=1-1, to=1-2]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-2, to=2-2]
+        \arrow[hook, from=2-1, to=2-2]
+    \end{tikzcd}\]
+    where $s \in B$ is given by $s = f(t)$, and $s$ is not a zero-divisor. Then, given any $a \in I$, we know that $at^n = 0$ for some $n$, so $f(at^n) = f(a) s^n = 0$. Since $s$ is not a zero-divisor, we have $f(a) = 0$. Hence, $f$ factors through $A/I \rightarrow B$ uniquely. 
+    % https://q.uiver.app/#q=WzAsNixbMCwwLCJcXFNwZWMgQi8ocykiXSxbMCwxLCJcXFNwZWMgQS8odCxJKSJdLFsxLDEsIlxcU3BlYyBBIC8gSSJdLFsxLDAsIlxcU3BlYyBCIl0sWzEsMiwiXFxTcGVjIEEiXSxbMCwyLCJcXFNwZWMgQS8odCkiXSxbMCwxXSxbMSwyLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFszLDJdLFswLDMsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzIsNF0sWzUsNCwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSw1XV0=
+    \[\begin{tikzcd}
+        {\Spec B/(s)} & {\Spec B} \\
+        {\Spec A/(t,I)} & {\Spec A / I} \\
+        {\Spec A/(t)} & {\Spec A}
+        \arrow[hook, from=1-1, to=1-2]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-2, to=2-2]
+        \arrow[hook, from=2-1, to=2-2]
+        \arrow[from=2-1, to=3-1]
+        \arrow[from=2-2, to=3-2]
+        \arrow[hook, from=3-1, to=3-2]
+    \end{tikzcd}\]
+    The universal property of $\Spec A / (t, I) \hookrightarrow \Spec A / I$ for blow-up then follows from the universal property of kernels. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 22.3.B.}
+
+\begin{solution}
+    Let $A = k[x,y]/(y^2 - x^3 - x^2)$, and let $I = (x, y)$ corresponds to the ideal sheaf of the origin. The tangent cone to $Y = \Spec A$ at the origin is then given by 
+    \[
+        N_{(0,0)} Y = \Spec \bigoplus_{n \geq 0} I^n / I^{n+1}
+    \]
+    where the latter is considered as a graded ring. We now examine each graded piece $I^n / I^{n+1}$. For $n = 0$, we have $I^0 / I^1 = A / I \cong k$. For $n = 1$, we have $I^1 / I^2$ is generated by $x$ and $y$, so $I^1 / I^2 \cong k \langle x, y \rangle$. For $n \geq 2$, notice that from $y^2 = x^3 - x^2$, we can reduce any monomials $y^k x^l$ with $k > 1$ and $k + l = n$ to $y(x^n + x^{n-1}) = yx^{n-1}$ when $k$ is odd and $x^{n+1} + x^n = x^n$ when $k$ is even. It follows that $I^n / I^{n+1}$ is generated by $x^n$ and $y x^{n-1}$ for all $n \geq 2$. Thus, we have
+    \[
+        \bigoplus_{n \geq 0} I^n / I^{n+1}
+        \cong \bigoplus_{n \geq 0} k \langle x^n, y x^{n-1} \rangle
+        \cong k[x, y] / (y^2 - x^2). 
+    \]
+    This completes the proof.
+\end{solution}
+
+\newpage
+
+\section*{FOAG 22.4.E.}
+
+\begin{solution}
+    Denote by $W$ the cone $V(z^2 - x^2 - y^2) \subset \AA^3$. The blow-up of $W$ at the origin can be computed by the blow-up of $\AA^3$ at the origin. Recall that $\Bl_0 \AA^3 \subset \AA^3 \times \PP^2$ is cut out by $xY - yX, xZ - zX, yZ - zY$. We will consider three affine patches. 
+    \begin{itemize}
+        \item On $D_+(X)$ we have coordinates $s_y = Y / X$ and $s_z = Z / X$. $W$ is then cut out by $z^2 - x^2 - y^2$, $y - s_y x$, and $z - s_z x$. Substituting the last two equations into the first gives us $s_z^2x^2 - x^2 - s_y^2 x^2 = 0$, so $x^2 (s_z^2 - s_y^2 - 1) = 0$. The exceptional divisor on $D_+(X)$ is cut out by $x = 0$. Therefore, the blow-up $\Bl_0(W) \cap D_+(X)$ is cut out by $s^2_z - s^2_y - 1$. It is clearly regular since the Jacobian with respect to $x, s_y, s_z$ is $(0, -2s_y, 2s_z)$, which is never 0 when $s_z^2 - s_y^2 = 1$. 
+        \item On $D_+(Y)$ we have coordinates $t_x = X / Y$ and $t_y = Z / Y$, $W$ is then cut out by $z^2 - x^2 - y^2$, $x - t_x y$, and $z - t_z y$. Substituting the last two equations into the first gives us $t_z^2 y^2 - y_x^2 y^2 - y^2 = 0$, so $y^2 (t_z^2 - t_x^2 - 1) = 0$. The exceptional divisor on $D_+(Y)$ is cut out by $y = 0$. Therefore, the blow-up $\Bl_0(W) \cap D_+(Y)$ is cut out by $t_z^2 - t_x^2 - 1$. It is clearly regular since the Jacobian with respect to $y, t_x, y_z$ is $(0, -2t_x, 2t_z)$, which is never 0 when $t_z^2 - t_x^2 = 1$. 
+        \item On $D_+(Z)$ we have coordinates $r_x = X / Z$ and $r_y = Y / Z$, $W$ is then cut out by $z^2 - x^2 - y^2$, $x - r_x z$, and $y - r_y z$. Substituting the last two equations into the first gives us $z^2 - z_x^2 x^2 - z_y^2 y^2 = 0$, so $z^2 (1 - r_x^2 - r_y^2) = 0$. The exceptional divisor on $D_+(Z)$ is cut out by $z = 0$. Therefore, the blow-up $\Bl_0(W) \cap D_+(Z)$ is cut out by $r_x^2 + r_y^2 - 1$. It is clearly regular since the Jacobian with respect to $z, r_x, r_y$ is $(0, 2r_x, 2r_y)$, which is never 0 when $r_x^2 + r_y^2 = 1$. 
+    \end{itemize}
+
+    We now show that the exceptional divisor $E$ is isomorphic to $\PP^1$. The exceptional divisor is cut out by $x$ on $\Bl_0(W) \cap D_+(X)$, by $y$ on $\Bl_0(W) \cap D_+(Y)$, and by $z$ on $\Bl_0(W) \cap D_+(Z)$. In particular $E \cap D_+(Z)$ is contained in $(E \cap D_+(X)) \cup (E \cap D_+(Y))$. Denote by $E_x = E \cap D_+(X)$ and $E_y = E \cap D_+(Y)$. We have 
+    \[
+        E_x = \Spec \frac{k[s_y, s_z]}{(s_z^2 - s_y^2 - 1)} ; \hspace{10pt}
+        E_y = \Spec \frac{k[t_x, t_z]}{(t_z^2 - t_x^2 - 1)}.
+    \]
+    We claim that the projection map $E \rightarrow \PP^1$ from the point $[0:0:1]$ given by $[x:y:z] \mapsto [x:y]$ gives us the isomorphism. 
+    We define the projection map $E \rightarrow \PP^1$ as follows: Cover $\PP^1$ with affines $D_+(u)$ and $D_+(v)$. The 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 22.4.G.}
+
+\begin{solution}
+    Denote by $W$ the closed subscheme of $\AA^2$ cut out by the ideal $(y, x^2)$. Consider the map $\AA^2_{u,v} \hookrightarrow \AA^2_{x,y}$ given by sending $(u,v) \mapsto (x^2,y)$. It follows that $W$ is the preimage of the origin in $\AA^2$. Consider $\Bl_0 \AA^2 \cong \Proj k[u,v,U,V] / (uV-vU)$, which is covered by two affines $D_+(U)$ and $D_+(V)$. Let $s = V / U$ be a coordinate on $D_+(U)$, and $t = U / V$ be a coordinate on $D_+(V)$. It follows that $\Bl_{V(y,x^2)} \AA^2$ is cut out by $us - v = x^2s - y$ on $D_+(U)$, and $vt - u = yt - x^2$ on $D_+(V)$. Notice that $x^2s - y$ is smooth, since the Jacobian matrix with respect to $x,y,s$ is $(2xs, -1, x^2)$, which is never zero. On the other hand, $yt - x^2$ is not smooth, since the Jacobian matrix with respect to $x,y,t$ is $(-2x, t, y)$, which is $0$ at $(0,0,0)$. Then, by change of variables, we see that $(\frac{y+t}{\sqrt2})^2 = (\frac{y-t}{\sqrt2})^2 - x^2$, so the blow-up has an $A_1$ surface singularity on the affine patch $D_+(V)$. This completes the proof. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 22.4.I.}
+
+\begin{solution}
+    We may change coordinates so that we are blowing up $V(x,y)$ on the quadric surface $C = V(x^2 - yz) \subset \AA^3$. Recall that the blow-up of $\AA^1 \subset \AA^3$ is given by $\Proj k[x,y,z,X,Y]/(xY - yX) \subset \AA^3 \times \PP^1$. This is covered by two affines $D_+(X)$ with coordinate $s = Y/X$, and $D_+(Y)$ with coordinate $t = X/Y$. We now compute the blow-up $\Bl_{V(x,y)}C$. On $D_+(X)$, we have $x^2 - xsz = x(x - sz)$, so the proper transform is cut out by $x - sz$. On $D_+(Y)$, we have $y^2t^2 - yz = y(yt^2 - z)$, so the proper transform is cut out by $yt^2 - z$. Notice that both surfaces are regular since the Jacobian on $D_+(X)$ with respect to $x,z,s$ is given by $(1, -s, -z)$, which is nonzero everywhere; the Jacobian on $D_+(Y)$ with respect to $y,z,t$ is $(t^2, -1, 2yt)$, which is again nonzero everywhere. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 22.4.K.}
+
+\begin{solution}
+    WLOG we may assume $p = [1:0:0]$, $q = [0:1:0]$, and $r = (\infty, \infty)$. We first describe a dominant map $f: \PP^2 \setminus \{\overline{pq}\} \rightarrow \PP^1 \times \PP^1$. Notice that $\overline{pq}$ is the vanishing of the section $z$ of $\cO_{\PP^2}(1)$. Let $f_1, f_2$ be the map from $\PP^2 \setminus V(z)$ to the first and the second factor of $\PP^1 \times \PP^1$ respectively, given by $f_1: [x:y:z] \mapsto [y:z]$ and $f_2: [x:y:z] \mapsto [x:z]$. Notice that the image of $(f_1, f_2): \PP^2 \setminus V(z) \rightarrow \PP^1 \times \PP^1$ is precisely the complement of $\{r\}$. 
+
+    Next, we construct a map $g: \PP^1 \times \PP^1 \setminus \{r\} \rightarrow \PP^2$. Consider the line bundle $\cO(1, 1)$ over $\PP^1 \times \PP^1$, which contains sections $ac, ad, bc, bd$, where $[a:b]$ is the coordinate of the first copy of $\PP^1$ and $[c:d]$ the second copy of $\PP^1$. The map $g$ is given by the linear series $[x:y:z] = [bc:ad:bd]$. Clearly, $\PP^2 \setminus V(z)$ is contained in the image of $g$, so $g$ is a dominant map. 
+
+    We now show that $f \circ g$ and $g \circ f$ are identities. Notice that 
+    \begin{align*}
+        f \circ g &: [x:y:z] \mapsto ([y:z], [x:z]) \mapsto [xz:yz:z^2] = [x:y:z] \\
+        g \circ f &: ([a:b], [c:d]) \mapsto [bc: ad: bd] \mapsto ([ad:bd], [bc:bd]) = ([a:b], [c:d]).
+    \end{align*}
+    It follows that $\PP^2$ and $\PP^1 \times \PP^1$ are birational. 
+
+    To construct the isomorphism $\Bl_r (\PP^1 \times \PP^1) \rightarrow \Bl_{p,q} \PP^2$, we simply need to specify the map on the exceptional divisor $E_r$. Note that we have an affine $D_+(b) \cap D_+(d)$ that contains $r$ and admits coordinates $s = a/b$ and $t = c/d$. It follows that $\Bl_r (\PP^1 \times \PP^1)$ restricts to $D_+(b) \cap D_+(d)$ as 
+    \[
+        \Proj \frac{k[s,t,S,T]}{(sT - tS)} \subset \AA^2 \times \PP^1.
+    \]
+    Also, $\Bl_r (\PP^1 \times \PP^1)$ restricts to an isomorphism on the complement of $D_+(b) \cap D_+(d)$. Therefore, $E_r$ is contained in $ \Proj k[s,t,S,T]/(sT - tS)$, which is covered by two affines $D_+(S)$ and $D_+(T)$ with coordinates $\tau = T/S$ and $\xi = S/T$, where 
+    \[
+        D_+(S) = \Spec \frac{k[s,t,\tau]}{(s \tau - t)} = \Spec k[s, \tau] ; \hspace{10pt}
+        D_+(T) = \Spec \frac{k[s,t,\xi]}{(t \xi - s)} = \Spec k[\xi, t].
+    \]
+    We now map $D_+(S) \rightarrow \Bl_{p,q} \PP^2$ by $[x:y:z] = [s\tau : s : 1]$, and $D_+(T) \rightarrow Bl_{p,q} \PP^2$ by $[x:y:z] = [t: \xi t: 1]$. Notice that away from $(s,t) = (0,0)$ this map agrees with our previous map $\PP^1 \times \PP^1 \setminus \{r\} \rightarrow \PP^2$. One can check that this gives the desired isomorphism. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 22.4.O.}
+
+\begin{solution}
+    We first show that $\Pic(X) \cong \Pic(X \setminus p)$. Since $p$ is a codimension-2 subscheme of $X$, we see that $X \setminus p$ contains all codimension-1 subschemes of $X$. It follows that $\Weil (X) = \Weil (X \setminus p)$, since both are generated by the same set of codimension-1 subschemes. In particular, by Algebraic Hartog's lemma, we see that $K(X)^{\times} = K(X \setminus p)^{\times}$, but these are precisely the principal divisors of $X$ and $X \setminus p$. We therefore have 
+    \[
+        \Pic (X) \cong \Cl (X) \cong \frac{\Weil (X)}{K(X)^{\times}}
+        \cong \frac{\Weil (X \setminus p)}{K(X \setminus p)^{\times}}
+        \cong \Cl(X \setminus p) \cong \Pic (X \setminus p).
+    \]
+    In particular, this isomorphism is induced by the pullback of the inclusion map $i: X \setminus p \hookrightarrow X$. 
+
+    We now show that $\alpha \circ \beta^*$ is the identity on $\Pic(\Bl_p X \setminus E) = \Pic(X \setminus p)$. Notice that $\beta$ is the canonical projection map $\Bl_p X \rightarrow X$. The map $\alpha$ is simply restricting the line bundle on $\Bl_p X$ to $X \setminus p$. It follows that $\alpha \circ \beta^* = i^*$ is the pullback along the inclusion, but we have just shown that $i^*$ is an isomorphism. We conclude that $\beta^*$ is a section of $\alpha$. 
+
+    Next, we would like to show that $\cO_X(E)|_E \cong \cO_E(-1)$. We know that $\cO_X(E)|_E$ is the normal bundle of $E \hookrightarrow \Bl_p X$. On the other hand, since $p \hookrightarrow X$ is a regular embedding, we know from 22.3.D. that the normal bundle of the exceptional divisor $E \hookrightarrow \Bl_p X$ must be $\cO_E(-1)$. This gives us the desired isomorphism. 
+
+    It then follows that the map $\ZZ \rightarrow \Pic(\Bl_p X)$ is injective, since $n \mapsto \cO_X(E)^n$ restricts to $\cO_E(-n)$ for all $n \in \ZZ$, which is trivial iff $n = 0$. We therefore have the following split exact sequence
+    \[
+        0 \longrightarrow \ZZ \longrightarrow \Pic (\Bl_p(X)) \longrightarrow \Pic (X) \longrightarrow 0,
+    \]
+    so $\Pic (\Bl_p X) \cong \Pic(X) \oplus \ZZ$. In particular, we have $E \cdot E = \deg_E(\cO(E)|_E) = -1$ and $E \cdot D = \deg_{D}(\cO(E)|_D)$ for any divisor $D$ on $X \setminus p$, but then since $X \setminus p = \Bl_p X \setminus E$, we see that the restriction $\cO(E)|_D$ is simply $\cO_D$, so $E \cdot D = 0$. We conclude that the intersection matrix on $N_{\QQ}^1(\Bl_p X) \cong N_{\QQ}^1 (X) \oplus \QQ$ is the following block-diagonal matrix 
+    \[
+        \begin{pmatrix}
+            M_X & 0 \\ 0 & -1
+        \end{pmatrix}
+    \]
+    where $M_X$ is the intersection matrix on $N_{\QQ}^1(X)$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 22.4.R.}
+
+\begin{solution}
+    Let $X = \Bl_0 \AA^n$ and $Y = \AA^n$. Denote by $\beta: X \rightarrow Y$ the canonical projection map. We would like to show that $\cK_X \cong (\beta^* \cK_Y)((n-1)E)$. Clearly, $\cK_X \cong \cK_Y$ away from the exceptional divisor, so it suffices to show that on the exceptional divisor, the pullbacks of sections of $\cK_Y$ vanish along $E$ with multiplicity $n-1$. By Geometric Nakayama, we know that sections of $\cK_Y$ around a neighborhood of the origin is generated by $\omega = dx_1 \wedge \cdots \wedge dx_n$. We also know that 
+    \[
+        X \cong \Proj \frac{k[x_i, X_j \, | \, i,j \in [n]]}{(x_i X_j - x_j X_i \, | \, i,j \in [n])} \subset \AA^n \times \PP^{n-1}.
+    \]
+    Notice that $X$ is covered by affines of the form $D_+(X_i)$, where 
+    \[
+        D_+(X_i)
+        = \Spec \frac{k[x_j, t_k \, | \, j,k \in [n]; k \neq i]}{(x_i t_j - x_j \, | \, j \in [n]; j \neq i)} 
+        = \Spec k[x_i, t_1, \ldots, \widehat{t_i}, \ldots t_n].
+    \]
+    If we pull back $\omega$ along the map $D_+(X_i) \hookrightarrow X \rightarrow Y$, we get that 
+    \begin{align*}
+        \omega 
+        &= dx_1 \wedge \cdots \wedge dx_n \\
+        &= d(t_1 x_i) \wedge \cdots \wedge dx_i \wedge \cdots \wedge d(t_nx_i) \\
+        &= (t_1 dx_i + x_i dt_1) \wedge \cdots \wedge dx_i \wedge \cdots \wedge (t_n dx_i + x_i dt_n) \\
+        &= x_i^{n-1} (dt_1 \wedge \cdots \wedge dx_i \wedge \cdots \wedge dt_n).
+    \end{align*}
+    It follows that $\beta^* \omega$ vanishes on $E$ with order $n-1$, which gives us the desired result. 
+\end{solution}
+
+\end{document}

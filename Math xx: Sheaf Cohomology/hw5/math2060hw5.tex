@@ -1,0 +1,361 @@
+\documentclass[11pt]{article} 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,esint, dsfont,mathtools}	
+\usepackage{graphicx}		
+\usepackage{hyperref}
+\usepackage{cases}			
+\usepackage{textcomp, gensymb}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+% diagrams
+\usepackage{quiver}
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	\def\@currentlabel{#2}
+	\label{#1}\endgroup
+}
+\makeatother
+
+\setlength{\parindent}{0pt} 	% first line in paragraph will not be indented
+
+\usepackage[parfill]{parskip}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\newcommand{\ind}{{\mathds{1}}}
+
+% math fonts
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\ka}{\mathfrak{a}}
+\newcommand{\kb}{\mathfrak{b}}
+\newcommand{\kc}{\mathfrak{c}}
+\newcommand{\kd}{\mathfrak{d}}
+\newcommand{\ke}{\mathfrak{e}}
+\newcommand{\kg}{\mathfrak{g}}
+\newcommand{\kf}{\mathfrak{f}}
+\newcommand{\kh}{\mathfrak{h}}
+\newcommand{\ki}{\mathfrak{i}}
+\newcommand{\kj}{\mathfrak{j}}
+\newcommand{\kk}{\mathfrak{k}}
+\newcommand{\kl}{\mathfrak{l}}
+\newcommand{\km}{\mathfrak{m}}
+\newcommand{\kn}{\mathfrak{n}}
+\newcommand{\ko}{\mathfrak{o}}
+\newcommand{\kp}{\mathfrak{p}}
+\newcommand{\kq}{\mathfrak{q}}
+\newcommand{\kr}{\mathfrak{r}}
+\newcommand{\ks}{\mathfrak{s}}
+\newcommand{\kt}{\mathfrak{t}}
+\newcommand{\ku}{\mathfrak{u}}
+\newcommand{\kv}{\mathfrak{v}}
+\newcommand{\kw}{\mathfrak{w}}
+\newcommand{\kx}{\mathfrak{x}}
+\newcommand{\ky}{\mathfrak{y}}
+\newcommand{\kz}{\mathfrak{z}}
+
+\newcommand{\kA}{\mathfrak{A}}
+\newcommand{\kB}{\mathfrak{B}}
+\newcommand{\kC}{\mathfrak{C}}
+\newcommand{\kD}{\mathfrak{D}}
+\newcommand{\kE}{\mathfrak{E}}
+\newcommand{\kG}{\mathfrak{G}}
+\newcommand{\kF}{\mathfrak{F}}
+\newcommand{\kH}{\mathfrak{H}}
+\newcommand{\kI}{\mathfrak{I}}
+\newcommand{\kJ}{\mathfrak{J}}
+\newcommand{\kK}{\mathfrak{K}}
+\newcommand{\kL}{\mathfrak{L}}
+\newcommand{\kM}{\mathfrak{M}}
+\newcommand{\kN}{\mathfrak{N}}
+\newcommand{\kO}{\mathfrak{O}}
+\newcommand{\kP}{\mathfrak{P}}
+\newcommand{\kQ}{\mathfrak{Q}}
+\newcommand{\kR}{\mathfrak{R}}
+\newcommand{\kS}{\mathfrak{S}}
+\newcommand{\kT}{\mathfrak{T}}
+\newcommand{\kU}{\mathfrak{U}}
+\newcommand{\kV}{\mathfrak{V}}
+\newcommand{\kW}{\mathfrak{W}}
+\newcommand{\kX}{\mathfrak{X}}
+\newcommand{\kY}{\mathfrak{Y}}
+\newcommand{\kZ}{\mathfrak{Z}}
+
+%some math symbol commands redefined:
+\DeclareMathOperator{\C}{\mathcal{C}}
+\DeclareMathOperator{\power}{\mathcal{P}}
+\DeclareMathOperator{\vspan}{\text{span}}
+\DeclareMathOperator{\vnull}{\text{null}}
+\DeclareMathOperator{\range}{\text{range}}
+\DeclareMathOperator{\re}{\text{Re}}
+\DeclareMathOperator{\im}{\text{Im}}
+\DeclareMathOperator{\erf}{\text{erf}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdvv}[2]{\frac{\partial^2 #1}{\partial #2}}
+\DeclareMathOperator{\tr}{\operatorname{Tr}}
+\newcommand{\Deck}{\operatorname{Deck}}
+\newcommand{\Conj}{\mathrm{Conj}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\PROJ}{\mathit{Proj}}
+
+% category names
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Ring}{\mathsf{Ring}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Sch}{\mathsf{Sch}}
+
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\pre}{\text{pre}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\Char}{\operatorname{char}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Bl}{\mathrm{Bl}}
+\newcommand{\codim}{\mathrm{codim}}
+\newcommand{\val}{\operatorname{val}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Sym}{\operatorname{Sym}}
+
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\Rk}{\operatorname{Rk}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+
+% category theory symbols
+\DeclareMathOperator{\Mor}{\operatorname{Mor}}
+
+\newenvironment{solution}{\begin{trivlist}\item[]{\textcolor{blue}{Solution:}}}{\qed \end{trivlist}}
+
+
+\usepackage[shortlabels]{enumitem}
+\title{MATH 2060 Homework 3}
+\author{Zhengyu Zou}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\textbf{Collaborators:} Ethan Bove
+
+\section*{FOAG 18.6.S.}
+
+\begin{solution}
+    Let $H_1$ and $H_2$ be the hypersurfaces of degree $m, n$ respectively in $\PP^3$ that form a complete intersection $C = H_1 \cap H_2$. Observe that $\cO_{\PP^3} (H_1) \cong \cO_{\PP^3}(m)$ and $\cO_{\PP^3}(H_2) \cong \cO_{\PP^3} (n)$. We first have the following short exact sequence from the embedding of $H_1$ into $\PP^3$:
+    \[
+        0 \longrightarrow \cO_{\PP^3} (-H_1) \longrightarrow \cO_{\PP^3} \longrightarrow \cO_{\PP^3} |_{H_1} \longrightarrow 0.
+    \]
+    Since Euler characteristics are additive, we have 
+    \begin{align*}
+        \chi(H_1, \cO_{H_1})
+        &= \chi(\PP^3, \cO_{\PP^3}|_{H_1})
+        = \chi(\PP^3, \cO_{\PP^3}) - \chi(\PP^3, \cO_{\PP^3}(-H_1)) \\
+        &= \chi(\PP^3, \cO_{\PP^3}) - \chi(\PP^3, \cO_{\PP^3}(-m)).
+    \end{align*}
+    This allows us to compute the Hilbert polynomila of $H_1$ as follows:
+    \[
+        p_{H_1}(k)
+        = p_{\PP^3}(k) - p_{\PP^3}(k - m)
+        = \binom{k+3}{3} - \binom{k-m+3}{3}.
+    \]
+    Next, on $H_1$ we have the following exact sequence 
+    \[
+        0 \longrightarrow \cO_{H_1} (-C) \longrightarrow \cO_{H_1} \longrightarrow \cO_{H_1} |_{C} \longrightarrow 0.
+    \]
+    Notice that $\cO_{H_1} (-C)$ is the restriction of $\cO_{\PP^3}(H_2)$ to $H_1$. Since $\cO_{\PP^3} (H_2) \cong \cO_{\PP^3}(-n)$, we have $\cO_{H_1} (-C) \cong \cO_{H_1} (-n)$. 
+    It follows that 
+    \begin{align*}
+        p_{C}(k)
+        &= p_{\cO_{H_1}|_C}(k)
+        = p_{H_1}(k) - p_{H_1}(k - n) \\
+        &= p_{\PP^3}(k) - p_{\PP^3}(k-m) - p_{\PP^3}(k-n) + p_{\PP^3}(k-m-n) \\
+        &= \binom{k+3}{3} - \binom{k-m+3}{3} - \binom{k-n+3}{3} + \binom{k-m-n+3}{3}
+    \end{align*}
+    Plugging in $k = 0$, we have 
+    \begin{align*}
+        p_a(C)
+        &= 1 - \frac{(3 - m)(2-m)(1-m)}{6} - \frac{(3-n)(2-n)(1-n)}{6} + \frac{(3-m-n)(2-m-n)(1-m-n)}{6}.
+    \end{align*}
+    Therefore, the genus of the surface is given by 
+    \[
+        \frac{(3 - m)(2-m)(1-m)}{6} + \frac{(3-n)(2-n)(1-n)}{6} - \frac{(3-m-n)(2-m-n)(1-m-n)}{6}.
+    \]
+\end{solution}
+
+\newpage
+
+\section*{FOAG 18.7.B.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+    \item Since localization is exact, it suffices to construct the natural map $\psi^* (R^i\pi_* \cF) \rightarrow R^i \pi'_* (\psi')^* \cF$ on the affines of $Y$. Pick an affine cover $\{\Spec A\}$ of $Y'$. Consider the natural push-pull map $\psi^* \pi_* \cF(\Spec A) \rightarrow \pi'_* (\psi')^* \cF(\Spec A)$. Taking the $i$-th cohomology on both sides, we have $H^i\psi^* \pi_* \cF(\Spec A) \rightarrow H^i \pi'_* (\psi')^* \cF(\Spec A)$. Now, since $\psi^*$ is left-adjoint to $\psi_*$ and hence right-exact, using FHHF on the \v Cech complex of $\Spec A$ we get a natural map $\psi^* (H^i \pi_* \cF)(\Spec A) \rightarrow H^i \psi^* (\pi_* \cF)(\Spec A)$. The composition map $\psi^* (H^i \pi_* \cF)(\Spec A) \rightarrow H^i \pi'_* (\psi')^* \cF$ glues together to give us the push-pull map $\psi^* R^i \pi_* \cF \rightarrow R^i \pi'_* (\psi')^* \cF$.
+
+    \item 
+    
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 18.7.D.}
+
+\begin{solution}
+\begin{enumerate}[(a)]
+    \item By adjunction of pullback and pushforward, we have a natural map $\cG \rightarrow \pi_* \pi^* \cG$. Tensoring with $R^i \pi_* \cF$ gives us a map 
+    \[
+        R^i \pi_* \cF \otimes \cG \longrightarrow (R^i \pi_* \cF) \otimes (\pi_* \pi^* \cG).
+    \]
+    Now, consider an affine cover $\Spec A$ of $Y$ on which $R^i \pi_* \cF (\Spec A) \cong H^i (\Spec A, \pi_*\cF)$. Cover $\Spec A$ with affines $\Spec A_i$. Let $\{\Spec B_i\}$ be a covering of $\pi^{-1}(\Spec A)$. Consider a \v Cech complex $C^{\bullet}$ of $\pi_*\cF$ over $\Spec A$ given by 
+    \[
+        0 \longrightarrow \prod_i \pi_*\cF(\Spec A_i) \longrightarrow \prod_{i,j} \pi_*\cF(\Spec A_i \cap \Spec A_j) \longrightarrow \cdots
+    \]
+    Since the pushforward functor $\pi_*$ is right-adjoint to the pullback functor, the FHHF theorem gives us a natural map $H^i \pi_* \cF(\Spec A) \rightarrow \pi_* (H^i \cF)(\Spec A)$. 
+
+    . Since $\pi_*$ is right-adjoint to $\pi^*$, there is a natural map 
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.1.B.}
+
+\begin{solution}
+    Denote by $A = k[x,y]/(y^2-x^3)$ the cusp curve. 
+    The normalization of a cusp is the morphism $\pi: \Spec k[t] \rightarrow \Spec A$ given by the ring map $\pi^{\sharp}: A \rightarrow k[t]$ sending $x \mapsto t^2$ and $y \mapsto t^3$. Consider the maximal ideal $\km = (x, y)$ of $A$. The image of $[\km]$ under $\pi$ is the closed point corresponding to the maximal ideal $\kn = (t)$. The cotangent space at $[\km]$ is $\km / \km^2$, which is a 2-dimensional $k$-vector space generated by $x$ and $y$. The cotangent space at $[\kn]$ is the 1-dimensional $k$-vector space generated by $t$. The cotangent map sends $x \mapsto t^2 = 0$ and $y \mapsto t^3 = 0$, so it's the zero map. It follows that the tangent map is the dual of the zero map, which is zero, so it's not injective. 
+
+    Next, we study the Frobenius map $\varphi: \Spec \FF_p[x] \rightarrow \Spec \FF_p[y]$ induced by the ring homomorphism $\varphi^{\sharp}: \FF_p[y] \rightarrow \FF_p[x]$ sending $y \mapsto x^p$. The point in $\Spec \FF_p[x]$ corresponding to the maximal ideal $\km = (x)$ maps to the point in $\Spec \FF_p[y]$ corresponding to $\kn = (y)$. The cotangent space over $[\km]$ is the 1-dimensional $\FF_p$-vector space generated by $x$, and the cotangent space over $[\kn]$ is the 1-dimensional $\FF_p$-vector space generated by $y$. The cotangent map sends $y \mapsto x^p = 0$, so it's the zero map. The tangent map, which is the dual of the cotangent map, must also be the zero map, so it's not injective. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.1.E.}
+
+\begin{solution}
+    We first show that the $d$-the Veronese embedding $\pi: \PP^n \hookrightarrow \PP^{N}$ where $N = \binom{n+d}{n} - 1$ is a closed embedding. First, $\pi$ is a map between projective spaces, so it is projective. To see that $\pi$ is injective on closed points, suppose we have two closed point on $\PP^n$ with homogeneous coordinates $[x_0 : \ldots : x_n]$ and $[y_0: \ldots: y_n]$ such that $\prod_{i \in I} x_i = \prod_{i \in I} y_i = a_I$ for some $a_I \in k$, where $I \subset \{0, \ldots, n\}$ is a multiset of size $d$. WLOG suppose $x_0 \neq 0$. Since $x_0^d = y_0^d$, we may WLOG scale $[y_0: \ldots: y_n]$ by a power of the $d$-th roots of unity to get $x_0 = y_0$. Then, we have $x_0^{d-1}x_i = y_0^{d-1} y_i = x_0^{d-1}y_i$, so $x_0 \neq 0$ gives us $x_i = y_i$ for all $i = 1, \ldots, n$. It follows that $[x_0: \ldots: x_n] = [y_0: \ldots: y_n]$. 
+    
+    Next, we show that $\pi$ is injective on tangent vectors. Let $p = [a_0: \ldots: a_n]$ be an arbitrary closed point in $\PP^n$. WLOG we may normalize so that $a_0 = 1$. Then, $p \in D_+(x_0) \cong \AA^n$ corresponds to the maximal ideal $\km = (x_1 - a_1, \ldots, x_n - a_n)$. Its image is the point $q \in D_+(y_{I_0})$, where $I_0$ is the multiset $\{0, \ldots, 0\}$, that corresponds to the maximal ideal $\kn = (y_I - \prod_{i \in I}a_i)$. The cotangent space $\km / \km^2$ is $n$-dimensional and is generated by $u_i = x_i - a_i$ (to see this, notice that $x_ju_i = a_j u_i$ for all $i,j$) where $i = 1, \ldots, n$. Similarly, $\kn / \kn^2$ is generated by $v_I = y_I - \prod_{i \in I} a_i$, where $I$ is a multiset consist of elements $\{1, \ldots, n\}$ and has size $\leq d$. The cotangent map $\pi^*: \kn / \kn^2 \rightarrow \km / \km^2$ is given by sending 
+    \[
+        v_I \mapsto \prod_{i \in I} (u_i + a_i) - \prod_{i \in I} a_i 
+        = \sum_{i\in I} \left( u_i \prod_{j \in I \setminus \{i\}} a_j \right). 
+    \]
+    Notice that for the sets $I = \{i\}$, we have $v_I \mapsto u_i$, so the dual map of $\varphi^*$ has trivial kernel. It follows that $\varphi$ is injective on tangent vectors over closed points. We conclude that the Veronese embedding is a closed embedding.
+
+    Next, we show that the Segre embedding $\varphi: \PP^m \times_k \PP^n \hookrightarrow \PP^{mn + m + n}$ is a closed embedding. We first show that $\varphi$ is injective on closed points. Given two closed points $[x_0 : \ldots : x_m] \times [y_0 : \ldots : y_n]$ and $[x'_0 : \ldots : x'_m] \times [y'_0 : \ldots : y'_n]$ such that $x_iy_j = x'_j y'_j$, we may WLOG assume $x_0, y_0, x'_0, y'_0 \neq 0$. In particular, we may normalize so that $x_0 = y_0 = x'_0 = y'_0 = 1$. It then follows that $x_i = x_iy_0 = x'_i y'_0 = x'_i$ and $y_j = x_0 y_j = x'_0 y'_j = y'_j$. Therefore, $\varphi$ is injective on closed points. 
+
+    Next, we show that $\varphi$ is injective on tangent vectors. Let $p = [a_0: \ldots: a_m] \times [b_0 : \ldots : b_n]$ be an arbitrary closed point in $\PP^m \times_k \PP^n$. WLOG assume $a_0 = b_0 = 1$. Then, $p$ is contained in the affine $\AA^m \times_k \AA^n \cong \AA^{m + n}$ and corresponds to the maximal ideal $\km = (x_i - a_i, y_j - b_j)$. Its image of $p$ under $\varphi$ is contained in the affine $D_+(z_{00})$ (here we use the coordinates $z_{ij} = x_iy_j$) and corresponds to the ideal $\kn = (z_{ij} - a_ib_j)$. The cotangent space $\km / \km^2$ is $(m+n)$-dimensional and generated by $u_i = x_i - a_i$ and $v_j = y_j - b_j$. On the other hand, the cotangent space $\kn / \kn^2$ is $(mn + m + n)$-dimensional and generated by $w_{ij} = z_{ij} - a_i b_j$. The cotangent pullback map is given by sending $w_{ij} \mapsto (u_i + a_i)(v_j + b_j) - a_i b_j = a_i v_j + b_j u_i$ for $i,j \neq 0$, adn $w_{0j} = v_j$, $w_{i0} = u_i$. The images of $w_{0j}$ and $w_{i0}$ implies the kernel of the dual tangent map is trivial. Therefore, $\varphi$ is injective on tangent vectors over closed points, so it is a close embedding. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.2.A.}
+
+\begin{solution}
+    Recall that $\deg \omega_C = 2g - 2$ for a regular projective curve $C$. By Serre duality, we have $\deg(\omega_C \otimes \cL^{\vee}) = \deg(\omega_C) - \deg(\cL^{\vee}) = 0$. 
+    
+    If the line bundle $\omega_C \otimes \cL^{\vee}$ has a nonzero section $s$, then since $\deg(\omega_C \otimes \cL^{\vee}) = 0$, $s$ has no zeros. It follows that $\omega_C \otimes \cL^{\vee} \cong \cO_C$ via the multiplication map by $1/s$, so in particular $h^0(C, \omega_C \otimes \cL^{\vee}) = h^0(C, \cO_C) = 0$, where the second equality comes from the fact that $C$ is geometrically integral. It follows from Riemann Roch and Serre duality that 
+    \[
+        h^0(C, \cL)
+        = h^1(C, \cL) + (g - 1)
+        = h^0(\omega_C \otimes \cL^{\vee}) + (g - 1)
+        = g.
+    \]
+    In this case, we must have $\cL \cong \omega_C$, as $\cL^{\vee} \otimes \omega_C \cong \cO_C$. 
+
+    On the other hand, if $\omega_C \otimes \cL^{\vee}$ has no nonzero regular sections, then $h^0(C, \omega_C \otimes \cL^{\vee}) = 0$, in which case we have $h^0(C, \cL) = g - 1$. Therefore, $h^0(C, \cL) \in \{g-1, g\}$, where $h^0(C, \cL) = g$ if and only if $\cL \cong \omega_C$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.2.B.}
+
+\begin{solution}
+    Recall that $\deg(\omega_C) = 2g - 2$ and $h^0(C, \omega_C) = g > 0$. Let $s$ be a regular section of $\omega_C$. Then, the number of zeros of $s$ must be $2g - 2 = 2(g - 1) > 0$. Let $p_i$ be the closed points on which $s = 0$. Then, $\Div(\omega_C) = \sum_i a_i [p_i]$ and $\deg(\omega_C) = \sum_i a_i \deg p_i$, where all the $a_i$'s are positive (this follows from the fact that $s$ has no poles). This gives us $\deg p_1 \leq \sum_i a_i \deg p_i = 2g - 2$, which is the desired closed point of degree at most $2g-2$.  
+\end{solution}
+
+\newpage
+
+\section*{FOAG 19.2.C.}
+
+\begin{solution}
+    Pick $j$ so that $j > 2g$. This gives us $\deg \cO(jp) = j \deg \cO(p) = j > 2g$. Then, given any closed point $q \in C$, we see that $\deg \cO(jp - q) > 2g - 1 > 2g - 2$. Therefore, by 19.2.5, we have 
+    \[
+        h^0(C, \cO(jp)) = j - g + 1 \text{ and } 
+        h^0(C, \cO(jp - q)) = j - g.
+    \]
+    By 19.2.7, $\cO(jp)$ is base-point-free. Moreover, since $j > 2g$, we see that $h^0(C, \cO(jp)) > g + 1$, so $h^0(C, \cO(jp)) \geq 2$ has at least 2 linearly independent sections. In particular, we can pick a section $s$ so that $\Div s = jp$, and another section $t$ such that $t \neq 0$ at $p$. 
+
+    Consider the map $\pi: C \rightarrow \PP^1$ given by the linear series $[s:t]$. Clearly, $\pi^{-1}(\infty) = V(s) = p$. Also, $\pi^{-1}(0) = V(t)$ consists of finitely many closed points in $C$. Since $C$ is projective, it suffices to check that $\pi$ is quasifinite. The section $s - at$ for all $a \in k$ is a regular section of $\cO(jp)$ and hence must satisfy $\deg \Div (s - at) = j$. This implies $V(s - at)$ consists of finitely many closed points in $C$, thus $\pi^{-1}(a)$ is finite. It follows that $\pi$ is a quasifinite projective morphism, hence a finite morphism, hence an affine morphism. Finally, since $\pi^{-1}(\infty) = \{p\}$, $\pi^{-1}(\AA^1) = C \setminus \{p\}$ is affine. 
+\end{solution}
+
+\end{document}

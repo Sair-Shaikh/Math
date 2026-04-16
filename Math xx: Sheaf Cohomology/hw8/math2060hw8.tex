@@ -1,0 +1,441 @@
+\documentclass[11pt]{article} 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,esint, dsfont,mathtools}	
+\usepackage{graphicx}		
+\usepackage{hyperref}
+\usepackage{cases}			
+\usepackage{textcomp, gensymb}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+% diagrams
+\usepackage{quiver}
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	\def\@currentlabel{#2}
+	\label{#1}\endgroup
+}
+\makeatother
+
+\setlength{\parindent}{0pt} 	% first line in paragraph will not be indented
+
+\usepackage[parfill]{parskip}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\newcommand{\ind}{{\mathds{1}}}
+
+% math fonts
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\ka}{\mathfrak{a}}
+\newcommand{\kb}{\mathfrak{b}}
+\newcommand{\kc}{\mathfrak{c}}
+\newcommand{\kd}{\mathfrak{d}}
+\newcommand{\ke}{\mathfrak{e}}
+\newcommand{\kg}{\mathfrak{g}}
+\newcommand{\kf}{\mathfrak{f}}
+\newcommand{\kh}{\mathfrak{h}}
+\newcommand{\ki}{\mathfrak{i}}
+\newcommand{\kj}{\mathfrak{j}}
+\newcommand{\kk}{\mathfrak{k}}
+\newcommand{\kl}{\mathfrak{l}}
+\newcommand{\km}{\mathfrak{m}}
+\newcommand{\kn}{\mathfrak{n}}
+\newcommand{\ko}{\mathfrak{o}}
+\newcommand{\kp}{\mathfrak{p}}
+\newcommand{\kq}{\mathfrak{q}}
+\newcommand{\kr}{\mathfrak{r}}
+\newcommand{\ks}{\mathfrak{s}}
+\newcommand{\kt}{\mathfrak{t}}
+\newcommand{\ku}{\mathfrak{u}}
+\newcommand{\kv}{\mathfrak{v}}
+\newcommand{\kw}{\mathfrak{w}}
+\newcommand{\kx}{\mathfrak{x}}
+\newcommand{\ky}{\mathfrak{y}}
+\newcommand{\kz}{\mathfrak{z}}
+
+\newcommand{\kA}{\mathfrak{A}}
+\newcommand{\kB}{\mathfrak{B}}
+\newcommand{\kC}{\mathfrak{C}}
+\newcommand{\kD}{\mathfrak{D}}
+\newcommand{\kE}{\mathfrak{E}}
+\newcommand{\kG}{\mathfrak{G}}
+\newcommand{\kF}{\mathfrak{F}}
+\newcommand{\kH}{\mathfrak{H}}
+\newcommand{\kI}{\mathfrak{I}}
+\newcommand{\kJ}{\mathfrak{J}}
+\newcommand{\kK}{\mathfrak{K}}
+\newcommand{\kL}{\mathfrak{L}}
+\newcommand{\kM}{\mathfrak{M}}
+\newcommand{\kN}{\mathfrak{N}}
+\newcommand{\kO}{\mathfrak{O}}
+\newcommand{\kP}{\mathfrak{P}}
+\newcommand{\kQ}{\mathfrak{Q}}
+\newcommand{\kR}{\mathfrak{R}}
+\newcommand{\kS}{\mathfrak{S}}
+\newcommand{\kT}{\mathfrak{T}}
+\newcommand{\kU}{\mathfrak{U}}
+\newcommand{\kV}{\mathfrak{V}}
+\newcommand{\kW}{\mathfrak{W}}
+\newcommand{\kX}{\mathfrak{X}}
+\newcommand{\kY}{\mathfrak{Y}}
+\newcommand{\kZ}{\mathfrak{Z}}
+
+%some math symbol commands redefined:
+\DeclareMathOperator{\C}{\mathcal{C}}
+\DeclareMathOperator{\power}{\mathcal{P}}
+\DeclareMathOperator{\vspan}{\text{span}}
+\DeclareMathOperator{\vnull}{\text{null}}
+\DeclareMathOperator{\range}{\text{range}}
+\DeclareMathOperator{\re}{\text{Re}}
+\DeclareMathOperator{\im}{\text{Im}}
+\DeclareMathOperator{\erf}{\text{erf}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdvv}[2]{\frac{\partial^2 #1}{\partial #2}}
+\DeclareMathOperator{\tr}{\operatorname{Tr}}
+\newcommand{\Deck}{\operatorname{Deck}}
+\newcommand{\Conj}{\mathrm{Conj}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\PROJ}{\mathit{Proj}}
+
+% category names
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Ring}{\mathsf{Ring}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Sch}{\mathsf{Sch}}
+
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\pre}{\text{pre}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\Char}{\operatorname{char}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Bl}{\mathrm{Bl}}
+\newcommand{\codim}{\mathrm{codim}}
+\newcommand{\val}{\operatorname{val}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Gr}{\operatorname{Gr}}
+
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\Rk}{\operatorname{Rk}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+
+% category theory symbols
+\DeclareMathOperator{\Mor}{\operatorname{Mor}}
+
+\newenvironment{solution}{\begin{trivlist}\item[]{\textcolor{blue}{Solution:}}}{\qed \end{trivlist}}
+
+
+\usepackage[shortlabels]{enumitem}
+\title{MATH 2060 Homework 8}
+\author{Zhengyu Zou}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\textbf{Collaborators:} Ethan Bove, Roberta Pagliaro, Anamaria Perez
+
+\section*{FOAG 20.2.B.}
+
+\begin{solution}
+\begin{enumerate}
+	\item Consider the following closed subscheme exact sequence
+	\[
+		0 \longrightarrow \cO_X(K_X) \longrightarrow \cO_X(K_X + C) \longrightarrow \cO_X(K_X + C)|_C \longrightarrow 0.
+	\]
+	Observe that $\cO_X(K_X) \cong \omega_X$ and $\cO_X(K_X + C) \cong \omega_X(C)$. 
+	By additivity of Euler characteristics, we must have $\chi(C, \cO_X(K_X + C)|_C) = \chi(X, \omega_X(C)) - \chi(X, \omega_X)$. Next, using Serre duality on $X$, we see that $\chi(X, \omega_X) = \chi(X, \cO_X)$ and $\chi(X, \omega_X(C)) = \chi(X, \cO_X(-C))$. Then, from the following closed subscheme exact sequence
+	\[
+		0 \longrightarrow \cO_X(-C) \longrightarrow \cO_X \longrightarrow \cO_X|_C \longrightarrow 0.
+	\]
+	Again, additivity of Euler characteristics gives us $\chi(C, \cO_C) = \chi(X, \cO_X) - \chi(X, \cO_X(-C))$, so 
+	\begin{align*}
+		C \cdot (K_X + C) 
+		&= \deg_C \cO_X(K_X + C)|_C \\
+		&= \chi(C, \cO_X(K_X + C)|_C) - \chi(C, \cO_C) \\
+		&= \chi(X, \omega_X(C)) - \chi(X, \omega_X) - \chi(C, \cO_C) \\
+		&= \chi(X, \cO(-C)) - \chi(X, \cO_X) - \chi(C, \cO_C) \\
+		&= -2 \chi(C, \cO_C) = 2p_a(C) - 2.
+	\end{align*}
+
+	\item We first claim that the formula holds if $D$ is effective (i.e., $D$ is a curve). We will use the following subscheme exact sequence:
+	\[
+		0 \longrightarrow \cO_X \longrightarrow \cO_X(D) \longrightarrow \cO_X(D)|_D \longrightarrow 0.
+	\]
+	This gives us
+	\begin{align*}
+		\chi(X, \cO_X(D)) - \chi(X, \cO_X)
+		&= \chi(D, \cO_X(D)|_D) \\
+		&= \deg_D \cO_X(D)|_D + \chi(D, \cO_D) \\
+		&= D \cdot D - (p_a(D) - 1) \\
+		&= D \cdot D - \frac{D \cdot (D + K_X)}{2} \\
+		&= \frac{D \cdot (D - K_X)}{2},
+	\end{align*}
+	where the fourth equality follows from part (a).
+
+	Next, given any Weil divisor $D$, we may express $D = A - B$ where $A$ and $B$ are effective. It follows that 
+	\[
+		\frac{D \cdot (D - K_X)}{2}
+		= \frac{(A - B) \cdot (A - B - K_X)}{2}
+		= \frac{A \cdot (A - K_X)}{2} + \frac{B \cdot (B + K_X)}{2} - A \cdot B.
+	\]
+	To compute $A \cdot B$, we consider the following subscheme exact sequence:
+	\[
+		0 \longrightarrow \cO_X(D) \longrightarrow \cO_X(A) \longrightarrow \cO_X(A)|_B \longrightarrow 0.
+	\]
+	It follows that $\chi(B, \cO_X(A)|_B) = \chi(X, \cO_X(A)) - \chi(X, \cO_X(D))$, so 
+	\[
+		A \cdot B = \chi(X, \cO_X(A)) - \chi(X, \cO_X(D)) - \chi(B, \cO_B).
+	\]
+	It follows that 
+	\begin{align*}
+		&\frac{D \cdot (D - K_X)}{2} \\
+		&= \chi(X, \cO_X(A)) - \chi(X, \cO_X) - \chi(B, \cO_B) - \chi(X, \cO_X(A)) + \chi(X, \cO_X(D)) + \chi(B, \cO_B) \\
+		&= \chi(X, \cO_X(D)) - \chi(X, \cO_X).
+	\end{align*}
+	This is precisely the equality that we want, so we are done.
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section*{FOAG 20.2.C.}
+
+\begin{solution}
+	We will write $\cO(l) = \cO(0, 1)$ and $\cO(m) = \cO(1, 0)$. Recall that $\cO(0, 1)$ pulls back to $\cO_{\PP^1}$ on $\PP^1 \times \{0\}$ and $\cO(1)$ on $\{0\} \times \PP^1$. It follows that 
+	\[
+		l \cdot l 
+		= \deg_l \cO(0, 1)|_l
+		= \deg_{\PP^1} \cO_{\PP^1} = 0 ;
+		\hspace{10pt}
+		m \cdot l 
+		= \deg_m \cO(0, 1)|_m 
+		= \deg_{\PP^1} \cO(1) = 1.
+	\]
+	It follows from symmetry of $m$ and $l$ that $m \cdot m = 0$. 
+	
+	Next, let $d$ be the diagonal in $\PP^1 \times \PP^1$. We know that the pullback of $d$ in both $\PP^1 \times \{0\}$ and $\{0\} \times \PP^1$ are $\cO(1)$, since the intersection is $(0, 0)$ with multiplicity 1. Now, if $d = al + bm$, then we have $a = d \cdot m = 1$ and $b = d \cdot l = 1$. This gives us $d = l + m = \cO(1, 1)$.
+\end{solution}
+
+\newpage
+
+\section*{FOAG 20.2.D.}
+
+\begin{solution}
+	Recall that $\Bl_0 \PP^2$ is the closed subscheme of $\PP^2 \times \PP^1$ cut out by the equation $xv - yu$, where $\PP^2$ has coordinates $[x:y:z]$ and $\PP^1$ has coordinates $[u:v]$. Let $l$ be the pullback of $\cO_{\PP^2}(1)$, and let $m$ be the pullback of $\cO_{\PP^1}(1)$. Concretely, we can think of $l = V(ax + by + cz)$ and $m = V(pu+ qv)$ for any $a,b,c,p,q \in k$. Clearly, $l$ and $m$ are effective divisors. We claim that $\Pic(\Bl_0 \PP^2) \cong l \ZZ \times m \ZZ$. To see this, we may WLOG assume $l = V(x)$ and $m = V(u)$. Consider the excision excision exact sequence 
+	\[	
+		\ZZ^2 \longrightarrow \Pic(\Bl_0 \PP^2) \longrightarrow \Pic(\Bl_0 \PP^2  - (l \cup m)) \longrightarrow 0.
+	\]	
+	Notice that $\Bl_0 \PP^2 - (l \cup m)$ is isomorphic to $D(x) \subset \AA^2$, so it is affine. It follows that we have a surjection $\ZZ^2 \rightarrow \Pic(\Bl_0 \PP^2)$, so $\Pic(\Bl_0 \PP^2)$ is generated by $l$ and $m$. Denote by $e = l - m$. Clearly, $l$ and $e$ generates $\Pic(\Bl_0 \PP^2)$. We will show that $e$ is the exceptional divisor, and that $l \cdot l = 1$, $e \cdot e = -1$, $l \cdot e = 0$. It follows that $(al + be) \cdot (al + be) = a^2 + b^2$, which equals 0 iff $a = b = 0$. It then follows that $\Pic (\Bl_0 \PP^2) = \ZZ l \times \ZZ e$. 
+
+	We start by showing that $e$ is the exceptional divisor. We may look at two affine charts $D_+(z) \cap D_+(v) \cong \Spec k[x,y,u]/(x - yu)$ and  $D_+(z) \cap D_+(u) \cong \Spec k[x,y,v]/(xv - y)$. Notice that on the first affine, we have $m = V(u)$, $e = V(y)$, and $l = V(x)$. Sections of $\cO(m + e)$ are of the form $\frac{f}{yu}$ where $f$ is any regular function, but these are precisely sections of $\cO(l)$, so $\cO(l) \cong \cO(m + e)$. For the second affine, we have $m = V(1)$, $e = V(y)$, and $l = V(x)$. It follows that $\cO(e + m) = \cO(e)$ which has sections $\frac{f}{y} = \frac{f}{ux}$, which is isomorphic to $\cO(l)$ via multiplication by $u$. The checks on other affines are similar, so we will omit them. This gives us $l = e + m$. 
+
+	Next, we show that $l \cdot l = 1$. Notice that $\cO(l) \cong \cO([x - z]) \cong \cO([y - z])$. Here, $[x - z]$ and $[y - z]$ are irreducible effective Cartier divisors that forms a complete intersection. In particular, $[x:y:z] \in [x - z] \cap [y - z]$ iff $x = y = z$, so $[x:y:z] = [1:1:1]$. It follows that $l \cdot l = h^0([1:1:1], \cO_{[1:1:1]}) = 1$. 
+
+	We then proceed to show that $l \cdot e = 0$. Since $e = l - m$, we can take $\cO(l) \cong \cO([z])$ and $\cO(m) \cong \cO([x])$. It follows that $l \cap m = [0:1:0]$, which is not the origin, so $l \cdot m = 1$ by the same argument as above. It follows that $l \cdot e = l \cdot (l - m) = 0$. This completes the proof. 
+
+	Finally, we show that $e \cdot e = -1$. We will do this on the affine charts. This follows from $e \cdot e = (l - m) \cdot (l - m) = -1 + m \cdot m$, so it suffices to show $m \cdot m = 0$. Notice that $\cO(m) \cong \cO(u) \cong \cO(v)$, but then $V(u) \cap V(v)$ is empty in $\PP^1$, so the self-intersection of $m$ must be 0. This shows $e \cdot e = -1$, which concludes the proof. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 20.2.E.}
+
+\begin{solution}
+	We know from 20.2.C. that $\Pic(\PP^1 \times \PP^1)$ is generated by $l = \PP^1 \times \{0\}$ and $m = \{0\} \times \PP^1$. In particular, any divisor $d = al + bm$ is effective if and only if $a, b \geq 0$. On the other hand, we know from 20.2.D. that $\Pic(\Bl_0 \PP^2)$ is generated by the exceptional divisor $e$ and the line $n$ that goes through the origin. In particular, $d' = ae + bn$ is effective if and only if $a, b \geq 0$. Therefore, if there exists an isomorphism $\Pic(\PP^1 \times \PP^1) \rightarrow \Pic(\Bl_0 \PP^2)$, then it must map the set of bases $\{l, m\}$ to $\{e, n\}$. However, this is impossible, since we have shown that $l \cdot l = m \cdot m = n \cdot n = 0$, but $e \cdot e = -1$. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 20.2.I.}
+
+\begin{solution}
+	WLOG we may tensor by $\cI^\vee$ so that the exact sequence becomes 
+	\[
+		0 \longrightarrow \cO_X \longrightarrow \cV \longrightarrow \cQ \longrightarrow 0.
+	\]
+	We will show that for each such exact sequence, there exists a section $\sigma: X \rightarrow \PP \cV$ such that $\cQ \cong N_{\sigma(X) / \PP \cV}$. 
+
+	We first find the isomorphism on the trivializing neighborhoods of $\cQ$. Suppose $\cQ$ is trivializable on $U \subset X$. We know that the exact sequence above must split, so $\cV \cong \cO_X^{\oplus2}$ and $\PP \cV|_U \cong \PP^1 \times U$. Let $\sigma|_U: U \rightarrow \PP^1 \times U$ be the section that maps $U \mapsto \{0\} \times U$. 
+
+	We now construct an isomorphism from $\cO_U$ to $N_{\sigma(U) / \PP^1 \times U}$. Let $\PP^1$ admit coordinates $[x:y]$. Then, $\sigma(U)$ corresponds to the principal divisor $[x] \in \PP^1 \times U$. This gives us an isomorphism $\cO_{\{0\} \times U} \rightarrow \cO_{\{0\} \times U}([x])$ sending $1 \mapsto x$. This gives us an isomorphism
+	\[
+		\cO_U \cong \cO_{\{0\} \times U} \cong \cO_{\{0\} \times U}([x])
+		\cong \cO_{\PP^1 \times U}(\sigma(U))|_{\sigma(U)} \cong N_{\sigma(U) / \PP^1 \times U}.
+	\]
+
+	Next, we would like to check that this section $\sigma$ glues together nicely on $X$ and that $\cQ \cong N_{\sigma(X) / \PP \cV}$. Suppose $U_i$ and $U_j$ are two trivializing neighborhoods of $\cQ$, with transition functions $g_{ij}$ and $g_{ji}$:
+	% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGNRfF97VV9pfSBcXGNvbmcgXFxjT197VV9pfSJdLFsxLDAsIlxcY09fe1Vfan0gXFxjb25nIFxcY1F8X3tVX2p9Il0sWzAsMSwiZ197aWp9IiwwLHsib2Zmc2V0IjotMn1dLFsxLDAsImdfe2ppfSIsMCx7Im9mZnNldCI6LTJ9XV0=
+	\[\begin{tikzcd}
+		{\cQ|_{U_i} \cong \cO_{U_i}} & {\cO_{U_j} \cong \cQ|_{U_j}}
+		\arrow["{g_{ij}}", shift left=2, from=1-1, to=1-2]
+		\arrow["{g_{ji}}", shift left=2, from=1-2, to=1-1]
+	\end{tikzcd}\]
+	Then, the trivializing maps commutes with the isomorphisms $\cQ|_{U_i} \rightarrow N_{\sigma(U_i)/\PP^1 \times U_i}$ on the overlaps $U_i \cap U_j$ in the following sense:
+	% https://q.uiver.app/#q=WzAsOCxbMCwwLCJcXGNPX3tVX2l9fF97VV9pIFxcY2FwIFVfan0iXSxbMCwxLCJcXGNPX3tVX2p9fF97VV9pIFxcY2FwIFVfan0iXSxbMSwwLCJOX3tcXHNpZ21hKFVfaSBcXGNhcCBVX2opIC8gXFxQUF4xIFxcdGltZXMgVV9pIFxcY2FwIFVfan0iXSxbMSwxLCJOX3tcXHNpZ21hKFVfaSBcXGNhcCBVX2opIC8gXFxQUF4xIFxcdGltZXMgVV9pIFxcY2FwIFVfan0iXSxbMiwwLCIxIl0sWzIsMSwiZ197aWp9KDEpIl0sWzMsMCwieCJdLFszLDEsImdfe2lqfSgxKXgiXSxbNCw1LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzQsNiwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs2LDcsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNSw3LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzAsMl0sWzIsM10sWzAsMV0sWzEsM11d
+	\[\begin{tikzcd}
+		{\cO_{U_i}|_{U_i \cap U_j}} & {N_{\sigma(U_i \cap U_j) / \PP^1 \times U_i \cap U_j}} & 1 & x \\
+		{\cO_{U_j}|_{U_i \cap U_j}} & {N_{\sigma(U_i \cap U_j) / \PP^1 \times U_i \cap U_j}} & {g_{ij}(1)} & {g_{ij}(1)x}
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=1-2, to=2-2]
+		\arrow[maps to, from=1-3, to=1-4]
+		\arrow[maps to, from=1-3, to=2-3]
+		\arrow[maps to, from=1-4, to=2-4]
+		\arrow[from=2-1, to=2-2]
+		\arrow[maps to, from=2-3, to=2-4]
+	\end{tikzcd}\]
+	We conclude that this correspondence is well-defined. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 20.2.L.}
+
+\begin{solution}
+	(I ran out of time thinking about this, so this is most likely wrong)
+	Let $\PP^1$ admit local coordinates $[u:v]$. We will establish local charts on $D_u := D_+(u)$ and $D_v := D_+(v)$ and analyze the transition functions. Locally on $D_u$ we have $\FF_n|_{D_u} \cong \PP^1_{D_u} \times D_u$, where $\PP^1_{D_u}$ has coordinates $[x_u:y_u]$. Similarly,  $\FF_n|_{D_v} \cong \PP^1_{D_v} \times D_v$, where $\PP^1_{D_v}$ has coordinates $[x_v:y_v]$. The gluing functions are 
+	\[
+		\phi_{uv}: [x_u:y_u] \mapsto [x_v:u^n y_v] \text{ and }
+		\phi_{vu}: [x_v:y_v] \mapsto [x_x:v^n y_u]
+	\]
+	Consider the divisor $[0] \subset \FF_n$, which induces an embedding $\PP^1 \rightarrow \FF_n$ whose image is $\PP^1_{\{0\}} \times \{0\}$. By the excision exact sequence, we have 
+	\[
+		\ZZ \longrightarrow \Pic(\FF_n) \longrightarrow \Pic(D_u) \longrightarrow 0
+	\]
+\end{solution}
+
+\newpage
+
+\section*{FOAG 21.2.E.}
+
+\begin{solution}
+	Denote by $\pdv{}{x_i}: B[x_1, \ldots, x_n] \rightarrow B[x_1, \ldots, x_n]$ the map that takes the partial derivative of a polynomial with respect to $x_i$. 
+	We let $M$ denote the quotient of the free $A$-module $A^n$ by the submodule generated by $(\pdv{f_j}{x_1}, \ldots, \pdv{f_j}{x_n})$ where $j = 1, \ldots, r$. 
+	Consider the map of $A$-modules $\phi: M \rightarrow \Omega_{A/B}$ that acts by sending $\phi(a_1, \ldots, a_n) = \sum_i a_i dx_i$. We claim that $\phi$ is an isomorphism. 
+	
+	To see that $\phi$ is well-defined, notice that 
+	\[
+		\phi \left( \pdv{f_j}{x_1}, \ldots, \pdv{f_j}{x_n} \right)
+		= \sum_{i=1}^n \pdv{f_j}{x_i} dx_i 
+		= df_j = d0 = 0.
+	\]	
+	To see that $\phi$ is surjective, observe that given any $a \in A$, we may express $a = p(x_1, \ldots, x_n)$ for some polynomial $p$. Using Leibniz's rule, we see that $da = \sum_i \pdv{p}{x_i} dx_i$, which implies $a = \phi(\pdv{p}{x_1}, \ldots, \pdv{p}{x_n})$. This shows $\phi$ is surjective. 
+
+	Finally, to see that $\phi$ is injective, we construct a map $\psi: \Omega_{A/B} \rightarrow M$ such that $\psi\phi = \Id_M$. Consider the $A$-module homomorphism $\psi$ that acts on the generators $da$ by $\psi(da) = (\pdv{a}{x_1}, \ldots, \pdv{a}{x_n})$. We first observe that 
+	\[
+		\psi\phi (a_1, \ldots, a_n)
+		= \psi \left( \sum_{i=1}^n a_i dx_i \right)
+		= \sum_{i=1}^n a_i \phi(dx_i) 
+		= (a_1, \ldots, a_n),
+	\]
+	so $\psi\phi = \Id_M$. 
+
+	It then remains to check that $\psi$ is well-defined. Given any two $a, a' \in A$, by properties of partial derivatives, we have 
+	\[
+		\psi(d(a + a') - da - da')
+		= \left( \pdv{a + a'}{x_1} - \pdv{a}{x_1} - \pdv{a'}{x_1}, \ldots, \pdv{a + a'}{x_n} - \pdv{a}{x_n} - \pdv{a'}{x_n} \right)
+		= 0.
+	\]
+	Similarly, we can check Leibniz's rule since the partial derivative operator also satisfies Leibniz's rule:
+	\[
+		\psi(d(aa') - ada' - a'da)
+		= \left( \pdv{aa'}{x_1} - a\pdv{a'}{x_1} - a'\pdv{a}{x_1}, \ldots, \pdv{aa'}{x_n} - a\pdv{a'}{x_n} - a'\pdv{a}{x_n} \right)
+		= 0.
+	\]
+	Finally, since $\pdv{b}{x_i} = 0$ for all $b \in B$ and $i = 1, \ldots, n$, we see that $\psi(db) = 0$. We conclude that $\psi$ is well-defined. 
+\end{solution}
+
+\newpage
+
+\section*{FOAG 21.2.J.}
+
+\begin{solution}
+	Recall that the conormal sheaf of a closed embedding $i: X \hookrightarrow Y$ is the sheaf $\cI / \cI^2$, where $\cI$ is the ideal sheaf of the embedding $i$. Since $D$ is an effective Cartier divisor, there exists a closed subscheme exact sequence 
+	\[
+		0 \longrightarrow \cO(-D) \longrightarrow \cO_X \longrightarrow \cO_X|_D \longrightarrow 0.
+	\]
+	It follows that the ideal sheaf of the embedding $D \hookrightarrow X$ is $\cO(-D)$, so $\cN_{D/X}^\vee \cong \cO(-D) / \cO(-D)^2 \cong \cO(-D) / \cO(-2D)$. To compute the latter sheaf, we may twist the above sequence by $\cO(-D)$ to get 
+	\[
+		0 \longrightarrow \cO(-2D) \longrightarrow \cO(-D) \longrightarrow \cO(-D)|_D \longrightarrow 0.
+	\]
+	Since $\cO(-D)$ is locally free, the above sequence is exact, so we have $\cO(-D)|_D \cong \cO(-D) / \cO(-2D) \cong \cN_{D/X}^\vee$. 
+\end{solution}
+
+\end{document}

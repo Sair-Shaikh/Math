@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{amsart}
 
 \include{../style}
 
@@ -7,349 +7,454 @@
 
 \input{title}
 
-These notes are going to be very rough because my background for this material is quite weak.
+\section{Line Bundles and Divisors:}
 
-In the first lecture, we covered global spec, global proj, and projective and affine morphisms. \todo{Fill this in.}
+Recall, the following bijection, 
+\begin{align*}
+    \Mor(X, \P^r) \leftrightarrow \{(\LL, s_0, \cdots, s_r) : \LL \text{ line bundle}, s_i \in \Gamma(\LL), \text{ basepoint free}\}
+\end{align*}
 
-Now, we are going towards sheaf cohomology. 
-
-\section{Sheaf Cohomology:}
-Recall that the global sections functor, $\Gamma$ is left-exact. 
-
-Our goal is to take $X$, a separated, quasi-compact $A$-scheme and $F$ a quasi-coherent sheaf of $\OO_X$ modules, to produce sheaf cohomology groups $H(X, F)$ satisfying: 
+Two of the central problems in Algebraic Geometry are:
 \begin{enumerate}
-    \item $H^i(X, -): QCoh \to Mod_A$ are functors. 
-    \item $H^0(X, -) = \Gamma(X, -)$  as functors.
-    \item Given exact seqeunce $0 \to F \to G \to H \to 0$, then we want the long exact sequence: 
-    \[ 0 \to H^0(X, F) \to H^0(X, G) \to H^0(X, H) \to H^1(X, F) \to  H^1(X, G) \cdots \] 
-    \item Given $\pi: X \to Y$ and $F$ a qcoh on $X$, you will get $H^i(Y, \pi_*(F)) \to H^i(X, F)$ extending the usual pullback map on global sections. 
-    \item The map in (4) is an isomoprhism if $\pi$ is affine. 
-    \item If $X$ covered by $n$ affines, then $H^1(X, F) = 0$ for $i \geq n$. In particular, $\Gamma$ is exact for $X$-affine.
-    \item $H^i(X, \colim F_j) = \colim H^1(X, F_j)$. In particular, $H^i(X, F_1 \oplus F_2) = H^1(X, F_1) \oplus H^1(X, F_2)$. 
-    \item The cohomology of line bundles on projective space is ... look at the next theorem.
+    \item Classify sheaves on a scheme $X$, in particular, line bundles.
+    \item Understand $\Gamma: \Coh(X) \to \Ab$. 
 \end{enumerate}
-
-For projective space, we want the following:
-\begin{theorem}
-    .
-    \begin{enumerate}
-        \item $H^0(\P_A^n, \OO(m))$ is free of rank $\binom{n+m}{m}$ if $m \geq 0$. 
-        \item $H^n(\P^n_A, \OO(m))$ is free of rank $\binom{-m-1}{-n-m-1}$ if $m \leq -n-1$
-        \item $H^i(\P^n_A, \OO(m)) = 0$ in all other cases. 
-    \end{enumerate}
-\end{theorem}
-
-Observe now the following: 
-\begin{enumerate}
-    \item These are all finitely generated $A$-modules. This is true for any coherent sheaf on a proper $A$-scheme. 
-    \item These vanish for $i > n = \dim(\P^n_A)$. 
-    \item The top cohomology, $H^n(\P^n_A, \OO(m))$ is $1$ dimensional for $m = -n-1$ and induces a perfect pairing:
-    \[ H^i(\P_k^n, \OO(m)) \times H^{n-i}(\P^n_k, \OO(-n-1-m)) \to H^n(\P^n_k, \OO(-n-1)) = k\]
-    This is a special case of Serre duality. $\OO(-n-1)$ is a special case of a ``dualizing sheaf''. 
-    \item Higher cohomology vanishes for $m > -n-1$. This is a special case of the Kodaira vanishing theorem.
-    \item $\Sigma_i (-1)^i h^i(\P_k^n, \OO(m))$ is a polynomial in $m$. This is called the Hilbert polynomial of projective space. 
-\end{enumerate}
-
-\begin{theorem}
-    Let $X$ be projective over $A$ noetherian and $F$ a coherent sheaf on $X$. Then, 
-    \begin{enumerate}
-        \item The $H^i(X, F)$ are finitely generated $A$-modules
-        \item The $H^i(X, F(m))$ vanish for $i > 0$ and $m >> 0$. Note: $F(m) = F \otimes \OO(m)$. 
-    \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-    Step 1: Reduce to $X = \P_A^n$. For $\pi : X \hookrightarrow \P_A^n$, we have:
-    \[ H^i(X, F(m)) =  H^1(\P^n_A, \pi_*(F(m)))\]
-    because closed embeddings are affine. So we might as well do this for projective space. 
-
-    Step 2: Present $F$ as: 
-    \[ 0 \to G \to \OO(m)^j \to F \to 0 \]
-    giving the long exact sequence:
-    \[ 
-    \xymatrix{
-    0 \ar[r] & H^0(G) \ar[r] & H^0(\OO(m)^j) \ar[r] & H^0(F) \ar[lld] \\
-    & H^1(G) \ar[r] & H^1(\OO(m)^j) \ar[r] & H^1(F) \ar[lld] \\
-    & H^2(G) \ar[r] & H^2(\OO(m)^j) \ar[r] & H^2(F) \ar[lld] \\
-    & \vdots \ar[r] & \vdots \ar[r] & \vdots \ar[lld] \\
-    & H^{n-1}(G) \ar[r] & H^{n-1}(\OO(m)^j) \ar[r] & H^{n-1}(F) \ar[lld] \\
-    & H^n(G) \ar[r] & H^n(\OO(m)^j) \ar[r] & H^n(F) \ar[r] & 0
-    } \]
-
-
-    Step 3: Backwards induction. 
-    \begin{enumerate}
-        \item $H^n(\OO(m)^j)$ finitely generated implies $H^n(F)$ finitely generated for all $F$ implies $H^n(G)$ finitely generated implies $H^{n-1}(F)$ finitely generated for all $F$. 
-        \item Twist by $\OO(N)$ for $N >> 0$. Then, 
-        \[ H^n(\OO(m+N)^j)= 0 \implies H^n(F(N)) = 0 \]
-        for all $F$ and $N$ sufficiently large. This implies, that $H^n(G(N)) = 0$ for $N >>_F 0$ which implies $H^{n-1}(F(N)) = 0$. 
-    \end{enumerate}
-    In particular, we showed that $\Gamma(X, F)$ is a finitely generated $A$-module.
-\end{proof}
-
-\begin{corollary}
-    Let $Y$ is locally noetherian. Then $\pi: X \to Y$ is finite if and only if it is affine and projective. 
-\end{corollary}
-\newpage 
-\section{Cech Cohomology:}
-\todo{Fill in the missing lecture}
-\newpage 
-
-\section{Euler Characteristics:}
-Let $X$ be a projective $k$-scheme and $F$ a coherent sheaf on $X$. 
 
 \begin{definition}
-    The Euler characteristic is 
-    \[ \chi(X, F) := \sum_{i = 0}{\dim X} (-1)^i h^i(X, F)\]
+    Let $\Pic(X) = \{\text{line bundles}\}/\text{isom.}$, equipped with the group operation $\otimes$. In fact, $\Pic$ is a contravariant functor as, 
+    \begin{align*}
+        f: X \to Y \implies f^*: \Pic(Y) \to \Pic(X)
+    \end{align*}
+    with $f^*([\LL]) = [f^*\LL]$. 
+\end{definition}
+
+In topology, we know how to classify line bundles. In fact, 
+\[ \Pic(X) = [X, \CP^\infty] = [X, K(\Z, 2)] = H^2_{sing}(X)\]
+
+Here are some trivial examples. 
+\begin{enumerate}
+    \item $\Pic(\Spec k) = 1$
+    \item $\Pic(\A^1_k) = 1$
+    \item More generally, $\Pic(\Spec A) = 1$ for $A$ a PID, since rank $1$ projective modules over $A$ are free.  
+\end{enumerate}
+
+Moving towards less trivial examples, we ask the question, where does a section of a line bundle $\LL$ vanish. 
+
+Locally, a section of $\LL$ is a function. Thus, it should vanish along a divisor (i.e. $\codim 1$).
+
+For simplicity, assume $X$ is Noetherian, normal, and irreducible. 
+
+\begin{definition}
+    A \textbf{Weil Divisor} is a formal $\Z$-linear combination, 
+    \[ \sum_{\substack{ Y \subset X  \\ \codim Y = 1 \\ irred+red}} n_Y [Y]\]
+    where all but finitely many $n_Y$ are zero. 
+
+    Let $\Weil(X)$ be the abelian group of Weil divisors. 
+\end{definition}
+
+\begin{remark}
+    In topology, these play the role of $2$-cocycles (via Poincare duality)
+\end{remark}
+
+\begin{definition}
+    \begin{enumerate}
+        \item A divisor of the form $D = [Y]$ is called \textbf{irreducible}.
+        \item A divisor $D = \sum n_Y [Y]$ is \textbf{effective} if $n_Y \geq 0$ for all $Y$. We notate this as $D > 0$. 
+        \item We write $D_1 \geq D_2$ if $D_1 - D_2 \geq 0$. This is a partial order on $\Weil(X)$. 
+    \end{enumerate}
 \end{definition}
 
 \begin{example}
-    \[ \chi(\P^n_k, \OO(m)) = \frac{(m+1)\cdots(m+n)}{n!} = \binom{m+n}{m}\]
+    \begin{enumerate}
+        \item If $X$ is a curve, $\Weil(X)$ is a free abelian group on the closed points of $X$. 
+        \item $X = \P^r$. Then irreducible divisors are vanishing of single irreducible homogeneous polynomials. 
+    \end{enumerate}
 \end{example}
 
-Computing Euler characteristics is much easier than computing the ranks of the cohomology groups. 
-
-\subsection{Riemann-Roch:}
-Let $C$ projective curve and 
-\[ D = \sum_{p \in C^{reg}} a_p[p]\]
-be a divisor supported at regular points of $C$. 
-
 \begin{definition}
-    We define the degree, 
-    \[ \deg(D) = \sum a_p \deg p\]
-    where $\deg p$ is the degree of extension of the residue field. 
+    Let $\LL$ be a line bundle on $X$ and $s$ a rational section not vanishing identically on any component. Then, we define the \textbf{divisor of zeros and poles}. 
+    \[ \div s = \sum_Y \val_Y(s)[Y]\]
+    Since a section of $\LL$ is locally a function (under any trivializion in any open neighborhood of $Y$.)
 \end{definition}
 
-There will be a homework problem: 
+Note that $\{(\LL, s)\}$ under $\otimes$ with $(\LL, s) \otimes (\LL', s') = (\LL \otimes \LL', s\otimes s')$ is an Abelian group. Furthermore, we have that
+\[ \div: \{ (\LL, s)\}/\text{isom} \to \Weil(X)\]
+is a homomorphism.
 
-\begin{exercise}{x.x.x}
-    Show that
-    \[ \chi(C, \OO_C(D)) = \deg D + \chi(C, \OO_C)\]
-\end{exercise}
-
-\begin{definition}
-    Let $\mathcal{L}$ be a line cunvle over $C$ a curve. Then, 
-    \[ \deg \mathcal L =  \chi(C, \mathcal L) - \chi(C, \OO_C) \]
-\end{definition}
-
-
-In complex analysis, these curves look topologically like a surface. We count the number of holes. That is, the genus $g$ is the number of holes and is a topological invariant. Turns out, 
-\[ \chi(C, \OO_C) = 1-g \]
-
-Further, we can consider holomorphic line bundles and map them to topological line bundles. 
-\begin{align*}
-    \{\text{holomorphic line bundles }\} \to \{\text{topological line bundles}\} = H^2_{sing}(X) = \Z  
-\end{align*} 
-This is the degree map. 
-
-\begin{definition}
-    Let $X$-scheme of dimension $n$. The arithmetic genus is,
-    \[ p_a(X) = (-1)^n (\chi(X, \OO_X)-1) \]
-\end{definition}
-
-Finally, we have the Riemann-Roch theorem,
-\begin{theorem}
-    \[ h^0(C, \LL) -h^1(C, \LL) = \deg \LL + 1 - p_a(C)\]
-\end{theorem}
-There is no content to this theorem as we state it now. 
-
-More generally, for $F$ a coherent sheaf on $C$, 
-
-\begin{definition}
-    \[ \deg(F) = \chi(C, F) - (\rk F)\chi(C, \OO_C)\]
-    where $\rk F$ is at the generic point. 
-\end{definition}
-
-We explain Serre Duality with an example. 
-\begin{example}[Serre Duality]
-    Let $C \subset \P^2$ be the closure of the affine plane curve $y^2 = x^3 + 1$. 
-    Let $p = (2,3)$ and $q = (2, -3)$. We ask, what is $H^0(\OO_C(p+q))$? 
-
-    We take some $f \in H^0(\OO_C(p+q))$ and we look at it in a neighborhood of $p$ and in a neighborhood of $q$. Thus, we need to pick coordinates locally around $p$ and $q$. The $x$-coordinate works (is this an analytic open?)
-
-    Near $p$ and $q$, we expand $f$,
-    \begin{align*}
-        f \sim_p \frac{a_{-1}}{x-2} + a_0 + a_1(x-2) + \cdots \\
-        f \sim_q \frac{b_{-1}}{x-2} + b_0 + b_1(x-2) + \cdots 
-    \end{align*}
-    Up to addition of a constant, $f$ is determined by $a_{-1}$ and $b_{-1}$. We call $a_{-1}$ and $b_{-1}$ the principal parts of the function. 
-
-    Write $\omega_C$ to be a line bundle of the algebraic/holomorphic differential forms on $C$. 
-
-    Later we will give precise definitions and show that $\omega_C \cong \OO_C$ in this case. 
-
-    Thus, in particular it has a unique section $\alpha$ up to scaling. 
-
-    Claim: $\alpha = \frac{dx}{y} = \frac{2dy}{3x^2}$. This is regular and nonvanishing away from $L$ (line at $\infty$) $z= 0$. 
-
-    Why? $C \cap L$ contains just one point $[0 : 1 : 0]$. Moreover, $\deg \omega_C = 0$. Upshot, $\alpha$ is regular on all of $C$. 
-
-    Next, we talk about which $a_{-1}$ and $b_{-1}$ can occur. We drew the picture of a genus $1$ torus with points $p$ and $q$. We look at $\alpha f$ the meromorphic differential. Then we take contractible opens around $p$ and $q$. 
-
-    By the Residue Theorem, we have 
-    \[ 0 = \Res_p(\alpha f) + \Res_q(\alpha f) = \frac{a_{-1}}{3} + \frac{b_{-1}}{-3}\]
-    This implies $a_{-1} = b_{-1}$. 
-
-    In general, if $D = \{p_0, \cdots, p_d\} \subset C$ is a divisor on a smooth curve. $\alpha \in H^0(\omega_C)$ and $f \in H^0(\OO_C(D))$. These imply, 
-    \[ \sum \Res_{p_i}(\alpha f) = 0\]
-    This condition is trivial if and only if $\alpha \in H^0(\omega_w(-D))$. Thus, 
-    \[ \dim H^0(\OO_C(D)) \leq d + 1 - [\dim H^0(\omega_C) - \dim H^0(\omega_C(-D))] \]
-    That is, 
-    \[ h^0(\OO_C(D)) = h^0(\omega_C(-D)) \leq d + 1 - h^0(\omega_C)\]
-    Serre Duality says that this is an equality and the terms in this expression agree with the Riemann-Roch theorem. 
+\begin{example}
+    Let $\LL = \OO_{\P^n}(m)$. Let $f = \frac{g_1-g_2^3}{g_3^2}$ with $\deg g_1 + 3\deg g_2 - 2\deg g_3 = m$. Then, 
+    \[ \div(\OO(m), f) = [\V(g_1)] + 3[\V(g_2)] - 2[\V(g_3)]\]
 \end{example}
-\newpage
 
-\section{Serre Duality and Complex Analysis}
-\todo{Skipped Another Lecture}
-\newpage
+\begin{example}
+    Let $\LL$ be the ideal sheaf of the origin in $\A^1$. Then, 
+    \[ \div\left(\LL, \frac{x^3}{x-1}\right) = 2[0] - [1]\]
+    Why? The key point is that $\LL$ and $\OO$ in a neighborhood of $x = 0$ is division by $x$. That is $\frac{x^2}{x-1}$ vanishes at $x = 0$ vanishes to order $2$ more than it was asked to. 
+\end{example}
 
-\section{Vector Bundles on $\P^1$}
-
-\begin{theorem}
-    Any vector bundle (locally free sheaf) $\EE$ on $\P^1$ can be written uniquely as $\bigoplus \OO(a_i)$.  
-\end{theorem}
-
-\begin{warning}
-    On most schemes, vector bundles do not always split as a direct sum of line bundles. 
-\end{warning}
-
-For $m >>0$, $\Hom(\OO(m), \EE) = 0$. When $m << 0$, $\Hom(\OO(m), \EE) \neq 0$. This is because $\Hom(\OO(m), \EE) = \EE(-m)$.  \todo{Understand this.}
-
-Let $a_r$ be the maximum $m$ such that $\Hom(\OO(m), \EE) \neq 0$. 
-
-Consider the exact sequence, 
-\begin{align*}
-    0 \to \OO(a_r) \to \EE \to \FF \to 0
-\end{align*}
-The map $\OO(q) \to \EE$ must be injective on fibers at every point $p \in \P^1$. 
-
-Why? If not, $\OO(a_r) \to \EE(-p) = \EE \otimes \II_p$. This implies $\OO(a_r+1) \to \EE$ contradicting the maximality of $a_r$. 
-
-This implies $F$ is locally free because it is the quotient of locally free sheaves. 
-
-By induction, $F = \bigoplus_{i=1}^{r-1} \OO(a_i)$. In some sense, we are splitting $\OO(a_r)$s out of $\EE$ to get this direct sum. \todo{Why?}
-
-\begin{claim}
-    $a_r \geq a_i \quad \forall i$
-\end{claim} 
-Why? We have the sequence, 
-\begin{align*}
-    0 \to \OO(-1) \to \EE(-a_r-1) \to \bigoplus \OO(a_i-a_r-1) \to 0
-\end{align*}
-Taking the long exact sequence in cohomology, we get, 
-\begin{align*}
-    \xymatrix{ 
-        ... \ar[r] &H^-(\EE(-a_r-1)) \ar[r] &H^0\left(\bigoplus \OO(a_i-a_r-1)\right) \ar[r] &H^1(\OO(-1)) \ar[r] &... \\ 
-        ... \ar[r] &0 \ar[r] &H^0\left(\bigoplus \OO(a_i-a_r-1)\right) \ar[r] &0 \ar[r] &...
-    }  
-\end{align*}
-Thus, \todo{Finish this}. 
-
-
-\begin{claim}
-    The previous exact sequence splits. 
-\end{claim}
-
-FOAG has an argument involving transition functions. 
-
-Easier argument: 
-\[ \Ext^1\left(\bigoplus \OO(a_i), \OO(a_r)\right) = H^1\left(\bigoplus \OO(a_r-a_i)\right) = 0\] 
-
-This uses the local-to-global $\Ext$ spectral sequence to get $H^p(\Ext^q(\FF, \GG)) \to \Ext^{p+q}(\FF, \GG)$.
-
-
-\subsection{Hilbert Functions / Polynomials}
-Let $X$ be a projective $k$-scheme, embedded in $\P^n$ and $F$ a coherent sheaf on $X$. 
-
-\begin{definition}
-    The Hilbert function 
-    \begin{align*}
-        h_F(m) &= h^0(X, F(m)) \\
-        h_X(m) &= h_{\OO_x}(m)
-    \end{align*}
-    This depends on the embedding. 
-\end{definition}
-
-\begin{theorem}
-    $\chi(X, F(m))$ is a polynomial of degree $\dim \Supp F$. Hence, $h^1(X, F(m))$ is a poylnomial of degree $\dim( \Supp F)$ for $m >> 0$. 
-\end{theorem}
-
-\begin{definition}
-    We call this polynomial the Hilbert Polynomials $p_F(m)$ and write $p_X(m) = p_{\OO_X}(m)$. 
-\end{definition}
+\begin{proposition}
+    If $X$ is noetherian and normal, then $\div$ is injective. 
+\end{proposition}
 
 \begin{proof}
-    Extend $k$ infinite. \todo{Finish this}
+    Why? $\div(\LL, s) = 0$ means that $s$ has no zeros and no poles as a section of $\LL$. That is, $s$ and $\frac{1}{s}$ are both regular. Thus, the map $\cdot s:\OO_X \to\LL$ is an isomorphism. That is $(\OO_X, 1) \cong (\LL, s)$. 
 \end{proof}
+
+Next, we will see that $\div$ is surjective. 
 
 \begin{definition}
-    The degree $\deg X := \text{leading coeff. of $p_X(m)$} \cdot n!$. 
+    Let $D$ be a Weil divisor on $X$. Define sheaf $\OO_X(D)$ via the following: 
+    \[ \Gamma(U, \OO_X(D)) = \{t \in K(X)^\times.: \div|_U t + D|_U \geq 0 \} \cup \{0\}\]
 \end{definition}
 
-\begin{exercise}{?}
-    If $X$ is a degree $d$ hypersurface. Then $\deg X = d$. 
-\end{exercise}
 
-\begin{theorem}[Bezout]
-    Let $X$ be a projective $k$-scheme in $\P^n$. Let $H$ be a hypersurface not containing any associated point of $X$. 
-    \[ \deg(H \cap X) = (\deg H)(\deg X)\]
-    In particular, $C_1$ \todo{Finish}. 
-\end{theorem}
-
-\subsection{Arithmetic Genus of a Plane Curve}
-Let $C = \P^2$ be a degree $d$ plane curve. What is $p_a(C) = 1-p_C(d)$?
-
-Lets calculate the whole Hilbert polynomial. Consider the exact sequence 
-\begin{align*}
-    0 \to \OO_{\P^2}(m-d) \to \OO_{\P^2}(m) \to \OO_C(m) \to 0
-\end{align*}
-Thus, 
-\begin{align*}
-    p_C(m) &= p_{\P^2}(m) - p_{\P^2}(n--d) \\
-    &= \binom{m+2}{2} - \binom{m-d+2}{2} \\
-    \implies p_C(0) &= -\frac{d^2-3d}{2}
-\end{align*}
+\begin{example}
+    If $D = -[\text{origin}]$ in $\A^1$. Then $\OO_X(D)$ is the ideal sheaf of the origin. For $U$ not containing the origin, having $\div|_U t \geq 0$ means that $t$ is regular. If $U$ contains the origin, then $\div|_U t -[\text{origin}]|_U \geq 0$ means it is regular and vanishes at the origin
+\end{example}
 
 \newpage 
-\todo{Missed a lecture}
+% \section{Global Spec and Global Proj:}
 
-\newpage 
-
-From projective to proper. We have seen a number of things we have shown are true for projective morphisms, but claimed they still work for proper morphisms. We are going to cover some lemmas that make this possible. 
-
-The first is Chow's lemma. 
-\begin{lemma}
-    Let $\pi: X \to \Spec A$ be proper and $A$ noetherian. Then there exists $\mu: X' \to X$ surjective + projective + birational such that $\pi \circ \mu$ is projective. 
-\end{lemma}
-
-\begin{proof}[Idea.]
-    \bbni
-    \begin{enumerate}
-        \item Cover $X$ by affines. 
-        \item Compactify each affine to a projective $A$-scheme. 
-        \item Consider graph of the rational map to their product. 
-    \end{enumerate}
-\end{proof}
+% In the first lecture, we covered global spec, global proj, and projective and affine morphisms. \todo{Fill this in.}
 
 
-\subsection{Grothendieck's Coherence Theorem}
-Let $\pi: X \to Y$ proper morphism of locally noetherian schemes. Let $F$ be coeherent over $X$. Then $R^i \pi_* F$ is coherent.
+% \section{Sheaf Cohomology:}
+% Recall that the global sections functor, $\Gamma$ is left-exact. 
 
-\begin{proof}[Idea.]
-    Reduce to $Y = \Spec A$ and apply Chow's lemma. 
-    \[\xymatrix{
-        X' \ar[r]^\mu \ar[d]_{\pi \circ \mu} & X \ar[ld]^\pi \\
-        \Spec A
-    }\]
-    Then approximate $F$ by $\mu_* \mu^* F$. Then, 
-    \[ 0 \to S \to F \to \mu_*\mu^*F \to Q \to 0\]
-    where if $S$ and $Q$ are supported on something of smaller dimension. Then, $R^i \pi_*$ coherent by induction. 
+% Our goal is to take $X$, a separated, quasi-compact $A$-scheme and $F$ a quasi-coherent sheaf of $\OO_X$ modules, to produce sheaf cohomology groups $H(X, F)$ satisfying: 
+% \begin{enumerate}
+%     \item $H^i(X, -): QCoh \to Mod_A$ are functors. 
+%     \item $H^0(X, -) = \Gamma(X, -)$  as functors.
+%     \item Given exact seqeunce $0 \to F \to G \to H \to 0$, then we want the long exact sequence: 
+%     \[ 0 \to H^0(X, F) \to H^0(X, G) \to H^0(X, H) \to H^1(X, F) \to  H^1(X, G) \cdots \] 
+%     \item Given $\pi: X \to Y$ and $F$ a qcoh on $X$, you will get $H^i(Y, \pi_*(F)) \to H^i(X, F)$ extending the usual pullback map on global sections. 
+%     \item The map in (4) is an isomoprhism if $\pi$ is affine. 
+%     \item If $X$ covered by $n$ affines, then $H^1(X, F) = 0$ for $i \geq n$. In particular, $\Gamma$ is exact for $X$-affine.
+%     \item $H^i(X, \colim F_j) = \colim H^1(X, F_j)$. In particular, $H^i(X, F_1 \oplus F_2) = H^1(X, F_1) \oplus H^1(X, F_2)$. 
+%     \item The cohomology of line bundles on projective space is ... look at the next theorem.
+% \end{enumerate}
 
-    Let $G$ be $\mu^* F$. Then, use the Leray spectral sequence, 
-    \begin{align*}
-        R^p \pi_*(R^q \mu_* G) \implies R^{p+q}(\pi \circ \mu)_* G
-    \end{align*}
-\end{proof}
+% For projective space, we want the following:
+% \begin{theorem}
+%     .
+%     \begin{enumerate}
+%         \item $H^0(\P_A^n, \OO(m))$ is free of rank $\binom{n+m}{m}$ if $m \geq 0$. 
+%         \item $H^n(\P^n_A, \OO(m))$ is free of rank $\binom{-m-1}{-n-m-1}$ if $m \leq -n-1$
+%         \item $H^i(\P^n_A, \OO(m)) = 0$ in all other cases. 
+%     \end{enumerate}
+% \end{theorem}
+
+% Observe now the following: 
+% \begin{enumerate}
+%     \item These are all finitely generated $A$-modules. This is true for any coherent sheaf on a proper $A$-scheme. 
+%     \item These vanish for $i > n = \dim(\P^n_A)$. 
+%     \item The top cohomology, $H^n(\P^n_A, \OO(m))$ is $1$ dimensional for $m = -n-1$ and induces a perfect pairing:
+%     \[ H^i(\P_k^n, \OO(m)) \times H^{n-i}(\P^n_k, \OO(-n-1-m)) \to H^n(\P^n_k, \OO(-n-1)) = k\]
+%     This is a special case of Serre duality. $\OO(-n-1)$ is a special case of a ``dualizing sheaf''. 
+%     \item Higher cohomology vanishes for $m > -n-1$. This is a special case of the Kodaira vanishing theorem.
+%     \item $\Sigma_i (-1)^i h^i(\P_k^n, \OO(m))$ is a polynomial in $m$. This is called the Hilbert polynomial of projective space. 
+% \end{enumerate}
+
+% \begin{theorem}
+%     Let $X$ be projective over $A$ noetherian and $F$ a coherent sheaf on $X$. Then, 
+%     \begin{enumerate}
+%         \item The $H^i(X, F)$ are finitely generated $A$-modules
+%         \item The $H^i(X, F(m))$ vanish for $i > 0$ and $m >> 0$. Note: $F(m) = F \otimes \OO(m)$. 
+%     \end{enumerate}
+% \end{theorem}
+
+% \begin{proof}
+%     Step 1: Reduce to $X = \P_A^n$. For $\pi : X \hookrightarrow \P_A^n$, we have:
+%     \[ H^i(X, F(m)) =  H^1(\P^n_A, \pi_*(F(m)))\]
+%     because closed embeddings are affine. So we might as well do this for projective space. 
+
+%     Step 2: Present $F$ as: 
+%     \[ 0 \to G \to \OO(m)^j \to F \to 0 \]
+%     giving the long exact sequence:
+%     \[ 
+%     \xymatrix{
+%     0 \ar[r] & H^0(G) \ar[r] & H^0(\OO(m)^j) \ar[r] & H^0(F) \ar[lld] \\
+%     & H^1(G) \ar[r] & H^1(\OO(m)^j) \ar[r] & H^1(F) \ar[lld] \\
+%     & H^2(G) \ar[r] & H^2(\OO(m)^j) \ar[r] & H^2(F) \ar[lld] \\
+%     & \vdots \ar[r] & \vdots \ar[r] & \vdots \ar[lld] \\
+%     & H^{n-1}(G) \ar[r] & H^{n-1}(\OO(m)^j) \ar[r] & H^{n-1}(F) \ar[lld] \\
+%     & H^n(G) \ar[r] & H^n(\OO(m)^j) \ar[r] & H^n(F) \ar[r] & 0
+%     } \]
+
+
+%     Step 3: Backwards induction. 
+%     \begin{enumerate}
+%         \item $H^n(\OO(m)^j)$ finitely generated implies $H^n(F)$ finitely generated for all $F$ implies $H^n(G)$ finitely generated implies $H^{n-1}(F)$ finitely generated for all $F$. 
+%         \item Twist by $\OO(N)$ for $N >> 0$. Then, 
+%         \[ H^n(\OO(m+N)^j)= 0 \implies H^n(F(N)) = 0 \]
+%         for all $F$ and $N$ sufficiently large. This implies, that $H^n(G(N)) = 0$ for $N >>_F 0$ which implies $H^{n-1}(F(N)) = 0$. 
+%     \end{enumerate}
+%     In particular, we showed that $\Gamma(X, F)$ is a finitely generated $A$-module.
+% \end{proof}
+
+% \begin{corollary}
+%     Let $Y$ is locally noetherian. Then $\pi: X \to Y$ is finite if and only if it is affine and projective. 
+% \end{corollary}
+% \newpage 
+% \section{Cech Cohomology:}
+% \todo{Fill in the missing lecture}
+% \newpage 
+
+% \section{Euler Characteristics:}
+% Let $X$ be a projective $k$-scheme and $F$ a coherent sheaf on $X$. 
+
+% \begin{definition}
+%     The Euler characteristic is 
+%     \[ \chi(X, F) := \sum_{i = 0}{\dim X} (-1)^i h^i(X, F)\]
+% \end{definition}
+
+% \begin{example}
+%     \[ \chi(\P^n_k, \OO(m)) = \frac{(m+1)\cdots(m+n)}{n!} = \binom{m+n}{m}\]
+% \end{example}
+
+% Computing Euler characteristics is much easier than computing the ranks of the cohomology groups. 
+
+% \subsection{Riemann-Roch:}
+% Let $C$ projective curve and 
+% \[ D = \sum_{p \in C^{reg}} a_p[p]\]
+% be a divisor supported at regular points of $C$. 
+
+% \begin{definition}
+%     We define the degree, 
+%     \[ \deg(D) = \sum a_p \deg p\]
+%     where $\deg p$ is the degree of extension of the residue field. 
+% \end{definition}
+
+% There will be a homework problem: 
+
+% \begin{exercise}{x.x.x}
+%     Show that
+%     \[ \chi(C, \OO_C(D)) = \deg D + \chi(C, \OO_C)\]
+% \end{exercise}
+
+% \begin{definition}
+%     Let $\mathcal{L}$ be a line cunvle over $C$ a curve. Then, 
+%     \[ \deg \mathcal L =  \chi(C, \mathcal L) - \chi(C, \OO_C) \]
+% \end{definition}
+
+
+% In complex analysis, these curves look topologically like a surface. We count the number of holes. That is, the genus $g$ is the number of holes and is a topological invariant. Turns out, 
+% \[ \chi(C, \OO_C) = 1-g \]
+
+% Further, we can consider holomorphic line bundles and map them to topological line bundles. 
+% \begin{align*}
+%     \{\text{holomorphic line bundles }\} \to \{\text{topological line bundles}\} = H^2_{sing}(X) = \Z  
+% \end{align*} 
+% This is the degree map. 
+
+% \begin{definition}
+%     Let $X$-scheme of dimension $n$. The arithmetic genus is,
+%     \[ p_a(X) = (-1)^n (\chi(X, \OO_X)-1) \]
+% \end{definition}
+
+% Finally, we have the Riemann-Roch theorem,
+% \begin{theorem}
+%     \[ h^0(C, \LL) -h^1(C, \LL) = \deg \LL + 1 - p_a(C)\]
+% \end{theorem}
+% There is no content to this theorem as we state it now. 
+
+% More generally, for $F$ a coherent sheaf on $C$, 
+
+% \begin{definition}
+%     \[ \deg(F) = \chi(C, F) - (\rk F)\chi(C, \OO_C)\]
+%     where $\rk F$ is at the generic point. 
+% \end{definition}
+
+% We explain Serre Duality with an example. 
+% \begin{example}[Serre Duality]
+%     Let $C \subset \P^2$ be the closure of the affine plane curve $y^2 = x^3 + 1$. 
+%     Let $p = (2,3)$ and $q = (2, -3)$. We ask, what is $H^0(\OO_C(p+q))$? 
+
+%     We take some $f \in H^0(\OO_C(p+q))$ and we look at it in a neighborhood of $p$ and in a neighborhood of $q$. Thus, we need to pick coordinates locally around $p$ and $q$. The $x$-coordinate works (is this an analytic open?)
+
+%     Near $p$ and $q$, we expand $f$,
+%     \begin{align*}
+%         f \sim_p \frac{a_{-1}}{x-2} + a_0 + a_1(x-2) + \cdots \\
+%         f \sim_q \frac{b_{-1}}{x-2} + b_0 + b_1(x-2) + \cdots 
+%     \end{align*}
+%     Up to addition of a constant, $f$ is determined by $a_{-1}$ and $b_{-1}$. We call $a_{-1}$ and $b_{-1}$ the principal parts of the function. 
+
+%     Write $\omega_C$ to be a line bundle of the algebraic/holomorphic differential forms on $C$. 
+
+%     Later we will give precise definitions and show that $\omega_C \cong \OO_C$ in this case. 
+
+%     Thus, in particular it has a unique section $\alpha$ up to scaling. 
+
+%     Claim: $\alpha = \frac{dx}{y} = \frac{2dy}{3x^2}$. This is regular and nonvanishing away from $L$ (line at $\infty$) $z= 0$. 
+
+%     Why? $C \cap L$ contains just one point $[0 : 1 : 0]$. Moreover, $\deg \omega_C = 0$. Upshot, $\alpha$ is regular on all of $C$. 
+
+%     Next, we talk about which $a_{-1}$ and $b_{-1}$ can occur. We drew the picture of a genus $1$ torus with points $p$ and $q$. We look at $\alpha f$ the meromorphic differential. Then we take contractible opens around $p$ and $q$. 
+
+%     By the Residue Theorem, we have 
+%     \[ 0 = \Res_p(\alpha f) + \Res_q(\alpha f) = \frac{a_{-1}}{3} + \frac{b_{-1}}{-3}\]
+%     This implies $a_{-1} = b_{-1}$. 
+
+%     In general, if $D = \{p_0, \cdots, p_d\} \subset C$ is a divisor on a smooth curve. $\alpha \in H^0(\omega_C)$ and $f \in H^0(\OO_C(D))$. These imply, 
+%     \[ \sum \Res_{p_i}(\alpha f) = 0\]
+%     This condition is trivial if and only if $\alpha \in H^0(\omega_w(-D))$. Thus, 
+%     \[ \dim H^0(\OO_C(D)) \leq d + 1 - [\dim H^0(\omega_C) - \dim H^0(\omega_C(-D))] \]
+%     That is, 
+%     \[ h^0(\OO_C(D)) = h^0(\omega_C(-D)) \leq d + 1 - h^0(\omega_C)\]
+%     Serre Duality says that this is an equality and the terms in this expression agree with the Riemann-Roch theorem. 
+% \end{example}
+% \newpage
+
+% \section{Serre Duality and Complex Analysis}
+% \todo{Skipped Another Lecture}
+% \newpage
+
+% \section{Vector Bundles on $\P^1$}
+
+% \begin{theorem}
+%     Any vector bundle (locally free sheaf) $\EE$ on $\P^1$ can be written uniquely as $\bigoplus \OO(a_i)$.  
+% \end{theorem}
+
+% \begin{warning}
+%     On most schemes, vector bundles do not always split as a direct sum of line bundles. 
+% \end{warning}
+
+% For $m >>0$, $\Hom(\OO(m), \EE) = 0$. When $m << 0$, $\Hom(\OO(m), \EE) \neq 0$. This is because $\Hom(\OO(m), \EE) = \EE(-m)$.  \todo{Understand this.}
+
+% Let $a_r$ be the maximum $m$ such that $\Hom(\OO(m), \EE) \neq 0$. 
+
+% Consider the exact sequence, 
+% \begin{align*}
+%     0 \to \OO(a_r) \to \EE \to \FF \to 0
+% \end{align*}
+% The map $\OO(q) \to \EE$ must be injective on fibers at every point $p \in \P^1$. 
+
+% Why? If not, $\OO(a_r) \to \EE(-p) = \EE \otimes \II_p$. This implies $\OO(a_r+1) \to \EE$ contradicting the maximality of $a_r$. 
+
+% This implies $F$ is locally free because it is the quotient of locally free sheaves. 
+
+% By induction, $F = \bigoplus_{i=1}^{r-1} \OO(a_i)$. In some sense, we are splitting $\OO(a_r)$s out of $\EE$ to get this direct sum. \todo{Why?}
+
+% \begin{claim}
+%     $a_r \geq a_i \quad \forall i$
+% \end{claim} 
+% Why? We have the sequence, 
+% \begin{align*}
+%     0 \to \OO(-1) \to \EE(-a_r-1) \to \bigoplus \OO(a_i-a_r-1) \to 0
+% \end{align*}
+% Taking the long exact sequence in cohomology, we get, 
+% \begin{align*}
+%     \xymatrix{ 
+%         ... \ar[r] &H^-(\EE(-a_r-1)) \ar[r] &H^0\left(\bigoplus \OO(a_i-a_r-1)\right) \ar[r] &H^1(\OO(-1)) \ar[r] &... \\ 
+%         ... \ar[r] &0 \ar[r] &H^0\left(\bigoplus \OO(a_i-a_r-1)\right) \ar[r] &0 \ar[r] &...
+%     }  
+% \end{align*}
+% Thus, \todo{Finish this}. 
+
+
+% \begin{claim}
+%     The previous exact sequence splits. 
+% \end{claim}
+
+% FOAG has an argument involving transition functions. 
+
+% Easier argument: 
+% \[ \Ext^1\left(\bigoplus \OO(a_i), \OO(a_r)\right) = H^1\left(\bigoplus \OO(a_r-a_i)\right) = 0\] 
+
+% This uses the local-to-global $\Ext$ spectral sequence to get $H^p(\Ext^q(\FF, \GG)) \to \Ext^{p+q}(\FF, \GG)$.
+
+
+% \subsection{Hilbert Functions / Polynomials}
+% Let $X$ be a projective $k$-scheme, embedded in $\P^n$ and $F$ a coherent sheaf on $X$. 
+
+% \begin{definition}
+%     The Hilbert function 
+%     \begin{align*}
+%         h_F(m) &= h^0(X, F(m)) \\
+%         h_X(m) &= h_{\OO_x}(m)
+%     \end{align*}
+%     This depends on the embedding. 
+% \end{definition}
+
+% \begin{theorem}
+%     $\chi(X, F(m))$ is a polynomial of degree $\dim \Supp F$. Hence, $h^1(X, F(m))$ is a poylnomial of degree $\dim( \Supp F)$ for $m >> 0$. 
+% \end{theorem}
+
+% \begin{definition}
+%     We call this polynomial the Hilbert Polynomials $p_F(m)$ and write $p_X(m) = p_{\OO_X}(m)$. 
+% \end{definition}
+
+% \begin{proof}
+%     Extend $k$ infinite. \todo{Finish this}
+% \end{proof}
+
+% \begin{definition}
+%     The degree $\deg X := \text{leading coeff. of $p_X(m)$} \cdot n!$. 
+% \end{definition}
+
+% \begin{exercise}{?}
+%     If $X$ is a degree $d$ hypersurface. Then $\deg X = d$. 
+% \end{exercise}
+
+% \begin{theorem}[Bezout]
+%     Let $X$ be a projective $k$-scheme in $\P^n$. Let $H$ be a hypersurface not containing any associated point of $X$. 
+%     \[ \deg(H \cap X) = (\deg H)(\deg X)\]
+%     In particular, $C_1$ \todo{Finish}. 
+% \end{theorem}
+
+% \subsection{Arithmetic Genus of a Plane Curve}
+% Let $C = \P^2$ be a degree $d$ plane curve. What is $p_a(C) = 1-p_C(d)$?
+
+% Lets calculate the whole Hilbert polynomial. Consider the exact sequence 
+% \begin{align*}
+%     0 \to \OO_{\P^2}(m-d) \to \OO_{\P^2}(m) \to \OO_C(m) \to 0
+% \end{align*}
+% Thus, 
+% \begin{align*}
+%     p_C(m) &= p_{\P^2}(m) - p_{\P^2}(n--d) \\
+%     &= \binom{m+2}{2} - \binom{m-d+2}{2} \\
+%     \implies p_C(0) &= -\frac{d^2-3d}{2}
+% \end{align*}
+
+% \newpage 
+% \todo{Missed a lecture}
+
+% \newpage 
+
+% From projective to proper. We have seen a number of things we have shown are true for projective morphisms, but claimed they still work for proper morphisms. We are going to cover some lemmas that make this possible. 
+
+% The first is Chow's lemma. 
+% \begin{lemma}
+%     Let $\pi: X \to \Spec A$ be proper and $A$ noetherian. Then there exists $\mu: X' \to X$ surjective + projective + birational such that $\pi \circ \mu$ is projective. 
+% \end{lemma}
+
+% \begin{proof}[Idea.]
+%     \bbni
+%     \begin{enumerate}
+%         \item Cover $X$ by affines. 
+%         \item Compactify each affine to a projective $A$-scheme. 
+%         \item Consider graph of the rational map to their product. 
+%     \end{enumerate}
+% \end{proof}
+
+
+% \subsection{Grothendieck's Coherence Theorem}
+% Let $\pi: X \to Y$ proper morphism of locally noetherian schemes. Let $F$ be coeherent over $X$. Then $R^i \pi_* F$ is coherent.
+
+% \begin{proof}[Idea.]
+%     Reduce to $Y = \Spec A$ and apply Chow's lemma. 
+%     \[\xymatrix{
+%         X' \ar[r]^\mu \ar[d]_{\pi \circ \mu} & X \ar[ld]^\pi \\
+%         \Spec A
+%     }\]
+%     Then approximate $F$ by $\mu_* \mu^* F$. Then, 
+%     \[ 0 \to S \to F \to \mu_*\mu^*F \to Q \to 0\]
+%     where if $S$ and $Q$ are supported on something of smaller dimension. Then, $R^i \pi_*$ coherent by induction. 
+
+%     Let $G$ be $\mu^* F$. Then, use the Leray spectral sequence, 
+%     \begin{align*}
+%         R^p \pi_*(R^q \mu_* G) \implies R^{p+q}(\pi \circ \mu)_* G
+%     \end{align*}
+% \end{proof}
 
 \end{document}
