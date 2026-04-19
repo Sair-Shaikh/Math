@@ -9,75 +9,167 @@
 
 \input{title}
 
-\begin{remark}
-    
-\end{remark}
-
-
-\begin{problem}{Ex 4.3.1}
+\begin{problem}{4.3.1}
     Use the Fundamental Theorem for Path Integrals to show that 
     \[ \int_{\d\Delta(-1-i, 1-i, i)} \frac{1}{z} dz = 2\pi i\]
 \end{problem}
 \begin{proof}   
+    We use the natural partition on the path $\d\Delta(-1-i, 1-i, i)$ to rewrite, 
+    \begin{align*}
+        \int_{\d\Delta(-1-i, 1-i, i)} \frac{1}{z} dz = \int_{[-1-i, 1-i]^*} \frac{1}{z} dz + \int_{[1-i, i]^*} \frac{1}{z} dz + \int_{[i, -1-i]^*} \frac{1}{z} dz 
+    \end{align*}
+    Then, we evaluate each of these integrals separately. For the first one, we can construct a domain containing $[-1-i, 1-i]^*$ and not intersecting $(-\infty, 0]$. Thus, we have a holomorphic branch of the logarithm, the principal branch $\Log$. This is an antiderivative of $\frac{1}{z}$ over this domain. Then, using the fundamental theorem, we get, 
+    \begin{align*}
+        \int_{[-1-i, 1-i]^*} \frac{1}{z} dz &= \Log\left(\frac{1-i}{-1-i}\right) \\
+        &= \Log\left(\frac{-(1-i)^2}{2}\right) \\
+        &= \Log(i) \\
+        &= 0 + \frac{\pi}{2}i
+    \end{align*}
+    The same branch of the logarithm works for the 2nd integral, 
+    \begin{align*}
+       \int_{[1-i, i]^*} \frac{1}{z} dz &= \Log\left(\frac{i}{1-i}\right) \\
+       &= \Log\left(\frac{-1+i}{2}\right) \\
+       &= \ln\left(\frac{\sqrt{2}}{2}\right) + \frac{3\pi}{4}i
+    \end{align*}
+    For the third integral, we employ the same argument using the branch of logarithm with a branch-cut along $[0, \infty)$, $\Log_0$. We get,
+    \begin{align*}
+       \int_{[i, -1-i]^*} \frac{1}{z} dz &= \Log_0\left(\frac{-1-i}{i}\right) \\
+       &= \Log_0\left(-1+i\right) \\
+       &= \ln\left(\sqrt{2}\right) + \frac{3\pi}{4}i
+    \end{align*}
+    Adding these up, we get,
+    \begin{align*}
+        \int_{\d\Delta(-1-i, 1-i, i)} \frac{1}{z} dz &= \left(0 + \ln\left(\frac{\sqrt{2}}{2}\right)+ \ln\left(\sqrt{2}\right)\right) + i\left( \frac{\pi}{2} + \frac{3\pi}{4} + \frac{3\pi}{4}\right) \\
+        &= \ln(1) + 2\pi i \\ 
+        &= 2\pi i
+    \end{align*}
+\end{proof}
+\newpage
+
+\begin{problem}{4.2.1}
+    Suppose that $f$ is holomorphic in a domain $D$ containing $\overline{D_r(z_0)}$ for some $r > 0$. Show that, 
+    \[ f(z_0) = \frac{1}{2\pi} \int_0^{2\pi} f(z_0 + re^{i\theta})d\theta\]
+    Thus, $f(z_0)$ is the average of the values of $f$ on the circle $|z-z_0| = r$. 
+\end{problem}
+\begin{proof}
+    We will use Cauchy's Integral Formula for a Convex Domain to evaluate. We first need a convex domain $D'$ where $f$ is holomorphic. Let $\rho$ be the Euclidean metric on $\C$. Then, $\rho(x, \C \setminus D)$, defined in the usual way, is continuous. Since $\overline{D_r(z_0)}$ is compact, this function attains a minimum value $\delta$ over $\overline{D_r(z_0)}$. Since $\overline{D_r(z_0)} \subset D$, $\delta > 0$. Thus, $\overline{D_r(z_0)} \subset D' := D_{r+\delta'}(z_0) \subset D$ where $0 < \delta' < \delta$. Moreover, being an open ball, $D_{r+\delta'}(z_0)$ is convex.
+    
+    Next, define $\gamma\colon [0, 1] \to \C$ by $\theta \mapsto z_0 + re^{i\theta}$. Then, $\gamma^*$ is a circle of radius $r$ centered at $z_0$. In particular, $\gamma^* \subset \overline{D_r(z_0)} \subset D'$. Thus, we can use Cauchy's Integral formula for a Convex Domain with $D'$ and $\gamma$ since $f \in H(D) \subset H(D')$. We get, 
+    \begin{align*}
+        \Ind_\gamma(z_0) \cdot f(z) &= \frac{1}{2\pi i}\int_\gamma \frac{f(w)}{w-z_0} dw \\
+        &= \frac{1}{2\pi i}\int_0^{2\pi} \frac{f(z_0+re^{i\theta})}{z_0+re^{i\theta}-z_0} \cdot rie^{i\theta} d\theta \\
+        &= \frac{ir}{2\pi i r}\int_0^{2\pi} \frac{f(z_0+re^{i\theta})e^{i\theta}}{e^{i\theta}} d\theta \\
+        &= \frac{1}{2\pi}\int_0^{2\pi} f(z_0+re^{i\theta}) d\theta    
+    \end{align*}
+
+\end{proof}
+\newpage
+
+\begin{problem}{4.3.2}
+    Let $D$ be a domain and $p \in D$. Suppose that $f$ is continuous on $D$ and that $f \in H(D\setminus \{p\})$. Show that $f \in H(D)$. 
+\end{problem}
+\begin{proof}
+    We will use Morera's Theorem (Theorem 4.18). We know that $f$ is continuous on the domain $D$. Let $\Delta = \Delta(a,b,c) \subset D$ be arbitrary. It suffices to show that, 
+    \[ \int_{\d\Delta}f(z)dz = 0\]
+    However this is evident via Cauchy's Theorem for a Triangle (4.6), since $D$ is open, $f$ is continuous on $D$, and $f \in H(D \setminus \{p\})$. 
+\end{proof}
+\newpage
+
+
+\begin{problem}{4.3.4}
+    Suppose that $f(z) = u(z) + iv(z)$ with $u$ and $v$ real-valued. If $D$ is open and $f \in H(D)$, show that $u$ and $v$ are smooth on $D$ in the sense that they have continuous partial derivative of all orders. In particular, conclude that $u$ and $v$ are harmonic on $D$. 
+\end{problem}
+\begin{proof}
+    Since smoothness and harmonicity are local properties, we may work with a connected component of $D$. That is, without loss of generality, we assume that $D$ is a domain. 
+
+    By theorem 4.12, we know that $f \in H(D)$ implies that $f$ is analytic on $D$. By corollary 2.12, $f$ has analytic (hence holomorphic) derivatives of all orders on $D$. By theorem 2.14, for all $z = x + iy \in D$, 
+    \[ f'(z) = u_x(z) + iv_x(z) = v_y(z) - iu_y(z)\]
+    Thus, the first partials of $u, v$ exist. Moreover, as $f'$ is holomorphic, it is also continuous. Since the topology on $\C$ is the same as that on $\R^2$, each of the components of $f'$ must be continuous. Thus, each of the first partials of $u, v$ are continuous. 
+
+    Since the first partials of $u,v$ (up to a sign) are real-valued components of another analytic function on $D$, they must also have continuous partials, i.e. $u$ and $v$ must have continuous second partials. Continuing via induction, we can show that $u$ and $v$ are smooth. 
+
+    Thus, we only need to show that $u$ and $v$ are harmonic on $D$. We evaluate the 2nd derivative explicitly using both expressions for $f'$ that we obtained above. We get, 
+    \begin{align*}
+        f''(z) &= u_{xx}(z) +iv_{xx}(z) \\
+               &= -u_{yy}(z) -iv_{yy}(z)
+    \end{align*}
+    Comparing real and imaginary parts, we conclude,
+    \[ u_{xx}(z) = -u_{yy}(z) \qquad \qquad v_{xx}(z) = -v_{yy}(z) \]
+    for all $z \in D$. Thus, $u$ and $v$ are harmonic. 
+\end{proof}
+\newpage
+
+\begin{problem}{4.3.8}
+    Let 
+    \[ f(z) = \frac{1}{e^z + 1} = \sum_{n=0}^\infty a_nz^n \]
+    be the MacLaurin series for $f$. 
+    \begin{enumerate}
+        \item Use problem 4.3.7 to show that the $a_n$ satisfy $a_0 = \frac{1}{2}$ and 
+        \[ a_n = -\frac{1}{2}\sum_{k=0}^{n-1} \frac{a_k}{(n-k)!} \qquad n \geq 1 \]
+        \item Use part (a) to calculate the first few terms of the equation above. 
+        \item What is the radius of convergence of the equation above?
+    \end{enumerate}
+\end{problem}
+\begin{proof}
+    Let $g(z) = e^z + 1$. Note that the McLaurin series for $g(z)$ is, 
+    \[ g(z) = \sum_{k=0}^\infty b_nz^n = 2 + \frac{z}{1!} + \frac{z^2}{2!} + \cdots +  \frac{z^n}{n!} + \cdots \]
+    Clearly, $f(z)g(z) = 1$. Using 4.3.7, we know that the McLaurin series for $f(z)g(z)$ is the Cauchy product of the McLaurin series for $f(z)$ and $g(z)$. Comparing the first term, we get, 
+    \[ 1 = 2 \cdot a_0 \implies a_0 = \frac{1}{2}\]
+    Comparing the $n$th term, we get, 
+    \begin{align*}
+        &0 = \sum_{k=0}^n a_kb_{n-k} = a_nb_0 + \sum_{k=0}^{n-1} \frac{a_k}{(n-k)!} = 2a_n + \sum_{k=0}^{n-1} \frac{a_k}{(n-k)!}  \\
+        \implies &a_n = -\frac{1}{2}\sum_{k=0}^{n-1} \frac{a_k}{(n-k)!}
+    \end{align*}
+    The first few terms, calculated via a symbolic algebra software are, 
+    \begin{align*}
+        a_0 &= \frac{1}{2} \\
+        a_1 &= -\frac{1}{4} \\
+        a_2 &= 0 \\
+        a_3 &= \frac{1}{48} \\
+        a_4 &= 0 
+    \end{align*}
+    Since the radius of convergence for both the constant function $1$ and $g(z)$ are infinite, the McLaurin series relation from the 4.3.7 implies that the McLaurin series for $f(z)$ must also converge everywhere. Moreover, since $g$ is easily seen to be a nowhere vanishing holomorphic function, its inverse $f$ is also holomorphic via the quotient rule. Thus, $f$ is equal to its McLaurin series. 
+\end{proof}
+\newpage 
+
+\begin{problem}{EP-2}
+    Complete the proof of Cauchy's theorem for convex domains by showing that if $f$ is continuous at $z_0$, then, 
+    \[ \lim_{z \to z_0} \frac{1}{z-z_0} \int_{[z_0, z]} (f(w)-f(z_0))dw = 0 \]
+\end{problem}
+\begin{proof}
+    We can parametrize $[z_0, z]^*$ with the curve $\gamma\colon [0, 1] \to \C$ taking $t \mapsto z_0+t(z-z_0)$. Thus, the statement becomes,
+    \begin{align*}
+        \lim_{z \to z_0} \frac{1}{z-z_0} \int_{0}^1 (z-z_0)(f\left(z_0+t(z-z_0)\right)-f(z_0))dt = \lim_{z \to z_0} \int_{0}^1 (f\left(z_0+t(z-z_0)\right)-f(z_0))dt
+    \end{align*}
+    Thus, it suffices to show that this integral goes to $0$. Let $\epsilon > 0$. We estimate, 
+    \begin{align*}
+        \left|\int_{0}^1 (f\left(z_0+t(z-z_0)\right)-f(z_0))dt\right| & \leq \int_0^1 \left|f(z_0+t(z-z_0))-f(z_0) \right|dt
+    \end{align*}
+    Since $f$ is continuous at $z_0$, there exists $\delta > 0$ such that $|w-z_0| < \delta$ implies $|f(w)-f(z_0)| < \epsilon$. Pick $z$ such that $|z-z_0| < \delta$. Then note, 
+    \begin{align*}
+        |z_0 +t(z-z_0) -z_0| = |t(z-z_0)| < \delta \qquad  \text{ as } 0 \leq t \leq 1
+    \end{align*}
+    Thus, 
+    \begin{align*}
+        \int_0^1 \left|f(z_0+t(z-z_0))-f(z_0) \right|dt < \int_0^1 \epsilon dt = \epsilon
+    \end{align*}
+\end{proof}
+\newpage 
+
+\begin{problem}{5.1.2}
+    Suppose that $D$ is a domain and that $f \in H(D)$ is nonconstant. Suppose also that there is an analytic branch of $f(z)^{\frac{1}{n}}$ in $D$. That is, there is a $g \in H(D)$ such that $f(z) = g(z)^n$. Show that if $f$ has a zero of order $m$ in $D$, then $m$ is divisible by $n$. 
+\end{problem}
+\begin{proof}
     
 \end{proof}
 
-
-% \begin{problem}{Ex 4.2.1}
-%     Suppose that $f$ is holomorphic in a domain $D$ containing $\overline{D_r(z_0)}$ for some $r > 0$. Show that, 
-%     \[ f(z_0) = \frac{1}{2\pi} \int_0^{2\pi} f(z_0 + re^{i\theta}d\theta\]
-%     Thus, $f(z_0)$ is the average of the values of $f$ on the circle $|z-z_0| = r$. 
-% \end{problem}
-% \begin{proof}
+\begin{problem}{5.1.3}
+    Suppose that $f$ is entire and that 
+    \[ f\left(\frac{1}{n}\right) = f\left(-\frac{1}{n}\right)\]
+    for all $n \in \N$. Show that $f(z) = f(-z)$ for all $z \in \C$. 
+\end{problem}
+\begin{proof}
     
-% \end{proof}
-
-
-% \begin{problem}{Ex 4.3.2}
-%     Let $D$ be a domain and $p \in D$. Suppose that $f$ is continuous on $D$ and that $f \in H(D\setminus \{p\})$. Show that $f \in H(D)$. 
-% \end{problem}
-% \begin{proof}
-    
-% \end{proof}
-
-
-% \begin{problem}{Ex 4.3.4}
-%     Suppose that $f(z) = u(z) + iv(z)$ with $u$ and $v$ real-valued. If $D$ is open and $f \in H(D)$, show that $u$ and $v$ are smooth on $D$ in the sense that they have continuous partial derivative of all orders. In particular, conclude that $u$ and $v$ are harmonic on $D$. 
-% \end{problem}
-% \begin{proof}
-    
-% \end{proof}
-
-% \begin{problem}{Ex 4.3.8}
-%     Let 
-%     \[ f(z) = \frac{1}{e^z + 1} = \sum_{n=0}^\infty a_nz^n \]
-% \end{problem}
-% \begin{proof}
-    
-% \end{proof}
-
-% \begin{problem}{EP-2}
-%     Complete the proof of Cauchy's theorem for convix domains by showing that if $f$ is continous at $z_0$, then, 
-%     \[ \lim_{z \to 0} \frac{1}{z-z_0} \int_{[z_0, z]} (f(w)-f(z_0))dw = 0 \]
-% \end{problem}
-% \begin{proof}
-    
-% \end{proof}
-
-% \begin{problem}{Ex 5.1.2}
-%     Suppose that $D$ is a domain and that $f \in H(D)$ is nonconstant. Suppose also that there is an analytic branch of $f(z)^{\frac{1}{n}}$ in $D$. That is, there is a $g \in H(D)$ such that $f(z) = g(z)^n$. Show that if $f$ has a zero of order $m$ in $D$, then $m$ is divisible by $n$. 
-% \end{problem}
-% \begin{proof}
-    
-% \end{proof}
-
-% \begin{problem}{Ex 5.1.3}
-%     Suppose that $f$ is entire and that 
-%     \[ f\left(\frac{1}{n}\right) = f\left(-\frac{1}{n}\right)\]
-%     for all $n \in \N$. Show that $f(z) = f(-z)$ for all $z \in \C$. 
-% \end{problem}
-% \begin{proof}
-    
-% \end{proof}
+\end{proof}
 
 \end{document}
