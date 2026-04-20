@@ -160,8 +160,19 @@
     Suppose that $D$ is a domain and that $f \in H(D)$ is nonconstant. Suppose also that there is an analytic branch of $f(z)^{\frac{1}{n}}$ in $D$. That is, there is a $g \in H(D)$ such that $f(z) = g(z)^n$. Show that if $f$ has a zero of order $m$ in $D$, then $m$ is divisible by $n$. 
 \end{problem}
 \begin{proof}
-    
+    Let $a$ be the zero of order $m$ of $f$ in $D$. Then, we know that, 
+    \[ f(z) = (z-a)^mh(z) = g(z)^n\]
+    for some $h \in H(D)$ with $h(a) \neq 0$. Thus, $a$ is a zero of $g$. Let $k$ be the order of $a$ for $g$. Then, we can write 
+    \[ g(z) = (z-a)^kp(z)\]
+    for some $p \in H(D)$ with $p(a) \neq 0$. This gives us, 
+    \begin{align*}
+        f(z) = (z-a)^mh(z) = g(z)^n = (z-a)^{kn}p(z)^n 
+    \end{align*} 
+    Since $h(a) \neq 0 \neq p(a)$, we know that $(z-a)$ does not divide $h(z)$ or $p(z)$. Thus, equating linear factors and multiplicities (using unique factorization), we get 
+    \[ m = kn \]
+    and we are done.
 \end{proof}
+\newpage
 
 \begin{problem}{5.1.3}
     Suppose that $f$ is entire and that 
@@ -169,7 +180,9 @@
     for all $n \in \N$. Show that $f(z) = f(-z)$ for all $z \in \C$. 
 \end{problem}
 \begin{proof}
-    
+    If $f$ is constant, the result is immediate. Thus, we assume $f$ is non-constant. Let $g(z) = f(-z)$. Clearly, $g(z)$ is also entire (chain rule). Let $Z := \{ z \in \C : f(z) = g(z)\}$. Then, we know, 
+    \[ \left\{\frac{1}{n} : n \in \N\right\} \subset Z\]
+    We know from point-set or undergraduate real analysis that $0 \in \C$ is a limit point of $\left\{\frac{1}{n} : n \in \N\right\}$, and thus of $Z$. Briefly, if you take a punctured disk $D'_r(0)$ for any $r > 0$, there exists $N \in \N$ such that $0 < \frac{1}{N} < r$ by the archimedian property. Then, $\frac{1}{N} \in Z \cap D'_r(0)$. Thus, $0$ is a limit point of $Z$. Since $f$ and $g$ are entire, this implies $f(z) = g(z)$ by corollary 5.7. 
 \end{proof}
 
 \end{document}
