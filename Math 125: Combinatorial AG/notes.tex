@@ -1001,13 +1001,193 @@ Let $M = \Hom_\Z(N, \Z)$. $k[M]$ is a finitely generateed reduced $k$-algebra. T
 \begin{example}
     Let $N = \Z^2$, $k[\G_m^2] \cong k[x^\pm, y^\pm]$, $x = \chi^{(1, 0)}$, $y = \chi^{(0, 1)}$. Then, 
     \begin{align*}
-        I_H &= \langle \chi^{(m, m)} - 1 | m \in \Z \rangle = \langle xy-1 \rangle \\
-        L &= \Z\langle 1, 1 \rangle  = \{ m(1,1) | m \in \Z \}\subset M \cong \Z^2 
+        L &= \Z\langle 1, 1 \rangle  = \{ m(1,1) | m \in \Z \}\subset M \cong \Z^2 \\
+        I_L &= \langle \chi^{(m, m)} - 1 | m \in \Z \rangle = \langle xy-1 \rangle \\
+        H &= \V(I_L) = \{(x,y) \in (k^\times)^2 | xy = 1\} \\
+        k[H] &\cong k[x^\pm, y^\pm]/\langle xy-1 \rangle \cong k[x^\pm]
     \end{align*}
 \end{example}
 
 \begin{example}
-    Same setup. Take $L = \Z\langle 2, 0 \rangle = \{ (2m, 0) | m \in \Z\}$. 
+    Same setup. 
+    \begin{align*}
+        L &= \Z(2,0) \subset \Z^2 \\
+        I_L &= \langle x^2-1\rangle \\
+        H &= \V(I_L) = \{ (x,y) \in (k^\times)^2 | x^2 = 1\} \\
+        &= \{(1,y) | y \in k^\times\} \cup \{(-1,y) | y \in k^\times\} \\
+        &\cong \mu_2 \times \G_m
+    \end{align*}
+    Then, $\Z^2/M \cong \Z \oplus \Z/2\Z$ is not saturated. 
+\end{example}
+
+[Day Begin: 4/21]
+\begin{corollary}
+    If $H \subset T_N$ is connected closed group subvariety, then $H$ is a torus. 
+\end{corollary}
+\begin{proof}[Proof of corollary]
+    Note that the group $H$ acts on itself via translation and since $H$ is connected, $H$ is irreducible. This implies $k[H]$ is a domain. Thus, $k[M/L_H]$ is also a domain. This only happens if $M/L_H$ is a lattice. Thus, this lattice comes from a torus, i.e. $H$ is a torus. 
+\end{proof}
+
+\begin{proof}[Proof of Theorem]
+    $I_H \subset \I(H)$ is clear. For the other inclusion, take $f = \sum_{m} a_m\chi^m \in \I(H)$. Since $f \in \I(H)$, we know $f|_H = 0$. 
+
+    As an aside, we note the following. For $\chi^m, \chi^{m'} \in k[T]$ we have $\chi^m|_H = \chi^{m'}|_H$ if and only if $\chi^{m-m'}|_H = 1$. To see this, consider, recalling that we are in a domain,
+    \begin{align*}
+        \chi^m|_H = \chi^{m'}|_H\chi^{m-m'}|_H = \chi^{m'}|_H
+    \end{align*}
+    
+    Then, this means, $\chi^{m}|_H = \chi^m|_H \iff m-m' \in L_H$. 
+
+    Let $\CC$ be a set of cosets for $M/L_H$ and for $C \in \CC$ pick representative $m_c$. Then, 
+    \begin{align*}
+        f|_H &= \sum_m a_m(\chi^m|_H) \\ 
+             &= \sum_{C \in \CC} \sum_{m \in C} a_m \chi^{m_c}|_H
+    \end{align*}
+    Since $C$ are distinct cosets, we know that, $\chi^{m_c}|_H \neq \chi^{m_c'}|_H$. 
+
+    \begin{align*}
+        f|_H = \sum_{C \in \CC} \sum_{m \in C} \chi^{m_C}|_H = 0
+    \end{align*}
+    Since characters are linearly independent, 
+    \[ \implies \sum_{m \in C} a_m = 0 \qquad \forall C \in \CC\]
+    Then, 
+    \begin{align*}
+        &\sum_{m \in C} a_m\chi^{m_c} = 0  \\
+        \implies& \sum_{m \in C}a_m\chi^m - \sum_{m\in C}a_m\chi^{m_C} = \sum_{m\in C} a_m(\chi^m-\chi^{m_C})
+    \end{align*}
+    If $m$ and $m_C$ are in the same coset, then $\chi^{m} - \chi^{m_C} \in I_H$ because $\chi^{m-m_C}-1 \in I_H$. 
+
+    We will say the 2nd statement of the theorem is clear.
+\end{proof}
+
+\begin{definition}
+    A topological space $X$ is irreducible if and only if any of the following are true: 
+    \begin{enumerate}
+        \item If $X = V_1 \cup V_2$ with $V_i$ closed and non-empty, then $V_i = X$ for some $i$. 
+        \item If $U_1, U_2 \subset X$ are open and non-empty, then $U_1 \cap U_w \neq \emptyset$. 
+        \item Every non-empty open set is dense. 
+    \end{enumerate}    
+\end{definition}
+
+\begin{lemma}
+    An affine variety $X$ is irreducible iff $k[X]$ is a domain iff $\I(X)$ is prime. 
+\end{lemma}
+\begin{corollary}
+    \begin{enumerate}
+        \item The subtori of $T_N$ are in bijection with saturated sublattices of $M$. The maps are $H \mapsto L_H$ and $L \mapsto k[M/L]$. 
+        \item The subtori of $T_N$ is in bijection with saturated sublattices of $N$. 
+        The maps are: take $N' \subset N$, map to $(N')^\perp = \{m \in M : \langle m, u\rangle = 0 \, \forall u \in N'\}$. This is satured if $N'$ is saturated. Then take the torus $\V(I_{(N')^\perp})$.  
+    \end{enumerate}
+\end{corollary}
+
+\begin{example}
+    Let $N = \Z^2$ and $N' = \Z\langle 1, 1\rangle$. Then, 
+    \begin{align*}
+        (N')^\perp = \Z\langle 1, -1\rangle \subseteq M \\
+        I_{(N')^\perp} = \langle xy^{-1} -1\rangle 
+    \end{align*}
+    is the diagonal torus.
+\end{example}
+
+\begin{lemma}
+    If $N' \subset N$ is a sublattice. Then, $T_N/T_{N'} \cong T_{N/N'}$. 
+\end{lemma}
+
+\begin{example}
+    Let $N = \Z^{n+1}$ and $N' = \Z\langle 1, \cdots, 1\rangle$. Then, 
+    \begin{align*}
+        \Delta\G_m \subset \G_m^{n+1} \\
+        \G_m^{n+1}/\Delta \G_m \cong T_{\Z^{n+1}/\langle 1, \cdots, 1\rangle}
+    \end{align*}
+\end{example}
+
+
+\section{Affine Toric Varieties}
+\begin{definition}
+    Let $A$ be any finitely generated abelian group. Then $D(A) := \Spec(k[A])$ where $k[A] =\bigoplus_{\alpha \in A} k\chi^\alpha$ with multiplication given by $\chi^a\chi^{b}= \chi^{a+b}$ and $\chi^0 = 1$. This is the diagonal group scheme associated to $A$. 
+\end{definition}
+
+\begin{definition}
+    If $R$ is a ring and $A$ is an abelian group, then an $A$-grading on $R$ is an isomorphism of abelian groups $R \cong \bigoplus_{a \in A} R_a$ such that $R_bR_b \subset R_{a+b}$. 
+\end{definition}
+
+\begin{definition}
+        If $G$ is a group variety and $X$ a variety, an algebraic action of $G$ on $X$ is a morphism $G \times X \to X$. 
+\end{definition}
+
+\begin{definition}
+    If $A$ is an abelian group and $R$ is a ring. A $k[A]$ coaction on $R$ is map, 
+    \[ R \to R \otimes k[A]\]
+\end{definition}
+
+\begin{theorem}
+    Let $A$ be a finitely generated abelian group and $X$ an affine variety over $k$. Set $R = k[x]$ and $G = D(A)$. The following are equivalent: 
+    \begin{enumerate}
+        \item An $A$-grading on $R$
+        \item An algebraic action on $G$ on $X$
+        \item $k[A]$-coaction on $R$. 
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Given $R \cong \bigoplus R_a$ take the map $R \to R \otimes k[A]$ by sending $r \mapsto r \otimes \chi^{\deg(r)}$. Alternatively, if we take $\rho: R \to R\otimes k[A]$ then $R_a = \{r \in R | \rho(r) = r \otimes \chi^\alpha \}$. 
+\end{proof}
+
+\begin{definition}
+    An affine toric variety is an affine variety $X$ with an open dence torus $T \subset X$ such that the action extends to an action $T \times X \to X$. 
+\end{definition}
+
+We think of $k[X]$ as the ``characters of $T$ that do not blow-up on $X \setminus T$". We know that $k[X] \to k[T]$. We also know $k[T] \cong k[M]$. If two characters dont blow up, neither does their product. The $\chi^0$ does not blow up either. This means,
+\[k [x] = k\{\chi^m | m \in S'\}\]
+
+\begin{definition}
+    A semigroup is a set $S$ together with an associative, commutative, binary operation $+$ that has an identity element $0$. Some people call these monoid. 
+\end{definition}
+
+\begin{example}
+    Take $\N = \{0, 1, \cdots\}$. This is a semi-group. 
+\end{example}
+
+\begin{example}
+    Take $\Z/2\Z$ is a semi-group that does not embed in a lattice (it has torsion). 
+\end{example}
+
+\begin{example}
+    $S = \{0, 1, \infty\}$ with typical multiplication does not cancel so doesn't embed into a lattice. 
+\end{example}
+
+\begin{definition}
+    An affine semigroup is a finitely generated semigroup that embeds into a lattice. 
+\end{definition}
+
+Given $m \in \N$ and a semigroup $S$ with $x \in S$, we define $mx = \underbrace{x+\ldots+x}_{m \text{ times}}$. Given $A \subset S$, 
+\[ \N(A) = \left\{ \sum_{i=1}^n m_is_i | m_i \in \N, s_i \in A, n > 0 \right\}\]
+
+\begin{definition}
+    A semigroup $S$ is finitely generated if $S = \N\{m_1, \cdots, m_t\}$. 
+\end{definition}
+
+If $S$ is an affine semigroup, $S \subset M$ with $M$ a lattice, then, 
+\[ \Z S = \left\{\sum_{i = 1}^n m_is_i | m_i \in \Z, s_i \in S, n > 0\right\} \subset M\]
+
+\begin{example}
+    If we take $S = \N(1,1) \subset \Z^2$. Then $\Z S$ is $\Z(1,1)$. 
+\end{example}
+
+\begin{definition}
+    If $S \subset M$ is an affine semigroup. The semigroup ring is:
+    \[ k[S] = \bigoplus_{m \in S} k\chi^m \subset k[M]\]
+    where multiplicated is defined in the usual manner. 
+\end{definition}
+
+\begin{example}
+    Let $S = \N^t \subset \Z^t = M$. Then, 
+    \[ k[S] = k[\chi^{e_1}, \ldots, \chi^{e_t}] = k[x_1, \ldots, x_n] \subset k[x_1^\pm, \ldots, x_t^\pm ] \] 
+\end{example}
+
+\begin{example}
+    Let $S = \N\{2, 3\} \subset \Z$. This does not contain $1$, i.e. it not saturated. Note, 
+    \[ k[S] \cong k[t^2, t^3]\]
+    We will see that singularities correspond to non-saturation. 
 \end{example}
 
 \end{document}

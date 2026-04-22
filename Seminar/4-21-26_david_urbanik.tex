@@ -1,0 +1,121 @@
+\documentclass[12pt]{amsart}
+
+
+\include{../style}
+
+
+\begin{document}
+
+\title{Degrees of Hodge Loci}
+
+\author{Talk by David Urbanik}
+\maketitle
+
+\section{Setup}
+Let $U_d$ be the algebraic variety parametrizing smooth degree $d$ hypersurfaces in $\P^3$. This is $\P(\Sym^d(k^\vee))$. 
+
+\begin{theorem}[Lefschetz]
+    There exists a countable collection $\{z_j\}_{j \in J}$ of closed subvarieties of $U_d$ such that, 
+    \[ \operatorname{NL} = \bigcup_{j \in J} z_j\]
+    This is the Noether-Lefschetz. 
+\end{theorem}
+
+The NL locus is the collection of hypersurfaces $H_b$ which contain an irreducible curve $C \subset H_b$, not arising as a complete intersection in $\P^3$ with a surface of this type. 
+
+We have a question: \red{Can we understand the degrees of the components $z_j$}. 
+
+If $d = 4$, there is a polynomial, 
+\begin{enumerate}
+    \item $Q_1$ such that $H_b$ contains a $\P^1$ if and only if $Q_1(b) = 0$ and $\deg Q_1 = 320$. 
+    \item $Q_2$ such that $H_b$ contains a quadric and $\deg Q_2 = 2508$. 
+\end{enumerate}
+
+To do this, we do an interlude into Hodge Theory. 
+
+\section{Hodge Theory}
+We will reformulate this using Hodge Structures on $H^2(H_b, \Z)$. 
+
+\begin{definition}
+    Given an integral lattice $V$, a (polarized) Hodge structure on $V$ of weight $k$ is a direct sum decomposition: 
+    \[ V_\C = \bigoplus_{p+q = k} H^{p,q}\]
+    satisfying $H^{p,q} = \overline{H^{q,p}}$. 
+\end{definition}
+
+The idea is that these come from a direct sum decomposition of de Rham cohomology with complex coefficients on a complex manifold. 
+
+If $X$ is a complex manifold, locally on $X$ there aresmooth complexified differential forms that break into holomorphic and anti-holomorphic components. For a Kahler manifold, even the global ones, the ones that give cohomology, descend with this decomposition with canonical representatives.
+
+\begin{conjecture}[Hodge Conjecture.]
+    If $X$ is a smooth projective algebraic variety then the cohomology classes in $H^{2p}(X, \Q) \cap H^{p, p}(X)$ are in the $\Q$-span of algebraic cycle classes.
+\end{conjecture}
+
+\begin{align*}
+    H^2(H_b, \Z) \to H^2(H_b, \Z)_{prim} \oplus \Z
+\end{align*}
+with $H_b \subset \P^3$, $C \subset H_b$, and $[C]_{prim} \in H^2(X_b, \Z)$. 
+
+We define,
+\[ Q : H^2(H_b, \Z)_{prim} \oplus H^2(H_b, \Z)_{prim} \to \Z\]     
+
+\begin{definition}
+    We define
+    \[ \operatorname{NL}_q = \{ b \in \operatorname{NL} : \exists C \subset H_b, Q([c]_{prim}, [c]_{prim}) = q\} \]
+\end{definition}
+
+
+\begin{theorem}[Urbanik.]
+    There exists $C > 0$ depeneding on $d$ such that, 
+    \[ \deg \operatorname{NL}_q \leq c q^e\]
+    with 
+    \begin{align*}
+        e = (b_2-1)^2 + 2h^{2,0}((b_2-1) - h^{2,0}) - 2
+    \end{align*}
+    where $b_2 = \dim_\C H^2(H_b, \Q)$ and $h^{2,0} = \dim_\C H^{2,0}$.
+\end{theorem}
+
+Next, we talk about the method. 
+
+\section{Seigel Sets}
+A problem about degrees is a problem about counting points. If we took a sufficiently general locus complimentary codim $F$ and intersected it with $NL_q$, we get the degree by counting intersections. 
+
+The idea is: We reduce the question to producing upper bounds for loci where there are extra Hodge vectors. 
+
+For Seigel Sets, we consider a space $D$ which is the parameter space for all (polarized) Hodge structures on $V \cong \Z^{2n}$ with fixed Hodge numbers $h^{2,0}$, $h^{1,1}$, and $h^{0,2}$. 
+
+There is a natural discrete group $\Gamma$ such that, 
+\[ D/\Gamma = \{ \text{pol. Hodge structures on V} \}/\text{iso}\]
+
+\begin{definition}
+    A Siegel set is a kind of fundamental set for the covering
+    \[ \pi: D \to D/\Gamma\]
+    it is associated to a triple $(P, S, K)$ where: 
+    \begin{enumerate}
+        \item $P$ is a minimal $\Q$-parabolic subgroup(?)
+        \item $S$ is the maximal $\Q$-split torus in $P$, stable under the Cartan involutions associated to $K$.
+        \item $K$ is a maximal compact subgroup corresponding to a choice $h \in D$. 
+    \end{enumerate}
+\end{definition}
+
+For $G = \GL_n$, $K = O(n)$, $S$ is the diagonal matrices, and $P$ is the lower triangular matrices. 
+
+A Siegel set in $G(\R)$ is a product, 
+\begin{align*}
+    \Omega A_t K \subset G(\R)
+\end{align*}
+where $\Omega$ is compact in $P(\R)$. 
+
+If one constructs Siegel sets for $G = \Aut(V, Q)$ associated to $D$, 
+\begin{align*}
+    G(\R) &\to D \qquad g \mapsto g\cdot h \\
+    \Omega A_t K &\mapsto T
+\end{align*}
+where $T$ is a Hodge-theoretic Siegel set. 
+
+The upshort is: One can choose Hodge theoretic Siegel sets such that, 
+\begin{enumerate}
+    \item They give a fundamental set for $\pi: D \to D/\Gamma$. 
+    \item The set of $h \in T$ that admit an integeral Hodge vector $v$ with $Q(v,v) \leq q$ has size that is is $\leq$ some polynomial in $q$. 
+\end{enumerate}
+
+
+\end{document}
